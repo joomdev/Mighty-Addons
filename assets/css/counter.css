@@ -1,0 +1,12 @@
+.mighty-counter {
+    text-align: center;
+}
+
+/* Alignment */
+.mighty-counter .icon-align-right {
+    float: right;
+}
+
+.mighty-counter .icon-align-left {
+    float: left;
+}

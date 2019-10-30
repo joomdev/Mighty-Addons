@@ -1,0 +1,597 @@
+<?php
+namespace MightyAddons\Widgets;
+
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Icons_Manager;
+use \Elementor\Utils as Utils;
+use Elementor\Repeater as Repeater;
+use \Elementor\Group_Control_Typography;
+use \Elementor\Group_Control_Border;
+use \Elementor\Scheme_Typography;
+use \Elementor\Scheme_Color;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+class MT_Accordion extends Widget_Base {
+
+	public function get_name() {
+		return 'accordion';
+	}
+
+	public function get_title() {
+		return __( 'MT Accordion', 'mighty' );
+    }
+    
+	public function get_icon() {
+		return 'fas fa-tasks';
+    }
+
+    public function get_categories() {
+        return [ 'mighty-addons' ];
+    }
+    
+	public function get_keywords() {
+		return [ 'accordion', 'tabs' ];
+    }
+
+    public function get_style_depends() {
+		return [ 'mt-accordion' ];
+    }
+    
+    public function get_script_depends() {
+		return [ 'mt-accordion' ];
+	}
+    
+	protected function _register_controls() {
+		$this->start_controls_section(
+			'section_accordion',
+			[
+				'label' => __( 'MT Accordion', 'mighty' ),
+			]
+		);
+
+            $repeater = new Repeater();
+
+                $repeater->add_control(
+                    'accordion_title',
+                    [
+                        'label' => __( 'Title & Description', 'mighty' ),
+                        'type' => Controls_Manager::TEXT,
+                        'default' => __( 'Accordion Title', 'mighty' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
+                        'label_block' => true,
+                    ]
+                );
+
+                $repeater->add_control(
+                    'accordion_content',
+                    [
+                        'label' => __( 'Content', 'mighty' ),
+                        'type' => Controls_Manager::WYSIWYG,
+                        'default' => __( 'Accordion Content', 'mighty' ),
+                        'show_label' => false,
+                    ]
+                );
+
+                $repeater->add_control(
+                    'accordion_icon',
+                    [
+                        'label' => __( 'Icon', 'mighty' ),
+                        'type' => Controls_Manager::ICONS,
+                        'default' => [
+                            'value' => 'fas fa-chevron-right',
+                            'library' => 'solid',
+                        ],
+                    ]
+                );
+
+                $repeater->add_control(
+                    'active_accordion_icon',
+                    [
+                        'label' => __( 'Active Icon', 'mighty' ),
+                        'type' => Controls_Manager::ICONS,
+                        'default' => [
+                            'value' => 'fas fa-chevron-down',
+                            'library' => 'solid',
+                        ],
+                    ]
+                );
+
+                $this->add_control(
+                    'tabs',
+                    [
+                        'label' => __( 'Accordion Items', 'mighty' ),
+                        'type' => Controls_Manager::REPEATER,
+                        'fields' => $repeater->get_controls(),
+                        'default' => [
+                            [
+                                'accordion_title' => __( 'Accordion 1', 'mighty' ),
+                                'accordion_icon' => __( 'fas fa-plus', 'mighty' ),
+                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
+                            ],
+                            [
+                                'accordion_title' => __( 'Accordion 2', 'mighty' ),
+                                'accordion_icon' => __( 'fas fa-plus', 'mighty' ),
+                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
+                            ],
+                        ],
+                        'title_field' => '{{{ accordion_title }}}',
+                    ]
+                );
+            
+            $repeater->end_controls_tabs();
+
+            $this->add_control(
+                'first_active',
+                [
+                    'label' => __( 'First Active', 'mighty' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'On', 'mighty' ),
+                    'label_off' => __( 'Off', 'mighty' ),
+                    'return_value' => 'yes',
+                    'default' => 'no',
+                ]
+            );
+            
+            $this->add_control(
+                'multiple_accordion',
+                [
+                    'label' => __( 'Open Multiple', 'mighty' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'On', 'mighty' ),
+                    'label_off' => __( 'Off', 'mighty' ),
+                    'return_value' => 'yes',
+                    'default' => 'no',
+                ]
+            );
+            
+            $this->add_control(
+                'open_all',
+                [
+                    'label' => __( 'Open All', 'mighty' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'On', 'mighty' ),
+                    'label_off' => __( 'Off', 'mighty' ),
+                    'return_value' => 'yes',
+                    'default' => 'no',
+                ]
+            );
+            
+            $this->add_control(
+                'enable_faq',
+                [
+                    'label' => __( 'Enable FAQ Schema', 'mighty' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'On', 'mighty' ),
+                    'label_off' => __( 'Off', 'mighty' ),
+                    'return_value' => 'yes',
+                    'default' => 'no',
+                ]
+            );
+        
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+			'section_title',
+			[
+				'label' => __( 'Title', 'mighty' ),
+			]
+        );
+
+            $this->add_control(
+                'title_html_tag',
+                [
+                    'label' => __( 'Title HTML Tag', 'mighty' ),
+                    'type' => Controls_Manager::SELECT,
+                    'options' => [
+                        'h1' => 'H1',
+                        'h2' => 'H2',
+                        'h3' => 'H3',
+                        'h4' => 'H4',
+                        'h5' => 'H5',
+                        'h6' => 'H6',
+                        'div' => 'div',
+                    ],
+                    'default' => 'div',
+                    'separator' => 'before',
+                ]
+            );
+
+        $this->end_controls_section();
+        
+        $this->start_controls_section(
+			'section_title_style',
+			[
+				'label' => __( 'Title', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+        );
+        
+            $this->add_control(
+                'title_color',
+                [
+                    'label' => __( 'Color', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'color: {{VALUE}};',
+                    ],
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'title_background',
+                [
+                    'label' => __( 'Background', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'active_color',
+                [
+                    'label' => __( 'Active Color', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .active .mt-accordion-title' => 'color: {{VALUE}};',
+                    ],
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_4,
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'active_background_color',
+                [
+                    'label' => __( 'Active Background Color', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .active .mt-accordion-title' => 'background-color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'title_typography',
+                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title',
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'title_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', 'em', '%' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+        $this->end_controls_section();
+        
+        $this->start_controls_section(
+			'section_icon_style',
+			[
+				'label' => __( 'Icon', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+            $this->add_control(
+                'icon_align',
+                [
+                    'label' => __( 'Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Start', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'right' => [
+                            'title' => __( 'End', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'default' => is_rtl() ? 'right' : 'left',
+                    'toggle' => false,
+                    'label_block' => false,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'icon_space',
+                [
+                    'label' => __( 'Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+						'unit' => 'px',
+						'size' => 5,
+					],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'margin: 0 {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+            
+            $this->start_controls_tabs(
+                'style_tabs'
+            );
+
+            $this->start_controls_tab(
+                'style_normal_tab',
+                [
+                    'label' => __( 'Normal', 'mighty' ),
+                ]
+            );
+
+                $this->add_control(
+                    'icon_color',
+                    [
+                        'label' => __( 'Color', 'mighty' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+
+                $this->add_control(
+                    'icon_bg_color',
+                    [
+                        'label' => __( 'Background Color', 'mighty' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'background-color: {{VALUE}};',
+                        ],
+                    ]
+                );
+
+            $this->end_controls_tab();
+
+            $this->start_controls_tab(
+                'style_active_tab',
+                [
+                    'label' => __( 'Active', 'mighty' ),
+                ]
+            );
+
+                $this->add_control(
+                    'icon_active_color',
+                    [
+                        'label' => __( 'Color', 'mighty' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .mighty-accordion .mt-panel .active .accordion-icons i' => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+
+                $this->add_control(
+                    'icon_active_bg_color',
+                    [
+                        'label' => __( 'Background Color', 'mighty' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .mighty-accordion .mt-panel .active .accordion-icons i' => 'background-color: {{VALUE}};',
+                        ],
+                    ]
+                );
+
+            $this->end_controls_tab();
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_accordion_style',
+			[
+				'label' => __( 'Accordion', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+        );
+
+            $this->add_control(
+                'accordion_gap',
+                [
+                    'label' => __( 'Gap', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 15,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'padding: {{SIZE}}{{UNIT}};'
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'title_border',
+                    'label' => __( 'Border Type', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion',
+                ]
+            );
+
+            $this->add_control(
+                'title_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_content_style',
+			[
+				'label' => __( 'Content', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+            $this->add_control(
+                'content_background_color',
+                [
+                    'label' => __( 'Background', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .panel' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'content_color',
+                [
+                    'label' => __( 'Color', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .panel' => 'color: {{VALUE}};',
+                    ],
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_3,
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'content_typography',
+                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .panel',
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'content_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', 'em', '%' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'content_border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content',
+                ]
+            );
+
+            $this->add_control(
+                'content_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+		$this->end_controls_section();
+    }
+    
+	protected function render() {
+        $settings = $this->get_settings_for_display();
+
+        if ( empty( $settings['tabs'] ) ) {
+            return;
+        }
+
+        $openMultiple = $settings['multiple_accordion'] == "yes" ? 'enable' : 'disable';
+        $firstActive = $settings['first_active'] == "yes" ? 'active' : '';
+        $openAll = $settings['open_all'] == "yes" ? 'active' : '';
+        $faqSchema = $settings['enable_faq'] == "yes" ? true : false;
+        $titleTag = $settings['title_html_tag'];
+        ?>
+
+        <div <?php echo $faqSchema ? 'itemscope itemtype="https://schema.org/FAQPage" ' : ''; ?> class="mighty-accordion" data-enable-multiple="<?php echo $openMultiple; ?>" data-first-active="<?php echo $firstActive; ?>" data-open-all="<?php echo $openAll; ?>">
+            <?php
+            foreach (  $settings['tabs'] as $index => $tab ) :
+                $tabId = substr( $this->get_id_int(), 0, 3 ) . $index+1;
+                
+                $accordionIcon = '<i aria-hidden="true" class="accordion-icon ' . $tab['accordion_icon']['value'].'"></i>';
+                $accordionActiveIcon = '<i aria-hidden="true" class="accordion-active-icon ' . $tab['active_accordion_icon']['value'].'"></i>';
+            ?>
+                <div <?php echo $faqSchema ? 'itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" ' : ''; ?> class="mt-panel elementor-repeater-item-<?php echo $tab['_id']; ?>">
+                    <div class="accordion accordion-<?php echo $tabId; ?><?php echo $firstActive; ?> <?php echo $settings['icon_align'] == "left" ? 'icons-left' : 'icons-right'; ?>">
+
+                        <?php if ( $settings['icon_align'] == "left" ) { ?>
+                        <div class="accordion-icons">
+                            <?php echo $accordionIcon; ?>
+                            <?php echo $accordionActiveIcon; ?>
+                        </div>
+                        <?php } ?>
+
+                        <<?php echo $titleTag; ?><?php echo $faqSchema ? ' itemprop="name"' : ''; ?> class="mt-accordion-title">
+                            <?php echo $tab['accordion_title']; ?>
+                        </<?php echo $titleTag; ?>>
+                        
+                        <?php if ( $settings['icon_align'] == "right" ) { ?>
+                        <div class="accordion-icons">
+                            <?php echo $accordionIcon; ?>
+                            <?php echo $accordionActiveIcon; ?>
+                        </div>
+                        <?php } ?>
+                        
+                    </div>
+                    <div <?php echo $faqSchema ? 'itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" ' : ''; ?> class="panel">
+                        <div class="accordion-content">
+                            <?php echo $tab['accordion_content']; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+		<?php
+	}
+}
