@@ -42,6 +42,7 @@ class Mighty_Elementor {
 		wp_register_style('mt-accordion', MIGHTY_ADDONS_PLG_URL . 'assets/css/accordion.css' );
 		wp_register_style('mt-twentytwenty', MIGHTY_ADDONS_PLG_URL . 'assets/css/twentytwenty.css' );
 		wp_register_style('mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/css/before-after.css' );
+		wp_register_style('mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/gradient-heading.css' );
 	}
 
 	public function mt_enqueue_styles() {
@@ -55,6 +56,7 @@ class Mighty_Elementor {
 		wp_enqueue_style( 'mt-accordion' );
 		wp_enqueue_style( 'mt-twentytwenty' );
 		wp_enqueue_style( 'mt-beforeafter' );
+		wp_enqueue_style( 'mt-gradientheading' );
 	}
 
 	public function widget_scripts() {
@@ -87,6 +89,7 @@ class Mighty_Elementor {
 		require_once( realpath(__DIR__ . '/..') . '/widgets/buttongroup.php' );
 		require_once( realpath(__DIR__ . '/..') . '/widgets/accordion.php' );
 		require_once( realpath(__DIR__ . '/..') . '/widgets/before-after.php' );
+		require_once( realpath(__DIR__ . '/..') . '/widgets/gradient-heading.php' );
 	}
 	
 	public function register_widgets() {
@@ -101,6 +104,7 @@ class Mighty_Elementor {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_ButtonGroup() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_Accordion() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_BeforeAfter() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_GradientHeading() );
 	}
 }
 
