@@ -132,6 +132,8 @@ class MT_GradientHeading extends Widget_Base {
                 Group_Control_Background::get_type(),
                 [
                     'name' => 'gh_heading_color',
+                    'label' => __( 'Heading Color', 'mighty' ),
+                    'types' => [ 'gradient' ],
                     'selector' => '{{WRAPPER}} .mighty-gradient-heading',
                 ]
             );
@@ -178,6 +180,7 @@ class MT_GradientHeading extends Widget_Base {
                         'color' => __( 'Color', 'mighty' ),
                         'luminosity' => __( 'Luminosity', 'mighty' ),
                     ],
+                    'default' => 'normal',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-gradient-heading' => 'mix-blend-mode: {{VALUE}}'
                     ],
@@ -190,7 +193,17 @@ class MT_GradientHeading extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
         
-            
+            if ( $settings['gh_link']['url'] == "" ) {
+                echo '<' . $settings['gh_title_tag'] . ' class="mighty-gradient-heading">' . $settings['gh_heading'] . '</' . $settings['gh_title_tag'] . '>';
+            } else {
+                $target = $settings['gh_link']['is_external'] ? ' target="_blank"' : '';
+                $nofollow = $settings['gh_link']['nofollow'] ? ' rel="nofollow"' : '';
+
+                echo '<' . $settings['gh_title_tag'] . ' class="mighty-gradient-heading">';
+                echo '<a href="' . $settings['gh_link']['url'] . ' ' . $target . ' ' . $nofollow .'">';
+                echo $settings['gh_heading'];
+                echo '</a></' . $settings['gh_title_tag'] . '>';
+            }
 	}
 	
 	protected function _content_template() {
