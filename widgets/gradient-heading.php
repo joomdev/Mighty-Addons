@@ -3,12 +3,11 @@ namespace MightyAddons\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use \Elementor\Utils as Utils;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Scheme_Typography;
 use \Elementor\Scheme_Color;
-use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Text_Shadow;
+use Mighty_Addons\Controls\Group_Control_Text_Gradient;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -129,11 +128,9 @@ class MT_GradientHeading extends Widget_Base {
         );
 
             $this->add_group_control(
-                Group_Control_Background::get_type(),
+                Group_Control_Text_Gradient::get_type(),
                 [
-                    'name' => 'gh_heading_color',
-                    'label' => __( 'Heading Color', 'mighty' ),
-                    'types' => [ 'gradient' ],
+                    'name' => 'gh_heading_gradient',
                     'selector' => '{{WRAPPER}} .mighty-gradient-heading',
                 ]
             );
