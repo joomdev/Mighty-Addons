@@ -9,6 +9,8 @@
  * Text Domain: mighty
  */
 
+namespace Mighty_Addons;
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 define( 'MIGHTY_VERSION', '1.0.1' );
@@ -92,7 +94,11 @@ final class Mighty_Addons {
 	 * @access public
 	 */
 	public function init() {
-		// Registering Category
+		
+		// Register Custom Controls
+		add_action( 'elementor/controls/controls_registered', [$this, 'register_controls'] );
+
+		// Register Custom Category
 		add_action( 'elementor/elements/categories_registered', [ $this, 'add_elementor_widget_categories' ] );
 
 		// Check if Elementor installed and activated
@@ -187,6 +193,22 @@ final class Mighty_Addons {
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 	}
+
+	/**
+     * Register custom controls
+     *
+     * Include custom controls file and register them
+     *
+     * @since 1.1.0
+     *
+     * @access public
+     */
+    public function register_controls() {
+        require( 'controls/gradient.php' );
+        $gradient = __NAMESPACE__ . '\Controls\Group_Control_Text_Gradient';
+
+        \Elementor\Plugin::instance()->controls_manager->add_group_control( $gradient::get_type(), new $gradient() );
+    }
 
 	/**
 	 * Plugin Category
