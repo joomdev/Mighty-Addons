@@ -9,6 +9,8 @@ use \Elementor\Scheme_Typography;
 use \Elementor\Scheme_Color;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Group_Control_Background;
+use \Elementor\Group_Control_Border;
+use \Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -264,6 +266,31 @@ class MT_FlipBox extends Widget_Base {
             );
 
             $this->add_control(
+                'back_button_text',
+                [
+                    'label' => __( 'Button Text', 'mighty' ),
+                    'type' => Controls_Manager::TEXT,
+                    'default' => __( 'Click Here', 'mighty' ),
+                    'placeholder' => __( 'Enter Button Text', 'mighty' ),
+                ]
+            );
+
+            $this->add_control(
+                'back_button_link',
+                [
+                    'label' => __( 'Link', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::URL,
+                    'placeholder' => __( 'https://your-link.com', 'mighty' ),
+                    'show_external' => true,
+                    'default' => [
+                        'url' => '',
+                        'is_external' => true,
+                        'nofollow' => true,
+                    ],
+                ]
+            );
+
+            $this->add_control(
                 'back_horizontal_alignment',
                 [
                     'label' => __( 'Horizontal Alignment', 'mighty' ),
@@ -404,15 +431,898 @@ class MT_FlipBox extends Widget_Base {
         
         $this->end_controls_section();
         
+        // Front Styling
         $this->start_controls_section(
-            'section_gh_style',
+            'section_flipbox_front_style',
             [
-                'label' => __( 'Gradient Heading', 'mighty' ),
+                'label' => __( 'Front', 'mighty' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
+            $this->add_responsive_control(
+                'front_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'front_border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'front_box_shadow',
+                    'label' => __( 'Box Shadow', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            // Icon Styling for Front
+            $this->add_control(
+                'heading_front_icon_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Icon', 'mighty' ),
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
             
+            $this->add_control(
+                'front_icon_spacing',
+                [
+                    'label' => __( 'Icon Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'front_icon_color',
+                [
+                    'label' => __( 'Icon Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'front_icon_size',
+                [
+                    'label' => __( 'Icon Size', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 5,
+                            'max' => 600,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'front_icon_bgcolor',
+                [
+                    'label' => __( 'Background Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'background-color: {{VALUE}}',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'front_icon_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'front_icon_rotate',
+                [
+                    'label' => __( 'Icon Rotate', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'deg' => [
+                            'min' => 0,
+                            'max' => 360,
+                            'step' => 1,
+                        ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'transform: rotate({{SIZE}}{{UNIT}});',
+					    '{{WRAPPER}} .mt-flipbox-wrapper' => 'transform: rotate({{SIZE}}{{UNIT}});',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+            
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'front_icon_border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .wrapper',
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'front_icon_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            // Image Styling for Front
+            $this->add_control(
+                'heading_front_image_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Image', 'mighty' ),
+                    'condition' => [
+                        'front_graphic_element' => 'image',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'front_image_spacing',
+                [
+                    'label' => __( 'Image Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'image',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'front_image_size',
+                [
+                    'label' => __( 'Image Size', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 10,
+                            'max' => 500,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'image',
+                    ],
+                ]
+            );
+            
+            $this->add_responsive_control(
+                'front_image_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'image',
+                    ],
+                ]
+            );
+            
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'front_image_border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'condition' => [
+                        'front_graphic_element' => 'image',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'front_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'image',
+                    ],
+                ]
+            );
+
+            // Title Styling for Front
+            $this->add_control(
+                'heading_front_title_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Title', 'mighty' ),
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'front_title_spacing',
+                [
+                    'label' => __( 'Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'front_title_color',
+                [
+                    'label' => __( 'Title Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'front_title_typography',
+                    'label' => __( 'Typography', 'mighty' ),
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            // Title Styling for Front
+            $this->add_control(
+                'heading_front_description_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Description', 'mighty' ),
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'front_description_color',
+                [
+                    'label' => __( 'Description Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'front_description_typography',
+                    'label' => __( 'Typography', 'mighty' ),
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+        $this->end_controls_section();
+
+        // Back Styling
+        $this->start_controls_section(
+            'section_flipbox_back_style',
+            [
+                'label' => __( 'Back', 'mighty' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+            $this->add_responsive_control(
+                'back_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'back_border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'back_box_shadow',
+                    'label' => __( 'Box Shadow', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            // Icon Styling for Back
+            $this->add_control(
+                'heading_back_icon_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Icon', 'mighty' ),
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
+            
+            $this->add_control(
+                'back_icon_spacing',
+                [
+                    'label' => __( 'Icon Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'back_icon_color',
+                [
+                    'label' => __( 'Icon Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'back_icon_size',
+                [
+                    'label' => __( 'Icon Size', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 5,
+                            'max' => 600,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'back_icon_bgcolor',
+                [
+                    'label' => __( 'Background Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'background-color: {{VALUE}}',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'back_icon_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'back_icon_rotate',
+                [
+                    'label' => __( 'Icon Rotate', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'deg' => [
+                            'min' => 0,
+                            'max' => 360,
+                            'step' => 1,
+                        ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'transform: rotate({{SIZE}}{{UNIT}});',
+					    '{{WRAPPER}} .mt-flipbox-wrapper' => 'transform: rotate({{SIZE}}{{UNIT}});',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+            
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'back_icon_border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .wrapper',
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'back_icon_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            // Image Styling for Back
+            $this->add_control(
+                'heading_back_image_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Image', 'mighty' ),
+                    'condition' => [
+                        'back_graphic_element' => 'image',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'back_image_spacing',
+                [
+                    'label' => __( 'Image Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'image',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'back_image_size',
+                [
+                    'label' => __( 'Image Size', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 10,
+                            'max' => 500,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'image',
+                    ],
+                ]
+            );
+            
+            $this->add_responsive_control(
+                'back_image_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'image',
+                    ],
+                ]
+            );
+            
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'back_image_border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'condition' => [
+                        'back_graphic_element' => 'image',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'back_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'image',
+                    ],
+                ]
+            );
+
+            // Title Styling for Back
+            $this->add_control(
+                'heading_back_title_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Title', 'mighty' ),
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'back_title_spacing',
+                [
+                    'label' => __( 'Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'back_title_color',
+                [
+                    'label' => __( 'Title Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'back_title_typography',
+                    'label' => __( 'Typography', 'mighty' ),
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            // Title Styling for Back
+            $this->add_control(
+                'heading_back_description_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Description', 'mighty' ),
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'back_description_color',
+                [
+                    'label' => __( 'Description Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'back_description_typography',
+                    'label' => __( 'Typography', 'mighty' ),
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            // Title Styling for Back
+            $this->add_control(
+                'heading_back_button_style',
+                [
+                    'type' => Controls_Manager::HEADING,
+                    'label' => __( 'Button', 'mighty' ),
+                    'separator' => 'before',
+                    'condition' => [
+                        'back_button_text!' => '',
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'button_size',
+                [
+                    'label' => __( 'Button Size', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'small',
+                    'options' => [
+                        'small'  => __( 'Small', 'mighty' ),
+                        'medium' => __( 'Medium', 'mighty' ),
+                        'large' => __( 'Large', 'mighty' ),
+                    ],
+                ]
+            );
+            
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'button_typogrpahy',
+                    'label' => __( 'Typography', 'mighty' ),
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            $this->add_control(
+                'button_text_color',
+                [
+                    'label' => __( 'Text Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'button_bg_color',
+                [
+                    'label' => __( 'Background Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'border',
+                    'label' => __( 'Border', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                ]
+            );
+
+            $this->add_responsive_control(
+                'button_border-radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
         $this->end_controls_section();
 	}
 	
