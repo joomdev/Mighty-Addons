@@ -43,7 +43,7 @@ class Mighty_Elementor {
 		wp_register_style('mt-twentytwenty', MIGHTY_ADDONS_PLG_URL . 'assets/css/twentytwenty.css' );
 		wp_register_style('mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/css/before-after.css' );
 		wp_register_style('mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/gradient-heading.css' );
-		wp_register_style('mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/flip-box.css' );
+		wp_register_style('mt-flipbox', MIGHTY_ADDONS_PLG_URL . 'assets/css/flip-box.css' );
 	}
 
 	public function mt_enqueue_styles() {

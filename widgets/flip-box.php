@@ -84,7 +84,7 @@ class MT_FlipBox extends Widget_Base {
             $this->add_group_control(
                 Group_Control_Image_Size::get_type(),
                 [
-                    'name' => 'front_choose_image_size', // // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
+                    'name' => 'front_image_dimension', // // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
                     'default' => 'large',
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -146,6 +146,9 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => 'center',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper .front' => "text-align: {{VALUE}}",
+                    ]
                 ]
             );
 
@@ -178,8 +181,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_background',
                     'label' => __( 'Background', 'mighty' ),
-                    'types' => [ 'classic', 'gradient' ],
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front',
                 ]
             );
 
@@ -252,7 +254,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'placeholder' => __( 'Front Title', 'mighty' ),
+                    'placeholder' => __( 'Back Title', 'mighty' ),
                 ]
             );
 
@@ -311,6 +313,9 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => 'center',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper .back' => "text-align: {{VALUE}}",
+                    ]
                 ]
             );
 
@@ -343,8 +348,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'back_background',
                     'label' => __( 'Background', 'mighty' ),
-                    'types' => [ 'classic', 'gradient' ],
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back',
                 ]
             );
 
@@ -359,21 +363,6 @@ class MT_FlipBox extends Widget_Base {
         );
 
             $this->add_control(
-                'flip_direction',
-                [
-                    'label' => __( 'Flip Direction', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'left',
-                    'options' => [
-                        'up'  => __( 'Up', 'mighty' ),
-                        'down' => __( 'Down', 'mighty' ),
-                        'left' => __( 'Left', 'mighty' ),
-                        'right' => __( 'Right', 'mighty' ),
-                    ],
-                ]
-            );
-
-            $this->add_control(
                 'flip_effect',
                 [
                     'label' => __( 'Flip Effect', 'mighty' ),
@@ -386,6 +375,21 @@ class MT_FlipBox extends Widget_Base {
                         'zoom-in' => __( 'Zoom In', 'mighty' ),
                         'zoom-out' => __( 'Zoom Out', 'mighty' ),
                         'fade' => __( 'Fade', 'mighty' ),
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'flip_direction',
+                [
+                    'label' => __( 'Flip Direction', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'left',
+                    'options' => [
+                        'up'  => __( 'Up', 'mighty' ),
+                        'down' => __( 'Down', 'mighty' ),
+                        'left' => __( 'Left', 'mighty' ),
+                        'right' => __( 'Right', 'mighty' ),
                     ],
                 ]
             );
@@ -455,7 +459,7 @@ class MT_FlipBox extends Widget_Base {
             $this->add_group_control(
                 Group_Control_Border::get_type(),
                 [
-                    'name' => 'front_border',
+                    'name' => 'front_card',
                     'label' => __( 'Border', 'mighty' ),
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
                 ]
@@ -1328,8 +1332,58 @@ class MT_FlipBox extends Widget_Base {
 	
 	protected function render() {
         $settings = $this->get_settings_for_display();
-        
+    ?>
+        <div class="mt-flipbox-wrapper flip-right">
+            <div class="mt-card">
 
+                <div class="front">
+                    <?php if( $settings['front_graphic_element'] == 'image' ) : ?>
+                    <div class="mt-flipbox-image">
+                        <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'front_image_dimension', 'front_choose_image' ); ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if( $settings['front_graphic_element'] == 'icon' ) : ?>
+                    <div class="mt-flipbox-icon">
+                        <?php \Elementor\Icons_Manager::render_icon( $settings['front_choose_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <h3><?php echo $settings['front_title']; ?></h3>
+                    <div class="card-description">
+                        <?php echo $settings['front_description']; ?>
+                    </div>
+                </div>
+
+                <div class="back">
+                    <?php if( $settings['back_graphic_element'] == 'image' ) : ?>
+                    <div class="mt-flipbox-image">
+                        <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'back_image_dimension', 'back_choose_image' ); ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if( $settings['back_graphic_element'] == 'icon' ) : ?>
+                    <div class="mt-flipbox-icon">
+                        <?php \Elementor\Icons_Manager::render_icon( $settings['back_choose_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <h3><?php echo $settings['back_title']; ?></h3>
+                    <div class="card-description">
+                        <?php echo $settings['back_description']; ?>
+                    </div>
+
+                    <div class="card-button">
+                    <?php
+                        $target = $settings['back_button_link']['is_external'] ? ' target="_blank"' : '';
+		                $nofollow = $settings['back_button_link']['nofollow'] ? ' rel="nofollow"' : '';
+                        echo '<a class="btn" href="' . $settings['back_button_link']['url'] . '"' . $target . $nofollow . '>' . $settings['back_button_text'] .'</a>';
+                    ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
 	}
 	
 	protected function _content_template() {
