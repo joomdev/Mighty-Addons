@@ -17,18 +17,9 @@
     transform: rotateX(0deg);
 }
 
-.mt-flipbox-wrapper,
-.mt-card {
-    width: 200px;
-    height: 200px;
+.mt-flipbox-wrapper .mt-card {
+    width: 100%;
 }
-
-.mt-card .front,
-.mt-card .back {
-    border: 1px solid #FC545E;
-    border-radius: 4px;
-}
-
 
 /* Effects */
 .mt-flipbox-wrapper .mt-card .back,

@@ -113,6 +113,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Front Title', 'mighty' ),
+                    'default' => __( 'Front Title', 'mighty'),
                 ]
             );
 
@@ -122,6 +123,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::WYSIWYG,
                     'placeholder' => __( 'Type your description here', 'mighty' ),
+                    'default' => __( 'Front box description', 'mighty'),
                 ]
             );
 
@@ -255,6 +257,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Back Title', 'mighty' ),
+                    'default' => __( 'Back Title', 'mighty'),
                 ]
             );
 
@@ -264,6 +267,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::WYSIWYG,
                     'placeholder' => __( 'Type your description here', 'mighty' ),
+                    'default' => __( 'Back box description', 'mighty'),
                 ]
             );
 
@@ -413,16 +417,16 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 50,
+                        'size' => 200,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card' => 'height: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
 
             $this->add_responsive_control(
-                'flipbox_radius',
+                'flipbox_border_radius',
                 [
                     'label' => __( 'Border Radius', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
@@ -451,7 +455,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -461,7 +465,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_card',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front',
                 ]
             );
 
@@ -470,7 +474,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front',
                 ]
             );
 
@@ -502,10 +506,11 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 10,
+                        'size' => 20,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -522,8 +527,10 @@ class MT_FlipBox extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#562dd4',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'color: {{VALUE}}',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -546,10 +553,11 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 10,
+                        'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -567,7 +575,8 @@ class MT_FlipBox extends Widget_Base {
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'background-color: {{VALUE}}',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -581,8 +590,13 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Padding', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -595,29 +609,30 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __( 'Icon Rotate', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
                     'range' => [
-                        'deg' => [
+                        'px' => [
                             'min' => 0,
                             'max' => 360,
                             'step' => 1,
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'transform: rotate({{SIZE}}{{UNIT}});',
-					    '{{WRAPPER}} .mt-flipbox-wrapper' => 'transform: rotate({{SIZE}}{{UNIT}});',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'transform: rotate({{SIZE}}deg);',
+					    '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'transform: rotate({{SIZE}}deg);',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
                     ],
                 ]
             );
-            
+
             $this->add_group_control(
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'front_icon_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i',
                     'condition' => [
                         'front_graphic_element' => 'icon',
                     ],
@@ -630,8 +645,12 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Border Radius', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 50,
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -667,7 +686,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -690,10 +709,10 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 10,
+                        'size' => 70,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'width: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -708,7 +727,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -721,7 +740,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_image_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img',
                     'condition' => [
                         'front_graphic_element' => 'image',
                     ],
@@ -735,7 +754,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -771,7 +790,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'margin: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-front-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -786,7 +805,7 @@ class MT_FlipBox extends Widget_Base {
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-front-title' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -797,11 +816,11 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'front_title_typography',
                     'label' => __( 'Typography', 'mighty' ),
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-front-title',
                 ]
             );
 
-            // Title Styling for Front
+            // Description Styling for Front
             $this->add_control(
                 'heading_front_description_style',
                 [
@@ -821,7 +840,7 @@ class MT_FlipBox extends Widget_Base {
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .card-description' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -832,7 +851,7 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'front_description_typography',
                     'label' => __( 'Typography', 'mighty' ),
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .card-description',
                 ]
             );
 
@@ -1332,8 +1351,17 @@ class MT_FlipBox extends Widget_Base {
 	
 	protected function render() {
         $settings = $this->get_settings_for_display();
+
+        // Effects
+        $effect = "";
+        $flipEffect = $settings['flip_effect'];
+        if ( $flipEffect == "flip" || $flipEffect == "slide" || $flipEffect == "push" ) {
+            $effect = $flipEffect . "-" . $settings['flip_direction'];
+        } else {
+            $effect = $flipEffect;
+        }
     ?>
-        <div class="mt-flipbox-wrapper flip-right">
+        <div class="mt-flipbox-wrapper <?php echo $effect; ?>">
             <div class="mt-card">
 
                 <div class="front">
@@ -1349,7 +1377,7 @@ class MT_FlipBox extends Widget_Base {
                     </div>
                     <?php endif; ?>
                     
-                    <h3><?php echo $settings['front_title']; ?></h3>
+                    <h3 class="mt-front-title"><?php echo $settings['front_title']; ?></h3>
                     <div class="card-description">
                         <?php echo $settings['front_description']; ?>
                     </div>
@@ -1368,7 +1396,7 @@ class MT_FlipBox extends Widget_Base {
                     </div>
                     <?php endif; ?>
                     
-                    <h3><?php echo $settings['back_title']; ?></h3>
+                    <h3 class="mt-back-title"><?php echo $settings['back_title']; ?></h3>
                     <div class="card-description">
                         <?php echo $settings['back_description']; ?>
                     </div>
