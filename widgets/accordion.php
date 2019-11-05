@@ -585,7 +585,7 @@ class MT_Accordion extends Widget_Base {
                         
                     </div>
                     <div <?php echo $faqSchema ? 'itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" ' : ''; ?> class="panel">
-                        <div class="accordion-content">
+                        <div itemprop="text" class="accordion-content">
                             <?php echo $tab['accordion_content']; ?>
                         </div>
                     </div>
