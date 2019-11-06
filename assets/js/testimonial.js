@@ -10,8 +10,6 @@
     var infiniteLoop     = $scope.find('.mighty-testimonial').data('infinite-looping');
     var transitionSpeed  = $scope.find('.mighty-testimonial').data('transition-speed');
 
-    console.log(slidesToShow);
-
     $scope.find(".mighty-testimonial").slick({
       infinite: infiniteLoop,
       speed: transitionSpeed,

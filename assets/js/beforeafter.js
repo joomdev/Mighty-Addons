@@ -1,17 +1,15 @@
 (function ($) {
 
     var WidgetBeforeAfterHandler = function ($scope, $) {
-
-        var el = $($scope).find('.mighty-before-after').attr('id');
         
-        var sliderOrientation = $("#"+el).data('slider-orientation');
-        var moveOnHover = $("#"+el).data('enable-hover');
-        var enableOverlay = !$("#"+el).data('enable-overlay');
-        var handleOffset = ($("#"+el).data('handle-offset'))/100; // Divided by hundred bcos offset requires fraction
-        var beforeLabel = $("#"+el).data('before-label');
-        var afterLabel = $("#"+el).data('after-label');
+        var sliderOrientation   = $scope.find('.mighty-before-after').data('slider-orientation');
+        var moveOnHover         = $scope.find('.mighty-before-after').data('enable-hover');
+        var enableOverlay       = !$scope.find('.mighty-before-after').data('enable-overlay');
+        var handleOffset        = ($scope.find('.mighty-before-after').data('handle-offset'))/100; // Divided by hundred bcos offset requires fraction
+        var beforeLabel         = $scope.find('.mighty-before-after').data('before-label');
+        var afterLabel          = $scope.find('.mighty-before-after').data('after-label');
         
-        $("#"+el).twentytwenty({
+        $scope.find('.mighty-before-after').twentytwenty({
             orientation: sliderOrientation,
             move_slider_on_hover: moveOnHover,
             no_overlay: enableOverlay,

@@ -1,10 +1,8 @@
 (function ($) {
 
     var WidgetCounterHandler = function ($scope, $) {
-        var obj = $scope['context'];
-        var el = $(obj).find('.mighty-counter .count');
         
-        $(el).each(function () {
+        $scope.find('.mighty-counter .count').each(function () {
             $(this).prop('Counter', $(this).data('start-number')).animate({
                 Counter: $(this).text()
             }, {
