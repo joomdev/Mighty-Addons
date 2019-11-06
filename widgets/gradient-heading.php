@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class MT_GradientHeading extends Widget_Base {
 	
 	public function get_name() {
-		return 'gradient-heading';
+		return 'mt-gradient-heading';
 	}
 	
 	public function get_title() {

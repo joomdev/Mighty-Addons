@@ -25,6 +25,6 @@
 
     // Make sure you run this code under Elementor.
     $(window).on('elementor/frontend/init', function () {
-        elementorFrontend.hooks.addAction('frontend/element_ready/counter.default', WidgetCounterHandler);
+        elementorFrontend.hooks.addAction('frontend/element_ready/mt-counter.default', WidgetCounterHandler);
     });
 })(jQuery);

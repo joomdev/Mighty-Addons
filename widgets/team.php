@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class MT_Team extends Widget_Base {
 	
 	public function get_name() {
-		return 'team';
+		return 'mt-team';
 	}
 	
 	public function get_title() {

@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class MT_Progressbar extends Widget_Base {
 	
 	public function get_name() {
-		return 'progressbar';
+		return 'mt-progressbar';
 	}
 	
 	public function get_title() {

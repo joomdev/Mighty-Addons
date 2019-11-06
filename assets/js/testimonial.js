@@ -28,6 +28,6 @@
 
   // Make sure you run this code under Elementor.
   $(window).on('elementor/frontend/init', function () {
-    elementorFrontend.hooks.addAction('frontend/element_ready/testimonial.default', WidgetTestimonialHandler);
+    elementorFrontend.hooks.addAction('frontend/element_ready/mt-testimonial.default', WidgetTestimonialHandler);
   });
 })(jQuery);

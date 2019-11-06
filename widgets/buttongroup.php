@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class MT_ButtonGroup extends Widget_Base {
 	
 	public function get_name() {
-		return 'buttongroup';
+		return 'mt-buttongroup';
 	}
 	
 	public function get_title() {

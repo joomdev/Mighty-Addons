@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class MT_Accordion extends Widget_Base {
 
 	public function get_name() {
-		return 'accordion';
+		return 'mt-accordion';
 	}
 
 	public function get_title() {

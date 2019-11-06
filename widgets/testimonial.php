@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class MT_Testimonial extends Widget_Base {
 	
 	public function get_name() {
-		return 'testimonial';
+		return 'mt-testimonial';
 	}
 	
 	public function get_title() {
@@ -684,8 +684,19 @@ class MT_Testimonial extends Widget_Base {
 		$autoplaySlides = ($settings['enable_autoplay'] == "true" ? 'true' : 'false');
 		$pauseOnHover = ($settings['pause_on_hover'] == "true" ? 'true' : 'false');
 		$infiniteLoop = ($settings['infinite_loop'] == "true" ? 'true' : 'false');
-
+		
+		
+		
 		echo '<div class="mighty-testimonial-wrapper" id="mighty-testimonial-'. $this->get_id() .'">';
+
+			if ( $settings['show_arrows'] === 'yes' ) {
+				echo '<div class="prev-next">';
+					echo '<a class="prev" role="button">';
+						\Elementor\Icons_Manager::render_icon( $settings['prev_icon'], [ 'aria-hidden' => 'true' ] );
+					echo '</a>';
+				echo '</div>';
+			}
+
 			echo '<div class="mighty-testimonial" data-show-slides="' . $settings['slides_to_show'] . '" data-scroll-slides="' . $settings['slides_to_scroll'] . '" data-autoplay-status="' . $autoplaySlides . '" data-autoplay-speed="' . $settings['autoplay_speed'] . '" data-hover-pause="' . $pauseOnHover . '" data-infinite-looping="' . $infiniteLoop . '" data-transition-speed="' . $settings['transition_speed'] . '">';
 			foreach (  $settings['testimonials'] as $index => $item ) {
 
@@ -716,10 +727,7 @@ class MT_Testimonial extends Widget_Base {
 			echo '</div>';
 
 			if ( $settings['show_arrows'] === 'yes' ) {
-				echo '<div class="prev-next text-center">';
-					echo '<a class="prev" role="button">';
-						\Elementor\Icons_Manager::render_icon( $settings['prev_icon'], [ 'aria-hidden' => 'true' ] );
-					echo '</a>';
+				echo '<div class="prev-next">';
 					echo '<a class="next" role="button">';
 						\Elementor\Icons_Manager::render_icon( $settings['next_icon'], [ 'aria-hidden' => 'true' ] );
 					echo '</a>';

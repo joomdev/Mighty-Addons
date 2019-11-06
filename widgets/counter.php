@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class MT_Counter extends Widget_Base {
 	
 	public function get_name() {
-		return 'counter';
+		return 'mt-counter';
 	}
 	
 	public function get_title() {

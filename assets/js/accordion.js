@@ -60,6 +60,6 @@
 
     // Make sure you run this code under Elementor.
     $(window).on('elementor/frontend/init', function () {
-        elementorFrontend.hooks.addAction('frontend/element_ready/accordion.default', WidgetAccordionHandler);
+        elementorFrontend.hooks.addAction('frontend/element_ready/mt-accordion.default', WidgetAccordionHandler);
     });
 })(jQuery);
