@@ -1,19 +1,18 @@
 (function ($) {
 
   var WidgetTestimonialHandler = function ($scope, $) {
-    var slidesToShow     = $('.mighty-testimonial').data('show-slides');
-    var slidesToScroll   = $('.mighty-testimonial').data('scroll-slides');
-    var autoplayStatus   = $('.mighty-testimonial').data('autoplay-status');
-    var autoplaySpeed    = $('.mighty-testimonial').data('autoplay-speed');
-    var transitionSpeed  = $('.mighty-testimonial').data('transition-speed');
-    var pauseOnHover     = $('.mighty-testimonial').data('hover-pause');
-    var infiniteLoop     = $('.mighty-testimonial').data('infinite-looping');
-    var transitionSpeed  = $('.mighty-testimonial').data('transition-speed');
+    var slidesToShow     = $scope.find('.mighty-testimonial').data('show-slides');
+    var slidesToScroll   = $scope.find('.mighty-testimonial').data('scroll-slides');
+    var autoplayStatus   = $scope.find('.mighty-testimonial').data('autoplay-status');
+    var autoplaySpeed    = $scope.find('.mighty-testimonial').data('autoplay-speed');
+    var transitionSpeed  = $scope.find('.mighty-testimonial').data('transition-speed');
+    var pauseOnHover     = $scope.find('.mighty-testimonial').data('hover-pause');
+    var infiniteLoop     = $scope.find('.mighty-testimonial').data('infinite-looping');
+    var transitionSpeed  = $scope.find('.mighty-testimonial').data('transition-speed');
 
-    var obj = $scope;
-    var el = $(obj).find('.mighty-testimonial-wrapper').attr('id');
+    console.log(slidesToShow);
 
-    $("#"+el + " .mighty-testimonial").slick({
+    $scope.find(".mighty-testimonial").slick({
       infinite: infiniteLoop,
       speed: transitionSpeed,
       autoplay: autoplayStatus,
@@ -21,8 +20,9 @@
       slidesToShow: slidesToShow,
       slidesToScroll: slidesToScroll,
       pauseOnHover: pauseOnHover,
-      prevArrow: $("#" + el + ' .prev'),
-      nextArrow: $("#" + el + ' .next'),
+      prevArrow: $(this).find('.prev'),
+      nextArrow: $(this).find('.next'),
+      dots: true,
     });
   };
 

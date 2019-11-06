@@ -13,46 +13,22 @@
     margin: auto;
 }
 
-.mighty-testimonial .slick-dots li button::before {
-    font-size: 30px
-}
-
-
-/* .mighty-testimonial .mt-person-testimonial.skin-bubble blockquote {
-    border: 1px solid transparent;
-    padding: 15px 20px;
-    background-color: #F1F4F5;
-    border-radius: 4px;
-    position: relative;
-} 
-
-.mighty-testimonial .mt-person-testimonial blockquote:before {
-    position: absolute;
-    border: 1px solid transparent;
-    border-width: 0 1px 1px 0;
-    bottom: -7px;
-    left: 33px;
-    display: block;
-    width: 14px;
-    height: 14px;
-    content: '';
-    background-color: #F1F4F5;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-} */
-
 .mighty-testimonial .mt-person-testimonial:before {
     border-width: 1px 0 0 1px;
 }
 
-.prev-next .prev,
-.prev-next .next {
-    font-size: 30px;
-    margin: 10px;
+.mighty-testimonial-wrapper .prev-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 5;
 }
 
-.mighty-testimonial {
-    font-size: 20px;
+.mighty-testimonial-wrapper .next-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    z-index: 5;
 }

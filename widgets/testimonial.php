@@ -499,7 +499,7 @@ class MT_Testimonial extends Widget_Base {
 			);
 
 			$this->add_control(
-                'testimonial_content_color',
+				'testimonial_content_color',
                 [
                     'label'     => __( 'Color', 'mighty' ),
 					'type'      => Controls_Manager::COLOR,
@@ -594,7 +594,7 @@ class MT_Testimonial extends Widget_Base {
 			$this->add_responsive_control(
 				'arrows_fontsize',
 				[
-					'label' => __( 'Font Size', 'mighty' ),
+					'label' => __( 'Arrows - Font Size', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
 					'size_units' => [ 'px', 'em', 'rem' ],
 					'range' => [
@@ -614,15 +614,15 @@ class MT_Testimonial extends Widget_Base {
 			);
 
 			$this->add_responsive_control(
-				'arrows_spacing',
+				'dots_fontsize',
 				[
-					'label' => __( 'Spacing', 'mighty' ),
+					'label' => __( 'Dots - Font Size', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
 					'size_units' => [ 'px', 'em', 'rem' ],
 					'range' => [
 						'px' => [
 							'min' => 1,
-							'max' => 200,
+							'max' => 30,
 						],
 					],
 					'default' => [
@@ -630,8 +630,7 @@ class MT_Testimonial extends Widget_Base {
 						'size' => 5,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial-wrapper .prev-next .prev i' => 'margin-right: {{SIZE}}{{UNIT}}',
-						'{{WRAPPER}} .mighty-testimonial-wrapper .prev-next .next i' => 'margin-left: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-testimonial .slick-dots li button::before' => 'font-size: {{SIZE}}{{UNIT}}',
 					],
 				]
 			);
@@ -690,7 +689,7 @@ class MT_Testimonial extends Widget_Base {
 		echo '<div class="mighty-testimonial-wrapper" id="mighty-testimonial-'. $this->get_id() .'">';
 
 			if ( $settings['show_arrows'] === 'yes' ) {
-				echo '<div class="prev-next">';
+				echo '<div class="prev-next prev-icon">';
 					echo '<a class="prev" role="button">';
 						\Elementor\Icons_Manager::render_icon( $settings['prev_icon'], [ 'aria-hidden' => 'true' ] );
 					echo '</a>';
@@ -727,7 +726,7 @@ class MT_Testimonial extends Widget_Base {
 			echo '</div>';
 
 			if ( $settings['show_arrows'] === 'yes' ) {
-				echo '<div class="prev-next">';
+				echo '<div class="prev-next next-icon">';
 					echo '<a class="next" role="button">';
 						\Elementor\Icons_Manager::render_icon( $settings['next_icon'], [ 'aria-hidden' => 'true' ] );
 					echo '</a>';
