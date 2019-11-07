@@ -1,13 +1,13 @@
 (function ($) {
 
     var WidgetAccordionHandler = function ($scope, $) {
-        var acc = document.getElementsByClassName("accordion");
-        var openMultiple = $(".mighty-accordion").data('enable-multiple');
-        var firstActive = $(".mighty-accordion").data('first-active');
-        var openAll = $(".mighty-accordion").data('open-all');
+        var acc = $scope.find(".accordion");
+        var openMultiple = $scope.find(".mighty-accordion").data('enable-multiple');
+        var firstActive = $scope.find(".mighty-accordion").data('first-active');
+        var openAll = $scope.find(".mighty-accordion").data('open-all');
 
         if ( firstActive == "active" ) {
-            var firstElement = $(".mighty-accordion").find('.mt-panel .accordion')[0];
+            var firstElement = $scope.find(".mighty-accordion .mt-panel .accordion")[0];
             firstElement.classList.add("active");
             firstElement.nextElementSibling.style.maxHeight = firstElement.nextElementSibling.scrollHeight + "px";
         }
