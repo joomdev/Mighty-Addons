@@ -237,6 +237,9 @@ class MT_FlipBox extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::URL,
                     'placeholder' => __( 'https://your-link.com', 'mighty' ),
                     'show_external' => true,
+                    'condition' => [
+                        'back_button_text!' => "",
+                    ],
                     'default' => [
                         'url' => '',
                         'is_external' => true,
@@ -374,18 +377,6 @@ class MT_FlipBox extends Widget_Base {
                     ],
                 ]
             );
-
-            $this->add_responsive_control(
-                'flipbox_border_radius',
-                [
-                    'label' => __( 'Border Radius', 'mighty' ),
-                    'type' => Controls_Manager::DIMENSIONS,
-                    'size_units' => [ 'px' ],
-                    'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    ],
-                ]
-            );
         
         $this->end_controls_section();
         
@@ -405,7 +396,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -441,7 +432,7 @@ class MT_FlipBox extends Widget_Base {
                 ]
             );
             
-            $this->add_control(
+            $this->add_responsive_control(
                 'front_icon_spacing',
                 [
                     'label' => __( 'Icon Spacing', 'mighty' ),
@@ -488,7 +479,7 @@ class MT_FlipBox extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'front_icon_size',
                 [
                     'label' => __( 'Icon Size', 'mighty' ),
@@ -601,6 +592,9 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'front_graphic_element' => 'icon',
                     ],
                 ]
             );
@@ -823,7 +817,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -859,7 +853,7 @@ class MT_FlipBox extends Widget_Base {
                 ]
             );
             
-            $this->add_control(
+            $this->add_responsive_control(
                 'back_icon_spacing',
                 [
                     'label' => __( 'Icon Spacing', 'mighty' ),
@@ -906,7 +900,7 @@ class MT_FlipBox extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'back_icon_size',
                 [
                     'label' => __( 'Icon Size', 'mighty' ),
@@ -1019,6 +1013,9 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'back_graphic_element' => 'icon',
                     ],
                 ]
             );
