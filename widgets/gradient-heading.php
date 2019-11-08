@@ -53,7 +53,7 @@ class MT_GradientHeading extends Widget_Base {
                 [
                     'label' => __( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'default' => 'Mighty Gradient Heading..',
+                    'default' => 'Mighty Gradient Heading',
                 ]
             );
 
@@ -197,7 +197,7 @@ class MT_GradientHeading extends Widget_Base {
                 $nofollow = $settings['gh_link']['nofollow'] ? ' rel="nofollow"' : '';
 
                 echo '<' . $settings['gh_title_tag'] . ' class="mighty-gradient-heading">';
-                echo '<a href="' . $settings['gh_link']['url'] . ' ' . $target . ' ' . $nofollow .'">';
+                echo '<a href="' . $settings['gh_link']['url'] . '" ' . $target . ' ' . $nofollow .'>';
                 echo $settings['gh_heading'];
                 echo '</a></' . $settings['gh_title_tag'] . '>';
             }

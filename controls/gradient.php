@@ -66,10 +66,10 @@ class Group_Control_Text_Gradient extends \Elementor\Group_Control_Base {
         ];
 
         $fields['color'] = [
-            'label' => _x( 'Color', 'Background Control', 'mighty' ),
+            'label' => _x( 'Color', 'mighty' ),
             'type' => Controls_Manager::COLOR,
-            'default' => '',
-            'title' => _x( 'Text Color', 'Background Control', 'mighty' ),
+            'default' => '#09009f',
+            'title' => _x( 'Text Color', 'mighty' ),
             'selectors' => [
                 '{{SELECTOR}}' => 'color: {{VALUE}};',
             ],
@@ -84,7 +84,7 @@ class Group_Control_Text_Gradient extends \Elementor\Group_Control_Base {
             'size_units' => [ '%' ],
             'default' => [
                 'unit' => '%',
-                'size' => 0,
+                'size' => 30,
             ],
             'render_type' => 'ui',
             'condition' => [
@@ -96,7 +96,7 @@ class Group_Control_Text_Gradient extends \Elementor\Group_Control_Base {
         $fields['color_b'] = [
             'label' => _x( 'Second Color', 'Background Control', 'mighty' ),
             'type' => Controls_Manager::COLOR,
-            'default' => '#f2295b',
+            'default' => '#00c4ce',
             'render_type' => 'ui',
             'condition' => [
                 'color_type' => [ 'gradient' ],
@@ -110,7 +110,7 @@ class Group_Control_Text_Gradient extends \Elementor\Group_Control_Base {
             'size_units' => [ '%' ],
             'default' => [
                 'unit' => '%',
-                'size' => 100,
+                'size' => 72,
             ],
             'render_type' => 'ui',
             'condition' => [
@@ -140,7 +140,7 @@ class Group_Control_Text_Gradient extends \Elementor\Group_Control_Base {
             'size_units' => [ 'deg' ],
             'default' => [
                 'unit' => 'deg',
-                'size' => 180,
+                'size' => 170,
             ],
             'range' => [
                 'deg' => [
@@ -181,7 +181,6 @@ class Group_Control_Text_Gradient extends \Elementor\Group_Control_Base {
             ],
             'of_type' => 'gradient',
         ];
-
         return $fields;
     }
 
