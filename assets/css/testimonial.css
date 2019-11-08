@@ -13,10 +13,6 @@
     margin: auto;
 }
 
-.mighty-testimonial .mt-person-testimonial:before {
-    border-width: 1px 0 0 1px;
-}
-
 .mighty-testimonial-wrapper .prev-icon {
     position: absolute;
     top: 50%;

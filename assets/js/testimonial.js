@@ -18,8 +18,8 @@
       slidesToShow: slidesToShow,
       slidesToScroll: slidesToScroll,
       pauseOnHover: pauseOnHover,
-      prevArrow: $(this).find('.prev'),
-      nextArrow: $(this).find('.next'),
+      prevArrow: $scope.find('.mighty-testimonial-wrapper .prev-next .prev'),
+      nextArrow: $scope.find('.mighty-testimonial-wrapper .prev-next .next'),
       dots: true,
     });
   };

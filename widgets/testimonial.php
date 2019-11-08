@@ -298,7 +298,7 @@ class MT_Testimonial extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 10,
+						'size' => 0,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide' => 'margin: 0 {{SIZE}}{{UNIT}}',
@@ -317,28 +317,13 @@ class MT_Testimonial extends Widget_Base {
                 ]
 			);
 			
-			$this->add_control(
-				'border_size',
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
 				[
-					'label' => __( 'Border Width', 'mighty' ),
-					'type' => Controls_Manager::DIMENSIONS,
-					'size_units' => [ 'px' ],
-					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide' => 'border-style: solid',
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					],
+					'name' => 'mt_testimonial_border',
+					'label' => __( 'Border', 'plugin-domain' ),
+					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide',
 				]
-			);
-
-			$this->add_control(
-                'testimonial_border_color',
-                [
-                    'label'     => __( 'Border Color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'border-color: {{VALUES}}'
-					]
-                ]
 			);
 
 			$this->add_responsive_control(
