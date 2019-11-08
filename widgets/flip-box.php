@@ -160,15 +160,15 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Vertical Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'mt-justify-content-start' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'middle' => [
+                        'mt-justify-content-center' => [
                             'title' => __( 'Middle', 'mighty' ),
                             'icon' => 'eicon-v-align-middle',
                         ],
-                        'right' => [
+                        'mt-justify-content-end' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
@@ -329,15 +329,15 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Vertical Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'mt-justify-content-start' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'middle' => [
+                        'mt-justify-content-center' => [
                             'title' => __( 'Middle', 'mighty' ),
                             'icon' => 'eicon-v-align-middle',
                         ],
-                        'right' => [
+                        'mt-justify-content-end' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
