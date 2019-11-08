@@ -127,57 +127,6 @@ class MT_FlipBox extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
-                'front_horizontal_alignment',
-                [
-                    'label' => __( 'Horizontal Alignment', 'mighty' ),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
-                        ],
-                        'center' => [
-                            'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'fa fa-align-center',
-                        ],
-                        'right' => [
-                            'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
-                        ],
-                    ],
-                    'default' => 'center',
-                    'toggle' => true,
-                    'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .front' => "text-align: {{VALUE}}",
-                    ]
-                ]
-            );
-
-            $this->add_control(
-                'front_vertical_alignment',
-                [
-                    'label' => __( 'Vertical Alignment', 'mighty' ),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Top', 'mighty' ),
-                            'icon' => 'eicon-v-align-top',
-                        ],
-                        'middle' => [
-                            'title' => __( 'Middle', 'mighty' ),
-                            'icon' => 'eicon-v-align-middle',
-                        ],
-                        'right' => [
-                            'title' => __( 'Bottom', 'mighty' ),
-                            'icon' => 'eicon-v-align-bottom',
-                        ],
-                    ],
-                    'default' => 'middle',
-                    'toggle' => true,
-                ]
-            );
-
             $this->add_group_control(
                 Group_Control_Background::get_type(),
                 [
@@ -296,57 +245,6 @@ class MT_FlipBox extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
-                'back_horizontal_alignment',
-                [
-                    'label' => __( 'Horizontal Alignment', 'mighty' ),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
-                        ],
-                        'center' => [
-                            'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'fa fa-align-center',
-                        ],
-                        'right' => [
-                            'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
-                        ],
-                    ],
-                    'default' => 'center',
-                    'toggle' => true,
-                    'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .back' => "text-align: {{VALUE}}",
-                    ]
-                ]
-            );
-
-            $this->add_control(
-                'back_vertical_alignment',
-                [
-                    'label' => __( 'Vertical Alignment', 'mighty' ),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Top', 'mighty' ),
-                            'icon' => 'eicon-v-align-top',
-                        ],
-                        'middle' => [
-                            'title' => __( 'Middle', 'mighty' ),
-                            'icon' => 'eicon-v-align-middle',
-                        ],
-                        'right' => [
-                            'title' => __( 'Bottom', 'mighty' ),
-                            'icon' => 'eicon-v-align-bottom',
-                        ],
-                    ],
-                    'default' => 'middle',
-                    'toggle' => true,
-                ]
-            );
-
             $this->add_group_control(
                 Group_Control_Background::get_type(),
                 [
@@ -395,6 +293,58 @@ class MT_FlipBox extends Widget_Base {
                         'left' => __( 'Left', 'mighty' ),
                         'right' => __( 'Right', 'mighty' ),
                     ],
+                ]
+            );
+
+            $this->add_control(
+                'flipbox_horizontal_alignment',
+                [
+                    'label' => __( 'Horizontal Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'fa fa-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'fa fa-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'fa fa-align-right',
+                        ],
+                    ],
+                    'default' => 'center',
+                    'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper .front' => "text-align: {{VALUE}}",
+                        '{{WRAPPER}} .mt-flipbox-wrapper .back' => "text-align: {{VALUE}}",
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'flipbox_vertical_alignment',
+                [
+                    'label' => __( 'Vertical Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Top', 'mighty' ),
+                            'icon' => 'eicon-v-align-top',
+                        ],
+                        'middle' => [
+                            'title' => __( 'Middle', 'mighty' ),
+                            'icon' => 'eicon-v-align-middle',
+                        ],
+                        'right' => [
+                            'title' => __( 'Bottom', 'mighty' ),
+                            'icon' => 'eicon-v-align-bottom',
+                        ],
+                    ],
+                    'default' => 'middle',
+                    'toggle' => true,
                 ]
             );
 
@@ -506,7 +456,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 20,
+                        'size' => 5,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -924,7 +874,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 10,
+                        'size' => 5,
                     ],                    
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -945,6 +895,7 @@ class MT_FlipBox extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#4d98d6',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'color: {{VALUE}}',
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon svg' => 'color: {{VALUE}}',
@@ -1290,7 +1241,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __('Button Size', 'mighty'),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'btn-md',
+                    'default' => 'btn-sm',
                     'options' => [
                         'btn-sm' => __('Small', 'mighty'),
                         'btn-md' => __('Medium', 'mighty'),
@@ -1415,6 +1366,7 @@ class MT_FlipBox extends Widget_Base {
                         <?php echo $settings['back_description']; ?>
                     </div>
 
+                    <?php if ( $settings['back_button_text'] !== "" ) { ?>
                     <div class="card-button">
                     <?php
                         $target = $settings['back_button_link']['is_external'] ? ' target="_blank"' : '';
@@ -1422,6 +1374,7 @@ class MT_FlipBox extends Widget_Base {
                         echo '<a class="btn ' . $settings['button_size'] . '" href="' . $settings['back_button_link']['url'] . '"' . $target . $nofollow . '>' . $settings['back_button_text'] .'</a>';
                     ?>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
