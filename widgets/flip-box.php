@@ -346,7 +346,7 @@ class MT_FlipBox extends Widget_Base {
                             'icon' => 'eicon-v-align-bottom',
                         ],
                     ],
-                    'default' => 'middle',
+                    'default' => 'ma-v-align-middle',
                     'toggle' => true,
                 ]
             );
@@ -1367,7 +1367,7 @@ class MT_FlipBox extends Widget_Base {
                     <?php
                         $target = $settings['back_button_link']['is_external'] ? ' target="_blank"' : '';
 		                $nofollow = $settings['back_button_link']['nofollow'] ? ' rel="nofollow"' : '';
-                        echo '<a class="btn ' . $settings['button_size'] . '" href="' . $settings['back_button_link']['url'] . '"' . $target . $nofollow . '>' . $settings['back_button_text'] .'</a>';
+                        echo '<a class="ma-btn ' . $settings['button_size'] . '" href="' . $settings['back_button_link']['url'] . '"' . $target . $nofollow . '>' . $settings['back_button_text'] .'</a>';
                     ?>
                     </div>
                     <?php } ?>

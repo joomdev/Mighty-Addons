@@ -40,7 +40,7 @@ class MT_ButtonGroup extends Widget_Base {
 	}
 
 	public function get_style_depends() {
-		return [ 'mt-buttongroup' ];
+		return [ 'mt-common', 'mt-buttongroup' ];
     }
 	
 	protected function _register_controls() {
@@ -88,14 +88,14 @@ class MT_ButtonGroup extends Widget_Base {
                     [
                         'label' => __('Button Type', 'mighty'),
                         'type' => \Elementor\Controls_Manager::SELECT,
-                        'default' => 'btn-primary',
+                        'default' => 'ma-btn-primary',
                         'options' => [
-                            'btn-primary' => __('Primary', 'mighty'),
-                            'btn-secondary' => __('Secondary', 'mighty'),
-                            'btn-success' => __('Success', 'mighty'),
-                            'btn-warning' => __('Warning', 'mighty'),
-                            'btn-danger' => __('Danger', 'mighty'),
-                            'btn-info' => __('Info', 'mighty'),
+                            'ma-btn-primary' => __('Primary', 'mighty'),
+                            'ma-btn-secondary' => __('Secondary', 'mighty'),
+                            'ma-btn-success' => __('Success', 'mighty'),
+                            'ma-btn-warning' => __('Warning', 'mighty'),
+                            'ma-btn-danger' => __('Danger', 'mighty'),
+                            'ma-btn-info' => __('Info', 'mighty'),
                         ],
                     ]
                 );
@@ -105,11 +105,11 @@ class MT_ButtonGroup extends Widget_Base {
                     [
                         'label' => __('Button Size', 'mighty'),
                         'type' => \Elementor\Controls_Manager::SELECT,
-                        'default' => 'btn-md',
+                        'default' => 'ma-btn-md',
                         'options' => [
-                            'btn-sm' => __('Small', 'mighty'),
-                            'btn-md' => __('Medium', 'mighty'),
-                            'btn-lg' => __('Large', 'mighty'),
+                            'ma-btn-sm' => __('Small', 'mighty'),
+                            'ma-btn-md' => __('Medium', 'mighty'),
+                            'ma-btn-lg' => __('Large', 'mighty'),
                         ],
                     ]
                 );
@@ -368,14 +368,14 @@ class MT_ButtonGroup extends Widget_Base {
                             [
                                 'button_text' => __('Facebook', 'mighty'),
                                 'button_link' => '#4267b2',
-                                'button_type' => 'btn-primary',
-                                'button_size' => 'btn-md',
+                                'button_type' => 'ma-btn-primary',
+                                'button_size' => 'ma-btn-md',
                             ],
                             [
                                 'button_text' => __('Twitter', 'mighty'),
                                 'button_link' => '#38A1F3',
-                                'button_type' => 'btn-primary',
-                                'button_size' => 'btn-md',
+                                'button_type' => 'ma-btn-primary',
+                                'button_size' => 'ma-btn-md',
                             ],
                         ],
                         'title_field' => '{{{ button_text }}}',
@@ -455,7 +455,7 @@ class MT_ButtonGroup extends Widget_Base {
 
             echo '<div class="mt-button' . $stackButtons . ' elementor-repeater-item-'. $btngrp['_id'] . '">';
 
-                echo '<a ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . 'class="btn mighty-btn '. (($btngrp['button_css_class'] !== "") ? $btngrp['button_css_class'] ." " : '') . $btngrp['button_type'] . ' ' . $btngrp['button_size'] . $buttonAnimation . '" '. $target . $nofollow .' href="'. $url . '">' . ( ($btngrp['button_icon_align']==="left") ? $buttonIcon . ' ' : '' ) . $btngrp['button_text'] . ( ($btngrp['button_icon_align']==="right") ? ' ' . $buttonIcon : '' ) .'</a>';
+                echo '<a ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . 'class="ma-btn mighty-btn '. (($btngrp['button_css_class'] !== "") ? $btngrp['button_css_class'] ." " : '') . $btngrp['button_type'] . ' ' . $btngrp['button_size'] . $buttonAnimation . '" '. $target . $nofollow .' href="'. $url . '">' . ( ($btngrp['button_icon_align']==="left") ? $buttonIcon . ' ' : '' ) . $btngrp['button_text'] . ( ($btngrp['button_icon_align']==="right") ? ' ' . $buttonIcon : '' ) .'</a>';
 
             echo '</div>'; // .mt-button
         endforeach;
