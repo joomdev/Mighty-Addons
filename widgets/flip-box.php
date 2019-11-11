@@ -1318,13 +1318,15 @@ class MT_FlipBox extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         // Effects
-        $effect = "";
+        $direction = "";
         $flipEffect = $settings['flip_effect'];
         if ( $flipEffect == "ma-flip" || $flipEffect == "ma-slide" || $flipEffect == "ma-push" ) {
-            $direction = $flipEffect . "-dir-" . $settings['flip_direction'];
+            $direction = "ma-flip-dir-" . $settings['flip_direction'];
         }
+        $flipClass = $flipEffect . " " . $direction;
+        print_r($flipClass);
     ?>
-        <div class="mt-flipbox-wrapper <?php echo $flipEffect; ?> <?php echo $direction; ?>">
+        <div class="mt-flipbox-wrapper <?php echo $flipClass; ?>">
             <div class="mt-card">
                 <div class="front <?php echo $settings['flipbox_vertical_alignment']; ?>">
                     <?php if( $settings['front_graphic_element'] == 'image' ) : ?>
