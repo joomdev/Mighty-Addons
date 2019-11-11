@@ -303,9 +303,9 @@ class MT_FlipBox extends Widget_Base {
             );
 
             $this->add_control(
-                'flipbox_horizontal_alignment',
+                'day_alignment',
                 [
-                    'label' => __( 'Horizontal Alignment', 'mighty' ),
+                    'label' => __( 'Day Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
                         'left' => [
@@ -324,8 +324,7 @@ class MT_FlipBox extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .front' => "text-align: {{VALUE}}",
-                        '{{WRAPPER}} .mt-flipbox-wrapper .back' => "text-align: {{VALUE}}",
+                        '{{WRAPPER}} ' => "text-align: {{VALUE}}",
                     ]
                 ]
             );
