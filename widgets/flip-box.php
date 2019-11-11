@@ -272,14 +272,14 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __( 'Flip Effect', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'flip',
+                    'default' => 'ma-flip',
                     'options' => [
-                        'flip'  => __( 'Flip', 'mighty' ),
-                        'slide' => __( 'Slide', 'mighty' ),
-                        'push' => __( 'Push', 'mighty' ),
-                        'zoom-in' => __( 'Zoom In', 'mighty' ),
-                        'zoom-out' => __( 'Zoom Out', 'mighty' ),
-                        'fade' => __( 'Fade', 'mighty' ),
+                        'ma-flip'  => __( 'Flip', 'mighty' ),
+                        'ma-slide' => __( 'Slide', 'mighty' ),
+                        'ma-push' => __( 'Push', 'mighty' ),
+                        'ma-zoom-in' => __( 'Zoom In', 'mighty' ),
+                        'ma-zoom-out' => __( 'Zoom Out', 'mighty' ),
+                        'ma-fade' => __( 'Fade', 'mighty' ),
                     ],
                 ]
             );
@@ -296,6 +296,9 @@ class MT_FlipBox extends Widget_Base {
                         'left' => __( 'Left', 'mighty' ),
                         'right' => __( 'Right', 'mighty' ),
                     ],
+                    'condition' => [
+                        'flip_effect' => ['ma-flip', 'ma-slide', 'ma-push']
+                    ]
                 ]
             );
 
@@ -1317,13 +1320,11 @@ class MT_FlipBox extends Widget_Base {
         // Effects
         $effect = "";
         $flipEffect = $settings['flip_effect'];
-        if ( $flipEffect == "flip" || $flipEffect == "slide" || $flipEffect == "push" ) {
-            $effect = $flipEffect . "-" . $settings['flip_direction'];
-        } else {
-            $effect = $flipEffect;
+        if ( $flipEffect == "ma-flip" || $flipEffect == "ma-slide" || $flipEffect == "ma-push" ) {
+            $direction = $flipEffect . "-dir-" . $settings['flip_direction'];
         }
     ?>
-        <div class="mt-flipbox-wrapper <?php echo $effect; ?>">
+        <div class="mt-flipbox-wrapper <?php echo $flipEffect; ?> <?php echo $direction; ?>">
             <div class="mt-card">
                 <div class="front <?php echo $settings['flipbox_vertical_alignment']; ?>">
                     <?php if( $settings['front_graphic_element'] == 'image' ) : ?>

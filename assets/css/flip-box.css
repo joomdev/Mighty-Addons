@@ -22,68 +22,34 @@
 }
 
 /* Effects */
-.mt-flipbox-wrapper .mt-card .back,
-.mt-flipbox-wrapper.flip-right .mt-card .back {
+.mt-flipbox-wrapper.ma-flip-dir-right .mt-card .back {
     transform: rotateY(180deg);
 }
 
-.mt-flipbox-wrapper:hover .mt-card,
-.mt-flipbox-wrapper.flip-right:hover .mt-card {
+.mt-flipbox-wrapper.ma-flip-dir-right:hover .mt-card {
     transform: rotateY(180deg);
 }
 
-.mt-flipbox-wrapper.flip-left .mt-card .back {
+.mt-flipbox-wrapper.ma-flip-dir-left .mt-card .back {
     transform: rotateY(-180deg);
 }
 
-.mt-flipbox-wrapper.flip-left:hover .mt-card {
+.mt-flipbox-wrapper.ma-flip-dir-left:hover .mt-card {
     transform: rotateY(-180deg);
 }
 
-.mt-flipbox-wrapper.flip-up .mt-card .back {
+.mt-flipbox-wrapper.ma-flip-dir-up .mt-card .back {
     transform: rotateX(180deg);
 }
 
-.mt-flipbox-wrapper.flip-up:hover .mt-card {
+.mt-flipbox-wrapper.ma-flip-dir-up:hover .mt-card {
     transform: rotateX(180deg);
 }
 
-.mt-flipbox-wrapper.flip-down .mt-card .back {
+.mt-flipbox-wrapper.ma-flip-dir-down .mt-card .back {
     transform: rotateX(-180deg);
 }
 
-.mt-flipbox-wrapper.flip-down:hover .mt-card {
+.mt-flipbox-wrapper.ma-flip-dir-down:hover .mt-card {
     transform: rotateX(-180deg);
-}
-
-.mt-flipbox-wrapper.flip-diagonal-right .mt-card .back {
-    transform: rotate3d(1, 1, 0, 180deg);
-}
-
-.mt-flipbox-wrapper.flip-diagonal-right:hover .mt-card {
-    transform: rotate3d(1, 1, 0, 180deg);
-}
-
-.mt-flipbox-wrapper.flip-diagonal-left .mt-card .back {
-    transform: rotate3d(1, 1, 0, -180deg);
-}
-
-.mt-flipbox-wrapper.flip-diagonal-left:hover .mt-card {
-    transform: rotate3d(1, 1, 0, -180deg);
-}
-
-.mt-flipbox-wrapper.flip-inverted-diagonal-right .mt-card .back {
-    transform: rotate3d(-1, 1, 0, 180deg);
-}
-
-.mt-flipbox-wrapper.flip-inverted-diagonal-right:hover .mt-card {
-    transform: rotate3d(-1, 1, 0, 180deg);
-}
-
-.mt-flipbox-wrapper.flip-inverted-diagonal-left .mt-card .back {
-    transform: rotate3d(1, -1, 0, 180deg);
-}
-
-.mt-flipbox-wrapper.flip-inverted-diagonal-left:hover .mt-card {
-    transform: rotate3d(1, -1, 0, 180deg);
 }
