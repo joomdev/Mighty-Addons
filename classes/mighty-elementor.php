@@ -44,6 +44,7 @@ class Mighty_Elementor {
 		wp_register_style('mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/css/before-after.css' );
 		wp_register_style('mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/gradient-heading.css' );
 		wp_register_style('mt-flipbox', MIGHTY_ADDONS_PLG_URL . 'assets/css/flip-box.css' );
+		wp_register_style('mt-openinghours', MIGHTY_ADDONS_PLG_URL . 'assets/css/opening-hours.css' );
 		// Common Stylings
 		wp_register_style('mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css' );
 	}
@@ -62,6 +63,7 @@ class Mighty_Elementor {
 		wp_enqueue_style( 'mt-gradientheading' );
 		wp_enqueue_style( 'mt-flipbox' );
 		wp_enqueue_style( 'mt-common' );
+		wp_enqueue_style( 'mt-openinghours' );
 	}
 
 	public function widget_scripts() {
@@ -96,6 +98,7 @@ class Mighty_Elementor {
 		require_once( realpath(__DIR__ . '/..') . '/widgets/before-after.php' );
 		require_once( realpath(__DIR__ . '/..') . '/widgets/gradient-heading.php' );
 		require_once( realpath(__DIR__ . '/..') . '/widgets/flip-box.php' );
+		require_once( realpath(__DIR__ . '/..') . '/widgets/opening-hours.php' );
 	}
 	
 	public function register_widgets() {
@@ -112,6 +115,7 @@ class Mighty_Elementor {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_BeforeAfter() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_GradientHeading() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_FlipBox() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_OpeningHours() );
 	}
 }
 

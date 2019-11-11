@@ -171,6 +171,7 @@ class MT_Accordion extends Widget_Base {
                     'label_off' => __( 'Off', 'mighty' ),
                     'return_value' => 'yes',
                     'default' => 'no',
+                    'description' => 'FAQPage Schema is allowed once on a page. If you will enable it on multiple sections of a page, you will get Duplicate Field "FAQPage" error at the time of Structure data validation.',
                 ]
             );
         
