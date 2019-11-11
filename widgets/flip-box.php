@@ -40,7 +40,7 @@ class MT_FlipBox extends Widget_Base {
 	}
 
 	public function get_style_depends() {
-		return [ 'mt-flipbox' ];
+		return [ 'mt-common', 'mt-flipbox' ];
     }
 	
 	protected function _register_controls() {
@@ -333,15 +333,15 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Vertical Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'v-align-top' => [
+                        'ma-v-align-top' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'v-align-middle' => [
+                        'ma-v-align-middle' => [
                             'title' => __( 'Middle', 'mighty' ),
                             'icon' => 'eicon-v-align-middle',
                         ],
-                        'v-align-bottom' => [
+                        'ma-v-align-bottom' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
@@ -1238,11 +1238,11 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __('Button Size', 'mighty'),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'btn-sm',
+                    'default' => 'ma-btn-sm',
                     'options' => [
-                        'btn-sm' => __('Small', 'mighty'),
-                        'btn-md' => __('Medium', 'mighty'),
-                        'btn-lg' => __('Large', 'mighty'),
+                        'ma-btn-sm' => __('Small', 'mighty'),
+                        'ma-btn-md' => __('Medium', 'mighty'),
+                        'ma-btn-lg' => __('Large', 'mighty'),
                     ],
                 ]
             );
@@ -1324,8 +1324,8 @@ class MT_FlipBox extends Widget_Base {
         }
     ?>
         <div class="mt-flipbox-wrapper <?php echo $effect; ?>">
-            <div class="mt-card <?php echo $settings['flipbox_vertical_alignment']; ?>">
-                <div class="front">
+            <div class="mt-card">
+                <div class="front <?php echo $settings['flipbox_vertical_alignment']; ?>">
                     <?php if( $settings['front_graphic_element'] == 'image' ) : ?>
                     <div class="mt-flipbox-image">
                         <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'front_image_dimension', 'front_choose_image' ); ?>
@@ -1344,7 +1344,7 @@ class MT_FlipBox extends Widget_Base {
                     </div>
                 </div>
 
-                <div class="back">
+                <div class="back <?php echo $settings['flipbox_vertical_alignment']; ?>">
                     <?php if( $settings['back_graphic_element'] == 'image' ) : ?>
                     <div class="mt-flipbox-image">
                         <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'back_image_dimension', 'back_choose_image' ); ?>
