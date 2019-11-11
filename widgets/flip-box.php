@@ -333,15 +333,15 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Vertical Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'v-align-top' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'middle' => [
+                        'v-align-middle' => [
                             'title' => __( 'Middle', 'mighty' ),
                             'icon' => 'eicon-v-align-middle',
                         ],
-                        'right' => [
+                        'v-align-bottom' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
@@ -1324,8 +1324,7 @@ class MT_FlipBox extends Widget_Base {
         }
     ?>
         <div class="mt-flipbox-wrapper <?php echo $effect; ?>">
-            <div class="mt-card">
-
+            <div class="mt-card <?php echo $settings['flipbox_vertical_alignment']; ?>">
                 <div class="front">
                     <?php if( $settings['front_graphic_element'] == 'image' ) : ?>
                     <div class="mt-flipbox-image">
