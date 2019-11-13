@@ -316,7 +316,7 @@ class MT_OpeningHours extends Widget_Base {
                         'size' => 5,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} ' => 'border: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -491,12 +491,30 @@ class MT_OpeningHours extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
 
-        if ( empty( $settings[ 'MT_OpeningHours'] ) ) {
+        if ( empty( $settings[ 'mt_openinghours_data'] ) ) {
             return;
 		}
         ?>
+        <div class="ma-openinghours-wrapper">
 
-        <div class="mt-openinghours-wrapper">
+            <div class="ma-oh-header">
+                <h2>Opening Hours</h2>
+            </div>
+
+            <div class="ma-oh-rows">
+                <div class="ma-oh-row">
+                    <div class="ma-oh-day">Monday</div>
+                    <div class="ma-oh-time">10:00-05:00</div>
+                </div>
+                <div class="ma-oh-row">
+                    <div class="ma-oh-day">Tuesday</div>
+                    <div class="ma-oh-time">10:00-05:00</div>
+                </div>
+            </div>
+
+            <div class="ma-oh-footer">
+                <p>Office is open 24 hours</p>
+            </div>
 
         </div>
         <?php
