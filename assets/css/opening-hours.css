@@ -12,53 +12,10 @@
     flex-grow: 1;
 }
 
-.ma-openinghours-wrapper .ma-oh-day {
-    text-align: left;
+.ma-openinghours-wrapper .ma-oh-header {
+    text-align: center;
 }
 
-.ma-openinghours-wrapper .ma-oh-time {
-    text-align: right;
-}
-
-/*======== Custom Styling ========*/
-/* Opening Hours Styling */
-.ma-openinghours-wrapper .ma-oh-row {
-    padding: 10px;
-}
-
-/* Divider */
-.ma-openinghours-wrapper .ma-oh-row:not(:last-child) {
-    border-bottom-style: solid;
-    border-bottom-color: #ddd;
-    border-bottom-width: 1px;
-}
-
-/* Day Alignment */
-.ma-openinghours-wrapper .ma-oh-day {
-    text-align: left;
-}
-
-/* Time Alignment */
-.ma-openinghours-wrapper .ma-oh-time {
-    text-align: right;
-}
-
-/* Day Color and Typography*/
-.ma-openinghours-wrapper .ma-oh-day {
-    color: #333;
-}
-
-/* Time Color and Typography */
-.ma-openinghours-wrapper .ma-oh-time {
-    color: #333;
-}
-
-/* Odd Row Background */
-.ma-openinghours-wrapper .ma-oh-row:nth-child(odd) {
-    background: #fff;
-}
-
-/* Even Row Background */
-.ma-openinghours-wrapper .ma-oh-row:nth-child(even) {
-    background: #f7f7f7;
+.ma-openinghours-wrapper .ma-oh-footer {
+    text-align: center;
 }
