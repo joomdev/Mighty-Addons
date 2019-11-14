@@ -23,12 +23,23 @@ class Mighty_Elementor {
 		add_action( 'elementor/frontend/after_register_styles', [ $this, 'widget_styles' ] );
 		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'mt_enqueue_styles' ] );
 
+		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
+
 		// Register widget scripts
 		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
 		add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'mt_enqueue_scripts' ] );
 
 		// Register widgets
 		add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
+	}
+
+	public static function enqueue_editor_scripts() {
+        wp_enqueue_style(
+            'mighty-icons',
+            MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.css',
+            null,
+            MIGHTY_VERSION
+		);
 	}
 
 	public function widget_styles() {
@@ -51,6 +62,7 @@ class Mighty_Elementor {
 
 	public function mt_enqueue_styles() {
 		wp_enqueue_style( 'mighty-fontawesome' );
+		wp_enqueue_style( 'mt-common' );
 		wp_enqueue_style( 'mighty-slickcss' );
 		wp_enqueue_style( 'mt-testmonial' );
 		wp_enqueue_style( 'mt-team' );
@@ -62,7 +74,6 @@ class Mighty_Elementor {
 		wp_enqueue_style( 'mt-beforeafter' );
 		wp_enqueue_style( 'mt-gradientheading' );
 		wp_enqueue_style( 'mt-flipbox' );
-		wp_enqueue_style( 'mt-common' );
 		wp_enqueue_style( 'mt-openinghours' );
 	}
 
