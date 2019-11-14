@@ -30,7 +30,7 @@ class MT_BeforeAfter extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-not-equal';
+		return 'mf mf-beforeafter';
 	}
 
 	public function get_categories() {

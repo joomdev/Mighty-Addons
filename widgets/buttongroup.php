@@ -32,7 +32,7 @@ class MT_ButtonGroup extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-th-large';
+		return 'mf mf-button';
 	}
 
 	public function get_categories() {

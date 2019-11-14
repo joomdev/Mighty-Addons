@@ -26,7 +26,7 @@ class MT_Accordion extends Widget_Base {
     }
     
 	public function get_icon() {
-		return 'fas fa-tasks';
+		return 'mf mf-accordion';
     }
 
     public function get_categories() {

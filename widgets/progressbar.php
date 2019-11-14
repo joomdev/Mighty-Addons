@@ -32,7 +32,7 @@ class MT_Progressbar extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-align-left';
+		return 'mf mf-progressbar';
 	}
 
 	public function get_categories() {

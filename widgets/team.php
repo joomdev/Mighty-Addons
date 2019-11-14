@@ -30,7 +30,7 @@ class MT_Team extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-user-friends';
+		return 'mf mf-beforeafter';
 	}
 
 	public function get_categories() {
@@ -330,11 +330,11 @@ class MT_Team extends Widget_Base {
 				[
 					'label' => __( 'Border Radius', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
-					'size_units' => [ 'px', 'em', 'rem' ],
+					'size_units' => [ 'px', '%', 'rem' ],
 					'range' => [
 						'px' => [
 							'min' => 1,
-							'max' => 200,
+							'max' => 400,
 						],
 					],
 					'default' => [

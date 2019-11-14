@@ -30,7 +30,7 @@ class MT_Testimonial extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-id-card';
+		return 'mf mf-testimonial';
 	}
 
 	public function get_categories() {

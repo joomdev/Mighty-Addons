@@ -32,7 +32,7 @@ class MT_OpeningHours extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-clock';
+		return 'mf mf-openinghours';
 	}
 
 	public function get_categories() {

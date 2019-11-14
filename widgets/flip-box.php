@@ -32,7 +32,7 @@ class MT_FlipBox extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-square';
+		return 'mf mf-flipbox';
 	}
 
 	public function get_categories() {

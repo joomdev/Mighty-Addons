@@ -29,7 +29,7 @@ class MT_GradientHeading extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-heading';
+		return 'mf mf-heading';
 	}
 
 	public function get_categories() {

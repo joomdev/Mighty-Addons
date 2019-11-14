@@ -29,7 +29,7 @@ class MT_Counter extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'fas fa-sort-numeric-up';
+		return 'mf mf-counter';
 	}
 
 	public function get_categories() {
