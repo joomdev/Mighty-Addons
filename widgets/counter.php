@@ -106,7 +106,7 @@ class MT_Counter extends Widget_Base {
 					'label_on' => __( 'Show', 'mighty' ),
 					'label_off' => __( 'Hide', 'mighty' ),
 					'return_value' => 'yes',
-					'default' => 'no',
+					'default' => 'yes',
 				]
 			);
 

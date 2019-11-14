@@ -134,13 +134,13 @@ class MT_Testimonial extends Widget_Base {
 							'image' => Utils::get_placeholder_image_src(),
 							'name' => __( 'Darth Vader', 'mighty' ),
 							'title' => __( 'Digital Overlord', 'mighty' ),
-							'testimonial' => 'The circle is now complete. When I left you, I was but the learner. Now I am the master.',
+							'testimonial_content' => 'The circle is now complete. When I left you, I was but the learner. Now I am the master.',
 						],
 						[
 							'image' => Utils::get_placeholder_image_src(),
 							'name' => __( 'Yoda', 'mighty' ),
 							'title' => __( 'Digita Master', 'mighty' ),
-							'testimonial' => '“If you end your training now — if you choose the quick and easy path as Vader did — you will become an agent of evil.”',
+							'testimonial_content' => 'If you end your training now — if you choose the quick and easy path as Vader did — you will become an agent of evil.',
 						],
 					]
 				]

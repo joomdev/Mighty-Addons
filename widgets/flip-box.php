@@ -98,7 +98,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Icon', 'mighty' ),
                     'type' => Controls_Manager::ICONS,
                     'default' => [
-                        'value' => 'fas fa-star',
+                        'value' => 'fas fa-pizza-slice',
                         'library' => 'solid',
                     ],
                     'condition' => [
@@ -113,7 +113,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Front Title', 'mighty' ),
-                    'default' => __( 'Front Title', 'mighty'),
+                    'default' => __( 'Pizza', 'mighty'),
                 ]
             );
 
@@ -123,7 +123,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::WYSIWYG,
                     'placeholder' => __( 'Type your description here', 'mighty' ),
-                    'default' => __( 'Front box description', 'mighty'),
+                    'default' => __( 'A delicious, round piece of dough that comes in square boxes for some strange reason.', 'mighty'),
                 ]
             );
 
@@ -202,7 +202,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __( 'Graphic Element', 'mighty' ),
                     'type' => Controls_Manager::SELECT,
-                    'default' => 'icon',
+                    'default' => 'none',
                     'options' => [
                         'none'  => __( 'None', 'mighty' ),
                         'image' => __( 'Image', 'mighty' ),
@@ -241,10 +241,6 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __( 'Icon', 'mighty' ),
                     'type' => Controls_Manager::ICONS,
-                    'default' => [
-                        'value' => 'fas fa-star',
-                        'library' => 'solid',
-                    ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
                     ],
@@ -257,7 +253,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Back Title', 'mighty' ),
-                    'default' => __( 'Back Title', 'mighty'),
+                    'default' => 'Pizza',
                 ]
             );
 
@@ -267,7 +263,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::WYSIWYG,
                     'placeholder' => __( 'Type your description here', 'mighty' ),
-                    'default' => __( 'Back box description', 'mighty'),
+                    'default' => __( 'A sacred food gifted to mankind by the gods. <br>Very delicious and cheesy with tomato sauce and toppings of your choice. Commonly consumed recreationally or at parties.', 'mighty'),
                 ]
             );
 
@@ -276,7 +272,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'label' => __( 'Button Text', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'default' => __( 'Click Here', 'mighty' ),
+                    'default' => __( 'Get It Now', 'mighty' ),
                     'placeholder' => __( 'Enter Button Text', 'mighty' ),
                 ]
             );
@@ -521,7 +517,7 @@ class MT_FlipBox extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#562dd4',
+                    'default' => '#e53c30',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'color: {{VALUE}}',
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'color: {{VALUE}}',
@@ -547,7 +543,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 50,
+                        'size' => 70,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -802,7 +798,7 @@ class MT_FlipBox extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
-                    'default' => "#000",
+                    'default' => "#e53c30",
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-title' => 'color: {{VALUE}}',
                     ],
@@ -826,6 +822,29 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::HEADING,
                     'label' => __( 'Description', 'mighty' ),
                     'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'front_description_spacing',
+                [
+                    'label' => __( 'Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    ]
                 ]
             );
 
@@ -1226,7 +1245,7 @@ class MT_FlipBox extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#000',
+                    'default' => '#e53c30',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-title' => 'color: {{VALUE}}',
                     ],
@@ -1250,6 +1269,29 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::HEADING,
                     'label' => __( 'Description', 'mighty' ),
                     'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'back_description_spacing',
+                [
+                    'label' => __( 'Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    ]
                 ]
             );
 
@@ -1341,7 +1383,7 @@ class MT_FlipBox extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#562dd4',
+                    'default' => '#e53c30',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a' => 'background-color: {{VALUE}}',
                     ],

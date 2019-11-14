@@ -95,7 +95,7 @@ class MT_OpeningHours extends Widget_Base {
                             'type' => Scheme_Color::get_type(),
                             'value' => Scheme_Color::COLOR_1,
                         ],
-                        'default' => '#000',
+                        'default' => '#232323',
                         'selectors' => [
                             '{{WRAPPER}} .ma-openinghours-wrapper {{CURRENT_ITEM}} .ma-oh-day' => 'color: {{VALUE}}',
                         ],
@@ -114,7 +114,7 @@ class MT_OpeningHours extends Widget_Base {
                             'type' => Scheme_Color::get_type(),
                             'value' => Scheme_Color::COLOR_1,
                         ],
-                        'default' => '#000',
+                        'default' => '#232323',
                         'selectors' => [
                             '{{WRAPPER}} .ma-openinghours-wrapper {{CURRENT_ITEM}} .ma-oh-time' => 'color: {{VALUE}}',
                         ],
@@ -543,7 +543,7 @@ class MT_OpeningHours extends Widget_Base {
                     'selectors' => [
                         '{{WRAPPER}} .ma-oh-header' => 'background-color: {{VALUES}}'
                     ],
-                    'default' => '#000',
+                    'default' => '#4965fb',
                 ]
             );
 

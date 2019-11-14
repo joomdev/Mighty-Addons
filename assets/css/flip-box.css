@@ -18,12 +18,6 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.mt-flipbox-wrapper .mt-flipbox-front {
-  background-color: #ddd;
-}
-.mt-flipbox-wrapper .mt-flipbox-back {
-  background-color: #ddd;
-}
 .mt-flipbox-wrapper.ma-flip .mt-flipbox-front {
   -webkit-transform: none;
   -ms-transform: none;
