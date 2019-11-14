@@ -78,8 +78,6 @@ class Mighty_Elementor {
 		wp_register_script( 'mt-accordion', MIGHTY_ADDONS_PLG_URL . 'assets/js/accordion.js', [ 'jquery' ], false, true );
 
 		wp_register_script( 'mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/js/beforeafter.js', [ 'jquery' ], false, true );
-
-		wp_register_script( 'mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/js/gradient.js', [ 'jquery' ], false, true );
 	}
 
 	// enqueue frontend scripts
@@ -88,7 +86,6 @@ class Mighty_Elementor {
 		wp_enqueue_script( 'mighty-slickjs' );
 		wp_enqueue_script( 'mt-eventmovejs' );
 		wp_enqueue_script( 'mt-twentytwentyjs' );
-		wp_enqueue_script( 'mt-gradientheading' );
 	}
 	
 	private function include_widgets_files() {
