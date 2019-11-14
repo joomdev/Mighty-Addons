@@ -149,7 +149,7 @@ class MT_FlipBox extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .front' => "text-align: {{VALUE}}",
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-front' => "text-align: {{VALUE}}",
                     ]
                 ]
             );
@@ -183,7 +183,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_background',
                     'label' => __( 'Background', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front',
                 ]
             );
 
@@ -321,7 +321,7 @@ class MT_FlipBox extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .back' => "text-align: {{VALUE}}",
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-back' => "text-align: {{VALUE}}",
                     ]
                 ]
             );
@@ -355,7 +355,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'back_background',
                     'label' => __( 'Background', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back',
                 ]
             );
 
@@ -426,7 +426,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 200,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card' => 'height: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card' => 'height: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -449,7 +449,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'rem' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -459,7 +459,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_card',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front',
                 ]
             );
 
@@ -468,7 +468,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front',
                 ]
             );
 
@@ -503,8 +503,8 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 5,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -523,8 +523,8 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#562dd4',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'color: {{VALUE}}',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'color: {{VALUE}}',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -550,8 +550,8 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -570,8 +570,8 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#fff',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'background-color: {{VALUE}}',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'background-color: {{VALUE}}',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -590,8 +590,8 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -613,8 +613,8 @@ class MT_FlipBox extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'transform: rotate({{SIZE}}deg);',
-					    '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon svg' => 'transform: rotate({{SIZE}}deg);',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'transform: rotate({{SIZE}}deg);',
+					    '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'transform: rotate({{SIZE}}deg);',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -627,7 +627,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_icon_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i',
                     'condition' => [
                         'front_graphic_element' => 'icon',
                     ],
@@ -645,7 +645,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -684,7 +684,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-image img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -710,7 +710,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 70,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-image img' => 'width: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -725,7 +725,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-image img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -738,7 +738,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_image_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-image img',
                     'condition' => [
                         'front_graphic_element' => 'image',
                     ],
@@ -752,7 +752,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-flipbox-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'image',
@@ -788,7 +788,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-front-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -804,7 +804,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => "#000",
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-front-title' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-title' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -815,7 +815,7 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'front_title_typography',
                     'label' => __( 'Typography', 'mighty' ),
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .mt-front-title',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-title',
                 ]
             );
 
@@ -840,7 +840,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#000',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .card-description' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-description' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -851,7 +851,7 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'front_description_typography',
                     'label' => __( 'Typography', 'mighty' ),
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .front .card-description',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-description',
                 ]
             );
 
@@ -873,7 +873,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -883,7 +883,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'back_card',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back',
                 ]
             );
 
@@ -892,7 +892,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'back_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back',
                 ]
             );
 
@@ -927,8 +927,8 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 5,
                     ],                    
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon svg' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon svg' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -947,8 +947,8 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#4d98d6',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'color: {{VALUE}}',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon svg' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon svg' => 'color: {{VALUE}}',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -974,8 +974,8 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -994,8 +994,8 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#fff',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'background-color: {{VALUE}}',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon svg' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon svg' => 'background-color: {{VALUE}}',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -1014,8 +1014,8 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -1037,8 +1037,8 @@ class MT_FlipBox extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'transform: rotate({{SIZE}}deg);',
-					    '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon svg' => 'transform: rotate({{SIZE}}deg);',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'transform: rotate({{SIZE}}deg);',
+					    '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon svg' => 'transform: rotate({{SIZE}}deg);',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -1051,7 +1051,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'back_icon_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i',
                     'condition' => [
                         'back_graphic_element' => 'icon',
                     ],
@@ -1069,7 +1069,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -1108,7 +1108,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-image img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-image img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'image',
@@ -1134,7 +1134,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-image img' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-image img' => 'width: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'image',
@@ -1149,7 +1149,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-image img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-image img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'image',
@@ -1162,7 +1162,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'back_image_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-image img',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-image img',
                     'condition' => [
                         'back_graphic_element' => 'image',
                     ],
@@ -1176,7 +1176,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-flipbox-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'image',
@@ -1212,7 +1212,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-back-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -1228,7 +1228,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#000',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-back-title' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-title' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1239,7 +1239,7 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'back_title_typography',
                     'label' => __( 'Typography', 'mighty' ),
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .mt-back-title',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-title',
                 ]
             );
 
@@ -1264,7 +1264,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#000',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .card-description' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-description' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1275,7 +1275,7 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'back_description_typography',
                     'label' => __( 'Typography', 'mighty' ),
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .card-description',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-description',
                 ]
             );
 
@@ -1312,7 +1312,7 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'button_typogrpahy',
                     'label' => __( 'Typography', 'mighty' ),
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .card-button a',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a',
                 ]
             );
 
@@ -1327,7 +1327,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#fff',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .card-button a' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1343,7 +1343,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => '#562dd4',
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .card-button a' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a' => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1353,7 +1353,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .card-button a',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a',
                 ]
             );
 
@@ -1364,7 +1364,7 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-card .back .card-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -1384,8 +1384,8 @@ class MT_FlipBox extends Widget_Base {
         $flipClass = $flipEffect . " " . $direction;
     ?>
         <div class="mt-flipbox-wrapper <?php echo $flipClass; ?>">
-            <div class="mt-card">
-                <div class="front <?php echo $settings['front_vertical_alignment']; ?>">
+            <div class="mt-flipbox-card">
+                <div class="mt-flipbox-front <?php echo $settings['front_vertical_alignment']; ?>">
                     <?php if( $settings['front_graphic_element'] == 'image' ) : ?>
                     <div class="mt-flipbox-image">
                         <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'front_image_dimension', 'front_choose_image' ); ?>
@@ -1398,13 +1398,13 @@ class MT_FlipBox extends Widget_Base {
                     </div>
                     <?php endif; ?>
                     
-                    <h3 class="mt-front-title"><?php echo $settings['front_title']; ?></h3>
-                    <div class="card-description">
+                    <h3 class="mt-flipbox-title"><?php echo $settings['front_title']; ?></h3>
+                    <div class="mt-flipbox-description">
                         <?php echo $settings['front_description']; ?>
                     </div>
                 </div>
 
-                <div class="back <?php echo $settings['back_vertical_alignment']; ?>">
+                <div class="mt-flipbox-back <?php echo $settings['back_vertical_alignment']; ?>">
                     <?php if( $settings['back_graphic_element'] == 'image' ) : ?>
                     <div class="mt-flipbox-image">
                         <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'back_image_dimension', 'back_choose_image' ); ?>
@@ -1417,13 +1417,13 @@ class MT_FlipBox extends Widget_Base {
                     </div>
                     <?php endif; ?>
                     
-                    <h3 class="mt-back-title"><?php echo $settings['back_title']; ?></h3>
-                    <div class="card-description">
+                    <h3 class="mt-flipbox-title"><?php echo $settings['back_title']; ?></h3>
+                    <div class="mt-flipbox-description">
                         <?php echo $settings['back_description']; ?>
                     </div>
 
                     <?php if ( $settings['back_button_text'] !== "" ) { ?>
-                    <div class="card-button">
+                    <div class="mt-flipbox-button mt-button">
                     <?php
                         $target = $settings['back_button_link']['is_external'] ? ' target="_blank"' : '';
 		                $nofollow = $settings['back_button_link']['nofollow'] ? ' rel="nofollow"' : '';
