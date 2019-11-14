@@ -247,8 +247,11 @@ class MT_OpeningHours extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
                     'default' => [
-                        'unit' => 'px',
-                        'size' => 10,
+                        'top' => '10',
+                        'right' => '10',
+                        'bottom' => '10',
+                        'left' => '10',
+                        'isLinked' => true,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -335,6 +338,9 @@ class MT_OpeningHours extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}}',
+                    ],
+                    'condition' => [
+                        'enable_divider' => 'true',
                     ],
                 ]
             );
@@ -476,7 +482,7 @@ class MT_OpeningHours extends Widget_Base {
                     ],
                     'default' => '#fff',
                     'selectors' => [
-                        '.ma-openinghours-wrapper .ma-oh-row:nth-child(odd)' => 'background: {{VALUE}}',
+                        '.ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(odd)' => 'background: {{VALUE}}',
                     ],
                     'condition' => [
                         'striped_effect' => 'true',
@@ -495,7 +501,7 @@ class MT_OpeningHours extends Widget_Base {
                     ],
                     'default' => '#f7f7f7',
                     'selectors' => [
-                        '.ma-openinghours-wrapper .ma-oh-row:nth-child(even)' => 'background: {{VALUE}}',
+                        '.ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(even)' => 'background: {{VALUE}}',
                     ],
                     'condition' => [
                         'striped_effect' => 'true',
@@ -547,7 +553,45 @@ class MT_OpeningHours extends Widget_Base {
 					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .ma-oh-header h2',
 				]
-			);
+            );
+
+            $this->add_control(
+                'oh_header_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'default' => [
+                        'top' => '10',
+                        'right' => '10',
+                        'bottom' => '10',
+                        'left' => '10',
+                        'isLinked' => true,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header h2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'oh_header_margin',
+                [
+                    'label' => __( 'Margin', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'default' => [
+                        'top' => '10',
+                        'right' => '10',
+                        'bottom' => '10',
+                        'left' => '10',
+                        'isLinked' => true,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
 
         $this->end_controls_section();
 
@@ -594,6 +638,44 @@ class MT_OpeningHours extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'oh_footer_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'default' => [
+                        'top' => '10',
+                        'right' => '10',
+                        'bottom' => '10',
+                        'left' => '10',
+                        'isLinked' => true,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-footer p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'oh_footer_margin',
+                [
+                    'label' => __( 'Margin', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'default' => [
+                        'top' => '10',
+                        'right' => '10',
+                        'bottom' => '10',
+                        'left' => '10',
+                        'isLinked' => true,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-footer p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
         $this->end_controls_section();
         
 	}
@@ -613,7 +695,7 @@ class MT_OpeningHours extends Widget_Base {
 
             <div class="ma-oh-rows">
                 <?php foreach (  $settings['mt_openinghours_data'] as $item ) : ?>
-                <div class="ma-oh-row elementor-repeater-item-<?php echo $item['_id']; ?>">
+                <div class="ma-oh-row <?php echo ($settings['striped_effect'] == true) ? 'mt-striped' : ''; ?> elementor-repeater-item-<?php echo $item['_id']; ?>">
                     <div class="ma-oh-day"><?php echo $item['business_day']; ?></div>
                     <div class="ma-oh-time"><?php echo $item['business_time']; ?></div>
                 </div>

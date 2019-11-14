@@ -19,6 +19,7 @@
     transform: translateY(-50%);
     left: 0;
     z-index: 5;
+    cursor: pointer;
 }
 
 .mighty-testimonial-wrapper .next-icon {
@@ -27,4 +28,9 @@
     transform: translateY(-50%);
     right: 0;
     z-index: 5;
+    cursor: pointer;
+}
+
+.mighty-testimonial-wrapper .mt-person-testimonial blockquote {
+    font-size: 30px;
 }
