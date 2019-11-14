@@ -39,6 +39,10 @@ class MT_GradientHeading extends Widget_Base {
 	public function get_style_depends() {
 		return [ 'mt-gradientheading' ];
     }
+
+    public function get_script_depends() {
+        return [ 'mt-gradientheading' ];
+    }
 	
 	protected function _register_controls() {
 		$this->start_controls_section(
@@ -126,6 +130,17 @@ class MT_GradientHeading extends Widget_Base {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+
+            $this->add_control(
+                'randomize_gradient',
+                [
+                    'label' => __( 'Randomize Gradient', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::BUTTON,
+                    // 'button_type' => 'success',
+                    'text' => __( 'Randomize', 'mighty' ),
+                    'event' => 'namespace:make:gradient',
+                ]
+            );
 
             $this->add_group_control(
                 Group_Control_Text_Gradient::get_type(),
