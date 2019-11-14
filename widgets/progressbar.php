@@ -167,7 +167,7 @@ class MT_Progressbar extends Widget_Base {
 					'label_on' => __( 'On', 'mighty' ),
 					'label_off' => __( 'Off', 'mighty' ),
 					'return_value' => 'yes',
-					'default' => true,
+					'default' => 'yes',
 				]
 			);
 			

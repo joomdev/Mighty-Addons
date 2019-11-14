@@ -9,6 +9,7 @@ use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Image_Size;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -30,7 +31,7 @@ class MT_Team extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'mf mf-beforeafter';
+		return 'mf mf-team';
 	}
 
 	public function get_categories() {
@@ -59,13 +60,20 @@ class MT_Team extends Widget_Base {
 			);
 
 			$this->add_control(
-				'image',
-				[
-					'label' => __( 'Team Avatar', 'mighty' ),
+				'avatar_image',
+				['label' => __( 'Team Avatar', 'mighty' ),
 					'type' => Controls_Manager::MEDIA,
 					'default' => [
 						'url' => Utils::get_placeholder_image_src(),
 					],
+				]
+			);
+
+			$this->add_group_control(
+				Group_Control_Image_Size::get_type(),
+				[
+					'name' => 'avatar_image_size',
+					'default' => 'full',
 				]
 			);
 
@@ -317,10 +325,10 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 20,
+						'size' => 1,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-team .person-avatar' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 					]
 				]
 			);
@@ -342,7 +350,7 @@ class MT_Team extends Widget_Base {
 						'size' => 0,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-team .person-avatar' => 'border-radius: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'border-radius: {{SIZE}}{{UNIT}}',
 					],
 				]
 			);
@@ -368,7 +376,7 @@ class MT_Team extends Widget_Base {
 						'size' => 300,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-team .person-avatar' => 'width: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'width: {{SIZE}}{{UNIT}}',
 					],
 				]
 			);
@@ -953,7 +961,7 @@ class MT_Team extends Widget_Base {
 		echo '<div class="mighty-team text-center">';
 
 			echo '<div class="avatar-wrapper">';
-				echo '<img class="person-avatar" src="' . $settings['image']['url'] .'" alt="' .$settings['name'] . '">';
+				echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar_image_size', 'avatar_image' );
 			echo '</div>';
 
 			if ( $settings['name'] !== "" ) {

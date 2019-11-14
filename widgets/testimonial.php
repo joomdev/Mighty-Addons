@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Image_Size;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -38,11 +39,11 @@ class MT_Testimonial extends Widget_Base {
 	}
 	
 	public function get_script_depends() {
-		return [ 'mt-testimonial', 'mighty-slick' ];
+		return [ 'mt-testimonial', 'mighty-slickjs' ];
 	}
 
 	public function get_style_depends() {
-		return [ 'mighty-slick', 'mt-testimonial' ];
+		return [ 'mighty-slickcss', 'mt-testimonial' ];
 	}
 	
 	protected function _register_controls() {
@@ -58,13 +59,21 @@ class MT_Testimonial extends Widget_Base {
 			$repeater->start_controls_tabs( 'testimonials' );
 
 				$repeater->add_control(
-					'image',
+					'avatar_image',
 					[
 						'label' => __( 'Testimonial Avatar', 'mighty' ),
 						'type' => Controls_Manager::MEDIA,
 						'default' => [
 							'url' => Utils::get_placeholder_image_src(),
 						],
+					]
+				);
+
+				$repeater->add_group_control(
+					Group_Control_Image_Size::get_type(),
+					[
+						'name' => 'avatar_image_size',
+						'default' => 'full',
 					]
 				);
 
@@ -125,7 +134,13 @@ class MT_Testimonial extends Widget_Base {
 							'image' => Utils::get_placeholder_image_src(),
 							'name' => __( 'Darth Vader', 'mighty' ),
 							'title' => __( 'Digital Overlord', 'mighty' ),
-							'testimonial' => 'Lorem Ipsum dolor sit amet..',
+							'testimonial' => 'The circle is now complete. When I left you, I was but the learner. Now I am the master.',
+						],
+						[
+							'image' => Utils::get_placeholder_image_src(),
+							'name' => __( 'Yoda', 'mighty' ),
+							'title' => __( 'Digita Master', 'mighty' ),
+							'testimonial' => '“If you end your training now — if you choose the quick and easy path as Vader did — you will become an agent of evil.”',
 						],
 					]
 				]
@@ -389,7 +404,7 @@ class MT_Testimonial extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 100,
+						'size' => 70,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-testimonial-avatar img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}',
@@ -607,12 +622,12 @@ class MT_Testimonial extends Widget_Base {
 					'range' => [
 						'px' => [
 							'min' => 1,
-							'max' => 30,
+							'max' => 50,
 						],
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 5,
+						'size' => 20,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial .slick-dots li button::before' => 'font-size: {{SIZE}}{{UNIT}}',
@@ -693,7 +708,7 @@ class MT_Testimonial extends Widget_Base {
 				echo '</div>';
 
 				echo '<div class="mt-testimonial-avatar">';
-					echo '<img src="' . $item['image']['url'] .'" alt="' .$item['name'] . '">';
+					echo Group_Control_Image_Size::get_attachment_image_html( $item, 'avatar_image_size', 'avatar_image' );
 					echo '<div class="mt-person-name"><strong>' . $item['name'] . '</strong></div>';
 				echo '</div>';
 				

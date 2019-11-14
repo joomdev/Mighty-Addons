@@ -10,6 +10,7 @@
 .ma-openinghours-wrapper .ma-oh-day,
 .ma-openinghours-wrapper .ma-oh-time {
     flex-grow: 1;
+    padding: 0 2px;
 }
 
 .ma-openinghours-wrapper .ma-oh-header {
@@ -18,4 +19,12 @@
 
 .ma-openinghours-wrapper .ma-oh-footer {
     text-align: center;
+}
+
+.ma-openinghours-wrapper .ma-oh-header {
+    font-size: 30px;
+}
+
+.ma-openinghours-wrapper .ma-oh-footer {
+    font-size: 20px;
 }

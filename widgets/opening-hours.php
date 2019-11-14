@@ -286,7 +286,7 @@ class MT_OpeningHours extends Widget_Base {
                 [
                     'label' => __( 'Style', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'solid',
+                    'default' => 'dashed',
                     'options' => [
                         'solid'  => __( 'Solid', 'mighty' ),
                         'dotted' => __( 'Dotted', 'mighty' ),
@@ -310,6 +310,7 @@ class MT_OpeningHours extends Widget_Base {
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#d3d3d3',
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row:not(:last-child)' => 'border-bottom-color: {{VALUE}};',
                     ],
@@ -334,7 +335,7 @@ class MT_OpeningHours extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 2,
+                        'size' => 1,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}}',
@@ -467,7 +468,7 @@ class MT_OpeningHours extends Widget_Base {
                     'label_on' => __( 'Show', 'mighty' ),
                     'label_off' => __( 'Hide', 'mighty' ),
                     'return_value' => 'true',
-                    'default' => 'true',
+                    'default' => 'false',
                 ]
             );
 
@@ -528,9 +529,9 @@ class MT_OpeningHours extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .ma-oh-header h2' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-oh-header' => 'color: {{VALUES}}'
                     ],
-                    'default' => '#000',
+                    'default' => '#fff',
                 ]
             );
 
@@ -540,9 +541,9 @@ class MT_OpeningHours extends Widget_Base {
                     'label'     => __( 'Background Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .ma-oh-header h2' => 'background-color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-oh-header' => 'background-color: {{VALUES}}'
                     ],
-                    'default' => '',
+                    'default' => '#000',
                 ]
             );
 
@@ -551,7 +552,7 @@ class MT_OpeningHours extends Widget_Base {
 				[
 					'name' => 'oh_header_typography',
 					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-					'selector' => '{{WRAPPER}} .ma-oh-header h2',
+					'selector' => '{{WRAPPER}} .ma-oh-header',
 				]
             );
 
@@ -561,15 +562,8 @@ class MT_OpeningHours extends Widget_Base {
                     'label' => __( 'Padding', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
-                    'default' => [
-                        'top' => '10',
-                        'right' => '10',
-                        'bottom' => '10',
-                        'left' => '10',
-                        'isLinked' => true,
-                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header h2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -580,15 +574,8 @@ class MT_OpeningHours extends Widget_Base {
                     'label' => __( 'Margin', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
-                    'default' => [
-                        'top' => '10',
-                        'right' => '10',
-                        'bottom' => '10',
-                        'left' => '10',
-                        'isLinked' => true,
-                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -612,7 +599,7 @@ class MT_OpeningHours extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .ma-oh-footer p' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-oh-footer' => 'color: {{VALUES}}'
                     ],
                     'default' => '#000',
                 ]
@@ -624,7 +611,7 @@ class MT_OpeningHours extends Widget_Base {
                     'label'     => __( 'Background Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .ma-oh-footer p' => 'background-color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-oh-footer' => 'background-color: {{VALUES}}'
                     ]
                 ]
             );
@@ -634,7 +621,7 @@ class MT_OpeningHours extends Widget_Base {
                 [
                     'name' => 'oh_footer_typography',
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .ma-oh-footer p',
+                    'selector' => '{{WRAPPER}} .ma-oh-footer',
                 ]
             );
 
@@ -644,15 +631,8 @@ class MT_OpeningHours extends Widget_Base {
                     'label' => __( 'Padding', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
-                    'default' => [
-                        'top' => '10',
-                        'right' => '10',
-                        'bottom' => '10',
-                        'left' => '10',
-                        'isLinked' => true,
-                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-footer p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -663,15 +643,8 @@ class MT_OpeningHours extends Widget_Base {
                     'label' => __( 'Margin', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
-                    'default' => [
-                        'top' => '10',
-                        'right' => '10',
-                        'bottom' => '10',
-                        'left' => '10',
-                        'isLinked' => true,
-                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-footer p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-footer' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -689,9 +662,7 @@ class MT_OpeningHours extends Widget_Base {
         ?>
         <div class="ma-openinghours-wrapper">
 
-            <div class="ma-oh-header">
-                <h2><?php echo $settings['header_text']; ?></h2>
-            </div>
+            <div class="ma-oh-header"><?php echo $settings['header_text']; ?></div>
 
             <div class="ma-oh-rows">
                 <?php foreach (  $settings['mt_openinghours_data'] as $item ) : ?>
@@ -702,9 +673,7 @@ class MT_OpeningHours extends Widget_Base {
                 <?php endforeach; ?>
             </div>
 
-            <div class="ma-oh-footer">
-                <p><?php echo $settings['footer_text']; ?></p>
-            </div>
+            <div class="ma-oh-footer"><?php echo $settings['footer_text']; ?></div>
 
         </div>
         <?php
