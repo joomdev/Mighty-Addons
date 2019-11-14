@@ -13,6 +13,16 @@
   width: 100%;
   height: 100%;
   transition: all .6s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.mt-flipbox-wrapper .mt-flipbox-front {
+  background-color: #ddd;
+}
+.mt-flipbox-wrapper .mt-flipbox-back {
+  background-color: #ddd;
 }
 .mt-flipbox-wrapper.ma-flip .mt-flipbox-front {
   -webkit-transform: none;
