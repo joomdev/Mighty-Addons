@@ -58,19 +58,17 @@ class MT_Progressbar extends Widget_Base {
 					'type' => Controls_Manager::REPEATER,
 					'default' => [
 						[
-							'mt_progressbar_title'         => __('Facebook','mighty'),
-							'mt_progressbar_color'         => '#4267b2',
-							'mt_progressbar_bgcolor'       => '#EEEEEE',
+							'mt_progressbar_title'         => __('Graphic Design','mighty'),
+							'mt_progressbar_value'         => '93',
 						],
 						[
-							'mt_progressbar_title'         => __('Twitter','mighty'),
-							'mt_progressbar_color'         => '#38A1F3',
-							'mt_progressbar_bgcolor'       => '#EEEEEE',
+							'mt_progressbar_title'         => __('Web Design','mighty'),
+							'mt_progressbar_value'         => '84',
 						],
 						[
-							'mt_progressbar_title'         => __('Reddit','mighty'),
-							'mt_progressbar_color'         => '#ff4500',
-							'mt_progressbar_bgcolor'       => '#EEEEEE',
+							'mt_progressbar_title'         => __('Photoshop','mighty'),
+							'mt_progressbar_value'         => '89',
+
 						],
 					],
 
@@ -105,9 +103,8 @@ class MT_Progressbar extends Widget_Base {
 							'name' => 'mt_progressbar_color',
 							'label' => __( 'Progress Bar Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
-							'default' => '#ff6347',
 							'selectors' => [
-								'{{WRAPPER}} .mighty-progressbar {{CURRENT_ITEM}} > .progressbar' => 'background: {{VALUE}};',
+								'{{WRAPPER}} .mighty-progressbar .progress-bar{{CURRENT_ITEM}} > .progressbar' => 'background: {{VALUE}};',
 							],
 						],
 						
@@ -116,7 +113,7 @@ class MT_Progressbar extends Widget_Base {
 							'label' => __( 'Background Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} .mighty-progressbar {{CURRENT_ITEM}}' => 'background: {{VALUE}};',
+								'{{WRAPPER}} .mighty-progressbar .progress-bar{{CURRENT_ITEM}}' => 'background: {{VALUE}};',
 							],
 						],
 					],
@@ -154,7 +151,7 @@ class MT_Progressbar extends Widget_Base {
 				[
 					'label' => __( 'Title Position', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'inside',
+					'default' => 'outside',
 					'options' => [
 						'inside'  => __( 'Inside', 'mighty' ),
 						'outside' => __( 'Outside', 'mighty' ),
@@ -170,7 +167,7 @@ class MT_Progressbar extends Widget_Base {
 					'label_on' => __( 'On', 'mighty' ),
 					'label_off' => __( 'Off', 'mighty' ),
 					'return_value' => 'yes',
-					'default' => 'no',
+					'default' => true,
 				]
 			);
 			
@@ -179,7 +176,7 @@ class MT_Progressbar extends Widget_Base {
 				[
 					'label' => __( 'Percentage Position', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'inside',
+					'default' => 'outside',
 					'options' => [
 						'inside'  => __( 'Inside', 'mighty' ),
 						'outside' => __( 'Outside', 'mighty' ),
@@ -204,7 +201,7 @@ class MT_Progressbar extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 40,
+						'size' => 8,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .progress-bar' => 'height: {{SIZE}}{{UNIT}}',
@@ -213,9 +210,9 @@ class MT_Progressbar extends Widget_Base {
 			);
 
 			$this->add_responsive_control(
-				'mt_progressbar_padding',
+				'mt_progressbar_spacing',
 				[
-					'label' => __( 'Padding', 'mighty' ),
+					'label' => __( 'Spacing', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
 					'size_units' => [ 'px' ],
 					'range' => [
@@ -229,7 +226,7 @@ class MT_Progressbar extends Widget_Base {
 						'size' => 10,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-progressbar' => 'padding: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-progressbar .progress-bar:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 					],
 				]
 			);
@@ -238,7 +235,8 @@ class MT_Progressbar extends Widget_Base {
                 'mt_progressbar_global_color',
                 [
                     'label' => __( 'Color', 'mighty' ),
-                    'type' => Controls_Manager::COLOR,
+						  'type' => Controls_Manager::COLOR,
+						  'default' => '#4965fb',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-progressbar .progress-bar .progressbar' => 'background: {{VALUE}};',
 					],
@@ -249,7 +247,8 @@ class MT_Progressbar extends Widget_Base {
                 'mt_progressbar_bg_color',
                 [
                     'label' => __( 'Background Color', 'mighty' ),
-                    'type' => Controls_Manager::COLOR,
+						  'type' => Controls_Manager::COLOR,
+						  'default' => '#e8eaf0',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-progressbar .progress-bar' => 'background-color: {{VALUE}};',
                     ],
@@ -306,9 +305,9 @@ class MT_Progressbar extends Widget_Base {
 						'type' => Scheme_Color::get_type(),
 						'value' => Scheme_Color::COLOR_1,
 					],
-					'default' => '#000',
+					'default' => '#333',
 					'selectors' => [
-						'{{WRAPPER}} .mighty-progressbar p' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .mighty-progressbar' => 'color: {{VALUE}};',
 					],
 				]
 			);
@@ -320,8 +319,8 @@ class MT_Progressbar extends Widget_Base {
                     'label' => __( 'Typography', 'mighty' ),
 					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selectors' => [
-						'{{WRAPPER}} .mighty-progressbar p .progressbar-title',
-						'{{WRAPPER}} .mighty-progressbar p .percentage',
+						'{{WRAPPER}} .mighty-progressbar .progressbar-title',
+						'{{WRAPPER}} .mighty-progressbar .percentage',
 					]
 				]
             );
@@ -352,11 +351,11 @@ class MT_Progressbar extends Widget_Base {
 
 			echo '<div class="progressbar-details">';
 				if ( $settings['mt_title_position'] === 'outside' ) {
-					echo '<p class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</p>';
+					echo '<div class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</div>';
 				}
 
 				if ( $settings['mt_percentage_position'] === 'outside' ) {
-					echo '<p class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</p>';
+					echo '<div class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</div>';
 				}
 			echo '</div>';
 
@@ -365,11 +364,11 @@ class MT_Progressbar extends Widget_Base {
 			echo '<div class="progressbar">';
 
 				if ( $settings['mt_title_position'] === 'inside' ) {
-					echo '<p class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</p>';
+					echo '<div class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</div>';
 				}
 
 				if ( $settings['mt_percentage_position'] === 'inside' ) {
-					echo '<p class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</p>';
+					echo '<div class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</div>';
 				}
 			
             echo '</div>';	# .progressbar

@@ -1,6 +1,5 @@
 .mighty-progressbar .progress-bar {
     position: relative;
-    margin: 10px 5px;
     height: 20px;
     background: #eee;
     border-radius: 5px;
@@ -48,15 +47,15 @@
     }
 }
 
-.mighty-progressbar p .progressbar-percentage {
+.mighty-progressbar .progressbar-percentage {
     float: right;
 }
 
-p.progressbar-title {
+.progressbar-title {
     margin: 0 5px;
 }
 
-p.progressbar-percentage {
+.progressbar-percentage {
     margin: 0 5px;
     margin-left: auto;
 }
