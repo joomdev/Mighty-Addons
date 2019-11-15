@@ -57,7 +57,7 @@ class MT_Counter extends Widget_Base {
 				[
 					'label' => __( 'Title', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::TEXT,
-					'default' => __( 'Title', 'mighty' ),
+					'default' => __( 'Cups of Coffee', 'mighty' ),
 					'placeholder' => __( 'Title', 'mighty' ),
 				]
 			);
@@ -76,7 +76,7 @@ class MT_Counter extends Widget_Base {
                 [
                     'label' => __( 'Ending Number', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::NUMBER,
-                    'default' => 10,
+                    'default' => 1000,
                 ]
             );
 
@@ -119,7 +119,7 @@ class MT_Counter extends Widget_Base {
                         'show_counter_icon' => 'yes'
 					],
 					'default' => [
-						'value' => 'fas fa-running',
+						'value' => 'fas fa-coffee',
 						'library' => 'solid',
 					],
                 ]
@@ -148,31 +148,6 @@ class MT_Counter extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
-				'mt_space_between',
-				[
-					'label' => __( 'Icon Spacing', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SLIDER,
-					'size_units' => [ 'px' ],
-					'range' => [
-						'px' => [
-							'min' => 1,
-							'max' => 200,
-						],
-					],
-					'default' => [
-						'unit' => 'px',
-						'size' => 0,
-					],
-					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mtcounter-content' => 'margin: {{SIZE}}{{UNIT}}',
-					],
-					'condition' => [
-						'show_counter_icon' => 'yes'
-					],
-				]
-			);
-
         $this->end_controls_section();
 
         // Icon Styling
@@ -187,16 +162,27 @@ class MT_Counter extends Widget_Base {
 			]
 		);
 
-			$this->add_control(
-				'icon_position',
+			$this->add_responsive_control(
+				'mt_space_between',
 				[
-					'label' => __( 'Position', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'top',
-					'options' => [
-						'top'  => __( 'Top', 'mighty' ),
-						'left' => __( 'Left', 'mighty' ),
-						'right' => __( 'Right', 'mighty' ),
+					'label' => __( 'Icon Spacing', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px' ],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 200,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 0,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-counter .mtcounter-content' => 'margin: {{SIZE}}{{UNIT}}',
+					],
+					'condition' => [
+						'show_counter_icon' => 'yes'
 					],
 				]
 			);
@@ -215,7 +201,7 @@ class MT_Counter extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 50,
+						'size' => 40,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'font-size: {{SIZE}}{{UNIT}}',
@@ -237,7 +223,7 @@ class MT_Counter extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 5,
+						'size' => 0,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'padding: {{SIZE}}{{UNIT}}',
@@ -392,7 +378,7 @@ class MT_Counter extends Widget_Base {
 		
 		// if icon is set
 		if ( 'yes' === $settings['show_counter_icon'] && ! empty($settings['counter_icon']['value']) ) {
-			echo '<div class="mt-counter-icon icon-align-'. $settings['icon_position'] . '">';
+			echo '<div class="mt-counter-icon">';
 				\Elementor\Icons_Manager::render_icon( $settings['counter_icon'], [ 'aria-hidden' => 'true' ] );
 			echo '</div>';
 		}

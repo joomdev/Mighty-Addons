@@ -2,6 +2,7 @@
     display: block;
     width: 100%;
 }
+
 .mighty-buttongroup, .mighty-buttongroup.mt-btng-align-justify .mt-button{
     -webkit-box-align: center;
     -webkit-align-items: center;

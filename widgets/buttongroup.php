@@ -61,7 +61,7 @@ class MT_ButtonGroup extends Widget_Base {
                     [
                         'label' => __('Title', 'mighty'),
                         'type' => Controls_Manager::TEXT,
-                        'default' => 'Button One',
+                        'default' => 'Click Here',
                     ]
                 );
                 
@@ -144,24 +144,6 @@ class MT_ButtonGroup extends Widget_Base {
                     [
                         'label' => __('Icon Animation', 'mighty'),
                         'type' => \Elementor\Controls_Manager::ANIMATION,
-                    ]
-                );
-                
-                $repeater->add_control(
-                    'button_type',
-                    [
-                        'label' => __('Button Type', 'mighty'),
-                        'type' => \Elementor\Controls_Manager::SELECT,
-                        'default' => 'ma-btn-primary',
-                        'options' => [
-                            'ma-btn-primary' => __('Primary', 'mighty'),
-                            'ma-btn-secondary' => __('Secondary', 'mighty'),
-                            'ma-btn-success' => __('Success', 'mighty'),
-                            'ma-btn-warning' => __('Warning', 'mighty'),
-                            'ma-btn-danger' => __('Danger', 'mighty'),
-                            'ma-btn-info' => __('Info', 'mighty'),
-                        ],
-                        'separator' => 'before',
                     ]
                 );
                 
@@ -297,6 +279,12 @@ class MT_ButtonGroup extends Widget_Base {
                         'label' => __( 'Button Padding', 'mighty' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
+                        'default' => [
+                            'top' =>  '5',
+                            'right' => '30',
+                            'bottom' => '5',
+                            'left' => '30',
+                        ],
                         'selectors' => [
                             '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
@@ -337,16 +325,16 @@ class MT_ButtonGroup extends Widget_Base {
                         'fields' => $repeater->get_controls(),
                         'default' => [
                             [
-                                'button_text' => __('Facebook', 'mighty'),
-                                'button_link' => '#4267b2',
-                                'button_type' => 'ma-btn-primary',
+                                'button_text' => __('Click Here', 'mighty'),
+                                'button_link' => '#',
                                 'button_size' => 'ma-btn-md',
+                                'buttongroup_bg_color' => '#f96b77',
                             ],
                             [
-                                'button_text' => __('Twitter', 'mighty'),
-                                'button_link' => '#38A1F3',
-                                'button_type' => 'ma-btn-primary',
+                                'button_text' => __('Click Here', 'mighty'),
+                                'button_link' => '#',
                                 'button_size' => 'ma-btn-md',
+                                'buttongroup_bg_color' => '#a652de',
                             ],
                         ],
                         'title_field' => '{{{ button_text }}}',
@@ -361,19 +349,19 @@ class MT_ButtonGroup extends Widget_Base {
         $this->start_controls_section(
 			'section_spacing',
 			[
-				'label' => __( 'Aesthetics', 'mighty' ),
+				'label' => __( 'Spacing', 'mighty' ),
 			]
         );
 
             $this->add_responsive_control(
                 'space_between_buttons',
                 [
-                    'label' => __( 'Spacing', 'mighty' ),
+                    'label' => __( 'Spacing Between Buttons', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SLIDER,
                     'size_units' => [ 'px' ],
                     'range' => [
                         'px' => [
-                            'min' => 1,
+                            'min' => 0,
                             'max' => 50,
                         ],
                     ],
@@ -382,7 +370,7 @@ class MT_ButtonGroup extends Widget_Base {
                         'size' => 10,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-buttongroup .mt-button .mighty-btn' => 'margin: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mighty-buttongroup .mt-button:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -425,7 +413,7 @@ class MT_ButtonGroup extends Widget_Base {
                             'icon' => 'fa fa-align-justify',
                         ]
                     ],
-                    'default' => 'center',
+                    'default' => 'left',
                 ]
             );
         
@@ -451,7 +439,7 @@ class MT_ButtonGroup extends Widget_Base {
             $buttonAnimation = (!empty($btngrp['hover_animation']) == true ? ' elementor-animation-'.$btngrp['hover_animation'] : '');
             echo '<div class="mt-button elementor-repeater-item-'. $btngrp['_id'] . '">';
 
-                echo '<a ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . 'class="ma-btn mighty-btn '. (($btngrp['button_css_class'] !== "") ? $btngrp['button_css_class'] ." " : '') . $btngrp['button_type'] . ' ' . $btngrp['button_size'] . $buttonAnimation . '" '. $target . $nofollow .' href="'. $url . '">' . ( ($btngrp['button_icon_align']==="left") ? $buttonIcon . ' ' : '' ) . $btngrp['button_text'] . ( ($btngrp['button_icon_align']==="right") ? ' ' . $buttonIcon : '' ) .'</a>';
+                echo '<a ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . 'class="ma-btn mighty-btn '. (($btngrp['button_css_class'] !== "") ? $btngrp['button_css_class'] ." " : '') . $btngrp['button_size'] . $buttonAnimation . '" '. $target . $nofollow .' href="'. $url . '">' . ( ($btngrp['button_icon_align']==="left") ? $buttonIcon . ' ' : '' ) . $btngrp['button_text'] . ( ($btngrp['button_icon_align']==="right") ? ' ' . $buttonIcon : '' ) .'</a>';
 
             echo '</div>'; // .mt-button
         endforeach;

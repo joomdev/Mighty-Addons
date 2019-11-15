@@ -10,3 +10,13 @@
 .mighty-counter .icon-align-left {
     float: left;
 }
+
+.mighty-counter .mtcounter-content .counter .count {
+    font-size: 40px;
+    /* line-height: 2.2em; */
+}
+
+.mighty-counter .mtcounter-content .counter-title {
+    font-size: 22px;
+    /* line-height: 0.2em; */
+}

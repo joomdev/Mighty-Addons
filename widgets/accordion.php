@@ -96,12 +96,12 @@ class MT_Accordion extends Widget_Base {
                             [
                                 'accordion_title' => __( 'Accordion 1', 'mighty' ),
                                 'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
-                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
+                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'mighty' ),
                             ],
                             [
                                 'accordion_title' => __( 'Accordion 2', 'mighty' ),
                                 'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
-                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
+                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'mighty' ),
                             ],
                         ],
                         'title_field' => '{{{ accordion_title }}}',
@@ -476,7 +476,7 @@ class MT_Accordion extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 0,
+                        'size' => 5,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
@@ -556,6 +556,12 @@ class MT_Accordion extends Widget_Base {
                     'label' => __( 'Padding', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', 'em', '%' ],
+                    'default' => [
+                        'top' =>  '10',
+                        'right' => '10',
+                        'bottom' => '10',
+                        'left' => '10',
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],

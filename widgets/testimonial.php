@@ -627,7 +627,7 @@ class MT_Testimonial extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 20,
+						'size' => 10,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial .slick-dots li button::before' => 'font-size: {{SIZE}}{{UNIT}}',
