@@ -438,20 +438,18 @@ class MT_ButtonGroup extends Widget_Base {
         if ( empty( $settings['mt_buttongroup_btns'] ) ) {
             return;
 		}
+        $stackButtons = (($settings['buttongroup_stack_on'] == "none") ? '' : ' ' . $settings['buttongroup_stack_on'] . ' ');
 
-        echo '<div class="mighty-buttongroup mt-btng-align-'. $settings['buttongroup_btns_align'] .'">';
+        echo '<div class="mighty-buttongroup ' . $stackButtons . 'mt-btng-align-'. $settings['buttongroup_btns_align'] .'">';
 
         foreach (  $settings['mt_buttongroup_btns'] as $btngrp ) :
-
             $target = $btngrp['button_link']['is_external'] ? ' target="_blank"' : '';
             $nofollow = $btngrp['button_link']['nofollow'] ? ' rel="nofollow"' : '';
             $url = $btngrp['button_link']['url'];
             $iconAnimation = (($btngrp['button_icon_animation'] !== 'none') ? 'animated '.$btngrp['button_icon_animation'] . ' ' : '');
             $buttonIcon = '<i aria-hidden="true" class="'. $iconAnimation . $btngrp['button_icon']['value'].'"></i>';
             $buttonAnimation = (!empty($btngrp['hover_animation']) == true ? ' elementor-animation-'.$btngrp['hover_animation'] : '');
-            $stackButtons = (($settings['buttongroup_stack_on'] == "none") ? '' : ' ' . $settings['buttongroup_stack_on'] . ' ');
-
-            echo '<div class="mt-button' . $stackButtons . ' elementor-repeater-item-'. $btngrp['_id'] . '">';
+            echo '<div class="mt-button elementor-repeater-item-'. $btngrp['_id'] . '">';
 
                 echo '<a ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . 'class="ma-btn mighty-btn '. (($btngrp['button_css_class'] !== "") ? $btngrp['button_css_class'] ." " : '') . $btngrp['button_type'] . ' ' . $btngrp['button_size'] . $buttonAnimation . '" '. $target . $nofollow .' href="'. $url . '">' . ( ($btngrp['button_icon_align']==="left") ? $buttonIcon . ' ' : '' ) . $btngrp['button_text'] . ( ($btngrp['button_icon_align']==="right") ? ' ' . $buttonIcon : '' ) .'</a>';
 
