@@ -82,46 +82,7 @@ class MT_ButtonGroup extends Widget_Base {
                         ],
                     ]
                 );
-                
-                $repeater->add_control(
-                    'button_type',
-                    [
-                        'label' => __('Button Type', 'mighty'),
-                        'type' => \Elementor\Controls_Manager::SELECT,
-                        'default' => 'ma-btn-primary',
-                        'options' => [
-                            'ma-btn-primary' => __('Primary', 'mighty'),
-                            'ma-btn-secondary' => __('Secondary', 'mighty'),
-                            'ma-btn-success' => __('Success', 'mighty'),
-                            'ma-btn-warning' => __('Warning', 'mighty'),
-                            'ma-btn-danger' => __('Danger', 'mighty'),
-                            'ma-btn-info' => __('Info', 'mighty'),
-                        ],
-                    ]
-                );
-                
-                $repeater->add_control(
-                    'button_size',
-                    [
-                        'label' => __('Button Size', 'mighty'),
-                        'type' => \Elementor\Controls_Manager::SELECT,
-                        'default' => 'ma-btn-md',
-                        'options' => [
-                            'ma-btn-sm' => __('Small', 'mighty'),
-                            'ma-btn-md' => __('Medium', 'mighty'),
-                            'ma-btn-lg' => __('Large', 'mighty'),
-                        ],
-                    ]
-                );
-                
-                $repeater->add_control(
-                    'hover_animation',
-                    [
-                        'label' => __('Hover Animation', 'mighty'),
-                        'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
-                    ]
-                );
-                
+
                 $repeater->add_control(
                     'button_icon',
                     [
@@ -130,7 +91,7 @@ class MT_ButtonGroup extends Widget_Base {
                         'type' => \Elementor\Controls_Manager::ICONS,
                     ]
                 );
-                
+
                 $repeater->add_control(
                     'button_icon_align',
                     [
@@ -187,19 +148,34 @@ class MT_ButtonGroup extends Widget_Base {
                 );
                 
                 $repeater->add_control(
-                    'button_css_id',
+                    'button_type',
                     [
-                        'label' => __('HTML ID', 'mighty'),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => __('', 'mighty'),
+                        'label' => __('Button Type', 'mighty'),
+                        'type' => \Elementor\Controls_Manager::SELECT,
+                        'default' => 'ma-btn-primary',
+                        'options' => [
+                            'ma-btn-primary' => __('Primary', 'mighty'),
+                            'ma-btn-secondary' => __('Secondary', 'mighty'),
+                            'ma-btn-success' => __('Success', 'mighty'),
+                            'ma-btn-warning' => __('Warning', 'mighty'),
+                            'ma-btn-danger' => __('Danger', 'mighty'),
+                            'ma-btn-info' => __('Info', 'mighty'),
+                        ],
+                        'separator' => 'before',
                     ]
                 );
                 
                 $repeater->add_control(
-                    'button_css_class',
+                    'button_size',
                     [
-                        'label' => __('CSS Class', 'mighty'),
-                        'type' => Controls_Manager::TEXT,
+                        'label' => __('Button Size', 'mighty'),
+                        'type' => \Elementor\Controls_Manager::SELECT,
+                        'default' => 'ma-btn-md',
+                        'options' => [
+                            'ma-btn-sm' => __('Small', 'mighty'),
+                            'ma-btn-md' => __('Medium', 'mighty'),
+                            'ma-btn-lg' => __('Large', 'mighty'),
+                        ],
                     ]
                 );
 
@@ -240,37 +216,6 @@ class MT_ButtonGroup extends Widget_Base {
                         ]
                     );
 
-                    // $repeater->add_group_control(
-                    //     Group_Control_Background::get_type(),
-                    //     [
-                    //         'name' => 'buttongroup_gradient_color',
-                    //         'label' => __( 'Gradient', 'mighty' ),
-                    //         'types' => [ 'classic', 'gradient' ],
-                    //         'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
-                    //     ]
-                    // );
-
-                    $repeater->add_group_control(
-                        Group_Control_Border::get_type(),
-                        [
-                            'name' => 'border',
-                            'label' => __( 'Border', 'mighty' ),
-                            'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
-                        ]
-                    );
-
-                    $repeater->add_control(
-                        'buttongroup_border_radius',
-                        [
-                            'label' => __( 'Border Radius', 'mighty' ),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'size_units' => [ 'px' ],
-                            'selectors' => [
-                                '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                            ],
-                        ]
-                    );
-
                 $repeater->end_controls_tab();
                 
                 // Hover styling
@@ -287,7 +232,7 @@ class MT_ButtonGroup extends Widget_Base {
                             'label'     => __( 'Color', 'mighty' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
-                                '' => 'color: {{VALUES}}'
+                                '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a:hover' => 'color: {{VALUES}}'
                             ]
                         ]
                     );
@@ -298,65 +243,91 @@ class MT_ButtonGroup extends Widget_Base {
                             'label'     => __( 'Background Color', 'mighty' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
-                                '' => 'background-color: {{VALUES}}'
+                                '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a:hover' => 'background-color: {{VALUES}}'
                             ]
                         ]
                     );
-
+                
                     $repeater->add_control(
-                        'buttongroup_hover_border_color',
+                        'hover_animation',
                         [
-                            'label'     => __( 'Border Color', 'mighty' ),
-                            'type'      => Controls_Manager::COLOR,
-                            'selectors' => [
-                                '' => 'border-color: {{VALUES}}'
-                            ]
-                        ]
-                    );
-
-                    
-
-                    $repeater->add_group_control(
-                        Group_Control_Background::get_type(),
-                        [
-                            'name' => 'buttongroup_gradient_hover_color',
-                            'label' => __( 'Gradient', 'mighty' ),
-                            'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} .wrapper',
-                        ]
-                    );
-
-                    $repeater->add_group_control(
-                        Group_Control_Box_Shadow::get_type(),
-                        [
-                            'name' => 'buttongroup_btn_shadow',
-                            'label' => __( 'Box Shadow', 'mighty' ),
-                            'selector' => '{{WRAPPER}} .wrapper',
-                        ]
-                    );
-
-                    $repeater->add_control(
-                        'buttongroup_button_padding',
-                        [
-                            'label' => __( 'Button Padding', 'mighty' ),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'size_units' => [ 'px' ],
-                            'selectors' => [
-                                '{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                            ],
-                        ]
-                    );
-
-                    $repeater->add_group_control(
-                        Group_Control_Typography::get_type(),
-                        [
-                            'name' => 'testimonial_typography',
-                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                            'selector' => '{{WRAPPER}} ',
+                            'label' => __('Hover Animation', 'mighty'),
+                            'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
                         ]
                     );
 
                 $repeater->end_controls_tab();
+                
+                $repeater->end_controls_tabs();
+
+                $repeater->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'border',
+                        'label' => __( 'Border', 'mighty' ),
+                        'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
+                        'separator' => 'before',
+                    ]
+                );
+
+                $repeater->add_control(
+                    'buttongroup_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'mighty' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px' ],
+                        'selectors' => [
+                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                    ]
+                );
+
+                $repeater->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'buttongroup_btn_shadow',
+                        'label' => __( 'Box Shadow', 'mighty' ),
+                        'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
+                    ]
+                );
+
+                $repeater->add_control(
+                    'buttongroup_button_padding',
+                    [
+                        'label' => __( 'Button Padding', 'mighty' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px' ],
+                        'selectors' => [
+                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                    ]
+                );
+
+                $repeater->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'name' => 'testimonial_typography',
+                        'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                        'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
+                    ]
+                );
+
+                $repeater->add_control(
+                    'button_css_id',
+                    [
+                        'label' => __('HTML ID', 'mighty'),
+                        'type' => Controls_Manager::TEXT,
+                        'default' => __('', 'mighty'),
+                    ]
+                );
+                
+                $repeater->add_control(
+                    'button_css_class',
+                    [
+                        'label' => __('CSS Class', 'mighty'),
+                        'type' => Controls_Manager::TEXT,
+                    ]
+                );
                 
                 $this->add_control(
                     'mt_buttongroup_btns',
@@ -429,7 +400,7 @@ class MT_ButtonGroup extends Widget_Base {
 						'stack-on-mobile' => __( 'Mobile', 'mighty' ),
 					],
 				]
-			);
+            );
         
         $this->end_controls_section();
 	}
