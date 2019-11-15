@@ -79,26 +79,10 @@ class MT_Accordion extends Widget_Base {
                 );
 
                 $repeater->add_control(
-                    'accordion_icon',
+                    'accordion_main_icon',
                     [
                         'label' => __( 'Icon', 'mighty' ),
                         'type' => Controls_Manager::ICONS,
-                        'default' => [
-                            'value' => 'fas fa-chevron-right',
-                            'library' => 'solid',
-                        ],
-                    ]
-                );
-
-                $repeater->add_control(
-                    'active_accordion_icon',
-                    [
-                        'label' => __( 'Active Icon', 'mighty' ),
-                        'type' => Controls_Manager::ICONS,
-                        'default' => [
-                            'value' => 'fas fa-chevron-down',
-                            'library' => 'solid',
-                        ],
                     ]
                 );
 
@@ -111,12 +95,12 @@ class MT_Accordion extends Widget_Base {
                         'default' => [
                             [
                                 'accordion_title' => __( 'Accordion 1', 'mighty' ),
-                                'accordion_icon' => __( 'fas fa-plus', 'mighty' ),
+                                'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
                                 'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
                             ],
                             [
                                 'accordion_title' => __( 'Accordion 2', 'mighty' ),
-                                'accordion_icon' => __( 'fas fa-plus', 'mighty' ),
+                                'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
                                 'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
                             ],
                         ],
@@ -176,11 +160,12 @@ class MT_Accordion extends Widget_Base {
             );
         
         $this->end_controls_section();
-
+        
         $this->start_controls_section(
-			'section_title',
+			'section_title_style',
 			[
 				'label' => __( 'Title', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
         );
 
@@ -202,16 +187,6 @@ class MT_Accordion extends Widget_Base {
                     'separator' => 'before',
                 ]
             );
-
-        $this->end_controls_section();
-        
-        $this->start_controls_section(
-			'section_title_style',
-			[
-				'label' => __( 'Title', 'mighty' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-        );
         
             $this->add_control(
                 'title_color',
@@ -234,7 +209,7 @@ class MT_Accordion extends Widget_Base {
                     'label' => __( 'Background', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'background-color: {{VALUE}};',
                     ],
                 ]
             );
@@ -264,7 +239,7 @@ class MT_Accordion extends Widget_Base {
                         'value' => Scheme_Color::COLOR_1,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-accordion .mt-panel .active .mt-accordion-title' => 'background-color: {{VALUE}}',
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .active' => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
@@ -273,8 +248,8 @@ class MT_Accordion extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'title_typography',
-                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title',
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title',
                 ]
             );
 
@@ -290,6 +265,27 @@ class MT_Accordion extends Widget_Base {
                 ]
             );
 
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'title_border',
+                    'label' => __( 'Border Type', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mighty-accordion .accordion',
+                ]
+            );
+
+            $this->add_control(
+                'title_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .accordion' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
         $this->end_controls_section();
         
         $this->start_controls_section(
@@ -298,7 +294,56 @@ class MT_Accordion extends Widget_Base {
 				'label' => __( 'Icon', 'mighty' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
-		);
+        );
+        
+            $this->add_control(
+                'open_close_icon',
+                [
+                    'label' => __( 'Select Icon', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::CHOOSE,
+                    'options' => [
+                        'fa-angle-down' => [
+                            'title' => __( 'Angle', 'mighty' ),
+                            'icon' => 'fas fa-angle-down',
+                        ],
+                        'fa-plus' => [
+                            'title' => __( 'Plus', 'mighty' ),
+                            'icon' => 'fas fa-plus',
+                        ],
+                        'fa-arrow-down' => [
+                            'title' => __( 'Arrow', 'mighty' ),
+                            'icon' => 'fas fa-arrow-down',
+                        ],
+                        'fa-sort-down' => [
+                            'title' => __( 'Sort', 'mighty' ),
+                            'icon' => 'fas fa-sort-down',
+                        ],
+                    ],
+                    'default' => 'fa-angle-down',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'icon_size',
+                [
+                    'label' => __( 'Font Size', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+						'unit' => 'px',
+						'size' => 15,
+					],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
 
             $this->add_control(
                 'icon_align',
@@ -315,14 +360,14 @@ class MT_Accordion extends Widget_Base {
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
-                    'default' => is_rtl() ? 'right' : 'left',
+                    'default' => is_rtl() ? 'left' : 'right',
                     'toggle' => false,
                     'label_block' => false,
                 ]
             );
 
             $this->add_responsive_control(
-                'icon_space',
+                'icon_spacing',
                 [
                     'label' => __( 'Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
@@ -431,10 +476,10 @@ class MT_Accordion extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 15,
+                        'size' => 0,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'padding: {{SIZE}}{{UNIT}};'
+                        '{{WRAPPER}} .mighty-accordion .mt-panel:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
                     ],
                 ]
             );
@@ -442,20 +487,20 @@ class MT_Accordion extends Widget_Base {
             $this->add_group_control(
                 Group_Control_Border::get_type(),
                 [
-                    'name' => 'title_border',
+                    'name' => 'accordion_border',
                     'label' => __( 'Border Type', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion',
+                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel',
                 ]
             );
 
             $this->add_control(
-                'title_border_radius',
+                'accordion_border_radius',
                 [
                     'label' => __( 'Border Radius', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-accordion .mt-panel' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -521,7 +566,7 @@ class MT_Accordion extends Widget_Base {
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'content_border',
-                    'label' => __( 'Border', 'mighty' ),
+                    'label' => __( 'Border Type', 'mighty' ),
                     'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content',
                 ]
             );
@@ -533,7 +578,7 @@ class MT_Accordion extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-accordion .panel' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -553,6 +598,20 @@ class MT_Accordion extends Widget_Base {
         $openAll = $settings['open_all'] == "yes" ? 'active' : '';
         $faqSchema = $settings['enable_faq'] == "yes" ? true : false;
         $titleTag = $settings['title_html_tag'];
+        $openAccordionIcon = $settings['open_close_icon'];
+        $closeAccordionIcon = "";
+            if( $openAccordionIcon ) {
+                switch( $openAccordionIcon ) {
+                    case 'fa-angle-down': $closeAccordionIcon = 'fa-angle-up';
+                    break;
+                    case 'fa-plus': $closeAccordionIcon = 'fa-minus';
+                    break;
+                    case 'fa-arrow-down': $closeAccordionIcon = 'fa-arrow-up';
+                    break;
+                    case 'fa-sort-down': $closeAccordionIcon = 'fa-sort-up';
+                    break;
+                }
+            }
         ?>
 
         <div <?php echo $faqSchema ? 'itemscope itemtype="https://schema.org/FAQPage" ' : ''; ?> class="mighty-accordion" data-enable-multiple="<?php echo $openMultiple; ?>" data-first-active="<?php echo $firstActive; ?>" data-open-all="<?php echo $openAll; ?>">
@@ -560,8 +619,11 @@ class MT_Accordion extends Widget_Base {
             foreach (  $settings['tabs'] as $index => $tab ) :
                 $tabId = substr( $this->get_id_int(), 0, 3 ) . $index+1;
                 
-                $accordionIcon = '<i aria-hidden="true" class="accordion-icon ' . $tab['accordion_icon']['value'].'"></i>';
-                $accordionActiveIcon = '<i aria-hidden="true" class="accordion-active-icon ' . $tab['active_accordion_icon']['value'].'"></i>';
+                $mainAccordionIcon = '<i aria-hidden="true" class="accordion-icon-main ' . $tab['accordion_main_icon']['value'].'"></i>';
+                $accordionIcon = '<i aria-hidden="true" class="accordion-icon fas ' . $openAccordionIcon .'"></i>';
+                $accordionActiveIcon = '<i aria-hidden="true" class="accordion-active-icon fas ' . $closeAccordionIcon .'"></i>';
+                
+
             ?>
                 <div <?php echo $faqSchema ? 'itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" ' : ''; ?> class="mt-panel elementor-repeater-item-<?php echo $tab['_id']; ?>">
                     <div class="accordion accordion-<?php echo $tabId; ?><?php echo $firstActive; ?> <?php echo $settings['icon_align'] == "left" ? 'icons-left' : 'icons-right'; ?>">
@@ -574,6 +636,7 @@ class MT_Accordion extends Widget_Base {
                         <?php } ?>
 
                         <<?php echo $titleTag; ?><?php echo $faqSchema ? ' itemprop="name"' : ''; ?> class="mt-accordion-title">
+                            <?php echo $mainAccordionIcon; ?>
                             <?php echo $tab['accordion_title']; ?>
                         </<?php echo $titleTag; ?>>
                         

@@ -37,6 +37,11 @@
     font-weight: bold;
     float: left;
     margin-left: 5px;
+    padding: 5px;
+}
+
+.mighty-accordion .mt-panel .accordion .accordion-icons i {
+    padding: 5px;
 }
 
 .mighty-accordion .mt-panel .active .accordion-active-icon {
@@ -44,7 +49,6 @@
 }
 
 .mighty-accordion .mt-panel .panel {
-    padding: 0 18px;
     background-color: white;
     max-height: 0;
     overflow: hidden;
