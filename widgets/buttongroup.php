@@ -401,6 +401,33 @@ class MT_ButtonGroup extends Widget_Base {
 					],
 				]
             );
+            
+            $this->add_control(
+                'buttongroup_btns_align',
+                [
+                    'label' => __( 'Alignment', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'fa fa-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'fa fa-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'fa fa-align-right',
+                        ],
+                        'justify' => [
+                            'title' => __( 'Justify', 'mighty' ),
+                            'icon' => 'fa fa-align-justify',
+                        ]
+                    ],
+                    'default' => 'center',
+                ]
+            );
         
         $this->end_controls_section();
 	}
@@ -412,7 +439,7 @@ class MT_ButtonGroup extends Widget_Base {
             return;
 		}
 
-        echo '<div class="mighty-buttongroup">';
+        echo '<div class="mighty-buttongroup mt-btng-align-'. $settings['buttongroup_btns_align'] .'">';
 
         foreach (  $settings['mt_buttongroup_btns'] as $btngrp ) :
 
