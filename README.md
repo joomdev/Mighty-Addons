@@ -6,7 +6,7 @@ Contributors: mightythemes1
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder
 Requires at least: 4.5
 Tested up to: 5.2
-Stable Tag: 1.0.0
+Stable Tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,8 @@ The plugin is loaded with the following Elementor addons.
 <li>MT Progress Bar</li>
 <li>MT Button Group</li>
 <li>MT Before After</li>
+<li>MT Gradient Heading</li>
+<li>MT Flip Box Widget</li>
 </ul>
 
 == Installation ==
@@ -48,6 +50,15 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 == Changelog ==
+
+= 1.1.0 =
+* Added: MT Gradient Heading Widget
+* Added: MT Flip Box Widget
+* Added: MT Opening Hours Widget
+* Added: Mighty Icons
+* Fixed: Schema for accordion
+* Fixed: MT Testimonial Widget
+* Updated: Widget Icons
 
 = 1.0.0 =
 * Initial release.

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Class Gradient
+ * 
+ * @since 1.1.0
+ */
 namespace Mighty_Addons\Controls;
 
 if ( ! defined( 'ABSPATH' ) ) {
