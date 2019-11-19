@@ -1,19 +1,27 @@
-=== Mighty Addons for Elementor ===
+# Mighty Addons for Elementor
 
 Author URI: https://mightythemes.com
-Plugin URI: https://mightythemes.com/products/mighty-addons/
+
+Plugin URI: https://mightythemes.com/products/mighty-addons
+
 Contributors: mightythemes1
+
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements
+
 Requires at least: 4.0 or higher
+
 Tested up to: 5.3
+
 Requires PHP: 5.6
+
 Stable Tag: 1.1.0
+
 License: GPLv2 or later
+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.
 
-== Description ==
 ## Mighty Addons - Free Elementor Widget Plugin
 **Mighty Addons for Elementor includes ready-to-use Elementor Widgets which can be easily modified as per the use-case. Install and give it a try. New Elementor Widgets & Features are going to be frequently uploaded and improved.**
 
@@ -59,7 +67,7 @@ We are working on more Elementor Widgets, and they will be updated soon. Still, 
 ## Have any Question or facing any issue?
 We are proud of our support team. If you are facing any issue or have any question regarding Mighty Addons for Elementor, feel free to **[post us on our support forum](https://mightythemes.com/support/c/mighty-addons/)**. Our technical WordPress Developer would love to help you. 
 
-== Installation ==
+## How to Install Mighty Addons for Elementor
 
 1. Install and activate the Elementor page builder.
 2. Install the Mighty Addons and activate or download the plugin from WordPress Directory and unzip the directory to the *wp-content/plugins/* directory and activate.
@@ -67,57 +75,49 @@ We are proud of our support team. If you are facing any issue or have any questi
 4. You can type "MT" on your element tabs within Elementor editor, and all the available elements will appear.
 Also, you can see them under the category "Mighty Addons" on your element/widget list.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
-= Is Mighty Addons a standalone plugin?=
+### Is Mighty Addons a standalone plugin?
 
 No, Mighty Addons is not a standalone plugin. You need to install the Elementor page builder to use Mighty Addon.
 
-= Does it work with any WordPress theme? =
+### Does it work with any WordPress theme?
 
 Yes, it will work with any WordPress theme as long as you are using the Elementor as your page builder.
 
-= How do I start using Mighty Addons? =
+### How do I start using Mighty Addons?
 
 You need to install Elementor and Mighty Addons plugin on your website to get started.
 
-= Will this Elementor Widget plugin slow down my website speed? =
+### Will this Elementor Widget plugin slow down my website speed?
 
 The Elementor Widget Plugin is lightweight so it will not slow down your website.
 
-= Is Mighty Addons 100% Ads Free? =
+### Is Mighty Addons 100% Ads Free?
 
 Yes, Mighty Addons plugin will be 100% ads free. You will get notices about the pro version only if you will be using the free version.
 
-= How often do you update Elementor widgets? =
+### How often do you update Elementor widgets?
 
 We always listen to our user's feedback and based on that feedback, we keep enhancing the existing features and widgets. So you can expect at least one update in a month.
 
-= Do I have to buy Elementor Pro to use Mighty Addons plugin? =
+### Do I have to buy Elementor Pro to use Mighty Addons plugin?
 
 No, you don't need to buy Elementor Pro to use Mighty Addons. These free Elementor Widgets will work with both free and pro versions.
 
-== Screenshots == 
-1. Advanced Accordion
-2. Testimonial Widget View
-3. Team Member widget
-4. Animated Progress bar widget
-5. Opening Hours Widgets
-6. Flipbox Widgets
-
-== Developer? Want to contribute? ==
+### Developer? Want to contribute?
 
 We 💗 Open Source. Come and see our products on <a href="https://github.com/mightythemes/" title="MightyThemes on GitHub">GitHub</a>.
 
 #Having any suggestions or ideas which can improve our product?
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
-== Upgrade Notice ==
 
 
-== Changelog ==
 
-= 1.1.0 =
+## Changelog
+
+### 1.1.0
 * Added: MT Gradient Heading Widget
 * Added: MT Flip Box Widget
 * Added: MT Opening Hours Widget
@@ -126,5 +126,5 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 * Fixed: Few other minor fixes
 * Updated: Widget Icons
 
-= 1.0.0 =
+### 1.0.0
 * Initial release.
