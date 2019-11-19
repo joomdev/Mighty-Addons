@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Mighty Addons
  * Description: Addons for elementor by MightyThemes.
- * Plugin URI: https://mightythemes.com/plugins/
+ * Plugin URI: https://mightythemes.com/products/mighty-addons/
  * Version:     1.1.0
  * Author:      MightyThemes1
  * Author URI:  https://mightythemes.com/
