@@ -43,9 +43,8 @@ class Mighty_Elementor {
 	}
 
 	public function widget_styles() {
-		wp_register_style('mighty-fontawesome', MIGHTY_ADDONS_PLG_URL . 'assets/css/fontawesome/css/all.min.css' );
-		wp_register_style('mighty-slickcss', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick.css' );
-		wp_register_style('mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.css' );
+		wp_register_style('mighty-slickcss', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick.min.css' );
+		wp_register_style('mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.min.css' );
 		wp_register_style('mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/css/testimonial.css' );
 		wp_register_style('mt-team', MIGHTY_ADDONS_PLG_URL . 'assets/css/team.css' );
 		wp_register_style('mt-progressbar', MIGHTY_ADDONS_PLG_URL . 'assets/css/progressbar.css' );
@@ -62,7 +61,6 @@ class Mighty_Elementor {
 	}
 
 	public function mt_enqueue_styles() {
-		wp_enqueue_style( 'mighty-fontawesome' );
 		wp_enqueue_style( 'mt-common' );
 		wp_enqueue_style( 'mighty-slickcss' );
 		wp_enqueue_style( 'mighty-slicktheme' );
@@ -80,9 +78,9 @@ class Mighty_Elementor {
 	}
 
 	public function widget_scripts() {
-		wp_register_script( 'mighty-slickjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/slick.js', [ 'jquery' ] );
-		wp_register_script( 'mt-eventmovejs', MIGHTY_ADDONS_PLG_URL . 'assets/js/event.move.js', [ 'jquery' ] );
-		wp_register_script( 'mt-twentytwentyjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/twentytwenty.js', [ 'jquery' ] );
+		wp_register_script( 'mighty-slickjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/slick.min.js', [ 'jquery' ] );
+		wp_register_script( 'mt-eventmovejs', MIGHTY_ADDONS_PLG_URL . 'assets/js/event.move.min.js', [ 'jquery' ] );
+		wp_register_script( 'mt-twentytwentyjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/twentytwenty.min.js', [ 'jquery' ] );
 		
 		wp_register_script( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/js/testimonial.js', [ 'jquery' ], false, true );
 
