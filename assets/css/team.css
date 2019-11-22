@@ -3,6 +3,7 @@
 }
 
 .mighty-team .person-name {
+    margin-top: 5px;
     font-size: 20px;
     font-weight: 600;
     line-height: normal;
@@ -15,9 +16,7 @@
 }
 
 .mighty-team .person-about {
-    padding: 10px 0 0;
-    border-top: 1px solid #ddd;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .mighty-team .avatar-wrapper .img {
@@ -27,12 +26,11 @@
 .mighty-team .social-icons-wrapper {
     list-style: none;
     padding: 0;
-    margin: 10px
+    margin-top: 5px;
 }
 
 .mighty-team .social-icons-wrapper li {
     display: inline;
-    margin: 0px 10px;
 }
 /* Social Icons Colors */
 .mighty-team .social-icons-wrapper .fa-android {
@@ -268,21 +266,4 @@
 
 .mighty-team .social-icons-wrapper .fa-500px {
     color: #0099e5;
-}
-
-/* Border Style */
-.mighty-team .social-icons-wrapper .border-solid {
-    border: 1px solid black;
-}
-.mighty-team .social-icons-wrapper .border-dashed {
-    border: 1px dashed black;
-}
-.mighty-team .social-icons-wrapper .border-dotted {
-    border: 1px dotted black;
-}
-.mighty-team .social-icons-wrapper .border-double {
-    border: 1px double black;
-}
-.mighty-team .social-icons-wrapper .border-groove {
-    border: 1px groove black;
 }

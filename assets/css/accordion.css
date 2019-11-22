@@ -42,6 +42,7 @@
 
 .mighty-accordion .mt-panel .accordion .accordion-icons i {
     padding: 5px;
+    border-color: black;
 }
 
 .mighty-accordion .mt-panel .active .accordion-active-icon {
@@ -53,4 +54,8 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+.mighty-accordion .mt-panel .panel .accordion-content {
+    border-color: black;
 }

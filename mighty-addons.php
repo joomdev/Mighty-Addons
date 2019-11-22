@@ -13,7 +13,7 @@ namespace Mighty_Addons;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'MIGHTY_VERSION', '1.0.1' );
+define( 'MIGHTY_VERSION', '1.1.0' );
 define( 'MIGHTY_ADDONS_PLG_URL', plugins_url( '/', __FILE__ ) );
 
 /**

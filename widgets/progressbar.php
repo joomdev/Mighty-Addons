@@ -260,7 +260,7 @@ class MT_Progressbar extends Widget_Base {
 				[
 					'name' => 'border_type',
 					'label' => __( 'Border', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-progressbar',
+					'selector' => '{{WRAPPER}} .mighty-progressbar .progress-bar',
 				]
 			);
 
@@ -271,7 +271,7 @@ class MT_Progressbar extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-progressbar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-progressbar .progress-bar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
 			);
