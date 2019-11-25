@@ -196,6 +196,7 @@ class MT_Accordion extends Widget_Base {
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'color: {{VALUE}};',
                     ],
+                    'default' => '#000',
                     'scheme' => [
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
@@ -208,6 +209,7 @@ class MT_Accordion extends Widget_Base {
                 [
                     'label' => __( 'Background', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
+                    'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'background-color: {{VALUE}};',
                     ],
@@ -222,6 +224,7 @@ class MT_Accordion extends Widget_Base {
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .active .mt-accordion-title' => 'color: {{VALUE}};',
                     ],
+                    'default' => '#000',
                     'scheme' => [
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_4,
@@ -238,6 +241,7 @@ class MT_Accordion extends Widget_Base {
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .active' => 'background-color: {{VALUE}}',
                     ],

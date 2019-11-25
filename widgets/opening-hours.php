@@ -793,24 +793,51 @@ class MT_OpeningHours extends Widget_Base {
             return;
         }
         ?>
-        <div class="ma-openinghours-wrapper">
+        <div itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/CivicStructure" class="ma-openinghours-wrapper">
+            
+            <img style="display:none;" itemprop="image" src="http://via.placeholder.com/350x150" alt="test logo" />
 
-            <div class="ma-oh-header"><?php echo $settings['header_text']; ?></div>
+            <div itemprop="name" class="ma-oh-header"><?php echo $settings['header_text']; ?></div>
 
             <div class="ma-oh-rows">
                 <?php foreach (  $settings['mt_openinghours_data'] as $item ) : 
                     $closingTime = $item['opening_business_time'] === "Closed" || $item['opening_business_time'] === "24 hours" ? false : true;
+                    $schemaDay = "";
+                    switch( $item['business_day'] ) {
+                        case 'All Days': $schemaDay = "Mo-Su";
+                        break;
+                        case 'Monday - Friday': $schemaDay = "Mo-Fr";
+                        break;
+                        case 'Saturday - Sunday': $schemaDay = "Sa-Su";
+                        break;
+                        default: $schemaDay = substr($item['business_day'], 0, 2);
+                    }
                 ?>
                 <div class="ma-oh-row <?php echo ($settings['striped_effect'] == true) ? 'mt-striped' : ''; ?> elementor-repeater-item-<?php echo $item['_id']; ?>">
-                    <div class="ma-oh-day"><?php echo $item['business_day']; ?></div>
-                    <div class="ma-oh-time">
-                        <?php echo $item['opening_business_time']; echo $closingTime ? " - ".$item['closing_business_time'] : ''; ?>
+                    <div class="ma-oh-day">
+                        <time itemprop="openingHours" datetime="<?php echo $schemaDay; ?>"><?php echo $item['business_day']; ?></time>.
                     </div>
+
+                    <div class="ma-oh-time" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
+                        <?php if ( $item['opening_business_time'] === "24 hours" ) { ?>
+
+                            <time itemprop="opens" content="<?php echo date("H:i", strtotime("12:00 AM")); ?>"><?php echo $item['opening_business_time']; ?></time>
+
+                            <time itemprop='closes' content='<?php echo date("H:i", strtotime("12:00 PM")); ?>'></time>
+
+                        <?php } else { ?>
+                            <time itemprop="opens" content="<?php echo date("H:i", strtotime($item['opening_business_time'])); ?>"><?php echo $item['opening_business_time']; ?></time>
+                        
+                            <?php echo $closingTime ? " - <time itemprop='closes' content='". date("H:i", strtotime($item['closing_business_time'])) ."'>". $item['closing_business_time'] ."</time>" : '';
+                        } ?>
+                        
+                    </div>
+
                 </div>
                 <?php endforeach; ?>
             </div>
 
-            <div class="ma-oh-footer"><?php echo $settings['footer_text']; ?></div>
+            <div itemprop="description" class="ma-oh-footer"><?php echo $settings['footer_text']; ?></div>
 
         </div>
         <?php
