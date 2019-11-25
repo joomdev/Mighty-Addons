@@ -59,18 +59,144 @@ class MT_OpeningHours extends Widget_Base {
                 $repeater->add_control(
                     'business_day',
                     [
-                        'label' => __('Enter Day', 'mighty'),
-                        'type' => Controls_Manager::TEXT,
+                        'label' => __('Select Day', 'mighty'),
+                        'type' => Controls_Manager::SELECT,
                         'default' => 'Monday',
+                        'options' => [
+                            'All Days'  => __( 'All Days', 'mighty' ),
+                            'Monday - Friday'  => __( 'Monday - Friday', 'mighty' ),
+                            'Saturday - Sunday'  => __( 'Saturday - Sunday', 'mighty' ),
+                            'Monday'  => __( 'Monday', 'mighty' ),
+                            'Tuesday' => __( 'Tuesday', 'mighty' ),
+                            'Wednesday' => __( 'Wednesday', 'mighty' ),
+                            'Thursday' => __( 'Thursday', 'mighty' ),
+                            'Friday' => __( 'Friday', 'mighty' ),
+                            'Saturday' => __( 'Saturday', 'mighty' ),
+                            'Sunday' => __( 'Sunday', 'mighty' ),
+                        ],
                     ]
                 );
 
                 $repeater->add_control(
-                    'business_time',
+                    'opening_business_time',
                     [
-                        'label' => __('Enter Time', 'mighty'),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => 'Always Open',
+                        'label' => __('Opening Time', 'mighty'),
+                        'type' => Controls_Manager::SELECT,
+                        'default' => '24 hours',
+                        'options' => [
+                            'Closed' =>      __( 'Closed', 'mighty' ),
+                            '24 hours' =>    __( '24 hours', 'mighty' ),
+                            '12:00 AM' =>    __( '12:00 AM', 'mighty' ),
+                            '12:30 AM' =>    __( '12:30 AM', 'mighty' ),
+                            '1:00 AM' =>     __( '1:00 AM', 'mighty' ),
+                            '1:30 AM' =>     __( '1:30 AM', 'mighty' ),
+                            '2:00 AM' =>     __( '2:00 AM', 'mighty' ),
+                            '2:30 AM' =>     __( '2:30 AM', 'mighty' ),
+                            '3:00 AM' =>     __( '3:00 AM', 'mighty' ),
+                            '3:30 AM' =>     __( '3:30 AM', 'mighty' ),
+                            '4:00 AM' =>     __( '4:00 AM', 'mighty' ),
+                            '4:30 AM' =>     __( '4:30 AM', 'mighty' ),
+                            '5:00 AM' =>     __( '5:00 AM', 'mighty' ),
+                            '5:30 AM' =>     __( '5:30 AM', 'mighty' ),
+                            '6:00 AM' =>     __( '6:00 AM', 'mighty' ),
+                            '6:30 AM' =>     __( '6:30 AM', 'mighty' ),
+                            '7:00 AM' =>     __( '7:00 AM', 'mighty' ),
+                            '7:30 AM' =>     __( '7:30 AM', 'mighty' ),
+                            '8:00 AM' =>     __( '8:00 AM', 'mighty' ),
+                            '8:30 AM' =>     __( '8:30 AM', 'mighty' ),
+                            '9:00 AM' =>     __( '9:00 AM', 'mighty' ),
+                            '9:30 AM' =>     __( '9:30 AM', 'mighty' ),
+                            '10:00 AM' =>    __( '10:00 AM', 'mighty' ),
+                            '10:30 AM' =>    __( '10:30 AM', 'mighty' ),
+                            '11:00 AM' =>    __( '11:00 AM', 'mighty' ),
+                            '11:30 AM' =>    __( '11:30 AM', 'mighty' ),
+                            '12:00 PM' =>    __( '12:00 PM', 'mighty' ),
+                            '12:30 PM' =>    __( '12:30 PM', 'mighty' ),
+                            '1:00 PM' =>     __( '1:00 PM', 'mighty' ),
+                            '1:30 PM' =>     __( '1:30 PM', 'mighty' ),
+                            '2:00 PM' =>     __( '2:00 PM', 'mighty' ),
+                            '2:30 PM' =>     __( '2:30 PM', 'mighty' ),
+                            '3:00 PM' =>     __( '3:00 PM', 'mighty' ),
+                            '3:30 PM' =>     __( '3:30 PM', 'mighty' ),
+                            '4:00 PM' =>     __( '4:00 PM', 'mighty' ),
+                            '4:30 PM' =>     __( '4:30 PM', 'mighty' ),
+                            '5:00 PM' =>     __( '5:00 PM', 'mighty' ),
+                            '5:30 PM' =>     __( '5:30 PM', 'mighty' ),
+                            '6:00 PM' =>     __( '6:00 PM', 'mighty' ),
+                            '6:30 PM' =>     __( '6:30 PM', 'mighty' ),
+                            '7:00 PM' =>     __( '7:00 PM', 'mighty' ),
+                            '7:30 PM' =>     __( '7:30 PM', 'mighty' ),
+                            '8:00 PM' =>     __( '8:00 PM', 'mighty' ),
+                            '8:30 PM' =>     __( '8:30 PM', 'mighty' ),
+                            '9:00 PM' =>     __( '9:00 PM', 'mighty' ),
+                            '9:30 PM' =>     __( '9:30 PM', 'mighty' ),
+                            '10:00 PM' =>    __( '10:00 PM', 'mighty' ),
+                            '10:30 PM' =>    __( '10:30 PM', 'mighty' ),
+                            '11:00 PM' =>    __( '11:00 PM', 'mighty' ),
+                            '11:30 PM' =>    __( '11:30 PM', 'mighty' ),
+                        ],
+                    ]
+                );
+
+                $repeater->add_control(
+                    'closing_business_time',
+                    [
+                        'label' => __('Closing Time', 'mighty'),
+                        'type' => Controls_Manager::SELECT,
+                        'default' => '5:00 PM',
+                        'options' => [
+                            '12:00 AM' =>    __( '12:00 AM', 'mighty' ),
+                            '12:30 AM' =>    __( '12:30 AM', 'mighty' ),
+                            '1:00 AM' =>     __( '1:00 AM', 'mighty' ),
+                            '1:30 AM' =>     __( '1:30 AM', 'mighty' ),
+                            '2:00 AM' =>     __( '2:00 AM', 'mighty' ),
+                            '2:30 AM' =>     __( '2:30 AM', 'mighty' ),
+                            '3:00 AM' =>     __( '3:00 AM', 'mighty' ),
+                            '3:30 AM' =>     __( '3:30 AM', 'mighty' ),
+                            '4:00 AM' =>     __( '4:00 AM', 'mighty' ),
+                            '4:30 AM' =>     __( '4:30 AM', 'mighty' ),
+                            '5:00 AM' =>     __( '5:00 AM', 'mighty' ),
+                            '5:30 AM' =>     __( '5:30 AM', 'mighty' ),
+                            '6:00 AM' =>     __( '6:00 AM', 'mighty' ),
+                            '6:30 AM' =>     __( '6:30 AM', 'mighty' ),
+                            '7:00 AM' =>     __( '7:00 AM', 'mighty' ),
+                            '7:30 AM' =>     __( '7:30 AM', 'mighty' ),
+                            '8:00 AM' =>     __( '8:00 AM', 'mighty' ),
+                            '8:30 AM' =>     __( '8:30 AM', 'mighty' ),
+                            '9:00 AM' =>     __( '9:00 AM', 'mighty' ),
+                            '9:30 AM' =>     __( '9:30 AM', 'mighty' ),
+                            '10:00 AM' =>    __( '10:00 AM', 'mighty' ),
+                            '10:30 AM' =>    __( '10:30 AM', 'mighty' ),
+                            '11:00 AM' =>    __( '11:00 AM', 'mighty' ),
+                            '11:30 AM' =>    __( '11:30 AM', 'mighty' ),
+                            '12:00 PM' =>    __( '12:00 PM', 'mighty' ),
+                            '12:30 PM' =>    __( '12:30 PM', 'mighty' ),
+                            '1:00 PM' =>     __( '1:00 PM', 'mighty' ),
+                            '1:30 PM' =>     __( '1:30 PM', 'mighty' ),
+                            '2:00 PM' =>     __( '2:00 PM', 'mighty' ),
+                            '2:30 PM' =>     __( '2:30 PM', 'mighty' ),
+                            '3:00 PM' =>     __( '3:00 PM', 'mighty' ),
+                            '3:30 PM' =>     __( '3:30 PM', 'mighty' ),
+                            '4:00 PM' =>     __( '4:00 PM', 'mighty' ),
+                            '4:30 PM' =>     __( '4:30 PM', 'mighty' ),
+                            '5:00 PM' =>     __( '5:00 PM', 'mighty' ),
+                            '5:30 PM' =>     __( '5:30 PM', 'mighty' ),
+                            '6:00 PM' =>     __( '6:00 PM', 'mighty' ),
+                            '6:30 PM' =>     __( '6:30 PM', 'mighty' ),
+                            '7:00 PM' =>     __( '7:00 PM', 'mighty' ),
+                            '7:30 PM' =>     __( '7:30 PM', 'mighty' ),
+                            '8:00 PM' =>     __( '8:00 PM', 'mighty' ),
+                            '8:30 PM' =>     __( '8:30 PM', 'mighty' ),
+                            '9:00 PM' =>     __( '9:00 PM', 'mighty' ),
+                            '9:30 PM' =>     __( '9:30 PM', 'mighty' ),
+                            '10:00 PM' =>    __( '10:00 PM', 'mighty' ),
+                            '10:30 PM' =>    __( '10:30 PM', 'mighty' ),
+                            '11:00 PM' =>    __( '11:00 PM', 'mighty' ),
+                            '11:30 PM' =>    __( '11:30 PM', 'mighty' ),
+                        ],
+                        'condition' =>[
+                            'opening_business_time!' => ['24 hours', 'Closed']
+                        ]
                     ]
                 );
 
@@ -151,7 +277,8 @@ class MT_OpeningHours extends Widget_Base {
                         'default' => [
                             [
                                 'business_day' => __('Monday', 'mighty'),
-                                'business_time' => __('10 AM - 5 PM', 'mighty'),
+                                'opening_business_time' => __('10:00 AM', 'mighty'),
+                                'closing_business_time' => __('5:00 PM', 'mighty'),
                                 'enable_styling' => 'false',
                                 'day_color' => '#000',
                                 'time_color' => '#000',
@@ -159,7 +286,8 @@ class MT_OpeningHours extends Widget_Base {
                             ],
                             [
                                 'business_day' => __('Tuesday', 'mighty'),
-                                'business_time' => __('10 AM - 5 PM', 'mighty'),
+                                'opening_business_time' => __('10:00 AM', 'mighty'),
+                                'closing_business_time' => __('5:00 PM', 'mighty'),
                                 'enable_styling' => 'false',
                                 'day_color' => '#000',
                                 'time_color' => '#000',
@@ -167,7 +295,8 @@ class MT_OpeningHours extends Widget_Base {
                             ],
                             [
                                 'business_day' => __('Wednesday', 'mighty'),
-                                'business_time' => __('10 AM - 5 PM', 'mighty'),
+                                'opening_business_time' => __('10:00 AM', 'mighty'),
+                                'closing_business_time' => __('5:00 PM', 'mighty'),
                                 'enable_styling' => 'false',
                                 'day_color' => '#000',
                                 'time_color' => '#000',
@@ -175,7 +304,8 @@ class MT_OpeningHours extends Widget_Base {
                             ],
                             [
                                 'business_day' => __('Thursday', 'mighty'),
-                                'business_time' => __('10 AM - 5 PM', 'mighty'),
+                                'opening_business_time' => __('10:00 AM', 'mighty'),
+                                'closing_business_time' => __('5:00 PM', 'mighty'),
                                 'enable_styling' => 'false',
                                 'day_color' => '#000',
                                 'time_color' => '#000',
@@ -183,7 +313,8 @@ class MT_OpeningHours extends Widget_Base {
                             ],
                             [
                                 'business_day' => __('Friday', 'mighty'),
-                                'business_time' => __('10 AM - 5 PM', 'mighty'),
+                                'opening_business_time' => __('10:00 AM', 'mighty'),
+                                'closing_business_time' => __('5:00 PM', 'mighty'),
                                 'enable_styling' => 'false',
                                 'day_color' => '#000',
                                 'time_color' => '#000',
@@ -191,7 +322,7 @@ class MT_OpeningHours extends Widget_Base {
                             ],
                             [
                                 'business_day' => __('Saturday', 'mighty'),
-                                'business_time' => __('Closed', 'mighty'),
+                                'opening_business_time' => __('Closed', 'mighty'),
                                 'enable_styling' => 'false',
                                 'day_color' => '#bb0f0f',
                                 'time_color' => '#bb0f0f',
@@ -199,7 +330,7 @@ class MT_OpeningHours extends Widget_Base {
                             ],
                             [
                                 'business_day' => __('Sunday', 'mighty'),
-                                'business_time' => __('Closed', 'mighty'),
+                                'opening_business_time' => __('Closed', 'mighty'),
                                 'enable_styling' => 'false',
                                 'day_color' => '#bb0f0f',
                                 'time_color' => '#bb0f0f',
@@ -419,6 +550,7 @@ class MT_OpeningHours extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#232323',
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-day' => 'color: {{VALUE}}',
                     ],
@@ -444,6 +576,7 @@ class MT_OpeningHours extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#232323',
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-time' => 'color: {{VALUE}}',
                     ],
@@ -468,7 +601,7 @@ class MT_OpeningHours extends Widget_Base {
                     'label_on' => __( 'Show', 'mighty' ),
                     'label_off' => __( 'Hide', 'mighty' ),
                     'return_value' => 'true',
-                    'default' => 'false',
+                    'default' => 'true',
                 ]
             );
 
@@ -658,17 +791,21 @@ class MT_OpeningHours extends Widget_Base {
 
         if ( empty( $settings[ 'mt_openinghours_data'] ) ) {
             return;
-		}
+        }
         ?>
         <div class="ma-openinghours-wrapper">
 
             <div class="ma-oh-header"><?php echo $settings['header_text']; ?></div>
 
             <div class="ma-oh-rows">
-                <?php foreach (  $settings['mt_openinghours_data'] as $item ) : ?>
+                <?php foreach (  $settings['mt_openinghours_data'] as $item ) : 
+                    $closingTime = $item['opening_business_time'] === "Closed" || $item['opening_business_time'] === "24 hours" ? false : true;
+                ?>
                 <div class="ma-oh-row <?php echo ($settings['striped_effect'] == true) ? 'mt-striped' : ''; ?> elementor-repeater-item-<?php echo $item['_id']; ?>">
                     <div class="ma-oh-day"><?php echo $item['business_day']; ?></div>
-                    <div class="ma-oh-time"><?php echo $item['business_time']; ?></div>
+                    <div class="ma-oh-time">
+                        <?php echo $item['opening_business_time']; echo $closingTime ? " - ".$item['closing_business_time'] : ''; ?>
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
