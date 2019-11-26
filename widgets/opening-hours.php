@@ -385,7 +385,7 @@ class MT_OpeningHours extends Widget_Base {
                     ],
                     'default' => 'LocalBusiness',
                     'description' => '<b>CivicStructure</b>: A public structure, such as a town hall or concert hall.<br>
-                    <b>LocalBusiness</b>:A particular physical business or branch of an organization.',
+                    <b>LocalBusiness</b>:A particular physical business or branch of an organization. Site logo is required to be enabled',
                     'condition' => [
                         'enable_schema' => 'yes'
                     ]
@@ -828,11 +828,15 @@ class MT_OpeningHours extends Widget_Base {
         ?>
 
         <div class="ma-openinghours-wrapper" <?php echo $enableSchema ? ' itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/' . $schemaType . '"' : ''; ?>>
-            
-            <?php if ( $enableSchema && $settings['schema_type'] == "LocalBusiness" ) : ?>
-            <img style="display:none;" itemprop="image" src="http://via.placeholder.com/350x150" alt="test logo" />
-            <?php endif; ?>
-
+            <?php
+            // Logo for LocalBusiness Schema
+            if ( $enableSchema && $settings['schema_type'] == "LocalBusiness" ) :
+                $logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ) , 'full' );
+                if ( has_custom_logo() ) {
+                    echo '<img style="display:none;" itemprop="image" src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '">';
+                }
+            endif;
+            ?>
             <div <?php echo $enableSchema ? 'itemprop="name"' : ''; ?> class="ma-oh-header"><?php echo $settings['header_text']; ?></div>
 
             <div class="ma-oh-rows">
