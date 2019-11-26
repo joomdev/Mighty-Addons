@@ -121,6 +121,11 @@ final class Mighty_Addons {
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once( 'classes/mighty-elementor.php' );
+
+		// Including Admin Widget
+		if ( is_admin() ) {
+            require( 'classes/panel.php' );
+        }
 	}
 
 	/**
