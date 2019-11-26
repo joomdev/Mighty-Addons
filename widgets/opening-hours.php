@@ -361,6 +361,37 @@ class MT_OpeningHours extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'enable_schema',
+                [
+                    'label' => __( 'Enable openingHours Schema', 'mighty' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __( 'On', 'mighty' ),
+                    'label_off' => __( 'Off', 'mighty' ),
+                    'return_value' => 'yes',
+                    'default' => 'false'
+                ]
+            );
+
+            $this->add_control(
+                'schema_type',
+                [
+                    'label' => __( 'Type', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'solid',
+                    'options' => [
+                        'CivicStructure'  => __( 'CivicStructure', 'mighty' ),
+                        'LocalBusiness' => __( 'LocalBusiness', 'mighty' ),
+                    ],
+                    'default' => 'LocalBusiness',
+                    'description' => '<b>CivicStructure</b>: A public structure, such as a town hall or concert hall.<br>
+                    <b>LocalBusiness</b>:A particular physical business or branch of an organization.',
+                    'condition' => [
+                        'enable_schema' => 'yes'
+                    ]
+                ]
+            );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -792,43 +823,54 @@ class MT_OpeningHours extends Widget_Base {
         if ( empty( $settings[ 'mt_openinghours_data'] ) ) {
             return;
         }
+        $enableSchema = $settings['enable_schema'] == "yes" ? true : false;
+        $schemaType = $settings['schema_type'];
         ?>
-        <div itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/CivicStructure" class="ma-openinghours-wrapper">
-            
-            <img style="display:none;" itemprop="image" src="http://via.placeholder.com/350x150" alt="test logo" />
 
-            <div itemprop="name" class="ma-oh-header"><?php echo $settings['header_text']; ?></div>
+        <div class="ma-openinghours-wrapper" <?php echo $enableSchema ? ' itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/' . $schemaType . '"' : ''; ?>>
+            
+            <?php if ( $enableSchema && $settings['schema_type'] == "LocalBusiness" ) : ?>
+            <img style="display:none;" itemprop="image" src="http://via.placeholder.com/350x150" alt="test logo" />
+            <?php endif; ?>
+
+            <div <?php echo $enableSchema ? 'itemprop="name"' : ''; ?> class="ma-oh-header"><?php echo $settings['header_text']; ?></div>
 
             <div class="ma-oh-rows">
                 <?php foreach (  $settings['mt_openinghours_data'] as $item ) : 
                     $closingTime = $item['opening_business_time'] === "Closed" || $item['opening_business_time'] === "24 hours" ? false : true;
-                    $schemaDay = "";
-                    switch( $item['business_day'] ) {
-                        case 'All Days': $schemaDay = "Mo-Su";
-                        break;
-                        case 'Monday - Friday': $schemaDay = "Mo-Fr";
-                        break;
-                        case 'Saturday - Sunday': $schemaDay = "Sa-Su";
-                        break;
-                        default: $schemaDay = substr($item['business_day'], 0, 2);
+                    if ( $enableSchema ) {
+                        $schemaDay = "";
+                        switch( $item['business_day'] ) {
+                            case 'All Days': $schemaDay = "Mo-Su";
+                            break;
+                            case 'Monday - Friday': $schemaDay = "Mo-Fr";
+                            break;
+                            case 'Saturday - Sunday': $schemaDay = "Sa-Su";
+                            break;
+                            default: $schemaDay = substr($item['business_day'], 0, 2);
+                        }
                     }
                 ?>
                 <div class="ma-oh-row <?php echo ($settings['striped_effect'] == true) ? 'mt-striped' : ''; ?> elementor-repeater-item-<?php echo $item['_id']; ?>">
                     <div class="ma-oh-day">
-                        <time itemprop="openingHours" datetime="<?php echo $schemaDay; ?>"><?php echo $item['business_day']; ?></time>.
+                        <time <?php echo $enableSchema ? 'itemprop="openingHours" datetime="'. $schemaDay .'"' : ''; ?>><?php echo $item['business_day']; ?></time>
                     </div>
 
-                    <div class="ma-oh-time" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
+                    <div class="ma-oh-time" <?php echo $enableSchema ? 'itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification"' : ''; ?>>
                         <?php if ( $item['opening_business_time'] === "24 hours" ) { ?>
 
-                            <time itemprop="opens" content="<?php echo date("H:i", strtotime("12:00 AM")); ?>"><?php echo $item['opening_business_time']; ?></time>
+                            <time <?php echo $enableSchema ? 'itemprop="opens" content="' . date("H:i", strtotime("12:00 AM")) . '"' : ''; ?>><?php echo $item['opening_business_time']; ?></time>
 
-                            <time itemprop='closes' content='<?php echo date("H:i", strtotime("12:00 PM")); ?>'></time>
+                            <?php if ( $enableSchema ) : ?>
+                            <time itemprop="closes" content="<?php echo date("H:i", strtotime("12:00 PM")); ?>"></time>
+                            <?php endif; ?>
 
                         <?php } else { ?>
-                            <time itemprop="opens" content="<?php echo date("H:i", strtotime($item['opening_business_time'])); ?>"><?php echo $item['opening_business_time']; ?></time>
-                        
-                            <?php echo $closingTime ? " - <time itemprop='closes' content='". date("H:i", strtotime($item['closing_business_time'])) ."'>". $item['closing_business_time'] ."</time>" : '';
+                            <time <?php echo $enableSchema ? 'itemprop="opens" content="' . date("H:i", strtotime($item['opening_business_time'])) . '"' : ''; ?>><?php echo $item['opening_business_time']; ?></time>
+                            
+                            <?php if ( $closingTime ) : ?>
+                                - <time <?php echo $enableSchema ? 'itemprop="closes" content="' . date("H:i", strtotime($item['closing_business_time'])) . '"' : ''; ?>><?php echo $item['closing_business_time']; ?></time>
+                            <?php endif;
                         } ?>
                         
                     </div>
@@ -837,7 +879,7 @@ class MT_OpeningHours extends Widget_Base {
                 <?php endforeach; ?>
             </div>
 
-            <div itemprop="description" class="ma-oh-footer"><?php echo $settings['footer_text']; ?></div>
+            <div <?php echo $enableSchema ? 'itemprop="description"' : ''; ?> class="ma-oh-footer"><?php echo $settings['footer_text']; ?></div>
 
         </div>
         <?php
