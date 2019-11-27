@@ -38,7 +38,7 @@ class Mighty_Elementor {
             'mighty-icons',
             MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.css',
             null,
-            MIGHTY_VERSION
+            MIGHTY_ADDONS_VERSION
 		);
 	}
 

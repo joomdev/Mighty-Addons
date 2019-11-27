@@ -13,8 +13,9 @@ namespace Mighty_Addons;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'MIGHTY_VERSION', '1.1.0' );
-define( 'MIGHTY_ADDONS_PLG_URL', plugins_url( '/', __FILE__ ) );
+define( 'MIGHTY_ADDONS_VERSION', '1.1.0' );
+define( 'MIGHTY_ADDONS_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'MIGHTY_ADDONS_PLG_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Main Mighty Addons Class

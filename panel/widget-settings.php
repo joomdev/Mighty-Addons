@@ -6,5 +6,5 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 <div class="ma-widgets-panel">
-<h1>Here comes the mighty widgets panel</h1>
+<h1 class="mighty-heading">Here comes the mighty widgets panel</h1>
 </div>
