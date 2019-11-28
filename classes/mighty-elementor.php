@@ -1,6 +1,8 @@
 <?php
 namespace MightyAddons;
 
+use \MightyAddons\Classes\HelperFunctions;
+
 /**
  * Class Mighty_Elementor
  * 
@@ -99,34 +101,18 @@ class Mighty_Elementor {
 		wp_enqueue_script( 'mt-twentytwentyjs' );
 	}
 	
-	private function include_widgets_files() {
-		require_once( realpath(__DIR__ . '/..') . '/widgets/testimonial.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/team.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/progressbar.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/counter.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/buttongroup.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/accordion.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/before-after.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/gradient-heading.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/flip-box.php' );
-		require_once( realpath(__DIR__ . '/..') . '/widgets/opening-hours.php' );
-	}
-	
 	public function register_widgets() {
-		// Its is now safe to include Widgets files
-		$this->include_widgets_files();
 
-		// Register Widgets
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_Testimonial() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_Team() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_Progressbar() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_Counter() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_ButtonGroup() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_Accordion() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_BeforeAfter() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_GradientHeading() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_FlipBox() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\MT_OpeningHours() );
+		$widgets = HelperFunctions::mighty_addons();
+		
+		foreach( $widgets as $widget => $props ) {
+			// Including Plugin
+			require_once( MIGHTY_ADDONS_DIR_PATH . 'widgets/' . $widget .'.php' );
+			
+			// Register Widgets
+			$class = sprintf( 'MightyAddons\Widgets\%s', $props['class'] );
+			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class );
+		}
 	}
 }
 

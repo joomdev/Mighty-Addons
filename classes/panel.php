@@ -27,7 +27,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         public static function add_menu() {
             add_menu_page(
-                __( 'MightyAddons Dashboard', 'mighty-addons' ),
+                __( 'Mighty Addons Panel', 'mighty-addons' ),
                 __( 'Mighty Addons', 'mighty-addons' ),
                 'manage_options',
                 'mighty-addons-home',
@@ -56,13 +56,30 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
         }
 
         public static function enqueue_scripts( $hook ) {
-            if ( 'mighty-addons-home' !== $hook ) {
+            
+            if( strpos($hook, self::PLG_SLUG) !== false ) {
+                // Proceed
+            } else {
                 return;
             }
 
             wp_enqueue_style(
                 'mighty-icons',
+                MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.css',
+                null,
+                MIGHTY_ADDONS_VERSION
+            );
+
+            wp_enqueue_style(
+                'mighty-styles',
                 MIGHTY_ADDONS_PLG_URL . 'assets/admin/css/admin-styles.css',
+                null,
+                MIGHTY_ADDONS_VERSION
+            );
+
+            wp_enqueue_style(
+                'mighty-bootstrap',
+                MIGHTY_ADDONS_PLG_URL . 'assets/admin/css/bootstrap.min.css',
                 null,
                 MIGHTY_ADDONS_VERSION
             );

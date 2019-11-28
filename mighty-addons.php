@@ -120,12 +120,16 @@ final class Mighty_Addons {
 			return;
 		}
 
-		// Once we get here, We have passed all validation checks so we can safely include our plugin
-		require_once( 'classes/mighty-elementor.php' );
+		// Little help from my friend Helper
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/class-helper-functions.php' );
 
+		// From the depths, a magical window has opened including our plugin!
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/mighty-elementor.php' );
+		
+		
 		// Including Admin Widget
 		if ( is_admin() ) {
-            require( 'classes/panel.php' );
+            require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/panel.php' );
         }
 	}
 
