@@ -10,6 +10,7 @@ namespace MightyAddons\Classes;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
 if ( ! class_exists( 'DashboardPanel' ) ) {
     class DashboardPanel {
 
@@ -17,11 +18,103 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         const PLG_NONCE = 'mighty_addons_panel';
 
-        static $menu_slug = '';
+        public static $mighty_addons = [
 
+            'testimonial' => [
+                'title' => 'MT Testimonial',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Testimonial',
+                'slug' => 'testimonial',
+                'icon' => 'mf mf-testimonial'
+            ],
+            'team' => [
+                'title' => 'MT Team',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Team',
+                'slug' => 'team',
+                'icon' => 'mf mf-team'
+            ],
+            'progressbar' => [
+                'title' => 'MT Progressbar',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Progressbar',
+                'slug' => 'progressbar',
+                'icon' => 'mf mf-progressbar'
+            ],
+            'counter' => [
+                'title' => 'MT Counter',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Counter',
+                'slug' => 'counter',
+                'icon' => 'mf mf-counter'
+            ],
+            'buttongroup' => [
+                'title' => 'MT Button Group',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Buttongroup',
+                'slug' => 'buttongroup',
+                'icon' => 'mf mf-button'
+            ],
+            'accordion' => [
+                'title' => 'MT Accordion',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Accordion',
+                'slug' => 'accordion',
+                'icon' => 'mf mf-accordion'
+            ],
+            'beforeafter' => [
+                'title' => 'MT Before After',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Beforeafter',
+                'slug' => 'beforeafter',
+                'icon' => 'mf mf-beforeafter'
+            ],
+            'gradientheading' => [
+                'title' => 'MT Gradient Heading',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Gradientheading',
+                'slug' => 'gradientheading',
+                'icon' => 'mf mf-heading'
+            ],
+            'flipbox' => [
+                'title' => 'MT FlipBox',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Flipbox',
+                'slug' => 'flipbox',
+                'icon' => 'mf mf-flipbox'
+            ],
+            'openinghours' => [
+                'title' => 'MT Opening Hours',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Openinghours',
+                'slug' => 'openinghours',
+                'icon' => 'mf mf-openinghours'
+            ],
+        ];
+
+        private static $ma_default_settings;
+
+        private static $ma_settings;
+
+        private static $ma_get_settings;
+        
         public static function init() {
+            
             add_action( 'admin_menu', [ __CLASS__, 'add_menu' ], 22 );
+
             add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
+
+            add_action( 'wp_ajax_save_mighty_addons_settings', [ __CLASS__, 'mighty_addons_status'] );
 
         }
 
@@ -58,7 +151,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
         public static function enqueue_scripts( $hook ) {
             
             if( strpos($hook, self::PLG_SLUG) !== false ) {
-                // Proceed
+                // ⚠ Proceed with caution
             } else {
                 return;
             }
@@ -83,12 +176,32 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 null,
                 MIGHTY_ADDONS_VERSION
             );
+
+            wp_enqueue_script(
+                'mighty-panel-js',
+                MIGHTY_ADDONS_PLG_URL . 'assets/admin/js/admin-script.js',
+                array('jquery'),
+                MIGHTY_ADDONS_VERSION,
+                true // in footer?
+            );
+
+            wp_localize_script(
+                'mighty-panel-js',
+                'MightyAddonsDashboard',
+                [
+                    'nonce' => wp_create_nonce( self::PLG_NONCE ),
+                    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                    'action' => self::PLG_NONCE,
+                    'yes' => esc_html__( 'Yes', 'mighty-addons' ),
+                    'cancel' => esc_html__( 'Cancel', 'mighty-addons' ),
+                ]
+            );
         }
 
         public static function mighty_addons() {
             $widgets = [
                 'testimonial' => [
-                    'title' => esc_html__( 'MT Testimonial', 'mighty-addons' ),
+                    'title' => 'MT Testimonial',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Testimonial',
@@ -96,7 +209,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-testimonial'
                 ],
                 'team' => [
-                    'title' => esc_html__( 'MT Team', 'mighty-addons' ),
+                    'title' => 'MT Team',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Team',
@@ -104,7 +217,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-team'
                 ],
                 'progressbar' => [
-                    'title' => esc_html__( 'MT Progressbar', 'mighty-addons' ),
+                    'title' => 'MT Progressbar',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Progressbar',
@@ -112,7 +225,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-progressbar'
                 ],
                 'counter' => [
-                    'title' => esc_html__( 'MT Counter', 'mighty-addons' ),
+                    'title' => 'MT Counter',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Counter',
@@ -120,7 +233,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-counter'
                 ],
                 'buttongroup' => [
-                    'title' => esc_html__( 'MT Button Group', 'mighty-addons' ),
+                    'title' => 'MT Button Group',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Buttongroup',
@@ -128,7 +241,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-button'
                 ],
                 'accordion' => [
-                    'title' => esc_html__( 'MT Accordion', 'mighty-addons' ),
+                    'title' => 'MT Accordion',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Accordion',
@@ -136,7 +249,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-accordion'
                 ],
                 'beforeafter' => [
-                    'title' => esc_html__( 'MT Before After', 'mighty-addons' ),
+                    'title' => 'MT Before After',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Beforeafter',
@@ -144,7 +257,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-beforeafter'
                 ],
                 'gradientheading' => [
-                    'title' => esc_html__( 'MT Gradient Heading', 'mighty-addons' ),
+                    'title' => 'MT Gradient Heading',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Gradientheading',
@@ -152,7 +265,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-heading'
                 ],
                 'flipbox' => [
-                    'title' => esc_html__( 'MT FlipBox', 'mighty-addons' ),
+                    'title' => 'MT FlipBox',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Flipbox',
@@ -160,7 +273,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-flipbox'
                 ],
                 'openinghours' => [
-                    'title' => esc_html__( 'MT Opening Hours', 'mighty-addons' ),
+                    'title' => 'MT Opening Hours',
                     'description' => '',
                     'enable' => true,
                     'class' => 'MT_Openinghours',
@@ -179,16 +292,88 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             }
         }
 
+        public static function get_default_keys() {
+        
+            $default_keys = array_fill_keys( self::$mighty_addons, true );
+            
+            return $default_keys;
+        }
+
         public static function generate_homepage() {
             self::load_html( 'home' );
         }
 
         public static function generate_widgets_page() {
+            
+            $script = array(
+                'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+                'nonce' 	=> wp_create_nonce( self::PLG_SLUG ),
+            );
+
+            wp_localize_script( 'mighty-panel-js', 'settings', $script );
+            
+            self::$ma_default_settings = self::$mighty_addons; // Default option i.e, mighty_addons() functions (predefined/static)
+
+            self::$ma_get_settings = self::get_enabled_addons();
+
+            $ma_new_addons = array_diff_key( self::$ma_default_settings, self::$ma_get_settings );
+
+            if( ! empty ( $ma_new_addons ) ) {
+                $ma_updated_settings = array_merge( self::$ma_get_settings, $ma_new_addons );
+
+                update_option( 'mighty_addons_status', $ma_updated_settings );
+            }
+
+            self::$ma_get_settings = get_option( 'mighty_addons_status', self::$ma_default_settings );
+
+            
+
             self::load_html( 'widget-settings' );
+        }
+
+        public static function get_enabled_addons() {
+
+            $enable_addons = get_option( 'mighty_addons_status', self::$mighty_addons );
+
+            return $enable_addons;
+
         }
 
         public static function generate_extensions_page() {
             self::load_html( 'extension-settings' );
+        }
+
+        public function mighty_addons_status() {
+        
+            check_ajax_referer( 'mighty-addons', 'security' );
+    
+            if( isset( $_POST['fields'] ) ) {
+                parse_str( $_POST['fields'], $settings );
+            } else {
+                return;
+            }
+            
+            foreach(self::$mighty_addons as $widget => $props) {
+                self::$ma_settings = [
+                    $widget => [
+                        'title' => $props['title'],
+                        'description' => $props['description'],
+                        'enable' => intval( $settings[$props['title']] ? 1 : 0 ),
+                        'class' => $props['class'],
+                        'slug' => $props['slug'],
+                        'icon' => $props['icon']
+                    ],
+                ];
+            }
+
+            // self::$ma_settings = array(
+            //     'banner'            => intval( $settings['banner'] ? 1 : 0 ),
+            //     'blog'              => intval( $settings['blog'] ? 1 : 0 ),
+            // );
+    
+            update_option( 'mighty_addons_status', self::$ma_settings );
+    
+            return true;
         }
 
     }
