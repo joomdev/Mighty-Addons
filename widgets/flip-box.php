@@ -302,8 +302,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 200,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-card .mt-flipbox-front' => 'height: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-card .mt-flipbox-back' => 'height: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-card' => 'height: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -582,7 +581,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -1088,7 +1087,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 50,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
@@ -1435,8 +1434,10 @@ class MT_FlipBox extends Widget_Base {
                     <?php endif; ?>
 
                     <?php if( $settings['front_graphic_element'] == 'icon' ) : ?>
-                    <div class="mt-flipbox-icon">
-                        <?php \Elementor\Icons_Manager::render_icon( $settings['front_choose_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                    <div class="mt-flipbox-wrapper">
+                        <span class="mt-flipbox-icon">
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['front_choose_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                        </span>
                     </div>
                     <?php endif; ?>
                     
@@ -1454,8 +1455,10 @@ class MT_FlipBox extends Widget_Base {
                     <?php endif; ?>
 
                     <?php if( $settings['back_graphic_element'] == 'icon' ) : ?>
-                    <div class="mt-flipbox-icon">
-                        <?php \Elementor\Icons_Manager::render_icon( $settings['back_choose_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                    <div class="mt-flipbox-wrapper">
+                        <span class="mt-flipbox-icon">
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['back_choose_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                        </span>
                     </div>
                     <?php endif; ?>
                     

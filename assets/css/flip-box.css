@@ -191,9 +191,6 @@
 .mt-flipbox-wrapper.ma-fade .mt-flipbox-card:hover .mt-flipbox-back {
   opacity: 1;
 }
-.mt-flipbox-wrapper .mt-flipbox-front {
-  display: inline-block;
-}
 .mt-flipbox-wrapper .mt-flipbox-front .mt-flipbox-icon,
 .mt-flipbox-wrapper .mt-flipbox-back .mt-flipbox-icon {
   display: inline-block;
