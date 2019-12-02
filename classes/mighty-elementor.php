@@ -106,12 +106,14 @@ class Mighty_Elementor {
 		$widgets = HelperFunctions::mighty_addons();
 		
 		foreach( $widgets as $widget => $props ) {
-			// Including Plugin
-			require_once( MIGHTY_ADDONS_DIR_PATH . 'widgets/' . $widget .'.php' );
-			
-			// Register Widgets
-			$class = sprintf( 'MightyAddons\Widgets\%s', $props['class'] );
-			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class );
+			if( $props['enable'] === 1 ) {
+				// Including Plugin
+				require_once( MIGHTY_ADDONS_DIR_PATH . 'widgets/' . $widget .'.php' );
+				
+				// Register Widgets
+				$class = sprintf( 'MightyAddons\Widgets\%s', $props['class'] );
+				\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class );
+			}
 		}
 	}
 }
