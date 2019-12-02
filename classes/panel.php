@@ -312,7 +312,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             wp_localize_script( 'mighty-panel-js', 'settings', $script );
             
-            self::$ma_default_settings = self::$mighty_addons; // Default option i.e, mighty_addons() functions (predefined/static)
+            self::$ma_default_settings = self::$mighty_addons; // Default values i.e, mighty_addons() functions (predefined/static)
 
             self::$ma_get_settings = self::get_enabled_addons();
 
@@ -325,16 +325,14 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             }
 
             self::$ma_get_settings = get_option( 'mighty_addons_status', self::$ma_default_settings );
-
             
-
             self::load_html( 'widget-settings' );
         }
 
         public static function get_enabled_addons() {
 
             $enable_addons = get_option( 'mighty_addons_status', self::$mighty_addons );
-
+            
             return $enable_addons;
 
         }
@@ -343,36 +341,107 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             self::load_html( 'extension-settings' );
         }
 
-        public function mighty_addons_status() {
-        
+        public static function mighty_addons_status() {
+            
             check_ajax_referer( 'mighty-addons', 'security' );
-    
+            
             if( isset( $_POST['fields'] ) ) {
                 parse_str( $_POST['fields'], $settings );
             } else {
                 return;
             }
-            
-            foreach(self::$mighty_addons as $widget => $props) {
-                self::$ma_settings = [
-                    $widget => [
-                        'title' => $props['title'],
-                        'description' => $props['description'],
-                        'enable' => intval( $settings[$props['title']] ? 1 : 0 ),
-                        'class' => $props['class'],
-                        'slug' => $props['slug'],
-                        'icon' => $props['icon']
-                    ],
-                ];
-            }
 
-            // self::$ma_settings = array(
-            //     'banner'            => intval( $settings['banner'] ? 1 : 0 ),
-            //     'blog'              => intval( $settings['blog'] ? 1 : 0 ),
-            // );
-    
+            // For compactness
+            // foreach ( self::$ma_settings as $widget ) {
+            //     self::$ma_settings[$settings[$widget['slug']]['enable']] = intval( $settings[$widget['slug']] ? 1 : 0 );
+            // }
+            
+            self::$ma_settings = [
+
+                'testimonial' => [
+                    'title' => 'MT Testimonial',
+                    'description' => '',
+                    'enable' => intval( $settings['testimonial'] ? 1 : 0 ),
+                    'class' => 'MT_Testimonial',
+                    'slug' => 'testimonial',
+                    'icon' => 'mf mf-testimonial'
+                ],
+                'team' => [
+                    'title' => 'MT Team',
+                    'description' => '',
+                    'enable' => intval( $settings['team'] ? 1 : 0 ),
+                    'class' => 'MT_Team',
+                    'slug' => 'team',
+                    'icon' => 'mf mf-team'
+                ],
+                'progressbar' => [
+                    'title' => 'MT Progressbar',
+                    'description' => '',
+                    'enable' => intval( $settings['progressbar'] ? 1 : 0 ),
+                    'class' => 'MT_Progressbar',
+                    'slug' => 'progressbar',
+                    'icon' => 'mf mf-progressbar'
+                ],
+                'counter' => [
+                    'title' => 'MT Counter',
+                    'description' => '',
+                    'enable' => intval( $settings['counter'] ? 1 : 0 ),
+                    'class' => 'MT_Counter',
+                    'slug' => 'counter',
+                    'icon' => 'mf mf-counter'
+                ],
+                'buttongroup' => [
+                    'title' => 'MT Button Group',
+                    'description' => '',
+                    'enable' => intval( $settings['buttongroup'] ? 1 : 0 ),
+                    'class' => 'MT_Buttongroup',
+                    'slug' => 'buttongroup',
+                    'icon' => 'mf mf-button'
+                ],
+                'accordion' => [
+                    'title' => 'MT Accordion',
+                    'description' => '',
+                    'enable' => intval( $settings['accordion'] ? 1 : 0 ),
+                    'class' => 'MT_Accordion',
+                    'slug' => 'accordion',
+                    'icon' => 'mf mf-accordion'
+                ],
+                'beforeafter' => [
+                    'title' => 'MT Before After',
+                    'description' => '',
+                    'enable' => intval( $settings['beforeafter'] ? 1 : 0 ),
+                    'class' => 'MT_Beforeafter',
+                    'slug' => 'beforeafter',
+                    'icon' => 'mf mf-beforeafter'
+                ],
+                'gradientheading' => [
+                    'title' => 'MT Gradient Heading',
+                    'description' => '',
+                    'enable' => intval( $settings['gradientheading'] ? 1 : 0 ),
+                    'class' => 'MT_Gradientheading',
+                    'slug' => 'gradientheading',
+                    'icon' => 'mf mf-heading'
+                ],
+                'flipbox' => [
+                    'title' => 'MT FlipBox',
+                    'description' => '',
+                    'enable' => intval( $settings['flipbox'] ? 1 : 0 ),
+                    'class' => 'MT_Flipbox',
+                    'slug' => 'flipbox',
+                    'icon' => 'mf mf-flipbox'
+                ],
+                'openinghours' => [
+                    'title' => 'MT Opening Hours',
+                    'description' => '',
+                    'enable' => intval( $settings['openinghours'] ? 1 : 0 ),
+                    'class' => 'MT_Openinghours',
+                    'slug' => 'openinghours',
+                    'icon' => 'mf mf-openinghours'
+                ],
+            ];
+            
             update_option( 'mighty_addons_status', self::$ma_settings );
-    
+            
             return true;
         }
 

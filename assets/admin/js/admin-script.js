@@ -11,11 +11,10 @@
                 fields: $('form#mighty-settings').serialize(),
             },
             success: function(response) {
-                console.log($('form#mighty-settings').serialize());
                 console.log('successfully saved!');
             },
             error: function() {
-                console.log('horrendously unsaved!');
+                console.log('#212 Something went wrong!');
             }
         });
     });
