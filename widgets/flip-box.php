@@ -440,8 +440,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 5,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};'
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -946,8 +945,7 @@ class MT_FlipBox extends Widget_Base {
                         'size' => 5,
                     ],                    
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon svg' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};'
                     ],
                     'condition' => [
                         'back_graphic_element' => 'icon',
