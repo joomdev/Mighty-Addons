@@ -22,6 +22,14 @@
     $('form#mighty-settings').on('submit', function (e) {
         e.preventDefault();
         saveAddons(settings);
+
+        $('.ma-settings-header-bar .ma-save-button').text('✅ Updated');
+        $('#mighty-settings .ma-save-button').text('✅ Updated');
+
+        setTimeout(function() {
+            $('.ma-settings-header-bar .ma-save-button').text('Save Settings');
+            $('#mighty-settings .ma-save-button').text('Save Settings');
+        }, 2000);
         
         // Disable after save
         $('.ma-settings-header-bar .ma-save-button').attr('disabled', 'disabled'); // Header Button
@@ -44,7 +52,7 @@
     });
 
     // Detecting changes (Switch)
-    $('#mighty-settings .switch-label').on('click', function() {
+    $('#mighty-settings .switch').off('click').on('click', function() {
         $('.ma-settings-header-bar .ma-save-button').removeAttr('disabled'); // Header Button
         $('#mighty-settings .ma-save-button').removeAttr('disabled'); // Form's Button
     });
