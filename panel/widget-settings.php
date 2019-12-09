@@ -27,8 +27,8 @@ $page = 'widgets';
                 <div class="ma-gl-cnt-right">
                     <h4 class="title">Global Control</h4>
                     <div class="ma-btn-group">
-                        <button type="button" class="ma-btn ma-btn-action ma-gl-cnt-enable">Enable All</button>
-                        <button type="button" class="ma-btn ma-btn-action ma-gl-cnt-disable">Disable All</button>
+                        <button id="enable-all" type="button" class="ma-btn ma-btn-action ma-gl-cnt-enable">Enable All</button>
+                        <button  id="disable-all" type="button" class="ma-btn ma-btn-action ma-gl-cnt-disable">Disable All</button>
                     </div>
                 </div>
             </div>

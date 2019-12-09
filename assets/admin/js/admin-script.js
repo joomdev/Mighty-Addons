@@ -28,5 +28,15 @@
     $('.ma-settings-header-bar .ma-save-button').on('click', function () {
         $("form#mighty-settings .ma-save-button").trigger('click');
     });
+    
+    // Enable all button
+    $('.ma-gl-cnt-right #enable-all').on('click', function() {
+        $(".switch-input").attr('checked', 'checked');
+    });
+    
+    // Disable all button
+    $('.ma-gl-cnt-right #disable-all').on('click', function() {
+        $(".switch-input").removeAttr('checked');
+    });
 
 }) ( jQuery );
