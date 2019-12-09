@@ -169,6 +169,14 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 null,
                 MIGHTY_ADDONS_VERSION
             );
+            
+            wp_enqueue_style(
+                'mighty-font-roboto',
+                'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap',
+                null,
+                MIGHTY_ADDONS_VERSION
+            );
+            
 
             wp_enqueue_script(
                 'mighty-panel-js',
