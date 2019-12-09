@@ -37,7 +37,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 'icon' => 'mf mf-team'
             ],
             'progressbar' => [
-                'title' => 'MT Progressbar',
+                'title' => 'MT Progress Bar',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Progressbar',
@@ -281,7 +281,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'icon' => 'mf mf-team'
                 ],
                 'progressbar' => [
-                    'title' => 'MT Progressbar',
+                    'title' => 'MT Progress Bar',
                     'description' => '',
                     'enable' => intval( $settings['progressbar'] ? 1 : 0 ),
                     'class' => 'MT_Progressbar',
