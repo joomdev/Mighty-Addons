@@ -22,6 +22,10 @@
     $('form#mighty-settings').on('submit', function (e) {
         e.preventDefault();
         saveAddons(settings);
+        
+        // Disable after save
+        $('.ma-settings-header-bar .ma-save-button').attr('disabled', 'disabled'); // Header Button
+        $('#mighty-settings .ma-save-button').attr('disabled', 'disabled'); // Form's Button
     });
     
     // Click event - Header Button
@@ -37,6 +41,18 @@
     // Disable all button
     $('.ma-gl-cnt-right #disable-all').on('click', function() {
         $(".switch-input").removeAttr('checked');
+    });
+
+    // Detecting changes (Switch)
+    $('#mighty-settings .switch-label').on('click', function() {
+        $('.ma-settings-header-bar .ma-save-button').removeAttr('disabled'); // Header Button
+        $('#mighty-settings .ma-save-button').removeAttr('disabled'); // Form's Button
+    });
+
+    // Detecting changes (Enable/Disable All)
+    $('#widgets .ma-btn-action').on('click', function() {
+        $('.ma-settings-header-bar .ma-save-button').removeAttr('disabled'); // Header Button
+        $('#mighty-settings .ma-save-button').removeAttr('disabled'); // Form's Button
     });
 
 }) ( jQuery );

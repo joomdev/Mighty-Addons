@@ -55,7 +55,7 @@ $page = 'widgets';
                 </div>
 
                 <div class="text-center ma-cta-save">
-                    <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button"><?php echo __('Save Settings', 'mighty-addons'); ?></button>
+                    <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button" disabled="disabled"><?php echo __('Save Settings', 'mighty-addons'); ?></button>
                 </div>
             </form>
         </div>
