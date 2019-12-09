@@ -170,13 +170,6 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 MIGHTY_ADDONS_VERSION
             );
 
-            wp_enqueue_style(
-                'mighty-bootstrap',
-                MIGHTY_ADDONS_PLG_URL . 'assets/admin/css/bootstrap.min.css',
-                null,
-                MIGHTY_ADDONS_VERSION
-            );
-
             wp_enqueue_script(
                 'mighty-panel-js',
                 MIGHTY_ADDONS_PLG_URL . 'assets/admin/js/admin-script.js',
