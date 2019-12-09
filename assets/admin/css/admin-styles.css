@@ -599,3 +599,7 @@ button {
     color: #fff;
     background-color: #e63d3d;
 }
+
+.text-center {
+    text-align: center !important;
+}

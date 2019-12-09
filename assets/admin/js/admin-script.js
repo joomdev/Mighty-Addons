@@ -1,7 +1,6 @@
 ( function( $ ) {
 
-    $('form#mighty-settings').on('submit', function (e) {
-        e.preventDefault();
+    function saveAddons() {
         $.ajax({
             url: settings.ajaxurl,
             type: 'post',
@@ -17,6 +16,17 @@
                 console.log('#212 Something went wrong!');
             }
         });
+    }
+
+    // Submit event - Form button
+    $('form#mighty-settings').on('submit', function (e) {
+        e.preventDefault();
+        saveAddons(settings);
+    });
+    
+    // Click event - Header Button
+    $('.ma-settings-header-bar .ma-save-button').on('click', function () {
+        $("form#mighty-settings .ma-save-button").trigger('click');
     });
 
 }) ( jQuery );

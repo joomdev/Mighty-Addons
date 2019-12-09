@@ -32,35 +32,41 @@ $page = 'widgets';
                     </div>
                 </div>
             </div>
-            <div class="ma-element-container">
-            <?php foreach( $widgets as $widget => $props ) : ?>
-                <div class="ma-element ma-element-free">
-                    <div class="ma-ele-info">
-                        <i class="<?php echo $props['icon']; ?> widget-icon"></i>
-                        <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
-                        <a href="#" class="ma-ele-info-link">
-                            <span class="ma-view-demo">
-                                <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/desktop-solid.svg' ?>" alt="">
-                            </span>
-                            <span class="ma-ele-info-tooltip">Demo</span>
-                        </a>
-                        <a href="#" class="ma-ele-info-link">
-                            <span class="ma-get-help">
-                                <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
-                            </span>
-                            <span class="ma-ele-info-tooltip">Documentation</span>
-                        </a>
+            <form id="mighty-settings" action="" method="POST" name="mighty-settings">
+                <div class="ma-element-container">
+                    <?php foreach( $widgets as $widget => $props ) : ?>
+                    <div class="ma-element ma-element-free">
+                        <div class="ma-ele-info">
+                            <i class="<?php echo $props['icon']; ?> widget-icon"></i>
+                            <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
+                            <a href="#" class="ma-ele-info-link">
+                                <span class="ma-view-demo">
+                                    <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/desktop-solid.svg' ?>" alt="">
+                                </span>
+                                <span class="ma-ele-info-tooltip">Demo</span>
+                            </a>
+                            <a href="#" class="ma-ele-info-link">
+                                <span class="ma-get-help">
+                                    <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
+                                </span>
+                                <span class="ma-ele-info-tooltip">Documentation</span>
+                            </a>
+                        </div>
+                        <div class="ma-ele-switch">
+                            <label class="switch">
+                                <input class="switch-input" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> />
+                                <span class="switch-label" data-on="On" data-off="Off"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="ma-ele-switch">
-                        <label class="switch">
-                            <input class="switch-input" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> />
-                            <span class="switch-label" data-on="On" data-off="Off"></span>
-                            <span class="switch-handle"></span>
-                        </label>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
-            </div>
+
+                <div class="text-center">
+                    <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button"><?php echo __('Save Settings', 'mighty-addons'); ?></button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
