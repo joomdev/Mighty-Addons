@@ -223,7 +223,7 @@ class MT_Progressbar extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 10,
+						'size' => 11,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-progressbar .progress-bar:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',

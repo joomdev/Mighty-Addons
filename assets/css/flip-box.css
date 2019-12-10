@@ -92,6 +92,11 @@
 .mt-flipbox-wrapper.ma-push .mt-flipbox-card {
   overflow: hidden;
 }
+.mt-flipbox-wrapper .mt-flipbox-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+}
 .mt-flipbox-wrapper.ma-push .mt-flipbox-card:hover .mt-flipbox-back {
   -webkit-transform: none;
   -ms-transform: none;

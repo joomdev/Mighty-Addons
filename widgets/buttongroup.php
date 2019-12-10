@@ -362,15 +362,8 @@ class MT_ButtonGroup extends Widget_Base {
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 50,
+                            'max' => 100,
                         ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 10,
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .mighty-buttongroup .mt-button:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -445,8 +438,46 @@ class MT_ButtonGroup extends Widget_Base {
         endforeach;
         
         echo '</div>'; // .mighty-buttongroup
+        ?>
         
+                        
+        <?php 
         
+        $margin = $settings['space_between_buttons']['size'] ? $settings['space_between_buttons']['size'] : '10';
+        $margin .= $settings['space_between_buttons']['unit'];
+        $stacking = strip_tags($settings['buttongroup_stack_on']);
+
+        if( strcmp("stack-on-desktop", $stacking) == 0 ) { ?>
+		<style>
+            .mighty-buttongroup .mt-button:not(:last-child) {
+                margin-bottom: <?php echo $margin; ?>;
+            }
+        </style>
+        <?php } elseif( strcmp("stack-on-tablet", $stacking) == 0 ) { ?>
+            <style>
+                @media only screen and (max-width: 991px) {
+                    .mighty-buttongroup .mt-button:not(:last-child) {
+                        margin-bottom: <?php echo $margin; ?>;
+                    }
+                }
+            </style>
+        <?php } elseif( strcmp("stack-on-mobile", $stacking) == 0 ) { ?>
+            <style>
+                @media only screen and (max-width: 767px) {
+                    .mighty-buttongroup .mt-button:not(:last-child) {
+                        margin-bottom: <?php echo $margin; ?>;
+                    }
+                }
+            </style>
+        <?php } elseif( strcmp($stacking, "none") == 0 ) { ?>
+            <style>
+                .mighty-buttongroup .mt-button:not(:last-child) {
+                    margin-right: <?php echo $margin; ?>;
+                }
+            </style>
+        <?php } ?>
+        
+        <?php
 	}
 	
 	protected function _content_template() {

@@ -203,7 +203,7 @@ class MT_FlipBox extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::WYSIWYG,
                     'placeholder' => __( 'Type your description here', 'mighty' ),
-                    'default' => __( 'A sacred food gifted to mankind by the gods. <br>Very delicious and cheesy with tomato sauce and toppings of your choice. Commonly consumed recreationally or at parties.', 'mighty'),
+                    'default' => __( 'A sacred food gifted to mankind by the gods. <br>Very delicious and cheesy with tomato sauce and toppings of your choice.', 'mighty'),
                 ]
             );
 
@@ -299,7 +299,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 200,
+                        'size' => 250,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-card' => 'height: {{SIZE}}{{UNIT}};',

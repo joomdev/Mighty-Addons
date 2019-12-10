@@ -365,7 +365,7 @@ class MT_Counter extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		
-		$counter = '<div class="counter"> ' .
+		$counter =	'<div class="counter"> ' .
 						( !empty($settings['number_prefix']) ? '<span class="count-prefix">'. $settings['number_prefix'] .'</span>' : '') .
 
 						'<span class="count" data-num-separator="'. $settings['number_separator'] .'" data-start-number="'. $settings['starting_number'] .'" data-end-number="'. $settings['ending_number'] .'" data-animation="'. $settings['mtanimation_duration'] .'">'. $settings['ending_number'] .'</span>' .
@@ -389,7 +389,7 @@ class MT_Counter extends Widget_Base {
 					echo $counter;
 				}
 
-				echo '<h2 class="counter-title">'. $settings['counter_title'] .'</h2>';
+				echo '<div class="counter-title">'. $settings['counter_title'] .'</div>';
 				
 				// For counter position below title
 				if ( 'below' === $settings['counter_position'] ) {

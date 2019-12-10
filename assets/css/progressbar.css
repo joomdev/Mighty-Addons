@@ -49,15 +49,15 @@
 
 .mighty-progressbar .progressbar-percentage {
     float: right;
-}
-
-.progressbar-title {
-    margin: 0 5px;
-}
-
-.progressbar-percentage {
-    margin: 0 5px;
     margin-left: auto;
+}
+
+.mighty-progressbar .progressbar-details .progressbar-title,
+.mighty-progressbar .progressbar-details .progressbar-percentage {
+    margin: 0 5px;
+    line-height: 2;
+    font-weight: 400;
+    font-size: 2.1rem;
 }
 
 .mighty-progressbar .progress-bar .progressbar {

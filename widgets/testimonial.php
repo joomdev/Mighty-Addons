@@ -284,7 +284,7 @@ class MT_Testimonial extends Widget_Base {
 					'label_on' => __( 'On', 'mighty' ),
 					'label_off' => __( 'Off', 'mighty' ),
 					'return_value' => 'true',
-					'default' => 'yes',
+					'default' => 'true',
 				]
 			);
 

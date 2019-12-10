@@ -1,3 +1,7 @@
+.mighty-before-after {
+    text-align: center;
+}
+
 .mighty-before-after img {
     width: 100%;
 }
@@ -34,7 +38,7 @@
 
 .mighty-before-after.show-label-hover .inverted-overlay:hover .twentytwenty-before-label,
 .mighty-before-after.show-label-hover .inverted-overlay:hover .twentytwenty-after-label {
-    opacity: 1;
+    opacity: 0;
 }
 
 /* Horizontal Label Alignment */
@@ -62,7 +66,6 @@
 .twentytwenty-vertical .label-v-center .twentytwenty-before-label:before, 
 .twentytwenty-vertical .label-v-center .twentytwenty-after-label:before {
     left: 50%;
-    transform: translateX(-50%);
 }
 
 .twentytwenty-vertical .label-v-right .twentytwenty-before-label:before, 
@@ -94,4 +97,21 @@
     color: white;
     vertical-align: -webkit-baseline-middle;
     padding: 0 5px;
+}
+
+.mighty-before-after .twentytwenty-vertical .mighty-before-after .twentytwenty-handle {
+    display: flex;
+    border-color: #fff;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.mighty-before-after .twentytwenty-vertical .mighty-before-after .twentytwenty-handle i {
+    transform: rotate(90deg);
+}
+
+.mighty-before-after .twentytwenty-handle:before,
+.mighty-before-after .twentytwenty-handle:after {
+    background: #fff;
+    box-shadow: 0 3px 0 #fff, 0px 0px 12px rgba(51, 51, 51, 0.5);
 }
