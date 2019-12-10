@@ -23,8 +23,8 @@
         e.preventDefault();
         saveAddons(settings);
 
-        $('.ma-settings-header-bar .ma-save-button').text('✅ Updated');
-        $('#mighty-settings .ma-save-button').text('✅ Updated');
+        $('.ma-settings-header-bar .ma-save-button').html('<span class="updated-widgets dashicons dashicons-yes-alt"></span> Updated');
+        $('#mighty-settings .ma-save-button').html('<span class="updated-widgets dashicons dashicons-yes-alt"></span> Updated');
 
         setTimeout(function() {
             $('.ma-settings-header-bar .ma-save-button').text('Save Settings');
