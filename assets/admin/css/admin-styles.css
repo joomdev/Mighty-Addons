@@ -418,7 +418,7 @@ button {
     box-sizing: border-box;
     border-radius: 5px;
     background-color: #ffffff;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-bottom: 15px;
     box-shadow: 0px 5px 18px 0px rgba(0, 4, 32, 0.08);
 }
