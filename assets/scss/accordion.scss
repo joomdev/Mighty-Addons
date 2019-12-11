@@ -1,0 +1,61 @@
+.mighty-accordion .mt-panel .accordion {
+   border: 1px solid #ccc;
+   color: #444;
+   cursor: pointer;
+   padding: 10px;
+   width: 100%;
+   text-align: left;
+   outline: none;
+   font-size: 15px;
+   transition: 0.4s;
+   display: flex;
+   align-items: center;
+}
+
+.mighty-accordion .mt-panel .accordion .accordion-title {
+   display: inline-block
+}
+
+.mighty-accordion .mt-panel .icons-right {
+   justify-content: space-between;
+}
+
+.mighty-accordion .mt-panel .active,
+.mighty-accordion .mt-panel .accordion:hover {
+   border: 1px solid #ccc;
+}
+
+.mighty-accordion .mt-panel .accordion-active-icon {
+   display: none;
+   color: #777;
+   font-weight: bold;
+}
+
+.mighty-accordion .mt-panel .active .accordion-icon {
+   display: none;
+   color: #777;
+   font-weight: bold;
+   float: left;
+   margin-left: 5px;
+   padding: 5px;
+}
+
+.mighty-accordion .mt-panel .accordion .accordion-icons i {
+   padding: 5px;
+   border-color: black;
+}
+
+.mighty-accordion .mt-panel .active .accordion-active-icon {
+   display: block;
+}
+
+.mighty-accordion .mt-panel .panel {
+   background-color: white;
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.2s ease-out;
+}
+
+.mighty-accordion .mt-panel .panel .accordion-content {
+   border-color: black;
+}

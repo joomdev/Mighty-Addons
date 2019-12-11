@@ -449,14 +449,14 @@ class MT_ButtonGroup extends Widget_Base {
 
         if( strcmp("stack-on-desktop", $stacking) == 0 ) { ?>
 		<style>
-            .mighty-buttongroup .mt-button:not(:last-child) {
+            .stack-on-desktop.mighty-buttongroup .mt-button:not(:last-child) {
                 margin-bottom: <?php echo $margin; ?>;
             }
         </style>
         <?php } elseif( strcmp("stack-on-tablet", $stacking) == 0 ) { ?>
             <style>
                 @media only screen and (max-width: 991px) {
-                    .mighty-buttongroup .mt-button:not(:last-child) {
+                    .stack-on-tablet.mighty-buttongroup .mt-button:not(:last-child) {
                         margin-bottom: <?php echo $margin; ?>;
                     }
                 }
@@ -464,7 +464,7 @@ class MT_ButtonGroup extends Widget_Base {
         <?php } elseif( strcmp("stack-on-mobile", $stacking) == 0 ) { ?>
             <style>
                 @media only screen and (max-width: 767px) {
-                    .mighty-buttongroup .mt-button:not(:last-child) {
+                    .stack-on-mobile.mighty-buttongroup .mt-button:not(:last-child) {
                         margin-bottom: <?php echo $margin; ?>;
                     }
                 }

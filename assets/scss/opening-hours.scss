@@ -1,0 +1,30 @@
+.ma-openinghours-wrapper {
+   position: relative;
+}
+
+.ma-openinghours-wrapper .ma-oh-row {
+   display: flex;
+   justify-content: space-between;
+}
+
+.ma-openinghours-wrapper .ma-oh-day,
+.ma-openinghours-wrapper .ma-oh-time {
+   flex-grow: 1;
+   padding: 0 2px;
+}
+
+.ma-openinghours-wrapper .ma-oh-header {
+   text-align: center;
+}
+
+.ma-openinghours-wrapper .ma-oh-footer {
+   text-align: center;
+}
+
+.ma-openinghours-wrapper .ma-oh-header {
+   font-size: 30px;
+}
+
+.ma-openinghours-wrapper .ma-oh-footer {
+   font-size: 20px;
+}

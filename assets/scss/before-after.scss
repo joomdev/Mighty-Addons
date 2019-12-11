@@ -1,127 +1,127 @@
 .mighty-before-after {
-    text-align: center;
+   text-align: center;
 }
 
 .mighty-before-after img {
-    width: 100%;
+   width: 100%;
 }
 
 .mighty-before-after.show-label-normal .twentytwenty-overlay .twentytwenty-before-label,
 .mighty-before-after.show-label-normal .twentytwenty-overlay .twentytwenty-after-label {
-    opacity: 1;
+   opacity: 1;
 }
 
 .mighty-before-after.show-label-normal .twentytwenty-overlay:hover .twentytwenty-before-label,
 .mighty-before-after.show-label-normal .twentytwenty-overlay:hover .twentytwenty-after-label {
-    opacity: 0;
+   opacity: 0;
 }
 
 .mighty-before-after.show-label-normal .inverted-overlay .twentytwenty-before-label,
 .mighty-before-after.show-label-normal .inverted-overlay .twentytwenty-after-label {
-    opacity: 1;
+   opacity: 1;
 }
 
 .mighty-before-after.show-label-normal .inverted-overlay:hover .twentytwenty-before-label,
 .mighty-before-after.show-label-normal .inverted-overlay:hover .twentytwenty-after-label {
-    opacity: 0;
+   opacity: 0;
 }
 
 .mighty-before-after.show-label-always .twentytwenty-before-label,
 .mighty-before-after.show-label-always .twentytwenty-after-label {
-    opacity: 1;
+   opacity: 1;
 }
 
 .mighty-before-after.show-label-always .twentytwenty-before-label:hover,
 .mighty-before-after.show-label-always .twentytwenty-after-label:hover {
-    opacity: 1;
+   opacity: 1;
 }
 
 .mighty-before-after.show-label-hover .inverted-overlay:hover .twentytwenty-before-label,
 .mighty-before-after.show-label-hover .inverted-overlay:hover .twentytwenty-after-label {
-    opacity: 0;
+   opacity: 0;
 }
 
 /* Horizontal Label Alignment */
 .twentytwenty-horizontal .label-h-top .twentytwenty-before-label:before, 
 .twentytwenty-horizontal .label-h-top .twentytwenty-after-label:before {
-    top: 10px;
+   top: 10px;
 }
 
 .twentytwenty-horizontal .label-h-bottom .twentytwenty-before-label:before, 
 .twentytwenty-horizontal .label-h-bottom .twentytwenty-after-label:before {
-    bottom: 10px;
+   bottom: 10px;
 }
 
 .twentytwenty-horizontal .label-h-middle .twentytwenty-before-label:before, 
 .twentytwenty-horizontal .label-h-middle .twentytwenty-after-label:before {
-    top: 50%; 
+   top: 50%; 
 }
 
 /* Vertical Label Alignment */
 .twentytwenty-vertical .label-v-left .twentytwenty-before-label:before, 
 .twentytwenty-vertical .label-v-left .twentytwenty-after-label:before {
-    left: 10px;
+   left: 10px;
 }
 
 .twentytwenty-vertical .label-v-center .twentytwenty-before-label:before, 
 .twentytwenty-vertical .label-v-center .twentytwenty-after-label:before {
-    left: 50%;
+   left: 50%;
 }
 
 .twentytwenty-vertical .label-v-right .twentytwenty-before-label:before, 
 .twentytwenty-vertical .label-v-right .twentytwenty-after-label:before {
-    right: 10px;
+   right: 10px;
 }
 
 /* Inverted overlay */
 .twentytwenty-before-label,
 .twentytwenty-after-label,
 .inverted-overlay {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
+ position: absolute;
+ top: 0;
+ width: 100%;
+ height: 100%;
 }
 
 .inverted-overlay {
-  -webkit-transition-property: background;
-  -moz-transition-property: background;
-  transition-property: background;
-  background: rgba(0, 0, 0, 0);
-  z-index: 25;
+ -webkit-transition-property: background;
+ -moz-transition-property: background;
+ transition-property: background;
+ background: rgba(0, 0, 0, 0);
+ z-index: 25;
 }
 
 /* Arrows */
 .mighty-before-after .twentytwenty-handle i {
-    font-size: 20px;
-    color: white;
-    vertical-align: -webkit-baseline-middle;
-    padding: 0 5px;
+   font-size: 20px;
+   color: white;
+   vertical-align: -webkit-baseline-middle;
+   padding: 0 5px;
 }
 
 .mighty-before-after .twentytwenty-vertical .mighty-before-after .twentytwenty-handle {
-    display: flex;
-    border-color: #fff;
-    flex-direction: column;
-    justify-content: space-evenly;
+   display: flex;
+   border-color: #fff;
+   flex-direction: column;
+   justify-content: space-evenly;
 }
 
 .mighty-before-after .twentytwenty-vertical .mighty-before-after .twentytwenty-handle i {
-    transform: rotate(90deg);
+   transform: rotate(90deg);
 }
 
 .mighty-before-after .twentytwenty-handle:before,
 .mighty-before-after .twentytwenty-handle:after {
-    background: #fff;
-    box-shadow: 0 3px 0 #fff, 0px 0px 12px rgba(51, 51, 51, 0.5);
+   background: #fff;
+   box-shadow: 0 3px 0 #fff, 0px 0px 12px rgba(51, 51, 51, 0.5);
 }
 
 .twentytwenty-vertical .twentytwenty-handle{
-    display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
+   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .twentytwenty-vertical {}
 .twentytwenty-vertical .fa{
-    transform: rotate(90deg);
+   transform: rotate(90deg);
 }

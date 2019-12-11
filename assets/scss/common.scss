@@ -1,0 +1,289 @@
+/* Vertical Alignment */
+.ma-v-align-top {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+}
+
+.ma-v-align-middle {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.ma-v-align-bottom {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+}
+
+/* Button */
+.ma-btn {
+   display: inline-block;
+   font-weight: 400;
+   color: #fff;
+   background-color: #562dd4;
+   text-align: center;
+   vertical-align: middle;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   border: 1px solid transparent;
+   padding: 0.375rem 0.75rem;
+   font-size: 1rem;
+   line-height: 1.5;
+   border-radius: 0.25rem;
+   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .ma-btn {
+       transition: none;
+   }
+}
+
+.ma-btn:hover {
+   color: #fff;
+   text-decoration: none;
+}
+
+.ma-btn:focus,
+.ma-btn.focus {
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button Sizes */
+.ma-btn-sm {
+   padding: 0.25rem 0.5rem;
+   font-size: 0.875rem;
+   line-height: 1.5;
+   border-radius: 0.2rem;
+}
+
+.ma-btn-md {
+   font-size: 1rem;
+   line-height: 1.6;
+   border-radius: 0.4rem;
+}
+
+.ma-btn-lg {
+   padding: 0.5rem 1rem;
+   font-size: 1.25rem;
+   line-height: 1.5;
+   border-radius: 0.3rem;
+}
+
+/* Button Types */
+.ma-btn-primary {
+   color: #fff;
+   background-color: #007bff;
+   border-color: #007bff;
+}
+
+.ma-btn-primary:hover {
+   color: #fff;
+   background-color: #0069d9;
+   border-color: #0062cc;
+}
+
+.ma-btn-primary:focus,
+.ma-btn-primary.focus {
+   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+.ma-btn-primary.disabled,
+.ma-btn-primary:disabled {
+   color: #fff;
+   background-color: #007bff;
+   border-color: #007bff;
+}
+
+.ma-btn-primary:not(:disabled):not(.disabled):active,
+.ma-btn-primary:not(:disabled):not(.disabled).active {
+   color: #fff;
+   background-color: #0062cc;
+   border-color: #005cbf;
+}
+
+.ma-btn-primary:not(:disabled):not(.disabled):active:focus {
+   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+.ma-btn-secondary {
+   color: #fff;
+   background-color: #6c757d;
+   border-color: #6c757d;
+}
+
+.ma-btn-secondary:hover {
+   color: #fff;
+   background-color: #5a6268;
+   border-color: #545b62;
+}
+
+.ma-btn-secondary:focus,
+.ma-btn-secondary.focus {
+   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.ma-btn-secondary.disabled,
+.ma-btn-secondary:disabled {
+   color: #fff;
+   background-color: #6c757d;
+   border-color: #6c757d;
+}
+
+.ma-btn-secondary:not(:disabled):not(.disabled):active,
+.ma-btn-secondary:not(:disabled):not(.disabled).active {
+   color: #fff;
+   background-color: #545b62;
+   border-color: #4e555b;
+}
+
+.ma-btn-secondary:not(:disabled):not(.disabled):active:focus,
+.ma-btn-secondary:not(:disabled):not(.disabled).active:focus {
+   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.ma-btn-success {
+   color: #fff;
+   background-color: #28a745;
+   border-color: #28a745;
+}
+
+.ma-btn-success:hover {
+   color: #fff;
+   background-color: #218838;
+   border-color: #1e7e34;
+}
+
+.ma-btn-success:focus,
+.ma-btn-success.focus {
+   box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
+}
+
+.ma-btn-success.disabled,
+.ma-btn-success:disabled {
+   color: #fff;
+   background-color: #28a745;
+   border-color: #28a745;
+}
+
+.ma-btn-success:not(:disabled):not(.disabled):active,
+.ma-btn-success:not(:disabled):not(.disabled).active {
+   color: #fff;
+   background-color: #1e7e34;
+   border-color: #1c7430;
+}
+
+.ma-btn-success:not(:disabled):not(.disabled):active:focus,
+.ma-btn-success:not(:disabled):not(.disabled).active:focus {
+   box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
+}
+
+.ma-btn-info {
+   color: #fff;
+   background-color: #17a2b8;
+   border-color: #17a2b8;
+}
+
+.ma-btn-info:hover {
+   color: #fff;
+   background-color: #138496;
+   border-color: #117a8b;
+}
+
+.ma-btn-info:focus,
+.ma-btn-info.focus {
+   box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+}
+
+.ma-btn-info.disabled,
+.ma-btn-info:disabled {
+   color: #fff;
+   background-color: #17a2b8;
+   border-color: #17a2b8;
+}
+
+.ma-btn-info:not(:disabled):not(.disabled):active,
+.ma-btn-info:not(:disabled):not(.disabled).active {
+   color: #fff;
+   background-color: #117a8b;
+   border-color: #10707f;
+}
+
+.ma-btn-info:not(:disabled):not(.disabled):active:focus,
+.ma-btn-info:not(:disabled):not(.disabled).active:focus {
+   box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+}
+
+.ma-btn-warning {
+   color: #212529;
+   background-color: #ffc107;
+   border-color: #ffc107;
+}
+
+.ma-btn-warning:hover {
+   color: #212529;
+   background-color: #e0a800;
+   border-color: #d39e00;
+}
+
+.ma-btn-warning:focus,
+.ma-btn-warning.focus {
+   box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+}
+
+.ma-btn-warning.disabled,
+.ma-btn-warning:disabled {
+   color: #212529;
+   background-color: #ffc107;
+   border-color: #ffc107;
+}
+
+.ma-btn-warning:not(:disabled):not(.disabled):active,
+.ma-btn-warning:not(:disabled):not(.disabled).active {
+   color: #212529;
+   background-color: #d39e00;
+   border-color: #c69500;
+}
+
+.ma-btn-warning:not(:disabled):not(.disabled):active:focus {
+   box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+}
+
+.ma-btn-danger {
+   color: #fff;
+   background-color: #dc3545;
+   border-color: #dc3545;
+}
+
+.ma-btn-danger:hover {
+   color: #fff;
+   background-color: #c82333;
+   border-color: #bd2130;
+}
+
+.ma-btn-danger:focus,
+.ma-btn-danger.focus {
+   box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+
+.ma-btn-danger.disabled,
+.ma-btn-danger:disabled {
+   color: #fff;
+   background-color: #dc3545;
+   border-color: #dc3545;
+}
+
+.ma-btn-danger:not(:disabled):not(.disabled):active {
+   color: #fff;
+   background-color: #bd2130;
+   border-color: #b21f2d;
+}
+
+.ma-btn-danger:not(:disabled):not(.disabled):active:focus {
+   box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}

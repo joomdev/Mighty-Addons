@@ -1,0 +1,26 @@
+.mighty-counter {
+   text-align: center;
+}
+
+/* Alignment */
+.mighty-counter .icon-align-right {
+   float: right;
+}
+
+.mighty-counter .icon-align-left {
+   float: left;
+}
+
+.mighty-counter .mtcounter-content .counter .count {
+   font-size: 40px;
+   /* line-height: 2.2em; */
+}
+
+.mighty-counter .mtcounter-content .counter-title {
+   font-size: 22px;
+}
+
+.mighty-counter .mt-counter-icon i {
+   box-sizing: content-box;
+   padding: 20px;
+}

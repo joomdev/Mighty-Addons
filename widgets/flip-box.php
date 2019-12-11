@@ -549,7 +549,7 @@ class MT_FlipBox extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'transform: rotate({{SIZE}}deg);',
-					    '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'transform: rotate({{SIZE}}deg);',
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon svg' => 'transform: rotate({{SIZE}}deg);',
                     ],
                     'condition' => [
                         'front_graphic_element' => 'icon',
@@ -562,7 +562,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'front_icon_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon',
                     'condition' => [
                         'front_graphic_element' => 'icon',
                     ],
