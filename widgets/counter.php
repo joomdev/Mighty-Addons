@@ -204,7 +204,7 @@ class MT_Counter extends Widget_Base {
 						'size' => 40,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'font-size: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
 					],
 				]
             );
