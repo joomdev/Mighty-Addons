@@ -1,6 +1,6 @@
 body {
     font-family: "Roboto", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     color: #252525;
     background-color: #f3f3f3;
@@ -375,6 +375,7 @@ button {
     display: flex;
     flex-flow: row wrap;
     align-content: center;
+    margin-top: 15px;
 }
 
 .ma-tabs-content-block-wrap {
@@ -671,4 +672,14 @@ button {
 .coming-soon .cs-cta {
     margin-top: 26px;
     text-transform: capitalize;
+}
+
+.coming-soon .cs-title {
+    font-size: 55px;
+    margin-bottom: 30px;
+}
+
+.coming-soon .cs-description {
+    font-size: 22px;
+    line-height: 1.2;
 }
