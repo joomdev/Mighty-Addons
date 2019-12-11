@@ -288,6 +288,12 @@ button {
     align-items: center;
     border-radius: 5px;
     box-shadow: 0px 8px 21px 0px rgba(36, 39, 50, 0.08);
+
+}
+
+.ma-settings-header-bar .ma-logo img {
+    width: 40px;
+    height: 40px;
 }
 
 .ma-settings-header-bar .title {
@@ -295,7 +301,6 @@ button {
     font-weight: 600;
     color: #777;
     margin: 0px;
-    text-transform: uppercase;
 }
 
 .ma-settings-header-left,
@@ -375,7 +380,7 @@ button {
     display: flex;
     flex-flow: row wrap;
     align-content: center;
-    margin-top: 15px;
+    margin-top: 40px;
 }
 
 .ma-tabs-content-block-wrap {

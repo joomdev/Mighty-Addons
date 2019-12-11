@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             <!-- MT Settings Header Left -->
             <div class="ma-settings-header-left">
                 <div class="ma-logo">
-                    <img src="https://mightythemes.com/wp-content/uploads/2019/05/logo-Blue-Sticky-1.png" alt="MightyThemes-addons">
+                    <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/mighty-addons-logo.svg' ?>" alt="">
                 </div>
-                <h2 class="title">Mighty Addons Settings</h2>
+                <h2 class="title">Mighty Addons Settings | v<?php echo MIGHTY_ADDONS_VERSION; ?></h2>
             </div>
             <?php if ( $page == "widgets") : ?>
             <div class="ma-settings-header-right">
