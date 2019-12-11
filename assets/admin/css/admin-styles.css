@@ -142,6 +142,38 @@ button {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
 .button.ma-btn {
     background: #5A00F0;
     color: #fff;
@@ -232,6 +264,16 @@ button {
     max-width: 100%;
     margin: auto;
     margin: 20px 40px 0 20px;
+}
+
+#mtbody-content .ma-btn:hover {
+    background: #6000ff;
+    color: white;
+}
+
+#mtbody-content .ma-btn:focus {
+    background: #5A00F0;
+    color: #fff;
 }
 
 .ma-settings {
@@ -338,7 +380,7 @@ button {
 .ma-tabs-content-block-wrap {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px;
 }
 
@@ -603,6 +645,10 @@ button {
     color: #78909C;
 }
 
+.mt-banner img {
+    width: 100%;
+}
+
 /* Extension (Coming Soon) */
 
 .coming-soon .mt-illustration {
@@ -625,14 +671,4 @@ button {
 .coming-soon .cs-cta {
     margin-top: 26px;
     text-transform: capitalize;
-}
-
-.coming-soon .cs-cta:hover {
-    background: #6000ff;
-    color: white;
-}
-
-.coming-soon .cs-cta:focus {
-    background: #5A00F0;
-    color: #fff;
 }
