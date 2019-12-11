@@ -146,6 +146,15 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 'mighty-addons-extensions',
                 [ __CLASS__, 'generate_extensions_page' ]
             );
+
+            add_submenu_page(
+                'mighty-addons-home',
+                __( 'Mighty Pro', 'mighty-addons' ),
+                __( 'Go Pro 🔥', 'mighty-addons' ),
+                'manage_options',
+                'mighty-addons-pro',
+                [ __CLASS__, 'generate_pro_page' ]
+            );
         }
 
         public static function enqueue_scripts( $hook ) {
@@ -253,6 +262,10 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         public static function generate_extensions_page() {
             self::load_html( 'extension-settings' );
+        }
+
+        public static function generate_pro_page() {
+            self::load_html( 'go-pro' );
         }
 
         public static function mighty_addons_status() {

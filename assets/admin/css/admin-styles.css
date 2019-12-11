@@ -127,7 +127,7 @@ button {
 
 .switch-label,
 .switch-handle {
-    transition: all 0.5s cubic-bezier(0.85, -0.28, 0, 1.38);
+    transition: all 0.5s cubic-bezier(0.79, -0.54, 0, 1.51);
 }
 
 .switch-handle {
@@ -597,4 +597,42 @@ button {
 
 .updated-widgets {
     margin-top: 3px;
+}
+
+.text-muted {
+    color: #78909C;
+}
+
+/* Extension (Coming Soon) */
+
+.coming-soon .mt-illustration {
+    width: 600px;
+    height: 600px;
+    display: flex;
+}
+
+.coming-soon .ma-col-full {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.coming-soon .under-construction {
+    width: 100%
+}
+
+.coming-soon .cs-cta {
+    margin-top: 26px;
+    text-transform: capitalize;
+}
+
+.coming-soon .cs-cta:hover {
+    background: #6000ff;
+    color: white;
+}
+
+.coming-soon .cs-cta:focus {
+    background: #5A00F0;
+    color: #fff;
 }
