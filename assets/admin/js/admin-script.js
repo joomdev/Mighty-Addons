@@ -24,6 +24,7 @@
         // Modifies Tab active status
         if ( source == "sidebar" ) {
             $('.ma-tabs li a[href="'+ tab +'"]').parent('li').addClass('active');
+            $(obj).parent('li').addClass('current');
         } else {
             var url = tab == "#general" ? 'admin.php?page=mighty-addons-home' : 'admin.php?page=mighty-addons-home'+tab;
             $('#toplevel_page_mighty-addons-home .wp-submenu li a[href="'+ url +'"]').parent('li').addClass('current');
@@ -33,7 +34,7 @@
     }
 
     // Tabs Setting
-    $('.ma-tabs li:first-child').addClass('active');
+    $('.ma-tabs li:last-child').addClass('active');
     $('.ma-tabs-content').hide();
     $('.ma-tabs-content:first').show();
 
