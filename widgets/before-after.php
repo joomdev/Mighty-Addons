@@ -148,33 +148,6 @@ class MT_BeforeAfter extends Widget_Base {
             );
 
             $this->add_control(
-                'beforeafter_alignment',
-                [
-                    'label' => __( 'Alignment', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
-                        ],
-                        'center' => [
-                            'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'fa fa-align-center',
-                        ],
-                        'right' => [
-                            'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
-                        ],
-                    ],
-                    'default' => 'center',
-                    'toggle' => true,
-                    'selectors' => [
-                        '{{WRAPPER}} .mighty-before-after' => 'text-align: {{VALUE}}',
-                    ],
-                ]
-            );
-
-            $this->add_control(
                 'move_on_hover',
                 [
                     'label' => __( 'Move On Hover', 'mighty' ),
@@ -317,15 +290,15 @@ class MT_BeforeAfter extends Widget_Base {
             );
 
             $this->add_control(
-                'triangle_size',
+                'arrows_size',
                 [
-                    'label' => __( 'Triangle Size', 'mighty' ),
+                    'label' => __( 'Arrows Size', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ 'px' ],
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 1000,
+                            'max' => 100,
                         ]
                     ],
                     'default' => [

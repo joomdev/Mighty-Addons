@@ -690,6 +690,31 @@ class MT_Team extends Widget_Base {
 				]
 			);
 
+			$this->add_responsive_control(
+				'team_icons_spacing',
+				[
+					'label' => __( 'Spacing', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px', 'em', 'rem' ],
+					'range' => [
+						'px' => [
+							'min' => 1,
+							'max' => 200,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 0,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-team .social-icons-wrapper' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+					],
+					'condition' => [
+						'mt_icon_position' => 'before-bio'
+					]
+				]
+			);
+
 			$this->add_control(
 				'icon_color_type',
 				[

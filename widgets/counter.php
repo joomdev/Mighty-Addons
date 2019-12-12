@@ -167,7 +167,7 @@ class MT_Counter extends Widget_Base {
 				[
 					'label' => __( 'Icon Spacing', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
-					'size_units' => [ 'px' ],
+					'size_units' => [ 'px', '%' ],
 					'range' => [
 						'px' => [
 							'min' => 0,
@@ -179,7 +179,7 @@ class MT_Counter extends Widget_Base {
 						'size' => 0,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mtcounter-content' => 'margin: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 					],
 					'condition' => [
 						'show_counter_icon' => 'yes'

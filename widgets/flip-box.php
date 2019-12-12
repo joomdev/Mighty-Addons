@@ -400,6 +400,18 @@ class MT_FlipBox extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'front_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
             $this->add_group_control(
                 Group_Control_Box_Shadow::get_type(),
                 [
@@ -681,7 +693,7 @@ class MT_FlipBox extends Widget_Base {
             );
 
             $this->add_responsive_control(
-                'front_border_radius',
+                'front_image_border_radius',
                 [
                     'label' => __( 'Border Radius', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
@@ -761,29 +773,6 @@ class MT_FlipBox extends Widget_Base {
                     'type' => Controls_Manager::HEADING,
                     'label' => __( 'Description', 'mighty' ),
                     'separator' => 'before',
-                ]
-            );
-
-            $this->add_control(
-                'front_description_spacing',
-                [
-                    'label' => __( 'Spacing', 'mighty' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px' ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 1,
-                        ]
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 0,
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                    ]
                 ]
             );
 
@@ -902,6 +891,18 @@ class MT_FlipBox extends Widget_Base {
                     'name' => 'back_card',
                     'label' => __( 'Border', 'mighty' ),
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back',
+                ]
+            );
+
+            $this->add_control(
+                'back_border_radius',
+                [
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
                 ]
             );
 
@@ -1067,7 +1068,7 @@ class MT_FlipBox extends Widget_Base {
                 [
                     'name' => 'back_icon_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i',
+                    'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon',
                     'condition' => [
                         'back_graphic_element' => 'icon',
                     ],
@@ -1186,7 +1187,7 @@ class MT_FlipBox extends Widget_Base {
             );
 
             $this->add_responsive_control(
-                'back_border_radius',
+                'back_image_border_radius',
                 [
                     'label' => __( 'Border Radius', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
