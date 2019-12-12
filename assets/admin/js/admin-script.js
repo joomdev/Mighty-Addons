@@ -18,6 +18,42 @@
         });
     }
 
+    function tabsStatus(tab, source, obj) {
+        $('.ma-tabs li').removeClass('active');
+        $('#toplevel_page_mighty-addons-home .wp-submenu li').removeClass('current');
+        // Modifies Tab active status
+        if ( source == "sidebar" ) {
+            $('.ma-tabs li a[href="'+ tab +'"]').parent('li').addClass('active');
+        } else {
+            var url = tab == "#general" ? 'admin.php?page=mighty-addons-home' : 'admin.php?page=mighty-addons-home'+tab;
+            $('#toplevel_page_mighty-addons-home .wp-submenu li a[href="'+ url +'"]').parent('li').addClass('current');
+            $(obj).addClass('active');
+        }
+        $('.ma-tabs-content').hide();
+    }
+
+    // Tabs Setting
+    $('.ma-tabs li:first-child').addClass('active');
+    $('.ma-tabs-content').hide();
+    $('.ma-tabs-content:first').show();
+
+    // Tabs Events
+    $('.ma-tabs li').click(function() {
+        var activeTab = $(this).find('a').attr('href');
+        tabsStatus(activeTab, 'topbar', this);
+        $(activeTab).show();
+        return false;
+    });
+
+    // Sidebar Events
+    $("#toplevel_page_mighty-addons-home .wp-submenu li a").click( function() {
+        var activeTab = $(this).attr("href").substr($(this).attr("href").indexOf("#"));
+        activeTab = activeTab === "e" ? "#general" : activeTab;
+        tabsStatus(activeTab, 'sidebar',this);
+        $(activeTab).show();
+        return false;
+    });
+
     // Submit event - Form button
     $('form#mighty-settings').on('submit', function (e) {
         e.preventDefault();

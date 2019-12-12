@@ -134,17 +134,15 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 __( 'Mighty Widgets', 'mighty-addons' ),
                 __( 'Widgets', 'mighty-addons' ),
                 'manage_options',
-                'mighty-addons-widgets',
-                [ __CLASS__, 'generate_widgets_page' ]
+                'admin.php?page=mighty-addons-home#widgets'
             );
 
             add_submenu_page(
                 'mighty-addons-home',
                 __( 'Mighty Extension', 'mighty-addons' ),
-                __( 'Extension', 'mighty-addons' ),
+                __( 'Extensions', 'mighty-addons' ),
                 'manage_options',
-                'mighty-addons-extensions',
-                [ __CLASS__, 'generate_extensions_page' ]
+                'admin.php?page=mighty-addons-home#extensions'
             );
 
             add_submenu_page(
@@ -152,8 +150,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 __( 'Mighty Pro', 'mighty-addons' ),
                 __( 'Go Pro 🔥', 'mighty-addons' ),
                 'manage_options',
-                'mighty-addons-pro',
-                [ __CLASS__, 'generate_pro_page' ]
+                'admin.php?page=mighty-addons-home#go-pro'
             );
         }
 
@@ -223,11 +220,6 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
         }
 
         public static function generate_homepage() {
-            self::load_html( 'home' );
-        }
-
-        public static function generate_widgets_page() {
-            
             $script = array(
                 'ajaxurl'   => admin_url( 'admin-ajax.php' ),
                 'nonce' 	=> wp_create_nonce( self::PLG_SLUG ),
@@ -249,7 +241,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             self::$ma_get_settings = get_option( 'mighty_addons_status', self::$ma_default_settings );
             
-            self::load_html( 'widget-settings' );
+            self::load_html( 'home' );
         }
 
         public static function get_enabled_addons() {
@@ -258,14 +250,6 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             
             return $enable_addons;
 
-        }
-
-        public static function generate_extensions_page() {
-            self::load_html( 'extension-settings' );
-        }
-
-        public static function generate_pro_page() {
-            self::load_html( 'go-pro' );
         }
 
         public static function mighty_addons_status() {
