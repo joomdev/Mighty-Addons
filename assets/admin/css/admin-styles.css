@@ -266,6 +266,11 @@ button {
     margin: 20px 40px 0 20px;
 }
 
+#mtbody-content a:focus {
+    box-shadow: 0 0 0 1px #562dd4, 0 0 2px 1px rgba(86, 30, 190, 0.8);
+    outline: 1px solid transparent;
+}
+
 #mtbody-content .mighty-underline {
     background-image: linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%);
     background-repeat: no-repeat;
@@ -673,7 +678,6 @@ button {
 
 .coming-soon .mt-illustration {
     width: 600px;
-    height: 600px;
     display: flex;
 }
 
@@ -685,7 +689,7 @@ button {
 }
 
 .coming-soon .under-construction {
-    width: 100%
+    max-width: 100%
 }
 
 .coming-soon .cs-cta {

@@ -62,11 +62,15 @@ final class Mighty_Addons {
 	 */
 	public function __construct() {
 
+		register_activation_hook( __FILE__, array( $this, 'mighty_addons_activation_redirect' ) );
+
 		// Load translation
 		add_action( 'init', array( $this, 'i18n' ) );
 
 		// Init Plugin
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
+
+		add_action( 'admin_init', array( $this, 'show_user_what_we_got' ) );
 	}
 
 	/**
@@ -80,6 +84,34 @@ final class Mighty_Addons {
 	 */
 	public function i18n() {
 		load_plugin_textdomain( 'mighty' );
+	}
+
+
+	/**
+	 * Activate Mighty Addons.
+	 *
+	 * Set Mighty-Addons activation hook.
+	 *
+	 * Fired by `register_activation_hook` when the plugin is activated.
+	 *
+	 * @since 2.0.0
+	 * @access public
+	 */
+	public function mighty_addons_activation_redirect() {
+		add_option('activate_mighty_addons', true);
+	}
+
+	public function show_user_what_we_got() {
+
+		if ( get_option('activate_mighty_addons', false) ) {
+			
+			delete_option('activate_mighty_addons');
+			if(!isset($_GET['activate-multi']))
+			{
+				wp_safe_redirect( admin_url( 'admin.php?page=mighty-addons-home' ) );
+			}
+		}
+
 	}
 
 	/**
