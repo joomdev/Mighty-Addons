@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         <h4 class="ma-tabs-block-title">Need Help?</h4>
                     </header>
                     <div class="ma-tabs-block-content">
-                        <p>Facing issues while using addons? Get help from our dedicated WordPress Developers on <a href="https://mightythemes.com/support/c/mighty-addons/" target="_blank">Mighty Addons Official Forum</a>. Or join our <a target="_blank" href="https://www.facebook.com/groups/mightythemes/">Facebook Community</a> and post your questions there as well.</p>
+                        <p>Facing issues while using addons? Get help from our dedicated WordPress Developers on <a class="mighty-underline" href="https://mightythemes.com/support/c/mighty-addons/" target="_blank">Mighty Addons Official Forum</a>. Or join our <a class="mighty-underline" target="_blank" href="https://www.facebook.com/groups/mightythemes/">Facebook Community</a> and post your questions there as well.</p>
                         <a href="https://mightythemes.com/support/c/mighty-addons/" class="ma-btn" target="_blank">Reach out on Forum</a>
                     </div>
                 </div>
@@ -35,6 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     </header>
                     <div class="ma-tabs-block-content">
                         <p>Are we missing any features that you need for your project? Submit feature requests on GitHub and help us improve Mighty Addons.</p>
+                        <br>
                         <a href="https://github.com/mightythemes/Mighty-Addons/issues/new?template=issue_template.md&title=Feature%20Request:&labels=Feature%20Request" class="ma-btn" target="_blank">Request a Feature</a>
                     </div>
                 </div>

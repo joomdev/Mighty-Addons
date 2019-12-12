@@ -266,6 +266,19 @@ button {
     margin: 20px 40px 0 20px;
 }
 
+#mtbody-content .mighty-underline {
+    background-image: linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 110%;
+    transition: background-size 0.10s ease-in;
+}
+
+#mtbody-content .mighty-underline:hover {
+    background-size: 100% 88%;
+    color: white;
+}
+
 #mtbody-content .ma-btn:hover {
     background: #6000ff;
     color: white;
@@ -292,8 +305,8 @@ button {
 }
 
 .ma-settings-header-bar .ma-logo img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 .ma-settings-header-bar .title {
@@ -401,6 +414,7 @@ button {
     border-radius: 5px;
     padding: 25px;
     margin-bottom: 15px;
+    height: 160px;
 }
 
 .ma-tabs-block-title {
