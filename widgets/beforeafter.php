@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  */
-class MT_BeforeAfter extends Widget_Base {
+class MT_Beforeafter extends Widget_Base {
 	
 	public function get_name() {
 		return 'mt-before-after';
