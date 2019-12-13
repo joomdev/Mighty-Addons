@@ -20,11 +20,6 @@
     justify-content: space-between;
 }
 
-.mighty-accordion .mt-panel .active,
-.mighty-accordion .mt-panel .accordion:hover {
-    border: 1px solid #ccc;
-}
-
 .mighty-accordion .mt-panel .accordion-active-icon {
     display: none;
     color: #777;
@@ -58,4 +53,12 @@
 
 .mighty-accordion .mt-panel .panel .accordion-content {
     border-color: black;
+}
+
+.mighty-accordion .panel {
+    border: 1px solid rgba(146, 109, 109, 0.12156862745098039);
+}
+
+.mighty-accordion .mt-panel .accordion .mt-accordion-title {
+    font-weight: 500;
 }

@@ -103,6 +103,11 @@ class MT_Accordion extends Widget_Base {
                                 'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
                                 'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'mighty' ),
                             ],
+                            [
+                                'accordion_title' => __( 'Accordion 3', 'mighty' ),
+                                'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
+                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'mighty' ),
+                            ],
                         ],
                         'title_field' => '{{{ accordion_title }}}',
                     ]
@@ -118,7 +123,7 @@ class MT_Accordion extends Widget_Base {
                     'label_on' => __( 'On', 'mighty' ),
                     'label_off' => __( 'Off', 'mighty' ),
                     'return_value' => 'yes',
-                    'default' => 'no',
+                    'default' => 'yes',
                 ]
             );
             
@@ -209,7 +214,7 @@ class MT_Accordion extends Widget_Base {
                 [
                     'label' => __( 'Background', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#fff',
+                    'default' => '#F6FAFB',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'background-color: {{VALUE}};',
                     ],
@@ -241,7 +246,7 @@ class MT_Accordion extends Widget_Base {
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#fff',
+                    'default' => '#F6FAFB',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .active' => 'background-color: {{VALUE}}',
                     ],
@@ -263,6 +268,12 @@ class MT_Accordion extends Widget_Base {
                     'label' => __( 'Padding', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', 'em', '%' ],
+                    'default' => [
+                        'top' =>  '5',
+                        'right' => '5',
+                        'bottom' => '5',
+                        'left' => '5',
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
@@ -284,6 +295,12 @@ class MT_Accordion extends Widget_Base {
                     'label' => __( 'Border Radius', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
+                    'default' => [
+                        'top' =>  '5',
+                        'right' => '5',
+                        'bottom' => '0',
+                        'left' => '0',
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .accordion' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
@@ -421,6 +438,15 @@ class MT_Accordion extends Widget_Base {
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'background-color: {{VALUE}};',
                             ],
+                        ]
+                    );
+
+                    $this->add_group_control(
+                        Group_Control_Typography::get_type(),
+                        [
+                            'name' => 'icons_typography',
+                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                            'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i',
                         ]
                     );
 

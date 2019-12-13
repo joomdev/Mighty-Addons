@@ -331,9 +331,9 @@ class MT_OpeningHours extends Widget_Base {
                             [
                                 'business_day' => __('Sunday', 'mighty'),
                                 'opening_business_time' => __('Closed', 'mighty'),
-                                'enable_styling' => 'false',
-                                'day_color' => '#bb0f0f',
-                                'time_color' => '#bb0f0f',
+                                'enable_styling' => 'true',
+                                'day_color' => '#FF0000',
+                                'time_color' => '#FF0000',
                                 'oh_bg_color' => '#fff',
                             ],
                         ],
@@ -448,7 +448,7 @@ class MT_OpeningHours extends Widget_Base {
                 [
                     'label' => __( 'Style', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'dashed',
+                    'default' => 'solid',
                     'options' => [
                         'solid'  => __( 'Solid', 'mighty' ),
                         'dotted' => __( 'Dotted', 'mighty' ),
@@ -472,7 +472,7 @@ class MT_OpeningHours extends Widget_Base {
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#d3d3d3',
+                    'default' => '#E6E6E65C',
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row:not(:last-child)' => 'border-bottom-color: {{VALUE}};',
                     ],
@@ -664,7 +664,7 @@ class MT_OpeningHours extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#f7f7f7',
+                    'default' => '#FAFBFD',
                     'selectors' => [
                         '.ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(even)' => 'background: {{VALUE}}',
                     ],
@@ -707,7 +707,7 @@ class MT_OpeningHours extends Widget_Base {
                     'selectors' => [
                         '{{WRAPPER}} .ma-oh-header' => 'background-color: {{VALUES}}'
                     ],
-                    'default' => '#4965fb',
+                    'default' => '#6732B8',
                 ]
             );
 
@@ -726,6 +726,12 @@ class MT_OpeningHours extends Widget_Base {
                     'label' => __( 'Padding', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
+                    'default' => [
+                        'top' =>  '10',
+                        'right' => '10',
+                        'bottom' => '10',
+                        'left' => '10',
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
@@ -738,6 +744,13 @@ class MT_OpeningHours extends Widget_Base {
                     'label' => __( 'Margin', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
+                    'default' => [
+                        'top' => '0',
+                        'right' => '0',
+                        'bottom' => '20',
+                        'left' => '0',
+                        'isLinked' => true,
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-header' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],

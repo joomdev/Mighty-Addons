@@ -201,7 +201,7 @@ class MT_Progressbar extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 8,
+						'size' => 10,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .progress-bar' => 'height: {{SIZE}}{{UNIT}}',
@@ -223,7 +223,7 @@ class MT_Progressbar extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 11,
+						'size' => 5,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-progressbar .progress-bar:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
@@ -349,7 +349,7 @@ class MT_Progressbar extends Widget_Base {
 			if ( $settings['mt_title_position'] === 'outside' || $settings['mt_percentage_position'] === 'outside' ) {
 
 				echo '<div class="progressbar-details">';
-				
+
 					if ( $settings['mt_title_position'] === 'outside' ) {
 						echo '<div class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</div>';
 					}

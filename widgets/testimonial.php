@@ -574,6 +574,7 @@ class MT_Testimonial extends Widget_Base {
                 [
                     'label'     => __( 'Color', 'mighty' ),
 					'type'      => Controls_Manager::COLOR,
+					'default'	=> '#6A5E5E',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial .mt-person-title' => 'color: {{VALUES}}'
 					]
