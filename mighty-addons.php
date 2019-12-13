@@ -3,7 +3,7 @@
  * Plugin Name: Mighty Addons
  * Description: Addons for elementor by MightyThemes.
  * Plugin URI: https://mightythemes.com/products/mighty-addons/
- * Version:     1.1.0
+ * Version:     1.2.0
  * Author:      MightyThemes1
  * Author URI:  https://mightythemes.com/
  * Text Domain: mighty
@@ -13,7 +13,7 @@ namespace Mighty_Addons;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'MIGHTY_ADDONS_VERSION', '1.1.0' );
+define( 'MIGHTY_ADDONS_VERSION', '1.2.0' );
 define( 'MIGHTY_ADDONS_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MIGHTY_ADDONS_PLG_URL', plugin_dir_url( __FILE__ ) );
 
