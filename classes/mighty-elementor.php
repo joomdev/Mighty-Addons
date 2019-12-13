@@ -20,8 +20,8 @@ class Mighty_Elementor {
 	public function __construct() {
 
 		// Register Widget Styles
-		add_action( 'elementor/frontend/after_register_styles', [ $this, 'widget_styles' ] );
-		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'mt_enqueue_styles' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'widget_styles' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'mt_enqueue_styles' ] );
 
 		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 

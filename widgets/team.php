@@ -96,7 +96,7 @@ class MT_Team extends Widget_Base {
 						'active' => true,
 					],
 					'rows' => '10',
-					'default' => 'Lorem Ipsum dolor sit amet.',
+					'default' => 'I\'m cool and I know it.',
 				]
 			);
 
@@ -124,174 +124,188 @@ class MT_Team extends Widget_Base {
 
             $repeater = new Repeater();
 
-            $repeater->add_control(
-                'mt_social_title',
-                [
-                    'label'   => __( 'Title', 'mighty' ),
-                    'type'    => Controls_Manager::TEXT,
-					'default' => 'Facebook',
-                ]
-            );
+				$repeater->add_control(
+					'mt_social_title',
+					[
+						'label'   => __( 'Title', 'mighty' ),
+						'type'    => Controls_Manager::TEXT,
+						'default' => 'Facebook',
+					]
+				);
 
-            $repeater->add_control(
-                'mt_social_link',
-                [
-                    'label'   => __( 'Link', 'mighty' ),
-                    'type'    => Controls_Manager::TEXT,
-                    'default' => __( '#', 'mighty' ),
-                ]
-            );
-			
-			$repeater->add_control(
-				'mt_social_icon',
-				[
-					'label' => __( 'Icon', 'elementor' ),
-					'type' => Controls_Manager::ICONS,
-					'fa4compatibility' => 'social',
-					'label_block' => true,
-					'default' => [
-						'value' => 'fab fa-facebook',
-						'library' => 'fa-brands',
-					],
-					'recommended' => [
-						'fa-brands' => [
-							'android',
-							'apple',
-							'behance',
-							'bitbucket',
-							'codepen',
-							'delicious',
-							'deviantart',
-							'digg',
-							'dribbble',
-							'elementor',
-							'facebook',
-							'flickr',
-							'foursquare',
-							'free-code-camp',
-							'github',
-							'gitlab',
-							'globe',
-							'google-plus',
-							'houzz',
-							'instagram',
-							'jsfiddle',
-							'linkedin',
-							'medium',
-							'meetup',
-							'mixcloud',
-							'odnoklassniki',
-							'pinterest',
-							'product-hunt',
-							'reddit',
-							'shopping-cart',
-							'skype',
-							'slideshare',
-							'snapchat',
-							'soundcloud',
-							'spotify',
-							'stack-overflow',
-							'steam',
-							'stumbleupon',
-							'telegram',
-							'thumb-tack',
-							'tripadvisor',
-							'tumblr',
-							'twitch',
-							'twitter',
-							'viber',
-							'vimeo',
-							'vk',
-							'weibo',
-							'weixin',
-							'whatsapp',
-							'wordpress',
-							'xing',
-							'yelp',
-							'youtube',
-							'500px',
+				$repeater->add_control(
+					'mt_social_link',
+					[
+						'label'   => __( 'Link', 'mighty' ),
+						'type'    => Controls_Manager::TEXT,
+						'default' => __( '#', 'mighty' ),
+					]
+				);
+				
+				$repeater->add_control(
+					'mt_social_icon',
+					[
+						'label' => __( 'Icon', 'elementor' ),
+						'type' => Controls_Manager::ICONS,
+						'recommended' => [
+							'fa-brands' => [
+								'android',
+								'apple',
+								'behance',
+								'bitbucket',
+								'codepen',
+								'delicious',
+								'deviantart',
+								'digg',
+								'dribbble',
+								'elementor',
+								'facebook',
+								'flickr',
+								'foursquare',
+								'free-code-camp',
+								'github',
+								'gitlab',
+								'globe',
+								'google-plus',
+								'houzz',
+								'instagram',
+								'jsfiddle',
+								'linkedin',
+								'medium',
+								'meetup',
+								'mixcloud',
+								'odnoklassniki',
+								'pinterest',
+								'product-hunt',
+								'reddit',
+								'shopping-cart',
+								'skype',
+								'slideshare',
+								'snapchat',
+								'soundcloud',
+								'spotify',
+								'stack-overflow',
+								'steam',
+								'stumbleupon',
+								'telegram',
+								'thumb-tack',
+								'tripadvisor',
+								'tumblr',
+								'twitch',
+								'twitter',
+								'viber',
+								'vimeo',
+								'vk',
+								'weibo',
+								'weixin',
+								'whatsapp',
+								'wordpress',
+								'xing',
+								'yelp',
+								'youtube',
+								'500px',
+							],
+							'fa-solid' => [
+								'envelope',
+								'link',
+								'rss',
+							],
 						],
-						'fa-solid' => [
-							'envelope',
-							'link',
-							'rss',
+					]
+				);
+
+				$repeater->add_control(
+					'mt_icon_color',
+					[
+						'label'     => __( 'Icon Color', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUES}}',
+							'{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'fill: {{VALUES}}',
+						]
+					]
+				);
+
+				$repeater->add_control(
+					'mt_icon_background',
+					[
+						'label'     => __( 'Icon Background', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'background-color: {{VALUES}}'
+						]
+					]
+				);
+
+				$repeater->add_control(
+					'mt_icon_hover_color',
+					[
+						'label'     => __( 'Icon Hover Color', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'color: {{VALUES}}'
+						]
+					]
+				);
+
+				$repeater->add_control(
+					'mt_icon_hover_background',
+					[
+						'label'     => __( 'Icon Hover Background', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'background-color: {{VALUES}}'
+						]
+					]
+				);
+
+				$repeater->add_control(
+					'mt_icon_hover_border_color',
+					[
+						'label'     => __( 'Icon Hover border color', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'border-color: {{VALUES}}'
+						]
+					]
+				);
+
+				$this->add_control(
+					'mt_team_social_link_list',
+					[
+						'type'    => Controls_Manager::REPEATER,
+						'fields'  => $repeater->get_controls(),
+						'default' => [
+							[
+								'mt_social_title'      => __( 'Facebook', 'mighty' ),
+								'mt_social_icon'       => [
+									'value' => 'fab fa-facebook',
+									'library' => 'fa-brands',
+								],
+								'mt_social_link'       => __( '#', 'mighty' ),
+							],
+							[
+								'mt_social_title'      => __( 'Twitter', 'mighty' ),
+								'mt_social_icon'       => [
+									'value' => 'fab fa-twitter',
+									'library' => 'fa-brands',
+								],
+								'mt_social_link'       => __( '#', 'mighty' ),
+							],
+							[
+								'mt_social_title'      => __( 'LinkedIn', 'mighty' ),
+								'mt_social_icon'       => [
+									'value' => 'fab fa-linkedin-in',
+									'library' => 'fa-brands',
+								],
+								'mt_social_link'       => __( '#', 'mighty' ),
+							],
 						],
-					],
-				]
-			);
-
-            $repeater->add_control(
-                'mt_icon_color',
-                [
-                    'label'     => __( 'Icon Color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUES}}',
-						'{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'fill: {{VALUES}}',
+						'title_field' => '{{{ mt_social_title }}}',
 					]
-                ]
-            );
-
-            $repeater->add_control(
-                'mt_icon_background',
-                [
-                    'label'     => __( 'Icon Background', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'background-color: {{VALUES}}'
-					]
-                ]
-            );
-
-            $repeater->add_control(
-                'mt_icon_hover_color',
-                [
-                    'label'     => __( 'Icon Hover Color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'color: {{VALUES}}'
-					]
-                ]
-            );
-
-            $repeater->add_control(
-                'mt_icon_hover_background',
-                [
-                    'label'     => __( 'Icon Hover Background', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'background-color: {{VALUES}}'
-					]
-                ]
-            );
-
-            $repeater->add_control(
-                'mt_icon_hover_border_color',
-                [
-                    'label'     => __( 'Icon Hover border color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'border-color: {{VALUES}}'
-					]
-                ]
-            );
-
-            $this->add_control(
-                'mt_team_social_link_list',
-                [
-                    'type'    => Controls_Manager::REPEATER,
-                    'fields'  => array_values( $repeater->get_controls() ),
-                    'default' => [
-
-                        [
-                            'mt_social_title'      => 'Facebook',
-                            'mt_social_icon'       => 'fab fa-facebook-f',
-                            'mt_social_link'       => __( '#', 'mighty' ),
-                        ],
-					],
-					'title_field' => '{{{ mt_social_title }}}',
-                ]
-            );
+				);
+				
+			$repeater->end_controls_tabs();
 
         $this->end_controls_section();
 
@@ -358,7 +372,7 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 0,
+						'size' => 15,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'margin-bottom: {{SIZE}}{{UNIT}}',
@@ -380,7 +394,7 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 0,
+						'size' => 15,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'border-radius: {{SIZE}}{{UNIT}}',
@@ -539,7 +553,7 @@ class MT_Team extends Widget_Base {
 						'type' => Scheme_Color::get_type(),
 						'value' => Scheme_Color::COLOR_1,
 					],
-					'default' => '#343434',
+					'default' => '#999A9C',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .person-designation' => 'color: {{VALUE}};',
 					],
@@ -583,7 +597,7 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 0,
+						'size' => 25,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .person-about' => 'margin-bottom: {{SIZE}}{{UNIT}}',
@@ -666,7 +680,7 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 5,
+						'size' => 10,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'margin: 0 {{SIZE}}{{UNIT}}',
@@ -856,7 +870,7 @@ class MT_Team extends Widget_Base {
 				echo '<div class="person-designation">' . $settings['designation'] . '</div>';
 			}
 			
-			if ( $settings['mt_icon_position'] == "after-bio") {
+			if ( $settings['mt_icon_position'] == "after-bio" || $settings['show_social_icons'] !== "yes" ) {
 				if ( $settings['about'] !== "" ) {
 					echo '<div class="person-about">' . $settings['about'] . '</div>';
 				}

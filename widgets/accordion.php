@@ -441,15 +441,6 @@ class MT_Accordion extends Widget_Base {
                         ]
                     );
 
-                    $this->add_group_control(
-                        Group_Control_Typography::get_type(),
-                        [
-                            'name' => 'icons_typography',
-                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                            'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i',
-                        ]
-                    );
-
                 $this->end_controls_tab();
 
                 $this->start_controls_tab(
