@@ -269,10 +269,10 @@ class MT_Accordion extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', 'em', '%' ],
                     'default' => [
-                        'top' =>  '5',
-                        'right' => '5',
-                        'bottom' => '5',
-                        'left' => '5',
+                        'top' =>  '2',
+                        'right' => '2',
+                        'bottom' => '2',
+                        'left' => '2',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

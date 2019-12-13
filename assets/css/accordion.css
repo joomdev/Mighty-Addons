@@ -51,14 +51,6 @@
     transition: max-height 0.2s ease-out;
 }
 
-.mighty-accordion .mt-panel .panel .accordion-content {
-    border-color: black;
-}
-
-.mighty-accordion .panel {
-    border: 1px solid rgba(146, 109, 109, 0.12156862745098039);
-}
-
 .mighty-accordion .mt-panel .accordion .mt-accordion-title {
     font-weight: 500;
 }
