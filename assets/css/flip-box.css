@@ -48,6 +48,7 @@
 .mt-flipbox-wrapper.ma-flip.ma-flip-dir-left .mt-flipbox-back {
   -webkit-transform: rotateX(0) rotateY(180deg);
   transform: rotateX(0) rotateY(180deg);
+  background-color: #2E77FF;
 }
 .mt-flipbox-wrapper.ma-flip.ma-flip-dir-left .mt-flipbox-card:hover .mt-flipbox-front {
   -webkit-transform: rotateX(0) rotateY(-180deg);
@@ -201,6 +202,7 @@
   display: inline-block;
   width: auto;
 }
-
-
+.elementor-widget-mt-flip-box .mt-flipbox-wrapper .mt-flipbox-icon {
+  background-color: transparent;
+}
 /*# sourceMappingURL=flip-box.css.map */

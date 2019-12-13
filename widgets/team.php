@@ -669,7 +669,7 @@ class MT_Team extends Widget_Base {
 			$this->add_responsive_control(
 				'team_socialicons_margin',
 				[
-					'label' => __( 'Spacing', 'mighty' ),
+					'label' => __( 'Spacing Between Icons', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
 					'size_units' => [ 'px', 'em', 'rem' ],
 					'range' => [
