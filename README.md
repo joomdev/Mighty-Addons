@@ -118,13 +118,12 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 == Changelog ==
 
 = 1.2.0 =
-* Added: Mighty Dashboard
-* Added: MT Flip Box Widget
-* Added: MT Opening Hours Widget
-* Fixed: FAQ Schema for accordion
-* Fixed: MT Testimonial Widget
-* Fixed: Few other minor fixes
-* Updated: Widget Icons
+* Added: Mighty Admin Dashboard
+* Added: Opening Hours Schema for OpeningHours Widget
+* Fixes: Major and Minor fixes in Addons
+* Fixes: Design Fixes
+* Updated: Default layouts of widgets
+* Updated: Minification of CSS & JS
 
 = 1.1.0 =
 * Added: MT Gradient Heading Widget
