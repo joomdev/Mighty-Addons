@@ -262,7 +262,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 return;
             }
 
-            // For compactness
+            // TO-DO: For compactness
             // foreach ( self::$ma_settings as $widget ) {
             //     self::$ma_settings[$settings[$widget['slug']]['enable']] = intval( $settings[$widget['slug']] ? 1 : 0 );
             // }

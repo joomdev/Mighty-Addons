@@ -106,7 +106,8 @@ class Mighty_Elementor {
 		$widgets = HelperFunctions::mighty_addons();
 		
 		foreach( $widgets as $widget => $props ) {
-			if( $props['enable'] === 1 ) {
+			if( $props['enable'] ) {
+				
 				// Including Plugin
 				require_once( MIGHTY_ADDONS_DIR_PATH . 'widgets/' . $widget .'.php' );
 				

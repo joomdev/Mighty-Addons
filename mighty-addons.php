@@ -11,6 +11,8 @@
 
 namespace Mighty_Addons;
 
+use MightyAddons\Classes\DashboardPanel;
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 define( 'MIGHTY_ADDONS_VERSION', '1.2.0' );
@@ -160,7 +162,13 @@ final class Mighty_Addons {
 		
 		// Including Admin Widget
 		if ( is_admin() ) {
-            require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/panel.php' );
+
+			require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/panel.php' );
+			
+			$dashboard = new DashboardPanel;
+			$widgets = $dashboard->get_enabled_addons();
+			
+			update_option( 'mighty_addons_status', $widgets );
         }
 	}
 
