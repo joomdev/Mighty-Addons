@@ -36,6 +36,9 @@ Every Elementor widget comes with lots of customization controls. You can play w
 ### Free but Powerful
 Just because it's free, don't think it is compromised with the quality. The free Elementor Widgets will always be free, and you don't need to purchase the pro version to use the full features of a free element. Free Element will always be free without any upsell.
 
+### OpeningHour Schema
+Now, you can markup your business opening hours with OpeningHour schema with just a click. Simply add Opening hours widget and input your opening hours, style them and enable the schema. And you are done.
+
 ### Highly Responsive & Browser Compatible
 We created different designs with Mighty Addons & tested them with different sizes of screens. They all were fully responsive and browser compatible. 
 
