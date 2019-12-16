@@ -103,6 +103,11 @@ class MT_Accordion extends Widget_Base {
                                 'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
                                 'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'mighty' ),
                             ],
+                            [
+                                'accordion_title' => __( 'Accordion 3', 'mighty' ),
+                                'accordion_main_icon' => __( 'fas fa-plus', 'mighty' ),
+                                'accordion_content' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'mighty' ),
+                            ],
                         ],
                         'title_field' => '{{{ accordion_title }}}',
                     ]
@@ -118,7 +123,7 @@ class MT_Accordion extends Widget_Base {
                     'label_on' => __( 'On', 'mighty' ),
                     'label_off' => __( 'Off', 'mighty' ),
                     'return_value' => 'yes',
-                    'default' => 'no',
+                    'default' => 'yes',
                 ]
             );
             
@@ -196,6 +201,7 @@ class MT_Accordion extends Widget_Base {
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'color: {{VALUE}};',
                     ],
+                    'default' => '#000',
                     'scheme' => [
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
@@ -208,6 +214,7 @@ class MT_Accordion extends Widget_Base {
                 [
                     'label' => __( 'Background', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
+                    'default' => '#F6FAFB',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion' => 'background-color: {{VALUE}};',
                     ],
@@ -222,6 +229,7 @@ class MT_Accordion extends Widget_Base {
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .active .mt-accordion-title' => 'color: {{VALUE}};',
                     ],
+                    'default' => '#000',
                     'scheme' => [
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_4,
@@ -238,6 +246,7 @@ class MT_Accordion extends Widget_Base {
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#F6FAFB',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .active' => 'background-color: {{VALUE}}',
                     ],
@@ -259,6 +268,12 @@ class MT_Accordion extends Widget_Base {
                     'label' => __( 'Padding', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', 'em', '%' ],
+                    'default' => [
+                        'top' =>  '2',
+                        'right' => '2',
+                        'bottom' => '2',
+                        'left' => '2',
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
@@ -280,6 +295,12 @@ class MT_Accordion extends Widget_Base {
                     'label' => __( 'Border Radius', 'mighty' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
+                    'default' => [
+                        'top' =>  '5',
+                        'right' => '5',
+                        'bottom' => '0',
+                        'left' => '0',
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .accordion' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
@@ -391,67 +412,108 @@ class MT_Accordion extends Widget_Base {
                 'style_tabs'
             );
 
-            $this->start_controls_tab(
-                'style_normal_tab',
+                $this->start_controls_tab(
+                    'style_normal_tab',
+                    [
+                        'label' => __( 'Normal', 'mighty' ),
+                    ]
+                );
+
+                    $this->add_control(
+                        'icon_color',
+                        [
+                            'label' => __( 'Color', 'mighty' ),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'color: {{VALUE}};',
+                            ],
+                        ]
+                    );
+
+                    $this->add_control(
+                        'icon_bg_color',
+                        [
+                            'label' => __( 'Background Color', 'mighty' ),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'background-color: {{VALUE}};',
+                            ],
+                        ]
+                    );
+
+                $this->end_controls_tab();
+
+                $this->start_controls_tab(
+                    'style_active_tab',
+                    [
+                        'label' => __( 'Active', 'mighty' ),
+                    ]
+                );
+
+                    $this->add_control(
+                        'icon_active_color',
+                        [
+                            'label' => __( 'Color', 'mighty' ),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .mighty-accordion .mt-panel .active .accordion-icons i' => 'color: {{VALUE}};',
+                            ],
+                        ]
+                    );
+
+                    $this->add_control(
+                        'icon_active_bg_color',
+                        [
+                            'label' => __( 'Background Color', 'mighty' ),
+                            'type' => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .mighty-accordion .mt-panel .active .accordion-icons i' => 'background-color: {{VALUE}};',
+                            ],
+                        ]
+                    );
+
+                $this->end_controls_tab();
+            $this->end_controls_tabs();
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
                 [
-                    'label' => __( 'Normal', 'mighty' ),
+                    'name' => 'icon_border',
+                    'label' => __( 'Border Type', 'mighty' ),
+                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion-icons i',
+                    'separator' => 'before',
                 ]
             );
 
-                $this->add_control(
-                    'icon_color',
-                    [
-                        'label' => __( 'Color', 'mighty' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'color: {{VALUE}};',
-                        ],
-                    ]
-                );
-
-                $this->add_control(
-                    'icon_bg_color',
-                    [
-                        'label' => __( 'Background Color', 'mighty' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .accordion-icons i' => 'background-color: {{VALUE}};',
-                        ],
-                    ]
-                );
-
-            $this->end_controls_tab();
-
-            $this->start_controls_tab(
-                'style_active_tab',
+            $this->add_control(
+                'icon_border_radius',
                 [
-                    'label' => __( 'Active', 'mighty' ),
+                    'label' => __( 'Border Radius', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion-icons i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
                 ]
             );
 
-                $this->add_control(
-                    'icon_active_color',
-                    [
-                        'label' => __( 'Color', 'mighty' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            '{{WRAPPER}} .mighty-accordion .mt-panel .active .accordion-icons i' => 'color: {{VALUE}};',
-                        ],
-                    ]
-                );
-
-                $this->add_control(
-                    'icon_active_bg_color',
-                    [
-                        'label' => __( 'Background Color', 'mighty' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            '{{WRAPPER}} .mighty-accordion .mt-panel .active .accordion-icons i' => 'background-color: {{VALUE}};',
-                        ],
-                    ]
-                );
-
-            $this->end_controls_tab();
+            $this->add_responsive_control(
+                'icon_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', 'em', '%' ],
+                    'default' => [
+                        'top' =>  '5',
+                        'right' => '5',
+                        'bottom' => '5',
+                        'left' => '5',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion-icons i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
 
 		$this->end_controls_section();
 
@@ -484,27 +546,6 @@ class MT_Accordion extends Widget_Base {
                 ]
             );
 
-            $this->add_group_control(
-                Group_Control_Border::get_type(),
-                [
-                    'name' => 'accordion_border',
-                    'label' => __( 'Border Type', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel',
-                ]
-            );
-
-            $this->add_control(
-                'accordion_border_radius',
-                [
-                    'label' => __( 'Border Radius', 'mighty' ),
-                    'type' => Controls_Manager::DIMENSIONS,
-                    'size_units' => [ 'px' ],
-                    'selectors' => [
-                        '{{WRAPPER}} .mighty-accordion .mt-panel' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    ],
-                ]
-            );
-
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -532,7 +573,7 @@ class MT_Accordion extends Widget_Base {
                     'label' => __( 'Color', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-accordion .mt-panel .panel' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content' => 'color: {{VALUE}};',
                     ],
                     'scheme' => [
                         'type' => Scheme_Color::get_type(),

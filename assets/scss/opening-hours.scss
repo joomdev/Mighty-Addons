@@ -1,34 +1,30 @@
 .ma-openinghours-wrapper {
-    position: relative;
-}
-
-.elementor-widget-mt-openinghours .elementor-widget-container {
-    overflow: hidden;
+   position: relative;
 }
 
 .ma-openinghours-wrapper .ma-oh-row {
-    display: flex;
-    justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
 }
 
 .ma-openinghours-wrapper .ma-oh-day,
 .ma-openinghours-wrapper .ma-oh-time {
-    flex-grow: 1;
-    padding: 0 2px;
+   flex-grow: 1;
+   padding: 0 2px;
 }
 
 .ma-openinghours-wrapper .ma-oh-header {
-    text-align: center;
+   text-align: center;
 }
 
 .ma-openinghours-wrapper .ma-oh-footer {
-    text-align: center;
+   text-align: center;
 }
 
 .ma-openinghours-wrapper .ma-oh-header {
-    font-size: 30px;
+   font-size: 30px;
 }
 
 .ma-openinghours-wrapper .ma-oh-footer {
-    font-size: 20px;
+   font-size: 20px;
 }

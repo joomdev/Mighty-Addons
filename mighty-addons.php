@@ -1,20 +1,23 @@
 <?php
 /**
  * Plugin Name: Mighty Addons
- * Description: Addons for elementor by MightyThemes.
+ * Description: <a href="https://mightythemes.com/products/mighty-addons/">Mighty Addons</a> is a Powerful Elementor Widget Plugin that comes with advanced & flexible features powering up your Elementor website and increasing your designing experience.
  * Plugin URI: https://mightythemes.com/products/mighty-addons/
- * Version:     1.1.0
- * Author:      MightyThemes1
+ * Version:     1.2.0
+ * Author:      MightyThemes
  * Author URI:  https://mightythemes.com/
  * Text Domain: mighty
  */
 
 namespace Mighty_Addons;
 
+use MightyAddons\Classes\DashboardPanel;
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'MIGHTY_VERSION', '1.0.1' );
-define( 'MIGHTY_ADDONS_PLG_URL', plugins_url( '/', __FILE__ ) );
+define( 'MIGHTY_ADDONS_VERSION', '1.2.0' );
+define( 'MIGHTY_ADDONS_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'MIGHTY_ADDONS_PLG_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Main Mighty Addons Class
@@ -61,11 +64,15 @@ final class Mighty_Addons {
 	 */
 	public function __construct() {
 
+		register_activation_hook( __FILE__, array( $this, 'mighty_addons_activation_redirect' ) );
+
 		// Load translation
 		add_action( 'init', array( $this, 'i18n' ) );
 
 		// Init Plugin
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
+
+		add_action( 'admin_init', array( $this, 'show_user_what_we_got' ) );
 	}
 
 	/**
@@ -79,6 +86,37 @@ final class Mighty_Addons {
 	 */
 	public function i18n() {
 		load_plugin_textdomain( 'mighty' );
+	}
+
+
+	/**
+	 * Activate Mighty Addons.
+	 *
+	 * Set Mighty-Addons activation hook.
+	 *
+	 * Fired by `register_activation_hook` when the plugin is activated.
+	 *
+	 * @since 2.0.0
+	 * @access public
+	 */
+	public function mighty_addons_activation_redirect() {
+		add_option('activate_mighty_addons', true);
+	}
+
+	public function show_user_what_we_got() {
+
+		if ( ! did_action( 'elementor/loaded' ) ) {
+			add_action( 'admin_notices', array( $this, 'admin_notice_missing_main_plugin' ) );
+			return;
+		} elseif ( get_option('activate_mighty_addons', false) ) {
+			
+			delete_option('activate_mighty_addons');
+			if(!isset($_GET['activate-multi']))
+			{
+				wp_safe_redirect( admin_url( 'admin.php?page=mighty-addons-home' ) );
+			}
+		}
+
 	}
 
 	/**
@@ -119,8 +157,22 @@ final class Mighty_Addons {
 			return;
 		}
 
-		// Once we get here, We have passed all validation checks so we can safely include our plugin
-		require_once( 'classes/mighty-elementor.php' );
+		// Say hello to my little friend - Helper
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/class-helper-functions.php' );
+
+		// From the depths, a magical window has opened including our plugin!
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/mighty-elementor.php' );
+		
+		// Including Admin Widget
+		if ( is_admin() ) {
+
+			require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/panel.php' );
+			
+			$dashboard = new DashboardPanel;
+			$widgets = $dashboard->get_enabled_addons();
+			
+			update_option( 'mighty_addons_status', $widgets );
+        }
 	}
 
 	/**

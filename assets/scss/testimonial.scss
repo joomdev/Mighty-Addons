@@ -1,0 +1,36 @@
+.mighty-testimonial {
+   text-align: center;
+}
+
+.mighty-testimonial .mt-testimonial-avatar {
+   justify-content: center;
+}
+
+.mighty-testimonial .mt-testimonial-avatar img {
+   width: 100px;
+   height: 100px;
+   border-radius: 100%;
+   margin: auto;
+}
+
+.mighty-testimonial-wrapper .prev-icon {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 0;
+   z-index: 5;
+   cursor: pointer;
+}
+
+.mighty-testimonial-wrapper .next-icon {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   right: 0;
+   z-index: 5;
+   cursor: pointer;
+}
+
+.mighty-testimonial-wrapper .mt-person-testimonial blockquote {
+   font-size: 20px;
+}

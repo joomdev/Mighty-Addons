@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  */
-class MT_BeforeAfter extends Widget_Base {
+class MT_Beforeafter extends Widget_Base {
 	
 	public function get_name() {
 		return 'mt-before-after';
@@ -65,16 +65,6 @@ class MT_BeforeAfter extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
-                'before_alt_text',
-                [
-                    'label' => __( 'Alt Text', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::TEXT,
-                    'default' => __( 'Before', 'mighty' ),
-                    'placeholder' => __( 'Type your title here', 'mighty' ),
-                ]
-            );
-
             $this->add_group_control(
                 Group_Control_Image_Size::get_type(),
                 [
@@ -112,16 +102,6 @@ class MT_BeforeAfter extends Widget_Base {
                     'default' => [
                         'url' => Utils::get_placeholder_image_src(),
                     ],
-                ]
-            );
-
-            $this->add_control(
-                'after_alt_text',
-                [
-                    'label' => __( 'Alt Text', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::TEXT,
-                    'default' => __( 'After', 'mighty' ),
-                    'placeholder' => __( 'Type your title here', 'mighty' ),
                 ]
             );
 
@@ -163,33 +143,6 @@ class MT_BeforeAfter extends Widget_Base {
                     'options' => [
                         'horizontal'  => __( 'Horizontal', 'mighty' ),
                         'vertical' => __( 'Vertical', 'mighty' ),
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'beforeafter_alignment',
-                [
-                    'label' => __( 'Alignment', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
-                        ],
-                        'center' => [
-                            'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'fa fa-align-center',
-                        ],
-                        'right' => [
-                            'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
-                        ],
-                    ],
-                    'default' => 'center',
-                    'toggle' => true,
-                    'selectors' => [
-                        '{{WRAPPER}} .mighty-before-after' => 'text-align: {{VALUE}}',
                     ],
                 ]
             );
@@ -276,10 +229,12 @@ class MT_BeforeAfter extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
+                    'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-before-after .twentytwenty-handle' => 'border-color: {{VALUE}}',
                         '{{WRAPPER}} .mighty-before-after .twentytwenty-handle:before' => 'background: {{VALUE}}; box-shadow: 0 3px 0 {{VALUE}}, 0px 0px 12px rgba(51, 51, 51, 0.5);',
                         '{{WRAPPER}} .mighty-before-after .twentytwenty-handle:after' => 'background: {{VALUE}}; box-shadow: 0 3px 0 {{VALUE}}, 0px 0px 12px rgba(51, 51, 51, 0.5);',
+                        '{{WRAPPER}} .mighty-before-after .twentytwenty-handle i' => 'color: {{VALUE}};',
                     ],
                 ]
             );
@@ -335,15 +290,15 @@ class MT_BeforeAfter extends Widget_Base {
             );
 
             $this->add_control(
-                'triangle_size',
+                'arrows_size',
                 [
-                    'label' => __( 'Triangle Size', 'mighty' ),
+                    'label' => __( 'Arrows Size', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ 'px' ],
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 1000,
+                            'max' => 100,
                         ]
                     ],
                     'default' => [
@@ -489,15 +444,26 @@ class MT_BeforeAfter extends Widget_Base {
             <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'before_image_size', 'before_image' ); ?>
             <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'after_image_size', 'after_image' ); ?>
 
-            <?php if ( $settings['enable_overlay'] == false) { ?>
+            <?php if ( $settings['enable_overlay'] == false ) { ?>
                 <div class="inverted-overlay">
                     <div class="twentytwenty-before-label" data-content="Before"></div>
                     <div class="twentytwenty-after-label" data-content="After"></div>
-                </div
+                </div>
             <?php } ?>
 
         </div>
-    <?php
+
+        <?php if ( $settings['enable_overlay'] == false ) { ?>
+            <style>
+            .elementor-widget-mt-before-after .mighty-before-after .twentytwenty-overlay:hover {
+                background: transparent !important;
+            }
+            
+            .elementor-widget-mt-before-after .mighty-before-after .inverted-overlay:hover {
+                background: transparent !important;
+            }
+            </style>
+        <?php }
 	}
 	
 	protected function _content_template() {

@@ -167,7 +167,7 @@ class MT_Counter extends Widget_Base {
 				[
 					'label' => __( 'Icon Spacing', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
-					'size_units' => [ 'px' ],
+					'size_units' => [ 'px', '%' ],
 					'range' => [
 						'px' => [
 							'min' => 0,
@@ -179,7 +179,7 @@ class MT_Counter extends Widget_Base {
 						'size' => 0,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mtcounter-content' => 'margin: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 					],
 					'condition' => [
 						'show_counter_icon' => 'yes'
@@ -204,7 +204,7 @@ class MT_Counter extends Widget_Base {
 						'size' => 40,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'font-size: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
 					],
 				]
             );
@@ -365,7 +365,7 @@ class MT_Counter extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		
-		$counter = '<div class="counter"> ' .
+		$counter =	'<div class="counter"> ' .
 						( !empty($settings['number_prefix']) ? '<span class="count-prefix">'. $settings['number_prefix'] .'</span>' : '') .
 
 						'<span class="count" data-num-separator="'. $settings['number_separator'] .'" data-start-number="'. $settings['starting_number'] .'" data-end-number="'. $settings['ending_number'] .'" data-animation="'. $settings['mtanimation_duration'] .'">'. $settings['ending_number'] .'</span>' .
@@ -389,7 +389,7 @@ class MT_Counter extends Widget_Base {
 					echo $counter;
 				}
 
-				echo '<h2 class="counter-title">'. $settings['counter_title'] .'</h2>';
+				echo '<div class="counter-title">'. $settings['counter_title'] .'</div>';
 				
 				// For counter position below title
 				if ( 'below' === $settings['counter_position'] ) {

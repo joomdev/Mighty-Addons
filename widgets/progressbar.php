@@ -201,7 +201,7 @@ class MT_Progressbar extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 8,
+						'size' => 10,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .progress-bar' => 'height: {{SIZE}}{{UNIT}}',
@@ -223,7 +223,7 @@ class MT_Progressbar extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 10,
+						'size' => 5,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-progressbar .progress-bar:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
@@ -260,7 +260,7 @@ class MT_Progressbar extends Widget_Base {
 				[
 					'name' => 'border_type',
 					'label' => __( 'Border', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-progressbar',
+					'selector' => '{{WRAPPER}} .mighty-progressbar .progress-bar',
 				]
 			);
 
@@ -271,7 +271,7 @@ class MT_Progressbar extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-progressbar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-progressbar .progress-bar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
 			);
@@ -318,10 +318,7 @@ class MT_Progressbar extends Widget_Base {
                     'name' => 'mighty_title_typography',
                     'label' => __( 'Typography', 'mighty' ),
 					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-					'selectors' => [
-						'{{WRAPPER}} .mighty-progressbar .progressbar-title',
-						'{{WRAPPER}} .mighty-progressbar .percentage',
-					]
+					'selector' => '{{WRAPPER}} .mighty-progressbar .progressbar-details *',
 				]
             );
 
@@ -349,26 +346,40 @@ class MT_Progressbar extends Widget_Base {
         echo '<div class="mighty-progressbar">';
         foreach ( $settings['mt_progressbar_list'] as $progressbar ) :
 
-			echo '<div class="progressbar-details">';
-				if ( $settings['mt_title_position'] === 'outside' ) {
-					echo '<div class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</div>';
-				}
+			if ( $settings['mt_title_position'] === 'outside' || $settings['mt_percentage_position'] === 'outside' ) {
 
-				if ( $settings['mt_percentage_position'] === 'outside' ) {
-					echo '<div class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</div>';
-				}
-			echo '</div>';
+				echo '<div class="progressbar-details">';
+
+					if ( $settings['mt_title_position'] === 'outside' ) {
+						echo '<div class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</div>';
+					}
+
+					if ( $settings['mt_percentage_position'] === 'outside' ) {
+						echo '<div class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</div>';
+					}
+
+				echo '</div>';
+
+			}
 
             echo '<div class="progress-bar'. (($animation===true) ? ' animated' : '') .''. (($striped===true) ? ' striped' : '') .' elementor-repeater-item-'. $progressbar['_id'] . '">';
 
 			echo '<div class="progressbar">';
 
-				if ( $settings['mt_title_position'] === 'inside' ) {
-					echo '<div class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</div>';
-				}
+				if ( $settings['mt_title_position'] === 'inside' || $settings['mt_percentage_position'] === 'inside' ) {
+					
+					echo '<div class="progressbar-details">';
 
-				if ( $settings['mt_percentage_position'] === 'inside' ) {
-					echo '<div class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</div>';
+					if ( $settings['mt_title_position'] === 'inside' ) {
+						echo '<div class="progressbar-title">'. $progressbar['mt_progressbar_title'] . '</div>';
+					}
+	
+					if ( $settings['mt_percentage_position'] === 'inside' ) {
+						echo '<div class="progressbar-percentage">' . ( ($percentage===true) ? $progressbar['mt_progressbar_value']['size'] . $progressbar['mt_progressbar_value']['unit'] .'' : '' ) .'</div>';
+					}
+
+					echo '</div>';
+
 				}
 			
             echo '</div>';	# .progressbar

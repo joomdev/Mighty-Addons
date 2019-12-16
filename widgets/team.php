@@ -10,6 +10,7 @@ use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
+use Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -95,7 +96,7 @@ class MT_Team extends Widget_Base {
 						'active' => true,
 					],
 					'rows' => '10',
-					'default' => 'Lorem Ipsum dolor sit amet.',
+					'default' => 'I\'m cool and I know it.',
 				]
 			);
 
@@ -107,178 +108,204 @@ class MT_Team extends Widget_Base {
             [
                 'label' => __( 'Social Profiles', 'mighty' ),
             ]
-        );
+		);
 
-            $repeater = new Repeater();
-
-            $repeater->add_control(
-                'mt_social_title',
-                [
-                    'label'   => __( 'Title', 'mighty' ),
-                    'type'    => Controls_Manager::TEXT,
-                    'default' => 'Facebook',
-                ]
-            );
-
-            $repeater->add_control(
-                'mt_social_link',
-                [
-                    'label'   => __( 'Link', 'mighty' ),
-                    'type'    => Controls_Manager::TEXT,
-                    'default' => __( '#', 'mighty' ),
-                ]
-            );
-			
-			$repeater->add_control(
-				'mt_social_icon',
+			$this->add_control(
+				'show_social_icons',
 				[
-					'label' => __( 'Icon', 'elementor' ),
-					'type' => Controls_Manager::ICONS,
-					'fa4compatibility' => 'social',
-					'label_block' => true,
-					'default' => [
-						'value' => 'fab fa-facebook',
-						'library' => 'fa-brands',
-					],
-					'recommended' => [
-						'fa-brands' => [
-							'android',
-							'apple',
-							'behance',
-							'bitbucket',
-							'codepen',
-							'delicious',
-							'deviantart',
-							'digg',
-							'dribbble',
-							'elementor',
-							'facebook',
-							'flickr',
-							'foursquare',
-							'free-code-camp',
-							'github',
-							'gitlab',
-							'globe',
-							'google-plus',
-							'houzz',
-							'instagram',
-							'jsfiddle',
-							'linkedin',
-							'medium',
-							'meetup',
-							'mixcloud',
-							'odnoklassniki',
-							'pinterest',
-							'product-hunt',
-							'reddit',
-							'shopping-cart',
-							'skype',
-							'slideshare',
-							'snapchat',
-							'soundcloud',
-							'spotify',
-							'stack-overflow',
-							'steam',
-							'stumbleupon',
-							'telegram',
-							'thumb-tack',
-							'tripadvisor',
-							'tumblr',
-							'twitch',
-							'twitter',
-							'viber',
-							'vimeo',
-							'vk',
-							'weibo',
-							'weixin',
-							'whatsapp',
-							'wordpress',
-							'xing',
-							'yelp',
-							'youtube',
-							'500px',
-						],
-						'fa-solid' => [
-							'envelope',
-							'link',
-							'rss',
-						],
-					],
+					'label' => __( 'Show Social Icons', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => __( 'Show', 'mighty' ),
+					'label_off' => __( 'Hide', 'mighty' ),
+					'return_value' => 'yes',
+					'default' => 'yes',
 				]
 			);
 
-            $repeater->add_control(
-                'mt_icon_color',
-                [
-                    'label'     => __( 'Icon Color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUES}}',
-						'{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'fill: {{VALUES}}',
+            $repeater = new Repeater();
+
+				$repeater->add_control(
+					'mt_social_title',
+					[
+						'label'   => __( 'Title', 'mighty' ),
+						'type'    => Controls_Manager::TEXT,
+						'default' => 'Facebook',
 					]
-                ]
-            );
+				);
 
-            $repeater->add_control(
-                'mt_icon_background',
-                [
-                    'label'     => __( 'Icon Background', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'background-color: {{VALUES}}'
+				$repeater->add_control(
+					'mt_social_link',
+					[
+						'label'   => __( 'Link', 'mighty' ),
+						'type'    => Controls_Manager::TEXT,
+						'default' => __( '#', 'mighty' ),
 					]
-                ]
-            );
-
-            $repeater->add_control(
-                'mt_icon_hover_color',
-                [
-                    'label'     => __( 'Icon Hover Color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'color: {{VALUES}}'
+				);
+				
+				$repeater->add_control(
+					'mt_social_icon',
+					[
+						'label' => __( 'Icon', 'elementor' ),
+						'type' => Controls_Manager::ICONS,
+						'recommended' => [
+							'fa-brands' => [
+								'android',
+								'apple',
+								'behance',
+								'bitbucket',
+								'codepen',
+								'delicious',
+								'deviantart',
+								'digg',
+								'dribbble',
+								'elementor',
+								'facebook',
+								'flickr',
+								'foursquare',
+								'free-code-camp',
+								'github',
+								'gitlab',
+								'globe',
+								'google-plus',
+								'houzz',
+								'instagram',
+								'jsfiddle',
+								'linkedin',
+								'medium',
+								'meetup',
+								'mixcloud',
+								'odnoklassniki',
+								'pinterest',
+								'product-hunt',
+								'reddit',
+								'shopping-cart',
+								'skype',
+								'slideshare',
+								'snapchat',
+								'soundcloud',
+								'spotify',
+								'stack-overflow',
+								'steam',
+								'stumbleupon',
+								'telegram',
+								'thumb-tack',
+								'tripadvisor',
+								'tumblr',
+								'twitch',
+								'twitter',
+								'viber',
+								'vimeo',
+								'vk',
+								'weibo',
+								'weixin',
+								'whatsapp',
+								'wordpress',
+								'xing',
+								'yelp',
+								'youtube',
+								'500px',
+							],
+							'fa-solid' => [
+								'envelope',
+								'link',
+								'rss',
+							],
+						],
 					]
-                ]
-            );
+				);
 
-            $repeater->add_control(
-                'mt_icon_hover_background',
-                [
-                    'label'     => __( 'Icon Hover Background', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'background-color: {{VALUES}}'
+				$repeater->add_control(
+					'mt_icon_color',
+					[
+						'label'     => __( 'Icon Color', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUES}}',
+							'{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'fill: {{VALUES}}',
+						]
 					]
-                ]
-            );
+				);
 
-            $repeater->add_control(
-                'mt_icon_hover_border_color',
-                [
-                    'label'     => __( 'Icon Hover border color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'border-color: {{VALUES}}'
+				$repeater->add_control(
+					'mt_icon_background',
+					[
+						'label'     => __( 'Icon Background', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'background-color: {{VALUES}}'
+						]
 					]
-                ]
-            );
+				);
 
-            $this->add_control(
-                'mt_team_social_link_list',
-                [
-                    'type'    => Controls_Manager::REPEATER,
-                    'fields'  => array_values( $repeater->get_controls() ),
-                    'default' => [
+				$repeater->add_control(
+					'mt_icon_hover_color',
+					[
+						'label'     => __( 'Icon Hover Color', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'color: {{VALUES}}'
+						]
+					]
+				);
 
-                        [
-                            'mt_social_title'      => 'Facebook',
-                            'mt_social_icon'       => 'fab fa-facebook-f',
-                            'mt_social_link'       => __( '#', 'mighty' ),
-                        ],
-					],
-					'title_field' => '{{{ mt_social_title }}}',
-                ]
-            );
+				$repeater->add_control(
+					'mt_icon_hover_background',
+					[
+						'label'     => __( 'Icon Hover Background', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'background-color: {{VALUES}}'
+						]
+					]
+				);
+
+				$repeater->add_control(
+					'mt_icon_hover_border_color',
+					[
+						'label'     => __( 'Icon Hover border color', 'mighty' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} {{CURRENT_ITEM}} i:hover' => 'border-color: {{VALUES}}'
+						]
+					]
+				);
+
+				$this->add_control(
+					'mt_team_social_link_list',
+					[
+						'type'    => Controls_Manager::REPEATER,
+						'fields'  => $repeater->get_controls(),
+						'default' => [
+							[
+								'mt_social_title'      => __( 'Facebook', 'mighty' ),
+								'mt_social_icon'       => [
+									'value' => 'fab fa-facebook',
+									'library' => 'fa-brands',
+								],
+								'mt_social_link'       => __( '#', 'mighty' ),
+							],
+							[
+								'mt_social_title'      => __( 'Twitter', 'mighty' ),
+								'mt_social_icon'       => [
+									'value' => 'fab fa-twitter',
+									'library' => 'fa-brands',
+								],
+								'mt_social_link'       => __( '#', 'mighty' ),
+							],
+							[
+								'mt_social_title'      => __( 'LinkedIn', 'mighty' ),
+								'mt_social_icon'       => [
+									'value' => 'fab fa-linkedin-in',
+									'library' => 'fa-brands',
+								],
+								'mt_social_link'       => __( '#', 'mighty' ),
+							],
+						],
+						'title_field' => '{{{ mt_social_title }}}',
+					]
+				);
+				
+			$repeater->end_controls_tabs();
 
         $this->end_controls_section();
 
@@ -290,13 +317,33 @@ class MT_Team extends Widget_Base {
 			]
 		);
 
-			$this->add_group_control(
-				Group_Control_Background::get_type(),
+			$this->add_responsive_control(
+				'team_align',
 				[
-					'name' => 'team_background',
-					'label' => __( 'Background', 'mighty' ),
-					'types' => [ 'classic', 'gradient' ],
-					'selector' => '{{WRAPPER}} .mighty-team',
+					'label' => __( 'Alignment', 'mighty' ),
+					'type' => Controls_Manager::CHOOSE,
+					'options' => [
+						'left' => [
+							'title' => __( 'Left', 'mighty' ),
+							'icon' => 'fa fa-align-left',
+						],
+						'center' => [
+							'title' => __( 'Center', 'mighty' ),
+							'icon' => 'fa fa-align-center',
+						],
+						'right' => [
+							'title' => __( 'Right', 'mighty' ),
+							'icon' => 'fa fa-align-right',
+						],
+						'justify' => [
+							'title' => __( 'Justified', 'mighty' ),
+							'icon' => 'fa fa-align-justify',
+						],
+					],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-team' => 'text-align: {{VALUE}};',
+					],
+					'default' => 'center',
 				]
 			);
 
@@ -319,13 +366,13 @@ class MT_Team extends Widget_Base {
 					'size_units' => [ 'px' ],
 					'range' => [
 						'px' => [
-							'min' => 1,
+							'min' => 0,
 							'max' => 200,
 						],
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 1,
+						'size' => 15,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'margin-bottom: {{SIZE}}{{UNIT}}',
@@ -347,7 +394,7 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 0,
+						'size' => 15,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'border-radius: {{SIZE}}{{UNIT}}',
@@ -378,37 +425,6 @@ class MT_Team extends Widget_Base {
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .avatar-wrapper img' => 'width: {{SIZE}}{{UNIT}}',
 					],
-				]
-			);
-
-			$this->add_responsive_control(
-				'team_image_align',
-				[
-					'label' => __( 'Alignment', 'mighty' ),
-					'type' => Controls_Manager::CHOOSE,
-					'options' => [
-						'left' => [
-							'title' => __( 'Left', 'mighty' ),
-							'icon' => 'fa fa-align-left',
-						],
-						'center' => [
-							'title' => __( 'Center', 'mighty' ),
-							'icon' => 'fa fa-align-center',
-						],
-						'right' => [
-							'title' => __( 'Right', 'mighty' ),
-							'icon' => 'fa fa-align-right',
-						],
-						'justify' => [
-							'title' => __( 'Justified', 'mighty' ),
-							'icon' => 'fa fa-align-justify',
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .mighty-team .avatar-wrapper' => 'text-align: {{VALUE}};',
-					],
-					'default' => 'center',
-					'separator' =>'before',
 				]
 			);
 
@@ -492,37 +508,6 @@ class MT_Team extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
-				'team_name_align',
-				[
-					'label' => __( 'Alignment', 'mighty' ),
-					'type' => Controls_Manager::CHOOSE,
-					'options' => [
-						'left' => [
-							'title' => __( 'Left', 'mighty' ),
-							'icon' => 'fa fa-align-left',
-						],
-						'center' => [
-							'title' => __( 'Center', 'mighty' ),
-							'icon' => 'fa fa-align-center',
-						],
-						'right' => [
-							'title' => __( 'Right', 'mighty' ),
-							'icon' => 'fa fa-align-right',
-						],
-						'justify' => [
-							'title' => __( 'Justified', 'mighty' ),
-							'icon' => 'fa fa-align-justify',
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .mighty-team .person-name' => 'text-align: {{VALUE}};',
-					],
-					'default' => 'center',
-					'separator' =>'before',
-				]
-			);
-
 		$this->end_controls_section();
 
 		// Designation Styling
@@ -568,7 +553,7 @@ class MT_Team extends Widget_Base {
 						'type' => Scheme_Color::get_type(),
 						'value' => Scheme_Color::COLOR_1,
 					],
-					'default' => '#343434',
+					'default' => '#999A9C',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .person-designation' => 'color: {{VALUE}};',
 					],
@@ -581,37 +566,6 @@ class MT_Team extends Widget_Base {
 					'name' => 'team_designation_typography',
 					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-team .person-designation',
-				]
-			);
-
-			$this->add_responsive_control(
-				'team_designation_align',
-				[
-					'label' => __( 'Alignment', 'mighty' ),
-					'type' => Controls_Manager::CHOOSE,
-					'options' => [
-						'left' => [
-							'title' => __( 'Left', 'mighty' ),
-							'icon' => 'fa fa-align-left',
-						],
-						'center' => [
-							'title' => __( 'Center', 'mighty' ),
-							'icon' => 'fa fa-align-center',
-						],
-						'right' => [
-							'title' => __( 'Right', 'mighty' ),
-							'icon' => 'fa fa-align-right',
-						],
-						'justify' => [
-							'title' => __( 'Justified', 'mighty' ),
-							'icon' => 'fa fa-align-justify',
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .mighty-team .person-designation' => 'text-align: {{VALUE}};',
-					],
-					'default' => 'center',
-					'separator' =>'before',
 				]
 			);
 
@@ -643,11 +597,14 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 0,
+						'size' => 25,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .person-about' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 					],
+					'condition' => [
+						'mt_icon_position' => 'after-bio'
+					]
 				]
 			);
 
@@ -676,37 +633,6 @@ class MT_Team extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
-				'team_about_align',
-				[
-					'label' => __( 'Alignment', 'mighty' ),
-					'type' => Controls_Manager::CHOOSE,
-					'options' => [
-						'left' => [
-							'title' => __( 'Left', 'mighty' ),
-							'icon' => 'fa fa-align-left',
-						],
-						'center' => [
-							'title' => __( 'Center', 'mighty' ),
-							'icon' => 'fa fa-align-center',
-						],
-						'right' => [
-							'title' => __( 'Right', 'mighty' ),
-							'icon' => 'fa fa-align-right',
-						],
-						'justify' => [
-							'title' => __( 'Justified', 'mighty' ),
-							'icon' => 'fa fa-align-justify',
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .mighty-team .person-about' => 'text-align: {{VALUE}};',
-					],
-					'default' => 'center',
-					'separator' =>'before',
-				]
-			);
-
 		$this->end_controls_section();
 
 		// Social Icons Styling
@@ -732,7 +658,7 @@ class MT_Team extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 15,
+						'size' => 18,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'font-size: {{SIZE}}{{UNIT}}',
@@ -743,53 +669,22 @@ class MT_Team extends Widget_Base {
 			$this->add_responsive_control(
 				'team_socialicons_margin',
 				[
-					'label' => __( 'Spacing', 'mighty' ),
+					'label' => __( 'Spacing Between Icons', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
 					'size_units' => [ 'px', 'em', 'rem' ],
 					'range' => [
 						'px' => [
-							'min' => 1,
+							'min' => 0,
 							'max' => 200,
 						],
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 1,
+						'size' => 10,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'margin: 0 {{SIZE}}{{UNIT}}',
 					],
-				]
-			);
-
-			$this->add_responsive_control(
-				'team_socialicons_align',
-				[
-					'label' => __( 'Alignment', 'mighty' ),
-					'type' => Controls_Manager::CHOOSE,
-					'options' => [
-						'left' => [
-							'title' => __( 'Left', 'mighty' ),
-							'icon' => 'fa fa-align-left',
-						],
-						'center' => [
-							'title' => __( 'Center', 'mighty' ),
-							'icon' => 'fa fa-align-center',
-						],
-						'right' => [
-							'title' => __( 'Right', 'mighty' ),
-							'icon' => 'fa fa-align-right',
-						],
-						'justify' => [
-							'title' => __( 'Justified', 'mighty' ),
-							'icon' => 'fa fa-align-justify',
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .mighty-team .social-icons-wrapper' => 'text-align: {{VALUE}};',
-					],
-					'default' => 'center',
-					'separator' =>'before',
 				]
 			);
 			
@@ -803,6 +698,34 @@ class MT_Team extends Widget_Base {
 						'before-bio'  => __( 'Before Bio', 'mighty' ),
 						'after-bio' => __( 'After Bio', 'mighty' ),
 					],
+					'condition' => [
+						'show_social_icons' => 'yes',
+					]
+				]
+			);
+
+			$this->add_responsive_control(
+				'team_icons_spacing',
+				[
+					'label' => __( 'Spacing', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px', 'em', 'rem' ],
+					'range' => [
+						'px' => [
+							'min' => 1,
+							'max' => 200,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 0,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-team .social-icons-wrapper' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+					],
+					'condition' => [
+						'mt_icon_position' => 'before-bio'
+					]
 				]
 			);
 
@@ -879,51 +802,26 @@ class MT_Team extends Widget_Base {
 					],
                 ]
 			);
-			
-			$this->add_control(
-				'mt_border_style',
+
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
 				[
-					'label' => __( 'Border Style', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'none',
-					'options' => [
-						'none'  => __( 'None', 'mighty' ),
-						'border-solid' => __( 'Solid', 'mighty' ),
-						'border-dashed' => __( 'Dashed', 'mighty' ),
-						'border-dotted' => __( 'Dotted', 'mighty' ),
-						'border-double' => __( 'Double', 'mighty' ),
-						'border-groove' => __( 'Groove', 'mighty' ),
-					],
+					'name' => 'avatar_border',
+					'label' => __( 'Border Type', 'mighty' ),
+					'selector' => '{{WRAPPER}} .mighty-team .social-icons-wrapper a i',
 				]
 			);
 
 			$this->add_control(
-				'mt_border_width',
+				'mt_border_radius',
 				[
-					'label' => __( 'Border Width', 'mighty' ),
+					'label' => __( 'Border Radius', 'mighty' ),
 					'type' => Controls_Manager::DIMENSIONS,
-					'size_units' => [ 'px', '%', 'em' ],
+					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					],
-					'condition' => [
-						'mt_border_style!' => 'none'
+						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					]
 				]
-			);
-
-			$this->add_control(
-                'mt_border_color',
-                [
-                    'label'     => __( 'Border Color', 'mighty' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'border-color: {{VALUES}}'
-					],
-					'condition' => [
-						'mt_border_style!' => 'none'
-					],
-                ]
 			);
 
 			$this->add_control(
@@ -941,14 +839,14 @@ class MT_Team extends Widget_Base {
 			);
 
 			$this->add_control(
-				'mt_border_radius',
+				'icons_padding',
 				[
-					'label' => __( 'Border Radius', 'mighty' ),
+					'label' => __( 'Padding', 'mighty' ),
 					'type' => Controls_Manager::DIMENSIONS,
-					'size_units' => [ 'px', '%', 'em' ],
+					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					]
+						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
 				]
 			);
 
@@ -972,19 +870,23 @@ class MT_Team extends Widget_Base {
 				echo '<div class="person-designation">' . $settings['designation'] . '</div>';
 			}
 			
-			if ( $settings['mt_icon_position'] == "after-bio") {
+			if ( $settings['mt_icon_position'] == "after-bio" || $settings['show_social_icons'] !== "yes" ) {
 				if ( $settings['about'] !== "" ) {
 					echo '<div class="person-about">' . $settings['about'] . '</div>';
 				}
 			}
-			echo '<ul class="social-icons-wrapper">';
-				foreach ( $settings['mt_team_social_link_list'] as $socialprofile ) :
-					echo '<li class="elementor-repeater-item-'. $socialprofile['_id'] .'" >
-					<a href="'. esc_url( $socialprofile['mt_social_link'] ) .'">';
-					\Elementor\Icons_Manager::render_icon( $socialprofile['mt_social_icon'], [ 'aria-hidden' => 'true', 'class' => $settings['mt_border_style'] ] );
-					echo '</a></li>';
-				endforeach;
-			echo '</ul>';
+
+			if ( $settings['show_social_icons'] == "yes" ) {
+				echo '<ul class="social-icons-wrapper">';
+					foreach ( $settings['mt_team_social_link_list'] as $socialprofile ) :
+						echo '<li class="elementor-repeater-item-'. $socialprofile['_id'] .'" >
+						<a href="'. esc_url( $socialprofile['mt_social_link'] ) .'">';
+						\Elementor\Icons_Manager::render_icon( $socialprofile['mt_social_icon'], [ 'aria-hidden' => 'true' ] );
+						echo '</a></li>';
+					endforeach;
+				echo '</ul>';
+			}
+			
 			if ( $settings['mt_icon_position'] == "before-bio") {
 				if ( $settings['about'] !== "" ) {
 					echo '<div class="person-about">' . $settings['about'] . '</div>';

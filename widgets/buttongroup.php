@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  */
-class MT_ButtonGroup extends Widget_Base {
+class MT_Buttongroup extends Widget_Base {
 	
 	public function get_name() {
 		return 'mt-buttongroup';
@@ -280,10 +280,10 @@ class MT_ButtonGroup extends Widget_Base {
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'default' => [
-                            'top' =>  '5',
-                            'right' => '30',
-                            'bottom' => '5',
-                            'left' => '30',
+                            'top' =>  '15',
+                            'right' => '25',
+                            'bottom' => '15',
+                            'left' => '25',
                         ],
                         'selectors' => [
                             '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -328,13 +328,13 @@ class MT_ButtonGroup extends Widget_Base {
                                 'button_text' => __('Click Here', 'mighty'),
                                 'button_link' => '#',
                                 'button_size' => 'ma-btn-md',
-                                'buttongroup_bg_color' => '#f96b77',
+                                'buttongroup_bg_color' => '#5F6AE6',
                             ],
                             [
-                                'button_text' => __('Click Here', 'mighty'),
+                                'button_text' => __('No, click here', 'mighty'),
                                 'button_link' => '#',
                                 'button_size' => 'ma-btn-md',
-                                'buttongroup_bg_color' => '#a652de',
+                                'buttongroup_bg_color' => '#2FCC71',
                             ],
                         ],
                         'title_field' => '{{{ button_text }}}',
@@ -362,15 +362,8 @@ class MT_ButtonGroup extends Widget_Base {
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 50,
+                            'max' => 100,
                         ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 10,
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .mighty-buttongroup .mt-button:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -445,8 +438,46 @@ class MT_ButtonGroup extends Widget_Base {
         endforeach;
         
         echo '</div>'; // .mighty-buttongroup
+        ?>
         
+                        
+        <?php 
         
+        $margin = $settings['space_between_buttons']['size'] ? $settings['space_between_buttons']['size'] : '10';
+        $margin .= $settings['space_between_buttons']['unit'];
+        $stacking = strip_tags($settings['buttongroup_stack_on']);
+
+        if( strcmp("stack-on-desktop", $stacking) == 0 ) { ?>
+		<style>
+            .stack-on-desktop.mighty-buttongroup .mt-button:not(:last-child) {
+                margin-bottom: <?php echo $margin; ?>;
+            }
+        </style>
+        <?php } elseif( strcmp("stack-on-tablet", $stacking) == 0 ) { ?>
+            <style>
+                @media only screen and (max-width: 991px) {
+                    .stack-on-tablet.mighty-buttongroup .mt-button:not(:last-child) {
+                        margin-bottom: <?php echo $margin; ?>;
+                    }
+                }
+            </style>
+        <?php } elseif( strcmp("stack-on-mobile", $stacking) == 0 ) { ?>
+            <style>
+                @media only screen and (max-width: 767px) {
+                    .stack-on-mobile.mighty-buttongroup .mt-button:not(:last-child) {
+                        margin-bottom: <?php echo $margin; ?>;
+                    }
+                }
+            </style>
+        <?php } elseif( strcmp($stacking, "none") == 0 ) { ?>
+            <style>
+                .mighty-buttongroup .mt-button:not(:last-child) {
+                    margin-right: <?php echo $margin; ?>;
+                }
+            </style>
+        <?php } ?>
+        
+        <?php
 	}
 	
 	protected function _content_template() {

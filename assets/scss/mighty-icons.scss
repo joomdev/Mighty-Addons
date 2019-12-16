@@ -1,0 +1,66 @@
+@font-face {
+   font-family: 'mighty-fonts';
+   src: url('./mighty-fonts/mighty-fonts.eot?d4igb4');
+   src: url('./mighty-fonts/mighty-fonts.eot?d4igb4#iefix') format('embedded-opentype'),
+       url('./mighty-fonts/mighty-fonts.ttf?d4igb4') format('truetype'),
+       url('./mighty-fonts/mighty-fonts.woff?d4igb4') format('woff'),
+       url('./mighty-fonts/mighty-fonts.svg?d4igb4#mighty-fonts') format('svg');
+   font-weight: normal;
+   font-style: normal;
+   font-display: block;
+}
+
+.mf {
+   /* use !important to prevent issues with browser extensions that change fonts */
+   font-family: 'mighty-fonts' !important;
+   speak: none;
+   font-style: normal;
+   font-weight: normal;
+   font-variant: normal;
+   text-transform: none;
+   line-height: 1;
+
+   /* Better Font Rendering =========== */
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+.mf-button:before {
+   content: "\e900";
+}
+
+.mf-accordion:before {
+   content: "\e901";
+}
+
+.mf-beforeafter:before {
+   content: "\e902";
+}
+
+.mf-counter:before {
+   content: "\e903";
+}
+
+.mf-flipbox:before {
+   content: "\e904";
+}
+
+.mf-heading:before {
+   content: "\e905";
+}
+
+.mf-openinghours:before {
+   content: "\e906";
+}
+
+.mf-progressbar:before {
+   content: "\e907";
+}
+
+.mf-team:before {
+   content: "\e908";
+}
+
+.mf-testimonial:before {
+   content: "\e909";
+}

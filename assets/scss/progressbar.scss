@@ -1,0 +1,77 @@
+.mighty-progressbar .progress-bar {
+   position: relative;
+   height: 20px;
+   background: #eee;
+   border-radius: 5px;
+   overflow: hidden;
+}
+
+.mighty-progressbar .progress-bar > .progressbar {
+   display: block;
+   position: absolute;
+   height: 100%;
+   border-radius: 4px;
+   overflow: hidden;
+}
+
+.mighty-progressbar .progress-bar.striped > .progressbar:after {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   background-image: linear-gradient(-45deg,
+           rgba(255, 255, 255, 0.2) 25%,
+           transparent 25%,
+           transparent 50%,
+           rgba(255, 255, 255, 0.2) 50%,
+           rgba(255, 255, 255, 0.2) 75%,
+           transparent 75%,
+           transparent);
+   background-size: 50px 50px;
+   overflow: hidden;
+}
+
+.mighty-progressbar .progress-bar.animated > .progressbar:after {
+   animation: move 2s linear infinite;
+}
+
+@keyframes move {
+   0% {
+       background-position: 0 0;
+   }
+
+   100% {
+       background-position: 50px 50px;
+   }
+}
+
+.mighty-progressbar .progressbar-percentage {
+   float: right;
+   margin-left: auto;
+}
+
+.mighty-progressbar .progressbar-details .progressbar-title,
+.mighty-progressbar .progressbar-details .progressbar-percentage {
+   margin: 0 5px;
+   line-height: 2;
+   font-weight: 400;
+   font-size: 2.1rem;
+}
+
+.mighty-progressbar .progress-bar .progressbar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row;
+}
+
+.mighty-progressbar .progress-bar .progressbar span {
+   margin: 0 5px;
+}
+
+.mighty-progressbar .progressbar-details {
+   display: flex;
+   justify-content: space-between;
+}
