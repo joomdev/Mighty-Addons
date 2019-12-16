@@ -105,7 +105,10 @@ final class Mighty_Addons {
 
 	public function show_user_what_we_got() {
 
-		if ( get_option('activate_mighty_addons', false) ) {
+		if ( ! did_action( 'elementor/loaded' ) ) {
+			add_action( 'admin_notices', array( $this, 'admin_notice_missing_main_plugin' ) );
+			return;
+		} elseif ( get_option('activate_mighty_addons', false) ) {
 			
 			delete_option('activate_mighty_addons');
 			if(!isset($_GET['activate-multi']))
