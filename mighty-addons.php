@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Mighty Addons
- * Description: Addons for elementor by MightyThemes.
+ * Description: <a href="https://mightythemes.com/products/mighty-addons/">Mighty Addons</a> is a Powerful Elementor Widget Plugin that comes with advanced & flexible features powering up your Elementor website and increasing your designing experience.
  * Plugin URI: https://mightythemes.com/products/mighty-addons/
  * Version:     1.2.0
- * Author:      MightyThemes1
+ * Author:      MightyThemes
  * Author URI:  https://mightythemes.com/
  * Text Domain: mighty
  */

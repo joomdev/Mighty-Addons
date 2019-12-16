@@ -340,7 +340,7 @@ class MT_Flipbox extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-front' => "text-align: {{VALUE}}",
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-front' => "text-align: {{VALUE}}; text-align: -webkit-{{VALUE}};",
                     ]
                 ]
             );
@@ -522,7 +522,7 @@ class MT_Flipbox extends Widget_Base {
                         'type' => \Elementor\Scheme_Color::get_type(),
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#fff',
+                    'default' => 'rgba(64, 84, 178, 0)',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon' => 'background-color: {{VALUE}}',
                     ],
@@ -841,7 +841,7 @@ class MT_Flipbox extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-back' => "text-align: {{VALUE}}",
+                        '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-back' => "text-align: {{VALUE}}; text-align: -webkit-{{VALUE}};",
                     ]
                 ]
             );

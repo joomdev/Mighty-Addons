@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.elementor-widget-mt-openinghours .elementor-widget-container {
+    overflow: hidden;
+}
+
 .ma-openinghours-wrapper .ma-oh-row {
     display: flex;
     justify-content: space-between;
