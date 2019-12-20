@@ -174,6 +174,7 @@ final class Mighty_Addons {
 			update_option( 'mighty_addons_status', $widgets );
 
 			// Including stuff for Library
+			require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-base.php' );
 			require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-elementor.php' );
         }
 	}

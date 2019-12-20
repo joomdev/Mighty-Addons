@@ -1,0 +1,22 @@
+.entry-title {
+    color: red !important;
+}
+.elementor-add-new-section {
+    background: red !important;
+}
+.elementor-add-new-section .elementor-add-mighty-button {
+    background-color: red !important;
+    margin-left: 5px;
+    background-image: url(../images/mighty-addons-logo.svg) !important;
+    background-repeat: no-repeat;
+    background-position: 48% 50%;
+    background-size: 17px auto;
+}
+
+.elementor-add-new-section .elementor-add-mighty-button i.fa {
+    visibility: hidden;
+}
+
+.elementor-add-new-section .elementor-add-section-area-button.elementor-add-mighty-button {
+    background: red;
+}
