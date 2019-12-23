@@ -10,6 +10,8 @@
 
 namespace Mighty_Addons;
 
+use Elementor\Plugin;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }

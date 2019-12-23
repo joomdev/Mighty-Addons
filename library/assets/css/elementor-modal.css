@@ -1,11 +1,5 @@
-.entry-title {
-    color: red !important;
-}
-.elementor-add-new-section {
-    background: red !important;
-}
 .elementor-add-new-section .elementor-add-mighty-button {
-    background-color: red !important;
+    background-color: #7226F0 !important;
     margin-left: 5px;
     background-image: url(../images/mighty-addons-logo.svg) !important;
     background-repeat: no-repeat;
@@ -18,5 +12,5 @@
 }
 
 .elementor-add-new-section .elementor-add-section-area-button.elementor-add-mighty-button {
-    background: red;
+    background: #7226F0;
 }
