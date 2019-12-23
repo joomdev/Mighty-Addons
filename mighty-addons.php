@@ -172,11 +172,10 @@ final class Mighty_Addons {
 			$widgets = $dashboard->get_enabled_addons();
 			
 			update_option( 'mighty_addons_status', $widgets );
+		}
 
-			// Including stuff for Library
-			require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-base.php' );
-			require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-elementor.php' );
-        }
+		// When in doubt go to the library - J.K. Rowling
+		$this->loadLibrary();
 	}
 
 	/**
@@ -283,6 +282,28 @@ final class Mighty_Addons {
 				'icon' => 'fas fa-ghost',
 			]
 		);
+	}
+
+	/**
+	 * MightyLibrary
+	 *
+	 * Library for Mighty Templates
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 */
+	public function loadLibrary() {
+		if ( ! did_action( 'elementor/loaded' ) ) {
+			add_action( 'admin_notices', __NAMESPACE__ . '\analog_fail_load' );
+			return;
+		} elseif ( ! version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
+			add_action( 'admin_notices', __NAMESPACE__ . '\analog_fail_wp_version' );
+			return;
+		}
+
+		// Including stuff for Library
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-base.php' );
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-elementor.php' );
 	}
 }
 
