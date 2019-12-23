@@ -3,10 +3,40 @@
 "undefined" != typeof jQuery && function ( $ ) {
     $(function () {
         function showStuff() {
-			alert('mighty library');
 			
+            if (elementorCommon) {
+                
+                window.mightyModal || (window.mightyModal = elementorCommon.dialogsManager.createWidget(
+                    "lightbox", {
+                        id: "mighty-library-modal",
+                        headerMessage: !1,
+                        message: "",
+                        hide: {
+                            auto: !1,
+                            onClick: !1,
+                            onOutsideClick: !1,
+                            onOutsideContextMenu: !1,
+                            onBackgroundClick: !0
+                        },
+                        position: {
+                            my: "center",
+                            at: "center"
+                        },
+                        onShow: function () {
+                            // alert('show');
+                            var content = window.mightyModal.getElements("content");
+                            content.append('<div id="mighty-library"><h1>Mighty Modal</h1></div>');
+                        },
+                        onHide: function () {
+                            // alert('hide');
+                            var e = window.mightyModal.getElements("content");
+                            window.ElementsReact && 0 < e.length && window.ElementsReact.elementor3rdPartyViewClose(e.get(0)), window.location.hash = ""
+                        }
+                }), window.mightyModal.getElements("header").remove(), window.mightyModal.getElements("message").append(window.mightyModal.addElement("content"))), window.mightyModal.show()
+            }
+            
         }
-        window.elementsModal = null;
+        window.mightyModal = null;
         var n = $("#tmpl-elementor-add-section");
         if (0 < n.length) {
             var t = n.text();
