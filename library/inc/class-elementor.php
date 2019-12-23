@@ -40,6 +40,13 @@ class Elementor extends base {
 		
 		wp_enqueue_style( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/css/elementor-modal.css', [], MIGHTY_ADDONS_VERSION );
 
+		// die(MIGHTY_ADDONS_PLG_URL . 'library\assets\js\library\build\static\js\2.81bc84e8.chunk.js');
+
+		wp_register_script( 'mighty-library-react', MIGHTY_ADDONS_PLG_URL . 'library/assets\js\library\build\static\js\2.81bc84e8.chunk.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
+
+		wp_enqueue_style( 'mighty-library-admin', MIGHTY_ADDONS_PLG_URL . 'library/assets\js\library\build\static\css\main.d1b05096.chunk.css', [], MIGHTY_ADDONS_VERSION );
+
+
 	}
 }
 
