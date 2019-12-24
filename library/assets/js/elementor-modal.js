@@ -25,14 +25,20 @@
                         onShow: function () {
                             // alert('show');
                             var content = window.mightyModal.getElements("content");
-                            content.append('<div id="mighty-library"><h1>Mighty Modal</h1></div>');
+                            content.html('');
+                            
+                            content.html('<div id="mighty-library"></div>');
                         },
                         onHide: function () {
                             // alert('hide');
-                            var e = window.mightyModal.getElements("content");
-                            window.ElementsReact && 0 < e.length && window.ElementsReact.elementor3rdPartyViewClose(e.get(0)), window.location.hash = ""
+                            // var content = window.mightyModal.getElements("content");
+                            // content.html('');
+                            // var e = window.mightyModal.getElements("content");
+                            // window.ElementsReact && 0 < e.length && window.ElementsReact.elementor3rdPartyViewClose(e.get(0)), window.location.hash = ""
                         }
-                }), window.mightyModal.getElements("header").remove(), window.mightyModal.getElements("message").append(window.mightyModal.addElement("content"))), window.mightyModal.show()
+                }), window.mightyModal.getElements("header").remove(), 
+                window.mightyModal.getElements("message").append(window.mightyModal.addElement("content"))), 
+                window.mightyModal.show()
             }
             
         }
