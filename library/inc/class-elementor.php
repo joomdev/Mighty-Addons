@@ -35,16 +35,35 @@ class Elementor extends base {
 	 * Load styles and scripts for Elementor modal.
 	 */
 	public function enqueue_editor_scripts() {
-
-		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 		
 		wp_enqueue_style( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/css/elementor-modal.css', [], MIGHTY_ADDONS_VERSION );
 
-		// die(MIGHTY_ADDONS_PLG_URL . 'library\assets\js\library\build\static\js\2.81bc84e8.chunk.js');
+		// die(MIGHTY_ADDONS_PLG_URL . 'library/assets\js\library\build\static\css\main.d1b05096.chunk.css');
 
-		wp_register_script( 'mighty-library-react', MIGHTY_ADDONS_PLG_URL . 'library/assets\js\library\build\static\js\2.81bc84e8.chunk.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
+		// die(MIGHTY_ADDONS_PLG_URL . 'library\assets\js\library\build\static\js\main.d43696de.chunk.js');
+		
+		wp_enqueue_style( 'mighty-library-admin', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/library/build/static/css/main.d1b05096.chunk.css', [], MIGHTY_ADDONS_VERSION );
 
-		wp_enqueue_style( 'mighty-library-admin', MIGHTY_ADDONS_PLG_URL . 'library/assets\js\library\build\static\css\main.d1b05096.chunk.css', [], MIGHTY_ADDONS_VERSION );
+		// wp_enqueue_script( 'mighty-library-reactq', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/library/build/static/js/runtime-main.fe86c051.js', [], MIGHTY_ADDONS_VERSION );
+
+		// wp_enqueue_script( 'mighty-library-reactw', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/library/build/static/js/2.81bc84e8.chunk.js', [], MIGHTY_ADDONS_VERSION );
+		
+		// wp_enqueue_script( 'mighty-library-reacte', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/library/build/static/js/main.d43696de.chunk.js', [], MIGHTY_ADDONS_VERSION );
+
+		// die(MIGHTY_ADDONS_PLG_URL . 'library/assets/js/lib2/dist/public/bundle.js');
+
+		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
+
+		wp_enqueue_script(
+			'mighty-library-react',
+			MIGHTY_ADDONS_PLG_URL . 'library/assets/js/lib2/dist/public/bundle.js',
+			['wp-element', 'wp-components'],
+			MIGHTY_ADDONS_VERSION,
+			true 
+		);
+
+		
+		
 
 
 	}
