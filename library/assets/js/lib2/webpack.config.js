@@ -17,6 +17,10 @@ module.exports = {
               '@babel/react',{'plugins': ['@babel/plugin-proposal-class-properties']}
             ]
           }
+        },
+        {
+          test:/\.css$/,
+          use:['style-loader','css-loader']
         }
     ]
   }
