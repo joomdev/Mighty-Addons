@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../styles/grid.min.css';
-import '../styles/mt.css';
+// import '../styles/grid.min.css';
+// import '../styles/mt.css';
 
 class App extends Component {
 
