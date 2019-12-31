@@ -12,6 +12,7 @@ class App extends Component {
       isLoaded: false,
       renderView: 'home', // template
       items: [],
+      'choosenKit': [],
     };
   }
 
@@ -38,17 +39,20 @@ class App extends Component {
       )
   }
 
-  handleClick = ( view ) => {
-    this.setState( {view});
+  showKit = ( templates ) => {
+    this.setState({
+      renderView: 'templates',
+      choosenKit: templates
+    });
   }
 
   createView() {
     
     switch( this.state.renderView ) {
       case 'home':
-        return <Kits data={this.state.items} />;
+        return <Kits data={this.state.items} onClick={ (templates) => this.showKit(templates) } />;
       case 'templates':
-        return <Templates />
+        return <Templates data={this.state.choosenKit} />
     }
 
   }
@@ -97,7 +101,7 @@ class App extends Component {
                   </div>
               </div>
 
-              {this.createView()}
+              { this.createView() }
               
           </div>
         </div>
@@ -112,6 +116,7 @@ class Kits extends Component {
   
   render() {
     return (
+      
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
 
@@ -174,7 +179,7 @@ class Kits extends Component {
                         <div className="template-item-inner">
                           <ul className="template-btn-group">
                               <li className="template-btn-item mt-btn mt-btn-preview">
-                                  <span onClick={ () => { this.handleClick(item.templates) } }>View</span>
+                                  <span onClick={ () => this.props.onClick( item.templates ) }>View</span>
                               </li>
                               <li className="template-btn-item mt-btn mt-btn-go">
                                   <span><img className="icon" src="images/external-link-alt-solid.svg" alt="" />Go Pro</span>
@@ -184,7 +189,7 @@ class Kits extends Component {
                               </li>
                           </ul>
                           <div className="template-item-figure">
-                              <img src={item.image} alt="" />
+                            <img src={item.image} alt="" />
                           </div>
                           <div className="template-item-name"><span>{item.name}</span>{item.pages} Pages</div>
                         </div>
@@ -203,7 +208,41 @@ class Templates extends Component {
   
   render() {
     return (
-      <h1>Here comes the Templates component!!</h1>
+      <div className="mt-templates-modal-body">
+        <div className="mt-templates-modal-body-inner">
+          <div className="mt-templates-modal-body-mid mt-row">
+            <div className="mt-col-sm-6">
+              <span className="back mt-btn"><img className="icon" src="images/long-arrow-alt-left-solid.svg" alt="" />
+                Back</span>
+            </div>
+          </div>
+          
+          <div className="mt-templates-modal-body-main">
+            <div className="mt-template-views-body">
+              <div className="template-item">
+                
+                {this.props.data.map(kit => (
+                  <div className="template-item-inner">
+                    <ul className="template-preview-btn">
+                      <li className="mt-btn mt-btn-preview-big">
+                        <span>Preview</span>
+                      </li>
+                      <li className="mt-btn mt-btn-import">
+                        <span>Import</span>
+                      </li>
+                    </ul>
+                    <div className="template-item-figure">
+                      <img src={kit.image} alt="" />
+                    </div>
+                    <div className="template-item-name"><span>{kit.name}</span></div>
+                  </div>
+                ))}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
