@@ -6,14 +6,16 @@ import '../styles/mt.css'
 class App extends Component {
   
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       error: null,
       isLoaded: false,
       renderView: 'home', // template
       items: [],
-      'choosenKit': [],
-    };
+      choosenKit: [],
+    }
+    // Updates View Globally
+    updateView = updateView.bind(this)
   }
 
   componentDidMount() {
@@ -212,11 +214,10 @@ class Templates extends Component {
         <div className="mt-templates-modal-body-inner">
           <div className="mt-templates-modal-body-mid mt-row">
             <div className="mt-col-sm-6">
-              <span className="back mt-btn"><img className="icon" src="images/long-arrow-alt-left-solid.svg" alt="" />
+              <span onClick={ () => updateView('home')} className="back mt-btn"><img className="icon" src="images/long-arrow-alt-left-solid.svg" alt="" />
                 Back</span>
             </div>
           </div>
-          
           <div className="mt-templates-modal-body-main">
             <div className="mt-template-views-body">
               <div className="template-item">
@@ -228,7 +229,7 @@ class Templates extends Component {
                         <span>Preview</span>
                       </li>
                       <li className="mt-btn mt-btn-import">
-                        <span>Import</span>
+                        <span onClick={ () => console.log('importing..')}>Import</span>
                       </li>
                     </ul>
                     <div className="template-item-figure">
@@ -245,6 +246,13 @@ class Templates extends Component {
       </div>
     );
   }
+}
+
+function updateView( view ) {
+  console.log("view: " + view)
+  this.setState({ 
+    renderView: view
+  });
 }
 
 export default App
