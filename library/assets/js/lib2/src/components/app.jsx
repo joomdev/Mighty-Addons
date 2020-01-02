@@ -67,9 +67,11 @@ class App extends Component {
     
     switch( this.state.renderView ) {
       case 'home':
-        return <Kits data = { this.state.items } onClick = { (templates) => this.showKit(templates) } />;
+        return <Kits data = { this.state.items } onClick = { (templates) => this.showKit(templates) } />
       case 'templates':
         return <Templates data = { this.state.choosenKit } onClick = { (item) => this.importJson(item) } />
+      case 'blocks':
+        return <Blocks data = {this.state.blocks } />
     }
 
   }
@@ -97,8 +99,9 @@ class App extends Component {
                   <div className="mt-col-sm-4">
                       <div className="mt-templates-modal-header-top-tabs">
                           <ul className="top-tabs-inner">
-                              <li className="top-tabs-temp active">Templates <span className="top-tabs-numb">{items.length}</span></li>
-                              <li className="top-tabs-kits">Blocks <span className="top-tabs-numb">200</span></li>
+                              
+                              <li onClick={ () => updateView('templates') } className="top-tabs-temp active">Templates <span className="top-tabs-numb">{items.length}</span></li>
+                              <li onClick={ () => updateView('blocks') } className="top-tabs-kits">Blocks <span className="top-tabs-numb">200</span></li>
                           </ul>
                       </div>
                   </div>
@@ -263,7 +266,18 @@ class Templates extends Component {
   }
 }
 
+class Blocks extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Mighty Blocks</h1>
+      </div>
+    )
+  }
+}
+
 function updateView( view ) {
+  console.log(view),
   this.setState({ 
     renderView: view
   });
