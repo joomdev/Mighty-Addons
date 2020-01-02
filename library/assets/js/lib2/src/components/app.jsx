@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("#")
+    fetch("http://elementoraddons.local/wp-content/uploads/kits/kits.json")
       .then(res => res.json())
       .then(
         (result) => {
@@ -52,39 +52,14 @@ class App extends Component {
 
     fetch(item.url)
     .then(response => response.json())
-    .then((content) => {
-      // content is parsed json object received from url
+    .then((tmpl) => {
       
-      let i = {}
-
-      // elementor.channels.data.trigger("template:before:insert", e),
-      // null !== t.atIndex && (i.at = t.atIndex),
-      elementor.sections.currentView.addChildModel(content.content, i),
-
-      console.log(content.content)
+      window.mightyModal.hide(),
+      elementor.sections.currentView.addChildModel(tmpl.content)
     })
     .catch((error) => {
       console.error(error)
     })
-
-    // fetch(MightyLibrary.ajaxurl, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   body: 'action=elementor_fetch_tmpl_data&tmpl=' + item.url,
-    // })
-    //   .then(response => response.json())
-    //   .then(
-    //     (response) => {
-    //       console.log('got something');
-    //       console.log(response);
-    //     },
-    //     (error) => {
-    //       console.log('got error');
-    //     }
-    //   )
-    
     
   }
 
