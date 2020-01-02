@@ -48,13 +48,53 @@ class App extends Component {
     });
   }
 
+  importJson = ( item ) => {
+
+    fetch(item.url)
+    .then(response => response.json())
+    .then((content) => {
+      // content is parsed json object received from url
+      
+      let i = {}
+
+      // elementor.channels.data.trigger("template:before:insert", e),
+      // null !== t.atIndex && (i.at = t.atIndex),
+      elementor.sections.currentView.addChildModel(content.content, i),
+
+      console.log(content.content)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+
+    // fetch(MightyLibrary.ajaxurl, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/x-www-form-urlencoded',
+    //   },
+    //   body: 'action=elementor_fetch_tmpl_data&tmpl=' + item.url,
+    // })
+    //   .then(response => response.json())
+    //   .then(
+    //     (response) => {
+    //       console.log('got something');
+    //       console.log(response);
+    //     },
+    //     (error) => {
+    //       console.log('got error');
+    //     }
+    //   )
+    
+    
+  }
+
   createView() {
     
     switch( this.state.renderView ) {
       case 'home':
-        return <Kits data={this.state.items} onClick={ (templates) => this.showKit(templates) } />;
+        return <Kits data = { this.state.items } onClick = { (templates) => this.showKit(templates) } />;
       case 'templates':
-        return <Templates data={this.state.choosenKit} />
+        return <Templates data = { this.state.choosenKit } onClick = { (item) => this.importJson(item) } />
     }
 
   }
@@ -193,7 +233,7 @@ class Kits extends Component {
                           <div className="template-item-figure">
                             <img src={item.image} alt="" />
                           </div>
-                          <div className="template-item-name"><span>{item.name}</span>{item.pages} Pages</div>
+                          <div className="template-item-name"><span>{item.name}</span>{item.templates.length} Pages</div>
                         </div>
 
                       ))}
@@ -229,7 +269,7 @@ class Templates extends Component {
                         <span>Preview</span>
                       </li>
                       <li className="mt-btn mt-btn-import">
-                        <span onClick={ () => console.log('importing..')}>Import</span>
+                        <span onClick={ () => this.props.onClick( kit ) }>Import</span>
                       </li>
                     </ul>
                     <div className="template-item-figure">
@@ -249,7 +289,6 @@ class Templates extends Component {
 }
 
 function updateView( view ) {
-  console.log("view: " + view)
   this.setState({ 
     renderView: view
   });
