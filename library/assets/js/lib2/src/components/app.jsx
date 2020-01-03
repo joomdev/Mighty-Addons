@@ -94,7 +94,7 @@ class App extends Component {
       
       return (
         
-        <div id="mt-templates-modal">
+        <div id="mt-templates-modal" className="mt-templates-modal">
           <div className="mt-templates-modal-inner mt-container">
 
               <div className="mt-templates-modal-header mt-row">
@@ -115,11 +115,11 @@ class App extends Component {
                       <div className="mt-templates-modal-header-top-right">
                           <ul className="top-right">
                               <li className="top-right-list">
-                                  <span>Sync</span>
-                                  <div className="top-sync"><img className="icon" src="images/sync-solid.svg" alt="" /></div>
+                                <span>Sync</span>
+                                <div className="top-sync"><i class="fas fa-sync-alt"></i></div>
                               </li>
                               <li className="top-right-list">
-                                  <div className="top-close icon"><img className="icon" src="images/times-solid.svg" alt="" /></div>
+                                <div className="icon"><i class="fas fa-times"></i></div>
                               </li>
                           </ul>
                       </div>
@@ -143,45 +143,6 @@ class Kits extends Component {
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
 
-              <div className="mt-templates-modal-body-header mt-row">
-                  <div className="mt-col-sm-6">
-                      <div className="body-header-left">
-                          <div className="filter body-header-filter">
-                              <label htmlFor="filter">Filter</label>
-                              <div className="filter-dropdown">
-                                  <div className="filter-dropdown-inner">
-                                      <div className="filter-dropdown-inner-left">
-                                          <div className="filter-dropdown-inner-left-text">Show All</div>
-                                          <input id="filter-list" readOnly tabIndex={0} className="filter-input"
-                                              defaultValue />
-                                      </div>
-                                      <div className="filter-dropdown-inner-right">
-                                          <span><img className="icon" src="images/angle-down-solid.svg" alt="" /></span>
-                                      </div>
-                                  </div>
-                                  <div className="filter-dropdown-list">
-                                      <ul className="filter-dropdown-list-inner">
-                                          <li className="filter-dropdown-list-items active"><a href="#">Show all</a>
-                                          </li>
-                                          <li className="filter-dropdown-list-items"><a href="#">Page</a></li>
-                                          <li className="filter-dropdown-list-items"><a href="#">Single</a></li>
-                                          <li className="filter-dropdown-list-items"><a href="#">Archive</a></li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="mt-col-sm-6">
-                      <div className="body-header-search">
-                          <input type="text" placeholder="Search Templates.." name="search" />
-                          <button type="submit">
-                              <img className="icon" src="images/search-solid.svg" alt="" />
-                          </button>
-                      </div>
-                  </div>
-              </div>
-
               <div className="mt-templates-modal-body-mid mt-row">
                   <div className="mt-col-sm-6">
                       <div className="mt-templates-modal-body-mid-left">{this.props.data.bannerMsg}</div>
@@ -199,15 +160,9 @@ class Kits extends Component {
                       {this.props.data.kits.map(item => (
                         <div className="template-item-inner">
                           <ul className="template-btn-group">
-                              <li className="template-btn-item mt-btn mt-btn-preview">
-                                  <span onClick={ () => this.props.onClick( item.templates ) }>View</span>
-                              </li>
-                              <li className="template-btn-item mt-btn mt-btn-go">
-                                  <span><img className="icon" src="images/external-link-alt-solid.svg" alt="" />Go Pro</span>
-                              </li>
-                              <li className="template-btn-item mt-btn mt-btn-fav">
-                                  <span><img className="icon" src="images/heart-solid.svg" alt="" /></span>
-                              </li>
+                              <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.templates ) }><i class="far fa-eye"></i></button>
+                              
+                              <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i class="fas fa-rocket"></i></button>
                           </ul>
                           <div className="template-item-figure">
                             <img src={item.image} alt="" />
@@ -231,10 +186,11 @@ class Templates extends Component {
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
-          <div className="mt-templates-modal-body-mid mt-row">
+          <div className="cta-section mt-templates-modal-body-mid mt-row">
             <div className="mt-col-sm-6">
-              <span onClick={ () => updateView('home')} className="back mt-btn"><img className="icon" src="images/long-arrow-alt-left-solid.svg" alt="" />
-                Back</span>
+              <button onClick={ () => updateView('home')} className="back mt-btn">
+                <i class="fas fa-long-arrow-alt-left"></i>&nbsp;Back
+              </button>
             </div>
           </div>
           <div className="mt-templates-modal-body-main">
@@ -304,13 +260,15 @@ class Blocks extends Component {
 
 class Preview extends Component {
   render() {
+    let previousView = (this.props.data.type == "template" ? 'templates' : 'blocks');
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
-          <div className="mt-templates-modal-body-mid mt-row">
+          <div className="cta-section mt-templates-modal-body-mid mt-row">
             <div className="mt-col-sm-6">
-              <span onClick={ () => updateView('home')} className="back mt-btn"><img className="icon" src="images/long-arrow-alt-left-solid.svg" alt="" />
-                Back</span>
+            <button onClick={ () => updateView(previousView)} className="back mt-btn">
+                <i class="fas fa-long-arrow-alt-left"></i>&nbsp;Back
+              </button>
             </div>
           </div>
           <div className="mt-templates-modal-body-main preview-section">

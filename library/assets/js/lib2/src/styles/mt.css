@@ -73,11 +73,22 @@
 }
 
 #mighty-library .mt-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 4px;
   display: inline-block;
-  transition: all 0.5s ease;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   cursor: pointer;
 }
 
@@ -94,8 +105,8 @@
   background-color: #563D7C;
 }
 
-#mighty-library .mt-btn-preview img {
-  filter: invert(1);
+#mighty-library .mt-btn-preview i {
+  color: white;
 }
 
 #mighty-library .mt-btn-go {
@@ -132,7 +143,6 @@
   max-width: 1300px;
   overflow-y: auto;
   overflow-x: hidden;
-  margin: 5vh auto;
   background-color: #f9f9f9;
 }
 
@@ -191,6 +201,7 @@
 
 #mighty-library .mt-templates-modal-header-top-right .top-right li span {
   margin-right: 15px;
+  font-size: 18px;
 }
 
 #mighty-library .mt-templates-modal-header-top-right .top-right li:not(:last-child) {
@@ -558,12 +569,12 @@
   z-index: 9;
 }
 
-#mighty-library .mt-template-views .mt-templates-modal-body-mid {
+#mighty-library .cta-section.mt-templates-modal-body-mid {
   background-color: #eee;
   padding: 15px 0;
 }
 
-#mighty-library .mt-template-views .back {
+#mighty-library .back {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -571,15 +582,11 @@
   background-color: #563D7C;
 }
 
-#mighty-library .mt-template-views .back img {
-  margin-right: 5px;
-}
-
-#mighty-library .mt-template-views .template-item-figure {
+#mighty-library .template-item-figure {
   min-height: inherit;
 }
 
-#mighty-library .mt-template-views .template-item {
+#mighty-library .template-item {
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -616,7 +623,20 @@
 }
 
 #mighty-library-modal #mighty-library .preview-section iframe { 
-    display: block;
-    width: 100%;
-    height: 100vh;
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+
+#mighty-library-modal .mt-templates-modal-header-top-right i {
+  font-size: 20px;
+}
+
+#mighty-library-modal .mt-templates-modal-header-top-right span {
+
+}
+
+#mighty-library-modal .dialog-message {
+  text-align: justify;
+  padding: 0;
 }
