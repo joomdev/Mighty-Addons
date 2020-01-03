@@ -12,6 +12,7 @@ class App extends Component {
       isLoaded: false,
       renderView: 'home', // template
       kits: [],
+      blocks: [],
       choosenKit: [],
       kitsData: []
     }
@@ -27,7 +28,8 @@ class App extends Component {
           this.setState({
             isLoaded: true,
             kitsData: result,
-            kits: result.kits
+            kits: result.kits,
+            blocks: result.blocks
           });
         },
         (error) => {
@@ -47,18 +49,15 @@ class App extends Component {
   }
 
   importJson = ( item ) => {
-
     fetch(item.url)
     .then(response => response.json())
     .then((tmpl) => {
-      
       window.mightyModal.hide(),
       elementor.sections.currentView.addChildModel(tmpl.content)
     })
     .catch((error) => {
       console.error(error)
     })
-    
   }
 
   createView( view ) {
@@ -69,14 +68,14 @@ class App extends Component {
       case 'templates':
         return <Templates data = { this.state.choosenKit } onClick = { (item) => this.importJson(item) } />
       case 'blocks':
-        return <Blocks data = {this.state.blocks } />
+        return <Blocks data = { this.state.kitsData } onClick = { (item) => this.importJson(item) } />
     }
 
   }
 
   render() {
 
-    const { error, isLoaded, kits, renderView } = this.state;
+    const { error, isLoaded, kits, blocks, renderView } = this.state;
     if ( error ) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -98,7 +97,7 @@ class App extends Component {
                       <div className="mt-templates-modal-header-top-tabs">
                           <ul className="top-tabs-inner">
                               <li onClick={ () => updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{kits.length}</span></li>
-                              <li onClick={ () => updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">200</span></li>
+                              <li onClick={ () => updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.length}</span></li>
                           </ul>
                       </div>
                   </div>
@@ -261,8 +260,33 @@ class Templates extends Component {
 class Blocks extends Component {
   render() {
     return (
-      <div>
-        <h1>Mighty Blocks</h1>
+      <div className="mt-templates-modal-body">
+        <div className="mt-templates-modal-body-inner">
+          <div className="mt-templates-modal-body-main">
+            <div className="mt-template-views-body">
+              <div className="template-item">
+                {this.props.data.blocks.map(block => (
+                  
+                  <div className="template-item-inner">
+                    <ul className="template-preview-btn">
+                      <li className="mt-btn mt-btn-preview-big">
+                        <span>Preview</span>
+                      </li>
+                      <li className="mt-btn mt-btn-import">
+                        <span onClick={ () => this.props.onClick( block ) }>Import</span>
+                      </li>
+                    </ul>
+                    <div className="template-item-figure">
+                      <img src={block.image} alt="" />
+                    </div>
+                    <div className="template-item-name"><span>{block.name}</span></div>
+                  </div>
+                ))}
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
