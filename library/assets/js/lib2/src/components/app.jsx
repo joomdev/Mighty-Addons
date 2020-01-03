@@ -11,8 +11,9 @@ class App extends Component {
       error: null,
       isLoaded: false,
       renderView: 'home', // template
-      items: [],
+      kits: [],
       choosenKit: [],
+      kitsData: []
     }
     // Updates View Globally
     updateView = updateView.bind(this)
@@ -23,15 +24,12 @@ class App extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-
           this.setState({
             isLoaded: true,
-            items: result.kits
+            kitsData: result,
+            kits: result.kits
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -63,11 +61,11 @@ class App extends Component {
     
   }
 
-  createView() {
+  createView( view ) {
     
-    switch( this.state.renderView ) {
+    switch( view ) {
       case 'home':
-        return <Kits data = { this.state.items } onClick = { (templates) => this.showKit(templates) } />
+        return <Kits data = { this.state.kitsData } onClick = { (templates) => this.showKit(templates) } />
       case 'templates':
         return <Templates data = { this.state.choosenKit } onClick = { (item) => this.importJson(item) } />
       case 'blocks':
@@ -78,11 +76,11 @@ class App extends Component {
 
   render() {
 
-    const { error, isLoaded, items, renderView } = this.state;
+    const { error, isLoaded, kits, renderView } = this.state;
     if ( error ) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div>Loading... </div>;
     } else {
       
       return (
@@ -99,7 +97,7 @@ class App extends Component {
                   <div className="mt-col-sm-4">
                       <div className="mt-templates-modal-header-top-tabs">
                           <ul className="top-tabs-inner">
-                              <li onClick={ () => updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{items.length}</span></li>
+                              <li onClick={ () => updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{kits.length}</span></li>
                               <li onClick={ () => updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">200</span></li>
                           </ul>
                       </div>
@@ -112,23 +110,20 @@ class App extends Component {
                                   <div className="top-sync"><img className="icon" src="images/sync-solid.svg" alt="" /></div>
                               </li>
                               <li className="top-right-list">
-                                  <div className="top-close icon"><img className="icon" src="images/times-solid.svg" alt="" />
-                                  </div>
+                                  <div className="top-close icon"><img className="icon" src="images/times-solid.svg" alt="" /></div>
                               </li>
                           </ul>
                       </div>
                   </div>
               </div>
-
-              { this.createView() }
+              
+              { this.createView(this.state.renderView) }
               
           </div>
         </div>
       );
     }
-  
   }
-
 }
 
 class Kits extends Component {
@@ -152,8 +147,7 @@ class Kits extends Component {
                                               defaultValue />
                                       </div>
                                       <div className="filter-dropdown-inner-right">
-                                          <span><img className="icon" src="images/angle-down-solid.svg"
-                                                  alt="" /></span>
+                                          <span><img className="icon" src="images/angle-down-solid.svg" alt="" /></span>
                                       </div>
                                   </div>
                                   <div className="filter-dropdown-list">
@@ -181,12 +175,11 @@ class Kits extends Component {
 
               <div className="mt-templates-modal-body-mid mt-row">
                   <div className="mt-col-sm-6">
-                      <div className="mt-templates-modal-body-mid-left">Sign up for an exclusive launch discount.
-                      </div>
+                      <div className="mt-templates-modal-body-mid-left">{this.props.data.bannerMsg}</div>
                   </div>
                   <div className="mt-col-sm-6">
                       <div className="mt-templates-modal-body-mid-right">
-                          <a href="#" className="mt-btn mt-btn-blue">Learn more</a>
+                          <a href={this.props.data.ctaUrl} target="_blank" className="mt-btn mt-btn-blue">{this.props.data.ctaBtn}</a>
                       </div>
                   </div>
               </div>
@@ -194,7 +187,7 @@ class Kits extends Component {
               <div className="mt-templates-modal-body-main">
                   <div className="template-item">
 
-                      {this.props.data.map(item => (
+                      {this.props.data.kits.map(item => (
                         <div className="template-item-inner">
                           <ul className="template-btn-group">
                               <li className="template-btn-item mt-btn mt-btn-preview">
@@ -276,11 +269,9 @@ class Blocks extends Component {
 }
 
 function updateView( view ) {
-  // console.log(view),
   this.setState({ 
     renderView: view
   });
-  console.log(this.state.renderView);
 }
 
 export default App
