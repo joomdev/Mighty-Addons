@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      renderView: 'home', // template
+      renderView: 'home',
+      preview: [],
       kits: [],
       blocks: [],
       choosenKit: [],
@@ -48,6 +49,13 @@ class App extends Component {
     });
   }
 
+  showDemo = ( preview ) => {
+    this.setState({
+      renderView: 'preview',
+      preview: preview
+    })
+  }
+
   importJson = ( item ) => {
     fetch(item.url)
     .then(response => response.json())
@@ -64,11 +72,13 @@ class App extends Component {
     
     switch( view ) {
       case 'home':
-        return <Kits data = { this.state.kitsData } onClick = { (templates) => this.showKit(templates) } />
+        return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
       case 'templates':
-        return <Templates data = { this.state.choosenKit } onClick = { (item) => this.importJson(item) } />
+        return <Templates data={ this.state.choosenKit } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'blocks':
-        return <Blocks data = { this.state.kitsData } onClick = { (item) => this.importJson(item) } />
+        return <Blocks data={ this.state.kitsData } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
+      case 'preview':
+        return <Preview data={ this.state.preview } />
     }
 
   }
@@ -115,7 +125,7 @@ class App extends Component {
                       </div>
                   </div>
               </div>
-              
+
               { this.createView(this.state.renderView) }
               
           </div>
@@ -235,7 +245,7 @@ class Templates extends Component {
                   <div className="template-item-inner">
                     <ul className="template-preview-btn">
                       <li className="mt-btn mt-btn-preview-big">
-                        <span>Preview</span>
+                        <span onClick={ () => this.props.onPreview( kit ) }>Preview</span>
                       </li>
                       <li className="mt-btn mt-btn-import">
                         <span onClick={ () => this.props.onClick( kit ) }>Import</span>
@@ -270,7 +280,7 @@ class Blocks extends Component {
                   <div className="template-item-inner">
                     <ul className="template-preview-btn">
                       <li className="mt-btn mt-btn-preview-big">
-                        <span>Preview</span>
+                        <span onClick={ () => this.props.onPreview( block ) }>Preview</span>
                       </li>
                       <li className="mt-btn mt-btn-import">
                         <span onClick={ () => this.props.onClick( block ) }>Import</span>
@@ -285,6 +295,26 @@ class Blocks extends Component {
 
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class Preview extends Component {
+  render() {
+    return (
+      <div className="mt-templates-modal-body">
+        <div className="mt-templates-modal-body-inner">
+          <div className="mt-templates-modal-body-mid mt-row">
+            <div className="mt-col-sm-6">
+              <span onClick={ () => updateView('home')} className="back mt-btn"><img className="icon" src="images/long-arrow-alt-left-solid.svg" alt="" />
+                Back</span>
+            </div>
+          </div>
+          <div className="mt-templates-modal-body-main preview-section">
+            <iframe src={this.props.data.preview} frameBorder={0} allowFullScreen />
           </div>
         </div>
       </div>
