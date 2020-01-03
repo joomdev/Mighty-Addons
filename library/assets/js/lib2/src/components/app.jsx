@@ -78,7 +78,7 @@ class App extends Component {
 
   render() {
 
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, items, renderView } = this.state;
     if ( error ) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -99,9 +99,8 @@ class App extends Component {
                   <div className="mt-col-sm-4">
                       <div className="mt-templates-modal-header-top-tabs">
                           <ul className="top-tabs-inner">
-                              
-                              <li onClick={ () => updateView('templates') } className="top-tabs-temp active">Templates <span className="top-tabs-numb">{items.length}</span></li>
-                              <li onClick={ () => updateView('blocks') } className="top-tabs-kits">Blocks <span className="top-tabs-numb">200</span></li>
+                              <li onClick={ () => updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{items.length}</span></li>
+                              <li onClick={ () => updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">200</span></li>
                           </ul>
                       </div>
                   </div>
@@ -277,10 +276,11 @@ class Blocks extends Component {
 }
 
 function updateView( view ) {
-  console.log(view),
+  // console.log(view),
   this.setState({ 
     renderView: view
   });
+  console.log(this.state.renderView);
 }
 
 export default App
