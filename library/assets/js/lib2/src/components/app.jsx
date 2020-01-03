@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import '../styles/grid.min.css'
 import '../styles/mt.css'
+// import {logo} from '../assets/mighty-addons-logo.svg'
 
 class App extends Component {
   
@@ -57,6 +58,10 @@ class App extends Component {
   }
 
   importJson = ( item ) => {
+    this.setState({
+      renderView: 'loading'
+    });
+
     fetch(item.url)
     .then(response => response.json())
     .then((tmpl) => {
@@ -69,7 +74,7 @@ class App extends Component {
   }
 
   createView( view ) {
-    
+    console.log("In create view : " + view)
     switch( view ) {
       case 'home':
         return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
@@ -79,6 +84,8 @@ class App extends Component {
         return <Blocks data={ this.state.kitsData } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'preview':
         return <Preview data={ this.state.preview } />
+      case 'loading':
+        return <Loader />
     }
 
   }
@@ -89,25 +96,31 @@ class App extends Component {
     if ( error ) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading... </div>;
+      return (
+        <div className="loader">
+          <div className="mighty-loader"></div>
+        </div>
+      );
     } else {
       
       return (
-        
         <div id="mt-templates-modal" className="mt-templates-modal">
           <div className="mt-templates-modal-inner mt-container">
 
               <div className="mt-templates-modal-header mt-row">
                   <div className="mt-col-sm-4">
                       <div className="brand-logo">
-                          <img src="images/logo-white-1.png" alt="Mighty Logo" />
+                          {/* <img src={logo} alt="Mighty Addons" /> */}
                       </div>
                   </div>
                   <div className="mt-col-sm-4">
                       <div className="mt-templates-modal-header-top-tabs">
                           <ul className="top-tabs-inner">
-                              <li onClick={ () => updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{kits.length}</span></li>
-                              <li onClick={ () => updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.length}</span></li>
+                              <li onClick={ ()=> updateView('home') } className={`top-tabs-temp ${renderView == "home" ||
+                                  renderView == "templates" ? 'active' : ''}`}>Templates <span
+                                      className="top-tabs-numb">{kits.length}</span></li>
+                              <li onClick={ ()=> updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ?
+                                  'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.length}</span></li>
                           </ul>
                       </div>
                   </div>
@@ -115,11 +128,12 @@ class App extends Component {
                       <div className="mt-templates-modal-header-top-right">
                           <ul className="top-right">
                               <li className="top-right-list">
-                                <span>Sync</span>
-                                <div className="top-sync"><i class="fas fa-sync-alt"></i></div>
+                                  <span>Sync</span>
+                                  <div className="top-sync"><i class="fas fa-sync-alt"></i></div>
                               </li>
                               <li className="top-right-list">
-                                <div className="icon"><i class="fas fa-times"></i></div>
+                                  <div className="icon" onClick={ ()=> window.mightyModal.hide() }><i
+                                          class="fas fa-times"></i></div>
                               </li>
                           </ul>
                       </div>
@@ -127,9 +141,9 @@ class App extends Component {
               </div>
 
               { this.createView(this.state.renderView) }
-              
+
           </div>
-        </div>
+      </div>
       );
     }
   }
@@ -280,10 +294,22 @@ class Preview extends Component {
   }
 }
 
+class Loader extends Component {
+  render() {
+    return (
+      <div className="mt-loader">
+        <div className="mighty-loader"></div>
+      </div>
+    )
+  }
+}
+
 function updateView( view ) {
+  console.log(view),
   this.setState({ 
     renderView: view
   });
+  console.log("State value: " + this.state.renderView);
 }
 
 export default App
