@@ -2,13 +2,14 @@
     
     var randomizeGradient = function( panel, model, view ) {
 
-        if ( $(panel.$el[0]).find("#elementor-panel-content-wrapper .elementor-button").data('event') == "namespace:make:gradient" ) {
-            $(panel.$el[0]).find("#elementor-panel-content-wrapper .elementor-button").on('click', function() {
-                $(view.$el).find('.elementor-widget-container .mighty-gradient-heading').css('background', '-webkit-linear-gradient(45deg, #33ccff, #ff99cc 80%)');
-                $(view.$el).find('.elementor-widget-container .mighty-gradient-heading').css('-webkit-background-clip', 'text');
-                $(view.$el).find('.elementor-widget-container .mighty-gradient-heading').css('-webkit-text-fill-color', 'transparent');
-            });
-        }
+        $(panel.el).on('click', '#elementor-controls .elementor-control-randomize_gradient button', function () {
+            var hex1 = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+            var hex2 = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+
+            $(view.$el).find('.elementor-widget-container .mighty-gradient-heading').css('background', '-webkit-linear-gradient(45deg, ' + hex1 + ', ' + hex2 + ' 80%)');
+            $(view.$el).find('.elementor-widget-container .mighty-gradient-heading').css('-webkit-background-clip', 'text');
+            $(view.$el).find('.elementor-widget-container .mighty-gradient-heading').css('-webkit-text-fill-color', 'transparent');
+        });
     };
 
     $(window).on('elementor/frontend/init', function () {
