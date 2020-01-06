@@ -36,8 +36,6 @@ class Elementor extends base {
 	public function enqueue_editor_scripts() {
 		
 		wp_enqueue_style( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/css/elementor-modal.css', [], MIGHTY_ADDONS_VERSION );
-		
-		wp_enqueue_style( 'mighty-library-admin', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/library/build/static/css/main.d1b05096.chunk.css', [], MIGHTY_ADDONS_VERSION );
 
 		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 
@@ -50,7 +48,8 @@ class Elementor extends base {
 		);
 
 		wp_localize_script( 'mighty-library-react', 'MightyLibrary', array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' )
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'baseUrl' => MIGHTY_ADDONS_PLG_URL
 		) );
 	}
 

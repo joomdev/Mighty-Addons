@@ -674,3 +674,8 @@
     transform: rotate(1800deg);
   }
 }
+
+#mighty-library-modal .mighty-logo {
+  height: 65px;
+  width: 65px;
+}

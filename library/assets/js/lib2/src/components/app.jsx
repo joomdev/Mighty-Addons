@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import '../styles/grid.min.css'
 import '../styles/mt.css'
-// import {logo} from '../assets/mighty-addons-logo.svg'
 
 class App extends Component {
   
@@ -87,7 +86,6 @@ class App extends Component {
       case 'loading':
         return <Loader />
     }
-
   }
 
   render() {
@@ -102,6 +100,7 @@ class App extends Component {
         </div>
       );
     } else {
+      let logo = MightyLibrary.baseUrl + 'library/assets/images/mighty-addons-logo.svg';
       
       return (
         <div id="mt-templates-modal" className="mt-templates-modal">
@@ -110,7 +109,7 @@ class App extends Component {
               <div className="mt-templates-modal-header mt-row">
                   <div className="mt-col-sm-4">
                       <div className="brand-logo">
-                          {/* <img src={logo} alt="Mighty Addons" /> */}
+                          <img className="mighty-logo" src={logo} alt="Mighty Addons" />
                       </div>
                   </div>
                   <div className="mt-col-sm-4">
@@ -128,12 +127,9 @@ class App extends Component {
                       <div className="mt-templates-modal-header-top-right">
                           <ul className="top-right">
                               <li className="top-right-list">
-                                  <span>Sync</span>
-                                  <div className="top-sync"><i class="fas fa-sync-alt"></i></div>
-                              </li>
-                              <li className="top-right-list">
-                                  <div className="icon" onClick={ ()=> window.mightyModal.hide() }><i
-                                          class="fas fa-times"></i></div>
+                                  <div className="icon" onClick={ ()=> window.mightyModal.hide() }>
+                                    <i class="fas fa-times"></i>
+                                  </div>
                               </li>
                           </ul>
                       </div>
