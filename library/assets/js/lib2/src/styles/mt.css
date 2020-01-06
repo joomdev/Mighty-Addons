@@ -164,6 +164,7 @@
   position: relative;
   padding-top: 25px;
   padding-bottom: 25px;
+  cursor: pointer;
 }
 
 #mighty-library .mt-templates-modal-header .top-tabs-inner li:not(:last-child) {
@@ -571,7 +572,22 @@
 
 #mighty-library .cta-section.mt-templates-modal-body-mid {
   background-color: #eee;
-  padding: 15px 0;
+  padding: 15px;
+}
+
+#mighty-library .cta-responsive {
+  display: flex;
+  justify-content: space-between;
+}
+
+#mighty-library .cta-responsive .responsive-controls {
+  color: black;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+#mighty-library .cta-responsive .responsive-controls i {
+  margin: 0 10px;
 }
 
 #mighty-library .back {
@@ -626,6 +642,8 @@
   display: block;
   width: 100%;
   height: 100vh;
+  transition: width 0.3s ease 0s;
+  margin: 0 auto;
 }
 
 #mighty-library-modal .mt-templates-modal-header-top-right i {

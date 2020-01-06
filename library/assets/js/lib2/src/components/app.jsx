@@ -15,7 +15,8 @@ class App extends Component {
       kits: [],
       blocks: [],
       choosenKit: [],
-      kitsData: []
+      kitsData: [],
+      responsive: 'desktop',
     }
     // Updates View Globally
     updateView = updateView.bind(this)
@@ -66,14 +67,25 @@ class App extends Component {
     .then((tmpl) => {
       window.mightyModal.hide(),
       elementor.sections.currentView.addChildModel(tmpl.content)
+      this.setState({
+        renderView: 'home'
+      });
     })
     .catch((error) => {
       console.error(error)
     })
   }
 
+  responsiveIframe = ( type ) => {
+    console.log(type)
+    this.setState({
+      responsive: type
+    })
+  }
+
   createView( view ) {
     console.log("In create view : " + view)
+    
     switch( view ) {
       case 'home':
         return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
@@ -82,7 +94,7 @@ class App extends Component {
       case 'blocks':
         return <Blocks data={ this.state.kitsData } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'preview':
-        return <Preview data={ this.state.preview } />
+        return <Preview data={ this.state.preview } onClick={ (item) => this.importJson(item) } onResponsive={ (type) => this.responsiveIframe(type) } iframeType={ this.state.responsive } />
       case 'loading':
         return <Loader />
     }
@@ -128,7 +140,7 @@ class App extends Component {
                           <ul className="top-right">
                               <li className="top-right-list">
                                   <div className="icon" onClick={ ()=> window.mightyModal.hide() }>
-                                    <i class="fas fa-times"></i>
+                                    <i className="fas fa-times"></i>
                                   </div>
                               </li>
                           </ul>
@@ -168,18 +180,17 @@ class Kits extends Component {
                   <div className="template-item">
 
                       {this.props.data.kits.map(item => (
-                        <div className="template-item-inner">
+                        <div key={item.id} className="template-item-inner">
                           <ul className="template-btn-group">
-                              <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.templates ) }><i class="far fa-eye"></i></button>
+                              <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.templates ) }><i className="far fa-eye"></i></button>
                               
-                              <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i class="fas fa-rocket"></i></button>
+                              <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i className="fas fa-rocket"></i></button>
                           </ul>
                           <div className="template-item-figure">
                             <img src={item.image} alt="" />
                           </div>
                           <div className="template-item-name"><span>{item.name}</span>{item.templates.length} Pages</div>
                         </div>
-
                       ))}
                   </div>
               </div>
@@ -199,7 +210,7 @@ class Templates extends Component {
           <div className="cta-section mt-templates-modal-body-mid mt-row">
             <div className="mt-col-sm-6">
               <button onClick={ () => updateView('home')} className="back mt-btn">
-                <i class="fas fa-long-arrow-alt-left"></i>&nbsp;Back
+                <i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back
               </button>
             </div>
           </div>
@@ -208,7 +219,7 @@ class Templates extends Component {
               <div className="template-item">
                 
                 {this.props.data.map(kit => (
-                  <div className="template-item-inner">
+                  <div key={kit.id} className="template-item-inner">
                     <ul className="template-preview-btn">
                       <li className="mt-btn mt-btn-preview-big">
                         <span onClick={ () => this.props.onPreview( kit ) }>Preview</span>
@@ -243,7 +254,7 @@ class Blocks extends Component {
               <div className="template-item">
                 {this.props.data.blocks.map(block => (
                   
-                  <div className="template-item-inner">
+                  <div key={block.id} className="template-item-inner">
                     <ul className="template-preview-btn">
                       <li className="mt-btn mt-btn-preview-big">
                         <span onClick={ () => this.props.onPreview( block ) }>Preview</span>
@@ -271,18 +282,35 @@ class Blocks extends Component {
 class Preview extends Component {
   render() {
     let previousView = (this.props.data.type == "template" ? 'templates' : 'blocks');
+    let iframeWidth;
+    switch( this.props.iframeType ) {
+      case 'desktop': iframeWidth = {width: "100%"};
+      break;
+      case 'tablet': iframeWidth = {width: "768px"};
+      break;
+      case 'mobile': iframeWidth = {width: "320px"};
+      break;
+    }
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
-          <div className="cta-section mt-templates-modal-body-mid mt-row">
-            <div className="mt-col-sm-6">
-            <button onClick={ () => updateView(previousView)} className="back mt-btn">
-                <i class="fas fa-long-arrow-alt-left"></i>&nbsp;Back
-              </button>
+          <div className="cta-section mt-templates-modal-body-mid cta-responsive">
+            <button onClick={ ()=> updateView(previousView)} className="back mt-btn">
+              <i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back
+            </button>
+
+            <div className="responsive-controls">
+              <i onClick={ () => this.props.onResponsive('desktop') } className="fas fa-laptop"></i>
+              <i onClick={ () => this.props.onResponsive('tablet') } className="fas fa-tablet-alt"></i>
+              <i onClick={ () => this.props.onResponsive('mobile') } className="fas fa-mobile-alt"></i>
             </div>
+            
+            <button onClick={ ()=> this.props.onClick(this.props.data) } className="back mt-btn">
+              <i className="far fa-arrow-alt-circle-down"></i>&nbsp;Import
+            </button>
           </div>
           <div className="mt-templates-modal-body-main preview-section">
-            <iframe src={this.props.data.preview} frameBorder={0} allowFullScreen />
+            <iframe style={iframeWidth} src={this.props.data.preview} frameBorder={0} allowFullScreen width="" />
           </div>
         </div>
       </div>
