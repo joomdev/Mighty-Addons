@@ -24,14 +24,11 @@
                         },
                         onShow: function () {
                             var content = window.mightyModal.getElements("content");
-                            content.html('<div id="mighty-library"></div>');
+                            if( content.html() === '' ) {
+                                content.html('<div id="mighty-library"></div>');
+                            }
                         },
-                        onHide: function () {
-                            var content = window.mightyModal.getElements("content");
-                            content.html('');
-                            // var e = window.mightyModal.getElements("content");
-                            // window.ElementsReact && 0 < e.length && window.ElementsReact.elementor3rdPartyViewClose(e.get(0)), window.location.hash = ""
-                        }
+                        onHide: function () {}
                 }), window.mightyModal.getElements("header").remove(), 
                 window.mightyModal.getElements("message").append(window.mightyModal.addElement("content"))), 
                 window.mightyModal.show()
