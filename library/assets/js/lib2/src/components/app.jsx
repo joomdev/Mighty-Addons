@@ -31,7 +31,8 @@ class App extends Component {
             isLoaded: true,
             kitsData: result,
             kits: result.kits,
-            blocks: result.blocks
+            blocks: result.blocks,
+            renderView: 'home'
           });
         },
         (error) => {
@@ -45,9 +46,9 @@ class App extends Component {
 
   showKit = ( templates ) => {
     this.setState({
-      renderView: 'templates',
       choosenKit: templates
     });
+    updateView('templates');
   }
 
   showDemo = ( preview ) => {
@@ -58,18 +59,13 @@ class App extends Component {
   }
 
   importJson = ( item ) => {
-    this.setState({
-      renderView: 'loading'
-    });
-
+    updateView('loading');
     fetch(item.url)
     .then(response => response.json())
     .then((tmpl) => {
       window.mightyModal.hide(),
       elementor.sections.currentView.addChildModel(tmpl.content)
-      this.setState({
-        renderView: 'home'
-      });
+      updateView('home');
     })
     .catch((error) => {
       console.error(error)
@@ -77,15 +73,12 @@ class App extends Component {
   }
 
   responsiveIframe = ( type ) => {
-    console.log(type)
     this.setState({
       responsive: type
     })
   }
 
   createView( view ) {
-    console.log("In create view : " + view)
-    
     switch( view ) {
       case 'home':
         return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
@@ -98,6 +91,13 @@ class App extends Component {
       case 'loading':
         return <Loader />
     }
+  }
+
+  closeModal() {
+    window.mightyModal.hide();
+    setTimeout(() => {
+      updateView('home');
+    }, 500);
   }
 
   render() {
@@ -139,7 +139,7 @@ class App extends Component {
                       <div className="mt-templates-modal-header-top-right">
                           <ul className="top-right">
                               <li className="top-right-list">
-                                  <div className="icon" onClick={ ()=> window.mightyModal.hide() }>
+                                  <div className="icon" onClick={ ()=> this.closeModal() }>
                                     <i className="fas fa-times"></i>
                                   </div>
                               </li>
@@ -329,11 +329,11 @@ class Loader extends Component {
 }
 
 function updateView( view ) {
-  console.log(view),
-  this.setState({ 
-    renderView: view
-  });
-  console.log("State value: " + this.state.renderView);
+  if ( view != this.state.renderView ) {
+    this.setState({ 
+      renderView: view
+    })
+  }
 }
 
 export default App
