@@ -41,10 +41,10 @@ class Elementor extends base {
 
 		wp_enqueue_script(
 			'mighty-library-react',
-			MIGHTY_ADDONS_PLG_URL . 'library/assets/js/lib2/dist/public/bundle.js',
+			MIGHTY_ADDONS_PLG_URL . 'library/assets/js/lib/build/main.js',
 			['wp-element', 'wp-components'],
 			MIGHTY_ADDONS_VERSION,
-			true 
+			true
 		);
 
 		wp_localize_script( 'mighty-library-react', 'MightyLibrary', array(
