@@ -78,7 +78,7 @@ class App extends Component {
     })
   }
 
-  createView( view ) {
+  createView = ( view ) => {
     switch( view ) {
       case 'home':
         return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
@@ -93,7 +93,7 @@ class App extends Component {
     }
   }
 
-  closeModal() {
+  closeModal = () => {
     window.mightyModal.hide();
     setTimeout(() => {
       updateView('home');
@@ -127,11 +127,9 @@ class App extends Component {
                   <div className="mt-col-sm-4">
                       <div className="mt-templates-modal-header-top-tabs">
                           <ul className="top-tabs-inner">
-                              <li onClick={ ()=> updateView('home') } className={`top-tabs-temp ${renderView == "home" ||
-                                  renderView == "templates" ? 'active' : ''}`}>Templates <span
-                                      className="top-tabs-numb">{kits.length}</span></li>
-                              <li onClick={ ()=> updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ?
-                                  'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.length}</span></li>
+                              <li onClick={ ()=> updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{kits.length}</span></li>
+
+                              <li onClick={ ()=> updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.length}</span></li>
                           </ul>
                       </div>
                   </div>
@@ -158,10 +156,8 @@ class App extends Component {
 }
 
 class Kits extends Component {
-  
   render() {
     return (
-      
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
 
@@ -202,7 +198,6 @@ class Kits extends Component {
 }
 
 class Templates extends Component {
-  
   render() {
     return (
       <div className="mt-templates-modal-body">
@@ -280,7 +275,28 @@ class Blocks extends Component {
 }
 
 class Preview extends Component {
+  
+  showFullscreen = () => {
+    if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
+      
+      var iframe = document.querySelector('#mighty-library iframe');
+      // Do fullscreen
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+    } else {
+      alert('Your browser is not supported');
+    }
+  }
+
   render() {
+    
     let previousView = (this.props.data.type == "template" ? 'templates' : 'blocks');
     let iframeWidth;
     switch( this.props.iframeType ) {
@@ -300,9 +316,10 @@ class Preview extends Component {
             </button>
 
             <div className="responsive-controls">
-              <i onClick={ () => this.props.onResponsive('desktop') } className="fas fa-laptop"></i>
-              <i onClick={ () => this.props.onResponsive('tablet') } className="fas fa-tablet-alt"></i>
-              <i onClick={ () => this.props.onResponsive('mobile') } className="fas fa-mobile-alt"></i>
+              <i title="Desktop View" onClick={ () => this.props.onResponsive('desktop') } className={`fas fa-laptop ${ this.props.iframeType == "desktop" ? 'active' : '' }`}></i>
+              <i title="Tablet View" onClick={ () => this.props.onResponsive('tablet') } className={`fas fa-tablet-alt ${ this.props.iframeType == "tablet" ? 'active' : '' }`}></i>
+              <i title="Mobile View" onClick={ () => this.props.onResponsive('mobile') } className={`fas fa-mobile-alt ${ this.props.iframeType == "mobile" ? 'active' : '' }`}></i>
+              <i title="Fullscreen View" onClick={ () => this.showFullscreen() } className="fas fa-expand"></i>
             </div>
             
             <button onClick={ ()=> this.props.onClick(this.props.data) } className="back mt-btn">

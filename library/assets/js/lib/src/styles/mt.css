@@ -590,6 +590,12 @@
   margin: 0 10px;
 }
 
+#mighty-library .cta-responsive .responsive-controls i.active {
+  color: blueviolet;
+  font-size: 25px;
+  transition: 0.1s;
+}
+
 #mighty-library .back {
   display: inline-flex;
   flex-wrap: wrap;
