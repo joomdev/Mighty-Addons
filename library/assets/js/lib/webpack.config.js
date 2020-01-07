@@ -4,7 +4,8 @@ module.exports = {
   entry : "./app.js",
   mode: 'development',
   output : {
-    filename: "public/bundle.js"
+    filename: "main.js",
+    path: __dirname + '/build'
   },
   module:{
     rules: [
