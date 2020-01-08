@@ -23,41 +23,27 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Fething Kits
-    fetch("http://api.joomdev.com/api/templates/pages")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            kitsData: result.data,
-            kits: result.data.templates,
-            renderView: 'home'
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-
-    fetch("http://api.joomdev.com/api/templates/blocks")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            blocks: result.data
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    // Fething Templates & Blocks
+    try {
+      Promise.all([
+        fetch("http://api.joomdev.com/api/templates/pages"),
+        fetch("http://api.joomdev.com/api/templates/blocks")
+      ])
+      .then(values => Promise.all(values.map(value => value.json())))
+      .then(finalVals => {
+        let templates = finalVals[0];
+        let blocks = finalVals[1];
+        this.setState({
+          isLoaded: true,
+          kitsData: templates.data,
+          kits: templates.data.templates,
+          blocks: blocks.data,
+          renderView: 'home'
+        });
+      })
+    } catch {
+      console.log("Something went wrong!");
+    }
   }
 
   showKit = ( templates ) => {
@@ -127,11 +113,7 @@ class App extends Component {
     if ( error ) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return (
-        <div className="loader">
-          <div className="mighty-loader"></div>
-        </div>
-      );
+      return <Loader />
     } else {
       let logo = MightyLibrary.baseUrl + 'library/assets/images/mighty-addons-logo.svg';
       
@@ -324,7 +306,7 @@ class Preview extends Component {
 
   render() {
     
-    let previousView = (this.props.data.type == "template" ? 'templates' : 'blocks');
+    let previousView = (this.props.data.type == "template" ? 'templates' : 'blocks'); // TODO: Refactor after API
     let iframeWidth;
     switch( this.props.iframeType ) {
       case 'desktop': iframeWidth = {width: "100%"};
