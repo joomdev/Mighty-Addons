@@ -42,6 +42,22 @@ class App extends Component {
           });
         }
       )
+
+    fetch("http://api.joomdev.com/api/templates/blocks")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            blocks: result.data
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
   }
 
   showKit = ( templates ) => {
@@ -85,7 +101,7 @@ class App extends Component {
       case 'templates':
         return <Pages data={ this.state.choosenKit } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'blocks':
-        return <Blocks data={ this.state.kitsData } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
+        return <Blocks data={ this.state.blocks } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'preview':
         return <Preview data={ this.state.preview } onClick={ (item) => this.importJson(item) } onResponsive={ (type) => this.responsiveIframe(type) } iframeType={ this.state.responsive } />
       case 'loading':
@@ -98,6 +114,11 @@ class App extends Component {
     setTimeout(() => {
       updateView('home');
     }, 500);
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { error: true };
   }
 
   render() {
@@ -129,7 +150,7 @@ class App extends Component {
                           <ul className="top-tabs-inner">
                               <li onClick={ ()=> updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{kits.length}</span></li>
 
-                              <li onClick={ ()=> updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.length}</span></li>
+                              <li onClick={ ()=> updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.templates.length}</span></li>
                           </ul>
                       </div>
                   </div>
@@ -230,9 +251,9 @@ class Pages extends Component {
                       </li>
                     </ul>
                     <div className="template-item-figure">
-                      <img src={pages.image} alt="" />
+                      <img src={pages.thumbnail} alt="" />
                     </div>
-                    <div className="template-item-name"><span>{pages.name}</span></div>
+                    <div className="template-item-name"><span>{pages.title}</span></div>
                   </div>
                 ))}
 
@@ -253,7 +274,7 @@ class Blocks extends Component {
           <div className="mt-templates-modal-body-main">
             <div className="mt-template-views-body">
               <div className="template-item">
-                {this.props.data.blocks.map(block => (
+                {this.props.data.templates.map(block => (
                   
                   <div key={block.id} className="template-item-inner">
                     <ul className="template-preview-btn">
@@ -265,9 +286,9 @@ class Blocks extends Component {
                       </li>
                     </ul>
                     <div className="template-item-figure">
-                      <img src={block.image} alt="" />
+                      <img src={block.thumbnail} alt="" />
                     </div>
-                    <div className="template-item-name"><span>{block.name}</span></div>
+                    <div className="template-item-name"><span>{block.title}</span></div>
                   </div>
                 ))}
 
