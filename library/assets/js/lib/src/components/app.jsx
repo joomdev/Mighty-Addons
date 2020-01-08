@@ -23,15 +23,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://elementoraddons.local/wp-content/uploads/kits/kits.json")
+    // Fething Kits
+    fetch("http://api.joomdev.com/api/templates/pages")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            kitsData: result,
-            kits: result.kits,
-            blocks: result.blocks,
+            kitsData: result.data,
+            kits: result.data.templates,
             renderView: 'home'
           });
         },
@@ -83,7 +83,7 @@ class App extends Component {
       case 'home':
         return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
       case 'templates':
-        return <Templates data={ this.state.choosenKit } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
+        return <Pages data={ this.state.choosenKit } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'blocks':
         return <Blocks data={ this.state.kitsData } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'preview':
@@ -156,12 +156,13 @@ class App extends Component {
 }
 
 class Kits extends Component {
+
   render() {
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
 
-              <div className="mt-templates-modal-body-mid mt-row">
+              {/* <div className="mt-templates-modal-body-mid mt-row">
                   <div className="mt-col-sm-6">
                       <div className="mt-templates-modal-body-mid-left">{this.props.data.bannerMsg}</div>
                   </div>
@@ -170,23 +171,28 @@ class Kits extends Component {
                           <a href={this.props.data.ctaUrl} target="_blank" className="mt-btn mt-btn-blue">{this.props.data.ctaBtn}</a>
                       </div>
                   </div>
-              </div>
+              </div> */}
 
               <div className="mt-templates-modal-body-main">
                   <div className="template-item">
 
-                      {this.props.data.kits.map(item => (
+                      {this.props.data.templates.map(item => (
+                        
+                        item.pages ?
+
                         <div key={item.id} className="template-item-inner">
                           <ul className="template-btn-group">
-                              <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.templates ) }><i className="far fa-eye"></i></button>
+                              <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ) }><i className="far fa-eye"></i></button>
                               
                               <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i className="fas fa-rocket"></i></button>
                           </ul>
                           <div className="template-item-figure">
-                            <img src={item.image} alt="" />
+                            <img src={item.pages[0].thumbnail} alt="" />
                           </div>
-                          <div className="template-item-name"><span>{item.name}</span>{item.templates.length} Pages</div>
+                          <div className="template-item-name"><span>{item.title}</span>{item.pages.length} Pages</div>
                         </div>
+                        :
+                        ''
                       ))}
                   </div>
               </div>
@@ -197,7 +203,7 @@ class Kits extends Component {
   }
 }
 
-class Templates extends Component {
+class Pages extends Component {
   render() {
     return (
       <div className="mt-templates-modal-body">
@@ -213,20 +219,20 @@ class Templates extends Component {
             <div className="mt-template-views-body">
               <div className="template-item">
                 
-                {this.props.data.map(kit => (
-                  <div key={kit.id} className="template-item-inner">
+                {this.props.data.map(pages => (
+                  <div key={pages.id} className="template-item-inner">
                     <ul className="template-preview-btn">
                       <li className="mt-btn mt-btn-preview-big">
-                        <span onClick={ () => this.props.onPreview( kit ) }>Preview</span>
+                        <span onClick={ () => this.props.onPreview( pages ) }>Preview</span>
                       </li>
                       <li className="mt-btn mt-btn-import">
-                        <span onClick={ () => this.props.onClick( kit ) }>Import</span>
+                        <span onClick={ () => this.props.onClick( pages ) }>Import</span>
                       </li>
                     </ul>
                     <div className="template-item-figure">
-                      <img src={kit.image} alt="" />
+                      <img src={pages.image} alt="" />
                     </div>
-                    <div className="template-item-name"><span>{kit.name}</span></div>
+                    <div className="template-item-name"><span>{pages.name}</span></div>
                   </div>
                 ))}
 
