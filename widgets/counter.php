@@ -306,7 +306,7 @@ class MT_Counter extends Widget_Base {
 				[
 					'name' => 'counter_typography',
 					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-					'selector' => '{{WRAPPER}} .mighty-counter .counter',
+					'selector' => '{{WRAPPER}} .mighty-counter .counter *',
 				]
 			);
 
