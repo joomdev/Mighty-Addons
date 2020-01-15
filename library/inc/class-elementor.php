@@ -81,7 +81,9 @@ class Elementor extends base {
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'baseUrl' => MIGHTY_ADDONS_PLG_URL,
 			'apiUrl' => "http://api.mightythemes.local/api/",
-			'elementorPro' => $elementorPro
+			'elementorPro' => $elementorPro,
+			'key' => "",
+			'host' => $_SERVER['HTTP_HOST'],
 		) );
 	}
 
