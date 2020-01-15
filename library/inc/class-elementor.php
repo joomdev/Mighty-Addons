@@ -23,6 +23,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.2.1
  */
 class Elementor extends base {
+
+	/**
+	 * All Activated Plugins
+	 *
+	 * @since 1.2.0
+	 */
+	private $activated_plugins = [];
     
 	public function __construct() {
 		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
@@ -34,6 +41,29 @@ class Elementor extends base {
 	 * Load styles and scripts for Elementor modal.
 	 */
 	public function enqueue_editor_scripts() {
+
+		if ( ! $this->activated_plugins ) {
+			$active_plugins          = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+			$active_sitewide_plugins = get_site_option( 'active_sitewide_plugins' );
+			if ( ! is_array( $active_plugins ) ) {
+				$active_plugins = [];
+			}
+			if ( ! is_array( $active_sitewide_plugins ) ) {
+				$active_sitewide_plugins = [];
+			}
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+			$active_plugins                   = array_merge( $active_plugins, array_keys( $active_sitewide_plugins ) );
+			$this->activated_plugins['active'] = $active_plugins;
+			$this->activated_plugins['all']    = get_plugins();
+		}
+		
+		if ( in_array( 'elementor-pro/elementor-pro.php', $this->activated_plugins['active'], true ) ) {
+			$elementorPro = true;
+		} else {
+			$elementorPro = false;
+		}
 		
 		wp_enqueue_style( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/css/elementor-modal.css', [], MIGHTY_ADDONS_VERSION );
 
@@ -49,7 +79,9 @@ class Elementor extends base {
 
 		wp_localize_script( 'mighty-library-react', 'MightyLibrary', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'baseUrl' => MIGHTY_ADDONS_PLG_URL
+			'baseUrl' => MIGHTY_ADDONS_PLG_URL,
+			'apiUrl' => "http://api.mightythemes.local/api/",
+			'elementorPro' => $elementorPro
 		) );
 	}
 
