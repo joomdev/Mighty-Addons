@@ -294,7 +294,7 @@ class MT_Buttongroup extends Widget_Base {
                 $repeater->add_group_control(
                     Group_Control_Typography::get_type(),
                     [
-                        'name' => 'testimonial_typography',
+                        'name' => 'buttongroup_typography',
                         'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                         'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
                     ]
