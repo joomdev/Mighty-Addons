@@ -26,11 +26,12 @@ class App extends Component {
     // Fething Templates & Blocks
     try {
       Promise.all([
-        fetch("http://api.joomdev.com/api/templates/pages"),
-        fetch("http://api.joomdev.com/api/templates/blocks")
+        fetch(MightyLibrary.apiUrl+"templates/pages"),
+        fetch(MightyLibrary.apiUrl+"templates/blocks")
       ])
       .then(values => Promise.all(values.map(value => value.json())))
       .then(finalVals => {
+        console.log(MightyLibrary.host);
         let templates = finalVals[0];
         let blocks = finalVals[1];
         this.setState({
@@ -61,12 +62,20 @@ class App extends Component {
   }
 
   importJson = ( item ) => {
+    let url = MightyLibrary.apiUrl+"template/"+item.id;
     updateView('loading');
-    fetch(item.url)
+    fetch(url, {
+      method: 'POST',
+      headers : new Headers(),
+      body: ({
+        "key" : MightyLibrary.key,
+        "host" : MightyLibrary.host
+      })
+    })
     .then(response => response.json())
     .then((tmpl) => {
       window.mightyModal.hide(),
-      elementor.sections.currentView.addChildModel(tmpl.content)
+      elementor.sections.currentView.addChildModel(tmpl.data.template.content)
       updateView('home');
     })
     .catch((error) => {
@@ -224,6 +233,20 @@ class Pages extends Component {
                 
                 {this.props.data.map(pages => (
                   <div key={pages.id} className="template-item-inner">
+                    
+                    {/* <div className="elementor-pro">
+                      <img src={MightyLibrary.baseUrl+'library/assets/images/elementor-logo.png'} alt=""/> Pro
+                    </div> */}
+
+                    { pages.elementor_type == "pro" ? 
+                    
+                    <div className="elementor-pro-tag">
+                      <span>Elementor Pro Required</span>
+                    </div>
+                    :
+                    ''
+                    }
+
                     <ul className="template-preview-btn">
                       <li className="mt-btn mt-btn-preview-big">
                         <span onClick={ () => this.props.onPreview( pages ) }>Preview</span>
@@ -306,7 +329,9 @@ class Preview extends Component {
 
   render() {
     
-    let previousView = (this.props.data.type == "template" ? 'templates' : 'blocks'); // TODO: Refactor after API
+    let previousView = (this.props.data.type == "page" ? 'templates' : 'blocks');
+    console.log("this.props.data.type : " + this.props.data.type);
+    console.log("previousView : " + previousView);
     let iframeWidth;
     switch( this.props.iframeType ) {
       case 'desktop': iframeWidth = {width: "100%"};
@@ -319,6 +344,21 @@ class Preview extends Component {
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
+
+          { this.props.data.elementor_type == "pro" ?
+          <div className="cta-section mt-templates-modal-body-mid cta-responsive elementor-pro-banner">
+            <span><big><b>Required Plugins Missing : Elementor Pro</b></big>
+            <br />
+            This template requires Elementor Pro. To ensure this template works best, you'll need to buy and install <b>Elementor Pro</b> version 2.2.0 or above.</span>
+            
+            <a href="#" className="back mt-btn">
+              Get Elementor Pro
+            </a>
+          </div>
+          :
+          ''
+          }
+
           <div className="cta-section mt-templates-modal-body-mid cta-responsive">
             <button onClick={ ()=> updateView(previousView)} className="back mt-btn">
               <i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back
@@ -332,11 +372,12 @@ class Preview extends Component {
             </div>
             
             <button onClick={ ()=> this.props.onClick(this.props.data) } className="back mt-btn">
-              <i className="far fa-arrow-alt-circle-down"></i>&nbsp;Import
+              <i className="far fa-arrow-alt-circle-down"></i>&nbsp;
+              { this.props.data.elementor_type == "pro" ? 'Import Anyway' : 'Import' }
             </button>
           </div>
           <div className="mt-templates-modal-body-main preview-section">
-            <iframe style={iframeWidth} src={this.props.data.preview} frameBorder={0} allowFullScreen width="" />
+            <iframe style={iframeWidth} src={this.props.data.link} frameBorder={0} allowFullScreen width="" />
           </div>
         </div>
       </div>

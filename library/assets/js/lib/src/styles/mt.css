@@ -703,3 +703,21 @@
   height: 65px;
   width: 65px;
 }
+
+#mighty-library-modal .mt-template-views-body .template-item-inner .elementor-pro-tag {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+}
+
+#mighty-library-modal .mt-template-views-body .template-item-inner .elementor-pro-tag span {
+  color: white;
+  font-size: 11px;
+  background: #D30C5C;
+  padding: 2px 5px;
+  margin: 0 5px;
+}
+
+#mighty-library-modal .mt-templates-modal-body-inner .elementor-pro-banner span {
+  color: black;
+}
