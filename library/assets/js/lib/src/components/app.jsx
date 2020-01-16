@@ -186,25 +186,20 @@ class Kits extends Component {
 
               <div className="mt-templates-modal-body-main">
                   <div className="template-item">
-
-                      {this.props.data.templates.map(item => (
-                        
-                        item.pages ?
-
-                        <div key={item.id} className="template-item-inner">
-                          <ul className="template-btn-group">
-                              <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ) }><i className="far fa-eye"></i></button>
-                              
-                              <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i className="fas fa-rocket"></i></button>
-                          </ul>
-                          <div className="template-item-figure">
-                            <img src={item.pages[0].thumbnail} alt="" />
-                          </div>
-                          <div className="template-item-name"><span>{item.title}</span>{item.pages.length} Pages</div>
+                    {this.props.data.templates.map(item => (
+                      
+                      <div key={item.id} className="template-item-inner">
+                        <ul className="template-btn-group">
+                            <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ? item.pages : [item] ) }><i className="far fa-eye"></i></button>
+                            
+                            <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i className="fas fa-rocket"></i></button>
+                        </ul>
+                        <div className="template-item-figure">
+                          <img src={item.thumbnail} alt="template-thumbnail" />
                         </div>
-                        :
-                        ''
-                      ))}
+                        <div className="template-item-name"><span>{item.title}</span>{item.pages ? item.pages.length : 1} Pages</div>
+                      </div>
+                    ))}
                   </div>
               </div>
 
@@ -229,15 +224,10 @@ class Pages extends Component {
           <div className="mt-templates-modal-body-main">
             <div className="mt-template-views-body">
               <div className="template-item">
-                
                 {this.props.data.map(pages => (
                   <div key={pages.id} className="template-item-inner">
-                    
-                    {/* <div className="elementor-pro">
-                      <img src={MightyLibrary.baseUrl+'library/assets/images/elementor-logo.png'} alt=""/> Pro
-                    </div> */}
 
-                    { pages.elementor_type == "pro" ? 
+                    { pages.elementor_type == "pro" ?
                     
                     <div className="elementor-pro-tag">
                       <span>Elementor Pro Required</span>
