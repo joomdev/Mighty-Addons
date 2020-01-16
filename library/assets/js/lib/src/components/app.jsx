@@ -31,7 +31,6 @@ class App extends Component {
       ])
       .then(values => Promise.all(values.map(value => value.json())))
       .then(finalVals => {
-        console.log(MightyLibrary.host);
         let templates = finalVals[0];
         let blocks = finalVals[1];
         this.setState({
@@ -330,8 +329,6 @@ class Preview extends Component {
   render() {
     
     let previousView = (this.props.data.type == "page" ? 'templates' : 'blocks');
-    console.log("this.props.data.type : " + this.props.data.type);
-    console.log("previousView : " + previousView);
     let iframeWidth;
     switch( this.props.iframeType ) {
       case 'desktop': iframeWidth = {width: "100%"};
@@ -345,7 +342,7 @@ class Preview extends Component {
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
 
-          { this.props.data.elementor_type == "pro" ?
+          { this.props.data.elementor_type == "pro" && !MightyLibrary.elementorPro ?
           <div className="cta-section mt-templates-modal-body-mid cta-responsive elementor-pro-banner">
             <span><big><b>Required Plugins Missing : Elementor Pro</b></big>
             <br />
