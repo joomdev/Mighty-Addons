@@ -83,7 +83,7 @@ class Elementor extends base {
 			'apiUrl' => "http://api.mightythemes.local/api/",
 			'elementorPro' => $elementorPro,
 			'key' => "",
-			'host' => $_SERVER['HTTP_HOST'],
+			'host' => $_SERVER['HTTP_HOST']
 		) );
 	}
 
@@ -93,33 +93,26 @@ class Elementor extends base {
 	public function fetch_tmpl_data() 
 	{
 		$tmplUrl = !isset($_POST['tmpl']) ? '' : $_POST['tmpl'];
-		
-		$response = wp_remote_get($tmplUrl, array(
-            'timeout' => 120,
-            'httpversion' => '1.1'
-		));
+
+		$response = wp_remote_post($tmplUrl, [
+			'key' => '',
+			'host' => $_SERVER['HTTP_HOST']
+		]);
 		
 		$tmpl = json_decode($response['body'], true);
-		
+
 		$content = $this->process_import_ids($tmpl);
 		
 		$content = $this->process_import_content($tmpl, 'on_import');
 		
-		// return $content;
-
-		if ( is_wp_error( $content ) ) {
-			echo json_encode( $content->errors );
-		} else {
-			echo 'successful import';
-		}
+		print_r(\json_encode($content));
 
 		die();
 	}
 
 	protected function process_import_ids($content)
     {
-        return \Elementor\Plugin::$instance
-            ->db->iterate_data($content, function ($element)
+        return \Elementor\Plugin::$instance->db->iterate_data($content, function ($element)
         {
             $element['id'] = \Elementor\Utils::generate_random_string();
             return $element;
@@ -163,7 +156,7 @@ class Elementor extends base {
             {
                 $element_data['settings'][$control['name']] = $control_class->{$method}($element->get_settings($control['name']) , $control);
             }
-        }
+		}
         return $element_data;
     }
 }

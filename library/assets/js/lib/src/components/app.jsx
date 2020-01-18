@@ -63,13 +63,11 @@ class App extends Component {
   importJson = ( item ) => {
     let url = MightyLibrary.apiUrl+"template/"+item.id;
     updateView('loading');
-    fetch(url, {
+    // Installing Template
+    fetch(MightyLibrary.ajaxurl, {
       method: 'POST',
-      headers : new Headers(),
-      body: ({
-        "key" : MightyLibrary.key,
-        "host" : MightyLibrary.host
-      })
+      headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+      body: 'action=elementor_fetch_tmpl_data&tmpl=' + url
     })
     .then(response => response.json())
     .then((tmpl) => {
@@ -77,9 +75,10 @@ class App extends Component {
       elementor.sections.currentView.addChildModel(tmpl.data.template.content)
       updateView('home');
     })
-    .catch((error) => {
-      console.error(error)
-    })
+    .catch(function(error) {
+      console.log('Something went wrong!');
+      console.log(JSON.stringify(error));
+    });
   }
 
   responsiveIframe = ( type ) => {
@@ -338,7 +337,7 @@ class Preview extends Component {
             <br />
             This template requires Elementor Pro. To ensure this template works best, you'll need to buy and install <b>Elementor Pro</b> version 2.2.0 or above.</span>
             
-            <a href="#" className="back mt-btn">
+            <a href="https://elementor.com/pricing/?ref=6508&campaign=mightyaddon" className="back mt-btn">
               Get Elementor Pro
             </a>
           </div>
