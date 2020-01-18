@@ -236,11 +236,20 @@ class Pages extends Component {
                     }
 
                     <ul className="template-preview-btn">
+                      { pages.elementor_type == "pro" ?
+                      <div className="elementor-pro-notice">
+                        <h5>Required Plugins Missing</h5>
+                        <img src={MightyLibrary.baseUrl + 'library/assets/images/elementor-pro-notice.png'} alt="elementor-pro-logo" />
+                      </div>
+                      :
+                      ''
+                      }
+                      
                       <li className="mt-btn mt-btn-preview-big">
                         <span onClick={ () => this.props.onPreview( pages ) }>Preview</span>
                       </li>
                       <li className="mt-btn mt-btn-import">
-                        <span onClick={ () => this.props.onClick( pages ) }>Import</span>
+                        <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
                       </li>
                     </ul>
                     <div className="template-item-figure">

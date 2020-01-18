@@ -629,6 +629,14 @@
   transform: translateY(25px);
 }
 
+#mighty-library .template-preview-btn .elementor-pro-notice h5 {
+  color: black;
+}
+
+#mighty-library .template-preview-btn .elementor-pro-notice img {
+  width: 250px;
+}
+
 #mighty-library .template-preview-btn .mt-btn:not(:last-child) {
   margin-bottom: 10px;
 }
