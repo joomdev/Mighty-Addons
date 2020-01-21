@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 708 386.9" style="enable-background:new 0 0 708 386.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#5A00F0;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFC200;}
+	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#5A00F0;}
+	.st5{fill:#414042;}
+</style>
+<g>
+	<polygon class="st0" points="384.2,11.3 316.7,11.3 231.4,265.5 146.9,11.3 79.3,11.3 16.2,375.8 83.9,375.8 123.9,145.6 
+		200.6,375.8 261.8,375.8 339.2,145.6 350.3,210.8 397.9,92.9 	"/>
+	<path class="st4" d="M570.4,152.7l-5.4,0.2l-67.4,2.6l-5.4-12.3c-4.6-10.1-9.3-20.1-14-30.1c-0.5-1.1-1.1-2.2-2-4
+		c-1.2,3.6-2.3,6.6-3.2,9.5l-74.3,190.5c-7.6,21.4-15.4,42.7-22.9,64.1c-1.2,3.3-2.7,4.2-6,4.2c-21.2-0.2-42.5-0.1-63.7-0.1h-4.5
+		c3.5-9.2,6.8-17.9,10.1-26.6c42.9-112.2,85.8-224.3,128.6-336.6c1.5-3.9,3.2-5.3,7.5-5.3c21.5,0.3,43,0.1,64.8,0.1
+		C531.7,56.7,551,104.4,570.4,152.7z"/>
+	<path class="st2" d="M570.4,152.7c-1.7,0.1-2.9,0.2-4,0.2H565L570.4,152.7z"/>
+	<polygon class="st3" points="628,302.2 658.4,378.1 583.4,377.7 554.6,303.6 484.3,305 455,235.3 527.7,234.4 501.7,167.6 
+		573.1,165 600.5,233.5 666.2,232.7 691.8,300.9 	"/>
+</g>
+</svg>

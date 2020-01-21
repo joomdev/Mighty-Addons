@@ -123,7 +123,7 @@ class App extends Component {
     } else if (!isLoaded) {
       return <Loader data={ this.state.wittyTexts } />
     } else {
-      let logo = MightyLibrary.baseUrl + 'library/assets/images/mighty-addons-logo.svg';
+      let logo = MightyLibrary.baseUrl + 'library/assets/images/mighty-library-logo.svg';
       
       return (
         <div id="mt-templates-modal" className="mt-templates-modal">
@@ -133,6 +133,7 @@ class App extends Component {
                   <div className="mt-col-sm-4">
                       <div className="brand-logo">
                           <img className="mighty-logo" src={logo} alt="Mighty Addons" />
+                          <span className="logo-subheading">LIBRARY</span>
                       </div>
                   </div>
                   <div className="mt-col-sm-4">
@@ -173,35 +174,38 @@ class Kits extends Component {
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
 
-              {/* <div className="mt-templates-modal-body-mid mt-row">
-                  <div className="mt-col-sm-6">
-                      <div className="mt-templates-modal-body-mid-left">{this.props.data.bannerMsg}</div>
-                  </div>
-                  <div className="mt-col-sm-6">
-                      <div className="mt-templates-modal-body-mid-right">
-                          <a href={this.props.data.ctaUrl} target="_blank" className="mt-btn mt-btn-blue">{this.props.data.ctaBtn}</a>
-                      </div>
-                  </div>
-              </div> */}
-
-              <div className="mt-templates-modal-body-main">
-                  <div className="template-item">
-                    {this.props.data.templates.map(item => (
-                      
-                      <div key={item.id} className="template-item-inner">
-                        <ul className="template-btn-group">
-                            <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ? item.pages : [item] ) }><i className="far fa-eye"></i></button>
-                            
-                            <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i className="fas fa-rocket"></i></button>
-                        </ul>
-                        <div className="template-item-figure">
-                          <img src={item.thumbnail} alt="template-thumbnail" />
-                        </div>
-                        <div className="template-item-name"><span>{item.title}</span>{item.pages ? item.pages.length : 1} Pages</div>
-                      </div>
-                    ))}
+          <div className="mt-templates-modal-body-mid mt-row">
+              <div className="mt-col-sm-6">
+                  <div className="mt-templates-modal-body-mid-left">{this.props.data.bannerMsg}</div>
+              </div>
+              <div className="mt-col-sm-6">
+                  <div className="mt-templates-modal-body-mid-right">
+                      <a href={this.props.data.ctaUrl} target="_blank" className="mt-btn mt-btn-blue">{this.props.data.ctaBtn}</a>
                   </div>
               </div>
+          </div>
+
+          <div className="mt-templates-modal-body-main">
+              <div className="template-item">
+                {this.props.data.templates.map(item => (
+                  
+                  <div key={item.id} className="template-item-inner">
+                    <ul className="template-btn-group">
+                        <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ? item.pages : [item] ) }><i className="far fa-eye"></i></button>
+                        
+                        <button className="template-btn-item mt-btn mt-btn-go">Go Pro&nbsp;<i className="fas fa-rocket"></i></button>
+                    </ul>
+                    <div className="template-item-figure">
+                      <img src={item.thumbnail} alt="template-thumbnail" />
+                    </div>
+                    <div className="template-item-name">
+                      <span className="page-title">{item.title}</span>
+                      <span className="page-count">{item.pages ? item.pages.length + " Pages" : 1 + " Page"}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+          </div>
 
           </div>
       </div>
@@ -215,11 +219,9 @@ class Pages extends Component {
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
           <div className="cta-section mt-templates-modal-body-mid mt-row">
-            <div className="mt-col-sm-6">
-              <button onClick={ () => updateView('home')} className="back mt-btn">
-                <i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back
-              </button>
-            </div>
+            <button onClick={ () => updateView('home')} className="back mt-btn">
+              <i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back
+            </button>
           </div>
           <div className="mt-templates-modal-body-main">
             <div className="mt-template-views-body">
@@ -236,15 +238,16 @@ class Pages extends Component {
                     }
 
                     <ul className="template-preview-btn">
+
                       { pages.elementor_type == "pro" ?
                       <div className="elementor-pro-notice">
-                        <h5>Required Plugins Missing</h5>
+                        <p>Required Plugins Missing</p>
                         <img src={MightyLibrary.baseUrl + 'library/assets/images/elementor-pro-notice.png'} alt="elementor-pro-logo" />
                       </div>
                       :
                       ''
                       }
-                      
+
                       <li className="mt-btn mt-btn-preview-big">
                         <span onClick={ () => this.props.onPreview( pages ) }>Preview</span>
                       </li>
@@ -345,7 +348,7 @@ class Preview extends Component {
             <br />
             This template requires Elementor Pro. To ensure this template works best, you'll need to buy and install <b>Elementor Pro</b> version 2.2.0 or above.</span>
             
-            <a target="_blank" href="https://elementor.com/pricing/?ref=6508&campaign=mightyaddon" className="back mt-btn">
+            <a target="_blank" href="https://elementor.com/pricing/?ref=6508&campaign=mightyaddon" className="mt-btn mt-btn-pro">
               Get Elementor Pro
             </a>
           </div>
