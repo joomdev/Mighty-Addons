@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOMServer from 'react-dom/server'
 
 import '../styles/grid.min.css'
 import '../styles/mt.css'
@@ -11,6 +12,7 @@ class App extends Component {
       error: null,
       isLoaded: false,
       renderView: 'home',
+      bannerMessages: [],
       preview: [],
       kits: [],
       blocks: [],
@@ -36,6 +38,7 @@ class App extends Component {
         let blocks = finalVals[1];
         this.setState({
           isLoaded: true,
+          bannerMessages: templates.updates,
           kitsData: templates.data,
           kits: templates.data.templates,
           blocks: blocks.data,
@@ -91,7 +94,7 @@ class App extends Component {
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
+        return <Kits banner={ this.state.bannerMessages } data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
       case 'templates':
         return <Pages data={ this.state.choosenKit } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'blocks':
@@ -173,16 +176,9 @@ class Kits extends Component {
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
-
+          {/* Banner Ads */}
           <div className="mt-templates-modal-body-mid mt-row">
-              <div className="mt-col-sm-6">
-                  <div className="mt-templates-modal-body-mid-left">{this.props.data.bannerMsg}</div>
-              </div>
-              <div className="mt-col-sm-6">
-                  <div className="mt-templates-modal-body-mid-right">
-                      <a href={this.props.data.ctaUrl} target="_blank" className="mt-btn mt-btn-blue">{this.props.data.ctaBtn}</a>
-                  </div>
-              </div>
+            { ReactDOMServer.renderToStaticMarkup(this.props.banner[0].html) }
           </div>
 
           <div className="mt-templates-modal-body-main">
