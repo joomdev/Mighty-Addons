@@ -177,14 +177,12 @@ class Kits extends Component {
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
           {/* Banner Ads */}
-          <div className="mt-templates-modal-body-mid mt-row">
-            { ReactDOMServer.renderToStaticMarkup(this.props.banner[0].html) }
-          </div>
-
+          {this.props.banner.map((item, i) => (
+            (item.type == "banner") ? <div key={i} className="mighty-banner" dangerouslySetInnerHTML={{ __html: item.html }} /> : ''
+          ))}
           <div className="mt-templates-modal-body-main">
               <div className="template-item">
                 {this.props.data.templates.map(item => (
-                  
                   <div key={item.id} className="template-item-inner">
                     <ul className="template-btn-group">
                         <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ? item.pages : [item] ) }><i className="far fa-eye"></i></button>
