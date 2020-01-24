@@ -35,6 +35,7 @@ class Elementor extends base {
 		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 		add_action( 'elementor/preview/enqueue_styles', [ $this, 'enqueue_editor_scripts' ] );
 		add_action( 'wp_ajax_elementor_fetch_tmpl_data', [ $this, 'fetch_tmpl_data'], 1);
+		add_action( 'admin_enqueue_scripts', [ $this, 'load_custom_wp_admin_scripts' ], 100 );
 	}
 
 	/**
@@ -69,6 +70,8 @@ class Elementor extends base {
 
 		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 
+		wp_enqueue_script( 'mightyaddons-elementor-gallery', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-gallery.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+
 		wp_enqueue_script(
 			'mighty-library-react',
 			MIGHTY_ADDONS_PLG_URL . 'library/assets/js/lib/build/main.js',
@@ -85,6 +88,12 @@ class Elementor extends base {
 			'key' => "",
 			'host' => $_SERVER['HTTP_HOST']
 		) );
+	}
+
+	public function load_custom_wp_admin_scripts() {
+
+		wp_enqueue_script( 'mightyaddons-elementor-gallery', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-gallery.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+
 	}
 
 	/**
