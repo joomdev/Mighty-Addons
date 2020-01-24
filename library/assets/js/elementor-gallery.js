@@ -10,6 +10,7 @@
 
         wp.media.view.MightyAddons_AttachmentsBrowser = t.extend({
             tagName: "div",
+            id: "mighty-extension-pixabay",
             className: "mighty-photos-browser mightyaddons-pixabay",
             initialize: function () {
                 o = this
