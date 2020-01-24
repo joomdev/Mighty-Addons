@@ -14,7 +14,9 @@
             initialize: function () {
                 o = this
             }
-        }), e.prototype.browseRouter = function (e) {
+        }), e.prototype.bindHandlers = function () {
+            this.on("router:create:browse", this.createRouter, this), this.on("router:render:browse", this.browseRouter, this), this.on("content:create:browse", this.browseContent, this), this.on("content:create:mightygallery", this.mightygallery, this), this.on("content:render:upload", this.uploadContent, this), this.on("toolbar:create:select", this.createSelectToolbar, this)
+        }, e.prototype.browseRouter = function (e) {
             var t = {};
             t.upload = {
                 text: i.uploadFilesTitle,
