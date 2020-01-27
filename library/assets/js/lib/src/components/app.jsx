@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import ReactDOMServer from 'react-dom/server'
 
 import '../styles/grid.min.css'
 import '../styles/mt.css'
 
 class App extends Component {
-  
   constructor(props) {
     super(props)
     this.state = {
@@ -26,7 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Fething Templates & Blocks
+    // Fetching Templates & Blocks
     try {
       Promise.all([
         fetch(MightyLibrary.apiUrl+"templates/pages"),
@@ -119,7 +117,7 @@ class App extends Component {
   }
 
   render() {
-
+    
     const { error, isLoaded, kits, blocks, renderView } = this.state;
     if ( error ) {
       return <div>Error: {error.message}</div>;
