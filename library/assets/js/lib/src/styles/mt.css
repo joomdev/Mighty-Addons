@@ -812,3 +812,14 @@
   font-style: italic;
   color: #909090;
 }
+
+/* Mighty Gallery */
+#mighty-extension-pixabay .px-image {
+  margin: 8px;
+  cursor: pointer;
+}
+
+#mighty-extension-pixabay .media-item .startclosed,
+#mighty-extension-pixabay .media-item .startopen {
+  display: block !important;
+}
