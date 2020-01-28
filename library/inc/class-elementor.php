@@ -144,8 +144,25 @@ class Elementor extends base {
                     throw new Exception("The file cannot be saved.");
 				}
 
+				$attachment = array(
+                    'post_mime_type' => $wp_filetype['type'],
+                    'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+                    'post_content' => '',
+                    'post_status' => 'inherit',
+                    'guid' => $uploads['url'] . "/" . $filename,
+				);
+				
+				$attach_id = wp_insert_attachment($attachment, $fullpathfilename);
+				
+                if (!$attach_id) {
+                    throw new Exception("Failed to save record into database.");
+				}
+				
+                $attach_data = wp_generate_attachment_metadata($attach_id, $fullpathfilename);
+				wp_update_attachment_metadata($attach_id, $attach_data);
+
 				// Local URL
-				$localUrl = $uploads['url'] . "/" . basename($fullpathfilename);
+				$localUrl = $uploads['baseurl'] . '/' . $attach_data['file'];
 
 				$data = array(
 					"status" => true,
