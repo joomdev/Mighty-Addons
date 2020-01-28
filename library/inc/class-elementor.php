@@ -36,7 +36,6 @@ class Elementor extends base {
 		add_action( 'elementor/preview/enqueue_styles', [ $this, 'enqueue_editor_scripts' ] );
 		add_action( 'wp_ajax_elementor_fetch_tmpl_data', [ $this, 'fetch_tmpl_data'], 1);
 		add_action( 'wp_ajax_save_mighty_extension_media', [ $this, 'mighty_extension_media'] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'load_custom_wp_admin_scripts' ], 100 );
 	}
 
 	/**
@@ -71,7 +70,7 @@ class Elementor extends base {
 
 		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 
-		wp_enqueue_script( 'mightyaddons-elementor-gallery', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-gallery.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+		// wp_enqueue_script( 'mightyaddons-elementor-gallery', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-gallery.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
 
 		wp_enqueue_script(
 			'mighty-library-react',
@@ -90,12 +89,6 @@ class Elementor extends base {
 			'host' => $_SERVER['HTTP_HOST'],
 			'nonce' => "MightyLibrary"
 		) );
-	}
-
-	public function load_custom_wp_admin_scripts() {
-
-		wp_enqueue_script( 'mightyaddons-elementor-gallery', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-gallery.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-
 	}
 
 	/**
@@ -153,8 +146,30 @@ class Elementor extends base {
 
 				// Local URL
 				$localUrl = $uploads['url'] . "/" . basename($fullpathfilename);
+
+				$data = array(
+					"status" => true,
+					"category" => "photos",
+					"photoId" => "2QSPL8V",
+					"attachmentData" => [
+					  "id" => 133,
+					  "title" => "Lorem ipsum dolor sit amet",
+					  "filename" => "lorem-ipsum-dolor-sit-amet.jpg",
+					  "url" => $localUrl,
+					  "link" => "#",
+					  "alt" => "Lorem ipsum dolor sit amet",
+					  "author" => "1",
+					  "description" => "Lorem ipsum dolor sit amet, ipsum dolor",
+					  "caption" => "Lorem ipsum dolor sit amet, ipsum dolor",
+					  "name" => "lorem-ipsum-dolor-sit-amet",
+					  "mime" => "image/jpeg",
+					  "type" => "image",
+					  "subtype" => "jpeg",
+					  "dateFormatted" => "January 24, 2020",
+					]
+				);
 				
-				print_r(\json_encode($localUrl));
+				print_r(\json_encode($data));
 
 				wp_die();
 

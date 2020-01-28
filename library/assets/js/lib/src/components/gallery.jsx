@@ -3,6 +3,46 @@ import React, { Component } from 'react'
 import '../styles/grid.min.css'
 import '../styles/mt.css'
 
+if ("undefined" != typeof wp && wp.media) {
+
+  var e = wp.media.view.MediaFrame.Select,
+    i = (wp.media.controller.Library, wp.media.view.l10n),
+    t = wp.media.view.Frame,
+    importData = null,
+    tabTitle = "Mighty Photos",
+    defaultSearchTerm = "Cats"; // 🐈
+
+  wp.media.view.MightyAddons_AttachmentsBrowser = t.extend({
+    tagName: "div",
+    id: "mighty-extension-pixabay",
+    className: "mighty-photos-browser mightyaddons-pixabay",
+    initialize: function () {
+      importData = this
+    }
+  }), e.prototype.bindHandlers = function () {
+    this.on("router:create:browse", this.createRouter, this), this.on("router:render:browse", this.browseRouter, this), this.on("content:create:browse", this.browseContent, this), this.on("content:create:mightygallery", this.mightygallery, this), this.on("content:render:upload", this.uploadContent, this), this.on("toolbar:create:select", this.createSelectToolbar, this)
+  }, e.prototype.browseRouter = function (e) {
+    var t = {};
+    t.upload = {
+      text: i.uploadFilesTitle,
+      priority: 20
+    }, t.browse = {
+      text: i.mediaLibraryTitle,
+      priority: 40
+    }, t.mightygallery = {
+      text: tabTitle,
+      priority: 61
+    }, e.set(t)
+  }, e.prototype.mightygallery = function (e) {
+    var t = this.state();
+    e.view = new wp.media.view.MightyAddons_AttachmentsBrowser({
+      controller: this,
+      model: t,
+      AttachmentView: t.get("AttachmentView")
+    })
+  }
+}
+
 class Gallery extends Component {
   
   constructor(props) {
@@ -63,7 +103,23 @@ class Gallery extends Component {
   }
 
   importImage = ( image ) => {
-    console.log(image)
+    fetch(MightyLibrary.ajaxurl, {
+      method: 'POST',
+      headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+      body: 'action=save_mighty_extension_media&image=' + image
+    })
+    .then(response => response.json())
+    .then((data) => {
+      importData.model.get("selection").add(data.attachmentData),
+      importData.model.frame.trigger("library:selection:add"),
+      document.querySelector(".media-frame .media-button-select").click(),
+      document.getElementById("mighty-extension-pixabay").remove(),
+      alert('imported')
+    })
+    .catch(function(error) {
+      console.log('Something went wrong!');
+      console.log(JSON.stringify(error));
+    });
   }
 
   createView = ( view ) => {
