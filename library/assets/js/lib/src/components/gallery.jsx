@@ -157,7 +157,7 @@ class Home extends Component {
         <h1>Mighty Gallery</h1>
         <br/>
         <input className='pixabay-input' value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search for your fav' />
-        <button type='submit' className='button button-px-search' onClick={ () => this.props.onSearch }>Search</button>
+        <button type='submit' className='button button-px-search' onClick={ () => this.props.onSearch() }>Search</button>
 
         <Images data={this.props.data} onClick={ (image) => this.props.onClick(image) } />
 
