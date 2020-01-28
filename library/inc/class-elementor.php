@@ -35,6 +35,7 @@ class Elementor extends base {
 		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 		add_action( 'elementor/preview/enqueue_styles', [ $this, 'enqueue_editor_scripts' ] );
 		add_action( 'wp_ajax_elementor_fetch_tmpl_data', [ $this, 'fetch_tmpl_data'], 1);
+		add_action( 'wp_ajax_save_mighty_extension_media', [ $this, 'mighty_extension_media'] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'load_custom_wp_admin_scripts' ], 100 );
 	}
 
@@ -86,7 +87,8 @@ class Elementor extends base {
 			'apiUrl' => "http://api.mightythemes.local/api/",
 			'elementorPro' => $elementorPro,
 			'key' => "",
-			'host' => $_SERVER['HTTP_HOST']
+			'host' => $_SERVER['HTTP_HOST'],
+			'nonce' => "MightyLibrary"
 		) );
 	}
 
@@ -117,6 +119,49 @@ class Elementor extends base {
 		print_r(\json_encode($content));
 
 		die();
+	}
+
+	/**
+	 * Fetches the selected image by user.
+	 */
+	public function mighty_extension_media()
+	{
+		$image = $_POST['image'];
+
+		if ( $image ) {
+			$imageurl = stripslashes($image);
+			$uploads = wp_upload_dir();
+			// $post_id = isset($_POST['postid']) ? (int) $_POST['postid'] : 0;
+			$ext = pathinfo(basename($imageurl), PATHINFO_EXTENSION);
+			$newfilename = basename($imageurl);
+			$filename = wp_unique_filename($uploads['path'], $newfilename, $unique_filename_callback = null); // Get a filename that is sanitized and unique for the given directory.
+			$wp_filetype = wp_check_filetype($filename, null);
+			$fullpathfilename = $uploads['path'] . "/" . $filename;
+			
+            try {
+                if (!substr_count($wp_filetype['type'], "image")) {
+                    throw new Exception(basename($imageurl) . ' is not a valid image. ' . $wp_filetype['type'] . '');
+				}
+				
+				$image_string = wp_remote_get($image);
+				
+				$fileSaved = file_put_contents($uploads['path'] . "/" . $filename, $image_string['body']);
+				
+                if (!$fileSaved) {
+                    throw new Exception("The file cannot be saved.");
+				}
+
+				// Local URL
+				$localUrl = $uploads['url'] . "/" . basename($fullpathfilename);
+				
+				print_r(\json_encode($localUrl));
+
+				wp_die();
+
+            } catch (Exception $e) {
+				echo $e->getMessage();
+            }
+		}
 	}
 
 	protected function process_import_ids($content)
