@@ -28,6 +28,7 @@ class MightyThemesLibraryClass{
             this.initiatedGallery = false;
         }
     };
+    
     init() {
         const observer = new MutationObserver(this.callback);
         observer.observe(document, { attributes: true, childList: true, subtree: true });
