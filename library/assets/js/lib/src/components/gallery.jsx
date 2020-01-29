@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-import '../styles/grid.min.css'
-import '../styles/mt.css'
-
 if ("undefined" != typeof wp && wp.media) {
 
   var e = wp.media.view.MediaFrame.Select,
@@ -154,10 +151,16 @@ class Home extends Component {
   render() {
     return (
       <div className="mighty-gallery">
-        <h1>Mighty Gallery</h1>
-        <br/>
-        <input className='pixabay-input' value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search for your fav' />
-        <button type='submit' className='button button-px-search' onClick={ () => this.props.onSearch() }>Search</button>
+
+        <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
+
+          <div className="body-header-search">
+            <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' />
+            
+            <button type='submit' onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
+          </div>
+          
+        </div>
 
         <Images data={this.props.data} onClick={ (image) => this.props.onClick(image) } />
 
