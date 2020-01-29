@@ -50,6 +50,7 @@ class Gallery extends Component {
       images: [],
       renderView: 'home',
       choosenImage: [],
+      viewType: 'unordered',
     }
 
     // Updates View Globally
@@ -122,7 +123,7 @@ class Gallery extends Component {
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } />
+        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} />
       case 'image':
         return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } />
     }
@@ -148,6 +149,14 @@ class Gallery extends Component {
 }
 
 class Home extends Component {
+
+  enterPressed = (event) => {
+    var keyCode = event.keyCode || event.which;
+    if ( keyCode == 13 ) { // enter pressed
+      this.props.onSearch();
+    }
+  }
+
   render() {
     return (
       <div className="mighty-gallery">
@@ -155,14 +164,20 @@ class Home extends Component {
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
 
           <div className="body-header-search">
-            <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' />
+            <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' onKeyPress={this.enterPressed.bind(this)} />
             
             <button type='submit' onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
+          </div>
+
+          <div className="photos-view">
+            <p>View as:</p>
+            <i className={`fas fa-stream${this.props.viewType == 'ordered' ? '' : ' active'}`} onClick={ () => this.props.onViewType('unordered') }></i>
+            <i className={`fas fa-align-justify${this.props.viewType == 'ordered' ? ' active' : ''}`} onClick={ () => this.props.onViewType('ordered') } ></i>
           </div>
           
         </div>
 
-        <Images data={this.props.data} onClick={ (image) => this.props.onClick(image) } />
+        <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} />
 
       </div>
     );
@@ -172,7 +187,7 @@ class Home extends Component {
 class Images extends Component {
   render() {
     return (
-      <div className="search-results">
+      <div className={`search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}`}>
         {this.props.data.map(image => (
           <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
         ))}
