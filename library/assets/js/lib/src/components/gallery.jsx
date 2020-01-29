@@ -139,11 +139,9 @@ class Gallery extends Component {
         </div>
       );
     } else {
-
       return (
         this.createView(this.state.renderView)
       );
-      
     }
   }
 }
@@ -194,11 +192,24 @@ class Image extends Component {
     return (
       <div className="mighty-image">
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
-          <button className="mt-btn mt-btn-import" onClick={ () => updateView('home') }>Back</button>
-          <button className="mt-btn mt-btn-import" onClick={ () => this.props.onImport(this.props.data.url) }>Import</button>
+          <button className="mt-btn mt-btn-import" onClick={ () => updateView('home') }><i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back</button>
         </div>
         <div className="selected-image">
           <img src={this.props.data.url} alt={this.props.data.tags} />
+          <div className="image-controls">
+            <p>Tags: </p>
+            <span>{this.props.data.tags}</span>
+            <div className="pixabay-notice">
+              <a target="_blank" rel="nofollow" href="https://pixabay.com/service/license/">Pixabay License</a>
+              <div className="pix-note">
+                Free for commercial use
+                <br />No attribution required
+              </div>
+            </div>
+            <span className="import-button" onClick={ () => this.props.onImport(this.props.data.url) }>
+              <i className="fas fa-download"></i>&nbsp; Insert Image
+            </span>
+          </div>
         </div>
       </div>
     );
