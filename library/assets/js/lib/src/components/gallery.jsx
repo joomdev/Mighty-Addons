@@ -160,25 +160,18 @@ class Home extends Component {
   render() {
     return (
       <div className="mighty-gallery">
-
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
-
           <div className="body-header-search">
             <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' onKeyPress={this.enterPressed.bind(this)} />
-            
-            <button type='submit' onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
+            <button><i className="fas fa-search"></i></button>
           </div>
-
           <div className="photos-view">
             <p>View as:</p>
             <i className={`fas fa-stream${this.props.viewType == 'ordered' ? '' : ' active'}`} onClick={ () => this.props.onViewType('unordered') }></i>
             <i className={`fas fa-align-justify${this.props.viewType == 'ordered' ? ' active' : ''}`} onClick={ () => this.props.onViewType('ordered') } ></i>
           </div>
-          
         </div>
-
         <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} />
-
       </div>
     );
   }
@@ -200,14 +193,12 @@ class Image extends Component {
   render() {
     return (
       <div className="mighty-image">
-        <button className="button" onClick={ () => updateView('home') }>👈🏻 Back</button>
-        <div className="mt-row">
-          <div className="mt-col-md-6">
-            <img src={this.props.data.preview} alt={this.props.data.tags} />
-          </div>
-          <div className="mt-col-md-6">
-            <button className='button button-px-search' onClick={ () => this.props.onImport(this.props.data.url) }>🔽 Import</button>
-          </div>
+        <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
+          <button className="mt-btn mt-btn-import" onClick={ () => updateView('home') }>Back</button>
+          <button className="mt-btn mt-btn-import" onClick={ () => this.props.onImport(this.props.data.url) }>Import</button>
+        </div>
+        <div className="selected-image">
+          <img src={this.props.data.url} alt={this.props.data.tags} />
         </div>
       </div>
     );
