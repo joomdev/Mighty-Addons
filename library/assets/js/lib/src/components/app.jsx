@@ -140,9 +140,9 @@ class App extends Component {
                   <div className="mt-col-sm-4">
                       <div className="mt-templates-modal-header-top-tabs">
                           <ul className="top-tabs-inner">
-                              <li onClick={ ()=> updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{kits.length}</span></li>
+                              <li onClick={ () => updateView('home') } className={`top-tabs-temp ${renderView == "home" || renderView == "templates" ? 'active' : ''}`}>Templates <span className="top-tabs-numb">{kits.length}</span></li>
 
-                              <li onClick={ ()=> updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.templates.length}</span></li>
+                              <li onClick={ () => updateView('blocks') } className={`top-tabs-kits ${renderView == "blocks" ? 'active' : ''}`}>Blocks <span className="top-tabs-numb">{blocks.templates.length}</span></li>
                           </ul>
                       </div>
                   </div>
@@ -211,7 +211,7 @@ class Pages extends Component {
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
           <div className="cta-section mt-templates-modal-body-mid mt-row">
-            <button onClick={ () => updateView('home')} className="back mt-btn">
+            <button onClick={ () => updateView('home') } className="back mt-btn">
               <i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back
             </button>
           </div>
@@ -253,7 +253,6 @@ class Pages extends Component {
                     <div className="template-item-name"><span>{pages.title}</span></div>
                   </div>
                 ))}
-
               </div>
             </div>
           </div>
@@ -287,7 +286,6 @@ class Blocks extends Component {
                     <div className="template-item-name"><span>{block.title}</span></div>
                   </div>
                 ))}
-
               </div>
             </div>
           </div>
@@ -349,7 +347,7 @@ class Preview extends Component {
           }
 
           <div className="cta-section mt-templates-modal-body-mid cta-responsive">
-            <button onClick={ ()=> updateView(previousView)} className="back mt-btn">
+            <button onClick={ ()=> updateView(previousView) } className="back mt-btn">
               <i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back
             </button>
 
@@ -376,7 +374,7 @@ class Preview extends Component {
 
 function updateView( view ) {
   if ( view != this.state.renderView ) {
-    this.setState({ 
+    this.setState({
       renderView: view
     })
   }

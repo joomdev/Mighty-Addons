@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
+
 
 if ("undefined" != typeof wp && wp.media) {
 
@@ -50,11 +52,8 @@ class Gallery extends Component {
       images: [],
       renderView: 'home',
       choosenImage: [],
-      viewType: 'unordered',
+      viewType: 'unordered'
     }
-
-    // Updates View Globally
-    updateView = updateView.bind(this)
   }
 
   componentDidMount() {
@@ -72,6 +71,14 @@ class Gallery extends Component {
       })
     } catch {
       console.log("Something went wrong!");
+    }
+  }
+
+  updateView = (view) => {
+    if ( view != this.state.renderView ) {
+      this.setState({ 
+        renderView: view
+      })
     }
   }
 
@@ -97,10 +104,11 @@ class Gallery extends Component {
     this.setState({
       choosenImage: image
     })
-    updateView('image')
+    this.updateView('image')
   }
 
   importImage = ( image ) => {
+    this.updateView('loader')
     fetch(MightyLibrary.ajaxurl, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
@@ -108,11 +116,12 @@ class Gallery extends Component {
     })
     .then(response => response.json())
     .then((data) => {
-      importData.model.get("selection").add(data.attachmentData),
-      importData.model.frame.trigger("library:selection:add"),
-      document.querySelector(".media-frame .media-button-select").click(),
-      document.getElementById("mighty-extension-pixabay").remove(),
-      alert('imported')
+      importData.model.get("selection").add(data.attachmentData)
+      importData.model.frame.trigger("library:selection:add")
+      let buttons = document.querySelectorAll(".media-toolbar .media-toolbar-primary .media-button-select")
+      console.log(buttons.length)
+      buttons[buttons.length-1].click()
+      this.updateView('home')
     })
     .catch(function(error) {
       console.log('Something went wrong!');
@@ -125,7 +134,7 @@ class Gallery extends Component {
       case 'home':
         return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} />
       case 'image':
-        return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } />
+        return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } onViewChange={ (view) => this.updateView(view) } />
     }
   }
 
@@ -192,7 +201,7 @@ class Image extends Component {
     return (
       <div className="mighty-image">
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
-          <button className="mt-btn mt-btn-import" onClick={ () => updateView('home') }><i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back</button>
+          <button className="mt-btn mt-btn-import" onClick={ () => this.props.onViewChange('home') }><i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back</button>
         </div>
         <div className="selected-image">
           <img src={this.props.data.url} alt={this.props.data.tags} />
@@ -213,14 +222,6 @@ class Image extends Component {
         </div>
       </div>
     );
-  }
-}
-
-function updateView( view ) {
-  if ( view != this.state.renderView ) {
-    this.setState({ 
-      renderView: view
-    })
   }
 }
 
