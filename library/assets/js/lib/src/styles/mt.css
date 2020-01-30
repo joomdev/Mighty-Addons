@@ -817,6 +817,13 @@
 #mighty-extension-pixabay .px-image {
   margin: 8px;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+#mighty-extension-pixabay .pixabay-logo img {
+  width: 300px;
+  vertical-align: middle;
 }
 
 #mighty-extension-pixabay .mighty-gallery .search-results.view-ordered img {
@@ -844,6 +851,7 @@
 #mighty-extension-pixabay .mighty-image .selected-image img {
   height: 60vh;
   margin-right: 40px;
+  -webkit-user-drag: none;
 }
 
 #mighty-extension-pixabay .mighty-image .selected-image p {
