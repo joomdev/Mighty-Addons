@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 
+import Loader from './loader.jsx'
 
 if ("undefined" != typeof wp && wp.media) {
 
@@ -48,6 +49,7 @@ class Gallery extends Component {
     super(props)
     this.state = {
       isLoaded: false,
+      isSearching: false,
       searchTerm: 'cats',
       images: [],
       renderView: 'home',
@@ -57,21 +59,7 @@ class Gallery extends Component {
   }
 
   componentDidMount() {
-    try {
-      Promise.all([
-        fetch("#")
-      ])
-      .then(values => Promise.all(values.map(value => value.json())))
-      .then(finalVals => {
-        let images = finalVals[0];
-        this.setState({
-          images: images.data.images,
-          isLoaded: true
-        });
-      })
-    } catch {
-      console.log("Something went wrong!");
-    }
+    this.search()
   }
 
   updateView = (view) => {
@@ -83,6 +71,7 @@ class Gallery extends Component {
   }
 
   search = () => {
+    this.setState({ isSearching: true });
     try {
       Promise.all([
         fetch("#")
@@ -92,7 +81,8 @@ class Gallery extends Component {
         let images = finalVals[0];
         this.setState({
           images: images.data.images,
-          isLoaded: true
+          isLoaded: true,
+          isSearching: false,
         });
       })
     } catch {
@@ -132,9 +122,11 @@ class Gallery extends Component {
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} />
+        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } />
       case 'image':
         return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } onViewChange={ (view) => this.updateView(view) } />
+      case 'loader':
+        return <Loader />
     }
   }
 
@@ -142,11 +134,7 @@ class Gallery extends Component {
     const { isLoaded } = this.state;
 
     if ( !isLoaded ) {
-      return (
-        <div className="loader">
-          <h1>Loading...</h1>
-        </div>
-      );
+      return <Loader />
     } else {
       return (
         this.createView(this.state.renderView)
@@ -170,7 +158,8 @@ class Home extends Component {
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
           <div className="body-header-search">
             <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' onKeyPress={this.enterPressed.bind(this)} />
-            <button><i className="fas fa-search"></i></button>
+            {/* <button><i className="fas fa-search"></i></button> */}
+            <button onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
           </div>
           <div className="photos-view">
             <p>View as:</p>
@@ -178,7 +167,12 @@ class Home extends Component {
             <i className={`fas fa-align-justify${this.props.viewType == 'ordered' ? ' active' : ''}`} onClick={ () => this.props.onViewType('ordered') } ></i>
           </div>
         </div>
-        <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} />
+        
+        { !this.props.isSearching ?
+          <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} />
+            :
+          <Loader />
+        }
       </div>
     );
   }
