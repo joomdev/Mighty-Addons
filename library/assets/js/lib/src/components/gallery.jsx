@@ -153,6 +153,7 @@ class Home extends Component {
   }
 
   render() {
+    let pxlogo = MightyLibrary.baseUrl + 'library/assets/images/pixabay-logo.png';
     return (
       <div className="mighty-gallery">
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
@@ -160,6 +161,9 @@ class Home extends Component {
             <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' onKeyPress={this.enterPressed.bind(this)} />
             {/* <button><i className="fas fa-search"></i></button> */}
             <button onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
+          </div>
+          <div className="pixabay-logo">
+            <img src={pxlogo} alt="Pixabay logo" />
           </div>
           <div className="photos-view">
             <p>View as:</p>
