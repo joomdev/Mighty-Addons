@@ -7,7 +7,6 @@ import Gallery from './src/components/gallery.jsx';
 class MightyThemesLibraryClass{
     constructor() {
         this.initiatedLibrary = false;
-        this.initiatedGallery = false;
     }
 
     callback(mutationsList, observer) {
@@ -20,12 +19,11 @@ class MightyThemesLibraryClass{
             this.initiatedLibrary = false;
         }
 
-        var _galleryExists = document.getElementById('mighty-extension-pixabay');
-        if( _galleryExists !== null && !this.initiatedGallery) {
-            this.initiatedGallery = true;
-            ReactDOM.render(<Gallery /> , document.getElementById('mighty-extension-pixabay'));
-        } else {
-            this.initiatedGallery = false;
+        var _galleryExists = document.getElementsByClassName('mighty-photos-browser');
+        if( _galleryExists !== null ) {
+            _galleryExists.forEach(element => {
+                ReactDOM.render(<Gallery /> , element);
+            });
         }
     };
     
