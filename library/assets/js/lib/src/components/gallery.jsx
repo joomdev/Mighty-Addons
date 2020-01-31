@@ -109,7 +109,6 @@ class Gallery extends Component {
       importData.model.get("selection").add(data.attachmentData)
       importData.model.frame.trigger("library:selection:add")
       let buttons = document.querySelectorAll(".media-toolbar .media-toolbar-primary .media-button-select")
-      console.log(buttons.length)
       buttons[buttons.length-1].click()
       this.updateView('home')
     })

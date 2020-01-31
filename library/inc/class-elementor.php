@@ -70,8 +70,6 @@ class Elementor extends base {
 
 		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 
-		// wp_enqueue_script( 'mightyaddons-elementor-gallery', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-gallery.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-
 		wp_enqueue_script(
 			'mighty-library-react',
 			MIGHTY_ADDONS_PLG_URL . 'library/assets/js/lib/build/main.js',
