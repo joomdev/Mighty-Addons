@@ -486,9 +486,28 @@ class MT_Buttongroup extends Widget_Base {
         $margin = $settings['space_between_buttons']['size'] ? $settings['space_between_buttons']['size'] : '10';
         $margin .= $settings['space_between_buttons']['unit'];
         $stacking = strip_tags($settings['buttongroup_stack_on']);
+        
+        ?>
+        <style>
+            .mighty-buttongroup.mighty-buttongroup-stack-desktop {
+                flex-direction: column;
+            }
 
-        if( strcmp("mighty-buttongroup-stack-desktop", $stacking) == 0 ) { ?>
-            <style>
+            .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+* {
+                margin-left: 0;
+                margin-top: <?php echo $margin; ?>;
+            }
+
+            @media (max-width: 1024px) {
+                .mighty-buttongroup .mighty-button-text {
+                    margin-right: 10px;
+                }
+
+                .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
+                    margin-right: 0;
+                    margin-left: 10px;
+                }
+
                 .mighty-buttongroup.mighty-buttongroup-stack-desktop {
                     flex-direction: column;
                 }
@@ -497,92 +516,63 @@ class MT_Buttongroup extends Widget_Base {
                     margin-left: 0;
                     margin-top: <?php echo $margin; ?>;
                 }
-            </style>
-        <?php } elseif( strcmp("mighty-buttongroup-stack-tablet", $stacking) == 0 ) { ?>
-            <style>
-                @media (max-width: 1024px) {
-                    .mighty-buttongroup .mighty-button-text {
-                        margin-right: 10px;
-                    }
 
-                    .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
-                        margin-right: 0;
-                        margin-left: 10px;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-desktop {
-                        flex-direction: column;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+* {
-                        margin-left: 0;
-                        margin-top: <?php echo $margin; ?>;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-tablet {
-                        flex-direction: column;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+* {
-                        margin-left: 0;
-                        margin-top: <?php echo $margin; ?>;
-                    }
-
-                    .mighty-buttongroup>*+* {
-                        margin-left: 30px;
-                    }
+                .mighty-buttongroup.mighty-buttongroup-stack-tablet {
+                    flex-direction: column;
                 }
-            </style>
-        <?php } elseif( strcmp("mighty-buttongroup-stack-mobile", $stacking) == 0 ) { ?>
-            <style>
-                @media (max-width: 767px) {
-                    .mighty-buttongroup .mighty-button-text {
-                        margin-right: 10px;
-                    }
 
-                    .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
-                        margin-right: 0;
-                        margin-left: 10px;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-desktop {
-                        flex-direction: column;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+* {
-                        margin-left: 0;
-                        margin-top: <?php echo $margin; ?>;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-tablet {
-                        flex-direction: column;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+* {
-                        margin-left: 0;
-                        margin-top: <?php echo $margin; ?>;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-mobile {
-                        flex-direction: column;
-                    }
-
-                    .mighty-buttongroup.mighty-buttongroup-stack-mobile>*+* {
-                        margin-left: 0;
-                        margin-top: <?php echo $margin; ?>;
-                    }
-
-                    .mighty-buttongroup>*+* {
-                        margin-left: 20px;
-                    }
+                .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+* {
+                    margin-left: 0;
+                    margin-top: <?php echo $margin; ?>;
                 }
-            </style>
-        <?php } elseif( strcmp($stacking, "mighty-buttongroup-stack-none") == 0 ) { ?>
-            <style>
-                
-            </style>
-        <?php } ?>
-        
+
+                .mighty-buttongroup>*+* {
+                    margin-left: <?php echo $margin; ?>;
+                }
+            }
+
+            @media (max-width: 767px) {
+                .mighty-buttongroup .mighty-button-text {
+                    margin-right: 10px;
+                }
+
+                .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
+                    margin-right: 0;
+                    margin-left: 10px;
+                }
+
+                .mighty-buttongroup.mighty-buttongroup-stack-desktop {
+                    flex-direction: column;
+                }
+
+                .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+* {
+                    margin-left: 0;
+                    margin-top: <?php echo $margin; ?>;
+                }
+
+                .mighty-buttongroup.mighty-buttongroup-stack-tablet {
+                    flex-direction: column;
+                }
+
+                .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+* {
+                    margin-left: 0;
+                    margin-top: <?php echo $margin; ?>;
+                }
+
+                .mighty-buttongroup.mighty-buttongroup-stack-mobile {
+                    flex-direction: column;
+                }
+
+                .mighty-buttongroup.mighty-buttongroup-stack-mobile>*+* {
+                    margin-left: 0;
+                    margin-top: <?php echo $margin; ?>;
+                }
+
+                .mighty-buttongroup>*+* {
+                    margin-left: <?php echo $margin; ?>;
+                }
+            }
+        </style>
         <?php
 	}
 	
