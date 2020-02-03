@@ -318,10 +318,10 @@ class MT_Buttongroup extends Widget_Base {
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'default' => [
-                            'top' =>  '15',
-                            'right' => '25',
-                            'bottom' => '15',
-                            'left' => '25',
+                            'top' =>  '',
+                            'right' => '',
+                            'bottom' => '',
+                            'left' => '',
                         ],
                         'selectors' => [
                             '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
