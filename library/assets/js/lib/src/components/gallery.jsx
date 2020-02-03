@@ -74,7 +74,7 @@ class Gallery extends Component {
     this.setState({ isSearching: true });
     try {
       Promise.all([
-        fetch("#")
+        fetch(MightyLibrary.apiUrl+MightyLibrary.pxUrl+this.state.searchTerm+"/1?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
       ])
       .then(values => Promise.all(values.map(value => value.json())))
       .then(finalVals => {
@@ -158,7 +158,6 @@ class Home extends Component {
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
           <div className="body-header-search">
             <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' onKeyPress={this.enterPressed.bind(this)} />
-            {/* <button><i className="fas fa-search"></i></button> */}
             <button onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
           </div>
           <div className="pixabay-logo">
@@ -185,7 +184,14 @@ class Images extends Component {
   render() {
     return (
       <div className={`search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}`}>
-        {this.props.data.map(image => (
+        {this.props.data.length < 1 ?
+          <div className="not-found">
+            <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
+            <h4>We really need to upgrade things here!</h4>
+            <p>Until then, search for something else.</p>
+          </div>
+          :
+          this.props.data.map(image => (
           <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
         ))}
       </div>

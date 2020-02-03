@@ -85,7 +85,9 @@ class Elementor extends base {
 			'elementorPro' => $elementorPro,
 			'key' => "",
 			'host' => $_SERVER['HTTP_HOST'],
-			'nonce' => "MightyLibrary"
+			'nonce' => "MightyLibrary",
+			'pxKey' => "54c67446-89e5250d-3808bb85-942e870d",
+			'pxUrl' => "pixabay/image/"
 		) );
 	}
 
