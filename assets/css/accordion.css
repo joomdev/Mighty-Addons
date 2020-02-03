@@ -48,6 +48,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+    margin-bottom: 0;
 }
 
 .mighty-accordion .mt-panel .accordion .mt-accordion-title {
