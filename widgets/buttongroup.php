@@ -146,22 +146,19 @@ class MT_Buttongroup extends Widget_Base {
                     [
                         'label' => __('Icon Spacing', 'mighty'),
                         'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px' ],
                         'range' => [
-                            '%' => [
+                            'px' => [
                                 'min' => 0,
                                 'max' => 100,
                             ],
                         ],
-                        'default' => [
-                            'unit' => 'px',
-                            'size' => 0,
-                        ],
                         'selectors' => [
-                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} .mighty-button-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+                            '{{WRAPPER}} .mighty-buttongroup .mighty-button-text' => 'margin-right: {{SIZE}}{{UNIT}};',
+                            '{{WRAPPER}} .mighty-buttongroup .mighty-button-icon-left .mighty-button-text' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: 0;',
                         ],
                         'condition' => [
                             'button_icon!' => '',
-                            'button_icon_align' => 'mighty-button-icon-right'
                         ],
                     ]
                 );
@@ -403,6 +400,12 @@ class MT_Buttongroup extends Widget_Base {
                             'max' => 100,
                         ],
                     ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-buttongroup>*+*' => 'margin-left: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
+                        '(tablet) {{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
+                        '(mobile) {{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-mobile>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
+                    ],
                 ]
             );
 
@@ -417,7 +420,7 @@ class MT_Buttongroup extends Widget_Base {
 						'mighty-buttongroup-stack-desktop' => __( 'Desktop', 'mighty' ),
 						'mighty-buttongroup-stack-tablet' => __( 'Tablet', 'mighty' ),
 						'mighty-buttongroup-stack-mobile' => __( 'Mobile', 'mighty' ),
-					],
+                    ],
 				]
             );
             
@@ -485,95 +488,6 @@ class MT_Buttongroup extends Widget_Base {
         // Stacking
         $margin = $settings['space_between_buttons']['size'] ? $settings['space_between_buttons']['size'] : '10';
         $margin .= $settings['space_between_buttons']['unit'];
-        $stacking = strip_tags($settings['buttongroup_stack_on']);
-        
-        ?>
-        <style>
-            .mighty-buttongroup.mighty-buttongroup-stack-desktop {
-                flex-direction: column;
-            }
-
-            .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+* {
-                margin-left: 0;
-                margin-top: <?php echo $margin; ?>;
-            }
-
-            @media (max-width: 1024px) {
-                .mighty-buttongroup .mighty-button-text {
-                    margin-right: 10px;
-                }
-
-                .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
-                    margin-right: 0;
-                    margin-left: 10px;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-desktop {
-                    flex-direction: column;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+* {
-                    margin-left: 0;
-                    margin-top: <?php echo $margin; ?>;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-tablet {
-                    flex-direction: column;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+* {
-                    margin-left: 0;
-                    margin-top: <?php echo $margin; ?>;
-                }
-
-                .mighty-buttongroup>*+* {
-                    margin-left: <?php echo $margin; ?>;
-                }
-            }
-
-            @media (max-width: 767px) {
-                .mighty-buttongroup .mighty-button-text {
-                    margin-right: 10px;
-                }
-
-                .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
-                    margin-right: 0;
-                    margin-left: 10px;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-desktop {
-                    flex-direction: column;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+* {
-                    margin-left: 0;
-                    margin-top: <?php echo $margin; ?>;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-tablet {
-                    flex-direction: column;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+* {
-                    margin-left: 0;
-                    margin-top: <?php echo $margin; ?>;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-mobile {
-                    flex-direction: column;
-                }
-
-                .mighty-buttongroup.mighty-buttongroup-stack-mobile>*+* {
-                    margin-left: 0;
-                    margin-top: <?php echo $margin; ?>;
-                }
-
-                .mighty-buttongroup>*+* {
-                    margin-left: <?php echo $margin; ?>;
-                }
-            }
-        </style>
-        <?php
 	}
 	
 	protected function _content_template() {
