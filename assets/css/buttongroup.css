@@ -16,10 +16,6 @@
     border-radius: 4px;
     font-size: 16px;
 }
-/* 
-.mighty-buttongroup>*+* {
-    margin-left: 30px;
-} */
 
 .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
     order: 1;

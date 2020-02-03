@@ -117,11 +117,16 @@ class MT_Buttongroup extends Widget_Base {
                 );
                 
                 $repeater->add_control(
-                    'button_icon_spacing_right',
+                    'button_icon_spacing',
                     [
                         'label' => __('Icon Spacing', 'mighty'),
                         'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
                         'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 200,
+                            ],
                             '%' => [
                                 'min' => 0,
                                 'max' => 100,
@@ -129,36 +134,14 @@ class MT_Buttongroup extends Widget_Base {
                         ],
                         'default' => [
                             'unit' => 'px',
-                            'size' => 0,
+                            'size' => 10,
                         ],
                         'selectors' => [
-                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} .mighty-button-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} .mighty-button-icon-left .mighty-button-text' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: 0;',
+                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} .mighty-button-text' => 'margin-right: {{SIZE}}{{UNIT}};',
                         ],
                         'condition' => [
-                            'button_icon!' => '',
-                            'button_icon_align' => 'mighty-button-icon-left'
-                        ],
-                    ]
-                );
-
-                $repeater->add_control(
-                    'button_icon_spacing_left',
-                    [
-                        'label' => __('Icon Spacing', 'mighty'),
-                        'type' => Controls_Manager::SLIDER,
-                        'size_units' => [ 'px' ],
-                        'range' => [
-                            'px' => [
-                                'min' => 0,
-                                'max' => 100,
-                            ],
-                        ],
-                        'selectors' => [
-                            '{{WRAPPER}} .mighty-buttongroup .mighty-button-text' => 'margin-right: {{SIZE}}{{UNIT}};',
-                            '{{WRAPPER}} .mighty-buttongroup .mighty-button-icon-left .mighty-button-text' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: 0;',
-                        ],
-                        'condition' => [
-                            'button_icon!' => '',
+                            'button_icon!' => ''
                         ],
                     ]
                 );
@@ -400,6 +383,10 @@ class MT_Buttongroup extends Widget_Base {
                             'max' => 100,
                         ],
                     ],
+                    'default' => [
+                        'size' => 20,
+                        'unit' => 'px',
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-buttongroup>*+*' => 'margin-left: {{SIZE}}{{UNIT}};',
                         '{{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
@@ -484,10 +471,6 @@ class MT_Buttongroup extends Widget_Base {
             echo '</div>';
         endforeach;
         echo '</div>';
-        
-        // Stacking
-        $margin = $settings['space_between_buttons']['size'] ? $settings['space_between_buttons']['size'] : '10';
-        $margin .= $settings['space_between_buttons']['unit'];
 	}
 	
 	protected function _content_template() {
