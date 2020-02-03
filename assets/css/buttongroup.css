@@ -35,6 +35,10 @@
     margin-right: 10px;
 }
 
+.mighty-buttongroup svg {
+  width: 1em;
+}
+
 .mighty-buttongroup .mighty-button-icon-left .mighty-button-text {
     margin-right: 0;
     margin-left: 10px;

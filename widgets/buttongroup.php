@@ -11,6 +11,7 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Border;
 use \Elementor\Scheme_Typography;
 use \Elementor\Scheme_Color;
+use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -169,7 +170,7 @@ class MT_Buttongroup extends Widget_Base {
                     'button_icon_animation',
                     [
                         'label' => __('Icon Animation', 'mighty'),
-                        'type' => \Elementor\Controls_Manager::ANIMATION,
+                        'type' => \Elementor\Controls_Manager::ANIMATION
                     ]
                 );
                 
@@ -333,7 +334,7 @@ class MT_Buttongroup extends Widget_Base {
                     [
                         'name' => 'buttongroup_typography',
                         'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                        'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} *',
+                        'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
                     ]
                 );
 
@@ -465,19 +466,19 @@ class MT_Buttongroup extends Widget_Base {
             $nofollow = $btngrp['button_link']['nofollow'] ? ' rel="nofollow"' : '';
             $url = $btngrp['button_link']['url'];
             $iconAnimation = (($btngrp['button_icon_animation'] !== 'none') ? 'animated '.$btngrp['button_icon_animation'] . ' ' : '');
-            $buttonIcon = '<i class="mighty-button-icon '. $iconAnimation . $btngrp['button_icon']['value'] .'"></i>';
             $buttonAnimation = (!empty($btngrp['hover_animation']) == true ? ' elementor-animation-'.$btngrp['hover_animation'] : '');
             $buttonSize = ' ' . $btngrp['button_size'];
-        
+            
             echo '<div ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . ' class="mighty-button ' . $settings['buttongroup_btns_align'] . ' elementor-repeater-item-'. $btngrp['_id'] . '">';
-
                 echo '<a class="mighty-button-link ' . $btngrp['button_icon_align'] . $buttonAnimation . (($btngrp['button_css_class'] !== "") ? " " . $btngrp['button_css_class'] : '') . $buttonSize .'" href="' . $url . '" '. $target . $nofollow .'>';
                     echo '<span class="mighty-button-text">' . $btngrp['button_text'] . '</span>';
-                    echo $btngrp['button_icon']['value'] ? $buttonIcon : '';
+                    if ( ! empty( $btngrp['button_icon']['value'] ) || ! empty( $btngrp['button_icon']['url']) ) :
+                        echo "<span class='mighty-button-icon " . $iconAnimation . "'>";
+                        \Elementor\Icons_Manager::render_icon( $btngrp['button_icon'], [ 'aria-hidden' => 'true' ] );
+                        echo "</span>";
+                    endif;
                 echo '</a>';
-            
             echo '</div>';
-        
         endforeach;
         echo '</div>';
         
