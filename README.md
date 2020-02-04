@@ -14,7 +14,7 @@ Tested up to: 5.3
 
 Requires PHP: 5.6
 
-Stable Tag: 1.2.0
+Stable Tag: 1.3.0
 
 License: GPLv2 or later
 
@@ -27,16 +27,33 @@ Mighty Addons is a collection of premium quality addons for the Elementor page b
 
 [**>> Check the Demos <<**](https://mightythemes.com/products/mighty-addons/)
 
-Let’s design Powerful WordPress Website together with Elementor page builder and achieve the imaginable designs in minutes. **No coding required.**
-## Why Mighty Addon is the Best Elementor Widgets Plugin
+Let’s design Powerful WordPress Websites together with the Elementor page builder and achieve the imaginable designs in minutes. **No coding required.**
+## Why Mighty Addons is the Best Elementor Widgets Plugin
+
+### Pre-designed Templates Kits
+A template kit is a group of multiple pages designed for a specific theme. Like if you are looking for a business elementor theme, you can choose a business template kit and import pages from the kit one by one.
+You will get all the required pages such as Home, About, Services, Services Detail, FAQ, Contact, etc. for your business website. You need to import them and replace the dummy content with your real content. 
+Check out the Available Template Kits
+
+[**>> Explore Template Kits <<**](https://mightythemes.com/mighty-addons-library)
+
+### Ready to Use Blocks/Sections
+Block is ready to use a section that can be inserted on any Elementor page. In Mighty Addons Library, you have different blocks in different categories. Like if you are looking for a Hero section, you can have multiple designs for the Hero section and the same for the other sections as well. 
+Most importantly, you can have these block designs in both dark and light shades. You need to access the library and insert the required block, and you are done. 
+
+[**>> Explore Sections/Blocks <<**](https://mightythemes.com/mighty-addons-library)
+
+### Pixabay Integration With Elementor
+You can search for the images you need for your web page and use them without leaving the Elementor. We have integrated Pixabay with Mighty Addons and this feature is available for free. 
+
 ### Use with Any Theme
 Mighty Addons plugin can work with any WordPress theme which supports Elementor. You don't need to change the theme to use our Elementor addons.
 
 ### Built-in FAQ Schema
-Add FAQ section with the help of MT Accordion on your pages and mark that section with FAQ schema. You will have a chance to get extra space in SERP. 
+Add the FAQ section with the help of MT Accordion on your pages and mark that section with FAQ schema. You will have a chance to get extra space in SERP. 
 
 ### Light Weight
-To eliminate loading issues, Mighty addons has neat and clean code which makes it lightweight widget plugins for Elementor.
+To eliminate loading issues, Mighty Addons has neat and clean code which makes it lightweight widget plugins for Elementor.
 
 ### Instinctive Widget Controls
 Every Elementor widget comes with lots of customization controls. You can play with them and achieve nearly any credible design without writing a single line of code.
@@ -56,7 +73,7 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 3. **[MT Accordion](https://demo.mightythemes.com/mighty-addons/mt-accordion/)** - Add beautiful & FAQ schema rich accordions in your pages, posts, and anywhere on your WordPress Website.
 4. **[MT Team](https://demo.mightythemes.com/mighty-addons/mt-team/)** - Showcase your talented team to your website visitors and increase the trust in your brand.
 5. **[MT Progress Bar](https://demo.mightythemes.com/mighty-addons/mt-progress-bar/)** - Highlight your skill stats with the help of Animated progress bars. You can add unlimited bars with a single element. 
-6. **[MT Button Group](https://demo.mightythemes.com/mighty-addons/mt-button-group/)** - Create better call to actions with creative button styles using Button Group Element. It allows you to add unlimited Buttons with a single element. 
+6. **[MT Button Group](https://demo.mightythemes.com/mighty-addons/mt-button-group/)** - Create a better call to actions with creative button styles using Button Group Element. It allows you to add unlimited Buttons with a single element. 
 7. **[MT Before After](https://demo.mightythemes.com/mighty-addons/mt-before-after/)** - Display before and after version of an image with the help of MT Before After Elementor Widget. 
 8. **[MT Gradient Heading](https://demo.mightythemes.com/mighty-addons/mt-gradient-heading/)** - Create an eye-catching gradient heading with the help of MT Gradient Heading. You can apply different gradient colors and angles, styles and positions. 
 9. **[MT Flip Box Widget](https://demo.mightythemes.com/mighty-addons/mt-flip-box/)** - MT Flip Box Widget comes with different interactive flipping effects. This widget can be used as a banner, for listing your company's services, and much more uses.
@@ -64,15 +81,15 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 
 We are working on more Elementor Widgets, and they will be updated soon. Still, you have any specific widget or feature request, feel free to **[get in touch with us.](https://mightythemes.com/contact/)** 
 
-## Have any Question or facing any issue?
-We are proud of our support team. If you are facing any issue or have any question regarding Mighty Addons for Elementor, feel free to **[post us on our support forum](https://mightythemes.com/support/c/mighty-addons/)**. Our technical WordPress Developer would love to help you. 
+## Have any questions or facing any issue?
+We are proud of our support team. If you are facing any issue or have any questions regarding Mighty Addons for Elementor, feel free to **[post us on our support forum](https://mightythemes.com/support/c/mighty-addons/)**. Our technical WordPress Developer would love to help you. 
 
 ## How to Install Mighty Addons for Elementor
 
 1. Install and activate the Elementor page builder.
 2. Install the Mighty Addons and activate or download the plugin from WordPress Directory and unzip the directory to the *wp-content/plugins/* directory and activate.
 3. Now they're ready to use. That's all, stop wandering!
-4. You can type "MT" on your element tabs within Elementor editor, and all the available elements will appear.
+4. You can type "MT" on your element tabs within the Elementor editor, and all the available elements will appear.
 Also, you can see them under the category "Mighty Addons" on your element/widget list.
 
 ## Frequently Asked Questions
@@ -105,6 +122,19 @@ We always listen to our user's feedback and based on that feedback, we keep enha
 
 No, you don't need to buy Elementor Pro to use Mighty Addons. These free Elementor Widgets will work with both free and pro versions.
 
+### Will you keep updating Free Elementor Templates?
+
+Yes, we will keep adding free Elementor templates regularly, along with pro templates.
+
+### Do I need to use Elementor Pro to access Mighty Addons Library?
+
+No, you don’t need Elementor Pro to access Mighty Addons Library. You can use these Elementor templates or blocks with free Elementor plugin.
+
+### Do I need to purchase Mighty Addons Pro to use Elementor Template or Blocks?
+
+No, Mighty Addons Pro is not required to use the templates. But in the free version of Mighty Addons, you will have limited templates and blocks. But in the pro version, you will have many more options than the free version. 
+
+
 ### Developer? Want to contribute?
 
 We 💗 Open Source. Come and see our products on <a href="https://github.com/mightythemes/" title="MightyThemes on GitHub">GitHub</a>.
@@ -113,6 +143,15 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.3.0
+* Added: Library for Templates and Blocks
+* Added: Pixabay integration in Media Manager
+* Fixed: Button Group Stacking issue when using responsive
+* Fixed: Button Group spacing issue when responsive
+* Fixed: Fixed issue with using SVG in ButtonGroup icon
+* Fixed: Fixed FlipBox Box Shadow when using unsupported effects
+* Fixed: Accordion Bottom Margin theme conflict
 
 ### 1.2.0
 * Added: Mighty Admin Dashboard
