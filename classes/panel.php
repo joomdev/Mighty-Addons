@@ -19,87 +19,99 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
         const PLG_NONCE = 'mighty_addons_panel';
 
         public static $mighty_addons = [
+            "addons" => [
+                'testimonial' => [
+                    'title' => 'MT Testimonial',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Testimonial',
+                    'slug' => 'testimonial',
+                    'icon' => 'mf mf-testimonial'
+                ],
+                'team' => [
+                    'title' => 'MT Team',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Team',
+                    'slug' => 'team',
+                    'icon' => 'mf mf-team'
+                ],
+                'progressbar' => [
+                    'title' => 'MT Progress Bar',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Progressbar',
+                    'slug' => 'progressbar',
+                    'icon' => 'mf mf-progressbar'
+                ],
+                'counter' => [
+                    'title' => 'MT Counter',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Counter',
+                    'slug' => 'counter',
+                    'icon' => 'mf mf-counter'
+                ],
+                'buttongroup' => [
+                    'title' => 'MT Button Group',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Buttongroup',
+                    'slug' => 'buttongroup',
+                    'icon' => 'mf mf-button'
+                ],
+                'accordion' => [
+                    'title' => 'MT Accordion',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Accordion',
+                    'slug' => 'accordion',
+                    'icon' => 'mf mf-accordion'
+                ],
+                'beforeafter' => [
+                    'title' => 'MT Before After',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Beforeafter',
+                    'slug' => 'beforeafter',
+                    'icon' => 'mf mf-beforeafter'
+                ],
+                'gradientheading' => [
+                    'title' => 'MT Gradient Heading',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Gradientheading',
+                    'slug' => 'gradientheading',
+                    'icon' => 'mf mf-heading'
+                ],
+                'flipbox' => [
+                    'title' => 'MT Flip Box',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Flipbox',
+                    'slug' => 'flipbox',
+                    'icon' => 'mf mf-flipbox'
+                ],
+                'openinghours' => [
+                    'title' => 'MT Opening Hours',
+                    'description' => '',
+                    'enable' => true,
+                    'class' => 'MT_Openinghours',
+                    'slug' => 'openinghours',
+                    'icon' => 'mf mf-openinghours'
+                ],
+            ],
 
-            'testimonial' => [
-                'title' => 'MT Testimonial',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Testimonial',
-                'slug' => 'testimonial',
-                'icon' => 'mf mf-testimonial'
-            ],
-            'team' => [
-                'title' => 'MT Team',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Team',
-                'slug' => 'team',
-                'icon' => 'mf mf-team'
-            ],
-            'progressbar' => [
-                'title' => 'MT Progress Bar',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Progressbar',
-                'slug' => 'progressbar',
-                'icon' => 'mf mf-progressbar'
-            ],
-            'counter' => [
-                'title' => 'MT Counter',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Counter',
-                'slug' => 'counter',
-                'icon' => 'mf mf-counter'
-            ],
-            'buttongroup' => [
-                'title' => 'MT Button Group',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Buttongroup',
-                'slug' => 'buttongroup',
-                'icon' => 'mf mf-button'
-            ],
-            'accordion' => [
-                'title' => 'MT Accordion',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Accordion',
-                'slug' => 'accordion',
-                'icon' => 'mf mf-accordion'
-            ],
-            'beforeafter' => [
-                'title' => 'MT Before After',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Beforeafter',
-                'slug' => 'beforeafter',
-                'icon' => 'mf mf-beforeafter'
-            ],
-            'gradientheading' => [
-                'title' => 'MT Gradient Heading',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Gradientheading',
-                'slug' => 'gradientheading',
-                'icon' => 'mf mf-heading'
-            ],
-            'flipbox' => [
-                'title' => 'MT Flip Box',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Flipbox',
-                'slug' => 'flipbox',
-                'icon' => 'mf mf-flipbox'
-            ],
-            'openinghours' => [
-                'title' => 'MT Opening Hours',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_Openinghours',
-                'slug' => 'openinghours',
-                'icon' => 'mf mf-openinghours'
-            ],
+            "extensions" => [
+                'pixabay' => [
+                    'title' => 'Pixabay',
+                    'description' => 'Quick pictures insert, integrated with Pixabay.',
+                    'enable' => true,
+                    'class' => 'MT_Photos',
+                    'slug' => 'pixabay',
+                    'icon' => 'mf mf-pixabay-icon'
+                ]
+            ]
         ];
 
         private static $ma_default_settings;
@@ -268,87 +280,99 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             // }
             
             self::$ma_settings = [
+                "addons" => [
+                    'testimonial' => [
+                        'title' => 'MT Testimonial',
+                        'description' => '',
+                        'enable' => intval( $settings['testimonial'] ? 1 : 0 ),
+                        'class' => 'MT_Testimonial',
+                        'slug' => 'testimonial',
+                        'icon' => 'mf mf-testimonial'
+                    ],
+                    'team' => [
+                        'title' => 'MT Team',
+                        'description' => '',
+                        'enable' => intval( $settings['team'] ? 1 : 0 ),
+                        'class' => 'MT_Team',
+                        'slug' => 'team',
+                        'icon' => 'mf mf-team'
+                    ],
+                    'progressbar' => [
+                        'title' => 'MT Progress Bar',
+                        'description' => '',
+                        'enable' => intval( $settings['progressbar'] ? 1 : 0 ),
+                        'class' => 'MT_Progressbar',
+                        'slug' => 'progressbar',
+                        'icon' => 'mf mf-progressbar'
+                    ],
+                    'counter' => [
+                        'title' => 'MT Counter',
+                        'description' => '',
+                        'enable' => intval( $settings['counter'] ? 1 : 0 ),
+                        'class' => 'MT_Counter',
+                        'slug' => 'counter',
+                        'icon' => 'mf mf-counter'
+                    ],
+                    'buttongroup' => [
+                        'title' => 'MT Button Group',
+                        'description' => '',
+                        'enable' => intval( $settings['buttongroup'] ? 1 : 0 ),
+                        'class' => 'MT_Buttongroup',
+                        'slug' => 'buttongroup',
+                        'icon' => 'mf mf-button'
+                    ],
+                    'accordion' => [
+                        'title' => 'MT Accordion',
+                        'description' => '',
+                        'enable' => intval( $settings['accordion'] ? 1 : 0 ),
+                        'class' => 'MT_Accordion',
+                        'slug' => 'accordion',
+                        'icon' => 'mf mf-accordion'
+                    ],
+                    'beforeafter' => [
+                        'title' => 'MT Before After',
+                        'description' => '',
+                        'enable' => intval( $settings['beforeafter'] ? 1 : 0 ),
+                        'class' => 'MT_Beforeafter',
+                        'slug' => 'beforeafter',
+                        'icon' => 'mf mf-beforeafter'
+                    ],
+                    'gradientheading' => [
+                        'title' => 'MT Gradient Heading',
+                        'description' => '',
+                        'enable' => intval( $settings['gradientheading'] ? 1 : 0 ),
+                        'class' => 'MT_Gradientheading',
+                        'slug' => 'gradientheading',
+                        'icon' => 'mf mf-heading'
+                    ],
+                    'flipbox' => [
+                        'title' => 'MT Flip Box',
+                        'description' => '',
+                        'enable' => intval( $settings['flipbox'] ? 1 : 0 ),
+                        'class' => 'MT_Flipbox',
+                        'slug' => 'flipbox',
+                        'icon' => 'mf mf-flipbox'
+                    ],
+                    'openinghours' => [
+                        'title' => 'MT Opening Hours',
+                        'description' => '',
+                        'enable' => intval( $settings['openinghours'] ? 1 : 0 ),
+                        'class' => 'MT_Openinghours',
+                        'slug' => 'openinghours',
+                        'icon' => 'mf mf-openinghours'
+                    ]
+                ],
 
-                'testimonial' => [
-                    'title' => 'MT Testimonial',
-                    'description' => '',
-                    'enable' => intval( $settings['testimonial'] ? 1 : 0 ),
-                    'class' => 'MT_Testimonial',
-                    'slug' => 'testimonial',
-                    'icon' => 'mf mf-testimonial'
-                ],
-                'team' => [
-                    'title' => 'MT Team',
-                    'description' => '',
-                    'enable' => intval( $settings['team'] ? 1 : 0 ),
-                    'class' => 'MT_Team',
-                    'slug' => 'team',
-                    'icon' => 'mf mf-team'
-                ],
-                'progressbar' => [
-                    'title' => 'MT Progress Bar',
-                    'description' => '',
-                    'enable' => intval( $settings['progressbar'] ? 1 : 0 ),
-                    'class' => 'MT_Progressbar',
-                    'slug' => 'progressbar',
-                    'icon' => 'mf mf-progressbar'
-                ],
-                'counter' => [
-                    'title' => 'MT Counter',
-                    'description' => '',
-                    'enable' => intval( $settings['counter'] ? 1 : 0 ),
-                    'class' => 'MT_Counter',
-                    'slug' => 'counter',
-                    'icon' => 'mf mf-counter'
-                ],
-                'buttongroup' => [
-                    'title' => 'MT Button Group',
-                    'description' => '',
-                    'enable' => intval( $settings['buttongroup'] ? 1 : 0 ),
-                    'class' => 'MT_Buttongroup',
-                    'slug' => 'buttongroup',
-                    'icon' => 'mf mf-button'
-                ],
-                'accordion' => [
-                    'title' => 'MT Accordion',
-                    'description' => '',
-                    'enable' => intval( $settings['accordion'] ? 1 : 0 ),
-                    'class' => 'MT_Accordion',
-                    'slug' => 'accordion',
-                    'icon' => 'mf mf-accordion'
-                ],
-                'beforeafter' => [
-                    'title' => 'MT Before After',
-                    'description' => '',
-                    'enable' => intval( $settings['beforeafter'] ? 1 : 0 ),
-                    'class' => 'MT_Beforeafter',
-                    'slug' => 'beforeafter',
-                    'icon' => 'mf mf-beforeafter'
-                ],
-                'gradientheading' => [
-                    'title' => 'MT Gradient Heading',
-                    'description' => '',
-                    'enable' => intval( $settings['gradientheading'] ? 1 : 0 ),
-                    'class' => 'MT_Gradientheading',
-                    'slug' => 'gradientheading',
-                    'icon' => 'mf mf-heading'
-                ],
-                'flipbox' => [
-                    'title' => 'MT Flip Box',
-                    'description' => '',
-                    'enable' => intval( $settings['flipbox'] ? 1 : 0 ),
-                    'class' => 'MT_Flipbox',
-                    'slug' => 'flipbox',
-                    'icon' => 'mf mf-flipbox'
-                ],
-                'openinghours' => [
-                    'title' => 'MT Opening Hours',
-                    'description' => '',
-                    'enable' => intval( $settings['openinghours'] ? 1 : 0 ),
-                    'class' => 'MT_Openinghours',
-                    'slug' => 'openinghours',
-                    'icon' => 'mf mf-openinghours'
-                ],
+                "extensions" => [
+                    'pixabay' => [
+                        'title' => 'Pixabay',
+                        'description' => 'Quick pictures insert, integrated with Pixabay.',
+                        'enable' => intval( $settings['pixabay'] ? 1 : 0 ),
+                        'class' => 'MT_Photos',
+                        'slug' => 'pixabay',
+                        'icon' => 'mf mf-pixabay-icon'
+                    ]
+                ]
             ];
             
             update_option( 'mighty_addons_status', self::$ma_settings );

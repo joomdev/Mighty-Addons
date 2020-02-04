@@ -25,6 +25,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.mf-pixabay-icon:before {
+    content: "\e90a";
+}
+
 .mf-button:before {
     content: "\e900";
 }

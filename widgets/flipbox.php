@@ -424,6 +424,9 @@ class MT_Flipbox extends Widget_Base {
                     'name' => 'front_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front',
+                    'condition' => [
+                        'flip_effect!' => ['ma-slide', 'ma-push']
+                    ]
                 ]
             );
 
@@ -924,6 +927,9 @@ class MT_Flipbox extends Widget_Base {
                     'name' => 'back_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back',
+                    'condition' => [
+                        'flip_effect!' => ['ma-slide', 'ma-push']
+                    ]
                 ]
             );
 

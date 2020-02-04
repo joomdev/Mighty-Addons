@@ -6,7 +6,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // All the Awesomeness
-$widgets = self::$ma_get_settings;
+$widgets = self::$ma_get_settings['addons'];
+$extensions = self::$ma_get_settings['extensions'];
 ?>
 
 <?php include_once('includes/header.php'); ?>

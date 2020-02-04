@@ -1,5 +1,4 @@
 .mighty-accordion .mt-panel .accordion {
-    border: 1px solid #ccc;
     color: #444;
     cursor: pointer;
     padding: 10px;
@@ -49,6 +48,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+    margin-bottom: 0;
 }
 
 .mighty-accordion .mt-panel .accordion .mt-accordion-title {

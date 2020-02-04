@@ -103,7 +103,8 @@ class Mighty_Elementor {
 	
 	public function register_widgets() {
 
-		$widgets = HelperFunctions::mighty_addons();
+		$widgets = HelperFunctions::mighty_addons()['addons'];
+		$extensions = HelperFunctions::mighty_addons()['extensions'];
 		
 		foreach( $widgets as $widget => $props ) {
 			if( $props['enable'] ) {

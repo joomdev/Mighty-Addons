@@ -11,9 +11,8 @@
     float: left;
 }
 
-.mighty-counter .mtcounter-content .counter .count {
+.mighty-counter .mtcounter-content .counter {
     font-size: 40px;
-    /* line-height: 2.2em; */
 }
 
 .mighty-counter .mtcounter-content .counter-title {

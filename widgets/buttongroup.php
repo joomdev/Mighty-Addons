@@ -11,6 +11,7 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Border;
 use \Elementor\Scheme_Typography;
 use \Elementor\Scheme_Color;
+use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -98,16 +99,16 @@ class MT_Buttongroup extends Widget_Base {
                         'label' => __('Icon Alignment', 'mighty'),
                         'type' => \Elementor\Controls_Manager::CHOOSE,
                         'options' => [
-                            'left' => [
+                            'mighty-button-icon-left' => [
                                 'title' => __('Left', 'mighty'),
                                 'icon' => 'fa fa-align-left',
                             ],
-                            'right' => [
+                            'mighty-button-icon-right' => [
                                 'title' => __('Right', 'mighty'),
                                 'icon' => 'fa fa-align-right',
                             ],
                         ],
-                        'default' => 'left',
+                        'default' => 'mighty-button-icon-left',
                         'toggle' => true,
                         'condition' => [
                             'button_icon!' => '',
@@ -120,7 +121,12 @@ class MT_Buttongroup extends Widget_Base {
                     [
                         'label' => __('Icon Spacing', 'mighty'),
                         'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
                         'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 200,
+                            ],
                             '%' => [
                                 'min' => 0,
                                 'max' => 100,
@@ -128,13 +134,14 @@ class MT_Buttongroup extends Widget_Base {
                         ],
                         'default' => [
                             'unit' => 'px',
-                            'size' => 0,
+                            'size' => 10,
                         ],
                         'selectors' => [
-                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} i' => 'margin: 0 {{SIZE}}{{UNIT}};',
+                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} .mighty-button-icon-left .mighty-button-text' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: 0;',
+                            '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} .mighty-button-text' => 'margin-right: {{SIZE}}{{UNIT}};',
                         ],
                         'condition' => [
-                            'button_icon!' => '',
+                            'button_icon!' => ''
                         ],
                     ]
                 );
@@ -143,7 +150,7 @@ class MT_Buttongroup extends Widget_Base {
                     'button_icon_animation',
                     [
                         'label' => __('Icon Animation', 'mighty'),
-                        'type' => \Elementor\Controls_Manager::ANIMATION,
+                        'type' => \Elementor\Controls_Manager::ANIMATION
                     ]
                 );
                 
@@ -154,9 +161,9 @@ class MT_Buttongroup extends Widget_Base {
                         'type' => \Elementor\Controls_Manager::SELECT,
                         'default' => 'ma-btn-md',
                         'options' => [
-                            'ma-btn-sm' => __('Small', 'mighty'),
-                            'ma-btn-md' => __('Medium', 'mighty'),
-                            'ma-btn-lg' => __('Large', 'mighty'),
+                            'mighty-button-sm' => __('Small', 'mighty'),
+                            '' => __('Medium', 'mighty'),
+                            'mighty-button-lg' => __('Large', 'mighty'),
                         ],
                     ]
                 );
@@ -229,6 +236,17 @@ class MT_Buttongroup extends Widget_Base {
                             ]
                         ]
                     );
+
+                    $repeater->add_control(
+                        'buttongroup_hover_border_color',
+                        [
+                            'label'     => __( 'Border Color', 'mighty' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a:hover' => 'border-color: {{VALUES}}'
+                            ]
+                        ]
+                    );
                 
                     $repeater->add_control(
                         'hover_animation',
@@ -280,10 +298,10 @@ class MT_Buttongroup extends Widget_Base {
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px' ],
                         'default' => [
-                            'top' =>  '15',
-                            'right' => '25',
-                            'bottom' => '15',
-                            'left' => '25',
+                            'top' =>  '',
+                            'right' => '',
+                            'bottom' => '',
+                            'left' => '',
                         ],
                         'selectors' => [
                             '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -294,7 +312,7 @@ class MT_Buttongroup extends Widget_Base {
                 $repeater->add_group_control(
                     Group_Control_Typography::get_type(),
                     [
-                        'name' => 'testimonial_typography',
+                        'name' => 'buttongroup_typography',
                         'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                         'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
                     ]
@@ -327,13 +345,13 @@ class MT_Buttongroup extends Widget_Base {
                             [
                                 'button_text' => __('Click Here', 'mighty'),
                                 'button_link' => '#',
-                                'button_size' => 'ma-btn-md',
+                                'button_size' => '',
                                 'buttongroup_bg_color' => '#5F6AE6',
                             ],
                             [
                                 'button_text' => __('No, click here', 'mighty'),
                                 'button_link' => '#',
-                                'button_size' => 'ma-btn-md',
+                                'button_size' => '',
                                 'buttongroup_bg_color' => '#2FCC71',
                             ],
                         ],
@@ -365,6 +383,16 @@ class MT_Buttongroup extends Widget_Base {
                             'max' => 100,
                         ],
                     ],
+                    'default' => [
+                        'size' => 20,
+                        'unit' => 'px',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-buttongroup>*+*' => 'margin-left: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
+                        '(tablet) {{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
+                        '(mobile) {{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-mobile>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
+                    ],
                 ]
             );
 
@@ -373,13 +401,13 @@ class MT_Buttongroup extends Widget_Base {
 				[
 					'label' => __( 'Stack On', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'none',
+					'default' => 'mighty-buttongroup-stack-none',
 					'options' => [
-						'none' => __( 'None', 'mighty' ),
-						'stack-on-desktop' => __( 'Desktop', 'mighty' ),
-						'stack-on-tablet' => __( 'Tablet', 'mighty' ),
-						'stack-on-mobile' => __( 'Mobile', 'mighty' ),
-					],
+						'mighty-buttongroup-stack-none' => __( 'None', 'mighty' ),
+						'mighty-buttongroup-stack-desktop' => __( 'Desktop', 'mighty' ),
+						'mighty-buttongroup-stack-tablet' => __( 'Tablet', 'mighty' ),
+						'mighty-buttongroup-stack-mobile' => __( 'Mobile', 'mighty' ),
+                    ],
 				]
             );
             
@@ -389,24 +417,24 @@ class MT_Buttongroup extends Widget_Base {
                     'label' => __( 'Alignment', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'mighty-buttongroup-align-left' => [
                             'title' => __( 'Left', 'mighty' ),
                             'icon' => 'fa fa-align-left',
                         ],
-                        'center' => [
+                        'mighty-buttongroup-align-center' => [
                             'title' => __( 'Center', 'mighty' ),
                             'icon' => 'fa fa-align-center',
                         ],
-                        'right' => [
+                        'mighty-buttongroup-align-right' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'fa fa-align-right',
                         ],
-                        'justify' => [
+                        'mighty-buttongroup-align-justify' => [
                             'title' => __( 'Justify', 'mighty' ),
                             'icon' => 'fa fa-align-justify',
                         ]
                     ],
-                    'default' => 'left',
+                    'default' => 'mighty-buttongroup-align-left',
                 ]
             );
         
@@ -419,65 +447,30 @@ class MT_Buttongroup extends Widget_Base {
         if ( empty( $settings['mt_buttongroup_btns'] ) ) {
             return;
 		}
-        $stackButtons = (($settings['buttongroup_stack_on'] == "none") ? '' : ' ' . $settings['buttongroup_stack_on'] . ' ');
+        $stackButtons = (($settings['buttongroup_stack_on'] == "mighty-buttongroup-stack-none") ? '' : ' ' . $settings['buttongroup_stack_on'] . ' ');
 
-        echo '<div class="mighty-buttongroup ' . $stackButtons . 'mt-btng-align-'. $settings['buttongroup_btns_align'] .'">';
-
+        echo '<div class="mighty-buttongroup ' . $settings['buttongroup_stack_on'] . ' ' . $settings['buttongroup_btns_align'] . '">';
         foreach (  $settings['mt_buttongroup_btns'] as $btngrp ) :
+
             $target = $btngrp['button_link']['is_external'] ? ' target="_blank"' : '';
             $nofollow = $btngrp['button_link']['nofollow'] ? ' rel="nofollow"' : '';
             $url = $btngrp['button_link']['url'];
             $iconAnimation = (($btngrp['button_icon_animation'] !== 'none') ? 'animated '.$btngrp['button_icon_animation'] . ' ' : '');
-            $buttonIcon = '<i aria-hidden="true" class="'. $iconAnimation . $btngrp['button_icon']['value'].'"></i>';
             $buttonAnimation = (!empty($btngrp['hover_animation']) == true ? ' elementor-animation-'.$btngrp['hover_animation'] : '');
-            echo '<div class="mt-button elementor-repeater-item-'. $btngrp['_id'] . '">';
-
-                echo '<a ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . 'class="ma-btn mighty-btn '. (($btngrp['button_css_class'] !== "") ? $btngrp['button_css_class'] ." " : '') . $btngrp['button_size'] . $buttonAnimation . '" '. $target . $nofollow .' href="'. $url . '">' . ( ($btngrp['button_icon_align']==="left") ? $buttonIcon . ' ' : '' ) . $btngrp['button_text'] . ( ($btngrp['button_icon_align']==="right") ? ' ' . $buttonIcon : '' ) .'</a>';
-
-            echo '</div>'; // .mt-button
+            $buttonSize = ' ' . $btngrp['button_size'];
+            
+            echo '<div ' . (($btngrp['button_css_id'] !== "") ? 'id="' . $btngrp['button_css_id'] . '" ' : '') . ' class="mighty-button ' . $settings['buttongroup_btns_align'] . ' elementor-repeater-item-'. $btngrp['_id'] . '">';
+                echo '<a class="mighty-button-link ' . $btngrp['button_icon_align'] . $buttonAnimation . (($btngrp['button_css_class'] !== "") ? " " . $btngrp['button_css_class'] : '') . $buttonSize .'" href="' . $url . '" '. $target . $nofollow .'>';
+                    echo '<span class="mighty-button-text">' . $btngrp['button_text'] . '</span>';
+                    if ( ! empty( $btngrp['button_icon']['value'] ) || ! empty( $btngrp['button_icon']['url']) ) :
+                        echo "<span class='mighty-button-icon " . $iconAnimation . "'>";
+                        \Elementor\Icons_Manager::render_icon( $btngrp['button_icon'], [ 'aria-hidden' => 'true' ] );
+                        echo "</span>";
+                    endif;
+                echo '</a>';
+            echo '</div>';
         endforeach;
-        
-        echo '</div>'; // .mighty-buttongroup
-        ?>
-        
-                        
-        <?php 
-        
-        $margin = $settings['space_between_buttons']['size'] ? $settings['space_between_buttons']['size'] : '10';
-        $margin .= $settings['space_between_buttons']['unit'];
-        $stacking = strip_tags($settings['buttongroup_stack_on']);
-
-        if( strcmp("stack-on-desktop", $stacking) == 0 ) { ?>
-		<style>
-            .stack-on-desktop.mighty-buttongroup .mt-button:not(:last-child) {
-                margin-bottom: <?php echo $margin; ?>;
-            }
-        </style>
-        <?php } elseif( strcmp("stack-on-tablet", $stacking) == 0 ) { ?>
-            <style>
-                @media only screen and (max-width: 991px) {
-                    .stack-on-tablet.mighty-buttongroup .mt-button:not(:last-child) {
-                        margin-bottom: <?php echo $margin; ?>;
-                    }
-                }
-            </style>
-        <?php } elseif( strcmp("stack-on-mobile", $stacking) == 0 ) { ?>
-            <style>
-                @media only screen and (max-width: 767px) {
-                    .stack-on-mobile.mighty-buttongroup .mt-button:not(:last-child) {
-                        margin-bottom: <?php echo $margin; ?>;
-                    }
-                }
-            </style>
-        <?php } elseif( strcmp($stacking, "none") == 0 ) { ?>
-            <style>
-                .mighty-buttongroup .mt-button:not(:last-child) {
-                    margin-right: <?php echo $margin; ?>;
-                }
-            </style>
-        <?php } ?>
-        
-        <?php
+        echo '</div>';
 	}
 	
 	protected function _content_template() {
