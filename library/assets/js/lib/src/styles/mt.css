@@ -4,10 +4,6 @@
   margin: 0;
 }
 
-#mighty-library a {
-  color: #563D7C;
-}
-
 #mighty-library a,
 #mighty-library a:hover,
 #mighty-library a:focus,
@@ -20,8 +16,7 @@
 #mighty-library h3,
 #mighty-library h4,
 #mighty-library h5,
-#mighty-library h6,
-#mighty-library p {
+#mighty-library h6 {
   margin-bottom: 15px;
 }
 

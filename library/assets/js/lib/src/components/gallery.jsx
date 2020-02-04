@@ -187,7 +187,7 @@ class Images extends Component {
         {this.props.data.length < 1 ?
           <div className="not-found">
             <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
-            <h4>We really need to upgrade things here!</h4>
+            <h4>We do need to upgrade things around here!</h4>
             <p>Until then, search for something else.</p>
           </div>
           :
