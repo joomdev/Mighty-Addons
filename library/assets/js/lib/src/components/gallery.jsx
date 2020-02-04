@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Loader from './loader.jsx'
 
-if ("undefined" != typeof wp && wp.media) {
+if ("undefined" != typeof wp && wp.media && Number(MightyLibrary.pxStatus)) {
 
   var e = wp.media.view.MediaFrame.Select,
     i = (wp.media.controller.Library, wp.media.view.l10n),

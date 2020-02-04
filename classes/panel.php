@@ -109,7 +109,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     'enable' => true,
                     'class' => 'MT_Photos',
                     'slug' => 'pixabay',
-                    'icon' => 'mf mf-testimonial'
+                    'icon' => 'mf mf-pixabay-icon'
                 ]
             ]
         ];
@@ -370,7 +370,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                         'enable' => intval( $settings['pixabay'] ? 1 : 0 ),
                         'class' => 'MT_Photos',
                         'slug' => 'pixabay',
-                        'icon' => 'mf mf-testimonial'
+                        'icon' => 'mf mf-pixabay-icon'
                     ]
                 ]
             ];
