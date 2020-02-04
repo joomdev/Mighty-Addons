@@ -82,7 +82,7 @@ class Elementor extends base {
 		wp_localize_script( 'mighty-library-react', 'MightyLibrary', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'baseUrl' => MIGHTY_ADDONS_PLG_URL,
-			'apiUrl' => "http://api.mightythemes.local/api/",
+			'apiUrl' => "https://api.mightythemes.com/api/",
 			'elementorPro' => $elementorPro,
 			'key' => "",
 			'host' => $_SERVER['HTTP_HOST'],
