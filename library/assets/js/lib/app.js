@@ -20,8 +20,8 @@ class MightyThemesLibraryClass{
         }
 
         var _galleryExists = document.getElementsByClassName('mighty-photos-browser');
-        if( _galleryExists !== null ) {
-            _galleryExists.forEach(element => {
+        if( _galleryExists !== null && Object.entries(_galleryExists).length > 0 ) {
+            Array.from(_galleryExists).forEach(element => {
                 ReactDOM.render(<Gallery /> , element);
             });
         }
