@@ -119,7 +119,7 @@ class Elementor extends base {
 		
 		print_r(\json_encode($content));
 
-		die();
+		wp_die();
 	}
 
 	/**
