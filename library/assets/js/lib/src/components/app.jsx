@@ -27,8 +27,8 @@ class App extends Component {
     // Fetching Templates & Blocks
     try {
       Promise.all([
-        fetch(MightyLibrary.apiUrl+"templates/pages"),
-        fetch(MightyLibrary.apiUrl+"templates/blocks")
+        fetch(MightyLibrary.apiUrl+"templates/pages?key=" + MightyLibrary.key + "&host=" + MightyLibrary.host),
+        fetch(MightyLibrary.apiUrl+"templates/blocks?key=" + MightyLibrary.key + "&host=" + MightyLibrary.host)
       ])
       .then(values => Promise.all(values.map(value => value.json())))
       .then(finalVals => {

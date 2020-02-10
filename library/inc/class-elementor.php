@@ -101,8 +101,14 @@ class Elementor extends base {
 		$tmplUrl = !isset($_POST['tmpl']) ? '' : $_POST['tmpl'];
 
 		$response = wp_remote_post($tmplUrl, [
-			'key' => '',
-			'host' => $_SERVER['HTTP_HOST']
+			'method' => 'POST',
+			'headers' => [
+				'Content-Type' => 'application/json; charset=utf-8',
+			],
+			'body' => json_encode([
+				'key' => '',
+				'host' => $_SERVER['HTTP_HOST']
+			])
 		]);
 		
 		$tmpl = json_decode($response['body'], true);
