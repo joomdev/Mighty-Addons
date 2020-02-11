@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class HelperFunctions {
 
     public static $mighty_addons = [
+        "version" => MIGHTY_ADDONS_VERSION,
         "addons" => [
             'testimonial' => [
                 'title' => 'MT Testimonial',

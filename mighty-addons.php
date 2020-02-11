@@ -171,7 +171,15 @@ final class Mighty_Addons {
 			$dashboard = new DashboardPanel;
 			$widgets = $dashboard->get_enabled_addons();
 			
-			update_option( 'mighty_addons_status', $widgets );
+			if ( 
+                get_option('mighty_addons_status') &&
+                isset(get_option('mighty_addons_status')['version']) && 
+                get_option('mighty_addons_status')['version'] === MIGHTY_ADDONS_VERSION
+            ) {
+				// do nothing
+			} else {
+				update_option( 'mighty_addons_status', $widgets );
+			}
 		}
 
 		// When in doubt go to the library - J.K. Rowling

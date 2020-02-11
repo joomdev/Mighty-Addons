@@ -7,6 +7,8 @@
  */
 namespace MightyAddons\Classes;
 
+use \MightyAddons\Classes\HelperFunctions;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -18,107 +20,17 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         const PLG_NONCE = 'mighty_addons_panel';
 
-        public static $mighty_addons = [
-            "addons" => [
-                'testimonial' => [
-                    'title' => 'MT Testimonial',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Testimonial',
-                    'slug' => 'testimonial',
-                    'icon' => 'mf mf-testimonial'
-                ],
-                'team' => [
-                    'title' => 'MT Team',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Team',
-                    'slug' => 'team',
-                    'icon' => 'mf mf-team'
-                ],
-                'progressbar' => [
-                    'title' => 'MT Progress Bar',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Progressbar',
-                    'slug' => 'progressbar',
-                    'icon' => 'mf mf-progressbar'
-                ],
-                'counter' => [
-                    'title' => 'MT Counter',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Counter',
-                    'slug' => 'counter',
-                    'icon' => 'mf mf-counter'
-                ],
-                'buttongroup' => [
-                    'title' => 'MT Button Group',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Buttongroup',
-                    'slug' => 'buttongroup',
-                    'icon' => 'mf mf-button'
-                ],
-                'accordion' => [
-                    'title' => 'MT Accordion',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Accordion',
-                    'slug' => 'accordion',
-                    'icon' => 'mf mf-accordion'
-                ],
-                'beforeafter' => [
-                    'title' => 'MT Before After',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Beforeafter',
-                    'slug' => 'beforeafter',
-                    'icon' => 'mf mf-beforeafter'
-                ],
-                'gradientheading' => [
-                    'title' => 'MT Gradient Heading',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Gradientheading',
-                    'slug' => 'gradientheading',
-                    'icon' => 'mf mf-heading'
-                ],
-                'flipbox' => [
-                    'title' => 'MT Flip Box',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Flipbox',
-                    'slug' => 'flipbox',
-                    'icon' => 'mf mf-flipbox'
-                ],
-                'openinghours' => [
-                    'title' => 'MT Opening Hours',
-                    'description' => '',
-                    'enable' => true,
-                    'class' => 'MT_Openinghours',
-                    'slug' => 'openinghours',
-                    'icon' => 'mf mf-openinghours'
-                ],
-            ],
-
-            "extensions" => [
-                'pixabay' => [
-                    'title' => 'Pixabay',
-                    'description' => 'Quick pictures insert, integrated with Pixabay.',
-                    'enable' => true,
-                    'class' => 'MT_Photos',
-                    'slug' => 'pixabay',
-                    'icon' => 'mf mf-pixabay-icon'
-                ]
-            ]
-        ];
+        public static $mighty_addons;
 
         private static $ma_default_settings;
 
         private static $ma_settings;
 
         private static $ma_get_settings;
+
+        public function __construct() {
+            self::$mighty_addons = HelperFunctions::$mighty_addons;
+        }
         
         public static function init() {
             
@@ -224,13 +136,6 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             }
         }
 
-        public static function get_default_keys() {
-        
-            $default_keys = array_fill_keys( self::$mighty_addons, true );
-            
-            return $default_keys;
-        }
-
         public static function generate_homepage() {
             $script = array(
                 'ajaxurl'   => admin_url( 'admin-ajax.php' ),
@@ -239,28 +144,32 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             wp_localize_script( 'mighty-panel-js', 'settings', $script );
             
-            self::$ma_default_settings = self::$mighty_addons; // Default values i.e, mighty_addons() functions (predefined/static)
-
             self::$ma_get_settings = self::get_enabled_addons();
-
-            $ma_new_addons = array_diff_key( self::$ma_default_settings, self::$ma_get_settings );
-
-            if( ! empty ( $ma_new_addons ) ) {
-                $ma_updated_settings = array_merge( self::$ma_get_settings, $ma_new_addons );
-
-                update_option( 'mighty_addons_status', $ma_updated_settings );
-            }
-
-            self::$ma_get_settings = get_option( 'mighty_addons_status', self::$ma_default_settings );
             
             self::load_html( 'home' );
         }
 
         public static function get_enabled_addons() {
 
-            $enable_addons = get_option( 'mighty_addons_status', self::$mighty_addons );
-            
-            return $enable_addons;
+            self::$ma_default_settings = self::$mighty_addons; // Default values
+
+            self::$ma_get_settings = get_option( 'mighty_addons_status', self::$mighty_addons );
+
+            if
+            (
+                isset( self::$ma_get_settings['version'] ) &&
+                self::$ma_get_settings['version'] == self::$ma_default_settings['version']
+            ) {
+                // do nothing
+            } else {
+                $ma_new_addons = self::$ma_default_settings;
+            }
+
+            if( ! empty ( $ma_new_addons ) ) {
+                update_option( 'mighty_addons_status', $ma_new_addons );
+            }
+
+            return get_option( 'mighty_addons_status', self::$ma_default_settings );
 
         }
 
@@ -280,6 +189,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             // }
             
             self::$ma_settings = [
+                "version" => MIGHTY_ADDONS_VERSION,
                 "addons" => [
                     'testimonial' => [
                         'title' => 'MT Testimonial',
