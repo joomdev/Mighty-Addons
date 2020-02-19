@@ -270,7 +270,15 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                         'class' => 'MT_Openinghours',
                         'slug' => 'openinghours',
                         'icon' => 'mf mf-openinghours'
-                    ]
+                    ],
+                    'contactform7' => [
+                        'title' => 'MT Contact Form 7',
+                        'description' => '',
+                        'enable' => intval( $settings['contactform7'] ? 1 : 0 ),
+                        'class' => 'MT_ContactForm7',
+                        'slug' => 'contactform7',
+                        'icon' => 'mf mf-contactform7'
+                    ],
                 ],
 
                 "extensions" => [

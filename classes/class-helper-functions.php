@@ -89,6 +89,14 @@ class HelperFunctions {
                 'slug' => 'openinghours',
                 'icon' => 'mf mf-openinghours'
             ],
+            'contactform7' => [
+                'title' => 'MT Contact Form 7',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_ContactForm7',
+                'slug' => 'contactform7',
+                'icon' => 'mf mf-contactform7'
+            ],
         ],
 
         "extensions" => [
@@ -107,6 +115,32 @@ class HelperFunctions {
         $widgets = get_option( 'mighty_addons_status', self::$mighty_addons );
         
         return $widgets;
+    }
+
+    /**
+     * Contact Form 7
+     *
+     * Helper Functions
+     *
+     * @since 1.3.1
+     */
+    public static function isCf7Active() {
+        return class_exists( 'WPCF7' );
+    }
+
+    public static function cf7FormsList() {
+        $cf7forms = get_posts( [
+            'post_type'      => 'wpcf7_contact_form',
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'orderby'        => 'title',
+            'order'          => 'ASC',
+        ] );
+
+        if ( ! empty( $cf7forms ) ) {
+            return wp_list_pluck( $cf7forms, 'post_title', 'ID' );
+        }
+        return [ esc_html__( 'No contact form found!', 'mighty' ) ];
     }
     
 }
