@@ -58,6 +58,7 @@ class Mighty_Elementor {
 		wp_register_style('mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/gradient-heading.css', '', MIGHTY_ADDONS_VERSION );
 		wp_register_style('mt-flipbox', MIGHTY_ADDONS_PLG_URL . 'assets/css/flip-box.css', '', MIGHTY_ADDONS_VERSION );
 		wp_register_style('mt-openinghours', MIGHTY_ADDONS_PLG_URL . 'assets/css/opening-hours.css', '', MIGHTY_ADDONS_VERSION );
+		wp_register_style('mt-cf7styler', MIGHTY_ADDONS_PLG_URL . 'assets/css/cf7-styler.css', '', MIGHTY_ADDONS_VERSION );
 		// Common Stylings
 		wp_register_style('mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css', '', MIGHTY_ADDONS_VERSION );
 	}
@@ -76,6 +77,7 @@ class Mighty_Elementor {
 		wp_enqueue_style( 'mt-gradientheading' );
 		wp_enqueue_style( 'mt-flipbox' );
 		wp_enqueue_style( 'mt-openinghours' );
+		wp_enqueue_style( 'mt-cf7styler' );
 		wp_enqueue_style( 'mt-common' );
 	}
 

@@ -133,7 +133,9 @@ class MT_ContactForm7 extends Widget_Base {
                     'label_on' => __( 'Show', 'mighty' ),
                     'label_off' => __( 'Hide', 'mighty' ),
                     'return_value' => 'yes',
+                    'prefix_class' => 'show-lables-',
                     'default' => 'yes',
+                    'render_type'  => 'template',
                 ]
             );
 
@@ -1628,12 +1630,22 @@ class MT_ContactForm7 extends Widget_Base {
 
         $settings = $this->get_settings_for_display();
         $cf7forms = Helper::cf7FormsList();
+        $showLabels = $settings['show_labels'] == "yes" ? 'show-labels' : '';
 
         if ( ! empty( $settings['cf7_form_id'] ) ) {
-            echo "<div class='mighty-cf7-wrapper'>";
-            echo "<div class='mighty-cf7-title'>";
-            echo "<h1>Title</h1>";
-            echo "</div>";
+            echo "<div class='mighty-cf7-wrapper " . $showLabels . "'>";
+            if( $settings['show_title'] == "yes" ) {
+                echo "<div class='mighty-cf7-title'>";
+                echo "<h1>" . $settings['cf7_title'] . "</h1>";
+                echo "</div>";
+            }
+
+            if( $settings['show_description'] == "yes" ) {
+                echo "<div class='mighty-cf7-description'>";
+                echo "<p>" . $settings['cf7_description'] . "</p>";
+                echo "</div>";
+            }
+
             echo do_shortcode( '[contact-form-7 id="' . $settings['cf7_form_id'] . ' title="' . $cf7forms[$settings['cf7_form_id']] .'"]' );
             echo "</div>";
         }
