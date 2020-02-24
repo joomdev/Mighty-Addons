@@ -72,22 +72,20 @@ class Gallery extends Component {
 
   search = () => {
     this.setState({ isSearching: true });
-    try {
-      Promise.all([
-        fetch(MightyLibrary.apiUrl+MightyLibrary.pxUrl+this.state.searchTerm+"/1?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
-      ])
-      .then(values => Promise.all(values.map(value => value.json())))
-      .then(finalVals => {
-        let images = finalVals[0];
-        this.setState({
-          images: images.data.images,
-          isLoaded: true,
-          isSearching: false,
-        });
-      })
-    } catch {
-      console.log("Something went wrong!");
-    }
+    fetch(MightyLibrary.apiUrl+MightyLibrary.pxUrl+this.state.searchTerm+"/1?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
+    .then(response => response.json())
+    .then((res) => {
+      let images = res.data.images;
+      this.setState({
+        images: images,
+        isLoaded: true,
+        isSearching: false,
+      });
+    })
+    .catch(function(error) {
+      console.log('Something went wrong!');
+      console.log(JSON.stringify(error));
+    });
   }
 
   showImage = ( image ) => {
