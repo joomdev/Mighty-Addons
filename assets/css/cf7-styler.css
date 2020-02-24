@@ -38,6 +38,7 @@
     color: transparent;
 }
 
+/* Hide/show Messages */
 .mighty-cf7-wrapper.hide-success-msg .wpcf7-mail-sent-ok {
     display: none !important;
 }
@@ -47,3 +48,15 @@
 .mighty-cf7-wrapper.hide-error-msg .wpcf7-not-valid-tip {
     display: none !important;
 }
+
+/* Alignment */
+.mighty-cf7-wrapper.align-left {
+    text-align: left;
+}
+.mighty-cf7-wrapper.align-center {
+    text-align: center;
+}
+.mighty-cf7-wrapper.align-right {
+    text-align: right;
+}
+

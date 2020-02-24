@@ -216,7 +216,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'name' => 'background',
                     'label' => __( 'Background', 'mighty' ),
                     'types' => [ 'classic', 'gradient' ],
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper',
                 ]
             );
 
@@ -226,15 +226,15 @@ class MT_ContactForm7 extends Widget_Base {
                     'label' => __( 'Form Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'align-left' => [
                             'title' => __( 'Left', 'mighty' ),
                             'icon' => 'eicon-h-align-left',
                         ],
-                        'center' => [
+                        'align-center' => [
                             'title' => __( 'Center', 'mighty' ),
                             'icon' => 'eicon-h-align-center',
                         ],
-                        'right' => [
+                        'align-right' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'eicon-h-align-right',
                         ],
@@ -254,7 +254,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 1000,
+                            'max' => 5000,
                             'step' => 5,
                         ],
                         '%' => [
@@ -264,10 +264,10 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => '',
+                        'size' => '100',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper' => 'width: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -279,7 +279,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -291,7 +291,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -301,7 +301,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'form_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper',
                 ]
             );
 
@@ -312,7 +312,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -322,7 +322,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'form_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper',
                 ]
             );
 
@@ -1623,7 +1623,7 @@ class MT_ContactForm7 extends Widget_Base {
         $hideValidationMsg = $settings['hide_validation_msg'] == "yes" ? ' hide-validation-msg' : '';
 
         if ( ! empty( $settings['cf7_form_id'] ) ) {
-            echo "<div" . ($settings['custom_id'] !== "" ? ' id=' . $settings['custom_id'] : "") . " class='mighty-cf7-wrapper" . $hidePlaceholders . $hideSuccessMsg . $hideErrorMsg . $hideValidationMsg . " " . $settings['custom_classes'] . "'>";
+            echo "<div" . ($settings['custom_id'] !== "" ? ' id=' . $settings['custom_id'] : "") . " class='mighty-cf7-wrapper" . $hidePlaceholders . $hideSuccessMsg . $hideErrorMsg . $hideValidationMsg . " " . $settings['custom_classes'] . " " . $settings['form_alignment'] . "'>";
             if( $settings['show_title'] == "yes" ) {
                 echo "<div class='mighty-cf7-title'>";
                 echo "<h1>" . $settings['cf7_title'] . "</h1>";
