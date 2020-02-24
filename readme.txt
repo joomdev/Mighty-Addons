@@ -7,7 +7,7 @@ Tags: elementor, elementor extensions, progress bar, elementor addons, elementor
 Requires at least: 4.0 or higher
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable Tag: 1.3.1
+Stable Tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,9 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 
 
 == Changelog ==
+
+= 1.3.2 =
+* Fixed: Images fetch in Gallery, when request not completed.
 
 = 1.3.1 =
 It was hard to find these bugs, but we found it and voila: 
