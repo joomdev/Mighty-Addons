@@ -1,3 +1,49 @@
-.mighty-cf7-wrapper.show-labels label {
-    display: none;
+/* Placeholder */
+.mighty-cf7-wrapper.hide-placeholders ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders input::placeholder {
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders textarea:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: transparent;
+}
+.mighty-cf7-wrapper.hide-placeholders textarea::placeholder {
+    color: transparent;
+}
+
+.mighty-cf7-wrapper.hide-success-msg .wpcf7-mail-sent-ok {
+    display: none !important;
+}
+.mighty-cf7-wrapper.hide-validation-msg .wpcf7-validation-errors {
+    display: none !important;
+}
+.mighty-cf7-wrapper.hide-error-msg .wpcf7-not-valid-tip {
+    display: none !important;
 }

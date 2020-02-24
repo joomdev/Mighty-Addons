@@ -126,28 +126,14 @@ class MT_ContactForm7 extends Widget_Base {
             );
 
             $this->add_control(
-                'show_labels',
+                'hide_placeholders',
                 [
-                    'label' => __( 'Show Labels', 'mighty' ),
+                    'label' => __( 'Hide Placeholders', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Show', 'mighty' ),
-                    'label_off' => __( 'Hide', 'mighty' ),
+                    'label_on' => __( 'Hide', 'mighty' ),
+                    'label_off' => __( 'Show', 'mighty' ),
                     'return_value' => 'yes',
-                    'prefix_class' => 'show-lables-',
-                    'default' => 'yes',
-                    'render_type'  => 'template',
-                ]
-            );
-
-            $this->add_control(
-                'show_placeholders',
-                [
-                    'label' => __( 'Show Placeholders', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Show', 'mighty' ),
-                    'label_off' => __( 'Hide', 'mighty' ),
-                    'return_value' => 'yes',
-                    'default' => 'yes',
+                    'default' => '',
                 ]
             );
 
@@ -161,43 +147,43 @@ class MT_ContactForm7 extends Widget_Base {
         );
 
             $this->add_control(
-                'show_success_msg',
+                'hide_success_msg',
                 [
-                    'label' => __( 'Show Success Message', 'mighty' ),
+                    'label' => __( 'Hide Success Message', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Show', 'mighty' ),
-                    'label_off' => __( 'Hide', 'mighty' ),
+                    'label_on' => __( 'Hide', 'mighty' ),
+                    'label_off' => __( 'Show', 'mighty' ),
                     'return_value' => 'yes',
-                    'default' => 'yes',
+                    'default' => '',
                 ]
             );
 
             $this->add_control(
-                'show_error_msg',
+                'hide_error_msg',
                 [
-                    'label' => __( 'Show Error Message', 'mighty' ),
+                    'label' => __( 'Hide Error Message', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Show', 'mighty' ),
-                    'label_off' => __( 'Hide', 'mighty' ),
+                    'label_on' => __( 'Hide', 'mighty' ),
+                    'label_off' => __( 'Show', 'mighty' ),
                     'return_value' => 'yes',
-                    'default' => 'yes',
+                    'default' => '',
                 ]
             );
 
             $this->add_control(
-                'show_validation_msg',
+                'hide_validation_msg',
                 [
-                    'label' => __( 'Show Validation Message', 'mighty' ),
+                    'label' => __( 'Hide Validation Message', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'label_on' => __( 'Show', 'mighty' ),
-                    'label_off' => __( 'Hide', 'mighty' ),
+                    'label_on' => __( 'Hide', 'mighty' ),
+                    'label_off' => __( 'Show', 'mighty' ),
                     'return_value' => 'yes',
-                    'default' => 'yes',
+                    'default' => '',
                 ]
             );
 
             $this->add_control(
-                'custom_class',
+                'custom_classes',
                 [
                     'label' => __( 'Custom Classes', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::TEXT,
@@ -278,7 +264,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
@@ -476,7 +462,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} ' => 'width: {{SIZE}}{{UNIT}};',
@@ -503,7 +489,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} ' => 'width: {{SIZE}}{{UNIT}};',
@@ -718,7 +704,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
@@ -768,7 +754,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'condition' => [
                         'custom_style_controls' => 'yes'
@@ -971,7 +957,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'condition' => [
                         'custom_style_list' => 'yes'
@@ -1275,7 +1261,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
@@ -1377,7 +1363,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
@@ -1461,7 +1447,7 @@ class MT_ContactForm7 extends Widget_Base {
                             ],
                             'default' => [
                                 'unit' => '%',
-                                'size' => 50,
+                                'size' => '',
                             ],
                             'selectors' => [
                                 '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
@@ -1611,7 +1597,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 50,
+                        'size' => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
@@ -1627,13 +1613,17 @@ class MT_ContactForm7 extends Widget_Base {
         if ( ! Helper::isCf7Active() ) {
             return;
         }
-
+        
         $settings = $this->get_settings_for_display();
         $cf7forms = Helper::cf7FormsList();
-        $showLabels = $settings['show_labels'] == "yes" ? 'show-labels' : '';
+        $hidePlaceholders = $settings['hide_placeholders'] == "yes" ? ' hide-placeholders' : '';
+
+        $hideSuccessMsg = $settings['hide_success_msg'] == "yes" ? ' hide-success-msg' : '';
+        $hideErrorMsg = $settings['hide_error_msg'] == "yes" ? ' hide-error-msg' : '';
+        $hideValidationMsg = $settings['hide_validation_msg'] == "yes" ? ' hide-validation-msg' : '';
 
         if ( ! empty( $settings['cf7_form_id'] ) ) {
-            echo "<div class='mighty-cf7-wrapper " . $showLabels . "'>";
+            echo "<div" . ($settings['custom_id'] !== "" ? ' id=' . $settings['custom_id'] : "") . " class='mighty-cf7-wrapper" . $hidePlaceholders . $hideSuccessMsg . $hideErrorMsg . $hideValidationMsg . " " . $settings['custom_classes'] . "'>";
             if( $settings['show_title'] == "yes" ) {
                 echo "<div class='mighty-cf7-title'>";
                 echo "<h1>" . $settings['cf7_title'] . "</h1>";
