@@ -1303,7 +1303,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'name' => 'success_msg_background_color',
                     'label' => __( 'Background Color', 'mighty' ),
                     'types' => [ 'classic', 'gradient' ],
-                    'selector' => '{{WRAPPER}} ',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok',
                 ]
             );
 
@@ -1317,7 +1317,7 @@ class MT_ContactForm7 extends Widget_Base {
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1327,7 +1327,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'success_msg_typography',
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} ',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok',
                 ]
             );
 
@@ -1336,7 +1336,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'success_msg_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok',
                 ]
             );
 
@@ -1347,7 +1347,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -1374,7 +1374,7 @@ class MT_ContactForm7 extends Widget_Base {
                         'size' => '',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok' => 'margin: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
