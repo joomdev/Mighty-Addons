@@ -239,7 +239,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
-                    'default' => is_rtl() ? 'left' : 'right',
+                    'default' => is_rtl() ? 'align-left' : 'align-right',
                     'toggle' => false,
                     'label_block' => false,
                 ]
@@ -342,30 +342,28 @@ class MT_ContactForm7 extends Widget_Base {
                     'label' => __( 'Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'align-details-left' => [
                             'title' => __( 'Left', 'mighty' ),
                             'icon' => 'fa fa-align-left',
                         ],
-                        'center' => [
+                        'align-details-center' => [
                             'title' => __( 'Center', 'mighty' ),
                             'icon' => 'fa fa-align-center',
                         ],
-                        'right' => [
+                        'align-details-right' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'fa fa-align-right',
                         ],
-                        'justify' => [
+                        'align-details-justify' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'fa fa-align-justify',
                         ]
                     ],
-                    'default' => is_rtl() ? 'left' : 'right',
+                    'default' => is_rtl() ? 'align-details-left' : 'align-details-right',
                     'toggle' => false,
                     'label_block' => false,
                 ]
             );
-
-            
 
             $this->start_controls_tabs(
                 'text_styling_tabs'
@@ -384,7 +382,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'label'     => __( 'Color', 'mighty' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'color: {{VALUES}}'
+                                '{{WRAPPER}} .mighty-cf7-title' => 'color: {{VALUES}}'
                             ]
                         ]
                     );
@@ -394,7 +392,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'name' => 'title_typography',
                             'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                            'selector' => '{{WRAPPER}} ',
+                            'selector' => '{{WRAPPER}} .mighty-cf7-title',
                         ]
                     );
 
@@ -414,7 +412,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'label'     => __( 'Color', 'mighty' ),
                             'type'      => Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'color: {{VALUES}}'
+                                '{{WRAPPER}} .mighty-cf7-description' => 'color: {{VALUES}}'
                             ]
                         ]
                     );
@@ -424,7 +422,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'name' => 'description_typography',
                             'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                            'selector' => '{{WRAPPER}} ',
+                            'selector' => '{{WRAPPER}} .mighty-cf7-description',
                         ]
                     );
 
@@ -1624,17 +1622,16 @@ class MT_ContactForm7 extends Widget_Base {
 
         if ( ! empty( $settings['cf7_form_id'] ) ) {
             echo "<div" . ($settings['custom_id'] !== "" ? ' id=' . $settings['custom_id'] : "") . " class='mighty-cf7-wrapper" . $hidePlaceholders . $hideSuccessMsg . $hideErrorMsg . $hideValidationMsg . " " . $settings['custom_classes'] . " " . $settings['form_alignment'] . "'>";
+
+            echo "<div class='form-details " . $settings['text_alignment'] ."'>";
             if( $settings['show_title'] == "yes" ) {
-                echo "<div class='mighty-cf7-title'>";
-                echo "<h1>" . $settings['cf7_title'] . "</h1>";
-                echo "</div>";
+                echo "<div class='mighty-cf7-title'>" . $settings['cf7_title'] . "</div>";
             }
 
             if( $settings['show_description'] == "yes" ) {
-                echo "<div class='mighty-cf7-description'>";
-                echo "<p>" . $settings['cf7_description'] . "</p>";
-                echo "</div>";
+                echo "<div class='mighty-cf7-description'>" . $settings['cf7_description'] . "</div>";
             }
+            echo "</div>";
 
             echo do_shortcode( '[contact-form-7 id="' . $settings['cf7_form_id'] . ' title="' . $cf7forms[$settings['cf7_form_id']] .'"]' );
             echo "</div>";

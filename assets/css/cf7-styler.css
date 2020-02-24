@@ -50,13 +50,19 @@
 }
 
 /* Alignment */
-.mighty-cf7-wrapper.align-left {
+.mighty-cf7-wrapper.align-left,
+.mighty-cf7-wrapper .form-details.align-details-left {
     text-align: left;
 }
-.mighty-cf7-wrapper.align-center {
+.mighty-cf7-wrapper.align-center,
+.mighty-cf7-wrapper .form-details.align-details-center {
     text-align: center;
 }
-.mighty-cf7-wrapper.align-right {
+.mighty-cf7-wrapper.align-right,
+.mighty-cf7-wrapper .form-details.align-details-right {
     text-align: right;
+}
+.mighty-cf7-wrapper .form-details.align-details-justify {
+    text-align: justify;
 }
 
