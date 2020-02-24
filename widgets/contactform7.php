@@ -460,10 +460,10 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => '',
+                        'size' => '100',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'width: {{SIZE}}{{UNIT}};'
                     ],
                 ]
             );
@@ -490,7 +490,7 @@ class MT_ContactForm7 extends Widget_Base {
                         'size' => '',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'margin: {{SIZE}}{{UNIT}} 0;'
                     ],
                 ]
             );
@@ -502,7 +502,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                     ],
                 ]
             );
@@ -517,14 +517,19 @@ class MT_ContactForm7 extends Widget_Base {
                         'label' => __( 'Normal', 'mighty' ),
                     ]
                 );
-                
-                    $this->add_group_control(
-                        Group_Control_Background::get_type(),
+
+                    $this->add_control(
+                        'field_background_color',
                         [
-                            'name' => 'field_background_color',
                             'label' => __( 'Background Color', 'mighty' ),
-                            'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} ',
+                            'type' => \Elementor\Controls_Manager::COLOR,
+                            'scheme' => [
+                                'type' => \Elementor\Scheme_Color::get_type(),
+                                'value' => \Elementor\Scheme_Color::COLOR_1,
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'background-color: {{VALUE}}',
+                            ],
                         ]
                     );
 
@@ -538,7 +543,7 @@ class MT_ContactForm7 extends Widget_Base {
                                 'value' => \Elementor\Scheme_Color::COLOR_1,
                             ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'color: {{VALUE}}'
                             ],
                         ]
                     );
@@ -553,13 +558,18 @@ class MT_ContactForm7 extends Widget_Base {
                     ]
                 );
 
-                    $this->add_group_control(
-                        Group_Control_Background::get_type(),
+                    $this->add_control(
+                        'field_focus_background_color',
                         [
-                            'name' => 'field_focus_background_color',
                             'label' => __( 'Background Color', 'mighty' ),
-                            'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} ',
+                            'type' => \Elementor\Controls_Manager::COLOR,
+                            'scheme' => [
+                                'type' => \Elementor\Scheme_Color::get_type(),
+                                'value' => \Elementor\Scheme_Color::COLOR_1,
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control:focus' => 'background-color: {{VALUE}}',
+                            ],
                         ]
                     );
 
@@ -573,7 +583,7 @@ class MT_ContactForm7 extends Widget_Base {
                                 'value' => \Elementor\Scheme_Color::COLOR_1,
                             ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control:focus' => 'color: {{VALUE}}',
                             ],
                         ]
                     );
@@ -583,7 +593,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'name' => 'field_focus_typography',
                             'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                            'selector' => '{{WRAPPER}} ',
+                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control:focus',
                         ]
                     );
 
@@ -596,7 +606,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'fields_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} ',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control',
                 ]
             );
 
@@ -607,7 +617,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                     ],
                 ]
             );
@@ -617,7 +627,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'fields_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} ',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control',
                 ]
             );
 
