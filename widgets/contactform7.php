@@ -1424,7 +1424,7 @@ class MT_ContactForm7 extends Widget_Base {
                                 'value' => \Elementor\Scheme_Color::COLOR_1,
                             ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-not-valid-tip' => 'color: {{VALUE}}',
                             ]
                         ]
                     );
@@ -1435,7 +1435,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'name' => 'alert_typography',
                             'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                            'selector' => '{{WRAPPER}} ',
+                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-not-valid-tip',
                         ]
                     );
 
@@ -1461,7 +1461,7 @@ class MT_ContactForm7 extends Widget_Base {
                                 'size' => '',
                             ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-not-valid-tip' => 'margin-top: {{SIZE}}{{UNIT}};',
                             ],
                         ]
                     );
@@ -1482,7 +1482,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'name' => 'error_fields_background_color',
                             'label' => __( 'Background Color', 'mighty' ),
                             'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} ',
+                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-not-valid',
                         ]
                     );
 
@@ -1496,7 +1496,7 @@ class MT_ContactForm7 extends Widget_Base {
                                 'value' => \Elementor\Scheme_Color::COLOR_1,
                             ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-not-valid' => 'color: {{VALUE}}',
                             ]
                         ]
                     );
@@ -1506,7 +1506,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'name' => 'error_fields_typography',
                             'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                            'selector' => '{{WRAPPER}} ',
+                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-not-valid',
                         ]
                     );
 
@@ -1516,7 +1516,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'name' => 'error_fields_border',
                             'label' => __( 'Border', 'mighty' ),
-                            'selector' => '{{WRAPPER}} .wrapper',
+                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-not-valid',
                         ]
                     );
 
@@ -1540,7 +1540,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'name' => 'validation_background_color',
                     'label' => __( 'Background Color', 'mighty' ),
                     'types' => [ 'classic', 'gradient' ],
-                    'selector' => '{{WRAPPER}} ',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors',
                 ]
             );
 
@@ -1554,7 +1554,7 @@ class MT_ContactForm7 extends Widget_Base {
                         'value' => \Elementor\Scheme_Color::COLOR_1,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors' => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1564,7 +1564,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'validation_typography',
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} ',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors',
                 ]
             );
 
@@ -1573,7 +1573,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'validation_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors',
                 ]
             );
 
@@ -1584,7 +1584,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -1611,7 +1611,7 @@ class MT_ContactForm7 extends Widget_Base {
                         'size' => '',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors' => 'margin-top: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
