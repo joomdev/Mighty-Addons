@@ -110,3 +110,15 @@
 .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked {
     background-color: blue;
 }
+
+/* Button Alignment */
+.mighty-cf7-wrapper.align-btn-left .wpcf7-submit {
+    float: left;
+}
+.mighty-cf7-wrapper.align-btn-center .wpcf7-submit {
+    display: block;
+    margin: 0 auto;
+}
+.mighty-cf7-wrapper.align-btn-right .wpcf7-submit {
+    float: right;
+}
