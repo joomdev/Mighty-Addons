@@ -66,3 +66,47 @@
     text-align: justify;
 }
 
+/* Custom Radio Buttons */
+.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"] {
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 5px solid red;
+    background-color: green;
+    border-radius: 50%;
+}
+
+/* appearance for checked radiobutton */
+.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]:checked {
+    background-color: blue;
+}
+
+/* Custom Checkboxes */
+.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"] {
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 5px solid red;
+    background-color: green;
+}
+
+/* appearance for checked radiobutton */
+.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked {
+    background-color: blue;
+}

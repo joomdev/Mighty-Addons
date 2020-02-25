@@ -648,7 +648,7 @@ class MT_ContactForm7 extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control::placeholder' => 'color: {{VALUES}}'
                     ]
                 ]
             );
@@ -658,7 +658,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'placeholder_text_typography',
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} ',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control::placeholder',
                 ]
             );
 
@@ -679,7 +679,8 @@ class MT_ContactForm7 extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .mighty-cf7-wrapper label' => 'color: {{VALUES}}',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-list-item-label' => 'color: {{VALUES}}'
                     ]
                 ]
             );
@@ -689,7 +690,10 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'label_typography',
                     'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} ',
+                    'selectors' => [ 
+                        '{{WRAPPER}} .mighty-cf7-wrapper label',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-list-item-label'
+                    ],
                 ]
             );
 
@@ -698,24 +702,21 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'label' => __( 'Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px', '%' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 1000,
+                            'max' => 500,
                             'step' => 5,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
+                        ]
                     ],
                     'default' => [
-                        'unit' => '%',
-                        'size' => '',
+                        'unit' => 'px',
+                        'size' => '0',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper label' => 'letter-spacing: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-list-item-label' => 'letter-spacing: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -739,36 +740,33 @@ class MT_ContactForm7 extends Widget_Base {
                     'label_on' => __( 'Show', 'mighty' ),
                     'label_off' => __( 'Hide', 'mighty' ),
                     'return_value' => 'yes',
-                    'default' => 'yes',
+                    'default' => '',
                 ]
             );
             
             $this->add_responsive_control(
                 'controls_size',
                 [
-                    'label' => __( 'Width', 'mighty' ),
+                    'label' => __( 'Size', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px', '%' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 1000,
+                            'max' => 500,
                             'step' => 5,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
+                        ]
                     ],
                     'default' => [
-                        'unit' => '%',
-                        'size' => '',
+                        'unit' => 'px',
+                        'size' => '10',
                     ],
                     'condition' => [
                         'custom_style_controls' => 'yes'
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -790,27 +788,16 @@ class MT_ContactForm7 extends Widget_Base {
                     $this->add_control(
                         'custom_control_color',
                         [
-                            'label' => __( 'Color', 'mighty' ),
+                            'label' => __( 'Background Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
                             'scheme' => [
                                 'type' => \Elementor\Scheme_Color::get_type(),
                                 'value' => \Elementor\Scheme_Color::COLOR_1,
                             ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]' => 'background-color: {{VALUE}}',
                             ],
-                            'condition' => [
-                                'custom_style_controls' => 'yes'
-                            ]
-                        ]
-                    );
-
-                    $this->add_group_control(
-                        Group_Control_Border::get_type(),
-                        [
-                            'name' => 'custom_control_border',
-                            'label' => __( 'Border', 'mighty' ),
-                            'selector' => '{{WRAPPER}} .wrapper',
                             'condition' => [
                                 'custom_style_controls' => 'yes'
                             ]
@@ -829,6 +816,18 @@ class MT_ContactForm7 extends Widget_Base {
                         ]
                     );
 
+                    $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'custom_checkbox_border',
+                            'label' => __( 'Checkbox Border', 'mighty' ),
+                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]',
+                            'condition' => [
+                                'custom_style_controls' => 'yes'
+                            ]
+                        ]
+                    );
+
                     $this->add_responsive_control(
                         'custom_checkbox_border_radius',
                         [
@@ -836,7 +835,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%', 'em' ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                             'condition' => [
                                 'custom_style_controls' => 'yes'
@@ -855,6 +854,18 @@ class MT_ContactForm7 extends Widget_Base {
                             ]
                         ]
                     );
+                    
+                    $this->add_group_control(
+                        Group_Control_Border::get_type(),
+                        [
+                            'name' => 'custom_radio_border',
+                            'label' => __( 'Radio Border', 'mighty' ),
+                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]',
+                            'condition' => [
+                                'custom_style_controls' => 'yes'
+                            ]
+                        ]
+                    );
 
                     $this->add_responsive_control(
                         'custom_radio_border_radius',
@@ -863,7 +874,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'type' => Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%', 'em' ],
                             'selectors' => [
-                                '{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                             'condition' => [
                                 'custom_style_controls' => 'yes'
@@ -894,7 +905,8 @@ class MT_ContactForm7 extends Widget_Base {
                             'value' => \Elementor\Scheme_Color::COLOR_1,
                         ],
                         'selectors' => [
-                            '{{WRAPPER}} ' => 'color: {{VALUE}}',
+                            '{{WRAPPER}} .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]:checked' => 'background-color: {{VALUE}}',
+                            '{{WRAPPER}} .mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked' => 'background-color: {{VALUE}}',
                         ],
                         'condition' => [
                             'custom_style_controls' => 'yes'
@@ -1629,9 +1641,10 @@ class MT_ContactForm7 extends Widget_Base {
         $hideSuccessMsg = $settings['hide_success_msg'] == "yes" ? ' hide-success-msg' : '';
         $hideErrorMsg = $settings['hide_error_msg'] == "yes" ? ' hide-error-msg' : '';
         $hideValidationMsg = $settings['hide_validation_msg'] == "yes" ? ' hide-validation-msg' : '';
+        $customButtons = $settings['custom_style_controls'] == "yes" ? ' enable-custom-btns' : '';
 
         if ( ! empty( $settings['cf7_form_id'] ) ) {
-            echo "<div" . ($settings['custom_id'] !== "" ? ' id=' . $settings['custom_id'] : "") . " class='mighty-cf7-wrapper" . $hidePlaceholders . $hideSuccessMsg . $hideErrorMsg . $hideValidationMsg . " " . $settings['custom_classes'] . " " . $settings['form_alignment'] . "'>";
+            echo "<div" . ($settings['custom_id'] !== "" ? ' id=' . $settings['custom_id'] : "") . " class='mighty-cf7-wrapper" . $hidePlaceholders . $hideSuccessMsg . $hideErrorMsg . $hideValidationMsg . " " . $settings['custom_classes'] . " " . $settings['form_alignment'] . " " . $customButtons . "'>";
 
             echo "<div class='form-details " . $settings['text_alignment'] ."'>";
             if( $settings['show_title'] == "yes" ) {
