@@ -1,64 +1,64 @@
 /* Placeholder */
-.mighty-cf7-wrapper.hide-placeholders ::-webkit-input-placeholder {
+.mighty-cf7-wrapper .hide-placeholders ::-webkit-input-placeholder {
     /* WebKit browsers */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders :-moz-placeholder {
+.mighty-cf7-wrapper .hide-placeholders :-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders ::-moz-placeholder {
+.mighty-cf7-wrapper .hide-placeholders ::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders :-ms-input-placeholder {
+.mighty-cf7-wrapper .hide-placeholders :-ms-input-placeholder {
     /* Internet Explorer 10+ */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders input::placeholder {
+.mighty-cf7-wrapper .hide-placeholders input::placeholder {
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders textarea::-webkit-input-placeholder {
+.mighty-cf7-wrapper .hide-placeholders textarea::-webkit-input-placeholder {
     /* WebKit browsers */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders textarea:-moz-placeholder {
+.mighty-cf7-wrapper .hide-placeholders textarea:-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders textarea::-moz-placeholder {
+.mighty-cf7-wrapper .hide-placeholders textarea::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders textarea:-ms-input-placeholder {
+.mighty-cf7-wrapper .hide-placeholders textarea:-ms-input-placeholder {
     /* Internet Explorer 10+ */
     color: transparent;
 }
-.mighty-cf7-wrapper.hide-placeholders textarea::placeholder {
+.mighty-cf7-wrapper .hide-placeholders textarea::placeholder {
     color: transparent;
 }
 
 /* Hide/show Messages */
-.mighty-cf7-wrapper.hide-success-msg .wpcf7-mail-sent-ok {
+.mighty-cf7-wrapper .hide-success-msg .wpcf7-mail-sent-ok {
     display: none !important;
 }
-.mighty-cf7-wrapper.hide-validation-msg .wpcf7-validation-errors {
+.mighty-cf7-wrapper .hide-validation-msg .wpcf7-validation-errors {
     display: none !important;
 }
-.mighty-cf7-wrapper.hide-error-msg .wpcf7-not-valid-tip {
+.mighty-cf7-wrapper .hide-error-msg .wpcf7-not-valid-tip {
     display: none !important;
 }
 
 /* Alignment */
-.mighty-cf7-wrapper.align-left,
+.mighty-cf7-wrapper .align-left,
 .mighty-cf7-wrapper .form-details.align-details-left {
     text-align: left;
 }
-.mighty-cf7-wrapper.align-center,
+.mighty-cf7-wrapper .align-center,
 .mighty-cf7-wrapper .form-details.align-details-center {
     text-align: center;
 }
-.mighty-cf7-wrapper.align-right,
+.mighty-cf7-wrapper .align-right,
 .mighty-cf7-wrapper .form-details.align-details-right {
     text-align: right;
 }
@@ -67,7 +67,7 @@
 }
 
 /* Custom Radio Buttons */
-.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"] {
+.mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"] {
     /* remove standard background appearance */
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -85,12 +85,12 @@
 }
 
 /* appearance for checked radiobutton */
-.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]:checked {
+.mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]:checked {
     background-color: blue;
 }
 
 /* Custom Checkboxes */
-.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"] {
+.mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"] {
     /* remove standard background appearance */
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -107,18 +107,18 @@
 }
 
 /* appearance for checked radiobutton */
-.mighty-cf7-wrapper.enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked {
+.mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked {
     background-color: blue;
 }
 
 /* Button Alignment */
-.mighty-cf7-wrapper.align-btn-left .wpcf7-submit {
+.mighty-cf7-wrapper .align-btn-left .wpcf7-submit {
     float: left;
 }
-.mighty-cf7-wrapper.align-btn-center .wpcf7-submit {
+.mighty-cf7-wrapper .align-btn-center .wpcf7-submit {
     display: block;
     margin: 0 auto;
 }
-.mighty-cf7-wrapper.align-btn-right .wpcf7-submit {
+.mighty-cf7-wrapper .align-btn-right .wpcf7-submit {
     float: right;
 }

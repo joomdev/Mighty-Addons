@@ -117,17 +117,6 @@ class HelperFunctions {
         return $widgets;
     }
 
-    /**
-     * Contact Form 7
-     *
-     * Helper Functions
-     *
-     * @since 1.3.1
-     */
-    public static function isCf7Active() {
-        return class_exists( 'WPCF7' );
-    }
-
     public static function cf7FormsList() {
         $cf7forms = get_posts( [
             'post_type'      => 'wpcf7_contact_form',
