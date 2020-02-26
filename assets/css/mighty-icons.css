@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'mighty-fonts';
-    src:  url('fonts/mighty-fonts.eot?rpgcsi');
-    src:  url('fonts/mighty-fonts.eot?rpgcsi#iefix') format('embedded-opentype'),
-      url('fonts/mighty-fonts.ttf?rpgcsi') format('truetype'),
-      url('fonts/mighty-fonts.woff?rpgcsi') format('woff'),
-      url('fonts/mighty-fonts.svg?rpgcsi#mighty-fonts') format('svg');
+    src:  url('./mighty-fonts/mighty-fonts.eot?rpgcsi');
+    src:  url('./mighty-fonts/mighty-fonts.eot?rpgcsi#iefix') format('embedded-opentype'),
+      url('./mighty-fonts/mighty-fonts.ttf?rpgcsi') format('truetype'),
+      url('./mighty-fonts/mighty-fonts.woff?rpgcsi') format('woff'),
+      url('./mighty-fonts/mighty-fonts.svg?rpgcsi#mighty-fonts') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
