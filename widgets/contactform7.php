@@ -72,7 +72,8 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'label' => __( 'Select Form', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'options' => Helper::cf7FormsList(),
+                    'options' => array( 0 => 'Select a Form') + Helper::cf7FormsList(),
+                    'default' => '0'
                 ]
             );
 
@@ -359,7 +360,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'icon' => 'fa fa-align-justify',
                         ]
                     ],
-                    'default' => is_rtl() ? 'align-details-right' : 'align-details-left',
+                    'default' => 'align-details-center',
                     'toggle' => false,
                     'label_block' => false,
                 ]
@@ -381,6 +382,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label'     => __( 'Color', 'mighty' ),
                             'type'      => Controls_Manager::COLOR,
+                            'default'   => '#000000',
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-title' => 'color: {{VALUES}}'
                             ]
@@ -411,6 +413,7 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label'     => __( 'Color', 'mighty' ),
                             'type'      => Controls_Manager::COLOR,
+                            'default'   => '#54595F',
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-description' => 'color: {{VALUES}}'
                             ]
@@ -462,8 +465,8 @@ class MT_ContactForm7 extends Widget_Base {
                         'unit' => '%',
                         'size' => '100',
                     ],
-                    'selectors' => [
-                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'width: {{SIZE}}{{UNIT}};'
+                    'selectors' => [                        
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control' => 'width: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -486,11 +489,11 @@ class MT_ContactForm7 extends Widget_Base {
                         ],
                     ],
                     'default' => [
-                        'unit' => '%',
+                        'unit' => 'px',
                         'size' => '',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'margin-bottom: {{SIZE}}{{UNIT}}; display: inline-block;'
                     ],
                 ]
             );
@@ -524,7 +527,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'background-color: {{VALUE}} !important',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-text, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-date, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-textarea, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-number, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-select, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-quiz' => 'background-color: {{VALUE}}',
                             ],
                         ]
                     );
@@ -591,7 +594,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'fields_border',
                     'label' => __( 'Border', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control',
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-text, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-date, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-textarea, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-number, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-select, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-quiz',
                 ]
             );
 
@@ -691,8 +694,8 @@ class MT_ContactForm7 extends Widget_Base {
                     'range' => [
                         'px' => [
                             'min' => 0,
-                            'max' => 500,
-                            'step' => 5,
+                            'max' => 100,
+                            'step' => 1,
                         ]
                     ],
                     'default' => [
@@ -744,7 +747,7 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => '10',
+                        'size' => '15',
                     ],
                     'condition' => [
                         'custom_style_controls' => 'yes'
@@ -1044,6 +1047,33 @@ class MT_ContactForm7 extends Widget_Base {
         );
 
             $this->add_responsive_control(
+                'button_width',
+                [
+                    'label' => __( 'Button Width', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 5000,
+                            'step' => 5,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => '%',
+                        'size' => '100',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-submit' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
                 'button_alignment',
                 [
                     'label' => __( 'Button Alignment', 'mighty' ),
@@ -1198,7 +1228,7 @@ class MT_ContactForm7 extends Widget_Base {
                         ],
                     ],
                     'default' => [
-                        'unit' => '%',
+                        'unit' => 'px',
                         'size' => '',
                     ],
                     'selectors' => [
@@ -1296,7 +1326,7 @@ class MT_ContactForm7 extends Widget_Base {
                         ],
                     ],
                     'default' => [
-                        'unit' => '%',
+                        'unit' => 'px',
                         'size' => '',
                     ],
                     'selectors' => [
@@ -1376,7 +1406,7 @@ class MT_ContactForm7 extends Widget_Base {
                                 ],
                             ],
                             'default' => [
-                                'unit' => '%',
+                                'unit' => 'px',
                                 'size' => '',
                             ],
                             'selectors' => [
@@ -1518,7 +1548,7 @@ class MT_ContactForm7 extends Widget_Base {
                         ],
                     ],
                     'default' => [
-                        'unit' => '%',
+                        'unit' => 'px',
                         'size' => '',
                     ],
                     'selectors' => [
@@ -1541,7 +1571,6 @@ class MT_ContactForm7 extends Widget_Base {
 
         $this->add_render_attribute('mt-cf7', 'class', [
             'mighty-contact-form',
-            'mighty-contact-form-7',
             'mighty-contact-form-' . esc_attr($this->get_id()),
         ]);
 
