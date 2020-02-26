@@ -523,10 +523,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'background-color: {{VALUE}} !important',
                             ],
@@ -538,10 +534,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'default' => '#000000',
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control' => 'color: {{VALUE}}'
@@ -564,10 +556,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control:focus' => 'background-color: {{VALUE}}',
                             ],
@@ -579,10 +567,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control:focus' => 'color: {{VALUE}}',
                             ],
@@ -791,10 +775,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]' => 'background-color: {{VALUE}}',
@@ -901,10 +881,6 @@ class MT_ContactForm7 extends Widget_Base {
                     [
                         'label' => __( 'Color', 'mighty' ),
                         'type' => \Elementor\Controls_Manager::COLOR,
-                        'scheme' => [
-                            'type' => \Elementor\Scheme_Color::get_type(),
-                            'value' => \Elementor\Scheme_Color::COLOR_1,
-                        ],
                         'selectors' => [
                             '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]:checked' => 'background-color: {{VALUE}}',
                             '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked' => 'background-color: {{VALUE}}',
@@ -991,10 +967,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control' => 'color: {{VALUE}}',
                             ],
@@ -1050,10 +1022,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control' => 'color: {{VALUE}}',
                             ]
@@ -1127,10 +1095,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-submit' => 'color: {{VALUE}}',
                             ]
@@ -1171,10 +1135,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-submit:hover' => 'color: {{VALUE}}',
                             ]
@@ -1186,10 +1146,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Border Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-submit:hover' => 'color: {{VALUE}}',
                             ]
@@ -1286,10 +1242,6 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'label' => __( 'Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok' => 'color: {{VALUE}}',
                     ],
@@ -1390,10 +1342,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-not-valid-tip' => 'color: {{VALUE}}',
                             ]
@@ -1462,10 +1410,6 @@ class MT_ContactForm7 extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
-                            'scheme' => [
-                                'type' => \Elementor\Scheme_Color::get_type(),
-                                'value' => \Elementor\Scheme_Color::COLOR_1,
-                            ],
                             'selectors' => [
                                 '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-not-valid' => 'color: {{VALUE}}',
                             ]
@@ -1520,10 +1464,6 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'label' => __( 'Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors' => 'color: {{VALUE}}',
                     ],

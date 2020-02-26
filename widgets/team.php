@@ -488,10 +488,6 @@ class MT_Team extends Widget_Base {
 				[
 					'label' => __( 'Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
-					'scheme' => [
-						'type' => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
-					],
 					'default' => '#343434',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .person-name' => 'color: {{VALUE}};',
@@ -549,10 +545,6 @@ class MT_Team extends Widget_Base {
 				[
 					'label' => __( 'Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
-					'scheme' => [
-						'type' => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
-					],
 					'default' => '#999A9C',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .person-designation' => 'color: {{VALUE}};',
@@ -613,10 +605,6 @@ class MT_Team extends Widget_Base {
 				[
 					'label' => __( 'Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
-					'scheme' => [
-						'type' => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
-					],
 					'default' => '#343434',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-team .person-about' => 'color: {{VALUE}};',
@@ -747,10 +735,6 @@ class MT_Team extends Widget_Base {
                 [
                     'label' => __( 'Icon Color', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'selectors' => [
 						'{{WRAPPER}} .mighty-team .social-icons-wrapper a i' => 'color: {{VALUES}}',
 						'{{WRAPPER}} .mighty-team .social-icons-wrapper a svg' => 'fill: {{VALUES}}'

@@ -176,10 +176,6 @@ class MT_Beforeafter extends Widget_Base {
                 [
                     'label' => __( 'Overlay Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-before-after .twentytwenty-overlay:hover' => 'background: {{VALUE}}',
                         '{{WRAPPER}} .mighty-before-after .inverted-overlay:hover' => 'background: {{VALUE}}',
@@ -225,10 +221,6 @@ class MT_Beforeafter extends Widget_Base {
                 [
                     'label' => __( 'Handle Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-before-after .twentytwenty-handle' => 'border-color: {{VALUE}}',
@@ -353,10 +345,6 @@ class MT_Beforeafter extends Widget_Base {
                 [
                     'label' => __( 'Label Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#ffffff',
                     'selectors' => [
                         '{{WRAPPER}} .twentytwenty-wrapper .mighty-before-after .twentytwenty-overlay div:before' => 'color: {{VALUE}}',
@@ -370,10 +358,6 @@ class MT_Beforeafter extends Widget_Base {
                 [
                     'label' => __( 'Label Background Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#000000',
                     'selectors' => [
                         '{{WRAPPER}} .twentytwenty-wrapper .mighty-before-after .twentytwenty-overlay div:before' => 'background-color: {{VALUE}}',

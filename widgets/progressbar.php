@@ -301,10 +301,6 @@ class MT_Progressbar extends Widget_Base {
 				[
 					'label' => __( 'Text Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
-					'scheme' => [
-						'type' => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
-					],
 					'default' => '#333',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-progressbar' => 'color: {{VALUE}};',

@@ -202,10 +202,6 @@ class MT_Accordion extends Widget_Base {
                         '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title' => 'color: {{VALUE}};',
                     ],
                     'default' => '#000',
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                 ]
             );
 
@@ -230,10 +226,6 @@ class MT_Accordion extends Widget_Base {
                         '{{WRAPPER}} .mighty-accordion .mt-panel .active .mt-accordion-title' => 'color: {{VALUE}};',
                     ],
                     'default' => '#000',
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_4,
-                    ],
                 ]
             );
             
@@ -242,10 +234,6 @@ class MT_Accordion extends Widget_Base {
                 [
                     'label' => __( 'Active Background Color', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#F6FAFB',
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .active' => 'background-color: {{VALUE}}',
@@ -574,10 +562,6 @@ class MT_Accordion extends Widget_Base {
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .mighty-accordion .mt-panel .panel .accordion-content' => 'color: {{VALUE}};',
-                    ],
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_3,
                     ],
                 ]
             );

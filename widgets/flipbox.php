@@ -474,10 +474,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Icon Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#2E77FF',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon i' => 'color: {{VALUE}}',
@@ -521,10 +517,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Background Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => 'rgba(64, 84, 178, 0)',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-icon' => 'background-color: {{VALUE}}',
@@ -754,10 +746,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Title Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => "#000",
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-title' => 'color: {{VALUE}}',
@@ -790,10 +778,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Description Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#000',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-description' => 'color: {{VALUE}}',
@@ -977,10 +961,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Icon Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#4d98d6',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon i' => 'color: {{VALUE}}',
@@ -1024,10 +1004,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Background Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-icon' => 'background-color: {{VALUE}}',
@@ -1257,10 +1233,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Title Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-title' => 'color: {{VALUE}}',
@@ -1316,10 +1288,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Description Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-description' => 'color: {{VALUE}}',
@@ -1379,10 +1347,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Text Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#fff',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a' => 'color: {{VALUE}}',
@@ -1395,10 +1359,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'label' => __( 'Background Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#000',
                     'selectors' => [
                         '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a' => 'background-color: {{VALUE}}',

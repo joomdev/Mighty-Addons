@@ -217,10 +217,6 @@ class MT_Openinghours extends Widget_Base {
                     [
                         'label' => __( 'Day Color', 'mighty' ),
                         'type' => Controls_Manager::COLOR,
-                        'scheme' => [
-                            'type' => Scheme_Color::get_type(),
-                            'value' => Scheme_Color::COLOR_1,
-                        ],
                         'default' => '#232323',
                         'selectors' => [
                             '{{WRAPPER}} .ma-openinghours-wrapper {{CURRENT_ITEM}} .ma-oh-day' => 'color: {{VALUE}}',
@@ -236,10 +232,6 @@ class MT_Openinghours extends Widget_Base {
                     [
                         'label' => __( 'Time Color', 'mighty' ),
                         'type' => Controls_Manager::COLOR,
-                        'scheme' => [
-                            'type' => Scheme_Color::get_type(),
-                            'value' => Scheme_Color::COLOR_1,
-                        ],
                         'default' => '#232323',
                         'selectors' => [
                             '{{WRAPPER}} .ma-openinghours-wrapper {{CURRENT_ITEM}} .ma-oh-time' => 'color: {{VALUE}}',
@@ -255,10 +247,6 @@ class MT_Openinghours extends Widget_Base {
                     [
                         'label' => __( 'Background Color', 'mighty' ),
                         'type' => Controls_Manager::COLOR,
-                        'scheme' => [
-                            'type' => Scheme_Color::get_type(),
-                            'value' => Scheme_Color::COLOR_1,
-                        ],
                         'selectors' => [
                             '{{WRAPPER}} .ma-openinghours-wrapper {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
                         ],
@@ -468,10 +456,6 @@ class MT_Openinghours extends Widget_Base {
                 [
                     'label' => __( 'Divider Color', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#E6E6E65C',
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row:not(:last-child)' => 'border-bottom-color: {{VALUE}};',
@@ -577,10 +561,6 @@ class MT_Openinghours extends Widget_Base {
                 [
                     'label' => __( 'Day Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#232323',
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-day' => 'color: {{VALUE}}',
@@ -603,10 +583,6 @@ class MT_Openinghours extends Widget_Base {
                 [
                     'label' => __( 'Time Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#232323',
                     'selectors' => [
                         '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-time' => 'color: {{VALUE}}',
@@ -641,10 +617,6 @@ class MT_Openinghours extends Widget_Base {
                 [
                     'label' => __( 'Odd Rows Background', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#fff',
                     'selectors' => [
                         '.ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(odd)' => 'background: {{VALUE}}',
@@ -660,10 +632,6 @@ class MT_Openinghours extends Widget_Base {
                 [
                     'label' => __( 'Even Rows Background', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#FAFBFD',
                     'selectors' => [
                         '.ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(even)' => 'background: {{VALUE}}',

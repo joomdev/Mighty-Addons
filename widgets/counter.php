@@ -290,10 +290,6 @@ class MT_Counter extends Widget_Base {
 				[
 					'label' => __( 'Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
-					'scheme' => [
-						'type' => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
-					],
 					'default' => '#000',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-counter .counter' => 'color: {{VALUE}};',
@@ -339,10 +335,6 @@ class MT_Counter extends Widget_Base {
 				[
 					'label' => __( 'Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
-					'scheme' => [
-						'type' => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
-					],
 					'default' => '#000',
 					'selectors' => [
 						'{{WRAPPER}} .mighty-counter .counter-title' => 'color: {{VALUE}};',
