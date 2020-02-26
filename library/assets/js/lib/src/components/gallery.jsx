@@ -72,9 +72,10 @@ class Gallery extends Component {
     }
   }
 
-  search = () => {
+  search = ( page ) => {
     this.setState({ isSearching: true });
-    fetch(MightyLibrary.apiUrl+MightyLibrary.pxUrl+this.state.searchTerm+"/"+this.state.pagination+"?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
+    let pagination = page !== undefined ? page : this.state.pagination
+    fetch(MightyLibrary.apiUrl+MightyLibrary.pxUrl+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
     .then(response => response.json())
     .then((res) => {
       let images = res.data.images;
@@ -132,7 +133,7 @@ class Gallery extends Component {
 
   pagination = ( page ) => {
     this.setState({ pagination: page })
-    this.search()
+    this.search( page )
   }
 
   render() {
