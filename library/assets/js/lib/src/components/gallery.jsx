@@ -56,7 +56,7 @@ class Gallery extends Component {
       choosenImage: [],
       viewType: 'unordered',
       totalPages: '',
-      pagination: 1,
+      currentPage: 1,
     }
   }
 
@@ -74,7 +74,7 @@ class Gallery extends Component {
 
   search = ( page ) => {
     this.setState({ isSearching: true });
-    let pagination = page !== undefined ? page : this.state.pagination
+    let pagination = page !== undefined ? page : this.state.currentPage
     fetch(MightyLibrary.apiUrl+MightyLibrary.pxUrl+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
     .then(response => response.json())
     .then((res) => {
@@ -123,7 +123,7 @@ class Gallery extends Component {
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } totalPages={ this.state.totalPages } onPaginate={ (page) => this.pagination( page ) } />
+        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } totalPages={ this.state.totalPages } onPaginate={ (page) => this.pagination( page ) } currentPage={this.state.currentPage} />
       case 'image':
         return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } onViewChange={ (view) => this.updateView(view) } />
       case 'loader':
@@ -132,7 +132,7 @@ class Gallery extends Component {
   }
 
   pagination = ( page ) => {
-    this.setState({ pagination: page })
+    this.setState({ currentPage: page })
     this.search( page )
   }
 
@@ -178,7 +178,7 @@ class Home extends Component {
         </div>
         
         { !this.props.isSearching ?
-          <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (e) => this.props.onPaginate(e.target.getAttribute("data-index")) }/>
+          <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (e) => this.props.onPaginate(e.target.getAttribute("data-index")) } currentPage={this.props.currentPage}/>
             :
           <Loader />
         }
@@ -191,10 +191,10 @@ class Images extends Component {
   render() {
     const pagination = []
     for ( var i = 1; i <= this.props.pages; i++ ) {
-      pagination.push(<li key={i} className="page-item"><a data-index={i} onClick={ (e) => this.props.onPagination(e) } className="page-link">{i}</a></li>)
+      pagination.push(<li key={i} className={`page-item${this.props.currentPage == i ? ' active' : ''}`}><a data-index={i} onClick={ (e) => this.props.onPagination(e) } className="page-link">{i}</a></li>)
     }
     return (
-      <div className={`search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}`}>
+      <div className={`search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
         {this.props.data.length < 1 ?
           <div className="not-found">
             <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />

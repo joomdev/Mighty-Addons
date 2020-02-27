@@ -840,6 +840,10 @@
   justify-content: space-between;
 }
 
+#mighty-extension-pixabay .mighty-gallery .search-results.error-not-found {
+  height: 100%;
+}
+
 #mighty-extension-pixabay .mighty-gallery .search-results .not-found {
   display: flex;
   align-items: center;
@@ -1591,7 +1595,8 @@
   justify-content: center;
 }
 
-.pagination {
+
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .pagination {
   display: -ms-flexbox;
   display: flex;
   padding-left: 0;
@@ -1599,34 +1604,39 @@
   border-radius: 0.25rem;
 }
 
-.pagination-sm .page-link {
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .pagination .page-link {
+  cursor: pointer;
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
 }
 
-.pagination-sm .page-item:first-child .page-link {
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .pagination .page-item:not(:last-child) {
+  margin-right: 15px;
+}
+
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .pagination .page-item:first-child .page-link {
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
 }
 
-.pagination-sm .page-item:last-child .page-link {
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .pagination .page-item:last-child .page-link {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
 }
 
-.page-item:first-child .page-link {
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item:first-child .page-link {
   margin-left: 0;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
 
-.page-item:last-child .page-link {
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item:last-child .page-link {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
 
-.page-item.active .page-link {
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item.active .page-link {
   z-index: 1;
   color: #fff;
   background-color: #5a00f0;
