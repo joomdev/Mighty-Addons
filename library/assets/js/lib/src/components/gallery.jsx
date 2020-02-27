@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 
 import Loader from './loader.jsx'
+import Pagination from './pagination.js'
 
 if ("undefined" != typeof wp && wp.media && Number(MightyLibrary.pxStatus)) {
 
@@ -120,6 +121,11 @@ class Gallery extends Component {
     });
   }
 
+  pagination = ( page ) => {
+    this.setState({ currentPage: page })
+    this.search( page )
+  }
+
   createView = ( view ) => {
     switch( view ) {
       case 'home':
@@ -129,11 +135,6 @@ class Gallery extends Component {
       case 'loader':
         return <Loader />
     }
-  }
-
-  pagination = ( page ) => {
-    this.setState({ currentPage: page })
-    this.search( page )
   }
 
   render() {
@@ -178,7 +179,7 @@ class Home extends Component {
         </div>
         
         { !this.props.isSearching ?
-          <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (e) => this.props.onPaginate(e.target.getAttribute("data-index")) } currentPage={this.props.currentPage}/>
+          <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
             :
           <Loader />
         }
@@ -188,11 +189,15 @@ class Home extends Component {
 }
 
 class Images extends Component {
+
+  handlePagination = ( data ) => {
+    let selected = data.selected+1;
+    let offset = Math.ceil(selected * this.props.pages);
+    this.props.onPagination(selected)
+    console.log('selected', selected);
+  }
+  
   render() {
-    const pagination = []
-    for ( var i = 1; i <= this.props.pages; i++ ) {
-      pagination.push(<li key={i} className={`page-item${this.props.currentPage == i ? ' active' : ''}`}><a data-index={i} onClick={ (e) => this.props.onPagination(e) } className="page-link">{i}</a></li>)
-    }
     return (
       <div className={`search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
         {this.props.data.length < 1 ?
@@ -206,14 +211,8 @@ class Images extends Component {
           <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
         ))}
 
-        <div className="mt-pixabay-pagination">
-          <nav aria-label="mighty-photos-pagination">
-            <ul className="pagination pagination-sm">
-              { pagination }
-            </ul>
-          </nav>
+        <Pagination currentPage={this.props.currentPage} lastPage={this.props.pages} clickEvent={ (e) => this.props.onPagination(e) } />
 
-        </div>
       </div>
     );
   }
