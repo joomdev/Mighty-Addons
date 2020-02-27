@@ -133,3 +133,26 @@
 .mighty-cf7-wrapper .mighty-cf7-description {
     font-size: 15px;
 }
+
+/* Stacking */
+.mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-radio > span,
+.mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-checkbox > span {
+    display: block;
+    
+}
+
+@media only screen and (max-width: 991px) {
+    .mighty-cf7-wrapper .control-stack-tablet .wpcf7-form-control-wrap .wpcf7-radio > span,
+    .mighty-cf7-wrapper .control-stack-tablet .wpcf7-form-control-wrap .wpcf7-checkbox > span {
+        display: block;
+        
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .mighty-cf7-wrapper .control-stack-mobile .wpcf7-form-control-wrap .wpcf7-radio > span,
+    .mighty-cf7-wrapper .control-stack-mobile .wpcf7-form-control-wrap .wpcf7-checkbox > span {
+        display: block;
+        
+    }
+}
