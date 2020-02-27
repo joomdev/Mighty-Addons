@@ -1659,7 +1659,14 @@
   border-bottom-right-radius: 0.25rem;
 }
 
-#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item.active .page-link {
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item .page-link:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item.active .page-link,
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item.active .page-link:hover,
+#mighty-extension-pixabay .mighty-gallery .search-results .mt-pixabay-pagination .page-item.active:hover .page-link {
   z-index: 1;
   color: #fff;
 }
