@@ -88,7 +88,7 @@ class Elementor extends base {
 			'host' => $_SERVER['HTTP_HOST'],
 			'nonce' => "MightyLibrary",
 			'pxStatus' => HelperFunctions::mighty_addons()['extensions']['pixabay']['enable'],
-			'pxKey' => "54c67446-89e5250d-3808bb85-942e870d",
+			'pxKey' => "",
 			'pxUrl' => "pixabay/image/"
 		) );
 	}
