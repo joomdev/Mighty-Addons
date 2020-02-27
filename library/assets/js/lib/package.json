@@ -1,9 +1,11 @@
 {
-  "name": "wp-plugin-reactjs",
+  "name": "Mighty Addons",
   "version": "1.0.0",
-  "description": "A WordPress starter plugin for those who want to use ReactJs in the development of WordPress Plugins.",
+  "description": "Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.",
   "main": "app.js",
-  "dependencies": {},
+  "dependencies": {
+    "react-paginate": "^6.3.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -23,17 +25,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/younes-dro/wp-plugin-reactjs.git"
+    "url": "git+https://github.com/mightythemes/Mighty-Addons.git"
   },
   "keywords": [
     "wordpress",
     "ReactJs",
     "Plugin"
   ],
-  "author": "Younes DRO",
+  "author": "MightyThemes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/younes-dro/wp-plugin-reactjs/issues"
+    "url": "https://github.com/mightythemes/Mighty-Addons/issues"
   },
-  "homepage": "https://github.com/younes-dro/wp-plugin-reactjs#readme"
+  "homepage": "https://github.com/mightythemes/Mighty-Addons#readme"
 }

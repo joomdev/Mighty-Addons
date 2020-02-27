@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
 
 import Loader from './loader.jsx'
-import Pagination from './pagination.js'
+import ReactPaginate from 'react-paginate'
 
 if ("undefined" != typeof wp && wp.media && Number(MightyLibrary.pxStatus)) {
 
@@ -189,14 +188,6 @@ class Home extends Component {
 }
 
 class Images extends Component {
-
-  handlePagination = ( data ) => {
-    let selected = data.selected+1;
-    let offset = Math.ceil(selected * this.props.pages);
-    this.props.onPagination(selected)
-    console.log('selected', selected);
-  }
-  
   render() {
     return (
       <div className={`search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
@@ -210,8 +201,34 @@ class Images extends Component {
           this.props.data.map(image => (
           <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
         ))}
-
-        <Pagination currentPage={this.props.currentPage} lastPage={this.props.pages} clickEvent={ (e) => this.props.onPagination(e) } />
+        
+        <div className="mt-pixabay-pagination">
+          <nav aria-label="mighty-photos-pagination">
+              <ReactPaginate
+                previousLabel={'Previous'}
+                nextLabel={'Next'}
+                pageCount={this.props.pages}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={3}
+                onPageChange={this.handlePagination}
+                onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
+                forcePage={this.props.currentPage - 1}
+                previousClassName={'page-item'}
+                previousLinkClassName={'page-link'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                nextClassName={'page-item'}
+                nextLinkClassName={'page-link'}
+                breakLabel={'...'}
+                breakClassName={'page-item'}
+                containerClassName={'pagination pagination-sm'}
+                subContainerClassName={'pages pagination'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link'}
+                activeClassName={'active'}
+              />
+          </nav>
+        </div>
 
       </div>
     );
