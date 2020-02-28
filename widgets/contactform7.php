@@ -1649,6 +1649,8 @@ class MT_ContactForm7 extends Widget_Base {
             echo do_shortcode( '[contact-form-7 id="' . $settings['cf7_form_id'] . ' title="' . $cf7forms[$settings['cf7_form_id']] .'"]' );
             echo "</div>";
             echo "</div>";
+        } else {
+            echo "<h3 align='center'> Choose a form to get started. </h3>";
         }
 	}
 	
