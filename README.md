@@ -14,7 +14,7 @@ Tested up to: 5.3
 
 Requires PHP: 5.6
 
-Stable Tag: 1.3.2
+Stable Tag: 1.3.3
 
 License: GPLv2 or later
 
@@ -144,11 +144,14 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
 
-### 1.3.2
+### 1.3.3
 * Added: Pagination for Pixabay giving you lot more options to choose from
 * Added: Contact Form 7 Styler Element
 * Fixed: Key bug in Pixabay Extension
 * Fixed: Removed Elementor default scheme colors
+
+### 1.3.2
+* Fixed: Images fetch in Gallery, when request not completed.
 
 ### 1.3.1
 It was hard to find these bugs, but we found it and voila: 
