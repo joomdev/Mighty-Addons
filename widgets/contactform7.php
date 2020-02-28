@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * Elementor widget for MT_ContactForm7.
  *
- * @since 1.3.1
+ * @since 1.3.2
  */
 class MT_ContactForm7 extends Widget_Base {
 	
