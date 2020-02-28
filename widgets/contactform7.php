@@ -216,6 +216,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'background',
                     'label' => __( 'Background', 'mighty' ),
+                    'default' => '#fff',
                     'types' => [ 'classic', 'gradient' ],
                     'selector' => '{{WRAPPER}} .mighty-cf7-wrapper',
                 ]
@@ -334,12 +335,27 @@ class MT_ContactForm7 extends Widget_Base {
             );
 
         $this->end_controls_section();
-
+        
         $this->start_controls_section(
             'section_cf7_text_style',
             [
                 'label' => __( 'Title & Description', 'mighty' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'show_title',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                        [
+                            'name' => 'show_description',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -369,6 +385,63 @@ class MT_ContactForm7 extends Widget_Base {
                     'default' => 'align-details-center',
                     'toggle' => false,
                     'label_block' => false,
+                ]
+            );
+
+            $this->add_control(
+                'spacing_content_form',
+                [
+                    'label' => __( 'Spacing B/w Content & Form', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 500,
+                            'step' => 5,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => '',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-cf7-wrapper .form-details' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'spacing_title_description',
+                [
+                    'label' => __( 'Spacing B/w Title & Description', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 500,
+                            'step' => 5,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => '',
+                    ],
+                    'condition' => [
+                        'show_description' => 'yes'
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-cf7-wrapper .form-details .mighty-cf7-title' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                    ],
                 ]
             );
 
@@ -792,7 +865,7 @@ class MT_ContactForm7 extends Widget_Base {
                 );
 
                     $this->add_control(
-                        'custom_control_color',
+                        'custom_control_bg_color',
                         [
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
@@ -800,6 +873,7 @@ class MT_ContactForm7 extends Widget_Base {
                                 '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]' => 'background-color: {{VALUE}}',
                             ],
+                            'default' => '#fff',
                             'condition' => [
                                 'custom_style_controls' => 'yes'
                             ]
@@ -906,6 +980,7 @@ class MT_ContactForm7 extends Widget_Base {
                             '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]:checked' => 'background-color: {{VALUE}}',
                             '{{WRAPPER}} .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked' => 'background-color: {{VALUE}}',
                         ],
+                        'default' => '#000',
                         'condition' => [
                             'custom_style_controls' => 'yes'
                         ]
@@ -955,102 +1030,47 @@ class MT_ContactForm7 extends Widget_Base {
                 ]
             );
 
-            $this->start_controls_tabs(
-                'custom_style_list_tabs'
+            $this->add_group_control(
+                Group_Control_Background::get_type(),
+                [
+                    'name' => 'list_background_color',
+                    'label' => __( 'Background Color', 'mighty' ),
+                    'types' => [ 'classic', 'gradient' ],
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control',
+                    'condition' => [
+                        'custom_style_list' => 'yes'
+                    ],
+                ]
             );
-                // Normal Styling
-                $this->start_controls_tab(
-                    'style_list_normal',
-                    [
-                        'label' => __( 'Normal', 'mighty' ),
-                        'condition' => [
-                            'custom_style_list' => 'yes'
-                        ]
+
+            $this->add_control(
+                'list_control_color',
+                [
+                    'label' => __( 'Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control' => 'color: {{VALUE}}',
+                    ],
+                    'condition' => [
+                        'custom_style_list' => 'yes'
                     ]
-                );
+                ]
+            );
 
-                    $this->add_group_control(
-                        Group_Control_Background::get_type(),
-                        [
-                            'name' => 'list_background_color',
-                            'label' => __( 'Background Color', 'mighty' ),
-                            'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control',
-                            'condition' => [
-                                'custom_style_list' => 'yes'
-                            ],
-                        ]
-                    );
-
-                    $this->add_control(
-                        'list_control_color',
-                        [
-                            'label' => __( 'Color', 'mighty' ),
-                            'type' => \Elementor\Controls_Manager::COLOR,
-                            'selectors' => [
-                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control' => 'color: {{VALUE}}',
-                            ],
-                            'condition' => [
-                                'custom_style_list' => 'yes'
-                            ]
-                        ]
-                    );
-
-                    $this->add_responsive_control(
-                        'custom_list_padding',
-                        [
-                            'label' => __( 'Padding', 'mighty' ),
-                            'type' => Controls_Manager::DIMENSIONS,
-                            'size_units' => [ 'px', '%', 'em' ],
-                            'selectors' => [
-                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                            ],
-                            'condition' => [
-                                'custom_style_list' => 'yes'
-                            ]
-                        ]
-                    );
-
-                $this->end_controls_tab();
-                
-                // Selected styling
-                $this->start_controls_tab(
-                    'style_form_fields_selected',
-                    [
-                        'label' => __( 'Selected', 'mighty' ),
-                        'condition' => [
-                            'custom_style_list' => 'yes'
-                        ]
+            $this->add_responsive_control(
+                'custom_list_padding',
+                [
+                    'label' => __( 'Padding', 'mighty' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'custom_style_list' => 'yes'
                     ]
-                );
-
-                    $this->add_group_control(
-                        Group_Control_Background::get_type(),
-                        [
-                            'name' => 'list_selected_background_color',
-                            'label' => __( 'Background Color', 'mighty' ),
-                            'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control',
-                            'condition' => [
-                                'custom_style_list' => 'yes'
-                            ],
-                        ]
-                    );
-
-                    $this->add_control(
-                        'list_selected_color',
-                        [
-                            'label' => __( 'Color', 'mighty' ),
-                            'type' => \Elementor\Controls_Manager::COLOR,
-                            'selectors' => [
-                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap select.wpcf7-form-control' => 'color: {{VALUE}}',
-                            ]
-                        ]
-                    );
-
-                $this->end_controls_tab();
-            
-            $this->end_controls_tabs();
+                ]
+            );
 
         $this->end_controls_section();
 
@@ -1616,11 +1636,11 @@ class MT_ContactForm7 extends Widget_Base {
 
             if ( $settings['show_title'] == "yes" || $settings['show_description'] == "yes") {
                 echo "<div class='form-details " . $settings['text_alignment'] ."'>";
-                if( $settings['show_title'] == "yes" || $settings['cf7_title'] !== "" ) {
+                if( $settings['show_title'] == "yes" && $settings['cf7_title'] !== "" ) {
                     echo "<div class='mighty-cf7-title'>" . $settings['cf7_title'] . "</div>";
                 }
 
-                if( $settings['show_description'] == "yes" || $settinsg['cf7_description'] ) {
+                if( $settings['show_description'] == "yes" && $settings['cf7_description'] ) {
                     echo "<div class='mighty-cf7-description'>" . $settings['cf7_description'] . "</div>";
                 }
                 echo "</div>";
