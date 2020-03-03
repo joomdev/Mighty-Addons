@@ -389,33 +389,6 @@ class MT_ContactForm7 extends Widget_Base {
             );
 
             $this->add_control(
-                'spacing_content_form',
-                [
-                    'label' => __( 'Spacing B/w Content & Form', 'mighty' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px', '%' ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 500,
-                            'step' => 5,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => '',
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .mighty-cf7-wrapper .form-details' => 'margin-bottom: {{SIZE}}{{UNIT}};'
-                    ],
-                ]
-            );
-
-            $this->add_control(
                 'spacing_title_description',
                 [
                     'label' => __( 'Spacing B/w Title & Description', 'mighty' ),
@@ -441,6 +414,33 @@ class MT_ContactForm7 extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-cf7-wrapper .form-details .mighty-cf7-title' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'spacing_content_form',
+                [
+                    'label' => __( 'Spacing B/w Content & Form', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 500,
+                            'step' => 5,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => '',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-cf7-wrapper .form-details' => 'margin-bottom: {{SIZE}}{{UNIT}};'
                     ],
                 ]
             );
