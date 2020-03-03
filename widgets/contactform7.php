@@ -1135,6 +1135,16 @@ class MT_ContactForm7 extends Widget_Base {
                 ]
             );
 
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'button_typography',
+                    'label' => __( 'Typography', 'mighty' ),
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-submit',
+                ]
+            );
+
             $this->start_controls_tabs(
                 'button_tabs'
             );
