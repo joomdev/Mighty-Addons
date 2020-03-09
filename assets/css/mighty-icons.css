@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-openstreetmap:before {
+	content: "\e90c";
+}
+
 .mf-contactform7:before {
 	content: "\e90b";
 }
