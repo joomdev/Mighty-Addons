@@ -133,10 +133,7 @@
 
 #mighty-library .mt-templates-modal-inner {
   width: 100%;
-  height: 90vh;
   max-width: 1300px;
-  overflow-y: auto;
-  overflow-x: hidden;
   background-color: #ECF0F6;
 }
 
