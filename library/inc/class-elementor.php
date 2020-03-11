@@ -44,22 +44,7 @@ class Elementor extends base {
 	 */
 	public function enqueue_editor_scripts() {
 
-		if ( ! $this->activated_plugins ) {
-			$active_plugins          = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
-			$active_sitewide_plugins = get_site_option( 'active_sitewide_plugins' );
-			if ( ! is_array( $active_plugins ) ) {
-				$active_plugins = [];
-			}
-			if ( ! is_array( $active_sitewide_plugins ) ) {
-				$active_sitewide_plugins = [];
-			}
-			if ( ! function_exists( 'get_plugins' ) ) {
-				require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			}
-			$active_plugins                   = array_merge( $active_plugins, array_keys( $active_sitewide_plugins ) );
-			$this->activated_plugins['active'] = $active_plugins;
-			$this->activated_plugins['all']    = get_plugins();
-		}
+		$this->activated_plugins = HelperFunctions::get_all_plugins();
 		
 		if ( in_array( 'elementor-pro/elementor-pro.php', $this->activated_plugins['active'], true ) ) {
 			$elementorPro = true;

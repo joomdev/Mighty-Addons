@@ -173,6 +173,12 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         }
 
+        public static function get_enabled_pro_addons() {
+
+            return get_option( 'mighty_addons_pro_status' );
+
+        }
+
         public static function mighty_addons_status() {
             
             check_ajax_referer( 'mighty-addons', 'security' );

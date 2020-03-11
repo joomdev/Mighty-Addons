@@ -2,12 +2,22 @@
 /**
  * Mighty Addons
  */
+use \MightyAddons\Classes\HelperFunctions;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // All the Awesomeness
 $widgets = self::$ma_get_settings['addons'];
 $extensions = self::$ma_get_settings['extensions'];
+
+$allPlugins = HelperFunctions::get_all_plugins();
+
+if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'], true ) ) {
+    $pro_widgets = self::get_enabled_pro_addons()['addons'];
+    $pro_extensions = self::get_enabled_pro_addons()['extensions'];
+    $mighty_addons_pro_active = true;
+}
+
 ?>
 
 <?php include_once('includes/header.php'); ?>
