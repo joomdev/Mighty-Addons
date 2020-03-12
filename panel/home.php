@@ -16,8 +16,9 @@ if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'],
     $pro_widgets = self::get_enabled_pro_addons()['addons'];
     $pro_extensions = self::get_enabled_pro_addons()['extensions'];
     $mighty_addons_pro_active = true;
+} else {
+    $mighty_addons_pro_active = false;
 }
-
 ?>
 
 <?php include_once('includes/header.php'); ?>

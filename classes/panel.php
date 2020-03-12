@@ -196,8 +196,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             }
 
             $proAddons = self::get_enabled_pro_addons();
-
-            // TO-DO: Pro Extensions
+            
             // TO-DO: Free Addons
             // TO-DO: Free Extension
             
@@ -309,7 +308,12 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             // Pro Addons
             foreach( $proAddons['addons'] as $addon ) {
-                $proAddons['addons'][$addon['slug']]['enable'] = intval( $proSettings[$addon['slug']] ? 1 : 0 );
+                $proAddons['addons'][$addon['slug']]['enable'] = intval( $proSettings[ $addon['slug'] ] ? 1 : 0 );
+            }
+
+            // Pro Extensions
+            foreach( $proAddons['extensions'] as $extension ) {
+                $proAddons['extensions'][$extension['slug']]['enable'] = intval( $proSettings[ $extension['slug'] ] ? 1 : 0 );
             }
             
             

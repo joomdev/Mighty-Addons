@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         <div class="ma-col-full">
 
             <form id="mighty-settings" action="" method="POST" name="mighty-settings">
+                <div class="text-center">
+                    <h4>Free</h4>
+                </div>
                 <div class="ma-element-container">
                     <?php foreach( $extensions as $extension => $props ) : ?>
                     <div class="ma-element ma-element-free">
@@ -28,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         </div>
                         <div class="ma-ele-switch">
                             <label class="switch">
-                                <input class="switch-input" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> />
+                                <input class="switch-input mighty-addons-free" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> />
                                 <span class="switch-label"></span>
                                 <span class="switch-handle"></span>
                             </label>
@@ -36,6 +39,35 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     </div>
                     <?php endforeach; ?>
                 </div>
+
+                <?php if ( isset($mighty_addons_pro_active) && $mighty_addons_pro_active ) : ?>
+                <div class="text-center">
+                    <h4>Pro</h4>
+                </div>
+                <div class="ma-element-container">
+                    <?php foreach( $pro_extensions as $extension => $props ) : ?>
+                    <div class="ma-element ma-element-free">
+                        <div class="ma-ele-info">
+                            <i class="<?php echo $props['icon']; ?> widget-icon"></i>
+                            <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
+                            <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
+                                <span class="ma-get-help">
+                                    <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
+                                </span>
+                                <span class="ma-ele-info-tooltip">Documentation</span>
+                            </a>
+                        </div>
+                        <div class="ma-ele-switch">
+                            <label class="switch">
+                                <input class="switch-input mighty-addons-pro" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> />
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
 
                 <div class="text-center ma-cta-save">
                     <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button" disabled="disabled"><?php echo __('Save Settings', 'mighty-addons'); ?></button>
