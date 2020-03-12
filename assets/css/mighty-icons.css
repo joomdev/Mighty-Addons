@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-particles:before {
+	content: "\e90e";
+}
+
 .mf-gmaps:before {
 	content: "\e90d";
 }
