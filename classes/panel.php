@@ -76,6 +76,14 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 'manage_options',
                 'admin.php?page=mighty-addons-home#go-pro'
             );
+
+            add_submenu_page(
+                'mighty-addons-home',
+                __( 'Mighty Pro', 'mighty-addons' ),
+                __( 'Integrations 🔨', 'mighty-addons' ),
+                'manage_options',
+                'admin.php?page=mighty-addons-home#integrations'
+            );
         }
 
         public static function enqueue_scripts( $hook ) {

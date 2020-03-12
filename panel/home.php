@@ -37,4 +37,6 @@ if( !is_plugin_active( 'Mighty-Addons-Pro/mighty-addons-pro.php' ) ) {
 }
 ?>
 
+<?php include_once('includes/integrations.php'); ?>
+
 <?php include_once('includes/footer.php'); ?>
