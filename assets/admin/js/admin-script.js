@@ -7,7 +7,8 @@
             data: {
                 action: 'save_mighty_addons_settings',
                 security: settings.nonce,
-                fields: $('form#mighty-settings').serialize(),
+                fields: $('form input.mighty-addons-free').serialize(),
+                proFields: $('form input.mighty-addons-pro').serialize()
             },
             success: function(response) {
                 console.log('successfully saved!');

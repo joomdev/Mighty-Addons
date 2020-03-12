@@ -188,12 +188,20 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             } else {
                 return;
             }
-
-            // TO-DO: For compactness
-            // foreach ( self::$ma_settings as $widget ) {
-            //     self::$ma_settings[$settings[$widget['slug']]['enable']] = intval( $settings[$widget['slug']] ? 1 : 0 );
-            // }
             
+            if( isset( $_POST['proFields'] ) ) {
+                parse_str( $_POST['proFields'], $proSettings );
+            } else {
+                return;
+            }
+
+            $proAddons = self::get_enabled_pro_addons();
+
+            // TO-DO: Pro Extensions
+            // TO-DO: Free Addons
+            // TO-DO: Free Extension
+            
+            // Free Addons
             self::$ma_settings = [
                 "version" => MIGHTY_ADDONS_VERSION,
                 "addons" => [
@@ -298,8 +306,17 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                     ]
                 ]
             ];
+
+            // Pro Addons
+            foreach( $proAddons['addons'] as $addon ) {
+                $proAddons['addons'][$addon['slug']]['enable'] = intval( $proSettings[$addon['slug']] ? 1 : 0 );
+            }
+            
             
             update_option( 'mighty_addons_status', self::$ma_settings );
+            
+            update_option( 'mighty_addons_pro_status', $proAddons );
+            
             
             return true;
         }
