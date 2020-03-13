@@ -40,6 +40,8 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             add_action( 'wp_ajax_save_mighty_addons_settings', [ __CLASS__, 'mighty_addons_status'] );
 
+            add_action( 'wp_ajax_save_mighty_addons_integration', [ __CLASS__, 'mighty_addons_integration'] );
+
         }
 
         public static function add_menu() {
@@ -230,6 +232,21 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             
             update_option( 'mighty_addons_pro_status', $proAddons );
             
+            return true;
+        }
+
+        public static function mighty_addons_integration() {
+
+            check_ajax_referer( 'mighty-addons', 'security' );
+
+            if( isset( $_POST['fields'] ) ) {
+                parse_str( $_POST['fields'], $settings );
+            } else {
+                return;
+            }
+
+            update_option( 'mighty_addons_integration', $settings );
+
             return true;
         }
 

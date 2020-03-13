@@ -19,6 +19,24 @@
         });
     }
 
+    function saveIntegrationSettings() {
+        $.ajax({
+            url: settings.ajaxurl,
+            type: 'post',
+            data: {
+                action: 'save_mighty_addons_integration',
+                security: settings.nonce,
+                fields: $('form#mighty-integration-settings').serialize()
+            },
+            success: function() {
+                console.log('Successfully saved!');
+            },
+            error: function() {
+                console.log('#213 Something went wrong!');
+            }
+        });
+    }
+
     function tabsStatus(tab, source, obj) {
         $('.ma-tabs li').removeClass('active');
         $('#toplevel_page_mighty-addons-home .wp-submenu li').removeClass('current');
@@ -72,6 +90,18 @@
         // Disable after save
         $('.ma-settings-header-bar .ma-save-button').attr('disabled', 'disabled'); // Header Button
         $('#mighty-settings .ma-save-button').attr('disabled', 'disabled'); // Form's Button
+    });
+
+    // Integration Settings
+    $('form#mighty-integration-settings').on('submit', function (e) {
+        e.preventDefault();
+        saveIntegrationSettings(settings);
+
+        $('#mighty-integration-settings .ma-save-button').html('<span class="updated-widgets dashicons dashicons-yes-alt"></span> Updated');
+
+        setTimeout(function() {
+            $('#mighty-integration-settings .ma-save-button').text('Save Settings');
+        }, 2000);
     });
     
     // Click event - Header Button
