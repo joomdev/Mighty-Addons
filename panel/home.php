@@ -12,7 +12,7 @@ $extensions = self::$ma_get_settings['extensions'];
 
 $allPlugins = HelperFunctions::get_all_plugins();
 
-if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'], true ) ) {
+if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'], true ) || in_array( 'mighty-addons-pro/mighty-addons-pro.php', $allPlugins['active'], true )) {
     $pro_widgets = self::get_enabled_pro_addons()['addons'];
     $pro_extensions = self::get_enabled_pro_addons()['extensions'];
     $mighty_addons_pro_active = true;
