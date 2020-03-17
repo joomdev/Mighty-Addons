@@ -57,7 +57,7 @@ class Gallery extends Component {
       viewType: 'unordered',
       totalPages: '',
       currentPage: 1,
-      searchPlatform: '',
+      searchPlatform: 'pixabay',
     }
   }
 
@@ -129,7 +129,7 @@ class Gallery extends Component {
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } totalPages={ this.state.totalPages } onPaginate={ (page) => this.pagination( page ) } currentPage={this.state.currentPage} searchPlatform={ (platform) => this.setState({ searchPlatform: platform }) } />
+        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } totalPages={ this.state.totalPages } onPaginate={ (page) => this.pagination( page ) } currentPage={ this.state.currentPage } activeSearchPlatform={ (platform) => this.setState({ searchPlatform: platform }) } searchPlatform={ this.state.searchPlatform } />
       case 'image':
         return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } onViewChange={ (view) => this.updateView(view) } />
       case 'loader':
@@ -169,11 +169,11 @@ class Home extends Component {
           </div>
           <div className="brand-filters">
 
-            <span className="action-button" onClick={ () => this.searchPlatform('pixabay') }>
+            <span className="action-button" onClick={ () => this.props.activeSearchPlatform('pixabay') }>
               Pixabay
             </span>
 
-            <span className="action-button" onClick={ () => this.searchPlatform('unsplash') }>
+            <span className="action-button" onClick={ () => this.props.activeSearchPlatform('unsplash') }>
               Unsplash
             </span>
 
@@ -186,7 +186,10 @@ class Home extends Component {
         </div>
         
         { !this.props.isSearching ?
-          <PixabayImages data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
+            this.props.searchPlatform == "pixabay" ?
+              <PixabayImages data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
+              :
+              <UnsplashImages data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
             :
           <Loader />
         }
@@ -246,7 +249,7 @@ class PixabayImages extends Component {
 class UnsplashImages extends Component {
   render() {
     return (
-      <div className={`pixabay-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
+      <div className={`unsplash-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
         
 
       </div>
