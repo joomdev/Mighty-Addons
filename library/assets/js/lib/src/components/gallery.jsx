@@ -57,6 +57,7 @@ class Gallery extends Component {
       viewType: 'unordered',
       totalPages: '',
       currentPage: 1,
+      searchPlatform: '',
     }
   }
 
@@ -128,7 +129,7 @@ class Gallery extends Component {
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } totalPages={ this.state.totalPages } onPaginate={ (page) => this.pagination( page ) } currentPage={this.state.currentPage} />
+        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } totalPages={ this.state.totalPages } onPaginate={ (page) => this.pagination( page ) } currentPage={this.state.currentPage} searchPlatform={ (platform) => this.setState({ searchPlatform: platform }) } />
       case 'image':
         return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } onViewChange={ (view) => this.updateView(view) } />
       case 'loader':
@@ -159,7 +160,6 @@ class Home extends Component {
   }
 
   render() {
-    let pxlogo = MightyLibrary.baseUrl + 'library/assets/images/pixabay-logo.png';
     return (
       <div className="mighty-gallery">
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
@@ -167,8 +167,16 @@ class Home extends Component {
             <input type="text" value={ this.props.searchTerm } onChange={ (e) => this.props.onChange(e) } type='text' placeholder='Search Photos...' onKeyPress={this.enterPressed.bind(this)} />
             <button onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
           </div>
-          <div className="pixabay-logo">
-            <img src={pxlogo} alt="Pixabay logo" />
+          <div className="brand-filters">
+
+            <span className="action-button" onClick={ () => this.searchPlatform('pixabay') }>
+              Pixabay
+            </span>
+
+            <span className="action-button" onClick={ () => this.searchPlatform('unsplash') }>
+              Unsplash
+            </span>
+
           </div>
           <div className="photos-view">
             <p>View as:</p>
@@ -178,7 +186,7 @@ class Home extends Component {
         </div>
         
         { !this.props.isSearching ?
-          <Images data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
+          <PixabayImages data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
             :
           <Loader />
         }
@@ -187,10 +195,10 @@ class Home extends Component {
   }
 }
 
-class Images extends Component {
+class PixabayImages extends Component {
   render() {
     return (
-      <div className={`search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
+      <div className={`pixabay-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
         {this.props.data.length < 1 ?
           <div className="not-found">
             <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
@@ -235,6 +243,17 @@ class Images extends Component {
   }
 }
 
+class UnsplashImages extends Component {
+  render() {
+    return (
+      <div className={`pixabay-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
+        
+
+      </div>
+    );
+  }
+}
+
 class Image extends Component {
   render() {
     return (
@@ -254,7 +273,7 @@ class Image extends Component {
                 <br />No attribution required
               </div>
             </div>
-            <span className="import-button" onClick={ () => this.props.onImport(this.props.data.url) }>
+            <span className="action-button" onClick={ () => this.props.onImport(this.props.data.url) }>
               <i className="fas fa-download"></i>&nbsp; Insert Image
             </span>
           </div>

@@ -813,9 +813,12 @@
   -webkit-user-drag: none;
 }
 
-#mighty-extension-pixabay .pixabay-logo img {
-  width: 300px;
-  vertical-align: middle;
+#mighty-extension-pixabay .brand-filters {
+  display: flex;
+}
+
+#mighty-extension-pixabay .brand-filters span {
+  margin: 0 5px;
 }
 
 #mighty-extension-pixabay,
@@ -895,7 +898,7 @@
   font-size: 14px;
 }
 
-#mighty-extension-pixabay .mighty-image .selected-image .import-button {
+#mighty-extension-pixabay .action-button {
   display: block;
   max-width: 310px;
   margin: 10px 0 0;
@@ -910,7 +913,7 @@
   transition: opacity 0.2s ease;
 }
 
-#mighty-extension-pixabay .mighty-image .selected-image .import-button:hover {
+#mighty-extension-pixabay .action-button:hover {
   opacity: 0.8;
 }
 
@@ -1154,7 +1157,6 @@
 
 #mighty-extension-pixabay .mt-templates-modal-body-inner .photos-view {
   display: flex;
-  width: 100%;
   justify-content: flex-end;
   margin: 10px;
   align-items: center;
@@ -1173,7 +1175,6 @@
   display: flex;
   justify-content: flex-start;
   position: relative;
-  width: 100%;
 }
 
 #mighty-extension-pixabay .mt-templates-modal-body-inner .body-header-search input {
@@ -1215,6 +1216,7 @@
   background-color: #fff;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 #mighty-extension-pixabay .mt-templates-modal-body-mid {

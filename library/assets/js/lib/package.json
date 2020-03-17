@@ -1,5 +1,5 @@
 {
-  "name": "Mighty Addons",
+  "name": "mighty-addons",
   "version": "1.0.0",
   "description": "Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.",
   "main": "app.js",
@@ -21,7 +21,9 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development --env.dist=false",
+    "dev:dist": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './src/components/app.jsx';
 import Gallery from './src/components/gallery.jsx';
 
-class MightyThemesLibraryClass{
+class MightyThemesLibraryClass {
     constructor() {
         this.initiatedLibrary = false;
     }
