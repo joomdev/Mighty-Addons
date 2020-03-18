@@ -67,7 +67,7 @@ class Gallery extends Component {
 
   updateView = (view) => {
     if ( view != this.state.renderView ) {
-      this.setState({ 
+      this.setState({
         renderView: view
       })
     }
@@ -75,8 +75,10 @@ class Gallery extends Component {
 
   search = ( page ) => {
     this.setState({ isSearching: true });
-    let pagination = page !== undefined ? page : this.state.currentPage
-    fetch(MightyLibrary.apiUrl+MightyLibrary.pxUrl+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
+    let host = this.state.searchPlatform == "pixabay" ? MightyLibrary.apiUrl+MightyLibrary.pxUrl : MightyLibrary.apiUrl+MightyLibrary.usUrl;
+    let pagination = page !== undefined ? page : this.state.currentPage;
+
+    fetch(host+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
     .then(response => response.json())
     .then((res) => {
       let images = res.data.images;
@@ -126,12 +128,35 @@ class Gallery extends Component {
     this.search( page )
   }
 
+  platformType = ( platform ) => {
+    this.setState({ searchPlatform: platform});
+    this.search();
+  }
+
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Home searchTerm={ this.state.searchTerm } data={ this.state.images } onClick={ (image) => this.showImage(image) } onChange={ (e) => this.setState({ searchTerm: e.target.value }) } onSearch={ () => this.search() } onViewType={ (type) => this.setState({ viewType: type }) } viewType={this.state.viewType} isSearching={ this.state.isSearching } totalPages={ this.state.totalPages } onPaginate={ (page) => this.pagination( page ) } currentPage={ this.state.currentPage } activeSearchPlatform={ (platform) => this.setState({ searchPlatform: platform }) } searchPlatform={ this.state.searchPlatform } />
+        return <Home 
+                  searchTerm={ this.state.searchTerm }
+                  data={ this.state.images } 
+                  onClick={ (image) => this.showImage(image) } 
+                  onChange={ (e) => this.setState({ searchTerm: e.target.value }) } 
+                  onSearch={ () => this.search() } 
+                  onViewType={ (type) => this.setState({ viewType: type }) } 
+                  viewType={this.state.viewType} 
+                  isSearching={ this.state.isSearching } 
+                  totalPages={ this.state.totalPages } 
+                  onPaginate={ (page) => this.pagination( page ) } 
+                  currentPage={ this.state.currentPage } 
+                  activeSearchPlatform={ (platform) => this.platformType( platform ) } 
+                  searchPlatform={ this.state.searchPlatform } 
+                />
       case 'image':
-        return <Image data={ this.state.choosenImage } onImport={ (image) => this.importImage(image) } onViewChange={ (view) => this.updateView(view) } />
+        return <Image 
+                data={ this.state.choosenImage } 
+                onImport={ (image) => this.importImage(image) } 
+                onViewChange={ (view) => this.updateView(view) } 
+              />
       case 'loader':
         return <Loader />
     }
@@ -247,10 +272,48 @@ class PixabayImages extends Component {
 }
 
 class UnsplashImages extends Component {
+  
   render() {
     return (
       <div className={`unsplash-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
+        {this.props.data.length < 1 ?
+          <div className="not-found">
+            <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
+            <h4>We do need to upgrade things around here!</h4>
+            <p>Until then, search for something else.</p>
+          </div>
+          :
+          this.props.data.map(image => (
+          <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
+        ))}
         
+        <div className="mt-pixabay-pagination">
+          <nav aria-label="mighty-photos-pagination">
+              <ReactPaginate
+                previousLabel={'Previous'}
+                nextLabel={'Next'}
+                pageCount={this.props.pages}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={3}
+                onPageChange={this.handlePagination}
+                onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
+                forcePage={this.props.currentPage - 1}
+                previousClassName={'page-item'}
+                previousLinkClassName={'page-link'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                nextClassName={'page-item'}
+                nextLinkClassName={'page-link'}
+                breakLabel={'...'}
+                breakClassName={'page-item'}
+                containerClassName={'pagination pagination-sm'}
+                subContainerClassName={'pages pagination'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link'}
+                activeClassName={'active'}
+              />
+          </nav>
+        </div>
 
       </div>
     );

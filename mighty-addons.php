@@ -301,14 +301,6 @@ final class Mighty_Addons {
 	 * @access public
 	 */
 	public function loadLibrary() {
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			add_action( 'admin_notices', __NAMESPACE__ . '\analog_fail_load' );
-			return;
-		} elseif ( ! version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
-			add_action( 'admin_notices', __NAMESPACE__ . '\analog_fail_wp_version' );
-			return;
-		}
-
 		// Including stuff for Library
 		require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-base.php' );
 		require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-elementor.php' );

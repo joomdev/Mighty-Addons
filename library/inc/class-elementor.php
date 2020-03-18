@@ -51,6 +51,12 @@ class Elementor extends base {
 		} else {
 			$elementorPro = false;
 		}
+
+		if( is_plugin_active( 'Mighty-Addons-Pro/mighty-addons-pro.php' ) || is_plugin_active( 'mighty-addons-pro/mighty-addons.php' )) {
+			$mightyAddonsProActive = true;
+		} else {
+			$mightyAddonsProActive = false;
+		}
 		
 		wp_enqueue_style( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/css/elementor-modal.css', [], MIGHTY_ADDONS_VERSION );
 
@@ -67,14 +73,15 @@ class Elementor extends base {
 		wp_localize_script( 'mighty-library-react', 'MightyLibrary', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'baseUrl' => MIGHTY_ADDONS_PLG_URL,
-			'apiUrl' => "https://api.mightythemes.com/api/",
+			'apiUrl' => "https://api.mightythemes.test/api/",
 			'elementorPro' => $elementorPro,
+			'maPro' => $mightyAddonsProActive,
 			'key' => "",
 			'host' => $_SERVER['HTTP_HOST'],
 			'nonce' => "MightyLibrary",
 			'pxStatus' => HelperFunctions::mighty_addons()['extensions']['pixabay']['enable'],
-			'pxKey' => "",
-			'pxUrl' => "pixabay/image/"
+			'pxUrl' => "pixabay/image/",
+			'usUrl' => "unsplash/image/"
 		) );
 	}
 
