@@ -120,6 +120,34 @@ class Elementor extends base {
 	public function mighty_extension_media()
 	{
 		$image = $_POST['image'];
+		$src = $_POST['src'];
+		
+		if ( $src == "unsplash" ) {
+			$image = json_decode(file_get_contents($image), true)['url'];
+			
+			// Format
+			parse_str(parse_url($image)['query'], $params);
+			$imgFormat = ".".$params['fm'];
+
+			$uploads = wp_upload_dir();
+
+			$image_string = wp_remote_get( $image,
+				array(
+					'timeout'     => 120,
+				)
+			);
+			
+			$newfilename = md5(time()) . $imgFormat;
+			$filename = wp_unique_filename($uploads['path'], $newfilename, $unique_filename_callback = null);			
+
+			$fileSaved = file_put_contents($uploads['path'] . "/" . $filename, $image_string['body']);
+
+			if (!$fileSaved) {
+				throw new Exception("The file cannot be saved.");
+			} else {
+				die('file saved');
+			}
+		}
 
 		if ( $image ) {
 			$imageurl = stripslashes($image);

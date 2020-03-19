@@ -107,7 +107,7 @@ class Gallery extends Component {
     fetch(MightyLibrary.ajaxurl, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
-      body: 'action=save_mighty_extension_media&image=' + image
+      body: 'action=save_mighty_extension_media&src='+ this.state.searchPlatform +'&image=' + image
     })
     .then(response => response.json())
     .then((data) => {
@@ -337,7 +337,6 @@ class Image extends Component {
       };
     }
     
-    // console.log(this.props.data);
     return (
       <div className="mighty-image">
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
