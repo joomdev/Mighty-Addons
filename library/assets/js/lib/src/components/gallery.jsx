@@ -77,7 +77,7 @@ class Gallery extends Component {
     this.setState({ isSearching: true });
     let host = this.state.searchPlatform == "pixabay" ? MightyLibrary.apiUrl+MightyLibrary.pxUrl : MightyLibrary.apiUrl+MightyLibrary.usUrl;
     let pagination = page !== undefined ? page : this.state.currentPage;
-
+    
     fetch(host+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
     .then(response => response.json())
     .then((res) => {
@@ -157,6 +157,7 @@ class Gallery extends Component {
                 data={ this.state.choosenImage } 
                 onImport={ (image) => this.importImage(image) } 
                 onViewChange={ (view) => this.updateView(view) } 
+                platform={ this.state.searchPlatform }
               />
       case 'loader':
         return <Loader />
@@ -321,24 +322,41 @@ class UnsplashImages extends Component {
 
 class Image extends Component {
   render() {
+    let image;
+    if( this.props.platform == "pixabay" ) {
+      image = {
+        src: this.props.data.url,
+        alt: this.props.data.tags,
+        url: this.props.data.url
+      };
+    } else {
+      image = {
+        src: this.props.data.preview,
+        alt: this.props.data.alt_description,
+        url: this.props.data.url
+      };
+    }
+    
+    // console.log(this.props.data);
     return (
       <div className="mighty-image">
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
           <button className="mt-btn mt-btn-import" onClick={ () => this.props.onViewChange('home') }><i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back</button>
         </div>
         <div className="selected-image">
-          <img src={this.props.data.url} alt={this.props.data.tags} />
+          <img src={ image.src } alt={ image.alt } />
           <div className="image-controls">
-            <p>Tags: </p>
-            <span>{this.props.data.tags}</span>
+            <p>{ this.props.platform == "pixabay" ? "Tags:" : "Description:" }</p>
+            <span>{ image.alt }</span>
+            { this.props.platform == "pixabay" &&
             <div className="pixabay-notice">
               <a target="_blank" rel="nofollow" href="https://pixabay.com/service/license/">Pixabay License</a>
               <div className="pix-note">
                 Free for commercial use
                 <br />No attribution required
               </div>
-            </div>
-            <span className="action-button" onClick={ () => this.props.onImport(this.props.data.url) }>
+            </div> }
+            <span className="action-button" onClick={ () => this.props.onImport( image.url ) }>
               <i className="fas fa-download"></i>&nbsp; Insert Image
             </span>
           </div>
