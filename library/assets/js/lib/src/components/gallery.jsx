@@ -129,8 +129,9 @@ class Gallery extends Component {
   }
 
   platformType = ( platform ) => {
-    this.setState({ searchPlatform: platform});
-    this.search();
+    this.setState({ searchPlatform: platform }, () =>
+      this.search()
+    );
   }
 
   createView = ( view ) => {
@@ -246,7 +247,6 @@ class PixabayImages extends Component {
                 pageCount={this.props.pages}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={3}
-                onPageChange={this.handlePagination}
                 onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
                 forcePage={this.props.currentPage - 1}
                 previousClassName={'page-item'}
@@ -295,7 +295,6 @@ class UnsplashImages extends Component {
                 pageCount={this.props.pages}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={3}
-                onPageChange={this.handlePagination}
                 onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
                 forcePage={this.props.currentPage - 1}
                 previousClassName={'page-item'}
