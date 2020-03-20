@@ -132,9 +132,6 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 [
                     'nonce' => wp_create_nonce( self::PLG_NONCE ),
                     'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-                    'action' => self::PLG_NONCE,
-                    'yes' => esc_html__( 'Yes', 'mighty-addons' ),
-                    'cancel' => esc_html__( 'Cancel', 'mighty-addons' ),
                 ]
             );
         }
@@ -147,16 +144,11 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
         }
 
         public static function generate_homepage() {
-            $script = array(
-                'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-                'nonce' 	=> wp_create_nonce( self::PLG_SLUG ),
-            );
-
-            wp_localize_script( 'mighty-panel-js', 'settings', $script );
             
             self::$ma_get_settings = self::get_enabled_addons();
             
             self::load_html( 'home' );
+
         }
 
         public static function get_enabled_addons() {
@@ -191,7 +183,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         public static function mighty_addons_status() {
             
-            check_ajax_referer( 'mighty-addons', 'security' );
+            check_ajax_referer( 'mighty_addons_panel', 'security' );
             
             if( isset( $_POST['fields'] ) ) {
                 parse_str( $_POST['fields'], $settings );
@@ -237,7 +229,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         public static function mighty_addons_integration() {
 
-            check_ajax_referer( 'mighty-addons', 'security' );
+            check_ajax_referer( 'mighty_addons_panel', 'security' );
 
             if( isset( $_POST['fields'] ) ) {
                 parse_str( $_POST['fields'], $settings );

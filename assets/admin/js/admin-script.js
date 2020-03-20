@@ -2,11 +2,11 @@
 
     function saveAddons() {
         $.ajax({
-            url: settings.ajaxurl,
+            url: MightyAddonsDashboard.ajaxUrl,
             type: 'post',
             data: {
                 action: 'save_mighty_addons_settings',
-                security: settings.nonce,
+                security: MightyAddonsDashboard.nonce,
                 fields: $('form#mighty-settings input.mighty-addons-free').serialize(),
                 proFields: $('form#mighty-settings input.mighty-addons-pro').serialize()
             },
@@ -21,11 +21,11 @@
 
     function saveIntegrationSettings() {
         $.ajax({
-            url: settings.ajaxurl,
+            url: MightyAddonsDashboard.ajaxUrl,
             type: 'post',
             data: {
                 action: 'save_mighty_addons_integration',
-                security: settings.nonce,
+                security: MightyAddonsDashboard.nonce,
                 fields: $('form#mighty-integration-settings').serialize()
             },
             success: function() {
@@ -77,7 +77,7 @@
     // Submit event - Form button
     $('form#mighty-settings').on('submit', function (e) {
         e.preventDefault();
-        saveAddons(settings);
+        saveAddons();
 
         $('.ma-settings-header-bar .ma-save-button').html('<span class="updated-widgets dashicons dashicons-yes-alt"></span> Updated');
         $('#mighty-settings .ma-save-button').html('<span class="updated-widgets dashicons dashicons-yes-alt"></span> Updated');
@@ -95,7 +95,7 @@
     // Integration Settings
     $('form#mighty-integration-settings').on('submit', function (e) {
         e.preventDefault();
-        saveIntegrationSettings(settings);
+        saveIntegrationSettings();
 
         $('#mighty-integration-settings .ma-save-button').html('<span class="updated-widgets dashicons dashicons-yes-alt"></span> Updated');
 
