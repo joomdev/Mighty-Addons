@@ -125,7 +125,8 @@ class Elementor extends base {
 		if ( $image ) {
 
 			if ( $src == "unsplash" ) {
-				$image = json_decode(file_get_contents($image), true)['url'];
+				
+				$image = json_decode(file_get_contents($image), true)['data']['url'];
 				
 				// Format
 				parse_str(parse_url($image)['query'], $params);

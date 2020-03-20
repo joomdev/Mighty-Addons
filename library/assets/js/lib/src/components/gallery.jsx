@@ -321,32 +321,17 @@ class UnsplashImages extends Component {
 }
 
 class Image extends Component {
-  render() {
-    let image;
-    if( this.props.platform == "pixabay" ) {
-      image = {
-        src: this.props.data.url,
-        alt: this.props.data.tags,
-        url: this.props.data.url
-      };
-    } else {
-      image = {
-        src: this.props.data.preview,
-        alt: this.props.data.alt_description,
-        url: this.props.data.url
-      };
-    }
-    
+  render() {    
     return (
       <div className="mighty-image">
         <div className="mt-templates-modal-body-inner mt-templates-modal-body-header">
           <button className="mt-btn mt-btn-import" onClick={ () => this.props.onViewChange('home') }><i className="fas fa-long-arrow-alt-left"></i>&nbsp;Back</button>
         </div>
         <div className="selected-image">
-          <img src={ image.src } alt={ image.alt } />
+          <img src={ this.props.data.preview } alt={ this.props.data.tags } />
           <div className="image-controls">
-            <p>{ this.props.platform == "pixabay" ? "Tags:" : "Description:" }</p>
-            <span>{ image.alt }</span>
+            <p>Description</p>
+            <span>{ this.props.data.tags }</span>
             { this.props.platform == "pixabay" &&
             <div className="pixabay-notice">
               <a target="_blank" rel="nofollow" href="https://pixabay.com/service/license/">Pixabay License</a>
@@ -355,7 +340,7 @@ class Image extends Component {
                 <br />No attribution required
               </div>
             </div> }
-            <span className="action-button" onClick={ () => this.props.onImport( image.url ) }>
+            <span className="action-button" onClick={ () => this.props.onImport( this.props.data.url ) }>
               <i className="fas fa-download"></i>&nbsp; Insert Image
             </span>
           </div>
