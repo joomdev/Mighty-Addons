@@ -122,71 +122,63 @@ class Elementor extends base {
 		$image = $_POST['image'];
 		$src = $_POST['src'];
 		
-		if ( $src == "unsplash" ) {
-			$image = json_decode(file_get_contents($image), true)['url'];
-			
-			// Format
-			parse_str(parse_url($image)['query'], $params);
-			$imgFormat = ".".$params['fm'];
-
-			$uploads = wp_upload_dir();
-
-			$image_string = wp_remote_get( $image,
-				array(
-					'timeout'     => 120,
-				)
-			);
-			
-			$newfilename = md5(time()) . $imgFormat;
-			$filename = wp_unique_filename($uploads['path'], $newfilename, $unique_filename_callback = null);			
-
-			$fileSaved = file_put_contents($uploads['path'] . "/" . $filename, $image_string['body']);
-
-			if (!$fileSaved) {
-				throw new Exception("The file cannot be saved.");
-			} else {
-				die('file saved');
-			}
-		}
-
 		if ( $image ) {
-			$imageurl = stripslashes($image);
+
+			if ( $src == "unsplash" ) {
+				$image = json_decode(file_get_contents($image), true)['url'];
+				
+				// Format
+				parse_str(parse_url($image)['query'], $params);
+				$imgFormat = ".".$params['fm'];
+				
+				$newfilename = md5(time()) . $imgFormat;
+			}
+			elseif ( $src == "pixabay" ) {
+				$imageurl = stripslashes($image);
+				
+				$newfilename = basename($imageurl);
+			}
+
 			$uploads = wp_upload_dir();
-			// $post_id = isset($_POST['postid']) ? (int) $_POST['postid'] : 0;
-			$ext = pathinfo(basename($imageurl), PATHINFO_EXTENSION);
-			$newfilename = basename($imageurl);
-			$filename = wp_unique_filename($uploads['path'], $newfilename, $unique_filename_callback = null); // Get a filename that is sanitized and unique for the given directory.
-			$wp_filetype = wp_check_filetype($filename, null);
+
+			$filename = wp_unique_filename( $uploads['path'], $newfilename, $unique_filename_callback = null );
+				
 			$fullpathfilename = $uploads['path'] . "/" . $filename;
-			
-            try {
-                if (!substr_count($wp_filetype['type'], "image")) {
-                    throw new Exception(basename($imageurl) . ' is not a valid image. ' . $wp_filetype['type'] . '');
+
+			$wp_filetype = wp_check_filetype($filename, null);
+
+			try {
+				if (!substr_count($wp_filetype['type'], "image")) {
+					throw new Exception(basename($imageurl) . ' is not a valid image. ' . $wp_filetype['type'] . '');
 				}
 				
-				$image_string = wp_remote_get($image);
+				$image_string = wp_remote_get( $image,
+					array(
+						'timeout'     => 120,
+					)
+				);
 				
 				$fileSaved = file_put_contents($uploads['path'] . "/" . $filename, $image_string['body']);
 				
-                if (!$fileSaved) {
-                    throw new Exception("The file cannot be saved.");
+				if (!$fileSaved) {
+					throw new Exception("The file cannot be saved.");
 				}
 
 				$attachment = array(
-                    'post_mime_type' => $wp_filetype['type'],
-                    'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
-                    'post_content' => '',
-                    'post_status' => 'inherit',
-                    'guid' => $uploads['url'] . "/" . $filename,
+					'post_mime_type' => $wp_filetype['type'],
+					'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+					'post_content' => '',
+					'post_status' => 'inherit',
+					'guid' => $uploads['url'] . "/" . $filename,
 				);
 				
 				$attach_id = wp_insert_attachment($attachment, $fullpathfilename);
 				
-                if (!$attach_id) {
-                    throw new Exception("Failed to save record into database.");
+				if (!$attach_id) {
+					throw new Exception("Failed to save record into database.");
 				}
 				
-                $attach_data = wp_generate_attachment_metadata($attach_id, $fullpathfilename);
+				$attach_data = wp_generate_attachment_metadata($attach_id, $fullpathfilename);
 				wp_update_attachment_metadata($attach_id, $attach_data);
 
 				// Local URL
@@ -218,9 +210,9 @@ class Elementor extends base {
 
 				wp_die();
 
-            } catch (Exception $e) {
+			} catch (Exception $e) {
 				echo $e->getMessage();
-            }
+			}
 		}
 	}
 
