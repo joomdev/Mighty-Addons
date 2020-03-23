@@ -76,7 +76,7 @@ class Elementor extends base {
 			'apiUrl' => "https://api.mightythemes.com/api/",
 			'elementorPro' => $elementorPro,
 			'maPro' => $mightyAddonsProActive,
-			'key' => "",
+			'key' => HelperFunctions::getProKey()['map-user-key'],
 			'host' => $_SERVER['HTTP_HOST'],
 			'nonce' => "MightyLibrary",
 			'pxStatus' => HelperFunctions::mighty_addons()['extensions']['pixabay']['enable'],

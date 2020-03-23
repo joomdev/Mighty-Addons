@@ -151,4 +151,10 @@ class HelperFunctions {
         return $activated_plugins;
     }
     
+    public static function getProKey() {
+
+        $key = get_option('mighty_addons_pro_key', '');
+
+        return $key;
+    }
 }
