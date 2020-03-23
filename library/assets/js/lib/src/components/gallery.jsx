@@ -58,6 +58,7 @@ class Gallery extends Component {
       totalPages: '',
       currentPage: 1,
       searchPlatform: 'pixabay',
+      proEnabled: ''
     }
   }
 
@@ -78,13 +79,23 @@ class Gallery extends Component {
     let host = this.state.searchPlatform == "pixabay" ? MightyLibrary.apiUrl+MightyLibrary.pxUrl : MightyLibrary.apiUrl+MightyLibrary.usUrl;
     let pagination = page !== undefined ? page : this.state.currentPage;
     
-    fetch(host+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.pxKey+"&host="+MightyLibrary.host)
+    fetch(host+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.key+"&host="+MightyLibrary.host)
     .then(response => response.json())
     .then((res) => {
-      let images = res.data.images;
+      if ( res.status == "error" ) {
+        this.setState({
+          images: [],
+          totalPages: 0,
+          proEnabled: false
+        });
+      } else {
+        this.setState({
+          images: res.data.images,
+          totalPages: res.data.pages,
+          proEnabled: true
+        });
+      }
       this.setState({
-        images: images,
-        totalPages: res.data.pages,
         isLoaded: true,
         isSearching: false,
       });
@@ -151,6 +162,7 @@ class Gallery extends Component {
                   currentPage={ this.state.currentPage } 
                   activeSearchPlatform={ (platform) => this.platformType( platform ) } 
                   searchPlatform={ this.state.searchPlatform } 
+                  proEnabled ={ this.state.proEnabled }
                 />
       case 'image':
         return <Image 
@@ -214,9 +226,24 @@ class Home extends Component {
         
         { !this.props.isSearching ?
             this.props.searchPlatform == "pixabay" ?
-              <PixabayImages data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
+              <PixabayImages 
+                data={this.props.data} 
+                onClick={ (image) => this.props.onClick(image)} 
+                viewType={this.props.viewType} 
+                pages={this.props.totalPages} 
+                onPagination={ (page) => this.props.onPaginate(page) } 
+                currentPage={this.props.currentPage}
+              />
               :
-              <UnsplashImages data={this.props.data} onClick={ (image) => this.props.onClick(image)} viewType={this.props.viewType} pages={this.props.totalPages} onPagination={ (page) => this.props.onPaginate(page) } currentPage={this.props.currentPage}/>
+              <UnsplashImages 
+                data={this.props.data} 
+                onClick={ (image) => this.props.onClick(image)} 
+                viewType={this.props.viewType} 
+                pages={this.props.totalPages} 
+                onPagination={ (page) => this.props.onPaginate(page) } 
+                currentPage={this.props.currentPage} 
+                proEnabled ={ this.props.proEnabled }
+              />
             :
           <Loader />
         }
@@ -277,44 +304,52 @@ class UnsplashImages extends Component {
   render() {
     return (
       <div className={`unsplash-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
+        
         {this.props.data.length < 1 ?
           <div className="not-found">
             <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
-            <h4>We do need to upgrade things around here!</h4>
-            <p>Until then, search for something else.</p>
+            {
+              this.props.proEnabled ?
+                <div class="error-message">
+                  <h4>We do need to upgrade things around here!</h4> 
+                  <p>Until then, search for something else.</p>
+                </div>
+                :
+                <h4>Unsplash is only available for Pro Users!</h4>
+            }
           </div>
           :
           this.props.data.map(image => (
-          <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
-        ))}
-        
-        <div className="mt-pixabay-pagination">
-          <nav aria-label="mighty-photos-pagination">
-              <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'Next'}
-                pageCount={this.props.pages}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={3}
-                onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
-                forcePage={this.props.currentPage - 1}
-                previousClassName={'page-item'}
-                previousLinkClassName={'page-link'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
-                nextClassName={'page-item'}
-                nextLinkClassName={'page-link'}
-                breakLabel={'...'}
-                breakClassName={'page-item'}
-                containerClassName={'pagination pagination-sm'}
-                subContainerClassName={'pages pagination'}
-                pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
-                activeClassName={'active'}
-              />
-          </nav>
-        </div>
-
+            <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
+          ),
+            <div className="mt-pixabay-pagination">
+              <nav aria-label="mighty-photos-pagination">
+                  <ReactPaginate
+                    previousLabel={'Previous'}
+                    nextLabel={'Next'}
+                    pageCount={this.props.pages}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
+                    forcePage={this.props.currentPage - 1}
+                    previousClassName={'page-item'}
+                    previousLinkClassName={'page-link'}
+                    breakClassName={'page-item'}
+                    breakLinkClassName={'page-link'}
+                    nextClassName={'page-item'}
+                    nextLinkClassName={'page-link'}
+                    breakLabel={'...'}
+                    breakClassName={'page-item'}
+                    containerClassName={'pagination pagination-sm'}
+                    subContainerClassName={'pages pagination'}
+                    pageClassName={'page-item'}
+                    pageLinkClassName={'page-link'}
+                    activeClassName={'active'}
+                  />
+              </nav>
+            </div>
+          )
+        }
       </div>
     );
   }
