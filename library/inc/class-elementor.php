@@ -125,8 +125,11 @@ class Elementor extends base {
 		if ( $image ) {
 
 			if ( $src == "unsplash" ) {
+
+				$request  = wp_remote_get( $image );
+				$response = wp_remote_retrieve_body( $request );
 				
-				$image = json_decode(file_get_contents($image), true)['data']['url'];
+				$image = json_decode($response, true)['data']['url'];
 				
 				// Format
 				parse_str(parse_url($image)['query'], $params);
