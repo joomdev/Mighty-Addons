@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             </div>
             <?php if ( $page == "widgets") : ?>
             <div class="ma-settings-header-right">
-                <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button" disabled="disabled"><?php echo __('Save Settings', 'mighty-addons'); ?></button>
+                <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button" disabled="disabled"><?php _e('Save Settings', 'mighty-addons'); ?></button>
             </div>
             <?php endif; ?>
         </div>

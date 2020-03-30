@@ -15,14 +15,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         <div class="ma-col-full">
             
             <form id="mighty-integration-settings" action="" method="POST" name="mighty-integration-settings">
-                <div class="ma-element-container">
-                    <label for="gmaps" class="ma-ele-title">Google Maps Key</label>
-                    <input type="text" name="gmaps-api-key" placeholder="YOUR_API_KEY" id="gmaps" value="<?php echo HelperFunctions::get_integration_option('gmaps-api-key'); ?>" />
-                    <a class="help-link" target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key">Get Google Maps API key</a>
+                <div class="ma-element ">
+                    <label for="gmaps" class="ma-ele-title"><?php _e('🌏 Google Maps Key', 'mighty-addons'); ?></label>
+                    <div class="info-field">
+                        <input type="text" name="gmaps-api-key" placeholder="YOUR_API_KEY" id="gmaps" value="<?php echo HelperFunctions::get_integration_option('gmaps-api-key'); ?>" />
+                        <a class="help-link" target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e('Get Google Maps API key 🔑', 'mighty-addons'); ?></a>
+                    </div>                    
+                </div>
+
+                <div class="ma-element ma-element-free">
+                    <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
+                    <button id="white-label" class="button ma-btn"><?php _e('Configure', 'mighty-addons'); ?></button>
                 </div>
 
                 <div class="text-center ma-cta-save">
-                    <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button"><?php echo __('Save Settings', 'mighty-addons'); ?></button>
+                    <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button"><?php _e('Save Settings', 'mighty-addons'); ?></button>
                 </div>
             </form>
             

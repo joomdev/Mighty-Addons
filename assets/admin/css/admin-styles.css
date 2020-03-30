@@ -54,7 +54,8 @@ button {
 }
 
 a.help-link {
-    margin: auto 0;
+    margin: 10px 0;
+    font-size: 13px;
     text-decoration: underline;
 }
 
@@ -396,6 +397,12 @@ a.help-link {
     padding: 15px 25px;
     border-top: none;
     position: relative;
+}
+
+.ma-tabs-content .info-field {
+    display: inline-flex;
+    text-align: center;
+    flex-direction: column;
 }
 
 .ma-tabs-content-wrap {

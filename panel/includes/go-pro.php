@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 <h1 class="cs-title">On the way ..</h1>
                 <p>: :&nbsp;&nbsp;&nbsp;&nbsp;: :&nbsp;&nbsp;&nbsp;&nbsp;: :</p>
                 <div class="text-muted cs-description">Mighty Addons is coming up with a pro version very soon.<br> Sign Up for an exclusive launch offer. </div>
-                <a href="https://mailchi.mp/58871d7350d3/mightyaddonspro" target="_BLANK" class="button ma-btn cs-cta"><?php echo __('Get Aboard', 'mighty-addons'); ?></a>
+                <a href="https://mailchi.mp/58871d7350d3/mightyaddonspro" target="_BLANK" class="button ma-btn cs-cta"><?php _e('Get Aboard', 'mighty-addons'); ?></a>
             </div>
         </div>
     </div>
