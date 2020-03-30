@@ -154,7 +154,16 @@ class HelperFunctions {
     public static function getProKey() {
 
         $key = get_option('mighty_addons_pro_key', '');
+        
+        if ( $key ) {
+            return $key;
+        } else {
+            return null;
+        }
+        
+    }
 
-        return $key;
+    public static function get_integration_option( $option ) {
+        return get_option('mighty_addons_integration')[$option];
     }
 }

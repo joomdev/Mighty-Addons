@@ -53,6 +53,11 @@ button {
     outline: none;
 }
 
+a.help-link {
+    margin: auto 0;
+    text-decoration: underline;
+}
+
 /* Transition */
 .switch {
     position: relative;
