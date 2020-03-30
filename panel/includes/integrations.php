@@ -4,7 +4,7 @@
  * Integrations
  */
 
-use MightyAddons\Classes\HelperFunctions;
+use MightyAddons\Classes\HelperFunctions as Helper;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
@@ -18,14 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 <div class="ma-element ">
                     <label for="gmaps" class="ma-ele-title"><?php _e('🌏 Google Maps Key', 'mighty-addons'); ?></label>
                     <div class="info-field">
-                        <input type="text" name="gmaps-api-key" placeholder="YOUR_API_KEY" id="gmaps" value="<?php echo HelperFunctions::get_integration_option('gmaps-api-key'); ?>" />
+                        <input type="text" name="gmaps-api-key" placeholder="YOUR_API_KEY" id="gmaps" value="<?php echo Helper::get_integration_option('gmaps-api-key'); ?>" />
                         <a class="help-link" target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e('Get Google Maps API key 🔑', 'mighty-addons'); ?></a>
                     </div>                    
                 </div>
 
                 <div class="ma-element ma-element-free">
                     <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
-                    <button id="white-label" class="button ma-btn"><?php _e('Configure', 'mighty-addons'); ?></button>
+                    <a href="#white-label" class="button ma-btn"><?php _e('Configure', 'mighty-addons'); ?></a>
                 </div>
 
                 <div class="text-center ma-cta-save">

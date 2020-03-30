@@ -166,4 +166,12 @@ class HelperFunctions {
     public static function get_integration_option( $option ) {
         return get_option('mighty_addons_integration')[$option];
     }
+
+    public static function mightyProAvailable() {
+        if( is_plugin_active( 'Mighty-Addons-Pro/mighty-addons-pro.php' ) || is_plugin_active( 'mighty-addons-pro/mighty-addons-pro.php' )) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

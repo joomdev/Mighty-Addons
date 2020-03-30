@@ -2,7 +2,7 @@
 /**
  * Mighty Addons
  */
-use \MightyAddons\Classes\HelperFunctions;
+use \MightyAddons\Classes\HelperFunctions as Helper;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $widgets = self::$ma_get_settings['addons'];
 $extensions = self::$ma_get_settings['extensions'];
 
-$allPlugins = HelperFunctions::get_all_plugins();
+$allPlugins = Helper::get_all_plugins();
 
 if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'], true ) || in_array( 'mighty-addons-pro/mighty-addons-pro.php', $allPlugins['active'], true )) {
     $pro_widgets = self::get_enabled_pro_addons()['addons'];
@@ -30,7 +30,7 @@ if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'],
 <?php include_once('includes/extension-settings.php'); ?>
 
 <?php
-if( is_plugin_active( 'Mighty-Addons-Pro/mighty-addons-pro.php' ) || is_plugin_active( 'mighty-addons-pro/mighty-addons-pro.php' )) {
+if( Helper::mightyProAvailable() ) {
     include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/go-pro.php');
 } else {
     include_once('includes/go-pro.php');
