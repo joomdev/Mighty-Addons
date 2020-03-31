@@ -69,7 +69,16 @@
     $("#toplevel_page_mighty-addons-home .wp-submenu li a").click( function() {
         var activeTab = $(this).attr("href").substr($(this).attr("href").indexOf("#"));
         activeTab = activeTab === "e" ? "#general" : activeTab;
-        tabsStatus(activeTab, 'sidebar',this);
+        tabsStatus(activeTab, 'sidebar', this);
+        $(activeTab).show();
+        return false;
+    });
+
+    // Standalone Events
+    $(".ma-tabs-content .ma-element .white-label-settings").click( function() {
+        var activeTab = $(this).attr("href").substr($(this).attr("href").indexOf("#"));
+        activeTab = activeTab === "e" ? "#general" : activeTab;
+        tabsStatus(activeTab, 'standalone', this);
         $(activeTab).show();
         return false;
     });

@@ -32,6 +32,7 @@ if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'],
 <?php
 if( Helper::mightyProAvailable() ) {
     include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/go-pro.php');
+    include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/white-label.php');
 } else {
     include_once('includes/go-pro.php');
 }

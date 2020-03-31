@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
                 <div class="ma-element ma-element-free">
                     <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
-                    <a href="#white-label" class="button ma-btn"><?php _e('Configure', 'mighty-addons'); ?></a>
+                    <a href="#white-label" class="button ma-btn white-label-settings"><?php _e('Configure', 'mighty-addons'); ?></a>
                 </div>
 
                 <div class="text-center ma-cta-save">
