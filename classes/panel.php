@@ -38,9 +38,11 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
 
-            add_action( 'wp_ajax_save_mighty_addons_settings', [ __CLASS__, 'mighty_addons_status'] );
+            add_action( 'wp_ajax_save_mighty_addons_settings', [ __CLASS__, 'mighty_addons_status' ] );
 
-            add_action( 'wp_ajax_save_mighty_addons_integration', [ __CLASS__, 'mighty_addons_integration'] );
+            add_action( 'wp_ajax_save_mighty_addons_integration', [ __CLASS__, 'mighty_addons_integration' ] );
+
+            add_filter( 'all_plugins', [ __CLASS__, 'plugin_settings' ] );
 
         }
 
@@ -240,6 +242,26 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             update_option( 'mighty_addons_integration', $settings );
 
             return true;
+        }
+
+        public static function plugin_settings( $plugins ) {
+            
+            $settings = HelperFunctions::get_white_label();
+            $plugin = plugin_basename( MIGHTY_ADDONS_DIR_PATH . 'mighty-addons.php');
+
+            if ( $plugins[ $plugin ] ) {
+
+                $plugins[ $plugin ]['Name'] = $settings['plugin_name'];
+                $plugins[ $plugin ]['Title'] = $settings['plugin_name'];
+                $plugins[ $plugin ]['PluginURI'] = $settings['author_url'];
+                $plugins[ $plugin ]['Description'] = $settings['plugin_description'];
+                $plugins[ $plugin ]['Author'] = $settings['author'];
+                $plugins[ $plugin ]['AuthorName'] = $settings['author'];
+                $plugins[ $plugin ]['AuthorURI'] = $settings['author_url'];
+
+            }
+
+            return $plugins;
         }
 
     }

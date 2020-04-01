@@ -174,4 +174,44 @@ class HelperFunctions {
             return false;
         }
     }
+
+    public static function get_white_label( $option = "all" ) {
+
+        $settings = get_option( 'mighty_addons_white_label' );
+
+        $defaults = [
+            'author'                    => 'MightyThemes',
+            'author_url'                => 'https://mightythemes.com',
+            'plugin_name'               => 'Mighty Addons',
+            'plugin_short_name'         => 'mighty',
+            'plugin_description'        => 'Mighty Addons is a Powerful Elementor Widget Plugin that comes with advanced & flexible features powering up your Elementor website and increasing your designing experience.',
+            'pro_plugin_name'           => 'Mighty Addons Pro',
+            'pro_plugin_short_name'     => 'mighty',
+            'pro_plugin_description'    => 'Mighty Addons Pro is a Powerful Elementor Widget Pro Plugin that gives you power to do more.',
+            'hide_option'               => 'disable',
+        ];
+
+        $ma_settings = [
+            'author'                    => ( isset ( $settings['author'] ) ) && "" !== $settings['author'] ? $settings['author'] : $defaults['author'],
+            'author_url'                => ( isset ( $settings['author_url'] ) ) && "" !== $settings['author_url'] ? $settings['author_url'] :  $defaults['author_url'],
+            'plugin_name'               => ( isset ( $settings['plugin_name'] ) ) && "" !== $settings['plugin_name'] ? $settings['plugin_name'] : $defaults['plugin_name'],
+            'plugin_short_name'         => ( isset ( $settings['plugin_short_name'] ) ) && "" !== $settings['plugin_short_name'] ? $settings['plugin_short_name'] : $defaults['plugin_short_name'],
+            'plugin_description'        => ( isset ( $settings['plugin_description'] ) ) && "" !== $settings['plugin_description'] ? $settings['plugin_description'] :  $defaults['plugin_description'],
+            'pro_plugin_name'           => ( isset ( $settings['pro_plugin_name'] ) ) && "" !== $settings['pro_plugin_name'] ? $settings['pro_plugin_name'] : $defaults['pro_plugin_name'],
+            'pro_plugin_short_name'     => ( isset ( $settings['pro_plugin_short_name'] ) ) && "" !== $settings['pro_plugin_short_name'] ? $settings['pro_plugin_short_name'] : $defaults['pro_plugin_short_name'],
+            'pro_plugin_description'    => ( isset ( $settings['pro_plugin_description'] ) ) && "" !== $settings['pro_plugin_description'] ? $settings['pro_plugin_description'] : $defaults['pro_plugin_description'],
+            'hide_option'               => ( isset ( $settings['hide_option'] ) ) && "on" !== $settings['hide_option'] ? 'enable' : $defaults['hide_option'],
+        ];
+
+        if ( "defaults" == $option ) {
+            return $defaults;
+        }
+
+        if ( "all" == $option ) {
+            return $ma_settings;
+        }
+        
+        return $ma_settings[$option];
+
+    }
 }
