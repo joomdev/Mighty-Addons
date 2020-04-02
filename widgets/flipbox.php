@@ -28,7 +28,7 @@ class MT_Flipbox extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Flip Box', 'mighty' );
+		return __( 'Flip Box', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -37,7 +37,11 @@ class MT_Flipbox extends Widget_Base {
 
 	public function get_categories() {
 		return [ 'mighty-addons' ];
-	}
+    }
+    
+    public function get_keywords() {
+		return [ 'mighty', 'flip', 'box' ];
+    }
 
 	public function get_style_depends() {
 		return [ 'mt-common', 'mt-flipbox' ];

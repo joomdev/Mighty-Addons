@@ -22,7 +22,7 @@ class MT_Accordion extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'MT Accordion', 'mighty' );
+		return __( 'Accordion', 'mighty' );
     }
     
 	public function get_icon() {
@@ -34,7 +34,7 @@ class MT_Accordion extends Widget_Base {
     }
     
 	public function get_keywords() {
-		return [ 'accordion', 'tabs' ];
+		return [ 'mighty', 'accordion', 'tabs' ];
     }
 
     public function get_style_depends() {
@@ -49,7 +49,7 @@ class MT_Accordion extends Widget_Base {
 		$this->start_controls_section(
 			'section_accordion',
 			[
-				'label' => __( 'MT Accordion', 'mighty' ),
+				'label' => __( 'Accordion', 'mighty' ),
 			]
 		);
 

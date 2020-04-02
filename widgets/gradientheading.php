@@ -25,7 +25,7 @@ class MT_Gradientheading extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Gradient Heading', 'mighty' );
+		return __( 'Gradient Heading', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -34,7 +34,11 @@ class MT_Gradientheading extends Widget_Base {
 
 	public function get_categories() {
 		return [ 'mighty-addons' ];
-	}
+    }
+    
+    public function get_keywords() {
+		return [ 'mighty', 'gradient', 'heading', 'title' ];
+    }
 
 	public function get_style_depends() {
 		return [ 'mt-gradientheading' ];
@@ -44,7 +48,7 @@ class MT_Gradientheading extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label' => __( 'MT Gradient Heading', 'mighty' ),
+				'label' => __( 'Gradient Heading', 'mighty' ),
 			]
 		);
 

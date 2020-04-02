@@ -10,7 +10,7 @@ class HelperFunctions {
         "version" => MIGHTY_ADDONS_VERSION,
         "addons" => [
             'testimonial' => [
-                'title' => 'MT Testimonial',
+                'title' => 'Testimonial',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Testimonial',
@@ -18,7 +18,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-testimonial'
             ],
             'team' => [
-                'title' => 'MT Team',
+                'title' => 'Team',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Team',
@@ -26,7 +26,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-team'
             ],
             'progressbar' => [
-                'title' => 'MT Progress Bar',
+                'title' => 'Progress Bar',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Progressbar',
@@ -34,7 +34,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-progressbar'
             ],
             'counter' => [
-                'title' => 'MT Counter',
+                'title' => 'Counter',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Counter',
@@ -42,7 +42,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-counter'
             ],
             'buttongroup' => [
-                'title' => 'MT Button Group',
+                'title' => 'Button Group',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Buttongroup',
@@ -50,7 +50,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-button'
             ],
             'accordion' => [
-                'title' => 'MT Accordion',
+                'title' => 'Accordion',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Accordion',
@@ -58,7 +58,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-accordion'
             ],
             'beforeafter' => [
-                'title' => 'MT Before After',
+                'title' => 'Before After',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Beforeafter',
@@ -66,7 +66,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-beforeafter'
             ],
             'gradientheading' => [
-                'title' => 'MT Gradient Heading',
+                'title' => 'Gradient Heading',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Gradientheading',
@@ -74,7 +74,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-heading'
             ],
             'flipbox' => [
-                'title' => 'MT Flip Box',
+                'title' => 'Flip Box',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Flipbox',
@@ -82,7 +82,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-flipbox'
             ],
             'openinghours' => [
-                'title' => 'MT Opening Hours',
+                'title' => 'Opening Hours',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_Openinghours',
@@ -90,7 +90,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-openinghours'
             ],
             'contactform7' => [
-                'title' => 'MT Contact Form 7',
+                'title' => 'Contact Form 7',
                 'description' => '',
                 'enable' => true,
                 'class' => 'MT_ContactForm7',

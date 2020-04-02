@@ -27,7 +27,7 @@ class MT_Testimonial extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Testimonial', 'mighty' );
+		return __( 'Testimonial', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -37,6 +37,10 @@ class MT_Testimonial extends Widget_Base {
 	public function get_categories() {
 		return [ 'mighty-addons' ];
 	}
+
+	public function get_keywords() {
+		return [ 'mighty', 'testimonial', 'recommendation' ];
+    }
 	
 	public function get_script_depends() {
 		return [ 'mt-testimonial', 'mighty-slickjs' ];
@@ -50,7 +54,7 @@ class MT_Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'section_testimonials',
 			[
-				'label' => __( 'MT Testimonial', 'mighty' ),
+				'label' => __( 'Testimonial', 'mighty' ),
 			]
 		);
 

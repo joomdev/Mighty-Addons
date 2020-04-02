@@ -28,7 +28,7 @@ class MT_Progressbar extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Progress Bar', 'mighty' );
+		return __( 'Progress Bar', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -39,6 +39,10 @@ class MT_Progressbar extends Widget_Base {
 		return [ 'mighty-addons' ];
 	}
 
+	public function get_keywords() {
+		return [ 'mighty', 'progress', 'bars' ];
+    }
+
 	public function get_style_depends() {
 		return [ 'mt-progressbar' ];
 	}
@@ -47,7 +51,7 @@ class MT_Progressbar extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label' => __( 'MT Progress Bar', 'mighty' ),
+				'label' => __( 'Progress Bar', 'mighty' ),
 			]
 		);
 

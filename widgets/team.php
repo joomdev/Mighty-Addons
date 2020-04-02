@@ -28,7 +28,7 @@ class MT_Team extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Team', 'mighty' );
+		return __( 'Team', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -39,6 +39,10 @@ class MT_Team extends Widget_Base {
 		return [ 'mighty-addons' ];
 	}
 
+	public function get_keywords() {
+		return [ 'mighty', 'team', 'contact', 'people' ];
+    }
+
 	public function get_style_depends() {
 		return [ 'mt-team' ];
 	}
@@ -47,7 +51,7 @@ class MT_Team extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label' => __( 'MT Team', 'mighty' ),
+				'label' => __( 'Team', 'mighty' ),
 			]
 		);
 

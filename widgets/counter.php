@@ -25,7 +25,7 @@ class MT_Counter extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Counter', 'mighty' );
+		return __( 'Counter', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -35,6 +35,10 @@ class MT_Counter extends Widget_Base {
 	public function get_categories() {
 		return [ 'mighty-addons' ];
 	}
+
+	public function get_keywords() {
+		return [ 'mighty', 'counter', 'icon' ];
+    }
 
 	public function get_style_depends() {
 		return [ 'mt-counter' ];
@@ -48,7 +52,7 @@ class MT_Counter extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label' => __( 'MT Counter', 'mighty' ),
+				'label' => __( 'Counter', 'mighty' ),
 			]
 		);
 

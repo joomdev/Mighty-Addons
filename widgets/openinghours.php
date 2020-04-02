@@ -28,7 +28,7 @@ class MT_Openinghours extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Opening Hours', 'mighty' );
+		return __( 'Opening Hours', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -37,7 +37,11 @@ class MT_Openinghours extends Widget_Base {
 
 	public function get_categories() {
 		return [ 'mighty-addons' ];
-	}
+    }
+    
+    public function get_keywords() {
+		return [ 'mighty', 'opening', 'hours', 'info' ];
+    }
 
 	public function get_style_depends() {
 		return [ 'mt-common', 'mt-openinghours' ];
@@ -48,7 +52,7 @@ class MT_Openinghours extends Widget_Base {
         $this->start_controls_section(
 			'section_openinghours',
 			[
-				'label' => __( 'MT Opening Hours', 'mighty' ),
+				'label' => __( 'Opening Hours', 'mighty' ),
 			]
         );
         

@@ -29,7 +29,7 @@ class MT_ContactForm7 extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Contact Form 7', 'mighty' );
+		return __( 'Contact Form 7', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -38,7 +38,11 @@ class MT_ContactForm7 extends Widget_Base {
 
 	public function get_categories() {
 		return [ 'mighty-addons' ];
-	}
+    }
+    
+    public function get_keywords() {
+		return [ 'mighty', 'contact', 'form', 'submit' ];
+    }
 
 	public function get_style_depends() {
 		return [ 'mt-common', 'mt-contactform7' ];
@@ -49,7 +53,7 @@ class MT_ContactForm7 extends Widget_Base {
         $this->start_controls_section(
 			'section_contactform7',
 			[
-				'label' => __( 'MT Contact Form 7', 'mighty' ),
+				'label' => __( 'Contact Form 7', 'mighty' ),
 			]
         );
 

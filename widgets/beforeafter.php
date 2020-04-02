@@ -26,7 +26,7 @@ class MT_Beforeafter extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Before After', 'mighty' );
+		return __( 'Before After', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -35,7 +35,11 @@ class MT_Beforeafter extends Widget_Base {
 
 	public function get_categories() {
 		return [ 'mighty-addons' ];
-	}
+    }
+    
+    public function get_keywords() {
+		return [ 'mighty', 'beforeafter', 'compare', 'slider' ];
+    }
 
 	public function get_style_depends() {
 		return [ 'mt-beforeafter' ];

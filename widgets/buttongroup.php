@@ -29,7 +29,7 @@ class MT_Buttongroup extends Widget_Base {
 	}
 	
 	public function get_title() {
-		return __( 'MT Button Group', 'mighty' );
+		return __( 'Button Group', 'mighty' );
 	}
 	
 	public function get_icon() {
@@ -38,7 +38,11 @@ class MT_Buttongroup extends Widget_Base {
 
 	public function get_categories() {
 		return [ 'mighty-addons' ];
-	}
+    }    
+    
+    public function get_keywords() {
+		return [ 'mighty', 'button', 'group', 'action' ];
+    }
 
 	public function get_style_depends() {
 		return [ 'mt-common', 'mt-buttongroup' ];
@@ -49,7 +53,7 @@ class MT_Buttongroup extends Widget_Base {
         $this->start_controls_section(
 			'section_buttongroup',
 			[
-				'label' => __( 'MT Button Group', 'mighty' ),
+				'label' => __( 'Button Group', 'mighty' ),
 			]
 		);
 
