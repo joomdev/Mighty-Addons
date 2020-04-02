@@ -25,17 +25,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                             <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
                         <?php } ?>
                         
-                    </div>                    
+                    </div>
                 </div>
 
-                <div class="ma-element ma-element-free">
-                    <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
-                    <?php if ( Helper::mightyProAvailable() ) { ?>
-                        <a href="#white-label" class="button ma-btn white-label-settings"><?php _e('Configure', 'mighty-addons'); ?></a>
-                    <?php } else { ?>
-                        <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
-                    <?php } ?>
-                </div>
+                <?php if ( $branding['hide_option'] !== "on" ) : ?>
+
+                    <div class="ma-element ma-element-free">
+                        <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
+                        <?php if ( Helper::mightyProAvailable() ) { ?>
+                            <a href="#white-label" class="button ma-btn white-label-settings"><?php _e('Configure', 'mighty-addons'); ?></a>
+                        <?php } else { ?>
+                            <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
+                        <?php } ?>
+                    </div>
+
+                <?php endif; ?>
 
                 <div class="text-center ma-cta-save">
                     <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button"><?php _e('Save Settings', 'mighty-addons'); ?></button>

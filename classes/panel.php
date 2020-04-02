@@ -47,9 +47,12 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
         }
 
         public static function add_menu() {
+
+            $branding = HelperFunctions::get_white_label();
+
             add_menu_page(
-                __( 'Mighty Addons Panel', 'mighty-addons' ),
-                __( 'Mighty Addons', 'mighty-addons' ),
+                __( $branding['plugin_name'] . ' Panel', 'mighty-addons' ),
+                __( $branding['plugin_name'], 'mighty-addons' ),
                 'manage_options',
                 'mighty-addons-home',
                 [ __CLASS__, 'generate_homepage' ],

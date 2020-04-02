@@ -19,6 +19,8 @@ if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'],
 } else {
     $mighty_addons_pro_active = false;
 }
+
+$branding = Helper::get_white_label();
 ?>
 
 <?php include_once('includes/header.php'); ?>

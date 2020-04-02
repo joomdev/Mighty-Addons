@@ -12,6 +12,7 @@
 namespace Mighty_Addons;
 
 use MightyAddons\Classes\DashboardPanel;
+use \MightyAddons\Classes\HelperFunctions as Helper;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -201,7 +202,7 @@ final class Mighty_Addons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'mighty' ),
+			esc_html__( '%1$s requires %2$s to be installed and activated.', 'mighty' ),
 			'<strong>' . esc_html__( 'Mighty Addons', 'mighty' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'mighty' ) . '</strong>'
 		);
@@ -224,7 +225,7 @@ final class Mighty_Addons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'mighty' ),
+			esc_html__( '%1$s requires %2$s version %3$s or greater.', 'mighty' ),
 			'<strong>' . esc_html__( 'Mighty Addons', 'mighty' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'mighty' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
@@ -248,7 +249,7 @@ final class Mighty_Addons {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'mighty' ),
+			esc_html__( '%1$s requires %2$s version %3$s or greater.', 'mighty' ),
 			'<strong>' . esc_html__( 'Mighty Addons', 'mighty' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'mighty' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
@@ -283,11 +284,12 @@ final class Mighty_Addons {
 	 */
 	function add_elementor_widget_categories( $elements_manager ) {
 
+		$branding = Helper::get_white_label();
+
 		$elements_manager->add_category(
 			'mighty-addons',
 			[
-				'title' => __( 'Mighty Addons', 'mighty' ),
-				'icon' => 'fas fa-ghost',
+				'title' => $branding['plugin_name']
 			]
 		);
 	}

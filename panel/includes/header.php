@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 <div class="ma-logo">
                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/mighty-addons-logo.svg' ?>" alt="">
                 </div>
-                <h2 class="title">Mighty Addons Settings | v<?php echo MIGHTY_ADDONS_VERSION; ?></h2>
+                <h2 class="title"><?php echo $branding['plugin_name'] ?> Settings | v<?php echo MIGHTY_ADDONS_VERSION; ?></h2>
             </div>
-            <?php if ( $page == "widgets") : ?>
+            <?php if ( $page == "widgets" ) : ?>
             <div class="ma-settings-header-right">
                 <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button" disabled="disabled"><?php _e('Save Settings', 'mighty-addons'); ?></button>
             </div>

@@ -188,7 +188,7 @@ class HelperFunctions {
             'pro_plugin_name'           => 'Mighty Addons Pro',
             'pro_plugin_short_name'     => 'mighty',
             'pro_plugin_description'    => 'Mighty Addons Pro is a Powerful Elementor Widget Pro Plugin that gives you power to do more.',
-            'hide_option'               => 'disable',
+            'hide_option'               => 'off',
         ];
 
         $ma_settings = [
@@ -200,7 +200,7 @@ class HelperFunctions {
             'pro_plugin_name'           => ( isset ( $settings['pro_plugin_name'] ) ) && "" !== $settings['pro_plugin_name'] ? $settings['pro_plugin_name'] : $defaults['pro_plugin_name'],
             'pro_plugin_short_name'     => ( isset ( $settings['pro_plugin_short_name'] ) ) && "" !== $settings['pro_plugin_short_name'] ? $settings['pro_plugin_short_name'] : $defaults['pro_plugin_short_name'],
             'pro_plugin_description'    => ( isset ( $settings['pro_plugin_description'] ) ) && "" !== $settings['pro_plugin_description'] ? $settings['pro_plugin_description'] : $defaults['pro_plugin_description'],
-            'hide_option'               => ( isset ( $settings['hide_option'] ) ) && "on" !== $settings['hide_option'] ? 'enable' : $defaults['hide_option'],
+            'hide_option'               => ( isset ( $settings['hide_option'] ) ) && "on" == $settings['hide_option'] ? $settings['hide_option'] : $defaults['hide_option'],
         ];
 
         if ( "defaults" == $option ) {
