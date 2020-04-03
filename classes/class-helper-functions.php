@@ -97,6 +97,14 @@ class HelperFunctions {
                 'slug' => 'contactform7',
                 'icon' => 'mf mf-contactform7'
             ],
+            'mailchimp' => [
+                'title' => 'Mailchimp',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Mailchimp',
+                'slug' => 'mailchimp',
+                'icon' => 'mf mf-contactform7'
+            ]
         ],
 
         "extensions" => [
