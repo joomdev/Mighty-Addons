@@ -7,7 +7,6 @@ use \Elementor\Utils as Utils;
 use Elementor\Repeater as Repeater;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         <div class="ma-col-full">
             
             <form id="mighty-integration-settings" action="" method="POST" name="mighty-integration-settings">
-                <div class="ma-element ">
+                <div class="ma-element">
                     <label for="gmaps" class="ma-ele-title"><?php _e('🌏 Google Maps Key', 'mighty-addons'); ?></label>
                     <div class="info-field">
                         <?php if ( Helper::mightyProAvailable() ) { ?>
@@ -28,9 +28,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     </div>
                 </div>
 
+                <div class="ma-element">
+                    <label for="mailchimp" class="ma-ele-title"><?php _e('🐵 Mailchimp Key', 'mighty-addons'); ?></label>
+                    <div class="info-field">
+                        <input class="regular-text" type="text" name="mailchimp-key" placeholder="YOUR_API_KEY" id="mailchimp" value="<?php echo Helper::get_integration_option('mailchimp-key'); ?>" />
+                        <a class="help-link" target="_blank" href="https://mailchimp.com/help/about-api-keys/"><?php _e('Get Mailchimp API key 🔑', 'mighty-addons'); ?></a>
+                    </div>
+                </div>
+
                 <?php if ( $branding['hide_option'] !== "on" ) : ?>
 
-                    <div class="ma-element ma-element-free">
+                    <div class="ma-element">
                         <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
                         <?php if ( Helper::mightyProAvailable() ) { ?>
                             <a href="#white-label" class="button ma-btn white-label-settings"><?php _e('Configure', 'mighty-addons'); ?></a>

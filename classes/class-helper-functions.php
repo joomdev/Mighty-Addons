@@ -214,4 +214,21 @@ class HelperFunctions {
         return $ma_settings[$option];
 
     }
+
+    public static function mailchimpLists() {
+
+        $mailchimpKey = self::get_integration_option('mailchimp-key');
+        $region = substr( $mailchimpKey, strpos( $mailchimpKey, '-') +1 );
+
+        $lists = wp_remote_get("https://$region.api.mailchimp.com/3.0/lists?apikey=$mailchimpKey");
+
+        if( is_wp_error( $lists ) ) {
+            return false; // Bail out
+        }
+
+        $body = wp_remote_retrieve_body( $lists );
+
+        return json_decode($body, true);
+        
+    }
 }

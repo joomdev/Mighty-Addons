@@ -5,7 +5,6 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use Elementor\Repeater as Repeater;
-use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
