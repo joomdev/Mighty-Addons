@@ -1,6 +1,7 @@
 <?php
 namespace MightyAddons\Widgets;
 
+use \MightyAddons\Classes\HelperFunctions as Helper;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -62,9 +63,8 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'label' => __( 'Choose List', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
-					'options' => [
-						'list'  => __( 'list', 'mighty' ),
-					],
+					'options' => array_merge( array( 0 => 'Select a List'), Helper::mailchimpLists() ),
+					'default' => '0'
 				]
 			);
 

@@ -228,15 +228,22 @@ class HelperFunctions {
         $mailchimpKey = self::get_integration_option('mailchimp-key');
         $region = substr( $mailchimpKey, strpos( $mailchimpKey, '-') +1 );
 
-        $lists = wp_remote_get("https://$region.api.mailchimp.com/3.0/lists?apikey=$mailchimpKey");
+        if ( $mailchimpKey ) {
+            $lists = wp_remote_get("https://$region.api.mailchimp.com/3.0/lists?apikey=$mailchimpKey");
 
-        if( is_wp_error( $lists ) ) {
-            return false; // Bail out
+            if( is_wp_error( $lists ) ) {
+                return false; // Bail out
+            }
+            
+            $lists = json_decode( wp_remote_retrieve_body( $lists ), true )[ 'lists' ];
+            
+            if ( ! empty( $lists ) ) {
+                return wp_list_pluck( $lists, 'name' );
+            }
+            return [ esc_html__( 'No List Found!', 'mighty' ) ];
         }
 
-        $body = wp_remote_retrieve_body( $lists );
+        return [ esc_html__( 'No Mailchimp Key Found!', 'mighty' ) ];
 
-        return json_decode($body, true);
-        
     }
 }
