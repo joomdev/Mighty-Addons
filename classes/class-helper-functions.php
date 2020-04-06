@@ -226,7 +226,7 @@ class HelperFunctions {
     public static function mailchimpLists() {
 
         $mailchimpKey = self::get_integration_option('mailchimp-key');
-        $region = substr( $mailchimpKey, strpos( $mailchimpKey, '-') +1 );
+        $region = substr( $mailchimpKey, strpos( $mailchimpKey, '-') + 1 );
 
         if ( $mailchimpKey ) {
             $lists = wp_remote_get("https://$region.api.mailchimp.com/3.0/lists?apikey=$mailchimpKey");
@@ -238,12 +238,51 @@ class HelperFunctions {
             $lists = json_decode( wp_remote_retrieve_body( $lists ), true )[ 'lists' ];
             
             if ( ! empty( $lists ) ) {
-                return wp_list_pluck( $lists, 'name' );
+                return wp_list_pluck( $lists, 'name', 'id' );
             }
             return [ esc_html__( 'No List Found!', 'mighty' ) ];
         }
 
         return [ esc_html__( 'No Mailchimp Key Found!', 'mighty' ) ];
 
+    }
+
+    public static function saveMailchimpData() {
+
+        $mailchimpKey = self::get_integration_option('mailchimp-key');
+        $region = substr( $mailchimpKey, strpos( $mailchimpKey, '-') + 1 );
+        
+        $email = "support@mightythemes.com";
+        $fname = "Mighty";
+        $lname = "Themes";
+        $list = "";
+        $memberId = md5(strtolower($email));
+        $url = "https://$region.api.mailchimp.com/3.0/lists/$list/members/$memberId";
+
+        $data = [
+            "email_address" => $email,
+            "status" => "subscribed",
+            "merge_fields" => [
+                "FNAME" => $fname,
+                "LNAME" => $lname
+            ]
+        ];
+
+        $response = wp_remote_post( $url, [
+            'method' => 'PUT',
+            'body'        => json_encode( $data ),
+            'headers' => [
+                'Authorization' => 'Basic ' . base64_encode( 'user:' . $mailchimpKey )
+            ],
+        ]);
+        
+        $response_body = json_decode( wp_remote_retrieve_body( $response ) );
+        
+        if ( $response_body->status == "subscribed" ) {
+            return 1;
+        } else {
+            return 0;
+        }
+        
     }
 }
