@@ -62,7 +62,7 @@ class MT_Mailchimp extends Widget_Base {
 				'mailchimp_list',
 				[
 					'label' => __( 'Choose List', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => array_merge( array( 0 => 'Select a List'), Helper::mailchimpLists() ),
 					'default' => '0'
 				]
@@ -81,7 +81,8 @@ class MT_Mailchimp extends Widget_Base {
 				'email_label',
 				[
 					'label' => __( 'Email Label', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
+					'type' => Controls_Manager::TEXT,
+					'default' => __( 'Your Email', 'mighty' ),
 					'placeholder' => __( 'Type your title here', 'mighty' ),
 				]
 			);
@@ -90,7 +91,7 @@ class MT_Mailchimp extends Widget_Base {
 				'email_column_width',
 				[
 					'label' => __( 'Column Width', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => [
 						'20'  => __( '20%', 'mighty' ),
 						'25'  => __( '25%', 'mighty' ),
@@ -103,6 +104,10 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
+					'default' => __( '50', 'mighty' ),
+					'selectors' => [
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-email' => 'width: {{VALUE}}%'
+					]
 				]
 			);
 
@@ -111,7 +116,7 @@ class MT_Mailchimp extends Widget_Base {
 				'enable_first_name',
 				[
 					'label' => __( 'Enable First Name', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
@@ -119,11 +124,12 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_control(
-				'first_name',
+				'fname_label',
 				[
 					'label' => __( 'First Name', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
+					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Type your First Name', 'mighty' ),
+					'default' => __( 'First Name', 'mighty' ),
 					'condition' => [
 						'enable_first_name' => 'yes'
 					]
@@ -134,7 +140,7 @@ class MT_Mailchimp extends Widget_Base {
 				'fname_column_width',
 				[
 					'label' => __( 'First Name Column Width', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => [
 						'20'  => __( '20%', 'mighty' ),
 						'25'  => __( '25%', 'mighty' ),
@@ -147,6 +153,10 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
+					'default' => __( '50', 'mighty' ),
+					'selectors' => [
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-fname' => 'width: {{VALUE}}%'
+					],
 					'condition' => [
 						'enable_first_name' => 'yes'
 					]
@@ -154,10 +164,10 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_control(
-				'required_first_name',
+				'fname_required',
 				[
-					'label' => __( 'Required', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label' => __( 'First Name Required', 'mighty' ),
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
@@ -172,7 +182,7 @@ class MT_Mailchimp extends Widget_Base {
 				'enable_last_name',
 				[
 					'label' => __( 'Enable Last Name', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
@@ -180,11 +190,12 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_control(
-				'last_name',
+				'lname_label',
 				[
 					'label' => __( 'Last Name', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
+					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Type your Last Name', 'mighty' ),
+					'default' => __( 'Last Name', 'mighty' ),
 					'condition' => [
 						'enable_last_name' => 'yes'
 					]
@@ -195,7 +206,7 @@ class MT_Mailchimp extends Widget_Base {
 				'lname_column_width',
 				[
 					'label' => __( 'Last Name Column Width', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => [
 						'20'  => __( '20%', 'mighty' ),
 						'25'  => __( '25%', 'mighty' ),
@@ -208,6 +219,10 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
+					'default' => __( '50', 'mighty' ),
+					'selectors' => [
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-lname' => 'width: {{VALUE}}%'
+					],
 					'condition' => [
 						'enable_last_name' => 'yes'
 					]
@@ -215,10 +230,10 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_control(
-				'required_last_name',
+				'lname_required',
 				[
 					'label' => __( 'Required', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
@@ -233,7 +248,7 @@ class MT_Mailchimp extends Widget_Base {
 				'agree_to_terms',
 				[
 					'label' => __( 'Agree To Terms', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
@@ -244,7 +259,7 @@ class MT_Mailchimp extends Widget_Base {
 				'acceptance_text',
 				[
 					'label' => __( 'Acceptance Text', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::WYSIWYG,
+					'type' => Controls_Manager::WYSIWYG,
 					'default' => __( 'I have read and agree to the terms & conditions.', 'mighty' ),
 					'condition' => [
 						'agree_to_terms' => 'yes'
@@ -256,7 +271,7 @@ class MT_Mailchimp extends Widget_Base {
 				'checked_by_default',
 				[
 					'label' => __( 'Checked By Default', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Yes', 'mighty' ),
 					'label_off' => __( 'No', 'mighty' ),
 					'return_value' => 'yes',
@@ -270,7 +285,7 @@ class MT_Mailchimp extends Widget_Base {
 				'terms_column_width',
 				[
 					'label' => __( 'Terms Column Width', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => [
 						'20'  => __( '20%', 'mighty' ),
 						'25'  => __( '25%', 'mighty' ),
@@ -283,6 +298,7 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
+					'default' => __( '50', 'mighty' ),
 					'condition' => [
 						'agree_to_terms' => 'yes'
 					]
@@ -293,7 +309,7 @@ class MT_Mailchimp extends Widget_Base {
 				'required_terms',
 				[
 					'label' => __( 'Required', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
@@ -316,7 +332,7 @@ class MT_Mailchimp extends Widget_Base {
 				'button_text',
 				[
 					'label' => __( 'Button Text', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
+					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Button Text', 'mighty' ),
 					'default' => __( 'Subscribe Now', 'mighty' ),
 				]
@@ -326,7 +342,7 @@ class MT_Mailchimp extends Widget_Base {
 				'loading_text',
 				[
 					'label' => __( 'Loading Text', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
+					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Loading Text', 'mighty' ),
 					'default' => __( 'Subscribing...', 'mighty' ),
 				]
@@ -336,7 +352,7 @@ class MT_Mailchimp extends Widget_Base {
 				'submit_column_width',
 				[
 					'label' => __( 'Submit Column Width', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => [
 						'20'  => __( '20%', 'mighty' ),
 						'25'  => __( '25%', 'mighty' ),
@@ -348,7 +364,8 @@ class MT_Mailchimp extends Widget_Base {
 						'75'  => __( '75%', 'mighty' ),
 						'80'  => __( '80%', 'mighty' ),
 						'100' => __( '100%', 'mighty' ),
-					]
+					],
+					'default' => __( '50', 'mighty' ),
 				]
 			);
 
@@ -356,7 +373,7 @@ class MT_Mailchimp extends Widget_Base {
 				'submit_size',
 				[
 					'label' => __( 'Size', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => [
 						'small'  => __( 'Small', 'mighty' ),
 						'medium'  => __( 'medium', 'mighty' ),
@@ -370,7 +387,7 @@ class MT_Mailchimp extends Widget_Base {
 				'enable_icon',
 				[
 					'label' => __( 'Enable Icon', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Yes', 'mighty' ),
 					'label_off' => __( 'No', 'mighty' ),
 					'return_value' => 'yes',
@@ -381,7 +398,7 @@ class MT_Mailchimp extends Widget_Base {
 				'submit_icon',
 				[
 					'label' => __( 'Icon', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::ICONS,
+					'type' => Controls_Manager::ICONS,
 					'default' => [
 						'value' => 'fas fa-star',
 						'library' => 'solid',
@@ -396,7 +413,7 @@ class MT_Mailchimp extends Widget_Base {
 				'icon_position',
 				[
 					'label' => __( 'Icon Position', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
+					'type' => Controls_Manager::SELECT,
 					'options' => [
 						'before'  => __( 'Before', 'mighty' ),
 						'after'  => __( 'After', 'mighty' ),
@@ -408,7 +425,7 @@ class MT_Mailchimp extends Widget_Base {
 				'icon_spacing',
 				[
 					'label' => __( 'Icon Spacing', 'mighty' ),
-					'type' => Controls_Manager::SLIDER,
+					'type' =>  Controls_Manager::SLIDER,
 					'size_units' => [ 'px', '%' ],
 					'range' => [
 						'px' => [
@@ -422,7 +439,7 @@ class MT_Mailchimp extends Widget_Base {
 						'size' => 50,
 					],
 					'selectors' => [
-						'{{WRAPPER}} ' => 'margin-top: {{SIZE}}{{UNIT}};',
+						'' => 'margin-top: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
@@ -440,7 +457,7 @@ class MT_Mailchimp extends Widget_Base {
 				'error_message',
 				[
 					'label' => __( 'Error Message', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
+					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Error Message', 'mighty' ),
 				]
 			);
@@ -449,7 +466,7 @@ class MT_Mailchimp extends Widget_Base {
 				'successful_message',
 				[
 					'label' => __( 'Successful Message', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
+					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Success Message', 'mighty' ),
 				]
 			);
@@ -461,7 +478,7 @@ class MT_Mailchimp extends Widget_Base {
 			'section_general_styling',
 			[
 				'label' => __( 'General', 'mighty' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'tab' =>  Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -479,10 +496,10 @@ class MT_Mailchimp extends Widget_Base {
 				'mc_margin',
 				[
 					'label' => __( 'Margin', 'mighty' ),
-					'type' => Controls_Manager::DIMENSIONS,
+					'type' =>  Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'{{WRAPPER}} ' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -491,10 +508,10 @@ class MT_Mailchimp extends Widget_Base {
 				'mc_padding',
 				[
 					'label' => __( 'Padding', 'mighty' ),
-					'type' => Controls_Manager::DIMENSIONS,
+					'type' =>  Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -504,7 +521,7 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'name' => 'mc_border',
 					'label' => __( 'Border', 'mighty' ),
-					'selector' => '{{WRAPPER}} ',
+					'selector' => '',
 				]
 			);
 
@@ -512,10 +529,10 @@ class MT_Mailchimp extends Widget_Base {
 				'mc_border_radius',
 				[
 					'label' => __( 'Border Radius', 'mighty' ),
-					'type' => Controls_Manager::DIMENSIONS,
+					'type' =>  Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -525,7 +542,7 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'name' => 'mc_box_shadow',
 					'label' => __( 'Box Shadow', 'mighty' ),
-					'selector' => '{{WRAPPER}} ',
+					'selector' => '',
 				]
 			);
 
@@ -536,7 +553,7 @@ class MT_Mailchimp extends Widget_Base {
 			'section_fields_styling',
 			[
 				'label' => __( 'Form Fields', 'mighty' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'tab' =>  Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -544,7 +561,7 @@ class MT_Mailchimp extends Widget_Base {
 				'fields_columns_gap',
 				[
 					'label' => __( 'Columns Gap', 'mighty' ),
-					'type' => Controls_Manager::SLIDER,
+					'type' =>  Controls_Manager::SLIDER,
 					'size_units' => [ 'px', '%' ],
 					'range' => [
 						'px' => [
@@ -562,7 +579,7 @@ class MT_Mailchimp extends Widget_Base {
 						'size' => 50,
 					],
 					'selectors' => [
-						'{{WRAPPER}} ' => 'margin-top: {{SIZE}}{{UNIT}};',
+						'' => 'margin-top: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
@@ -571,7 +588,7 @@ class MT_Mailchimp extends Widget_Base {
 				'fields_rows_gap',
 				[
 					'label' => __( 'Rows Gap', 'mighty' ),
-					'type' => Controls_Manager::SLIDER,
+					'type' =>  Controls_Manager::SLIDER,
 					'size_units' => [ 'px', '%' ],
 					'range' => [
 						'px' => [
@@ -589,7 +606,7 @@ class MT_Mailchimp extends Widget_Base {
 						'size' => 50,
 					],
 					'selectors' => [
-						'{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+						'' => 'margin: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
@@ -609,7 +626,7 @@ class MT_Mailchimp extends Widget_Base {
 						'label_spacing',
 						[
 							'label' => __( 'Spacing', 'mighty' ),
-							'type' => Controls_Manager::SLIDER,
+							'type' =>  Controls_Manager::SLIDER,
 							'size_units' => [ 'px', '%' ],
 							'range' => [
 								'px' => [
@@ -627,7 +644,7 @@ class MT_Mailchimp extends Widget_Base {
 								'size' => 50,
 							],
 							'selectors' => [
-								'{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+								'' => 'margin: {{SIZE}}{{UNIT}};',
 							],
 						]
 					);
@@ -636,9 +653,9 @@ class MT_Mailchimp extends Widget_Base {
 						'label_color',
 						[
 							'label' => __( 'Label Color', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::COLOR,
+							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+								'' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -649,7 +666,7 @@ class MT_Mailchimp extends Widget_Base {
 							'name' => 'label_typography',
 							'label' => __( 'Typography', 'mighty' ),
 							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-							'selector' => '{{WRAPPER}} ',
+							'selector' => '',
 						]
 					);
 
@@ -666,9 +683,9 @@ class MT_Mailchimp extends Widget_Base {
 						'field_text_color',
 						[
 							'label' => __( 'Text Color', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::COLOR,
+							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+								'' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -677,9 +694,9 @@ class MT_Mailchimp extends Widget_Base {
 						'field_placeholder_color',
 						[
 							'label' => __( 'Placeholder Color', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::COLOR,
+							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+								'' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -690,7 +707,7 @@ class MT_Mailchimp extends Widget_Base {
 							'name' => 'field_typography',
 							'label' => __( 'Typography', 'mighty' ),
 							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-							'selector' => '{{WRAPPER}} ',
+							'selector' => '',
 						]
 					);
 
@@ -698,10 +715,10 @@ class MT_Mailchimp extends Widget_Base {
 						'field_padding',
 						[
 							'label' => __( 'Padding', 'mighty' ),
-							'type' => Controls_Manager::DIMENSIONS,
+							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -712,7 +729,7 @@ class MT_Mailchimp extends Widget_Base {
 							'name' => 'field_background',
 							'label' => __( 'Background', 'mighty' ),
 							'types' => [ 'classic' ],
-							'selector' => '{{WRAPPER}} ',
+							'selector' => '',
 						]
 					);
 
@@ -720,9 +737,9 @@ class MT_Mailchimp extends Widget_Base {
 						'field_border_color',
 						[
 							'label' => __( 'Border Color', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::COLOR,
+							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} ' => 'border-color: {{VALUE}}',
+								'' => 'border-color: {{VALUE}}',
 							],
 						]
 					);
@@ -731,10 +748,10 @@ class MT_Mailchimp extends Widget_Base {
 						'field_border_width',
 						[
 							'label' => __( 'Border Width', 'mighty' ),
-							'type' => Controls_Manager::DIMENSIONS,
+							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'{{WRAPPER}} ' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -743,10 +760,10 @@ class MT_Mailchimp extends Widget_Base {
 						'field_border_radius',
 						[
 							'label' => __( 'Border Radius', 'mighty' ),
-							'type' => Controls_Manager::DIMENSIONS,
+							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -762,7 +779,7 @@ class MT_Mailchimp extends Widget_Base {
 			'section_button_styling',
 			[
 				'label' => __( 'Button', 'mighty' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'tab' =>  Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -781,9 +798,9 @@ class MT_Mailchimp extends Widget_Base {
 						'button_bg_color',
 						[
 							'label' => __( 'Background Color', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::COLOR,
+							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} ' => 'background-color: {{VALUE}}',
+								'' => 'background-color: {{VALUE}}',
 							],
 						]
 					);
@@ -792,9 +809,9 @@ class MT_Mailchimp extends Widget_Base {
 						'button_text_color',
 						[
 							'label' => __( 'Text Color', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::COLOR,
+							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+								'' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -803,7 +820,7 @@ class MT_Mailchimp extends Widget_Base {
 						Group_Control_Typography::get_type(),
 						[
 							'name' => 'button_typography',
-							'selector' => '{{WRAPPER}} ',
+							'selector' => '',
 						]
 					);
 					
@@ -812,7 +829,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'name' => 'button_border',
 							'label' => __( 'Border', 'mighty' ),
-							'selector' => '{{WRAPPER}} ',
+							'selector' => '',
 						]
 					);
 
@@ -820,10 +837,10 @@ class MT_Mailchimp extends Widget_Base {
 						'button_border_radius',
 						[
 							'label' => __( 'Border Radius', 'mighty' ),
-							'type' => Controls_Manager::DIMENSIONS,
+							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -833,7 +850,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'name' => 'button_box_shadow',
 							'label' => __( 'Box Shadow', 'mighty' ),
-							'selector' => '{{WRAPPER}} ',
+							'selector' => '',
 						]
 					);
 					
@@ -841,10 +858,10 @@ class MT_Mailchimp extends Widget_Base {
 						'button_padding',
 						[
 							'label' => __( 'Padding', 'mighty' ),
-							'type' => Controls_Manager::DIMENSIONS,
+							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -865,7 +882,7 @@ class MT_Mailchimp extends Widget_Base {
 							'name' => 'button_hover_background',
 							'label' => __( 'Background Color', 'mighty' ),
 							'types' => [ 'classic' ],
-							'selector' => '{{WRAPPER}} ',
+							'selector' => '',
 						]
 					);
 
@@ -873,7 +890,7 @@ class MT_Mailchimp extends Widget_Base {
 						'button_text_hover_color',
 						[
 							'label' => __( 'Text Color', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::COLOR,
+							'type' => Controls_Manager::COLOR,
 							'selectors' => [
 								'{{WRAPPER}} .title' => 'color: {{VALUE}}',
 							],
@@ -884,7 +901,7 @@ class MT_Mailchimp extends Widget_Base {
 						'button_hover_animation',
 						[
 							'label' => __( 'Hover Animation', 'mighty' ),
-							'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+							'type' => Controls_Manager::HOVER_ANIMATION,
 							'prefix_class' => 'elementor-animation-',
 						]
 					);
@@ -899,7 +916,7 @@ class MT_Mailchimp extends Widget_Base {
 			'section_message_styling',
 			[
 				'label' => __( 'Message', 'mighty' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'tab' =>  Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -909,7 +926,7 @@ class MT_Mailchimp extends Widget_Base {
 					'name' => 'message_typography',
 					'label' => __( 'Typography', 'mighty' ),
 					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-					'selector' => '{{WRAPPER}} ',
+					'selector' => '',
 				]
 			);
 
@@ -917,9 +934,9 @@ class MT_Mailchimp extends Widget_Base {
 				'success_message_color',
 				[
 					'label' => __( 'Success Message Color', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::COLOR,
+					'type' => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} ' => 'color: {{VALUE}}',
+						'' => 'color: {{VALUE}}',
 					],
 				]
 			);
@@ -928,9 +945,9 @@ class MT_Mailchimp extends Widget_Base {
 				'error_message_color',
 				[
 					'label' => __( 'Error Message Color', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::COLOR,
+					'type' => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} ' => 'color: {{VALUE}}',
+						'' => 'color: {{VALUE}}',
 					],
 				]
 			);
@@ -939,9 +956,9 @@ class MT_Mailchimp extends Widget_Base {
 				'inline_message_color',
 				[
 					'label' => __( 'Inline Message Color', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::COLOR,
+					'type' => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} ' => 'color: {{VALUE}}',
+						'' => 'color: {{VALUE}}',
 					],
 				]
 			);
@@ -952,6 +969,52 @@ class MT_Mailchimp extends Widget_Base {
 	
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+
+		$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
+		$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
+		$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
+		
+		if ( ! empty( $settings['mailchimp_list'] ) ) {
+
+			echo "<div class='mighty-mailchimp-wrapper'>";
+			echo "<form method='post' " . $this->get_render_attribute_string('mt-maichimp') . ">";
+			?>
+
+			<p>
+				<label> <?php echo $settings['email_label']; ?><br>
+					<span class="mailchimp-field">
+						<input type="text" name="email" class="mailchimp-email" required />
+					</span>
+				</label>
+			</p>
+
+			<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
+			<p>
+				<label> <?php echo $settings['fname_label']; ?><br>
+					<span class="mailchimp-field">
+						<input type="text" name="fname" class="mailchimp-fname" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
+					</span>
+				</label>
+			</p>
+			<?php endif; ?>
+
+			<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
+			<p>
+				<label> <?php echo $settings['lname_label']; ?><br>
+					<span class="mailchimp-field">
+						<input type="text" name="lname" class="mailchimp-lname" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
+					</span>
+				</label>
+			</p>
+			<?php endif; ?>
+
+			<?php
+			echo "</form>";
+			echo "</div>";
+
+		} else {
+			echo "<h3 align='center'> Choose a Mailchimp list to get started. </h3>";
+		}
 		
 	}
 	
