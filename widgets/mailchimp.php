@@ -1,14 +1,13 @@
 <?php
 namespace MightyAddons\Widgets;
 
+
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use \Elementor\Utils as Utils;
-use Elementor\Repeater as Repeater;
+use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Image_Size;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -50,6 +49,7 @@ class MT_Mailchimp extends Widget_Base {
 	}
 	
 	protected function _register_controls() {
+		
 		$this->start_controls_section(
 			'section_mailchimp',
 			[
@@ -333,9 +333,9 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_responsive_control(
-				'terms_column_width',
+				'submit_column_width',
 				[
-					'label' => __( 'Terms Column Width', 'mighty' ),
+					'label' => __( 'Submit Column Width', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
 					'options' => [
 						'20'  => __( '20%', 'mighty' ),
@@ -458,14 +458,493 @@ class MT_Mailchimp extends Widget_Base {
 
 		// Styling
 		$this->start_controls_section(
-			'section_mc_styling',
+			'section_general_styling',
 			[
 				'label' => __( 'General', 'mighty' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-			
+			$this->add_group_control(
+				Group_Control_Background::get_type(),
+				[
+					'name' => 'mc_background',
+					'label' => __( 'Background', 'mighty' ),
+					'types' => [ 'classic', 'gradient' ],
+					'selector' => '{{WRAPPER}} .wrapper',
+				]
+			);
+
+			$this->add_responsive_control(
+				'mc_margin',
+				[
+					'label' => __( 'Margin', 'mighty' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px', '%', 'em' ],
+					'selectors' => [
+						'{{WRAPPER}} ' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+
+			$this->add_responsive_control(
+				'mc_padding',
+				[
+					'label' => __( 'Padding', 'mighty' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px', '%', 'em' ],
+					'selectors' => [
+						'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
+				[
+					'name' => 'mc_border',
+					'label' => __( 'Border', 'mighty' ),
+					'selector' => '{{WRAPPER}} ',
+				]
+			);
+
+			$this->add_responsive_control(
+				'mc_border_radius',
+				[
+					'label' => __( 'Border Radius', 'mighty' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px', '%', 'em' ],
+					'selectors' => [
+						'{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+
+			$this->add_group_control(
+				\Elementor\Group_Control_Box_Shadow::get_type(),
+				[
+					'name' => 'mc_box_shadow',
+					'label' => __( 'Box Shadow', 'mighty' ),
+					'selector' => '{{WRAPPER}} ',
+				]
+			);
+
+		$this->end_controls_section();
+
+
+		$this->start_controls_section(
+			'section_fields_styling',
+			[
+				'label' => __( 'Form Fields', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+			$this->add_control(
+				'fields_columns_gap',
+				[
+					'label' => __( 'Columns Gap', 'mighty' ),
+					'type' => Controls_Manager::SLIDER,
+					'size_units' => [ 'px', '%' ],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 1000,
+							'step' => 5,
+						],
+						'%' => [
+							'min' => 0,
+							'max' => 100,
+						],
+					],
+					'default' => [
+						'unit' => '%',
+						'size' => 50,
+					],
+					'selectors' => [
+						'{{WRAPPER}} ' => 'margin-top: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+
+			$this->add_control(
+				'fields_rows_gap',
+				[
+					'label' => __( 'Rows Gap', 'mighty' ),
+					'type' => Controls_Manager::SLIDER,
+					'size_units' => [ 'px', '%' ],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 1000,
+							'step' => 5,
+						],
+						'%' => [
+							'min' => 0,
+							'max' => 100,
+						],
+					],
+					'default' => [
+						'unit' => '%',
+						'size' => 50,
+					],
+					'selectors' => [
+						'{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+
+			$this->start_controls_tabs(
+				'form_styling'
+			);
+
+				$this->start_controls_tab(
+					'form_label',
+					[
+						'label' => __( 'Label', 'mighty' ),
+					]
+				);
+
+					$this->add_control(
+						'label_spacing',
+						[
+							'label' => __( 'Spacing', 'mighty' ),
+							'type' => Controls_Manager::SLIDER,
+							'size_units' => [ 'px', '%' ],
+							'range' => [
+								'px' => [
+									'min' => 0,
+									'max' => 1000,
+									'step' => 5,
+								],
+								'%' => [
+									'min' => 0,
+									'max' => 100,
+								],
+							],
+							'default' => [
+								'unit' => '%',
+								'size' => 50,
+							],
+							'selectors' => [
+								'{{WRAPPER}} ' => 'margin: {{SIZE}}{{UNIT}};',
+							],
+						]
+					);
+
+					$this->add_control(
+						'label_color',
+						[
+							'label' => __( 'Label Color', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+							],
+						]
+					);
+
+					$this->add_group_control(
+						\Elementor\Group_Control_Typography::get_type(),
+						[
+							'name' => 'label_typography',
+							'label' => __( 'Typography', 'mighty' ),
+							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+							'selector' => '{{WRAPPER}} ',
+						]
+					);
+
+				$this->end_controls_tab();
+
+				$this->start_controls_tab(
+					'form_fields',
+					[
+						'label' => __( 'Fields', 'mighty' ),
+					]
+				);
+
+					$this->add_control(
+						'field_text_color',
+						[
+							'label' => __( 'Text Color', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+							],
+						]
+					);
+
+					$this->add_control(
+						'field_placeholder_color',
+						[
+							'label' => __( 'Placeholder Color', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+							],
+						]
+					);
+
+					$this->add_group_control(
+						\Elementor\Group_Control_Typography::get_type(),
+						[
+							'name' => 'field_typography',
+							'label' => __( 'Typography', 'mighty' ),
+							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+							'selector' => '{{WRAPPER}} ',
+						]
+					);
+
+					$this->add_control(
+						'field_padding',
+						[
+							'label' => __( 'Padding', 'mighty' ),
+							'type' => Controls_Manager::DIMENSIONS,
+							'size_units' => [ 'px', '%', 'em' ],
+							'selectors' => [
+								'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							],
+						]
+					);
+
+					$this->add_group_control(
+						Group_Control_Background::get_type(),
+						[
+							'name' => 'field_background',
+							'label' => __( 'Background', 'mighty' ),
+							'types' => [ 'classic' ],
+							'selector' => '{{WRAPPER}} ',
+						]
+					);
+
+					$this->add_control(
+						'field_border_color',
+						[
+							'label' => __( 'Border Color', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'{{WRAPPER}} ' => 'border-color: {{VALUE}}',
+							],
+						]
+					);
+
+					$this->add_responsive_control(
+						'field_border_width',
+						[
+							'label' => __( 'Border Width', 'mighty' ),
+							'type' => Controls_Manager::DIMENSIONS,
+							'size_units' => [ 'px', '%', 'em' ],
+							'selectors' => [
+								'{{WRAPPER}} ' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							],
+						]
+					);
+
+					$this->add_responsive_control(
+						'field_border_radius',
+						[
+							'label' => __( 'Border Radius', 'mighty' ),
+							'type' => Controls_Manager::DIMENSIONS,
+							'size_units' => [ 'px', '%', 'em' ],
+							'selectors' => [
+								'{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							],
+						]
+					);
+
+				$this->end_controls_tab();
+
+			$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+
+		$this->start_controls_section(
+			'section_button_styling',
+			[
+				'label' => __( 'Button', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+			$this->start_controls_tabs(
+				'button_styling'
+			);
+
+				$this->start_controls_tab(
+					'button_normal',
+					[
+						'label' => __( 'Normal', 'mighty' ),
+					]
+				);
+
+					$this->add_control(
+						'button_bg_color',
+						[
+							'label' => __( 'Background Color', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'{{WRAPPER}} ' => 'background-color: {{VALUE}}',
+							],
+						]
+					);
+
+					$this->add_control(
+						'button_text_color',
+						[
+							'label' => __( 'Text Color', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'{{WRAPPER}} ' => 'color: {{VALUE}}',
+							],
+						]
+					);
+
+					$this->add_group_control(
+						Group_Control_Typography::get_type(),
+						[
+							'name' => 'button_typography',
+							'selector' => '{{WRAPPER}} ',
+						]
+					);
+					
+					$this->add_group_control(
+						Group_Control_Border::get_type(),
+						[
+							'name' => 'button_border',
+							'label' => __( 'Border', 'mighty' ),
+							'selector' => '{{WRAPPER}} ',
+						]
+					);
+
+					$this->add_responsive_control(
+						'button_border_radius',
+						[
+							'label' => __( 'Border Radius', 'mighty' ),
+							'type' => Controls_Manager::DIMENSIONS,
+							'size_units' => [ 'px', '%', 'em' ],
+							'selectors' => [
+								'{{WRAPPER}} ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							],
+						]
+					);
+		
+					$this->add_group_control(
+						\Elementor\Group_Control_Box_Shadow::get_type(),
+						[
+							'name' => 'button_box_shadow',
+							'label' => __( 'Box Shadow', 'mighty' ),
+							'selector' => '{{WRAPPER}} ',
+						]
+					);
+					
+					$this->add_control(
+						'button_padding',
+						[
+							'label' => __( 'Padding', 'mighty' ),
+							'type' => Controls_Manager::DIMENSIONS,
+							'size_units' => [ 'px', '%', 'em' ],
+							'selectors' => [
+								'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							],
+						]
+					);
+
+				$this->end_controls_tab();
+
+
+				$this->start_controls_tab(
+					'button_hover',
+					[
+						'label' => __( 'Hover', 'mighty' ),
+					]
+				);
+
+					$this->add_group_control(
+						Group_Control_Background::get_type(),
+						[
+							'name' => 'button_hover_background',
+							'label' => __( 'Background Color', 'mighty' ),
+							'types' => [ 'classic' ],
+							'selector' => '{{WRAPPER}} ',
+						]
+					);
+
+					$this->add_control(
+						'button_text_hover_color',
+						[
+							'label' => __( 'Text Color', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'{{WRAPPER}} .title' => 'color: {{VALUE}}',
+							],
+						]
+					);
+
+					$this->add_control(
+						'button_hover_animation',
+						[
+							'label' => __( 'Hover Animation', 'mighty' ),
+							'type' => \Elementor\Controls_Manager::HOVER_ANIMATION,
+							'prefix_class' => 'elementor-animation-',
+						]
+					);
+
+				$this->end_controls_tab();
+
+			$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_message_styling',
+			[
+				'label' => __( 'Message', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+			$this->add_group_control(
+				\Elementor\Group_Control_Typography::get_type(),
+				[
+					'name' => 'message_typography',
+					'label' => __( 'Typography', 'mighty' ),
+					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+					'selector' => '{{WRAPPER}} ',
+				]
+			);
+
+			$this->add_control(
+				'success_message_color',
+				[
+					'label' => __( 'Success Message Color', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} ' => 'color: {{VALUE}}',
+					],
+				]
+			);
+
+			$this->add_control(
+				'error_message_color',
+				[
+					'label' => __( 'Error Message Color', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} ' => 'color: {{VALUE}}',
+					],
+				]
+			);
+
+			$this->add_control(
+				'inline_message_color',
+				[
+					'label' => __( 'Inline Message Color', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} ' => 'color: {{VALUE}}',
+					],
+				]
+			);
 
 		$this->end_controls_section();
 
