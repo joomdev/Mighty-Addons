@@ -32,6 +32,9 @@ class Mighty_Elementor {
 
 		// Register widgets
 		add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
+
+		// Mailchimp
+		add_action( 'wp_ajax_save_mailchimp_details', [ $this, 'mighty_mailchimp_details'] );
 	}
 
 	public static function enqueue_editor_scripts() {
@@ -75,6 +78,13 @@ class Mighty_Elementor {
 		wp_register_script( 'mt-accordion', MIGHTY_ADDONS_PLG_URL . 'assets/js/accordion.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
 
 		wp_register_script( 'mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/js/beforeafter.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+
+		wp_register_script( 'mt-mailchimp', MIGHTY_ADDONS_PLG_URL . 'assets/js/mailchimp.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+
+		wp_localize_script( 'mt-mailchimp', 'MightyAddons', array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'mailchimpAction' => 'save_mailchimp_details'
+		) );
 	}
 
 	// enqueue frontend scripts
@@ -100,6 +110,57 @@ class Mighty_Elementor {
 				$class = sprintf( 'MightyAddons\Widgets\%s', $props['class'] );
 				\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class );
 			}
+		}
+	}
+
+	/**
+	 * Send Mailchimp form data to API
+	 */
+	public function mighty_mailchimp_details()
+	{
+		if ( isset( $_POST['fields'] ) ) {
+			parse_str( $_POST['fields'], $data );
+		} else {
+			return;
+		}
+		
+		if ( empty( $data['email'] ) ) {
+			return "Email is required!";
+		}
+		
+		$mailchimpKey = HelperFunctions::get_integration_option('mailchimp-key');
+		$region = substr( $mailchimpKey, strpos( $mailchimpKey, '-') + 1 );
+		
+		$email = $data['email'] ? $data['email'] : '';
+		$fname = $data['fname'] ? $data['fname'] : '';
+		$lname = $data['lname'] ? $data['lname'] : '';
+		$list = $data['list'] ? $data['list'] : '';
+		$memberId = md5(strtolower($email));
+		$url = "https://$region.api.mailchimp.com/3.0/lists/$list/members/$memberId";
+
+		$data = [
+			"email_address" => $email,
+			"status" => "subscribed",
+			"merge_fields" => [
+				"FNAME" => $fname,
+				"LNAME" => $lname
+			]
+		];
+
+		$response = wp_remote_post( $url, [
+			'method' => 'PUT',
+			'body'        => json_encode( $data ),
+			'headers' => [
+				'Authorization' => 'Basic ' . base64_encode( 'user:' . $mailchimpKey )
+			],
+		]);
+		
+		$response_body = json_decode( wp_remote_retrieve_body( $response ) );
+		
+		if ( $response_body->status == "subscribed" ) {
+			return 1;
+		} else {
+			return 0;
 		}
 	}
 }

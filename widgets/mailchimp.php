@@ -40,9 +40,9 @@ class MT_Mailchimp extends Widget_Base {
 	public function get_keywords() {
 		return [ 'mighty', 'mail', 'chimp', 'form' ];
     }
-	
+
 	public function get_script_depends() {
-		return [  ];
+		return [ 'mt-mailchimp' ];
 	}
 
 	public function get_style_depends() {
@@ -956,10 +956,11 @@ class MT_Mailchimp extends Widget_Base {
 	
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
+		
 		$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
 		$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
 		$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', $settings['mailchimp_list'] );
 		
 		if ( ! empty( $settings['mailchimp_list'] ) ) {
 
@@ -999,7 +1000,7 @@ class MT_Mailchimp extends Widget_Base {
 			<p>
 				<label>
 				<span class="mailchimp-field">
-					<input type="checkbox" name="lname" class="mailchimp-terms" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
+					<input type="checkbox" name="terms" class="mailchimp-terms" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
 				</span>
 				<?php echo $settings['terms_label']; ?></label>
 			</p>
