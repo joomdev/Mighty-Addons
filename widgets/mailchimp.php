@@ -446,15 +446,17 @@ class MT_Mailchimp extends Widget_Base {
 					'label' => __( 'Error Message', 'mighty' ),
 					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Error Message', 'mighty' ),
+					'default' => __( 'Something went wrong!', 'mighty' )
 				]
 			);
 
 			$this->add_control(
-				'successful_message',
+				'success_message',
 				[
 					'label' => __( 'Successful Message', 'mighty' ),
 					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Success Message', 'mighty' ),
+					'default' => __( 'You are subscribed!', 'mighty' )
 				]
 			);
 
@@ -961,6 +963,8 @@ class MT_Mailchimp extends Widget_Base {
 		$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
 		$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
 		$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', $settings['mailchimp_list'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
 		
 		if ( ! empty( $settings['mailchimp_list'] ) ) {
 
