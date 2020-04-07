@@ -509,7 +509,7 @@ class MT_Mailchimp extends Widget_Base {
 					'name' => 'mc_background',
 					'label' => __( 'Background', 'mighty' ),
 					'types' => [ 'classic', 'gradient' ],
-					'selector' => '{{WRAPPER}} .wrapper',
+					'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper',
 				]
 			);
 
@@ -520,7 +520,7 @@ class MT_Mailchimp extends Widget_Base {
 					'type' =>  Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -532,7 +532,7 @@ class MT_Mailchimp extends Widget_Base {
 					'type' =>  Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -542,7 +542,7 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'name' => 'mc_border',
 					'label' => __( 'Border', 'mighty' ),
-					'selector' => '',
+					'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper',
 				]
 			);
 
@@ -553,7 +553,7 @@ class MT_Mailchimp extends Widget_Base {
 					'type' =>  Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%', 'em' ],
 					'selectors' => [
-						'' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -563,7 +563,7 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'name' => 'mc_box_shadow',
 					'label' => __( 'Box Shadow', 'mighty' ),
-					'selector' => '',
+					'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper',
 				]
 			);
 
@@ -600,7 +600,7 @@ class MT_Mailchimp extends Widget_Base {
 						'size' => 50,
 					],
 					'selectors' => [
-						'' => 'margin-top: {{SIZE}}{{UNIT}};',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mailchimp-field' => 'margin-top: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
@@ -665,7 +665,7 @@ class MT_Mailchimp extends Widget_Base {
 								'size' => 50,
 							],
 							'selectors' => [
-								'' => 'margin: {{SIZE}}{{UNIT}};',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form label' => 'margin: {{SIZE}}{{UNIT}};',
 							],
 						]
 					);
@@ -676,7 +676,7 @@ class MT_Mailchimp extends Widget_Base {
 							'label' => __( 'Label Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'' => 'color: {{VALUE}}',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -686,8 +686,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'name' => 'label_typography',
 							'label' => __( 'Typography', 'mighty' ),
-							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-							'selector' => '',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form label',
 						]
 					);
 
@@ -706,7 +705,7 @@ class MT_Mailchimp extends Widget_Base {
 							'label' => __( 'Text Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'' => 'color: {{VALUE}}',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -717,7 +716,7 @@ class MT_Mailchimp extends Widget_Base {
 							'label' => __( 'Placeholder Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'' => 'color: {{VALUE}}',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input::placeholder' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -727,8 +726,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'name' => 'field_typography',
 							'label' => __( 'Typography', 'mighty' ),
-							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-							'selector' => '',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input',
 						]
 					);
 
@@ -739,7 +737,7 @@ class MT_Mailchimp extends Widget_Base {
 							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -750,7 +748,7 @@ class MT_Mailchimp extends Widget_Base {
 							'name' => 'field_background',
 							'label' => __( 'Background', 'mighty' ),
 							'types' => [ 'classic' ],
-							'selector' => '',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input',
 						]
 					);
 
@@ -760,7 +758,7 @@ class MT_Mailchimp extends Widget_Base {
 							'label' => __( 'Border Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'' => 'border-color: {{VALUE}}',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input' => 'border-color: {{VALUE}}',
 							],
 						]
 					);
@@ -772,7 +770,7 @@ class MT_Mailchimp extends Widget_Base {
 							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -784,7 +782,7 @@ class MT_Mailchimp extends Widget_Base {
 							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -821,7 +819,7 @@ class MT_Mailchimp extends Widget_Base {
 							'label' => __( 'Background Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'' => 'background-color: {{VALUE}}',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button' => 'background-color: {{VALUE}}',
 							],
 						]
 					);
@@ -832,7 +830,7 @@ class MT_Mailchimp extends Widget_Base {
 							'label' => __( 'Text Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'' => 'color: {{VALUE}}',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -841,7 +839,7 @@ class MT_Mailchimp extends Widget_Base {
 						Group_Control_Typography::get_type(),
 						[
 							'name' => 'button_typography',
-							'selector' => '',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button',
 						]
 					);
 					
@@ -850,7 +848,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'name' => 'button_border',
 							'label' => __( 'Border', 'mighty' ),
-							'selector' => '',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button',
 						]
 					);
 
@@ -861,7 +859,7 @@ class MT_Mailchimp extends Widget_Base {
 							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -871,7 +869,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'name' => 'button_box_shadow',
 							'label' => __( 'Box Shadow', 'mighty' ),
-							'selector' => '',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button',
 						]
 					);
 					
@@ -882,7 +880,7 @@ class MT_Mailchimp extends Widget_Base {
 							'type' =>  Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%', 'em' ],
 							'selectors' => [
-								'' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -903,7 +901,7 @@ class MT_Mailchimp extends Widget_Base {
 							'name' => 'button_hover_background',
 							'label' => __( 'Background Color', 'mighty' ),
 							'types' => [ 'classic' ],
-							'selector' => '',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button:hover',
 						]
 					);
 
@@ -913,7 +911,7 @@ class MT_Mailchimp extends Widget_Base {
 							'label' => __( 'Text Color', 'mighty' ),
 							'type' => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} .title' => 'color: {{VALUE}}',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button:hover' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -946,8 +944,7 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'name' => 'message_typography',
 					'label' => __( 'Typography', 'mighty' ),
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-					'selector' => '',
+					'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mailchimp-message',
 				]
 			);
 
@@ -957,7 +954,7 @@ class MT_Mailchimp extends Widget_Base {
 					'label' => __( 'Success Message Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
-						'' => 'color: {{VALUE}}',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mailchimp-success' => 'color: {{VALUE}}',
 					],
 				]
 			);
@@ -968,7 +965,7 @@ class MT_Mailchimp extends Widget_Base {
 					'label' => __( 'Error Message Color', 'mighty' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
-						'' => 'color: {{VALUE}}',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mailchimp-error' => 'color: {{VALUE}}',
 					],
 				]
 			);
@@ -1011,47 +1008,43 @@ class MT_Mailchimp extends Widget_Base {
 			?>
 
 			<p>
-				<label> <?php echo $settings['email_label']; ?><br>
-					<span class="mailchimp-field">
-						<input type="text" name="email" class="mailchimp-email" required />
-					</span>
-				</label>
+				<label> <?php echo $settings['email_label']; ?></label><br>
+				<span class="mailchimp-field">
+					<input type="text" name="email" class="mailchimp-email" placeholder="Your Email" required />
+				</span>
 			</p>
 
 			<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
 			<p>
-				<label> <?php echo $settings['fname_label']; ?><br>
-					<span class="mailchimp-field">
-						<input type="text" name="fname" class="mailchimp-fname" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
-					</span>
-				</label>
+				<label> <?php echo $settings['fname_label']; ?></label><br>
+				<span class="mailchimp-field">
+					<input type="text" name="fname" class="mailchimp-fname" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
+				</span>
 			</p>
 			<?php endif; ?>
 
 			<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
 			<p>
-				<label> <?php echo $settings['lname_label']; ?><br>
-					<span class="mailchimp-field">
-						<input type="text" name="lname" class="mailchimp-lname" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
-					</span>
-				</label>
+				<label> <?php echo $settings['lname_label']; ?></label><br>
+				<span class="mailchimp-field">
+					<input type="text" name="lname" class="mailchimp-lname" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
+				</span>
 			</p>
 			<?php endif; ?>
 
 			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
 			<p>
-				<label>
 				<span class="mailchimp-field">
 					<input type="checkbox" name="terms" class="mailchimp-terms" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
 				</span>
-				<?php echo $settings['terms_label']; ?></label>
+				<label><?php echo $settings['terms_label']; ?></label>
 			</p>
 			<?php endif; ?>
 
 			<p>
 				<label>
 				<span class="mailchimp-field">
-					<button class="mailchimp-submit <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
+					<button class="mailchimp-submit <?php echo "elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
 						<?php if ( $settings['enable_icon'] == "yes" ) : ?>
 						<span class="submit-icon">
 							<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>

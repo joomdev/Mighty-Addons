@@ -31,11 +31,11 @@
                             window.location = link;
                         }
                     } else {
-                        $( sel[0] ).append('<p class="mailchimp-success">' + successMsg + '</p>');
+                        $( sel[0] ).append('<p class="mailchiimp-message mailchimp-success">' + successMsg + '</p>');
                     }
                 },
                 error: function() {
-                    $( sel[0] ).append('<p class="mailchimp-error">' + errorMsg + '</p>');
+                    $( sel[0] ).append('<p class="mailchiimp-message mailchimp-error">' + errorMsg + '</p>');
                 }
             });
         });
