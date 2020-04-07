@@ -167,20 +167,10 @@
    -ms-transform: scale(1);
    transform: scale(1);
  }
- .mt-flipbox-wrapper.ma-zoom-out .mt-flipbox-card .mt-flipbox-back {
-   -webkit-transition: opacity .35s, width .1ms, -webkit-transform .7s;
-   transition: opacity .35s, width .1ms, -webkit-transform .7s;
-   transition: transform .7s, opacity .35s, width .1ms;
-   transition: transform .7s, opacity .35s, width .1ms, -webkit-transform .7s;
-   opacity: 1;
-   -webkit-transform: scale(1);
-   -ms-transform: scale(1);
-   transform: scale(1);
-   z-index: 1;
-   width: 100%;
+ .mt-flipbox-wrapper.ma-zoom-out .mt-flipbox-card .mt-flipbox-front {
+  z-index: 1;
  }
- .mt-flipbox-wrapper.ma-zoom-out .mt-flipbox-card:hover .mt-flipbox-back {
-   width: 0;
+ .mt-flipbox-wrapper.ma-zoom-out .mt-flipbox-card:hover .mt-flipbox-front {
    opacity: 0;
    -webkit-transform: scale(0.7);
    -ms-transform: scale(0.7);
