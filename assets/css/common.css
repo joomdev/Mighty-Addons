@@ -56,23 +56,23 @@
 
 /* Button Sizes */
 .ma-btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    border-radius: 0.2rem;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
 }
 
 .ma-btn-md {
-    font-size: 1rem;
-    line-height: 1.6;
-    border-radius: 0.4rem;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    border-radius: 0.4rem !important;
 }
 
 .ma-btn-lg {
-    padding: 0.5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: 0.3rem;
+    padding: 0.5rem 1rem !important;
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.3rem !important;
 }
 
 /* Button Types */

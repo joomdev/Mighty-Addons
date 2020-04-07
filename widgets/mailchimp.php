@@ -46,7 +46,7 @@ class MT_Mailchimp extends Widget_Base {
 	}
 
 	public function get_style_depends() {
-		return [  ];
+		return [ 'mt-common', 'mt-mailchimp' ];
 	}
 	
 	protected function _register_controls() {
@@ -245,7 +245,7 @@ class MT_Mailchimp extends Widget_Base {
 
 			// Terms
 			$this->add_control(
-				'agree_to_terms',
+				'enable_terms',
 				[
 					'label' => __( 'Agree To Terms', 'mighty' ),
 					'type' => Controls_Manager::SWITCHER,
@@ -256,13 +256,13 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_control(
-				'acceptance_text',
+				'terms_label',
 				[
 					'label' => __( 'Acceptance Text', 'mighty' ),
 					'type' => Controls_Manager::WYSIWYG,
 					'default' => __( 'I have read and agree to the terms & conditions.', 'mighty' ),
 					'condition' => [
-						'agree_to_terms' => 'yes'
+						'enable_terms' => 'yes'
 					]
 				]
 			);
@@ -276,37 +276,13 @@ class MT_Mailchimp extends Widget_Base {
 					'label_off' => __( 'No', 'mighty' ),
 					'return_value' => 'yes',
 					'condition' => [
-						'agree_to_terms' => 'yes'
-					]
-				]
-			);
-
-			$this->add_responsive_control(
-				'terms_column_width',
-				[
-					'label' => __( 'Terms Column Width', 'mighty' ),
-					'type' => Controls_Manager::SELECT,
-					'options' => [
-						'20'  => __( '20%', 'mighty' ),
-						'25'  => __( '25%', 'mighty' ),
-						'33'  => __( '33%', 'mighty' ),
-						'40'  => __( '40%', 'mighty' ),
-						'50'  => __( '50%', 'mighty' ),
-						'60'  => __( '60%', 'mighty' ),
-						'66'  => __( '66%', 'mighty' ),
-						'75'  => __( '75%', 'mighty' ),
-						'80'  => __( '80%', 'mighty' ),
-						'100'  => __( '100%', 'mighty' ),
-					],
-					'default' => __( '50', 'mighty' ),
-					'condition' => [
-						'agree_to_terms' => 'yes'
+						'enable_terms' => 'yes'
 					]
 				]
 			);
 
 			$this->add_control(
-				'required_terms',
+				'terms_required',
 				[
 					'label' => __( 'Required', 'mighty' ),
 					'type' => Controls_Manager::SWITCHER,
@@ -314,7 +290,7 @@ class MT_Mailchimp extends Widget_Base {
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
 					'condition' => [
-						'agree_to_terms' => 'yes'
+						'enable_terms' => 'yes'
 					]
 				]
 			);
@@ -349,7 +325,7 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_responsive_control(
-				'submit_column_width',
+				'button_column_width',
 				[
 					'label' => __( 'Submit Column Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
@@ -366,20 +342,23 @@ class MT_Mailchimp extends Widget_Base {
 						'100' => __( '100%', 'mighty' ),
 					],
 					'default' => __( '50', 'mighty' ),
+					'selectors' => [
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit' => 'width: {{VALUE}}%'
+					],
 				]
 			);
 
 			$this->add_control(
-				'submit_size',
+				'button_size',
 				[
 					'label' => __( 'Size', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
 					'options' => [
-						'small'  => __( 'Small', 'mighty' ),
-						'medium'  => __( 'medium', 'mighty' ),
-						'large'  => __( 'large', 'mighty' ),
-						'extra-large'  => __( 'extra-large', 'mighty' ),
+						'ma-btn-sm'  => __( 'Small', 'mighty' ),
+						'ma-btn-md'  => __( 'Medium', 'mighty' ),
+						'ma-btn-lg'  => __( 'Large', 'mighty' )
 					],
+					'default' => 'ma-btn-md'
 				]
 			);
 
@@ -395,7 +374,7 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_control(
-				'submit_icon',
+				'button_icon',
 				[
 					'label' => __( 'Icon', 'mighty' ),
 					'type' => Controls_Manager::ICONS,
@@ -415,8 +394,12 @@ class MT_Mailchimp extends Widget_Base {
 					'label' => __( 'Icon Position', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
 					'options' => [
-						'before'  => __( 'Before', 'mighty' ),
-						'after'  => __( 'After', 'mighty' ),
+						'icon-before'  => __( 'Before', 'mighty' ),
+						'icon-after'  => __( 'After', 'mighty' ),
+					],
+					'default' => 'icon-before',
+					'condition' => [
+						'enable_icon' => 'yes'
 					]
 				]
 			);
@@ -436,11 +419,15 @@ class MT_Mailchimp extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 50,
+						'size' => 10,
 					],
 					'selectors' => [
-						'' => 'margin-top: {{SIZE}}{{UNIT}};',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-field .icon-before .submit-icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-field .icon-after .submit-icon' => 'margin-left: {{SIZE}}{{UNIT}}'
 					],
+					'condition' => [
+						'enable_icon' => 'yes'
+					]
 				]
 			);
 
@@ -977,7 +964,7 @@ class MT_Mailchimp extends Widget_Base {
 		if ( ! empty( $settings['mailchimp_list'] ) ) {
 
 			echo "<div class='mighty-mailchimp-wrapper'>";
-			echo "<form method='post' " . $this->get_render_attribute_string('mt-maichimp') . ">";
+			echo "<form method='post' " . $this->get_render_attribute_string('mt-mailchimp') . ">";
 			?>
 
 			<p>
@@ -1007,6 +994,30 @@ class MT_Mailchimp extends Widget_Base {
 				</label>
 			</p>
 			<?php endif; ?>
+
+			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
+			<p>
+				<label>
+				<span class="mailchimp-field">
+					<input type="checkbox" name="lname" class="mailchimp-terms" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
+				</span>
+				<?php echo $settings['terms_label']; ?></label>
+			</p>
+			<?php endif; ?>
+
+			<p>
+				<label>
+				<span class="mailchimp-field">
+					<button class="mailchimp-submit <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
+						<?php if ( $settings['enable_icon'] == "yes" ) : ?>
+						<span class="submit-icon">
+							<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+						</span>
+						<?php endif; ?>
+						<?php echo $settings['button_text']; ?>
+					</button>
+				</span>
+			</p>
 
 			<?php
 			echo "</form>";

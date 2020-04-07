@@ -1,0 +1,11 @@
+.mighty-mailchimp-wrapper .mailchimp-field .icon-before {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mighty-mailchimp-wrapper .mailchimp-field .icon-after {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
