@@ -431,6 +431,38 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
+			$this->add_control(
+				'after_submission',
+				[
+					'label' => __( 'After submission', 'mighty' ),
+					'type' => Controls_Manager::SELECT,
+					'options' => [
+						'same' => __( 'Same Page', 'mighty' ),
+						'different' => __( 'Different Page', 'mighty' ),
+					],
+					'default' => 'same',
+					'description' => __( 'Keep user on the same page and show notification or redirect to different page after submission.')
+				]
+			);
+
+			$this->add_control(
+				'page_link',
+				[
+					'label' => __( 'Page Link', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::URL,
+					'placeholder' => __( 'https://example.com', 'mighty' ),
+					'show_external' => false,
+					'default' => [
+						'url' => '',
+						'is_external' => false,
+						'nofollow' => false,
+					],
+					'condition' => [
+						'after_submission' => 'different'
+					]
+				]
+			);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -965,6 +997,12 @@ class MT_Mailchimp extends Widget_Base {
 		$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', $settings['mailchimp_list'] );
 		$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
 		$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-after-submission', $settings['after_submission'] );
+		if ( $settings['after_submission'] == "different" ) {
+			$this->add_render_attribute( 'mt-mailchimp', 'data-link', $settings['page_link']['url'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-external', $settings['page_link']['is_external'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-nofollow', $settings['page_link']['nofollow'] );
+		}
 		
 		if ( ! empty( $settings['mailchimp_list'] ) ) {
 

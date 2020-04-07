@@ -5,6 +5,12 @@
         var mcList = sel.data( 'mclist' );
         var successMsg = sel.data( 'success-msg' );
         var errorMsg = sel.data( 'error-msg' );
+        var submitAction = sel.data( 'after-submission' );
+        if ( submitAction == "different" ) {
+            var link = sel.data( 'link' );
+            var external = sel.data( 'external' );
+            var nofollow = sel.data( 'nofollow' );
+		}
 
         $( sel[0] ).on( 'submit', function( e ) {
             e.preventDefault();
@@ -18,7 +24,15 @@
                     fields: data,
                 },
                 success: function() {
-                    $( sel[0] ).append('<p class="mailchimp-success">' + successMsg + '</p>');
+                    if ( submitAction == "different" ) {
+                        if ( external ) {
+                            window.open(link, '_blank');
+                        } else {
+                            window.location = link;
+                        }
+                    } else {
+                        $( sel[0] ).append('<p class="mailchimp-success">' + successMsg + '</p>');
+                    }
                 },
                 error: function() {
                     $( sel[0] ).append('<p class="mailchimp-error">' + errorMsg + '</p>');
