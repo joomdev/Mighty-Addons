@@ -6,7 +6,6 @@ use \MightyAddons\Classes\HelperFunctions as Helper;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
-use Elementor\Repeater as Repeater;
 use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
@@ -67,7 +66,7 @@ class MT_ContactForm7 extends Widget_Base {
                         'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
                     ]
                 );
-                $this->end_controls_section();
+                
                 return;
             }
         

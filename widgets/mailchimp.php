@@ -661,11 +661,11 @@ class MT_Mailchimp extends Widget_Base {
 								],
 							],
 							'default' => [
-								'unit' => '%',
-								'size' => 50,
+								'unit' => 'px',
+								'size' => 10,
 							],
 							'selectors' => [
-								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form label' => 'margin: {{SIZE}}{{UNIT}};',
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form label' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 							],
 						]
 					);
@@ -921,7 +921,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'label' => __( 'Hover Animation', 'mighty' ),
 							'type' => Controls_Manager::HOVER_ANIMATION,
-							'prefix_class' => 'elementor-animation-',
+							'prefix_class' => 'mighty-animation-',
 						]
 					);
 
@@ -1008,26 +1008,26 @@ class MT_Mailchimp extends Widget_Base {
 			?>
 
 			<p>
-				<label> <?php echo $settings['email_label']; ?></label><br>
+				<label for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label><br>
 				<span class="mailchimp-field">
-					<input type="text" name="email" class="mailchimp-email" placeholder="Your Email" required />
+					<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mailchimp-email" placeholder="Your Email" required />
 				</span>
 			</p>
 
 			<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
 			<p>
-				<label> <?php echo $settings['fname_label']; ?></label><br>
+				<label for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label><br>
 				<span class="mailchimp-field">
-					<input type="text" name="fname" class="mailchimp-fname" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
+					<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mailchimp-fname" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
 				</span>
 			</p>
 			<?php endif; ?>
 
 			<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
 			<p>
-				<label> <?php echo $settings['lname_label']; ?></label><br>
+				<label for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label><br>
 				<span class="mailchimp-field">
-					<input type="text" name="lname" class="mailchimp-lname" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
+					<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mailchimp-lname" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
 				</span>
 			</p>
 			<?php endif; ?>
@@ -1035,14 +1035,13 @@ class MT_Mailchimp extends Widget_Base {
 			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
 			<p>
 				<span class="mailchimp-field">
-					<input type="checkbox" name="terms" class="mailchimp-terms" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
+					<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="mailchimp-terms" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
 				</span>
-				<label><?php echo $settings['terms_label']; ?></label>
+				<label for="terms-<?php echo $this->get_id(); ?>"><?php echo $settings['terms_label']; ?></label>
 			</p>
 			<?php endif; ?>
 
 			<p>
-				<label>
 				<span class="mailchimp-field">
 					<button class="mailchimp-submit <?php echo "elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
 						<?php if ( $settings['enable_icon'] == "yes" ) : ?>

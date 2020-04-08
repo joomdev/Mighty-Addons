@@ -9,3 +9,7 @@
     flex-direction: row-reverse;
     justify-content: center;
 }
+
+.mighty-mailchimp-wrapper label {
+    display: inline-block;
+}
