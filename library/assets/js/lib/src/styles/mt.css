@@ -817,10 +817,6 @@
   display: flex;
 }
 
-#mighty-extension-pixabay .brand-filters span {
-  margin: 0 5px;
-}
-
 #mighty-extension-pixabay,
 #mighty-extension-pixabay .mighty-gallery {
   height: 100%;
@@ -901,16 +897,18 @@
 #mighty-extension-pixabay .action-button {
   display: block;
   max-width: 310px;
-  margin: 10px 0 0;
   color: #fff;
-  background-color: #5a00f0;
+  background-color: #565656;
   padding: 18px 22px;
   text-decoration: none;
-  border-radius: 50px;
   text-align: center;
   font-size: 18px;
   cursor: pointer;
   transition: opacity 0.2s ease;
+}
+
+#mighty-extension-pixabay .action-button.active {
+  background-color: #5a00f0;
 }
 
 #mighty-extension-pixabay .action-button:hover {

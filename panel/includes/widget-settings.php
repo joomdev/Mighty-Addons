@@ -87,9 +87,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
-
                 <div class="text-center ma-cta-save">
-                    <button type="submit" class="button ma-btn js-ma-settings-save ma-btn ma-save-button" disabled="disabled"><?php _e('Save Settings', 'mighty-addons'); ?></button>
+                    <button type="submit" class="button ma-btn ma-save-button" disabled="disabled"><?php _e('Save Settings', 'mighty-addons'); ?></button>
                 </div>
             </form>
         </div>

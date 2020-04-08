@@ -52,7 +52,7 @@ class Elementor extends base {
 			$elementorPro = false;
 		}
 
-		if( is_plugin_active( 'Mighty-Addons-Pro/mighty-addons-pro.php' ) || is_plugin_active( 'mighty-addons-pro/mighty-addons.php' )) {
+		if( is_plugin_active( 'Mighty-Addons-Pro/mighty-addons-pro.php' ) || is_plugin_active( 'mighty-addons-pro/mighty-addons-pro.php' )) {
 			$mightyAddonsProActive = true;
 		} else {
 			$mightyAddonsProActive = false;
@@ -75,7 +75,7 @@ class Elementor extends base {
 			'baseUrl' => MIGHTY_ADDONS_PLG_URL,
 			'apiUrl' => "https://api.mightythemes.com/api/",
 			'elementorPro' => $elementorPro,
-			'maPro' => $mightyAddonsProActive,
+			'maProStatus' => $mightyAddonsProActive,
 			'key' => HelperFunctions::getProKey()['map-user-key'],
 			'host' => $_SERVER['HTTP_HOST'],
 			'nonce' => "MightyLibrary",

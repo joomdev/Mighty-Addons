@@ -78,11 +78,12 @@ class Gallery extends Component {
     this.setState({ isSearching: true });
     let host = this.state.searchPlatform == "pixabay" ? MightyLibrary.apiUrl+MightyLibrary.pxUrl : MightyLibrary.apiUrl+MightyLibrary.usUrl;
     let pagination = page !== undefined ? page : this.state.currentPage;
+    let url = host+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.key+"&host="+MightyLibrary.host;
     
-    fetch(host+this.state.searchTerm+"/"+pagination+"?key="+MightyLibrary.key+"&host="+MightyLibrary.host)
+    fetch(url)
     .then(response => response.json())
     .then((res) => {
-      if ( res.status == "error" ) {
+      if ( res.status == "error" || ( this.state.searchPlatform == "unsplash" && !MightyLibrary.maProStatus  ) ) {
         this.setState({
           images: [],
           totalPages: 0,
@@ -207,15 +208,13 @@ class Home extends Component {
             <button onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
           </div>
           <div className="brand-filters">
-
-            <span className="action-button" onClick={ () => this.props.activeSearchPlatform('pixabay') }>
+            <span className={`action-button${this.props.searchPlatform == "pixabay" ? ' active' : ''}`} onClick={ () => this.props.activeSearchPlatform('pixabay') }>
               Pixabay
             </span>
 
-            <span className="action-button" onClick={ () => this.props.activeSearchPlatform('unsplash') }>
+            <span className={`action-button${this.props.searchPlatform == "unsplash" ? ' active' : ''}`} onClick={ () => this.props.activeSearchPlatform('unsplash') }>
               Unsplash
             </span>
-
           </div>
           <div className="photos-view">
             <p>View as:</p>
@@ -310,7 +309,7 @@ class UnsplashImages extends Component {
             <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
             {
               this.props.proEnabled ?
-                <div class="error-message">
+                <div className="error-message">
                   <h4>We do need to upgrade things around here!</h4> 
                   <p>Until then, search for something else.</p>
                 </div>
