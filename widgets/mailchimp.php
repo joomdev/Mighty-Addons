@@ -100,6 +100,15 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
+			$this->add_control(
+				'email_placeholder',
+				[
+					'label' => __( 'Email Placeholder', 'mighty' ),
+					'type' => Controls_Manager::TEXT,
+					'default' => __( 'Your Email', 'mighty' ),
+				]
+			);
+
 			$this->add_responsive_control(
 				'email_column_width',
 				[
@@ -146,6 +155,15 @@ class MT_Mailchimp extends Widget_Base {
 					'condition' => [
 						'enable_first_name' => 'yes'
 					]
+				]
+			);
+
+			$this->add_control(
+				'fname_placeholder',
+				[
+					'label' => __( 'First Name Placeholder', 'mighty' ),
+					'type' => Controls_Manager::TEXT,
+					'default' => __( 'Your First Name', 'mighty' ),
 				]
 			);
 
@@ -212,6 +230,15 @@ class MT_Mailchimp extends Widget_Base {
 					'condition' => [
 						'enable_last_name' => 'yes'
 					]
+				]
+			);
+
+			$this->add_control(
+				'lname_placeholder',
+				[
+					'label' => __( 'Last Name Placeholder', 'mighty' ),
+					'type' => Controls_Manager::TEXT,
+					'default' => __( 'Your First Name', 'mighty' ),
 				]
 			);
 
@@ -608,12 +635,8 @@ class MT_Mailchimp extends Widget_Base {
 							'max' => 100,
 						],
 					],
-					'default' => [
-						'unit' => '%',
-						'size' => 50,
-					],
 					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mailchimp-field' => 'margin-top: {{SIZE}}{{UNIT}};',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-left: {{SIZE}}{{UNIT}};'
 					],
 				]
 			);
@@ -635,12 +658,8 @@ class MT_Mailchimp extends Widget_Base {
 							'max' => 100,
 						],
 					],
-					'default' => [
-						'unit' => '%',
-						'size' => 50,
-					],
 					'selectors' => [
-						'' => 'margin: {{SIZE}}{{UNIT}};',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-top: {{SIZE}}{{UNIT}};margin-bottom: {{SIZE}}{{UNIT}};'
 					],
 				]
 			);
@@ -1001,7 +1020,7 @@ class MT_Mailchimp extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		if( ! Helper::get_integration_option('mailchimp-key') ) {
+		if( ! Helper::get_integration_option('mailchimp-key') || empty( $settings['mailchimp_list'] ) ) {
 			echo "<h3 align='center'> Choose a Mailchimp list to get started. </h3>";
 			return;
 		}
@@ -1030,7 +1049,7 @@ class MT_Mailchimp extends Widget_Base {
 			<p>
 				<label for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label><br>
 				<span class="mailchimp-field">
-					<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mailchimp-email" placeholder="Your Email" required />
+					<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mailchimp-email" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
 				</span>
 			</p>
 
@@ -1038,7 +1057,7 @@ class MT_Mailchimp extends Widget_Base {
 			<p>
 				<label for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label><br>
 				<span class="mailchimp-field">
-					<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mailchimp-fname" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
+					<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mailchimp-fname" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
 				</span>
 			</p>
 			<?php endif; ?>
@@ -1047,7 +1066,7 @@ class MT_Mailchimp extends Widget_Base {
 			<p>
 				<label for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label><br>
 				<span class="mailchimp-field">
-					<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mailchimp-lname" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
+					<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mailchimp-lname" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
 				</span>
 			</p>
 			<?php endif; ?>
