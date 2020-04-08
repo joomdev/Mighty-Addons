@@ -7,7 +7,6 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -57,6 +56,20 @@ class MT_Mailchimp extends Widget_Base {
 				'label' => __( 'Mailchimp', 'mighty' ),
 			]
 		);
+
+			if ( ! Helper::get_integration_option('mailchimp-key') ) {
+					
+				$this->add_control(
+					'mailchimp_notice',
+					[
+						'type' => Controls_Manager::RAW_HTML,
+						'raw' => __( '<p>You need to insert <b>Mailchimp Key</b> to use the element.</p><br><p>1. Get a <a target="_blank" rel="noopener" href="https://mailchimp.com/help/about-api-keys/">Key</a>.</p><br><p>2. Insert the key in the dashboard in <b>Integration</b> Settings.</b></p><br><p>3. Voila! Start collecting your subscribers.</p>', 'mighty' ),
+						'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+					]
+				);
+				
+				return;
+			}
 
 			$this->add_control(
 				'mailchimp_list',
@@ -987,22 +1000,29 @@ class MT_Mailchimp extends Widget_Base {
 	
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		
-		$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
-		$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
-		$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
-		$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', $settings['mailchimp_list'] );
-		$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
-		$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
-		$this->add_render_attribute( 'mt-mailchimp', 'data-after-submission', $settings['after_submission'] );
-		if ( $settings['after_submission'] == "different" ) {
-			$this->add_render_attribute( 'mt-mailchimp', 'data-link', $settings['page_link']['url'] );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-external', $settings['page_link']['is_external'] );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-nofollow', $settings['page_link']['nofollow'] );
+
+		if( ! Helper::get_integration_option('mailchimp-key') ) {
+			echo "<h3 align='center'> Choose a Mailchimp list to get started. </h3>";
+			return;
 		}
 		
 		if ( ! empty( $settings['mailchimp_list'] ) ) {
 
+			$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
+			$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
+			$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', $settings['mailchimp_list'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-after-submission', $settings['after_submission'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-button-text', $settings['button_text'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-loading-text', $settings['loading_text'] );
+			if ( $settings['after_submission'] == "different" ) {
+				$this->add_render_attribute( 'mt-mailchimp', 'data-link', $settings['page_link']['url'] );
+				$this->add_render_attribute( 'mt-mailchimp', 'data-external', $settings['page_link']['is_external'] );
+				$this->add_render_attribute( 'mt-mailchimp', 'data-nofollow', $settings['page_link']['nofollow'] );
+			}
+			
 			echo "<div class='mighty-mailchimp-wrapper'>";
 			echo "<form method='post' " . $this->get_render_attribute_string('mt-mailchimp') . ">";
 			?>
@@ -1058,10 +1078,7 @@ class MT_Mailchimp extends Widget_Base {
 			echo "</form>";
 			echo "</div>";
 
-		} else {
-			echo "<h3 align='center'> Choose a Mailchimp list to get started. </h3>";
 		}
-		
 	}
 	
 	protected function _content_template() {
