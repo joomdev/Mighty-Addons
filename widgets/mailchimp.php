@@ -29,7 +29,7 @@ class MT_Mailchimp extends Widget_Base {
 	}
 	
 	public function get_icon() {
-		return 'mf mf-testimonial';
+		return 'mf mf-mailchimp';
 	}
 
 	public function get_categories() {

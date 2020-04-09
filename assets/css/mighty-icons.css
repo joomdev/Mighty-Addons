@@ -25,8 +25,12 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.mf-particles:before {
+.mf-mailchimp:before {
 	content: "\e90e";
+}
+
+.mf-particles:before {
+	content: "\e90f";
 }
 
 .mf-gmaps:before {

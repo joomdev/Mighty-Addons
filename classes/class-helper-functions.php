@@ -103,7 +103,7 @@ class HelperFunctions {
                 'enable' => true,
                 'class' => 'MT_Mailchimp',
                 'slug' => 'mailchimp',
-                'icon' => 'mf mf-contactform7'
+                'icon' => 'mf mf-mailchimp'
             ]
         ],
 
