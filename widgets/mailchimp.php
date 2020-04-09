@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * Elementor widget for MT_Mailchimp.
  *
- * @since 1.3.3
+ * @since 1.3.4
  */
 class MT_Mailchimp extends Widget_Base {
 	
@@ -128,7 +128,8 @@ class MT_Mailchimp extends Widget_Base {
 					],
 					'default' => __( '50', 'mighty' ),
 					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-email' => 'width: {{VALUE}}%'
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-email' => 'flex: 0 0 {{VALUE}}%;
+						max-width: {{VALUE}}%;'
 					]
 				]
 			);
@@ -164,6 +165,9 @@ class MT_Mailchimp extends Widget_Base {
 					'label' => __( 'First Name Placeholder', 'mighty' ),
 					'type' => Controls_Manager::TEXT,
 					'default' => __( 'Your First Name', 'mighty' ),
+					'condition' => [
+						'enable_first_name' => 'yes'
+					]
 				]
 			);
 
@@ -239,6 +243,9 @@ class MT_Mailchimp extends Widget_Base {
 					'label' => __( 'Last Name Placeholder', 'mighty' ),
 					'type' => Controls_Manager::TEXT,
 					'default' => __( 'Your First Name', 'mighty' ),
+					'condition' => [
+						'enable_last_name' => 'yes'
+					]
 				]
 			);
 
@@ -428,7 +435,7 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'icon_position',
 				[
 					'label' => __( 'Icon Position', 'mighty' ),
@@ -444,7 +451,7 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
-			$this->add_control(
+			$this->add_responsive_control(
 				'icon_spacing',
 				[
 					'label' => __( 'Icon Spacing', 'mighty' ),
@@ -462,8 +469,8 @@ class MT_Mailchimp extends Widget_Base {
 						'size' => 10,
 					],
 					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-field .icon-before .submit-icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-field .icon-after .submit-icon' => 'margin-left: {{SIZE}}{{UNIT}}'
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit.icon-before .submit-icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit.icon-after .submit-icon' => 'margin-left: {{SIZE}}{{UNIT}}'
 					],
 					'condition' => [
 						'enable_icon' => 'yes'
@@ -477,8 +484,8 @@ class MT_Mailchimp extends Widget_Base {
 					'label' => __( 'After submission', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
 					'options' => [
-						'same' => __( 'Same Page', 'mighty' ),
-						'different' => __( 'Different Page', 'mighty' ),
+						'same' => __( 'AJAX Load', 'mighty' ),
+						'different' => __( 'Redirect', 'mighty' ),
 					],
 					'default' => 'same',
 					'description' => __( 'Keep user on the same page and show notification or redirect to different page after submission.')
@@ -618,7 +625,7 @@ class MT_Mailchimp extends Widget_Base {
 			]
 		);
 
-			$this->add_control(
+			$this->add_responsive_control(
 				'fields_columns_gap',
 				[
 					'label' => __( 'Columns Gap', 'mighty' ),
@@ -641,7 +648,7 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
-			$this->add_control(
+			$this->add_responsive_control(
 				'fields_rows_gap',
 				[
 					'label' => __( 'Rows Gap', 'mighty' ),
@@ -762,7 +769,7 @@ class MT_Mailchimp extends Widget_Base {
 						]
 					);
 
-					$this->add_control(
+					$this->add_responsive_control(
 						'field_padding',
 						[
 							'label' => __( 'Padding', 'mighty' ),
@@ -774,13 +781,14 @@ class MT_Mailchimp extends Widget_Base {
 						]
 					);
 
-					$this->add_group_control(
-						Group_Control_Background::get_type(),
+					$this->add_control(
+						'field_background',
 						[
-							'name' => 'field_background',
-							'label' => __( 'Background', 'mighty' ),
-							'types' => [ 'classic' ],
-							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input',
+							'label' => __( 'Background Color', 'mighty' ),
+							'type' => Controls_Manager::COLOR,
+							'selectors' => [
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form input' => 'background-color: {{VALUE}}',
+							],
 						]
 					);
 
@@ -905,7 +913,7 @@ class MT_Mailchimp extends Widget_Base {
 						]
 					);
 					
-					$this->add_control(
+					$this->add_responsive_control(
 						'button_padding',
 						[
 							'label' => __( 'Padding', 'mighty' ),
@@ -927,13 +935,14 @@ class MT_Mailchimp extends Widget_Base {
 					]
 				);
 
-					$this->add_group_control(
-						Group_Control_Background::get_type(),
+					$this->add_control(
+						'button_hover_background',
 						[
-							'name' => 'button_hover_background',
 							'label' => __( 'Background Color', 'mighty' ),
-							'types' => [ 'classic' ],
-							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button:hover',
+							'type' => Controls_Manager::COLOR,
+							'selectors' => [
+								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button:hover' => 'background-color: {{VALUE}}',
+							],
 						]
 					);
 
@@ -953,7 +962,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'label' => __( 'Hover Animation', 'mighty' ),
 							'type' => Controls_Manager::HOVER_ANIMATION,
-							'prefix_class' => 'mighty-animation-',
+							// 'prefix_class' => 'mighty-animation-',
 						]
 					);
 
@@ -1002,17 +1011,6 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
-			$this->add_control(
-				'inline_message_color',
-				[
-					'label' => __( 'Inline Message Color', 'mighty' ),
-					'type' => Controls_Manager::COLOR,
-					'selectors' => [
-						'' => 'color: {{VALUE}}',
-					],
-				]
-			);
-
 		$this->end_controls_section();
 
 	}
@@ -1046,52 +1044,51 @@ class MT_Mailchimp extends Widget_Base {
 			echo "<form method='post' " . $this->get_render_attribute_string('mt-mailchimp') . ">";
 			?>
 
-			<p>
-				<label for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label><br>
-				<span class="mailchimp-field">
-					<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mailchimp-email" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
-				</span>
-			</p>
+			<div class="mt-form-group mailchimp-email">
+				<label class="mt-label-control" for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label>
+				
+				<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mt-form-control" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
+				
+			</div>
 
 			<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
-			<p>
-				<label for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label><br>
-				<span class="mailchimp-field">
-					<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mailchimp-fname" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
-				</span>
-			</p>
+			<div class="mt-form-group mailchimp-fname">
+				<label class="mt-label-control" for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label>
+				
+				<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mt-form-control" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
+				
+			</div>
 			<?php endif; ?>
 
 			<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
-			<p>
-				<label for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label><br>
-				<span class="mailchimp-field">
-					<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mailchimp-lname" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
-				</span>
-			</p>
+			<div class="mt-form-group mailchimp-lname">
+				<label class="mt-label-control" for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label>
+				
+				<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mt-form-control" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
+			</div>
 			<?php endif; ?>
 
 			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
-			<p>
-				<span class="mailchimp-field">
-					<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="mailchimp-terms" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
-				</span>
-				<label for="terms-<?php echo $this->get_id(); ?>"><?php echo $settings['terms_label']; ?></label>
-			</p>
+			<div class="mt-form-group mailchimp-terms">
+				
+				<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="mt-form-control" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
+				
+				<label class="mt-label-control" for="terms-<?php echo $this->get_id(); ?>"><?php echo $settings['terms_label']; ?></label>
+			</div>
 			<?php endif; ?>
 
-			<p>
-				<span class="mailchimp-field">
-					<button class="mailchimp-submit <?php echo "elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
-						<?php if ( $settings['enable_icon'] == "yes" ) : ?>
-						<span class="submit-icon">
-							<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-						</span>
-						<?php endif; ?>
-						<?php echo $settings['button_text']; ?>
-					</button>
-				</span>
-			</p>
+			<div class="mt-form-group mailchimp-submit">
+				
+				<button class="mt-form-control<?php echo " elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
+					<?php if ( $settings['enable_icon'] == "yes" ) : ?>
+					<span class="submit-icon">
+						<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+					</span>
+					<?php endif; ?>
+					<?php echo $settings['button_text']; ?>
+				</button>
+				
+			</div>
 
 			<?php
 			echo "</form>";

@@ -16,8 +16,8 @@
 
         $( sel[0] ).on( 'submit', function( e ) {
             e.preventDefault();
-            $(this).find('.mailchimp-submit').text(loadingText);
-            var data = $( sel[0] ).find( '.mailchimp-field input' ).serialize() + "&list=" + mcList;
+            $(this).find('.mailchimp-submit .mt-form-control').text(loadingText);
+            var data = $( sel[0] ).find( 'input' ).serialize() + "&list=" + mcList;
             $.ajax({
                 url: MightyAddons.ajaxUrl,
                 type: 'post',
@@ -35,7 +35,7 @@
                     } else {
                         $( sel[0] ).append('<p class="mailchimp-message mailchimp-success">' + successMsg + '</p>');
                     }
-                    $( sel[0] ).find('.mailchimp-submit').text(buttonText);
+                    $( sel[0] ).find('.mailchimp-submit .mt-form-control').text(buttonText);
                 },
                 error: function() {
                     $( sel[0] ).append('<p class="mailchimp-message mailchimp-error">' + errorMsg + '</p>');

@@ -1,15 +1,37 @@
-.mighty-mailchimp-wrapper .mailchimp-field .icon-before {
+.mighty-mailchimp-wrapper .mailchimp-submit.icon-before {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.mighty-mailchimp-wrapper .mailchimp-field .icon-after {
+.mighty-mailchimp-wrapper .mailchimp-submit.icon-after {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
 }
 
-.mighty-mailchimp-wrapper label {
-    display: inline-block;
+.mighty-mailchimp-wrapper .mighty-maichimp-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.mighty-mailchimp-wrapper .mighty-maichimp-form .mt-form-group {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.mighty-mailchimp-wrapper .mighty-maichimp-form .mt-label-control {
+    display: block;
+}
+
+.mighty-mailchimp-wrapper .mighty-maichimp-form .mt-form-control {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mighty-mailchimp-wrapper .mighty-maichimp-form .mailchimp-submit {
+    margin-top: 10px;
 }
