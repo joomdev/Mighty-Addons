@@ -44,6 +44,17 @@ class Mighty_Elementor {
             null,
             MIGHTY_ADDONS_VERSION
 		);
+
+		wp_enqueue_style( 'mighty-icons' );
+
+		$short_name = HelperFunctions::get_white_label('plugin_short_name');
+		if ( '' !== $short_name ) {
+			$custom_css = "
+				.elementor-element [class*='mf-']:after {
+					content: '{$short_name}';
+				}";
+			wp_add_inline_style( 'mighty-icons', $custom_css );
+		}
 	}
 
 	public function mt_enqueue_styles() {

@@ -191,10 +191,10 @@ class HelperFunctions {
             'author'                    => 'MightyThemes',
             'author_url'                => 'https://mightythemes.com',
             'plugin_name'               => 'Mighty Addons',
-            'plugin_short_name'         => 'mighty',
+            'plugin_short_name'         => 'MA',
             'plugin_description'        => 'Mighty Addons is a Powerful Elementor Widget Plugin that comes with advanced & flexible features powering up your Elementor website and increasing your designing experience.',
             'pro_plugin_name'           => 'Mighty Addons Pro',
-            'pro_plugin_short_name'     => 'mighty',
+            'pro_plugin_short_name'     => 'MAP',
             'pro_plugin_description'    => 'Mighty Addons Pro is a Powerful Elementor Widget Pro Plugin that gives you power to do more.',
             'hide_option'               => 'off',
         ];

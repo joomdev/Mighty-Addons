@@ -92,3 +92,19 @@
 .elementor-panel-category-items .elementor-element-wrapper .elementor-element:hover .icon .mf {
 	color: #350079;
 }
+
+.elementor-element [class*="mf-"]:after {
+	content: "MT";
+	background: transparent;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	font-size: 10px;
+	padding: 2px 4px;
+	color: #465f71;
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: #d1dde6;
+	font-family: Roboto, Helvetica, sans-serif;
+}
