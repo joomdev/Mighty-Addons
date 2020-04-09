@@ -42,6 +42,9 @@
                     }
 
                     $( form ).find('.mailchimp-submit .mt-form-control').text(buttonText);
+
+                    // Clearing after submission
+                    $( form ).find('input').val('');
                 },
                 error: function() {
                     $( form ).append('<p class="mailchimp-message mailchimp-error">' + errorMsg + '</p>');
