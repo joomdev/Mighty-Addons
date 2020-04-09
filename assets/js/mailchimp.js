@@ -12,12 +12,13 @@
             var link = sel.data( 'link' );
             var external = sel.data( 'external' );
             var nofollow = sel.data( 'nofollow' );
-		}
+        }
+        var form = sel[0];
 
-        $( sel[0] ).on( 'submit', function( e ) {
+        $( form ).on( 'submit', function( e ) {
             e.preventDefault();
             $(this).find('.mailchimp-submit .mt-form-control').text(loadingText);
-            var data = $( sel[0] ).find( 'input' ).serialize() + "&list=" + mcList;
+            var data = $( form ).find( 'input' ).serialize() + "&list=" + mcList;
             $.ajax({
                 url: MightyAddons.ajaxUrl,
                 type: 'post',
@@ -32,15 +33,23 @@
                         } else {
                             window.location = link;
                         }
-                    } else {
-                        $( sel[0] ).append('<p class="mailchimp-message mailchimp-success">' + successMsg + '</p>');
                     }
-                    $( sel[0] ).find('.mailchimp-submit .mt-form-control').text(buttonText);
+                    
+                    if ( $( form ).find('.mailchimp-message').length ) {
+                        $( form ).find('.mailchimp-message').text( successMsg );
+                    } else {
+                        $( form ).append('<p class="mailchimp-message mailchimp-success">' + successMsg + '</p>');
+                    }
+
+                    $( form ).find('.mailchimp-submit .mt-form-control').text(buttonText);
                 },
                 error: function() {
-                    $( sel[0] ).append('<p class="mailchimp-message mailchimp-error">' + errorMsg + '</p>');
+                    $( form ).append('<p class="mailchimp-message mailchimp-error">' + errorMsg + '</p>');
                 }
             });
+            setTimeout( () => {
+                $( form ).find('.mailchimp-message').remove();
+            }, 5000 );
         });
     };
 
