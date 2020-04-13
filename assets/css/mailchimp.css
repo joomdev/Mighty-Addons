@@ -1,13 +1,16 @@
-.mighty-mailchimp-wrapper .mailchimp-submit.icon-before {
+.mighty-mailchimp-wrapper .mailchimp-submit .mt-form-submit {
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.mighty-mailchimp-wrapper .mailchimp-submit .icon-before {
     display: flex;
     flex-direction: row;
-    justify-content: center;
 }
 
-.mighty-mailchimp-wrapper .mailchimp-submit.icon-after {
+.mighty-mailchimp-wrapper .mailchimp-submit .icon-after {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
 }
 
 .mighty-mailchimp-wrapper .mighty-maichimp-form {

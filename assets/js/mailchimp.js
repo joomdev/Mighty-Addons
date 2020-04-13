@@ -8,6 +8,16 @@
         var submitAction = sel.data( 'after-submission' );
         var buttonText = sel.data( 'button-text' );
         var loadingText = sel.data( 'loading-text' );
+        var enableBtnIcon = sel.data( 'enable-icon' );
+        if ( enableBtnIcon ) {
+            var buttonIcon = sel.data( 'button-icon' );
+        }
+        var btnText;
+        if ( enableBtnIcon ) {
+            btnText = "<span class='submit-icon'><i aria-hidden='true' class='" + buttonIcon + "'></i></span> " + buttonText;
+        } else {
+            btnText = buttonText;
+        }
         if ( submitAction == "different" ) {
             var link = sel.data( 'link' );
             var external = sel.data( 'external' );
@@ -17,7 +27,7 @@
 
         $( form ).on( 'submit', function( e ) {
             e.preventDefault();
-            $(this).find('.mailchimp-submit .mt-form-control').text(loadingText);
+            $(this).find('.mailchimp-submit .mt-form-submit').text(loadingText);
             var data = $( form ).find( 'input' ).serialize() + "&list=" + mcList;
             $.ajax({
                 url: MightyAddons.ajaxUrl,
@@ -41,7 +51,7 @@
                         $( form ).append('<p class="mailchimp-message mailchimp-success">' + successMsg + '</p>');
                     }
 
-                    $( form ).find('.mailchimp-submit .mt-form-control').text(buttonText);
+                    $( form ).find('.mailchimp-submit .mt-form-submit').html( btnText );
 
                     // Clearing after submission
                     $( form ).find('input').val('');

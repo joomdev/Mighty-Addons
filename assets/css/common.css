@@ -56,21 +56,21 @@
 
 /* Button Sizes */
 .ma-btn-sm {
-    padding: 0.25rem 0.5rem !important;
-    font-size: 0.875rem !important;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
     line-height: 1.5 !important;
     border-radius: 0.2rem;
 }
 
 .ma-btn-md {
-    font-size: 1rem !important;
+    font-size: 1rem;
     line-height: 1.6 !important;
     border-radius: 0.4rem;
 }
 
 .ma-btn-lg {
-    padding: 0.5rem 1rem !important;
-    font-size: 1.25rem !important;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
     line-height: 1.5 !important;
     border-radius: 0.3rem;
 }

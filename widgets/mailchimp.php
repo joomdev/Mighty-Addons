@@ -140,7 +140,7 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
-					'default' => __( '50', 'mighty' ),
+					'default' => __( '100', 'mighty' ),
 					'selectors' => [
 						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-email' => 'flex: 0 0 {{VALUE}}%;
 						max-width: {{VALUE}}%;'
@@ -219,7 +219,7 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
-					'default' => __( '50', 'mighty' ),
+					'default' => __( '100', 'mighty' ),
 					'selectors' => [
 						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-fname' => 'width: {{VALUE}}%'
 					],
@@ -314,7 +314,7 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
-					'default' => __( '50', 'mighty' ),
+					'default' => __( '100', 'mighty' ),
 					'selectors' => [
 						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-lname' => 'width: {{VALUE}}%'
 					],
@@ -436,7 +436,7 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100' => __( '100%', 'mighty' ),
 					],
-					'default' => __( '50', 'mighty' ),
+					'default' => __( '100', 'mighty' ),
 					'selectors' => [
 						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit' => 'width: {{VALUE}}%'
 					],
@@ -453,7 +453,7 @@ class MT_Mailchimp extends Widget_Base {
 						'ma-btn-md'  => __( 'Medium', 'mighty' ),
 						'ma-btn-lg'  => __( 'Large', 'mighty' )
 					],
-					'default' => 'ma-btn-md'
+					'default' => 'ma-btn-lg'
 				]
 			);
 
@@ -473,10 +473,6 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'label' => __( 'Icon', 'mighty' ),
 					'type' => Controls_Manager::ICONS,
-					'default' => [
-						'value' => 'fas fa-star',
-						'library' => 'solid',
-					],
 					'condition' => [
 						'enable_icon' => 'yes'
 					]
@@ -517,8 +513,8 @@ class MT_Mailchimp extends Widget_Base {
 						'size' => 10,
 					],
 					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit.icon-before .submit-icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit.icon-after .submit-icon' => 'margin-left: {{SIZE}}{{UNIT}}'
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit .icon-before .submit-icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit .icon-after .submit-icon' => 'margin-left: {{SIZE}}{{UNIT}}'
 					],
 					'condition' => [
 						'enable_icon' => 'yes'
@@ -903,6 +899,7 @@ class MT_Mailchimp extends Widget_Base {
 							'selectors' => [
 								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button' => 'background-color: {{VALUE}}',
 							],
+							'default' => '#61CE70'
 						]
 					);
 
@@ -914,6 +911,7 @@ class MT_Mailchimp extends Widget_Base {
 							'selectors' => [
 								'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button' => 'color: {{VALUE}}',
 							],
+							'default' => '#FFFFFF'
 						]
 					);
 
@@ -1069,7 +1067,7 @@ class MT_Mailchimp extends Widget_Base {
 			// Fields ordering
 			$ordering =  [ 'email' => $settings['email_ordering'], 'fname' => $settings['fname_ordering'], 'lname' => $settings['lname_ordering'] ];
 			asort($ordering);
-
+			
 			$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
 			$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
 			$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
@@ -1077,6 +1075,10 @@ class MT_Mailchimp extends Widget_Base {
 			$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
 			$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
 			$this->add_render_attribute( 'mt-mailchimp', 'data-after-submission', $settings['after_submission'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-enable-icon', $settings['enable_icon'] );
+			if ( $settings['enable_icon'] == "yes" ) {
+				$this->add_render_attribute( 'mt-mailchimp', 'data-button-icon', $settings['button_icon']['value'] );
+			}
 			$this->add_render_attribute( 'mt-mailchimp', 'data-button-text', $settings['button_text'] );
 			$this->add_render_attribute( 'mt-mailchimp', 'data-loading-text', $settings['loading_text'] );
 			if ( $settings['after_submission'] == "different" ) {
@@ -1126,15 +1128,15 @@ class MT_Mailchimp extends Widget_Base {
 			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
 			<div class="mt-form-group mailchimp-terms">
 				
-				<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="mt-form-control" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
+				<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
 				
-				<label class="mt-label-control" for="terms-<?php echo $this->get_id(); ?>"><?php echo $settings['terms_label']; ?></label>
+				<label class="" for="terms-<?php echo $this->get_id(); ?>"><?php echo $settings['terms_label']; ?></label>
 			</div>
 			<?php endif; ?>
 
 			<div class="mt-form-group mailchimp-submit">
 				
-				<button class="mt-form-control<?php echo " elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
+				<button class="mt-form-submit<?php echo " elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
 					<?php if ( $settings['enable_icon'] == "yes" ) : ?>
 					<span class="submit-icon">
 						<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
