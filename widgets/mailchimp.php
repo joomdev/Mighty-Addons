@@ -691,7 +691,7 @@ class MT_Mailchimp extends Widget_Base {
 						],
 					],
 					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-left: {{SIZE}}{{UNIT}};'
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: {{SIZE}}{{UNIT}}'
 					],
 				]
 			);
