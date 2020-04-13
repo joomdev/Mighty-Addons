@@ -678,20 +678,17 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'label' => __( 'Columns Gap', 'mighty' ),
 					'type' =>  Controls_Manager::SLIDER,
-					'size_units' => [ 'px', '%' ],
+					'size_units' => [ 'px' ],
 					'range' => [
 						'px' => [
 							'min' => 0,
-							'max' => 1000,
-							'step' => 5,
-						],
-						'%' => [
-							'min' => 0,
 							'max' => 100,
+							'step' => 1,
 						],
 					],
 					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: {{SIZE}}{{UNIT}}'
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mt-form-group' => 'padding-right: calc( {{SIZE}}{{UNIT}}/2 ); padding-left: calc( {{SIZE}}{{UNIT}}/2 );',
+						'{{WRAPPER}} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-left: calc( -{{SIZE}}{{UNIT}}/2 ); margin-right: calc( -{{SIZE}}{{UNIT}}/2 );',
 					],
 				]
 			);
@@ -701,20 +698,17 @@ class MT_Mailchimp extends Widget_Base {
 				[
 					'label' => __( 'Rows Gap', 'mighty' ),
 					'type' =>  Controls_Manager::SLIDER,
-					'size_units' => [ 'px', '%' ],
+					'size_units' => [ 'px' ],
 					'range' => [
 						'px' => [
 							'min' => 0,
-							'max' => 1000,
-							'step' => 5,
-						],
-						'%' => [
-							'min' => 0,
 							'max' => 100,
+							'step' => 1,
 						],
 					],
 					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-top: {{SIZE}}{{UNIT}};margin-bottom: {{SIZE}}{{UNIT}};'
+						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mt-form-group' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .mighty-mailchimp-wrapper .mighty-maichimp-form' => 'margin-bottom: -{{SIZE}}{{UNIT}};',
 					],
 				]
 			);
