@@ -725,17 +725,13 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'label' => __( 'Spacing', 'mighty' ),
 							'type' =>  Controls_Manager::SLIDER,
-							'size_units' => [ 'px', '%' ],
+							'size_units' => [ 'px' ],
 							'range' => [
 								'px' => [
 									'min' => 0,
-									'max' => 1000,
-									'step' => 5,
-								],
-								'%' => [
-									'min' => 0,
 									'max' => 100,
-								],
+									'step' => 1,
+								]
 							],
 							'default' => [
 								'unit' => 'px',
@@ -928,7 +924,7 @@ class MT_Mailchimp extends Widget_Base {
 						[
 							'name' => 'button_border',
 							'label' => __( 'Border', 'mighty' ),
-							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form button',
+							'selector' => '{{ WRAPPER }} .mighty-mailchimp-wrapper .mighty-maichimp-form .mailchimp-submit button',
 						]
 					);
 

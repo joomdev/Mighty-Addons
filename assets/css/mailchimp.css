@@ -2,6 +2,7 @@
     justify-content: center;
     width: 100%;
     box-sizing: border-box;
+    border-style: none;
 }
 .mighty-mailchimp-wrapper .mailchimp-submit .icon-before {
     display: flex;

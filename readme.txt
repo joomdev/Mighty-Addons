@@ -7,7 +7,7 @@ Tags: elementor, elementor extensions, progress bar, elementor addons, elementor
 Requires at least: 4.0 or higher
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable Tag: 1.3.3
+Stable Tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,8 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 8. **[MT Gradient Heading](https://demo.mightythemes.com/mighty-addons/mt-gradient-heading/)** - Create an eye-catching gradient heading with the help of MT Gradient Heading. You can apply different gradient colors and angles, styles and positions. 
 9. **[MT Flip Box Widget](https://demo.mightythemes.com/mighty-addons/mt-flip-box/)** - MT Flip Box Widget comes with different interactive flipping effects. This widget can be used as a banner, for listing your company's services, and much more uses.
 10. **[MT Opening Hours](https://demo.mightythemes.com/mighty-addons/mt-opening-hours/)** - Display your working hours on the website and customize the section to meet the theme design. 
+11. **[MT Contact Form 7 Styler](#)** - Display your contact forms in a jiffy by selecting from the list and start styling and personalizing the form as you like.
+12. **[MT Mailchimp](#)** - Grow your audience with a subscriber form. Create and display a Mailchimp form that matches your website’s brand, so you can attract new contacts and boost engagement. Choose the list to segment your audience in different lists.
 
 We are working on more Elementor Widgets, and they will be updated soon. Still, you have any specific widget or feature request, feel free to **[get in touch with us.](https://mightythemes.com/contact/)** 
 
@@ -145,6 +147,11 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 
 
 == Changelog ==
+
+### 1.3.4
+* Added: Mailchimp widget
+* Fixed: Issue while fetching Pixabay pictures
+* Fixed: Zoom Out Effect in Flip Box Widget
 
 = 1.3.3 =
 * Added: Pagination for Pixabay giving you lot more options to choose from
