@@ -152,11 +152,12 @@ class MT_Mailchimp extends Widget_Base {
 			$this->add_control(
 				'enable_first_name',
 				[
-					'label' => __( 'Enable First Name', 'mighty' ),
+					'label' => __( 'First Name', 'mighty' ),
 					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
+					'separator' => 'before',
 				]
 			);
 
@@ -247,11 +248,12 @@ class MT_Mailchimp extends Widget_Base {
 			$this->add_control(
 				'enable_last_name',
 				[
-					'label' => __( 'Enable Last Name', 'mighty' ),
+					'label' => __( 'Last Name', 'mighty' ),
 					'type' => Controls_Manager::SWITCHER,
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
+					'separator' => 'before',
 				]
 			);
 
@@ -347,6 +349,7 @@ class MT_Mailchimp extends Widget_Base {
 					'label_on' => __( 'Enable', 'mighty' ),
 					'label_off' => __( 'Disable', 'mighty' ),
 					'return_value' => 'yes',
+					'separator' => 'before'
 				]
 			);
 
@@ -1123,10 +1126,10 @@ class MT_Mailchimp extends Widget_Base {
 
 			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
 			<div class="mt-form-group mailchimp-terms">
-				
-				<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
-				
-				<label class="" for="terms-<?php echo $this->get_id(); ?>"><?php echo $settings['terms_label']; ?></label>
+				<label class="" for="terms-<?php echo $this->get_id(); ?>">
+					<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
+					<?php echo $settings['terms_label']; ?>
+				</label>
 			</div>
 			<?php endif; ?>
 
