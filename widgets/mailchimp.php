@@ -90,6 +90,20 @@ class MT_Mailchimp extends Widget_Base {
 			]
 		);
 
+			$this->add_responsive_control(
+				'email_ordering',
+				[
+					'label' => __( 'Email Ordering', 'mighty' ),
+					'type' => Controls_Manager::SELECT,
+					'options' => [
+						'1'  => __( '1', 'mighty' ),
+						'2'  => __( '2', 'mighty' ),
+						'3'  => __( '3', 'mighty' ),
+					],
+					'default' => __( '1', 'mighty' )
+				]
+			);
+
 			$this->add_control(
 				'email_label',
 				[
@@ -146,10 +160,27 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
+			$this->add_responsive_control(
+				'fname_ordering',
+				[
+					'label' => __( 'First Name Ordering', 'mighty' ),
+					'type' => Controls_Manager::SELECT,
+					'options' => [
+						'1'  => __( '1', 'mighty' ),
+						'2'  => __( '2', 'mighty' ),
+						'3'  => __( '3', 'mighty' ),
+					],
+					'default' => __( '2', 'mighty' ),
+					'condition' => [
+						'enable_first_name' => 'yes'
+					]
+				]
+			);
+
 			$this->add_control(
 				'fname_label',
 				[
-					'label' => __( 'First Name', 'mighty' ),
+					'label' => __( 'First Name	Label', 'mighty' ),
 					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Type your First Name', 'mighty' ),
 					'default' => __( 'First Name', 'mighty' ),
@@ -224,10 +255,27 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
+			$this->add_responsive_control(
+				'lname_ordering',
+				[
+					'label' => __( 'Last Name Ordering', 'mighty' ),
+					'type' => Controls_Manager::SELECT,
+					'options' => [
+						'1'  => __( '1', 'mighty' ),
+						'2'  => __( '2', 'mighty' ),
+						'3'  => __( '3', 'mighty' ),
+					],
+					'default' => __( '3', 'mighty' ),
+					'condition' => [
+						'enable_last_name' => 'yes'
+					]
+				]
+			);
+
 			$this->add_control(
 				'lname_label',
 				[
-					'label' => __( 'Last Name', 'mighty' ),
+					'label' => __( 'Last Name Label', 'mighty' ),
 					'type' => Controls_Manager::TEXT,
 					'placeholder' => __( 'Type your Last Name', 'mighty' ),
 					'default' => __( 'Last Name', 'mighty' ),
@@ -1024,6 +1072,9 @@ class MT_Mailchimp extends Widget_Base {
 		}
 		
 		if ( ! empty( $settings['mailchimp_list'] ) ) {
+			// Fields ordering
+			$ordering =  [ 'email' => $settings['email_ordering'], 'fname' => $settings['fname_ordering'], 'lname' => $settings['lname_ordering'] ];
+			asort($ordering);
 
 			$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
 			$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
@@ -1042,31 +1093,41 @@ class MT_Mailchimp extends Widget_Base {
 			
 			echo "<div class='mighty-mailchimp-wrapper'>";
 			echo "<form method='post' " . $this->get_render_attribute_string('mt-mailchimp') . ">";
+
 			?>
 
-			<div class="mt-form-group mailchimp-email">
-				<label class="mt-label-control" for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label>
-				
-				<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mt-form-control" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
-				
-			</div>
-
-			<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
-			<div class="mt-form-group mailchimp-fname">
-				<label class="mt-label-control" for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label>
-				
-				<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mt-form-control" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
-				
-			</div>
-			<?php endif; ?>
-
-			<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
-			<div class="mt-form-group mailchimp-lname">
-				<label class="mt-label-control" for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label>
-				
-				<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mt-form-control" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
-			</div>
-			<?php endif; ?>
+			<?php 
+			foreach ( $ordering as $field => $order ) :
+				if ( $field == "email" ) { ?>
+					<div class="mt-form-group mailchimp-email">
+						<label class="mt-label-control" for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label>
+						
+						<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mt-form-control" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
+						
+					</div>
+				<?php
+				}
+				elseif ( $field == "fname" ) { ?>
+					<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
+					<div class="mt-form-group mailchimp-fname">
+						<label class="mt-label-control" for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label>
+						<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mt-form-control" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
+					</div>
+					<?php endif; ?>
+				<?php
+				}
+				elseif ( $field == "lname" ) { ?>
+					<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
+					<div class="mt-form-group mailchimp-lname">
+						<label class="mt-label-control" for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label>
+						
+						<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mt-form-control" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
+					</div>
+					<?php endif; ?>
+				<?php
+				}
+			endforeach;
+			?>
 
 			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
 			<div class="mt-form-group mailchimp-terms">
