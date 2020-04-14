@@ -90,7 +90,7 @@ class MT_Mailchimp extends Widget_Base {
 			]
 		);
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'email_ordering',
 				[
 					'label' => __( 'Email Ordering', 'mighty' ),
@@ -140,11 +140,7 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100'  => __( '100%', 'mighty' ),
 					],
-					'default' => __( '100', 'mighty' ),
-					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-email' => 'flex: 0 0 {{VALUE}}%;
-						max-width: {{VALUE}}%;'
-					]
+					'default' => __( '100', 'mighty' )
 				]
 			);
 
@@ -161,7 +157,7 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'fname_ordering',
 				[
 					'label' => __( 'First Name Ordering', 'mighty' ),
@@ -221,9 +217,6 @@ class MT_Mailchimp extends Widget_Base {
 						'100'  => __( '100%', 'mighty' ),
 					],
 					'default' => __( '100', 'mighty' ),
-					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-fname' => 'width: {{VALUE}}%'
-					],
 					'condition' => [
 						'enable_first_name' => 'yes'
 					]
@@ -257,7 +250,7 @@ class MT_Mailchimp extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'lname_ordering',
 				[
 					'label' => __( 'Last Name Ordering', 'mighty' ),
@@ -317,9 +310,6 @@ class MT_Mailchimp extends Widget_Base {
 						'100'  => __( '100%', 'mighty' ),
 					],
 					'default' => __( '100', 'mighty' ),
-					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-lname' => 'width: {{VALUE}}%'
-					],
 					'condition' => [
 						'enable_last_name' => 'yes'
 					]
@@ -423,7 +413,7 @@ class MT_Mailchimp extends Widget_Base {
 			);
 
 			$this->add_responsive_control(
-				'button_column_width',
+				'submit_column_width',
 				[
 					'label' => __( 'Submit Column Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
@@ -439,10 +429,7 @@ class MT_Mailchimp extends Widget_Base {
 						'80'  => __( '80%', 'mighty' ),
 						'100' => __( '100%', 'mighty' ),
 					],
-					'default' => __( '100', 'mighty' ),
-					'selectors' => [
-						'{{ WRAPPER }} .mighty-mailchimp-wrapper .mailchimp-submit' => 'width: {{VALUE}}%'
-					],
+					'default' => __( '100', 'mighty' )
 				]
 			);
 
@@ -1085,6 +1072,26 @@ class MT_Mailchimp extends Widget_Base {
 				$this->add_render_attribute( 'mt-mailchimp', 'data-external', $settings['page_link']['is_external'] );
 				$this->add_render_attribute( 'mt-mailchimp', 'data-nofollow', $settings['page_link']['nofollow'] );
 			}
+
+			// Email Column Width
+			$this->add_render_attribute( 'email-width', 'class', 'mt-form-group mailchimp-email mt-col-' . $settings['email_column_width'] );
+			( ! empty( $settings['email_column_width_tablet'] ) ? $this->add_render_attribute( 'email-width', 'class', 'mt-col-md-' . $settings['email_column_width_tablet'] ) : '' );
+			( ! empty( $settings['email_column_width_mobile'] ) ? $this->add_render_attribute( 'email-width', 'class', 'mt-col-sm-' . $settings['email_column_width_mobile'] ) : '' );
+
+			// Fname Column Width
+			$this->add_render_attribute( 'fname-width', 'class', 'mt-form-group mailchimp-fname mt-col-' . $settings['fname_column_width'] );
+			( ! empty( $settings['fname_column_width_tablet'] ) ? $this->add_render_attribute( 'fname-width', 'class', 'mt-col-md-' . $settings['fname_column_width_tablet'] ) : '' );
+			( ! empty( $settings['fname_column_width_mobile'] ) ? $this->add_render_attribute( 'fname-width', 'class', 'mt-col-sm-' . $settings['fname_column_width_mobile'] ) : '' );
+
+			// Lname Column Width
+			$this->add_render_attribute( 'lname-width', 'class', 'mt-form-group mailchimp-lname mt-col-' . $settings['lname_column_width'] );
+			( ! empty( $settings['lname_column_width_tablet'] ) ? $this->add_render_attribute( 'lname-width', 'class', 'mt-col-md-' . $settings['lname_column_width_tablet'] ) : '' );
+			( ! empty( $settings['lname_column_width_mobile'] ) ? $this->add_render_attribute( 'lname-width', 'class', 'mt-col-sm-' . $settings['lname_column_width_mobile'] ) : '' );
+
+			// Submit Column Width
+			$this->add_render_attribute( 'submit-width', 'class', 'mt-form-group mailchimp-submit mt-col-' . $settings['submit_column_width'] );
+			( ! empty( $settings['submit_column_width_tablet'] ) ? $this->add_render_attribute( 'submit-width', 'class', 'mt-col-md-' . $settings['submit_column_width_tablet'] ) : '' );
+			( ! empty( $settings['submit_column_width_mobile'] ) ? $this->add_render_attribute( 'submit-width', 'class', 'mt-col-sm-' . $settings['submit_column_width_mobile'] ) : '' );
 			
 			echo "<div class='mighty-mailchimp-wrapper'>";
 			echo "<form method='post' " . $this->get_render_attribute_string('mt-mailchimp') . ">";
@@ -1094,7 +1101,7 @@ class MT_Mailchimp extends Widget_Base {
 			<?php 
 			foreach ( $ordering as $field => $order ) :
 				if ( $field == "email" ) { ?>
-					<div class="mt-form-group mailchimp-email">
+					<div <?php echo $this->get_render_attribute_string('email-width') ?>>
 						<label class="mt-label-control" for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label>
 						
 						<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mt-form-control" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
@@ -1104,7 +1111,7 @@ class MT_Mailchimp extends Widget_Base {
 				}
 				elseif ( $field == "fname" ) { ?>
 					<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
-					<div class="mt-form-group mailchimp-fname">
+					<div <?php echo $this->get_render_attribute_string('fname-width') ?>>
 						<label class="mt-label-control" for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label>
 						<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mt-form-control" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
 					</div>
@@ -1113,7 +1120,7 @@ class MT_Mailchimp extends Widget_Base {
 				}
 				elseif ( $field == "lname" ) { ?>
 					<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
-					<div class="mt-form-group mailchimp-lname">
+					<div <?php echo $this->get_render_attribute_string('lname-width') ?>>
 						<label class="mt-label-control" for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label>
 						
 						<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mt-form-control" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
@@ -1133,8 +1140,7 @@ class MT_Mailchimp extends Widget_Base {
 			</div>
 			<?php endif; ?>
 
-			<div class="mt-form-group mailchimp-submit">
-				
+			<div <?php echo $this->get_render_attribute_string('submit-width') ?>>				
 				<button class="mt-form-submit<?php echo " elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
 					<?php if ( $settings['enable_icon'] == "yes" ) : ?>
 					<span class="submit-icon">
@@ -1143,7 +1149,6 @@ class MT_Mailchimp extends Widget_Base {
 					<?php endif; ?>
 					<?php echo $settings['button_text']; ?>
 				</button>
-				
 			</div>
 
 			<?php
