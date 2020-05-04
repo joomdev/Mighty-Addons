@@ -5,7 +5,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons/
 Contributors: mightythemes1
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements
 Requires at least: 4.0 or higher
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
 Stable Tag: 1.3.4
 License: GPLv2 or later

@@ -54,3 +54,8 @@
 .mighty-accordion .mt-panel .accordion .mt-accordion-title {
     font-weight: 500;
 }
+
+.mighty-accordion .mt-panel .accordion .mt-accordion-title svg,
+.mighty-accordion .mt-panel .accordion .mt-accordion-title i {
+    vertical-align: middle;
+}

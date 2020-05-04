@@ -334,9 +334,31 @@ class MT_Accordion extends Widget_Base {
             );
 
             $this->add_responsive_control(
-                'icon_size',
+                'primary_icon_size',
                 [
-                    'label' => __( 'Font Size', 'mighty' ),
+                    'label' => __( 'Primary Icon Size', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+						'unit' => 'px',
+						'size' => 15,
+					],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title svg' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'secondary_icon_size',
+                [
+                    'label' => __( 'Secondary Icon Size', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'range' => [
                         'px' => [
@@ -376,9 +398,31 @@ class MT_Accordion extends Widget_Base {
             );
 
             $this->add_responsive_control(
-                'icon_spacing',
+                'primary_icon_spacing',
                 [
-                    'label' => __( 'Spacing', 'mighty' ),
+                    'label' => __( 'Primary Icon Spacing', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+						'unit' => 'px',
+						'size' => 5,
+					],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'secondary_icon_spacing',
+                [
+                    'label' => __( 'Secondary Icon Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'range' => [
                         'px' => [
@@ -649,12 +693,9 @@ class MT_Accordion extends Widget_Base {
             <?php
             foreach (  $settings['tabs'] as $index => $tab ) :
                 $tabId = substr( $this->get_id_int(), 0, 3 ) . $index+1;
-                
-                $mainAccordionIcon = '<i aria-hidden="true" class="accordion-icon-main ' . $tab['accordion_main_icon']['value'].'"></i>';
+
                 $accordionIcon = '<i aria-hidden="true" class="accordion-icon fas ' . $openAccordionIcon .'"></i>';
                 $accordionActiveIcon = '<i aria-hidden="true" class="accordion-active-icon fas ' . $closeAccordionIcon .'"></i>';
-                
-
             ?>
                 <div <?php echo $faqSchema ? 'itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" ' : ''; ?> class="mt-panel elementor-repeater-item-<?php echo $tab['_id']; ?>">
                     <div class="accordion accordion-<?php echo $tabId; ?><?php echo $firstActive; ?> <?php echo $settings['icon_align'] == "left" ? 'icons-left' : 'icons-right'; ?>">
@@ -667,7 +708,13 @@ class MT_Accordion extends Widget_Base {
                         <?php } ?>
 
                         <<?php echo $titleTag; ?><?php echo $faqSchema ? ' itemprop="name"' : ''; ?> class="mt-accordion-title">
-                            <?php echo $mainAccordionIcon; ?>
+                            <?php
+                            if ( $tab['accordion_main_icon']['library'] == "svg" ) {
+                                Icons_Manager::render_icon( $tab['accordion_main_icon'], [ 'aria-hidden' => 'true' ] );
+                            } elseif ( substr_count($tab['accordion_main_icon']['library'], "fa-") ) {
+                                echo '<i aria-hidden="true" class="accordion-icon-main ' . $tab['accordion_main_icon']['value'].'"></i>';
+                            }
+                            ?>
                             <?php echo $tab['accordion_title']; ?>
                         </<?php echo $titleTag; ?>>
                         
