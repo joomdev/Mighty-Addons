@@ -3,6 +3,7 @@
     var WidgetMailchimpHandler = function ( $scope, $ ) {
         var sel = $scope.find( '.mighty-maichimp-form' );
         var mcList = sel.data( 'mclist' );
+        var mcKey = sel.data( 'mckey' );
         var successMsg = sel.data( 'success-msg' );
         var errorMsg = sel.data( 'error-msg' );
         var submitAction = sel.data( 'after-submission' );
@@ -27,39 +28,43 @@
 
         $( form ).on( 'submit', function( e ) {
             e.preventDefault();
-            $(this).find('.mailchimp-submit .mt-form-submit').text(loadingText);
-            var data = $( form ).find( 'input' ).serialize() + "&list=" + mcList;
-            $.ajax({
-                url: MightyAddons.ajaxUrl,
-                type: 'post',
-                data: {
-                    action: MightyAddons.mailchimpAction,
-                    fields: data,
-                },
-                success: function() {
-                    if ( submitAction == "different" ) {
-                        if ( external ) {
-                            window.open(link, '_blank');
-                        } else {
-                            window.location = link;
+            if ( mcKey ) {
+                $(this).find('.mailchimp-submit .mt-form-submit').text(loadingText);
+                var data = $( form ).find( 'input' ).serialize() + "&list=" + mcList;
+                $.ajax({
+                    url: MightyAddons.ajaxUrl,
+                    type: 'post',
+                    data: {
+                        action: MightyAddons.mailchimpAction,
+                        fields: data,
+                    },
+                    success: function() {
+                        if ( submitAction == "different" ) {
+                            if ( external ) {
+                                window.open(link, '_blank');
+                            } else {
+                                window.location = link;
+                            }
                         }
-                    }
-                    
-                    if ( $( form ).find('.mailchimp-message').length ) {
-                        $( form ).find('.mailchimp-message').text( successMsg );
-                    } else {
-                        $( form ).append('<p class="mailchimp-message mailchimp-success">' + successMsg + '</p>');
-                    }
+                        
+                        if ( $( form ).find('.mailchimp-message').length ) {
+                            $( form ).find('.mailchimp-message').text( successMsg );
+                        } else {
+                            $( form ).append('<p class="mailchimp-message mailchimp-success">' + successMsg + '</p>');
+                        }
 
-                    $( form ).find('.mailchimp-submit .mt-form-submit').html( btnText );
+                        $( form ).find('.mailchimp-submit .mt-form-submit').html( btnText );
 
-                    // Clearing after submission
-                    $( form ).find('input').val('');
-                },
-                error: function() {
-                    $( form ).append('<p class="mailchimp-message mailchimp-error">' + errorMsg + '</p>');
-                }
-            });
+                        // Clearing after submission
+                        $( form ).find('input').val('');
+                    },
+                    error: function() {
+                        $( form ).append('<p class="mailchimp-message mailchimp-error">' + errorMsg + '</p>');
+                    }
+                });
+            } else {
+                $( form ).append('<p class="mailchimp-message mailchimp-info">You need to select the Mailchimp list to make it work.</p>');
+            }
             setTimeout( () => {
                 $( form ).find('.mailchimp-message').remove();
             }, 5000 );

@@ -67,19 +67,17 @@ class MT_Mailchimp extends Widget_Base {
 						'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 					]
 				);
-				
-				return;
+			} else {
+				$this->add_control(
+					'mailchimp_list',
+					[
+						'label' => __( 'Choose List', 'mighty' ),
+						'type' => Controls_Manager::SELECT,
+						'options' => array_merge( array( 0 => 'Select a List'), Helper::mailchimpLists() ),
+						'default' => '0'
+					]
+				);
 			}
-
-			$this->add_control(
-				'mailchimp_list',
-				[
-					'label' => __( 'Choose List', 'mighty' ),
-					'type' => Controls_Manager::SELECT,
-					'options' => array_merge( array( 0 => 'Select a List'), Helper::mailchimpLists() ),
-					'default' => '0'
-				]
-			);
 
 		$this->end_controls_section();
 
@@ -1045,8 +1043,9 @@ class MT_Mailchimp extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 
 		if( ! Helper::get_integration_option('mailchimp-key') || empty( $settings['mailchimp_list'] ) ) {
-			echo "<h3 align='center'> Choose a Mailchimp list to get started. </h3>";
-			return;
+			$mcKey = "false";
+		} else {
+			$mcKey = "true";
 		}
 		
 		if ( ! empty( $settings['mailchimp_list'] ) ) {
@@ -1058,6 +1057,7 @@ class MT_Mailchimp extends Widget_Base {
 			$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
 			$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
 			$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', $settings['mailchimp_list'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-mckey', $mcKey );
 			$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
 			$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
 			$this->add_render_attribute( 'mt-mailchimp', 'data-after-submission', $settings['after_submission'] );
