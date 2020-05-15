@@ -192,6 +192,11 @@ class Mighty_Elementor {
 			MIGHTY_ADDONS_VERSION,
 			true
 		);
+		
+		wp_localize_script( 'mt-xs-cp', 'xscp', array(
+			'saveEndpoint' => 'https://api.mightythemes.com/xscp/save',
+			'fetchEndpoint' => 'https://api.mightythemes.com/xscp/fetch',
+		) );
 
 	}
 }

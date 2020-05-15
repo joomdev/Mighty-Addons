@@ -1,23 +1,29 @@
-var element_type = [ 'widget', 'column', 'section' ];
+var copyType = [ 'widget', 'column', 'section' ];
 
-element_type.forEach( function( item, index ) {
-    elementor.hooks.addFilter( 'elements/' + element_type[index] + '/contextMenuGroups', function ( groups, element ) {
+copyType.forEach( function( item, index ) {
+    elementor.hooks.addFilter( 'elements/' + copyType[index] + '/contextMenuGroups', function ( groups, element ) {
         groups.push(
             {
-                name: "mt_" + element_type[index],
+                name: "mt_" + copyType[index],
                 actions: [
                     {
                         name: 'copy',
                         title: "MT Copy",
                         callback: function () {
-                            console.log('copy');
+                            var copiedElement = {};
+                            copiedElement.elementType = copyType[index] == "widget" ? element.model.get( "widgetType" ) : null;
+                            copiedElement.elementCode = element.model.toJSON();
+                            localStorage.removeItem('element-key');
+                            localStorage.setItem( 'element-key', JSON.stringify(copiedElement) );
+                            // console.log(JSON.stringify(copiedElement).length); // approx sixe of element
                         }
                     },
                     {
                         name: 'paste',
                         title: "MT Paste",
                         callback: function () {
-                            console.log('paste');
+                            var el = JSON.parse( localStorage.getItem('element-key') );
+                            console.log(JSON.stringify(el));
                         }
                     }
                 ]
