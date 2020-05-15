@@ -35,6 +35,9 @@ class Mighty_Elementor {
 
 		// Mailchimp
 		add_action( 'wp_ajax_save_mailchimp_details', [ $this, 'mighty_mailchimp_details'] );
+		
+		// Copy/Paste
+		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'copy_paste_extension_scripts' ) );
 	}
 
 	public static function enqueue_editor_scripts() {
@@ -173,6 +176,23 @@ class Mighty_Elementor {
 		} else {
 			return 0;
 		}
+	}
+
+	/**
+	 * Enable Copy/Paste in Elementor's Editor View
+	 */
+	public function copy_paste_extension_scripts()
+	{
+
+		// Cross-Site-Copy-Paste
+		wp_enqueue_script(
+			'mt-xs-cp',
+			MIGHTY_ADDONS_PLG_URL . 'assets/js/xs-cp.js',
+			array( 'jquery', 'elementor-editor' ),
+			MIGHTY_ADDONS_VERSION,
+			true
+		);
+
 	}
 }
 
