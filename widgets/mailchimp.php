@@ -63,7 +63,7 @@ class MT_Mailchimp extends Widget_Base {
 					'mailchimp_notice',
 					[
 						'type' => Controls_Manager::RAW_HTML,
-						'raw' => __( '<p>You need to insert <b>Mailchimp Key</b> to use the element.</p><br><p>1. Get a <a target="_blank" rel="noopener" href="https://mailchimp.com/help/about-api-keys/">Key</a>.</p><br><p>2. Insert the key in the dashboard in <b>Integration</b> Settings.</b></p><br><p>3. Voila! Start collecting your subscribers.</p>', 'mighty' ),
+						'raw' => __( '<p>You need to insert <b>Mailchimp Key</b> to make the element work.</p><br><p>1. Get a <a target="_blank" rel="noopener" href="https://mailchimp.com/help/about-api-keys/">Key</a>.</p><br><p>2. Insert the key in the dashboard in <b>Integration</b> Settings.</b></p><br><p>3. Voila! Start collecting your subscribers.</p>', 'mighty' ),
 						'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 					]
 				);
@@ -1047,115 +1047,112 @@ class MT_Mailchimp extends Widget_Base {
 		} else {
 			$mcKey = "true";
 		}
+
+		// Fields ordering
+		$ordering =  [ 'email' => $settings['email_ordering'], 'fname' => $settings['fname_ordering'], 'lname' => $settings['lname_ordering'] ];
+		asort($ordering);
 		
-		if ( ! empty( $settings['mailchimp_list'] ) ) {
-			// Fields ordering
-			$ordering =  [ 'email' => $settings['email_ordering'], 'fname' => $settings['fname_ordering'], 'lname' => $settings['lname_ordering'] ];
-			asort($ordering);
-			
-			$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
-			$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
-			$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', $settings['mailchimp_list'] );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-mckey', $mcKey );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-after-submission', $settings['after_submission'] );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-enable-icon', $settings['enable_icon'] );
-			if ( $settings['enable_icon'] == "yes" ) {
-				$this->add_render_attribute( 'mt-mailchimp', 'data-button-icon', $settings['button_icon']['value'] );
-			}
-			$this->add_render_attribute( 'mt-mailchimp', 'data-button-text', $settings['button_text'] );
-			$this->add_render_attribute( 'mt-mailchimp', 'data-loading-text', $settings['loading_text'] );
-			if ( $settings['after_submission'] == "different" ) {
-				$this->add_render_attribute( 'mt-mailchimp', 'data-link', $settings['page_link']['url'] );
-				$this->add_render_attribute( 'mt-mailchimp', 'data-external', $settings['page_link']['is_external'] );
-				$this->add_render_attribute( 'mt-mailchimp', 'data-nofollow', $settings['page_link']['nofollow'] );
-			}
-
-			// Email Column Width
-			$this->add_render_attribute( 'email-width', 'class', 'mt-form-group mailchimp-email mt-col-' . $settings['email_column_width'] );
-			( ! empty( $settings['email_column_width_tablet'] ) ? $this->add_render_attribute( 'email-width', 'class', 'mt-col-md-' . $settings['email_column_width_tablet'] ) : '' );
-			( ! empty( $settings['email_column_width_mobile'] ) ? $this->add_render_attribute( 'email-width', 'class', 'mt-col-sm-' . $settings['email_column_width_mobile'] ) : '' );
-
-			// Fname Column Width
-			$this->add_render_attribute( 'fname-width', 'class', 'mt-form-group mailchimp-fname mt-col-' . $settings['fname_column_width'] );
-			( ! empty( $settings['fname_column_width_tablet'] ) ? $this->add_render_attribute( 'fname-width', 'class', 'mt-col-md-' . $settings['fname_column_width_tablet'] ) : '' );
-			( ! empty( $settings['fname_column_width_mobile'] ) ? $this->add_render_attribute( 'fname-width', 'class', 'mt-col-sm-' . $settings['fname_column_width_mobile'] ) : '' );
-
-			// Lname Column Width
-			$this->add_render_attribute( 'lname-width', 'class', 'mt-form-group mailchimp-lname mt-col-' . $settings['lname_column_width'] );
-			( ! empty( $settings['lname_column_width_tablet'] ) ? $this->add_render_attribute( 'lname-width', 'class', 'mt-col-md-' . $settings['lname_column_width_tablet'] ) : '' );
-			( ! empty( $settings['lname_column_width_mobile'] ) ? $this->add_render_attribute( 'lname-width', 'class', 'mt-col-sm-' . $settings['lname_column_width_mobile'] ) : '' );
-
-			// Submit Column Width
-			$this->add_render_attribute( 'submit-width', 'class', 'mt-form-group mailchimp-submit mt-col-' . $settings['submit_column_width'] );
-			( ! empty( $settings['submit_column_width_tablet'] ) ? $this->add_render_attribute( 'submit-width', 'class', 'mt-col-md-' . $settings['submit_column_width_tablet'] ) : '' );
-			( ! empty( $settings['submit_column_width_mobile'] ) ? $this->add_render_attribute( 'submit-width', 'class', 'mt-col-sm-' . $settings['submit_column_width_mobile'] ) : '' );
-			
-			echo "<div class='mighty-mailchimp-wrapper'>";
-			echo "<form method='post' " . $this->get_render_attribute_string('mt-mailchimp') . ">";
-
-			?>
-
-			<?php 
-			foreach ( $ordering as $field => $order ) :
-				if ( $field == "email" ) { ?>
-					<div <?php echo $this->get_render_attribute_string('email-width') ?>>
-						<label class="mt-label-control" for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label>
-						
-						<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mt-form-control" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
-						
-					</div>
-				<?php
-				}
-				elseif ( $field == "fname" ) { ?>
-					<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
-					<div <?php echo $this->get_render_attribute_string('fname-width') ?>>
-						<label class="mt-label-control" for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label>
-						<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mt-form-control" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
-					</div>
-					<?php endif; ?>
-				<?php
-				}
-				elseif ( $field == "lname" ) { ?>
-					<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
-					<div <?php echo $this->get_render_attribute_string('lname-width') ?>>
-						<label class="mt-label-control" for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label>
-						
-						<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mt-form-control" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
-					</div>
-					<?php endif; ?>
-				<?php
-				}
-			endforeach;
-			?>
-
-			<?php if ( $settings['enable_terms'] == "yes" ) : ?>
-			<div class="mt-form-group mailchimp-terms">
-				<label class="" for="terms-<?php echo $this->get_id(); ?>">
-					<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
-					<?php echo $settings['terms_label']; ?>
-				</label>
-			</div>
-			<?php endif; ?>
-
-			<div <?php echo $this->get_render_attribute_string('submit-width') ?>>				
-				<button class="mt-form-submit<?php echo " elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
-					<?php if ( $settings['enable_icon'] == "yes" ) : ?>
-					<span class="submit-icon">
-						<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-					</span>
-					<?php endif; ?>
-					<?php echo $settings['button_text']; ?>
-				</button>
-			</div>
-
-			<?php
-			echo "</form>";
-			echo "</div>";
-
+		$this->add_render_attribute( 'mt-mailchimp', 'class', 'mighty-maichimp-form' );
+		$this->add_render_attribute( 'mt-mailchimp', 'id', 'mighty-mailchimp-form-' . esc_attr( $this->get_id() ) );
+		$this->add_render_attribute( 'mt-mailchimp', 'method', 'POST' );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-mclist', empty( $settings['mailchimp_list'] ) ? null : $settings['mailchimp_list'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-mckey', $mcKey );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-error-msg', $settings['error_message'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-success-msg', $settings['success_message'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-after-submission', $settings['after_submission'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-enable-icon', $settings['enable_icon'] );
+		if ( $settings['enable_icon'] == "yes" ) {
+			$this->add_render_attribute( 'mt-mailchimp', 'data-button-icon', $settings['button_icon']['value'] );
 		}
+		$this->add_render_attribute( 'mt-mailchimp', 'data-button-text', $settings['button_text'] );
+		$this->add_render_attribute( 'mt-mailchimp', 'data-loading-text', $settings['loading_text'] );
+		if ( $settings['after_submission'] == "different" ) {
+			$this->add_render_attribute( 'mt-mailchimp', 'data-link', $settings['page_link']['url'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-external', $settings['page_link']['is_external'] );
+			$this->add_render_attribute( 'mt-mailchimp', 'data-nofollow', $settings['page_link']['nofollow'] );
+		}
+
+		// Email Column Width
+		$this->add_render_attribute( 'email-width', 'class', 'mt-form-group mailchimp-email mt-col-' . $settings['email_column_width'] );
+		( ! empty( $settings['email_column_width_tablet'] ) ? $this->add_render_attribute( 'email-width', 'class', 'mt-col-md-' . $settings['email_column_width_tablet'] ) : '' );
+		( ! empty( $settings['email_column_width_mobile'] ) ? $this->add_render_attribute( 'email-width', 'class', 'mt-col-sm-' . $settings['email_column_width_mobile'] ) : '' );
+
+		// Fname Column Width
+		$this->add_render_attribute( 'fname-width', 'class', 'mt-form-group mailchimp-fname mt-col-' . $settings['fname_column_width'] );
+		( ! empty( $settings['fname_column_width_tablet'] ) ? $this->add_render_attribute( 'fname-width', 'class', 'mt-col-md-' . $settings['fname_column_width_tablet'] ) : '' );
+		( ! empty( $settings['fname_column_width_mobile'] ) ? $this->add_render_attribute( 'fname-width', 'class', 'mt-col-sm-' . $settings['fname_column_width_mobile'] ) : '' );
+
+		// Lname Column Width
+		$this->add_render_attribute( 'lname-width', 'class', 'mt-form-group mailchimp-lname mt-col-' . $settings['lname_column_width'] );
+		( ! empty( $settings['lname_column_width_tablet'] ) ? $this->add_render_attribute( 'lname-width', 'class', 'mt-col-md-' . $settings['lname_column_width_tablet'] ) : '' );
+		( ! empty( $settings['lname_column_width_mobile'] ) ? $this->add_render_attribute( 'lname-width', 'class', 'mt-col-sm-' . $settings['lname_column_width_mobile'] ) : '' );
+
+		// Submit Column Width
+		$this->add_render_attribute( 'submit-width', 'class', 'mt-form-group mailchimp-submit mt-col-' . $settings['submit_column_width'] );
+		( ! empty( $settings['submit_column_width_tablet'] ) ? $this->add_render_attribute( 'submit-width', 'class', 'mt-col-md-' . $settings['submit_column_width_tablet'] ) : '' );
+		( ! empty( $settings['submit_column_width_mobile'] ) ? $this->add_render_attribute( 'submit-width', 'class', 'mt-col-sm-' . $settings['submit_column_width_mobile'] ) : '' );
+		
+		echo "<div class='mighty-mailchimp-wrapper'>";
+		echo "<form method='post' " . $this->get_render_attribute_string('mt-mailchimp') . ">";
+
+		?>
+
+		<?php 
+		foreach ( $ordering as $field => $order ) :
+			if ( $field == "email" ) { ?>
+				<div <?php echo $this->get_render_attribute_string('email-width') ?>>
+					<label class="mt-label-control" for="email-<?php echo $this->get_id(); ?>"><?php echo $settings['email_label']; ?></label>
+					
+					<input id="email-<?php echo $this->get_id(); ?>" type="email" name="email" class="mt-form-control" placeholder="<?php echo $settings['email_placeholder']; ?>" required />
+					
+				</div>
+			<?php
+			}
+			elseif ( $field == "fname" ) { ?>
+				<?php if ( $settings['enable_first_name'] == "yes" ) : ?>
+				<div <?php echo $this->get_render_attribute_string('fname-width') ?>>
+					<label class="mt-label-control" for="fname-<?php echo $this->get_id(); ?>"><?php echo $settings['fname_label']; ?></label>
+					<input id="fname-<?php echo $this->get_id(); ?>" type="text" name="fname" class="mt-form-control" placeholder="<?php echo $settings['fname_placeholder']; ?>" <?php echo $settings['fname_required'] == "yes" ? 'required' : ''; ?> />
+				</div>
+				<?php endif; ?>
+			<?php
+			}
+			elseif ( $field == "lname" ) { ?>
+				<?php if ( $settings['enable_last_name'] == "yes" ) : ?>
+				<div <?php echo $this->get_render_attribute_string('lname-width') ?>>
+					<label class="mt-label-control" for="lname-<?php echo $this->get_id(); ?>"><?php echo $settings['lname_label']; ?></label>
+					
+					<input id="lname-<?php echo $this->get_id(); ?>" type="text" name="lname" class="mt-form-control" placeholder="<?php echo $settings['lname_placeholder']; ?>" <?php echo $settings['lname_required'] == "yes" ? 'required' : ''; ?> />
+				</div>
+				<?php endif; ?>
+			<?php
+			}
+		endforeach;
+		?>
+
+		<?php if ( $settings['enable_terms'] == "yes" ) : ?>
+		<div class="mt-form-group mailchimp-terms">
+			<label class="" for="terms-<?php echo $this->get_id(); ?>">
+				<input id="terms-<?php echo $this->get_id(); ?>" type="checkbox" name="terms" class="" <?php echo $settings['checked_by_default'] == "yes" ? ' checked' : ''; ?><?php echo $settings['terms_required'] == "yes" ? ' required' : ''; ?> />
+				<?php echo $settings['terms_label']; ?>
+			</label>
+		</div>
+		<?php endif; ?>
+
+		<div <?php echo $this->get_render_attribute_string('submit-width') ?>>				
+			<button class="mt-form-submit<?php echo " elementor-animation-".$settings['button_hover_animation']; ?> <?php echo $settings['enable_icon'] == "yes" ? $settings['icon_position'] : ''; ?> <?php echo $settings['button_size']; ?>" type="submit">
+				<?php if ( $settings['enable_icon'] == "yes" ) : ?>
+				<span class="submit-icon">
+					<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+				</span>
+				<?php endif; ?>
+				<?php echo $settings['button_text']; ?>
+			</button>
+		</div>
+
+		<?php
+		echo "</form>";
+		echo "</div>";
 	}
 	
 	protected function _content_template() {
