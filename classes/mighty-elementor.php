@@ -184,6 +184,14 @@ class Mighty_Elementor {
 	public function copy_paste_extension_scripts()
 	{
 
+		wp_enqueue_script(
+			'mt-xs-localstorage',
+			MIGHTY_ADDONS_PLG_URL . 'assets/js/xs-localstorage.js',
+			null,
+			MIGHTY_ADDONS_VERSION,
+			true
+		);
+
 		// Cross-Site-Copy-Paste
 		wp_enqueue_script(
 			'mt-xs-cp',
@@ -194,8 +202,7 @@ class Mighty_Elementor {
 		);
 		
 		wp_localize_script( 'mt-xs-cp', 'xscp', array(
-			'saveEndpoint' => 'https://api.mightythemes.com/xscp/save',
-			'fetchEndpoint' => 'https://api.mightythemes.com/xscp/fetch',
+			'xdScript' => MIGHTY_ADDONS_PLG_URL . 'assets/xdcp.html',
 		) );
 
 	}

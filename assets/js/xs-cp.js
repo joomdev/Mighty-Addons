@@ -1,9 +1,21 @@
-var copyType = [ 'widget', 'column', 'section' ];
+( function ( $ ) {
+    // XD Local Storage
+    xdLocalStorage.init(
+        {
+            iframeUrl: xscp.xdScript,
+            //an option function to be called right after the iframe was loaded and ready for action
+            initCallback: function () {
+                console.log('Got iframe ready');
+            }
+        }
+    );
 
-copyType.forEach( function( item, index ) {
-    elementor.hooks.addFilter( 'elements/' + copyType[index] + '/contextMenuGroups', function ( groups, element ) {
-        groups.push(
-            {
+
+    var copyType = [ 'widget', 'column', 'section' ];
+
+    copyType.forEach( function( item, index ) {
+        elementor.hooks.addFilter( 'elements/' + copyType[index] + '/contextMenuGroups', function ( groups, element ) {
+            groups.push({
                 name: "mt_" + copyType[index],
                 actions: [
                     {
@@ -13,9 +25,7 @@ copyType.forEach( function( item, index ) {
                             var copiedElement = {};
                             copiedElement.elementType = copyType[index] == "widget" ? element.model.get( "widgetType" ) : null;
                             copiedElement.elementCode = element.model.toJSON();
-                            localStorage.removeItem('element-key');
-                            localStorage.setItem( 'element-key', JSON.stringify(copiedElement) );
-                            // console.log(JSON.stringify(copiedElement).length); // approx sixe of element
+                            xdLocalStorage.setItem( 'element-key', JSON.stringify(copiedElement), function (data) { console.log('copied') });
                         }
                     },
                     {
@@ -27,8 +37,9 @@ copyType.forEach( function( item, index ) {
                         }
                     }
                 ]
-            }
-        );
-        return groups;
+            });
+            return groups;
+        });
     });
-});
+
+} )( jQuery );
