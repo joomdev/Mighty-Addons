@@ -3,22 +3,17 @@
     xdLocalStorage.init(
         {
             iframeUrl: xscp.xdScript,
-            //an option function to be called right after the iframe was loaded and ready for action
-            initCallback: function () {
-                console.log('Got iframe ready');
-            }
+            initCallback: function () { /* ain't nothin but a g thang */ }
         }
     );
 
     function getUniqueId( elements ) {
-    
         elements.forEach( function( item, index ) {
             item.id = elementor.helpers.getUniqueID();
             if( item.elements.length > 0 ) {
                 getUniqueId( item.elements );
             }
         } );
-    
         return elements;
     }
 
@@ -27,9 +22,6 @@
         // Original element
         var ogElement = element;
         var ogElementType = element.model.get( "elType" );
-        var elementLocation = {
-            index: 0
-        };
         
         // Copied Element
         var elementType = newElement.elementCode.elType;
@@ -41,34 +33,19 @@
         };
         var container;
 
-        switch( elementType ){
+        switch( elementType ) {
             case 'section':
-                console.log('section');
                 newWidget.elements = getUniqueId( elementCode.elements );
                 container = elementor.getPreviewContainer();
-                switch( ogElementType ){
-                    case 'widget':
-                        elementLocation.index = ogElement.getContainer().parent.parent.view.getOption( "_index" ) + 1;
-                        break;
-                    case 'column':
-                        elementLocation.index = ogElement.getContainer().parent.view.getOption( "_index" ) + 1;
-                        break;
-                    case 'section':
-                        elementLocation.index = ogElement.getOption( "_index" ) + 1;
-                        break;
-                }
                 break;
             case 'column':
-                console.log('column');
                 newWidget.elements = getUniqueId( elementCode.elements );
                 switch( ogElementType ){
                     case 'widget':
                         container = ogElement.getContainer().parent.parent;
-                        elementLocation.index = ogElement.getContainer().parent.view.getOption( "_index" ) + 1;
                         break;
                     case 'column':
                         container = ogElement.getContainer().parent;
-                        elementLocation.index = ogElement.getOption( "_index" ) + 1;
                         break;
                     case 'section':
                         container = ogElement.getContainer();
@@ -76,19 +53,16 @@
                 }
                 break;
             case 'widget':
-                console.log('widget');
                 newWidget.widgetType = newElement.elementType;
                 container = ogElement.getContainer();
-                switch( ogElementType ){
+                switch( ogElementType ) {
                     case 'widget':
                         container = ogElement.getContainer().parent;
                         ogElementType.index = ogElement.getOption( "_index" ) + 1;
                         break;
-
                     case 'column':
                         container = ogElement.getContainer();
                         break;
-
                     case 'section':
                         container = ogElement.children.findByIndex(0).getContainer();
                         break;
@@ -100,10 +74,10 @@
         var new_element = $e.run( "document/elements/create", {
             model: newWidget,
             container: container,
-            options: elementLocation
         });
         
-        console.log('done');
+        // TODO: add toast for paste notice
+        console.log('pasted');
     }
 
 
@@ -121,14 +95,17 @@
                             var copiedElement = {};
                             copiedElement.elementType = copyType[index] == "widget" ? element.model.get( "widgetType" ) : null;
                             copiedElement.elementCode = element.model.toJSON();
-                            xdLocalStorage.setItem( 'element-key', JSON.stringify(copiedElement), function (data) { console.log('copied') });
+                            xdLocalStorage.setItem( 'mighty-xscp-element', JSON.stringify(copiedElement), function (data) {
+                                console.log('copied');
+                                // TODO: add toast for copied notice
+                            });
                         }
                     },
                     {
                         name: 'paste',
                         title: "MT Paste",
                         callback: function () {
-                            xdLocalStorage.getItem( 'element-key', function ( newElement ) {
+                            xdLocalStorage.getItem( 'mighty-xscp-element', function ( newElement ) {
                                 pasteElement( JSON.parse( newElement.value ), element );
                             });
                         }

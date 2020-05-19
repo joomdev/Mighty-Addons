@@ -46,7 +46,7 @@ window.XdUtils = window.XdUtils || function () {
   function f() {
     return "complete" === document.readyState
   }
-  var g, h = "cross-domain-local-message",
+  var g, h = "cross-domain-mighty-element",
     i = {
       iframeId: "cross-domain-iframe",
       iframeUrl: void 0,

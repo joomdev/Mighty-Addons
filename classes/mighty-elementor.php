@@ -183,7 +183,6 @@ class Mighty_Elementor {
 	 */
 	public function copy_paste_extension_scripts()
 	{
-
 		wp_enqueue_script(
 			'mt-xs-localstorage',
 			MIGHTY_ADDONS_PLG_URL . 'assets/js/xs-localstorage.js',
@@ -204,7 +203,6 @@ class Mighty_Elementor {
 		wp_localize_script( 'mt-xs-cp', 'xscp', array(
 			'xdScript' => MIGHTY_ADDONS_PLG_URL . 'assets/xdcp.html',
 		) );
-
 	}
 }
 
