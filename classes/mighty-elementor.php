@@ -201,7 +201,7 @@ class Mighty_Elementor {
 		);
 		
 		wp_localize_script( 'mt-xs-cp', 'xscp', array(
-			'xdScript' => MIGHTY_ADDONS_PLG_URL . 'assets/xdcp.html',
+			'xdScript' => "https://api.mightythemes.com/xscp",
 		) );
 	}
 }

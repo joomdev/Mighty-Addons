@@ -82,9 +82,12 @@
 
 
     var copyType = [ 'widget', 'column', 'section' ];
+    var allElements = [];
 
     copyType.forEach( function( item, index ) {
         elementor.hooks.addFilter( 'elements/' + copyType[index] + '/contextMenuGroups', function ( groups, element ) {
+            allElements.push(element);
+
             groups.push({
                 name: "mt_" + copyType[index],
                 actions: [
@@ -109,7 +112,31 @@
                                 pasteElement( JSON.parse( newElement.value ), element );
                             });
                         }
-                    }
+                    },
+                    {
+                        name: 'copy_all',
+                        title: "MT Copy All",
+                        callback: function () {
+                            var allSections = [];
+
+                            allElements.forEach(elem => {
+                                if ( elem.container.type == "section" ) {
+                                    allSections.push(elem);
+                                }
+                            });
+
+                            console.log(allSections);
+                        }
+                    },
+                    {
+                        name: 'paste_all',
+                        title: "MT Paste All",
+                        callback: function () {
+                            return $e.run("document/ui/paste", {
+                                container: elementor.getPreviewContainer()
+                            });
+                        }
+                    },
                 ]
             });
             return groups;
