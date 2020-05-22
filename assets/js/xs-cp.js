@@ -120,7 +120,7 @@
                             var allSections = [];
                             allElements.forEach(elem => {
                                 if ( elem.container.type == "section" ) {
-                                    allSections.push(elem.model.toJSON());
+                                    allSections.push( elem.model.toJSON() );
                                 }
                             });
                             
@@ -128,6 +128,9 @@
                                 console.log('copied page');
                                 // TODO: add toast for copied notice
                             });
+
+                            // Empty the Sections
+                            allElements = [];
                         }
                     },
                     {
@@ -135,10 +138,10 @@
                         title: "MT Paste All",
                         callback: function () {
                             xdLocalStorage.getItem( 'mighty-xscp-page-sections', function ( newElement ) {
-                                console.log(JSON.parse(newElement.value));
-                                var copiedSections = JSON.parse(newElement.value);
+                                var copiedSections = JSON.parse( newElement.value );
                                 copiedSections.forEach(elem => {
                                     // Copied Element
+                                    var newSection = {};
                                     var elementType = "section";
                                     var newSection = {
                                         elType: elementType,
@@ -152,9 +155,9 @@
                                         model: newSection,
                                         container: container,
                                     });
-
-                                    console.log('pasted page');
                                 });
+
+                                console.log('pasted page');
                                 
                             });
                         }
