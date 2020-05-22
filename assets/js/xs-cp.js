@@ -92,8 +92,8 @@
                 name: "mt_" + copyType[index],
                 actions: [
                     {
-                        name: 'copy',
-                        title: "MT Copy",
+                        name: 'ma_copy',
+                        title: xscp.copy,
                         callback: function () {
                             var copiedElement = {};
                             copiedElement.elementType = copyType[index] == "widget" ? element.model.get( "widgetType" ) : null;
@@ -105,8 +105,8 @@
                         }
                     },
                     {
-                        name: 'paste',
-                        title: "MT Paste",
+                        name: 'ma_paste',
+                        title: xscp.paste,
                         callback: function () {
                             xdLocalStorage.getItem( 'mighty-xscp-element', function ( newElement ) {
                                 pasteElement( JSON.parse( newElement.value ), element );
@@ -114,8 +114,8 @@
                         }
                     },
                     {
-                        name: 'copy_all',
-                        title: "MT Copy All",
+                        name: 'ma_copy_all',
+                        title: xscp.copy_all,
                         callback: function () {
                             var allSections = [];
                             allElements.forEach(elem => {
@@ -134,8 +134,8 @@
                         }
                     },
                     {
-                        name: 'paste_all',
-                        title: "MT Paste All",
+                        name: 'ma_paste_all',
+                        title: xscp.paste_all,
                         callback: function () {
                             xdLocalStorage.getItem( 'mighty-xscp-page-sections', function ( newElement ) {
                                 var copiedSections = JSON.parse( newElement.value );

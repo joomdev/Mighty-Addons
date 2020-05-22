@@ -131,8 +131,7 @@ class Mighty_Elementor {
 	/**
 	 * Send Mailchimp form data to API
 	 */
-	public function mighty_mailchimp_details()
-	{
+	public function mighty_mailchimp_details() {
 		if ( isset( $_POST['fields'] ) ) {
 			parse_str( $_POST['fields'], $data );
 		} else {
@@ -182,8 +181,10 @@ class Mighty_Elementor {
 	/**
 	 * Enable Copy/Paste in Elementor's Editor View
 	 */
-	public function copy_paste_extension_scripts()
-	{
+	public function copy_paste_extension_scripts() {
+
+		$branding = HelperFunctions::get_white_label();
+		
 		wp_enqueue_script(
 			'mt-xs-localstorage',
 			MIGHTY_ADDONS_PLG_URL . 'assets/js/xs-localstorage.js',
@@ -202,7 +203,11 @@ class Mighty_Elementor {
 		);
 		
 		wp_localize_script( 'mt-xs-cp', 'xscp', array(
-			'xdScript' => "https://api.mightythemes.com/xscp",
+			'xdScript' => 'https://api.mightythemes.com/xscp',
+			'copy' => sprintf( __( '%1s Copy', 'mighty' ), $branding['plugin_short_name'] ),
+			'paste' => sprintf( __( '%1s Paste', 'mighty' ), $branding['plugin_short_name'] ),
+			'copy_all' => sprintf( __( '%1s Copy All', 'mighty' ), $branding['plugin_short_name'] ),
+			'paste_all' => sprintf( __( '%1s Paste All', 'mighty' ), $branding['plugin_short_name'] )
 		) );
 	}
 }
