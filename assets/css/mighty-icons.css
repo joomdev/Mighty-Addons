@@ -25,6 +25,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-tsl:before {
+	content: "\e911";
+}
+
+.mf-copypaste:before {
+	content: "\e910";
+}
+
 .mf-mailchimp:before {
 	content: "\e90e";
 }

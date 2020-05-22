@@ -122,7 +122,7 @@ class HelperFunctions {
                 'enable' => true,
                 'class' => 'MT_Copypaste',
                 'slug' => 'xscp',
-                'icon' => 'mf mf-pixabay-icon'
+                'icon' => 'mf mf-copypaste'
             ],
         ]
     ];
