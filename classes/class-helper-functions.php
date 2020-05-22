@@ -115,7 +115,15 @@ class HelperFunctions {
                 'class' => 'MT_Photos',
                 'slug' => 'pixabay',
                 'icon' => 'mf mf-pixabay-icon'
-            ]
+            ],
+            'xscp' => [
+                'title' => 'Cross Site Copy Paste',
+                'description' => 'Quickly Copy/Paste Widgets/Sections/Page across multiple domains.',
+                'enable' => true,
+                'class' => 'MT_Copypaste',
+                'slug' => 'xscp',
+                'icon' => 'mf mf-pixabay-icon'
+            ],
         ]
     ];
 

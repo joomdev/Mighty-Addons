@@ -37,7 +37,9 @@ class Mighty_Elementor {
 		add_action( 'wp_ajax_save_mailchimp_details', [ $this, 'mighty_mailchimp_details'] );
 		
 		// Copy/Paste
-		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'copy_paste_extension_scripts' ) );
+		if ( HelperFunctions::mighty_addons()['extensions']['xscp']['enable'] ) {
+			add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'copy_paste_extension_scripts' ) );
+		}
 	}
 
 	public static function enqueue_editor_scripts() {
@@ -112,7 +114,6 @@ class Mighty_Elementor {
 	public function register_widgets() {
 
 		$widgets = HelperFunctions::mighty_addons()['addons'];
-		$extensions = HelperFunctions::mighty_addons()['extensions'];
 		
 		foreach( $widgets as $widget => $props ) {
 			if( $props['enable'] ) {
