@@ -118,22 +118,44 @@
                         title: "MT Copy All",
                         callback: function () {
                             var allSections = [];
-
                             allElements.forEach(elem => {
                                 if ( elem.container.type == "section" ) {
-                                    allSections.push(elem);
+                                    allSections.push(elem.model.toJSON());
                                 }
                             });
-
-                            console.log(allSections);
+                            
+                            xdLocalStorage.setItem( 'mighty-xscp-page-sections', JSON.stringify(allSections), function (data) {
+                                console.log('copied page');
+                                // TODO: add toast for copied notice
+                            });
                         }
                     },
                     {
                         name: 'paste_all',
                         title: "MT Paste All",
                         callback: function () {
-                            return $e.run("document/ui/paste", {
-                                container: elementor.getPreviewContainer()
+                            xdLocalStorage.getItem( 'mighty-xscp-page-sections', function ( newElement ) {
+                                console.log(JSON.parse(newElement.value));
+                                var copiedSections = JSON.parse(newElement.value);
+                                copiedSections.forEach(elem => {
+                                    // Copied Element
+                                    var elementType = "section";
+                                    var newSection = {
+                                        elType: elementType,
+                                        settings: elem.settings
+                                    };
+                                    newSection.elements = getUniqueId( elem.elements );
+                                    var container = elementor.getPreviewContainer();
+
+                                    
+                                    var newSection = $e.run( "document/elements/create", {
+                                        model: newSection,
+                                        container: container,
+                                    });
+
+                                    console.log('pasted page');
+                                });
+                                
                             });
                         }
                     },
