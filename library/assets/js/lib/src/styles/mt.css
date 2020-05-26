@@ -879,7 +879,9 @@
 }
 
 #mighty-extension-pixabay .mighty-image .selected-image p {
-  font-size: 18px;
+  font-size: 16px;
+  color: black;
+  margin: 15px 0;
   font-weight: bold;
 }
 
@@ -898,6 +900,10 @@
 #mighty-extension-pixabay .mighty-image .selected-image .pixabay-notice .pix-note {
   margin-top: 4px;
   font-size: 14px;
+}
+
+#mighty-extension-pixabay .image-controls .action-button {
+  margin: 10px 0;
 }
 
 #mighty-extension-pixabay .action-button {

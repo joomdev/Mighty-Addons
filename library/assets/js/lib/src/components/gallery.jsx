@@ -54,7 +54,7 @@ class Gallery extends Component {
       images: [],
       renderView: 'home',
       choosenImage: [],
-      viewType: 'unordered',
+      viewType: 'ordered',
       totalPages: '',
       currentPage: 1,
       searchPlatform: 'pixabay',
@@ -96,6 +96,7 @@ class Gallery extends Component {
           proEnabled: true
         });
       }
+      console.log(this.state.images);
       this.setState({
         isLoaded: true,
         isSearching: false,
@@ -369,8 +370,8 @@ class Image extends Component {
         <div className="selected-image">
           <img src={ this.props.data.preview } alt={ this.props.data.tags } />
           <div className="image-controls">
-            <p>Description</p>
-            <span>{ this.props.data.tags }</span>
+            <h4>Description</h4>
+            <p>{ this.props.data.tags }</p>
             { this.props.platform == "pixabay" &&
             <div className="pixabay-notice">
               <a target="_blank" rel="nofollow" href="https://pixabay.com/service/license/">Pixabay License</a>
@@ -379,6 +380,12 @@ class Image extends Component {
                 <br />No attribution required
               </div>
             </div> }
+            <h4>Credits</h4>
+            { this.props.platform == "pixabay" ?
+             <p>Photo by <a target="_blank" href={ 'https://pixabay.com/users/' + this.props.data.user }>{ this.props.data.user }</a> on <a target="_blank" href="https://pixabay.com"> Pixabay</a></p>
+             :
+             <p>Photo by <a target="_blank" href={ 'https://unsplash.com/@' + this.props.data.user }>{ this.props.data.user }</a> on <a target="_blank" href="https://unsplash.com"> Unsplash</a></p>
+            }
             <span className="action-button" onClick={ () => this.props.onImport( this.props.data.url ) }>
               <i className="fas fa-download"></i>&nbsp; Insert Image
             </span>
