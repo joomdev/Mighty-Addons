@@ -254,7 +254,7 @@ class Home extends Component {
 class PixabayImages extends Component {
   render() {
     return (
-      <div className={`pixabay-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
+      <div className={`pixabay-images${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
         {this.props.data.length < 1 ?
           <div className="not-found">
             <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
@@ -262,65 +262,11 @@ class PixabayImages extends Component {
             <p>Until then, search for something else.</p>
           </div>
           :
-          this.props.data.map(image => (
-          <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
-        ))}
-        
-        <div className="mt-pixabay-pagination">
-          <nav aria-label="mighty-photos-pagination">
-              <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'Next'}
-                pageCount={this.props.pages}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={3}
-                onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
-                forcePage={this.props.currentPage - 1}
-                previousClassName={'page-item'}
-                previousLinkClassName={'page-link'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
-                nextClassName={'page-item'}
-                nextLinkClassName={'page-link'}
-                breakLabel={'...'}
-                breakClassName={'page-item'}
-                containerClassName={'pagination pagination-sm'}
-                subContainerClassName={'pages pagination'}
-                pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
-                activeClassName={'active'}
-              />
-          </nav>
-        </div>
+          <div className="search-results">
+            {this.props.data.map(image => (
+              <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
+            ))}
 
-      </div>
-    );
-  }
-}
-
-class UnsplashImages extends Component {
-  
-  render() {
-    return (
-      <div className={`unsplash-images search-results${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
-        
-        {this.props.data.length < 1 ?
-          <div className="not-found">
-            <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
-            {
-              this.props.proEnabled ?
-                <div className="error-message">
-                  <h4>We do need to upgrade things around here!</h4> 
-                  <p>Until then, search for something else.</p>
-                </div>
-                :
-                <h4>Unsplash is only available for Pro Users!</h4>
-            }
-          </div>
-          :
-          this.props.data.map(image => (
-            <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
-          ),
             <div className="mt-pixabay-pagination">
               <nav aria-label="mighty-photos-pagination">
                   <ReactPaginate
@@ -347,7 +293,66 @@ class UnsplashImages extends Component {
                   />
               </nav>
             </div>
-          )
+          </div>
+        }
+
+      </div>
+    );
+  }
+}
+
+class UnsplashImages extends Component {
+  
+  render() {
+    return (
+      <div className={`unsplash-images${this.props.viewType == 'ordered' ? ' view-ordered' : ''}${this.props.data.length < 1 ? ' error-not-found' : ''}`}>
+        
+        {this.props.data.length < 1 ?
+          <div className="not-found">
+            <img src={MightyLibrary.baseUrl + 'library/assets/images/retro-pc.svg'} alt="Images not found!" />
+            {
+              this.props.proEnabled ?
+                <div className="error-message">
+                  <h4>We do need to upgrade things around here!</h4> 
+                  <p>Until then, search for something else.</p>
+                </div>
+                :
+                <h4>Unsplash is only available for Pro Users!</h4>
+            }
+          </div>
+          :
+          <div className="search-results">
+            {this.props.data.map(image => (
+              <img key={image.id} onClick={ () => this.props.onClick(image) } draggable='false' className='px-image' src={image.preview} alt={image.tags} />
+            ))}
+
+            <div className="mt-pixabay-pagination">
+              <nav aria-label="mighty-photos-pagination">
+                  <ReactPaginate
+                    previousLabel={'Previous'}
+                    nextLabel={'Next'}
+                    pageCount={this.props.pages}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={ ( data ) => { this.props.onPagination(data.selected+1) } }
+                    forcePage={this.props.currentPage - 1}
+                    previousClassName={'page-item'}
+                    previousLinkClassName={'page-link'}
+                    breakClassName={'page-item'}
+                    breakLinkClassName={'page-link'}
+                    nextClassName={'page-item'}
+                    nextLinkClassName={'page-link'}
+                    breakLabel={'...'}
+                    breakClassName={'page-item'}
+                    containerClassName={'pagination pagination-sm'}
+                    subContainerClassName={'pages pagination'}
+                    pageClassName={'page-item'}
+                    pageLinkClassName={'page-link'}
+                    activeClassName={'active'}
+                  />
+              </nav>
+            </div>
+          </div>
         }
       </div>
     );
