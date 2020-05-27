@@ -123,14 +123,14 @@
                                     allSections.push( elem.model.toJSON() );
                                 }
                             });
-                            
+
                             xdLocalStorage.setItem( 'mighty-xscp-page-sections', JSON.stringify(allSections), function (data) {
                                 console.log('copied page');
+                                // Empty the Sections
+                                allElements = [];
+                                allSections = [];
                                 // TODO: add toast for copied notice
                             });
-
-                            // Empty the Sections
-                            allElements = [];
                         }
                     },
                     {
@@ -149,7 +149,6 @@
                                     };
                                     newSection.elements = getUniqueId( elem.elements );
                                     var container = elementor.getPreviewContainer();
-
                                     
                                     var newSection = $e.run( "document/elements/create", {
                                         model: newSection,
