@@ -122,6 +122,7 @@
                                 if ( elem.container.type == "section" ) {
                                     var sect = elem.model.toJSON();
                                     if ( sect.isInner === false ) {
+                                    if ( sect.isInner === false && sect.elements.length ) {
                                         allSections.push( elem.model.toJSON() );
                                     }
                                 }
