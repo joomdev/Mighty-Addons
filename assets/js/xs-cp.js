@@ -120,16 +120,19 @@
                             var allSections = [];
                             allElements.forEach(elem => {
                                 if ( elem.container.type == "section" ) {
-                                    allSections.push( elem.model.toJSON() );
+                                    var sect = elem.model.toJSON();
+                                    if ( sect.isInner === false ) {
+                                        allSections.push( elem.model.toJSON() );
+                                    }
                                 }
                             });
 
                             xdLocalStorage.setItem( 'mighty-xscp-page-sections', JSON.stringify(allSections), function (data) {
-                                console.log('copied page');
                                 // Empty the Sections
                                 allElements = [];
                                 allSections = [];
                                 // TODO: add toast for copied notice
+                                console.log('copied page');
                             });
                         }
                     },
