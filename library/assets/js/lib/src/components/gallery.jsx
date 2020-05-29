@@ -50,7 +50,7 @@ class Gallery extends Component {
     this.state = {
       isLoaded: false,
       isSearching: false,
-      searchTerm: 'cats',
+      searchTerm: defaultSearchTerm,
       images: [],
       renderView: 'home',
       choosenImage: [],
@@ -96,7 +96,7 @@ class Gallery extends Component {
           proEnabled: true
         });
       }
-      console.log(this.state.images);
+      
       this.setState({
         isLoaded: true,
         isSearching: false,
@@ -384,7 +384,7 @@ class Image extends Component {
             { this.props.platform == "pixabay" ?
              <p>Photo by <a target="_blank" href={ 'https://pixabay.com/users/' + this.props.data.user }>{ this.props.data.user }</a> on <a target="_blank" href="https://pixabay.com"> Pixabay</a></p>
              :
-             <p>Photo by <a target="_blank" href={ 'https://unsplash.com/@' + this.props.data.user }>{ this.props.data.user }</a> on <a target="_blank" href="https://unsplash.com"> Unsplash</a></p>
+             <p>Photo by <a target="_blank" href={ 'https://unsplash.com/@' + this.props.data.username }>{ this.props.data.user }</a> on <a target="_blank" href="https://unsplash.com"> Unsplash</a></p>
             }
             <span className="action-button" onClick={ () => this.props.onImport( this.props.data.url ) }>
               <i className="fas fa-download"></i>&nbsp; Insert Image

@@ -882,7 +882,11 @@
   font-size: 16px;
   color: black;
   margin: 15px 0;
-  font-weight: bold;
+}
+
+#mighty-extension-pixabay .mighty-image .selected-image a {
+  text-decoration: underline;
+  font-weight: 500;
 }
 
 #mighty-extension-pixabay .mighty-image .selected-image .pixabay-notice {
