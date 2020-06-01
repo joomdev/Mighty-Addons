@@ -49,6 +49,28 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
                 <?php endif; ?>
 
+                <div class="ma-element">
+                    <label for="weather-api" class="ma-ele-title"><?php _e('⛅ Weather', 'mighty-addons'); ?></label>
+                    <?php if ( Helper::mightyProAvailable() ) { ?>
+                        <div class="info-field">
+
+                            <?php $weatherAPI = Helper::get_integration_option('weather-api'); ?>
+                            <select class="regular-text" name="weather-api" id="weather-api">
+                                <option value="-1"<?php echo $weatherAPI == "-1" ? ' selected' : ''; ?>>Choose API</option>
+                                <option value="openweather"<?php echo $weatherAPI == "openweather" ? ' selected' : ''; ?>>OpenWeather</option>
+                                <option value="accuweather"<?php echo $weatherAPI == "accuweather" ? ' selected' : ''; ?>>Accuweather</option>
+                            </select>
+                            
+                            <a style="display:none;" class="help-link api-key-openweather" target="_blank" href="#"><?php _e('Get OpenWeather API key 🔑', 'mighty-addons'); ?></a>
+                            <a style="display:none;" class="help-link api-key-accuweather" target="_blank" href="#"><?php _e('Get Accuweather API key 🔑', 'mighty-addons'); ?></a>
+
+                            <input style="<?php echo $weatherAPI == "accuweather" || $weatherAPI == "openweather" ? 'display:block;' : 'display:none;'; ?> margin-top: 10px;" class="regular-text" type="text" name="weather-api-key" placeholder="YOUR_API_KEY" id="weather-api-key" value="<?php echo Helper::get_integration_option('weather-api-key'); ?>" />
+                        </div>
+                    <?php } else { ?>
+                        <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
+                    <?php } ?>
+                </div>
+
                 <div class="text-center ma-cta-save">
                     <button type="submit" class="button ma-btn ma-save-button"><?php _e('Save Settings', 'mighty-addons'); ?></button>
                 </div>

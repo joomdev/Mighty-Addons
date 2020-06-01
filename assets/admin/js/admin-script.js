@@ -140,4 +140,24 @@
         $('#mighty-settings .ma-save-button').removeAttr('disabled'); // Form's Button
     });
 
+    $('#integrations #weather-api').on('change', function() {
+        var api = $(this).val();
+        if ( api == "openweather" ) {
+            $('#integrations .ma-element .api-key-accuweather').css('display', 'none');
+            $('#integrations .ma-element .api-key-openweather').css('display', 'block');
+        } else if ( api == "accuweather" ) {
+            $('#integrations .ma-element .api-key-openweather').css('display', 'none');
+            $('#integrations .ma-element .api-key-accuweather').css('display', 'block');
+        } else {
+            $('#integrations .ma-element .api-key-openweather').css('display', 'none');
+            $('#integrations .ma-element .api-key-accuweather').css('display', 'none');
+        }
+
+        if ( api === "-1" ) {
+            $('#integrations #weather-api-key').css('display', 'none');
+        } else {
+            $('#integrations #weather-api-key').css('display', 'block');
+        }
+    });
+
 }) ( jQuery );
