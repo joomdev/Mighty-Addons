@@ -61,8 +61,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                                 <option value="accuweather"<?php echo $weatherAPI == "accuweather" ? ' selected' : ''; ?>>Accuweather</option>
                             </select>
                             
-                            <a style="display:none;" class="help-link api-key-openweather" target="_blank" href="#"><?php _e('Get OpenWeather API key 🔑', 'mighty-addons'); ?></a>
-                            <a style="display:none;" class="help-link api-key-accuweather" target="_blank" href="#"><?php _e('Get Accuweather API key 🔑', 'mighty-addons'); ?></a>
+                            <a style="display:none;" class="help-link api-key-openweather" target="_blank" href="https://openweathermap.org/appid"><?php _e('Get OpenWeather API key 🔑', 'mighty-addons'); ?></a>
+                            <a style="display:none;" class="help-link api-key-accuweather" target="_blank" href="https://developer.accuweather.com/getting-started"><?php _e('Get Accuweather API key 🔑', 'mighty-addons'); ?></a>
 
                             <input style="<?php echo $weatherAPI == "accuweather" || $weatherAPI == "openweather" ? 'display:block;' : 'display:none;'; ?> margin-top: 10px;" class="regular-text" type="text" name="weather-api-key" placeholder="YOUR_API_KEY" id="weather-api-key" value="<?php echo Helper::get_integration_option('weather-api-key'); ?>" />
                         </div>
