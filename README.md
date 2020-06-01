@@ -14,7 +14,7 @@ Tested up to: 5.4
 
 Requires PHP: 5.6
 
-Stable Tag: 1.3.7
+Stable Tag: 1.3.8
 
 License: GPLv2 or later
 
@@ -145,6 +145,10 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.3.8
+* Added: Cross Site Copy/Paste for Section and Pages
+* Fixed: Mighty Photos Pagination
 
 ### 1.3.7
 * Fixed: Mailchimp widget without key
