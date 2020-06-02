@@ -14,7 +14,7 @@ Tested up to: 5.4
 
 Requires PHP: 5.6
 
-Stable Tag: 1.3.8
+Stable Tag: 1.3.9
 
 License: GPLv2 or later
 
@@ -149,6 +149,9 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.3.9
+* Fixed: Empty Page Copying in Copy All
 
 ### 1.3.8
 * Added: Cross Site Copy/Paste for Section and Pages
