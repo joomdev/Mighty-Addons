@@ -30,6 +30,9 @@ Mighty Addons is a collection of premium quality addons for the Elementor page b
 Let’s design Powerful WordPress Websites together with the Elementor page builder and achieve the imaginable designs in minutes. **No coding required.**
 ## Why Mighty Addons is the Best Elementor Widgets Plugin
 
+### [Cross Domain Copy Paste](https://mightythemes.com/cross-domain-copy-paste/)
+Copy and Paste Sections, Widgets, or the whole page just in two clicks from one domain to another. So, you don't have to reinvent the wheel, thus, making your development speed faster.
+
 ### Pre-designed Templates Kits
 A template kit is a group of multiple pages designed for a specific theme. Like if you are looking for a business elementor theme, you can choose a business template kit and import pages from the kit one by one.
 You will get all the required pages such as Home, About, Services, Services Detail, FAQ, Contact, etc. for your business website. You need to import them and replace the dummy content with your real content. 
@@ -68,18 +71,19 @@ We created different designs with Mighty Addons & tested them with different siz
 
 ## Design any Website you can imagine With Mighty Addon & Elementor
 Every Elementor Widget is curated and developed with thousands of test cases and examples. Currently, we have 10+ Elementor addons, and these will ever keep growing in the future.
-1. **[MT Counter](https://demo.mightythemes.com/mighty-addons/mt-counter/)** - Add spotlights by adding animated number counters with text and icons to showcase your important data.
-2. **[MT Testimonial](https://demo.mightythemes.com/mighty-addons/mt-testimonial/)** - Win more customers by displaying what other customers said about your brand. 
-3. **[MT Accordion](https://demo.mightythemes.com/mighty-addons/mt-accordion/)** - Add beautiful & FAQ schema rich accordions in your pages, posts, and anywhere on your WordPress Website.
-4. **[MT Team](https://demo.mightythemes.com/mighty-addons/mt-team/)** - Showcase your talented team to your website visitors and increase the trust in your brand.
-5. **[MT Progress Bar](https://demo.mightythemes.com/mighty-addons/mt-progress-bar/)** - Highlight your skill stats with the help of Animated progress bars. You can add unlimited bars with a single element. 
-6. **[MT Button Group](https://demo.mightythemes.com/mighty-addons/mt-button-group/)** - Create a better call to actions with creative button styles using Button Group Element. It allows you to add unlimited Buttons with a single element. 
-7. **[MT Before After](https://demo.mightythemes.com/mighty-addons/mt-before-after/)** - Display before and after version of an image with the help of MT Before After Elementor Widget. 
-8. **[MT Gradient Heading](https://demo.mightythemes.com/mighty-addons/mt-gradient-heading/)** - Create an eye-catching gradient heading with the help of MT Gradient Heading. You can apply different gradient colors and angles, styles and positions. 
-9. **[MT Flip Box Widget](https://demo.mightythemes.com/mighty-addons/mt-flip-box/)** - MT Flip Box Widget comes with different interactive flipping effects. This widget can be used as a banner, for listing your company's services, and much more uses.
-10. **[MT Opening Hours](https://demo.mightythemes.com/mighty-addons/mt-opening-hours/)** - Display your working hours on the website and customize the section to meet the theme design.
-11. **[MT Contact Form 7 Styler](#)** - Display your contact forms in a jiffy by selecting from the list and start styling and personalizing the form as you like.
-12. **[MT Mailchimp](#)** - Grow your audience with a subscriber form. Create and display a Mailchimp form that matches your website’s brand, so you can attract new contacts and boost engagement. Choose the list to segment your audience in different lists.
+1. **[Cross Domain Copy Paste](https://mightythemes.com/cross-domain-copy-paste/)** - Copy and Paste Sections, Widgets, or the whole page just in two clicks from one domain to another. So, you don't have to reinvent the wheel, thus, making your development speed faster.
+2. **[MT Counter](https://demo.mightythemes.com/mighty-addons/mt-counter/)** - Add spotlights by adding animated number counters with text and icons to showcase your important data.
+3. **[MT Testimonial](https://demo.mightythemes.com/mighty-addons/mt-testimonial/)** - Win more customers by displaying what other customers said about your brand. 
+4. **[MT Accordion](https://demo.mightythemes.com/mighty-addons/mt-accordion/)** - Add beautiful & FAQ schema rich accordions in your pages, posts, and anywhere on your WordPress Website.
+5. **[MT Team](https://demo.mightythemes.com/mighty-addons/mt-team/)** - Showcase your talented team to your website visitors and increase the trust in your brand.
+6. **[MT Progress Bar](https://demo.mightythemes.com/mighty-addons/mt-progress-bar/)** - Highlight your skill stats with the help of Animated progress bars. You can add unlimited bars with a single element. 
+7. **[MT Button Group](https://demo.mightythemes.com/mighty-addons/mt-button-group/)** - Create a better call to actions with creative button styles using Button Group Element. It allows you to add unlimited Buttons with a single element. 
+8. **[MT Before After](https://demo.mightythemes.com/mighty-addons/mt-before-after/)** - Display before and after version of an image with the help of MT Before After Elementor Widget. 
+9. **[MT Gradient Heading](https://demo.mightythemes.com/mighty-addons/mt-gradient-heading/)** - Create an eye-catching gradient heading with the help of MT Gradient Heading. You can apply different gradient colors and angles, styles and positions. 
+10. **[MT Flip Box Widget](https://demo.mightythemes.com/mighty-addons/mt-flip-box/)** - MT Flip Box Widget comes with different interactive flipping effects. This widget can be used as a banner, for listing your company's services, and much more uses.
+11. **[MT Opening Hours](https://demo.mightythemes.com/mighty-addons/mt-opening-hours/)** - Display your working hours on the website and customize the section to meet the theme design.
+12. **[MT Contact Form 7 Styler](#)** - Display your contact forms in a jiffy by selecting from the list and start styling and personalizing the form as you like.
+13. **[MT Mailchimp](#)** - Grow your audience with a subscriber form. Create and display a Mailchimp form that matches your website’s brand, so you can attract new contacts and boost engagement. Choose the list to segment your audience in different lists.
 
 We are working on more Elementor Widgets, and they will be updated soon. Still, you have any specific widget or feature request, feel free to **[get in touch with us.](https://mightythemes.com/contact/)** 
 
