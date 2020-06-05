@@ -58,13 +58,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                             <select class="regular-text" name="weather-api" id="weather-api">
                                 <option value="-1"<?php echo $weatherAPI == "-1" ? ' selected' : ''; ?>>Choose API</option>
                                 <option value="openweather"<?php echo $weatherAPI == "openweather" ? ' selected' : ''; ?>>OpenWeather</option>
-                                <option value="accuweather"<?php echo $weatherAPI == "accuweather" ? ' selected' : ''; ?>>Accuweather</option>
+                                <option value="weatherbit"<?php echo $weatherAPI == "weatherbit" ? ' selected' : ''; ?>>Weatherbit</option>
                             </select>
                             
                             <a style="display:none;" class="help-link api-key-openweather" target="_blank" href="https://openweathermap.org/appid"><?php _e('Get OpenWeather API key 🔑', 'mighty-addons'); ?></a>
-                            <a style="display:none;" class="help-link api-key-accuweather" target="_blank" href="https://developer.accuweather.com/getting-started"><?php _e('Get Accuweather API key 🔑', 'mighty-addons'); ?></a>
+                            <a style="display:none;" class="help-link api-key-weatherbit" target="_blank" href="https://www.weatherbit.io/api"><?php _e('Get Weatherbit API key 🔑', 'mighty-addons'); ?></a>
 
-                            <input style="<?php echo $weatherAPI == "accuweather" || $weatherAPI == "openweather" ? 'display:block;' : 'display:none;'; ?> margin-top: 10px;" class="regular-text" type="text" name="weather-api-key" placeholder="YOUR_API_KEY" id="weather-api-key" value="<?php echo Helper::get_integration_option('weather-api-key'); ?>" />
+                            <input style="<?php echo $weatherAPI == "weatherbit" || $weatherAPI == "openweather" ? 'display:block;' : 'display:none;'; ?> margin-top: 10px;" class="regular-text" type="text" name="weather-api-key" placeholder="YOUR_API_KEY" id="weather-api-key" value="<?php echo Helper::get_integration_option('weather-api-key'); ?>" />
                         </div>
                     <?php } else { ?>
                         <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />

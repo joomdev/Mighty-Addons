@@ -143,14 +143,14 @@
     $('#integrations #weather-api').on('change', function() {
         var api = $(this).val();
         if ( api == "openweather" ) {
-            $('#integrations .ma-element .api-key-accuweather').css('display', 'none');
+            $('#integrations .ma-element .api-key-weatherbit').css('display', 'none');
             $('#integrations .ma-element .api-key-openweather').css('display', 'block');
-        } else if ( api == "accuweather" ) {
+        } else if ( api == "weatherbit" ) {
             $('#integrations .ma-element .api-key-openweather').css('display', 'none');
-            $('#integrations .ma-element .api-key-accuweather').css('display', 'block');
+            $('#integrations .ma-element .api-key-weatherbit').css('display', 'block');
         } else {
             $('#integrations .ma-element .api-key-openweather').css('display', 'none');
-            $('#integrations .ma-element .api-key-accuweather').css('display', 'none');
+            $('#integrations .ma-element .api-key-weatherbit').css('display', 'none');
         }
 
         if ( api === "-1" ) {
