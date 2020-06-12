@@ -703,7 +703,7 @@ class MT_Testimonial extends Widget_Base {
 			echo '<div class="mighty-testimonial" data-show-slides="' . $settings['slides_to_show'] . '" data-scroll-slides="' . $settings['slides_to_scroll'] . '" data-autoplay-status="' . $autoplaySlides . '" data-autoplay-speed="' . $settings['autoplay_speed'] . '" data-hover-pause="' . $pauseOnHover . '" data-infinite-looping="' . $infiniteLoop . '" data-transition-speed="' . $settings['transition_speed'] . '">';
 			foreach (  $settings['testimonials'] as $index => $item ) {
 
-				$slideId = substr( $this->get_id_int(), 0, 3 ) . $index+1;
+				$slideId = substr( $this->get_id_int(), 0, 3 ) . ( $index + 1 );
 
 				echo '<div class="mt-testimonial-slide testimonial-slide-'. $slideId .'">';
 

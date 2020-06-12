@@ -692,7 +692,7 @@ class MT_Accordion extends Widget_Base {
         <div <?php echo $faqSchema ? 'itemscope itemtype="https://schema.org/FAQPage" ' : ''; ?> class="mighty-accordion" data-enable-multiple="<?php echo $openMultiple; ?>" data-first-active="<?php echo $firstActive; ?>" data-open-all="<?php echo $openAll; ?>">
             <?php
             foreach (  $settings['tabs'] as $index => $tab ) :
-                $tabId = substr( $this->get_id_int(), 0, 3 ) . $index+1;
+                $tabId = substr( $this->get_id_int(), 0, 3 ) . ( $index + 1 );
 
                 $accordionIcon = '<i aria-hidden="true" class="accordion-icon fas ' . $openAccordionIcon .'"></i>';
                 $accordionActiveIcon = '<i aria-hidden="true" class="accordion-active-icon fas ' . $closeAccordionIcon .'"></i>';
