@@ -171,25 +171,16 @@
                         callback: function () {
                             xdLocalStorage.getItem( 'mighty-xscp-page-sections', function ( newElement ) {
                                 var copiedSections = JSON.parse( newElement.value );
+                                
                                 copiedSections.forEach(elem => {
-                                    // Copied Element
-                                    var newSection = {};
-                                    var elementType = "section";
-                                    var newSection = {
-                                        elType: elementType,
-                                        settings: elem.settings
-                                    };
-                                    newSection.elements = getUniqueId( elem.elements );
-                                    var container = elementor.getPreviewContainer();
-                                    
-                                    var newSection = $e.run( "document/elements/create", {
-                                        model: newSection,
-                                        container: container,
-                                    });
+                                    var copiedElement = {};
+                                    copiedElement.elementType = "section";
+                                    copiedElement.elementCode = elem;
+
+                                    pasteElement( copiedElement, element );
                                 });
 
                                 console.log('pasted page');
-                                
                             });
                         }
                     },
