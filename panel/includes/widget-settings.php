@@ -29,17 +29,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         <div class="ma-ele-info">
                             <i class="<?php echo $props['icon']; ?> widget-icon"></i>
                             <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
-                            <a href="https://demo.mightythemes.com/mighty-addons/<?php echo strtolower(str_replace(' ', '-', $props['title'])); ?>" class="ma-ele-info-link" target="_blank">
+                            <!-- <a href="https://demo.mightythemes.com/mighty-addons/<?php echo strtolower(str_replace(' ', '-', $props['title'])); ?>" class="ma-ele-info-link" target="_blank">
                                 <span class="ma-view-demo">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/desktop-solid.svg' ?>" alt="">
                                 </span>
                                 <span class="ma-ele-info-tooltip">Demo</span>
-                            </a>
+                            </a> -->
                             <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
-                                <span class="ma-get-help">
+                                <!-- <span class="ma-get-help">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
-                                </span>
-                                <span class="ma-ele-info-tooltip">Documentation</span>
+                                </span> -->
+                                <!-- <span class="ma-ele-info-tooltip">Documentation</span> -->
                             </a>
                         </div>
                         <div class="ma-ele-switch">
@@ -63,17 +63,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         <div class="ma-ele-info">
                             <i class="<?php echo $props['icon']; ?> widget-icon"></i>
                             <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
-                            <a href="https://demo.mightythemes.com/mighty-addons/<?php echo strtolower(str_replace(' ', '-', $props['title'])); ?>" class="ma-ele-info-link" target="_blank">
+                            <!-- <a href="https://demo.mightythemes.com/mighty-addons/<?php echo strtolower(str_replace(' ', '-', $props['title'])); ?>" class="ma-ele-info-link" target="_blank">
                                 <span class="ma-view-demo">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/desktop-solid.svg' ?>" alt="">
                                 </span>
                                 <span class="ma-ele-info-tooltip">Demo</span>
-                            </a>
+                            </a> -->
                             <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
-                                <span class="ma-get-help">
+                                <!-- <span class="ma-get-help">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
-                                </span>
-                                <span class="ma-ele-info-tooltip">Documentation</span>
+                                </span> -->
+                                <!-- <span class="ma-ele-info-tooltip">Documentation</span> -->-
                             </a>
                         </div>
                         <div class="ma-ele-switch">

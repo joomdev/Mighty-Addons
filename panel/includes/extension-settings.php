@@ -22,12 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         <div class="ma-ele-info">
                             <i class="<?php echo $props['icon']; ?> widget-icon"></i>
                             <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
-                            <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
+                            <!-- <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
                                 <span class="ma-get-help">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
                                 </span>
                                 <span class="ma-ele-info-tooltip">Documentation</span>
-                            </a>
+                            </a> -->
                         </div>
                         <div class="ma-ele-switch">
                             <label class="switch">
@@ -50,12 +50,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         <div class="ma-ele-info">
                             <i class="<?php echo $props['icon']; ?> widget-icon"></i>
                             <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
-                            <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
+                            <!-- <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
                                 <span class="ma-get-help">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
                                 </span>
                                 <span class="ma-ele-info-tooltip">Documentation</span>
-                            </a>
+                            </a> -->
                         </div>
                         <div class="ma-ele-switch">
                             <label class="switch">
