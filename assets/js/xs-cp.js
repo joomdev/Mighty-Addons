@@ -17,6 +17,45 @@
         return elements;
     }
 
+    function importContent( newWidget, elementCode, container ) {
+
+        var elementCodeStringify = JSON.stringify(elementCode);
+        var containsMedia = /png|gif|webp|tiff|psd|raw|bmp|heif|svg|jpg/.test(elementCodeStringify);
+        
+        if ( containsMedia ) {
+            fetch(MightyLibrary.ajaxurl, {
+                method: 'POST',
+                headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+                body: 'action=elementor_fetch_copy_paste_data&data=' + elementCodeStringify
+            })
+            .then(response => response.json())
+            .then((tmpl) => {
+    
+                var newWidget = {};
+                newWidget.elType = tmpl.data[0].elType;
+                newWidget.settings = tmpl.data[0].settings;
+                newWidget.elements = tmpl.data[0].elements;
+    
+                $e.run( "document/elements/create", {
+                    model: newWidget,
+                    container: container
+                });
+            })
+            .catch(function(error) {
+                console.log('Something went wrong!');
+                console.log(JSON.stringify(error));
+            });
+        } else {
+            $e.run( "document/elements/create", {
+                model: newWidget,
+                container: container,
+            });
+        }
+
+        // TODO: add toast for paste notice
+        console.log('pasted');
+    }
+
     function pasteElement( newElement, element ) {
 
         // Original element
@@ -26,7 +65,7 @@
         // Copied Element
         var elementType = newElement.elementCode.elType;
         var elementCode = newElement.elementCode;
-        // var elements = elementCode.elements;
+        
         var newWidget = {
             elType: elementType,
             settings: elementCode.settings
@@ -70,14 +109,7 @@
                 break;
         }
 
-        
-        var new_element = $e.run( "document/elements/create", {
-            model: newWidget,
-            container: container,
-        });
-        
-        // TODO: add toast for paste notice
-        console.log('pasted');
+        importContent( newWidget, elementCode, container );
     }
 
 

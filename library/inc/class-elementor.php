@@ -36,6 +36,7 @@ class Elementor extends base {
 		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 		add_action( 'elementor/preview/enqueue_styles', [ $this, 'enqueue_editor_scripts' ] );
 		add_action( 'wp_ajax_elementor_fetch_tmpl_data', [ $this, 'fetch_tmpl_data'], 1);
+		add_action( 'wp_ajax_elementor_fetch_copy_paste_data', [ $this, 'fetch_copy_paste_data'], 1);
 		add_action( 'wp_ajax_save_mighty_extension_media', [ $this, 'mighty_extension_media'] );
 	}
 
@@ -112,6 +113,19 @@ class Elementor extends base {
 		print_r(\json_encode($content));
 
 		wp_die();
+	}
+
+	public function fetch_copy_paste_data() 
+	{
+		$data = !isset( $_POST['data'] ) ? '' : wp_unslash( $_POST['data'] );
+		
+		$tmpl = array( json_decode( $data, true ) );
+
+		$content = $this->process_import_ids($tmpl);
+		
+		$content = $this->process_import_content($tmpl, 'on_import');
+
+		wp_send_json_success( $content );
 	}
 
 	/**
