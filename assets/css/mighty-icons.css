@@ -25,6 +25,22 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-advanceheading:before {
+	content: "\e921";
+}
+
+.mf-instagallery:before {
+	content: "\e922";
+}
+
+.mf-paypal:before {
+	content: "\e923";
+}
+
+.mf-weather:before {
+	content: "\e924";
+}
+
 .mf-tsl:before {
 	content: "\e911";
 }
