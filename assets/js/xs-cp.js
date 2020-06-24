@@ -169,7 +169,7 @@
                             xdLocalStorage.getItem( 'mighty-xscp-page-sections', function ( newElement ) {
 
                                 var copiedSections = JSON.parse( newElement.value );
-								var sectionsStringify = JSON.stringify(copiedSections);
+								var sectionsStringify = encodeURIComponent( JSON.stringify(copiedSections) );
                                 
                                 fetch(MightyLibrary.ajaxurl, {
                                     method: 'POST',
