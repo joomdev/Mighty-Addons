@@ -26,11 +26,11 @@
             fetch(MightyLibrary.ajaxurl, {
                 method: 'POST',
                 headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
-                body: 'action=elementor_fetch_copy_paste_data&data=' + elementCodeStringify
+                body: 'action=elementor_fetch_copy_paste_data&type=single&data=' + elementCodeStringify
             })
             .then(response => response.json())
             .then((tmpl) => {
-    
+
                 var newWidget = {};
                 newWidget.elType = tmpl.data[0].elType;
                 newWidget.settings = tmpl.data[0].settings;
@@ -51,9 +51,6 @@
                 container: container,
             });
         }
-
-        // TODO: add toast for paste notice
-        console.log('pasted');
     }
 
     function pasteElement( newElement, element ) {
@@ -170,17 +167,26 @@
                         title: xscp.paste_all,
                         callback: function () {
                             xdLocalStorage.getItem( 'mighty-xscp-page-sections', function ( newElement ) {
-                                var copiedSections = JSON.parse( newElement.value );
-                                
-                                copiedSections.forEach(elem => {
-                                    var copiedElement = {};
-                                    copiedElement.elementType = "section";
-                                    copiedElement.elementCode = elem;
 
-                                    pasteElement( copiedElement, element );
+                                var copiedSections = JSON.parse( newElement.value );
+								var sectionsStringify = JSON.stringify(copiedSections);
+                                
+                                fetch(MightyLibrary.ajaxurl, {
+                                    method: 'POST',
+                                    headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+                                    body: 'action=elementor_fetch_copy_paste_data&type=multiple&data=' + sectionsStringify
+                                })
+                                .then(response => response.json())
+                                .then((tmpl) => {
+                                    elementor.sections.currentView.addChildModel(tmpl.data.data.template.content)
+                                    // TODO: add toast for paste notice
+                                    console.log('pasted page');
+                                })
+                                .catch(function(error) {
+                                    console.log('Something went wrong!');
+                                    console.log(JSON.stringify(error));
                                 });
 
-                                console.log('pasted page');
                             });
                         }
                     },

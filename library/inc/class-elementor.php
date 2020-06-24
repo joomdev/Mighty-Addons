@@ -118,8 +118,23 @@ class Elementor extends base {
 	public function fetch_copy_paste_data() 
 	{
 		$data = !isset( $_POST['data'] ) ? '' : wp_unslash( $_POST['data'] );
-		
-		$tmpl = array( json_decode( $data, true ) );
+		$type = !isset( $_POST['type'] ) ? '' : wp_unslash( $_POST['type'] );
+
+		if ( $type == "multiple" ) {
+			$json = json_decode( $data, true );
+
+			$tmpl = [
+				"status" => 'success',
+				"code" => 200,
+				"data" => [
+					"template" => [
+						"content" => $json
+					]
+				]
+			];
+		} else if ( $type == "single" ) {
+			$tmpl = array( json_decode( $data, true ) );
+		}
 
 		$content = $this->process_import_ids($tmpl);
 		
