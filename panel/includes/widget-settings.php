@@ -35,12 +35,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                                 </span>
                                 <span class="ma-ele-info-tooltip">Demo</span>
                             </a> -->
-                            <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
-                                <!-- <span class="ma-get-help">
+                            <!-- <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
+                                <span class="ma-get-help">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
-                                </span> -->
-                                <!-- <span class="ma-ele-info-tooltip">Documentation</span> -->
-                            </a>
+                                </span>
+                                <span class="ma-ele-info-tooltip">Documentation</span>
+                            </a> -->
                         </div>
                         <div class="ma-ele-switch">
                             <label class="switch">
@@ -69,12 +69,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                                 </span>
                                 <span class="ma-ele-info-tooltip">Demo</span>
                             </a> -->
-                            <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
-                                <!-- <span class="ma-get-help">
+                            <!-- <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
+                                <span class="ma-get-help">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
-                                </span> -->
-                                <!-- <span class="ma-ele-info-tooltip">Documentation</span> -->-
-                            </a>
+                                </span>
+                                <span class="ma-ele-info-tooltip">Documentation</span> -
+                            </a> -->
                         </div>
                         <div class="ma-ele-switch">
                             <label class="switch">
