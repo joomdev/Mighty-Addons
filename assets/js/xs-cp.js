@@ -44,6 +44,10 @@
             .catch(function(error) {
                 console.log('Something went wrong!');
                 console.log(JSON.stringify(error));
+
+                elementor.notifications.showToast({
+                    message: elementor.translate('#2 Something went wrong!')
+                });
             });
         } else {
             $e.run( "document/elements/create", {
@@ -128,8 +132,9 @@
                             copiedElement.elementType = copyType[index] == "widget" ? element.model.get( "widgetType" ) : null;
                             copiedElement.elementCode = element.model.toJSON();
                             xdLocalStorage.setItem( 'mighty-xscp-element', JSON.stringify(copiedElement), function (data) {
-                                console.log('copied');
-                                // TODO: add toast for copied notice
+                                elementor.notifications.showToast({
+                                    message: elementor.translate('Element Copied!')
+                                });
                             });
                         }
                     },
@@ -139,6 +144,10 @@
                         callback: function () {
                             xdLocalStorage.getItem( 'mighty-xscp-element', function ( newElement ) {
                                 pasteElement( JSON.parse( newElement.value ), element );
+
+                                elementor.notifications.showToast({
+                                    message: elementor.translate('Element Pasted!')
+                                });
                             });
                         }
                     },
@@ -157,8 +166,9 @@
                             });
 
                             xdLocalStorage.setItem( 'mighty-xscp-page-sections', JSON.stringify(allSections), function (data) {
-                                // TODO: add toast for copied notice
-                                console.log('copied page');
+                                elementor.notifications.showToast({
+                                    message: elementor.translate('All Sections Copied!')
+                                });
                             });
                         }
                     },
@@ -179,12 +189,16 @@
                                 .then(response => response.json())
                                 .then((tmpl) => {
                                     elementor.sections.currentView.addChildModel(tmpl.data.data.template.content)
-                                    // TODO: add toast for paste notice
-                                    console.log('pasted page');
+                                    elementor.notifications.showToast({
+                                        message: elementor.translate('Page Pasted!')
+                                    });
                                 })
                                 .catch(function(error) {
                                     console.log('Something went wrong!');
                                     console.log(JSON.stringify(error));
+                                    elementor.notifications.showToast({
+                                        message: elementor.translate('#4 Something went wrong!')
+                                    });
                                 });
 
                             });
