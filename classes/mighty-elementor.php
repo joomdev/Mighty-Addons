@@ -38,7 +38,7 @@ class Mighty_Elementor {
 		
 		// Copy/Paste
 		if ( HelperFunctions::mighty_addons()['extensions']['xscp']['enable'] ) {
-			add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'copy_paste_extension_scripts' ) );
+			add_action( 'elementor/editor/after_enqueue_scripts', [ $this, 'copy_paste_extension_scripts' ] );
 		}
 	}
 
@@ -197,7 +197,7 @@ class Mighty_Elementor {
 		wp_enqueue_script(
 			'mt-xs-cp',
 			MIGHTY_ADDONS_PLG_URL . 'assets/js/xs-cp.js',
-			array( 'jquery', 'elementor-editor' ),
+			[ 'jquery', 'elementor-editor' ],
 			MIGHTY_ADDONS_VERSION,
 			true
 		);
