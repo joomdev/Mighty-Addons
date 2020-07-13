@@ -45,7 +45,7 @@
             $('.ma-tabs li a[href="'+ tab +'"]').parent('li').addClass('active');
             $(obj).parent('li').addClass('current');
         } else {
-            var url = tab == "#general" ? 'admin.php?page=mighty-addons-home' : 'admin.php?page=mighty-addons-home'+tab;
+            var url = ( tab == "#general" ? 'admin.php?page=mighty-addons-home' : 'admin.php?page=mighty-addons-home'+tab );
             $('#toplevel_page_mighty-addons-home .wp-submenu li a[href="'+ url +'"]').parent('li').addClass('current');
             $(obj).addClass('active');
         }
@@ -61,18 +61,25 @@
     $('.ma-tabs li').click(function() {
         var activeTab = $(this).find('a').attr('href');
         tabsStatus(activeTab, 'topbar', this);
-        $(activeTab).show();
+        $( activeTab ).show();
         return false;
     });
 
     // Sidebar Events
     $("#toplevel_page_mighty-addons-home .wp-submenu li a").click( function() {
-        var activeTab = $(this).attr("href").substr($(this).attr("href").indexOf("#"));
-        activeTab = activeTab === "e" ? "#general" : activeTab;
+        var activeTab = $( this ).attr( "href" ).substr( $(this).attr("href").indexOf("#") );
+        activeTab = ( activeTab === "e" ? "#general" : activeTab );
         tabsStatus(activeTab, 'sidebar', this);
-        $(activeTab).show();
+        $( activeTab ).show();
         return false;
     });
+
+    // OnLoad Event
+    if( location.hash ) {
+        var activeTab = location.hash;
+        tabsStatus( activeTab, 'sidebar', this );
+        $( activeTab ).show();
+    }
 
     // Standalone Events
     $(".ma-tabs-content .ma-element .white-label-settings").click( function() {
