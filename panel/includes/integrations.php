@@ -71,6 +71,23 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     <?php } ?>
                 </div>
 
+                <div class="ma-element">
+                    <label for="instagram" class="ma-ele-title"><?php _e('📷 Insta Gallery', 'mighty-addons'); ?></label>
+                    <?php if ( Helper::mightyProAvailable() ) { ?>
+                    <div class="info-field">
+                        <input class="regular-text" type="text" name="ig-client-id" placeholder="CLIENT_ID" id="instagram" value="<?php echo Helper::get_integration_option('ig_client_id'); ?>" />
+
+                        <input style="margin-top: 10px;" class="regular-text" type="text" name="ig-client-secret" placeholder="CLIENT_SECRET" value="<?php echo Helper::get_integration_option('ig_client_secret'); ?>" />
+
+                        <input style="margin-top: 10px;" class="regular-text" type="text" name="ig-redirect-uri" placeholder="REDIRECT_URI" value="<?php echo Helper::get_integration_option('ig_redirect_uri'); ?>" />
+
+                        <a class="help-link" target="_blank" href="#"><?php _e('Get the required details 📃', 'mighty-addons'); ?></a>
+                    </div>
+                    <?php } else { ?>
+                        <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
+                    <?php } ?>
+                </div>
+
                 <div class="text-center ma-cta-save">
                     <button type="submit" class="button ma-btn ma-save-button"><?php _e('Save Settings', 'mighty-addons'); ?></button>
                 </div>
