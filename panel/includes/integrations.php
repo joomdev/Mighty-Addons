@@ -75,13 +75,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     <label for="instagram" class="ma-ele-title"><?php _e('📷 Insta Gallery', 'mighty-addons'); ?></label>
                     <?php if ( Helper::mightyProAvailable() ) { ?>
                     <div class="info-field">
-                        <input class="regular-text" type="text" name="ig-client-id" placeholder="CLIENT_ID" id="instagram" value="<?php echo Helper::get_integration_option('ig_client_id'); ?>" />
+                        <input class="regular-text" type="text" name="ig-access-token" placeholder="ACCESS_TOKEN" id="instagram" value="<?php echo Helper::get_integration_option('ig-access-token'); ?>" />
 
-                        <input style="margin-top: 10px;" class="regular-text" type="text" name="ig-client-secret" placeholder="CLIENT_SECRET" value="<?php echo Helper::get_integration_option('ig_client_secret'); ?>" />
+                        <input style="margin-top: 10px;" class="regular-text" type="text" name="ig-user-id" placeholder="USER_ID" value="<?php echo Helper::get_integration_option('ig-user-id'); ?>" />
 
-                        <input style="margin-top: 10px;" class="regular-text" type="text" name="ig-redirect-uri" placeholder="REDIRECT_URI" value="<?php echo Helper::get_integration_option('ig_redirect_uri'); ?>" />
-
-                        <a class="help-link" target="_blank" href="#"><?php _e('Get the required details 📃', 'mighty-addons'); ?></a>
+                        <a class="help-link" target="_blank" href="https://mightythemes.com/insta-token-generator/"><?php _e('Get the details 📃', 'mighty-addons'); ?></a>
                     </div>
                     <?php } else { ?>
                         <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
