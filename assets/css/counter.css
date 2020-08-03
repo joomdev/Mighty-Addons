@@ -11,10 +11,6 @@
     float: left;
 }
 
-.mighty-counter .mtcounter-content .counter {
-    font-size: 40px;
-}
-
 .mighty-counter .mtcounter-content .counter-title {
     font-size: 22px;
 }
@@ -22,4 +18,9 @@
 .mighty-counter .mt-counter-icon i {
     box-sizing: content-box;
     padding: 20px;
+}
+
+.mighty-counter .mt-counter-icon svg {
+    display: block;
+    margin: auto;
 }

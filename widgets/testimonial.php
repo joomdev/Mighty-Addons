@@ -382,6 +382,15 @@ class MT_Testimonial extends Widget_Base {
 				]
 			);
 
+			$this->add_group_control(
+				\Elementor\Group_Control_Box_Shadow::get_type(),
+				[
+					'name' => 'testimonial_boxshadow',
+					'label' => __( 'Box Shadow', 'mighty' ),
+					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide',
+				]
+			);
+
 		$this->end_controls_section();
 
 		// Avatar Styling

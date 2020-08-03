@@ -167,7 +167,7 @@ class MT_Counter extends Widget_Base {
 		);
 
 			$this->add_responsive_control(
-				'mt_space_between',
+				'icon_spacing',
 				[
 					'label' => __( 'Icon Spacing', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
@@ -209,6 +209,7 @@ class MT_Counter extends Widget_Base {
 					],
 					'selectors' => [
 						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon svg' => 'width: {{SIZE}}{{UNIT}};',
 					],
 				]
             );
@@ -230,7 +231,8 @@ class MT_Counter extends Widget_Base {
 						'size' => 0,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'padding: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon *' => 'padding: {{SIZE}}{{UNIT}};',
+						// '{{WRAPPER}} .mighty-counter .mt-counter-icon svg' => 'padding: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
@@ -241,7 +243,7 @@ class MT_Counter extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'color: {{VALUES}}'
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon *' => 'color: {{VALUE}};'
 					]
                 ]
 			);
@@ -252,7 +254,7 @@ class MT_Counter extends Widget_Base {
                     'label'     => __( 'Background Color', 'mighty' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'background-color: {{VALUES}}'
+						'{{WRAPPER}} .mighty-counter .mt-counter-icon *' => 'background-color: {{VALUE}};'
 					]
                 ]
 			);
@@ -262,7 +264,7 @@ class MT_Counter extends Widget_Base {
 				[
 					'name' => 'icon_border_type',
 					'label' => __( 'Icon Border Type', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-counter .mt-counter-icon i',
+					'selector' => '{{WRAPPER}} .mighty-counter .mt-counter-icon *',
 				]
 			);
 
@@ -273,7 +275,7 @@ class MT_Counter extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px' ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-counter .mt-counter-icon i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-counter .mt-counter-icon *' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
 			);
@@ -288,6 +290,28 @@ class MT_Counter extends Widget_Base {
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
+
+			$this->add_responsive_control(
+				'counter_spacing',
+				[
+					'label' => __( 'Counter Spacing', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px', '%' ],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 200,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 0,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-counter .mtcounter-content .counter' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+					]
+				]
+			);
 
 			$this->add_control(
 				'counter_color',
@@ -375,7 +399,7 @@ class MT_Counter extends Widget_Base {
 		// if icon is set
 		if ( 'yes' === $settings['show_counter_icon'] && ! empty($settings['counter_icon']['value']) ) {
 			echo '<div class="mt-counter-icon">';
-				\Elementor\Icons_Manager::render_icon( $settings['counter_icon'], [ 'aria-hidden' => 'true' ] );
+				\Elementor\Icons_Manager::render_icon( $settings['counter_icon'], [ 'aria-hidden' => 'true', 'class' => 'counter-icon' ] );
 			echo '</div>';
 		}
 		
