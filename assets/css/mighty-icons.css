@@ -25,6 +25,38 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-clicktocall:before {
+	content: "\e912";
+}
+
+.mf-contenttoggle:before {
+	content: "\e913";
+}
+
+.mf-hotspot:before {
+	content: "\e914";
+}
+
+.mf-opentable:before {
+	content: "\e915";
+}
+
+.mf-pricelist:before {
+	content: "\e916";
+}
+
+.mf-timeline:before {
+	content: "\e917";
+}
+
+.mf-whatsappchat:before {
+	content: "\e918";
+}
+
+.mf-tsl:before {
+	content: "\e911";
+}
+
 .mf-advanceheading:before {
 	content: "\e921";
 }
@@ -41,12 +73,12 @@
 	content: "\e924";
 }
 
-.mf-tsl:before {
-	content: "\e911";
-}
-
 .mf-copypaste:before {
 	content: "\e910";
+}
+
+.mf-gmaps:before {
+	content: "\e90d";
 }
 
 .mf-mailchimp:before {
@@ -55,10 +87,6 @@
 
 .mf-particles:before {
 	content: "\e90f";
-}
-
-.mf-gmaps:before {
-	content: "\e90d";
 }
 
 .mf-openstreetmap:before {
