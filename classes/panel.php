@@ -56,7 +56,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 'manage_options',
                 'mighty-addons-home',
                 [ __CLASS__, 'generate_homepage' ],
-                MIGHTY_ADDONS_PLG_URL.'assets/admin/images/mighty-logo.svg',
+                $branding['hide_option'] == "on" ? 'dashicons-admin-generic' : MIGHTY_ADDONS_PLG_URL.'assets/admin/images/mighty-logo.svg',
                 99
             );
 

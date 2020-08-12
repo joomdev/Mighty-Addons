@@ -21,25 +21,25 @@ if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'],
 }
 
 $branding = Helper::get_white_label();
-?>
 
-<?php include_once('includes/header.php'); ?>
+include_once('includes/header.php');
 
-<?php include_once('includes/boring-stuff.php'); ?>
+if ( $branding['hide_option'] !== "on" ) :
+    include_once('includes/boring-stuff.php');
+endif;
 
-<?php include_once('includes/widget-settings.php'); ?>
+include_once('includes/widget-settings.php');
 
-<?php include_once('includes/extension-settings.php'); ?>
+include_once('includes/extension-settings.php');
 
-<?php
 if( Helper::mightyProAvailable() ) {
     include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/go-pro.php');
     include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/white-label.php');
 } else {
     include_once('includes/go-pro.php');
 }
+
+include_once('includes/integrations.php');
+
+include_once('includes/footer.php');
 ?>
-
-<?php include_once('includes/integrations.php'); ?>
-
-<?php include_once('includes/footer.php'); ?>

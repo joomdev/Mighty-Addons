@@ -53,7 +53,11 @@
     }
 
     // Tabs Setting
-    $('.ma-tabs li:last-child').addClass('active');
+    if( $('.ma-tabs li:last-child a span').html() == "Boring Stuff" ) {
+        $('.ma-tabs li:last-child').addClass('active');
+    } else {
+        $('.ma-tabs li:first-child').addClass('active');
+    }
     $('.ma-tabs-content').hide();
     $('.ma-tabs-content:first').show();
 
