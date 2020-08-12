@@ -226,6 +226,18 @@ class MT_Testimonial extends Widget_Base {
 			);
 
 			$this->add_control(
+				'show_bullets',
+				[
+					'label' => __( 'Show Bullets', 'mighty' ),
+					'type' => Controls_Manager::SWITCHER,
+					'label_on' => __( 'On', 'mighty' ),
+					'label_off' => __( 'Off', 'mighty' ),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
+
+			$this->add_control(
 				'transition_speed',
 				[
 					'label' => __( 'Transition Speed', 'mighty' ),
@@ -604,6 +616,18 @@ class MT_Testimonial extends Widget_Base {
 			]
 		);
 
+			$this->add_control(
+				'arrows_heading',
+				[
+					'label' => __( 'Arrows', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+					'condition' => [
+						'show_arrows' => 'yes'
+					]
+				]
+			);
+
 			$this->add_responsive_control(
 				'arrows_fontsize',
 				[
@@ -623,6 +647,65 @@ class MT_Testimonial extends Widget_Base {
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial-wrapper .prev-next a i' => 'font-size: {{SIZE}}{{UNIT}}',
 					],
+					'condition' => [
+						'show_arrows' => 'yes'
+					]
+				]
+			);
+
+			$this->add_control(
+                'arrows_color',
+                [
+                    'label'     => __( 'Color', 'mighty' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial-wrapper .prev-next a i' => 'color: {{VALUES}}'
+					],
+					'condition' => [
+						'show_arrows' => 'yes'
+					]
+                ]
+			);
+			
+			$this->add_control(
+                'prev_icon',
+                [
+                    'label' => __( 'Previous Icon', 'mighty' ),
+                    'type' => Controls_Manager::ICONS,
+                    'default' => [
+                        'value' => 'fas fa-chevron-left',
+                        'library' => 'solid',
+                    ],
+					'condition' => [
+						'show_arrows' => 'yes'
+					]
+                ]
+			);
+			
+			$this->add_control(
+                'next_icon',
+                [
+                    'label' => __( 'Next Icon', 'mighty' ),
+                    'type' => Controls_Manager::ICONS,
+                    'default' => [
+                        'value' => 'fas fa-chevron-right',
+                        'library' => 'solid',
+                    ],
+					'condition' => [
+						'show_arrows' => 'yes'
+					]
+                ]
+			);
+
+			$this->add_control(
+				'dots_heading',
+				[
+					'label' => __( 'Dots', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
 				]
 			);
 
@@ -645,43 +728,53 @@ class MT_Testimonial extends Widget_Base {
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial .slick-dots li button::before' => 'font-size: {{SIZE}}{{UNIT}}',
 					],
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
 				]
 			);
-
+			
 			$this->add_control(
-                'arrows_color',
+                'dots_color',
                 [
                     'label'     => __( 'Color', 'mighty' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial-wrapper .prev-next a i' => 'color: {{VALUES}}'
+						'{{WRAPPER}} .mighty-testimonial .slick-dots li button::before' => 'color: {{VALUES}}'
+					],
+					'condition' => [
+						'show_bullets' => 'yes'
 					]
                 ]
 			);
-			
+
 			$this->add_control(
-                'prev_icon',
+                'dots_bgcolor',
                 [
-                    'label' => __( 'Previous Icon', 'mighty' ),
-                    'type' => Controls_Manager::ICONS,
-                    'default' => [
-                        'value' => 'fas fa-chevron-left',
-                        'library' => 'solid',
-                    ],
+                    'label'     => __( 'Background Color', 'mighty' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial .slick-dots li button' => 'background-color: {{VALUES}}'
+					],
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
                 ]
 			);
-			
+
 			$this->add_control(
-                'next_icon',
+                'dots_hover_bgcolor',
                 [
-                    'label' => __( 'Next Icon', 'mighty' ),
-                    'type' => Controls_Manager::ICONS,
-                    'default' => [
-                        'value' => 'fas fa-chevron-right',
-                        'library' => 'solid',
-                    ],
+                    'label'     => __( 'Hover Background Color', 'mighty' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial .slick-dots li button:hover' => 'background-color: {{VALUES}}'
+					],
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
                 ]
-            );
+			);
 
 		$this->end_controls_section();
 	}
@@ -692,12 +785,6 @@ class MT_Testimonial extends Widget_Base {
 		if ( empty( $settings['testimonials'] ) ) {
 			return;
 		}
-
-		$autoplaySlides = ($settings['enable_autoplay'] == "true" ? 'true' : 'false');
-		$pauseOnHover = ($settings['pause_on_hover'] == "true" ? 'true' : 'false');
-		$infiniteLoop = ($settings['infinite_loop'] == "true" ? 'true' : 'false');
-		
-		
 		
 		echo '<div class="mighty-testimonial-wrapper" id="mighty-testimonial-'. $this->get_id() .'">';
 
@@ -709,7 +796,17 @@ class MT_Testimonial extends Widget_Base {
 				echo '</div>';
 			}
 
-			echo '<div class="mighty-testimonial" data-show-slides="' . $settings['slides_to_show'] . '" data-scroll-slides="' . $settings['slides_to_scroll'] . '" data-autoplay-status="' . $autoplaySlides . '" data-autoplay-speed="' . $settings['autoplay_speed'] . '" data-hover-pause="' . $pauseOnHover . '" data-infinite-looping="' . $infiniteLoop . '" data-transition-speed="' . $settings['transition_speed'] . '">';
+			$this->add_render_attribute( 'mighty-testimonial', 'class', 'mighty-testimonial' );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides', $settings['slides_to_show'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides', $settings['slides_to_scroll'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-autoplay-status', ($settings['enable_autoplay'] == "true" ? 'true' : 'false') );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-autoplay-speed', $settings['autoplay_speed'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-hover-pause', ($settings['pause_on_hover'] == "true" ? 'true' : 'false') );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-infinite-looping', ($settings['infinite_loop'] == "true" ? 'true' : 'false') );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-transition-speed', $settings['transition_speed'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-enable-dots', ($settings['show_bullets'] == "yes" ? 'true' : 'false') );
+
+			echo '<div ' . $this->get_render_attribute_string( 'mighty-testimonial' ) . '>';
 			foreach (  $settings['testimonials'] as $index => $item ) {
 
 				$slideId = substr( $this->get_id_int(), 0, 3 ) . ( $index + 1 );

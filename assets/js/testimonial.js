@@ -9,6 +9,7 @@
     var pauseOnHover     = $scope.find('.mighty-testimonial').data('hover-pause');
     var infiniteLoop     = $scope.find('.mighty-testimonial').data('infinite-looping');
     var transitionSpeed  = $scope.find('.mighty-testimonial').data('transition-speed');
+    var dots             = $scope.find('.mighty-testimonial').data('enable-dots');
 
     $scope.find(".mighty-testimonial").slick({
       infinite: infiniteLoop,
@@ -20,7 +21,7 @@
       pauseOnHover: pauseOnHover,
       prevArrow: $scope.find('.mighty-testimonial-wrapper .prev-next .prev'),
       nextArrow: $scope.find('.mighty-testimonial-wrapper .prev-next .next'),
-      dots: true,
+      dots: dots,
     });
   };
 
