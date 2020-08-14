@@ -87,7 +87,8 @@ class Elementor extends base {
 			'pxStatus' => HelperFunctions::mighty_addons()['extensions']['pixabay']['enable'],
 			'unsplashStatus' => HelperFunctions::mighty_addons_pro()['extensions']['unsplash']['enable'],
 			'pxUrl' => "pixabay/image/",
-			'usUrl' => "unsplash/image/"
+			'usUrl' => "unsplash/image/",
+			'plgShortName' => HelperFunctions::get_white_label('plugin_short_name')
 		) );
 	}
 

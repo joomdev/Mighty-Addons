@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 import Loader from './loader.jsx'
 import ReactPaginate from 'react-paginate'
 
-if ("undefined" != typeof wp && wp.media && Number(MightyLibrary.pxStatus)) {
+if ("undefined" != typeof wp && wp.media && ( Number(MightyLibrary.pxStatus) || Number(MightyLibrary.unsplashStatus) ) ) {
 
   var e = wp.media.view.MediaFrame.Select,
     i = (wp.media.controller.Library, wp.media.view.l10n),
     t = wp.media.view.Frame,
     importData = null,
-    tabTitle = "Mighty Photos",
+    tabTitle = MightyLibrary.plgShortName + " Photos",
     defaultSearchTerm = "Cats"; // 🐈
 
   wp.media.view.MightyAddons_AttachmentsBrowser = t.extend({
@@ -57,7 +57,7 @@ class Gallery extends Component {
       viewType: 'ordered',
       totalPages: '',
       currentPage: 1,
-      searchPlatform: 'pixabay',
+      searchPlatform: Number(MightyLibrary.pxStatus) ? 'pixabay' : 'unsplash',
       proEnabled: ''
     }
   }
@@ -209,13 +209,23 @@ class Home extends Component {
             <button onClick={ () => this.props.onSearch() }><i className="fas fa-search"></i></button>
           </div>
           <div className="brand-filters">
-            <span className={`action-button${this.props.searchPlatform == "pixabay" ? ' active' : ''}`} onClick={ () => this.props.activeSearchPlatform('pixabay') }>
-              Pixabay
-            </span>
 
-            <span className={`action-button${this.props.searchPlatform == "unsplash" ? ' active' : ''}`} onClick={ () => this.props.activeSearchPlatform('unsplash') }>
-              Unsplash
-            </span>
+            {Number(MightyLibrary.pxStatus) ?
+              <span className={`action-button${this.props.searchPlatform == "pixabay" ? ' active' : ''}`} onClick={ () => this.props.activeSearchPlatform('pixabay') }>
+                Pixabay
+              </span>
+              :
+              ''
+            }
+            
+            {Number(MightyLibrary.unsplashStatus) ?
+              <span className={`action-button${this.props.searchPlatform == "unsplash" ? ' active' : ''}`} onClick={ () => this.props.activeSearchPlatform('unsplash') }>
+                Unsplash
+              </span>
+              :
+              ''
+            }
+
           </div>
           <div className="photos-view">
             <p>View as:</p>
