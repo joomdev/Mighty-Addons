@@ -37,8 +37,8 @@
         }
         window.mightyModal = null;
         var btn = $("#tmpl-elementor-add-section");
-        
-        if (0 < btn.length) {
+
+        if ( 0 < btn.length && MightyAddonsModal.enableLibrary !== "on" ) {
             var btnText = btn.text();
             btnText = btnText.replace('<div class="elementor-add-section-drag-title', '<div class="elementor-add-section-area-button elementor-add-mighty-button" title="Mighty Library"> <i class="fa fa-folder"></i> </div><div class="elementor-add-section-drag-title'),
             btn.text(btnText), elementor.on("preview:loaded", function () {

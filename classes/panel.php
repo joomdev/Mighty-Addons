@@ -56,7 +56,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 'manage_options',
                 'mighty-addons-home',
                 [ __CLASS__, 'generate_homepage' ],
-                $branding['hide_option'] == "on" ? 'dashicons-admin-generic' : MIGHTY_ADDONS_PLG_URL.'assets/admin/images/mighty-logo.svg',
+                $branding['hide_logo'] == "on" ? 'dashicons-admin-generic' : MIGHTY_ADDONS_PLG_URL.'assets/admin/images/mighty-logo.svg',
                 99
             );
 
@@ -76,13 +76,15 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
                 'admin.php?page=mighty-addons-home#extensions'
             );
 
-            add_submenu_page(
-                'mighty-addons-home',
-                __( 'Mighty Pro', 'mighty-addons' ),
-                __( 'Go Pro 🔥', 'mighty-addons' ),
-                'manage_options',
-                'admin.php?page=mighty-addons-home#go-pro'
-            );
+            if ( $branding['hide_licencepage'] !== "on" ) :
+                add_submenu_page(
+                    'mighty-addons-home',
+                    __( 'Mighty Pro', 'mighty-addons' ),
+                    __( 'Go Pro 🔥', 'mighty-addons' ),
+                    'manage_options',
+                    'admin.php?page=mighty-addons-home#go-pro'
+                );
+            endif;
 
             add_submenu_page(
                 'mighty-addons-home',

@@ -117,7 +117,7 @@ class HelperFunctions {
                 'icon' => 'mf mf-pixabay-icon'
             ],
             'xscp' => [
-                'title' => 'Cross Site Copy Paste',
+                'title' => 'Cross-Site Copy Paste',
                 'description' => 'Quickly Copy/Paste Widgets/Sections/Page across multiple domains.',
                 'enable' => true,
                 'class' => 'MT_Copypaste',
@@ -131,6 +131,12 @@ class HelperFunctions {
         $widgets = get_option( 'mighty_addons_status', self::$mighty_addons );
         
         return $widgets;
+    }
+
+    public static function mighty_addons_pro() {
+
+        return get_option( 'mighty_addons_pro_status' );
+
     }
 
     public static function cf7FormsList() {
@@ -205,6 +211,9 @@ class HelperFunctions {
             'pro_plugin_short_name'     => 'MAP',
             'pro_plugin_description'    => 'Mighty Addons Pro is a Powerful Elementor Widget Pro Plugin that gives you power to do more.',
             'hide_option'               => 'off',
+            'hide_logo'                 => 'off',
+            'hide_templatelibrary'      => 'off',
+            'hide_licencepage'          => 'off',
         ];
 
         $ma_settings = [
@@ -217,6 +226,9 @@ class HelperFunctions {
             'pro_plugin_short_name'     => ( isset ( $settings['pro_plugin_short_name'] ) ) && "" !== $settings['pro_plugin_short_name'] ? $settings['pro_plugin_short_name'] : $defaults['pro_plugin_short_name'],
             'pro_plugin_description'    => ( isset ( $settings['pro_plugin_description'] ) ) && "" !== $settings['pro_plugin_description'] ? $settings['pro_plugin_description'] : $defaults['pro_plugin_description'],
             'hide_option'               => ( isset ( $settings['hide_option'] ) ) && "on" == $settings['hide_option'] ? $settings['hide_option'] : $defaults['hide_option'],
+            'hide_logo'                 => ( isset ( $settings['hide_logo'] ) ) && "on" == $settings['hide_logo'] ? $settings['hide_logo'] : $defaults['hide_logo'],
+            'hide_templatelibrary'      => ( isset ( $settings['hide_templatelibrary'] ) ) && "on" == $settings['hide_templatelibrary'] ? $settings['hide_templatelibrary'] : $defaults['hide_templatelibrary'],
+            'hide_licencepage'          => ( isset ( $settings['hide_licencepage'] ) ) && "on" == $settings['hide_licencepage'] ? $settings['hide_licencepage'] : $defaults['hide_licencepage'],
         ];
 
         if ( "defaults" == $option ) {

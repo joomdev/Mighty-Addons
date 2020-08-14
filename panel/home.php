@@ -24,7 +24,7 @@ $branding = Helper::get_white_label();
 
 include_once('includes/header.php');
 
-if ( $branding['hide_option'] !== "on" ) :
+if ( $branding['hide_logo'] !== "on" ) :
     include_once('includes/boring-stuff.php');
 endif;
 
@@ -33,10 +33,14 @@ include_once('includes/widget-settings.php');
 include_once('includes/extension-settings.php');
 
 if( Helper::mightyProAvailable() ) {
-    include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/go-pro.php');
+    if ( $branding['hide_licencepage'] !== "on" ) :
+        include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/go-pro.php');
+    endif;
     include_once(MIGHTY_ADDONS_PRO_DIR_PATH . 'pages/white-label.php');
 } else {
-    include_once('includes/go-pro.php');
+    if ( $branding['hide_licencepage'] !== "on" ) :
+        include_once('includes/go-pro.php');
+    endif;
 }
 
 include_once('includes/integrations.php');

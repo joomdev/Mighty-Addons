@@ -63,6 +63,10 @@ class Elementor extends base {
 
 		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 
+		wp_localize_script( 'mightyaddons-elementor-modal', 'MightyAddonsModal', array(
+			'enableLibrary' => HelperFunctions::get_white_label( 'hide_templatelibrary' ),
+		) );
+
 		wp_enqueue_script(
 			'mighty-library-react',
 			MIGHTY_ADDONS_PLG_URL . 'library/assets/js/lib/build/main.js',
@@ -81,6 +85,7 @@ class Elementor extends base {
 			'host' => $_SERVER['HTTP_HOST'],
 			'nonce' => "MightyLibrary",
 			'pxStatus' => HelperFunctions::mighty_addons()['extensions']['pixabay']['enable'],
+			'unsplashStatus' => HelperFunctions::mighty_addons_pro()['extensions']['unsplash']['enable'],
 			'pxUrl' => "pixabay/image/",
 			'usUrl' => "unsplash/image/"
 		) );

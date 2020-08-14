@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     </div>
                 </div>
 
-                <?php if ( $branding['hide_option'] !== "on" ) : ?>
+                <?php if ( $branding['hide_logo'] !== "on" ) : ?>
 
                     <div class="ma-element">
                         <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
@@ -79,7 +79,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
                         <input style="margin-top: 10px;" class="regular-text" type="text" name="ig-user-id" placeholder="USER_ID" value="<?php echo Helper::get_integration_option('ig-user-id'); ?>" />
 
-                        <a class="help-link" target="_blank" href="https://mightythemes.com/insta-token-generator/"><?php _e('Get the details 📃', 'mighty-addons'); ?></a>
+                        <a class="help-link" target="_blank" href="https://mightythemes.com/insta-token-generator/"><?php _e('Generate Access Token 📃', 'mighty-addons'); ?></a>
                     </div>
                     <?php } else { ?>
                         <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
