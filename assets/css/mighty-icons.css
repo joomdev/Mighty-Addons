@@ -25,6 +25,22 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-particles:before {
+	content: "\e90a";
+}
+
+.mf-pixabay:before {
+	content: "\e90f";
+}
+
+.mf-unsplash:before {
+	content: "\e919";
+}
+
+.mf-xscps:before {
+	content: "\e91a";
+}
+
 .mf-clicktocall:before {
 	content: "\e912";
 }
