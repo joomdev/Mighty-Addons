@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     </div>
                 </div>
 
-                <?php if ( $branding['hide_logo'] !== "on" ) : ?>
+                <?php if ( $branding['hide_option'] !== "on" ) : ?>
 
                     <div class="ma-element">
                         <label for="white-label" class="ma-ele-title"><?php _e('📃 White Label', 'mighty-addons'); ?></label>
