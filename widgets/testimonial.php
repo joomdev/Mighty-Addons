@@ -167,7 +167,9 @@ class MT_Testimonial extends Widget_Base {
 				[
 					'label' => __( 'Slides To Show', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => '1',
+					'default'        => '1',
+					'tablet_default' => '1',
+					'mobile_default' => '1',
 					'options' => [
 						'1' => __( '1', 'mighty' ),
 						'2' => __( '2', 'mighty' ),
@@ -188,7 +190,9 @@ class MT_Testimonial extends Widget_Base {
 				[
 					'label' => __( 'Slides To Scroll', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => '1',
+					'default'        => '1',
+					'tablet_default' => '1',
+					'mobile_default' => '1',
 					'options' => [
 						'1' => __( '1', 'mighty' ),
 						'2' => __( '2', 'mighty' ),
@@ -797,8 +801,14 @@ class MT_Testimonial extends Widget_Base {
 			}
 
 			$this->add_render_attribute( 'mighty-testimonial', 'class', 'mighty-testimonial' );
-			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides', $settings['slides_to_show'] );
-			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides', $settings['slides_to_scroll'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-desktop', $settings['slides_to_show'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-tablet', $settings['slides_to_show_tablet'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-mobile', $settings['slides_to_show_mobile'] );
+
+			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-desktop', $settings['slides_to_scroll'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-tablet', $settings['slides_to_scroll_tablet'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-mobile', $settings['slides_to_scroll_mobile'] );
+
 			$this->add_render_attribute( 'mighty-testimonial', 'data-autoplay-status', ($settings['enable_autoplay'] == "true" ? 'true' : 'false') );
 			$this->add_render_attribute( 'mighty-testimonial', 'data-autoplay-speed', $settings['autoplay_speed'] );
 			$this->add_render_attribute( 'mighty-testimonial', 'data-hover-pause', ($settings['pause_on_hover'] == "true" ? 'true' : 'false') );
