@@ -14,7 +14,7 @@ Tested up to: 5.4
 
 Requires PHP: 5.6
 
-Stable Tag: 1.3.11
+Stable Tag: 1.3.12
 
 License: GPLv2 or later
 
@@ -149,6 +149,15 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.3.12
+* Fixed: Sub links in Mighty Addons Dashboard
+* Added: Switcher Controls in the dashboard to control extensions
+* Fixed: CSS issues in Widgets
+* Fixed: Bullets and Arrows Controls not working in Testimonial Widget
+* Fixed: Responsive breakpoints in Testimonial Widget
+* Fixed: Elementor API issues with Template Library and Cross-site Copy/Paste
+* Added: Compatibility for both new and old Elementor versions
 
 ### 1.3.11
 * Fixed: Copy/Paste Conflict with RankMath plugin
