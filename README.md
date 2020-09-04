@@ -10,7 +10,7 @@ Tags: elementor, elementor extensions, progress bar, elementor addons, elementor
 
 Requires at least: 4.0 or higher
 
-Tested up to: 5.4
+Tested up to: 5.5
 
 Requires PHP: 5.6
 
