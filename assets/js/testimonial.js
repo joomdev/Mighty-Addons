@@ -9,7 +9,6 @@
     var slidesToScrollMobile  = $scope.find('.mighty-testimonial').data('scroll-slides-mobile');
     var autoplayStatus        = $scope.find('.mighty-testimonial').data('autoplay-status');
     var autoplaySpeed         = $scope.find('.mighty-testimonial').data('autoplay-speed');
-    var transitionSpeed       = $scope.find('.mighty-testimonial').data('transition-speed');
     var pauseOnHover          = $scope.find('.mighty-testimonial').data('hover-pause');
     var infiniteLoop          = $scope.find('.mighty-testimonial').data('infinite-looping');
     var transitionSpeed       = $scope.find('.mighty-testimonial').data('transition-speed');

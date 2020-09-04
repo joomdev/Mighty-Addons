@@ -74,7 +74,7 @@ class App extends Component {
     .then(response => response.json())
     .then((tmpl) => {
       window.mightyModal.hide(),
-      elementor.sections.currentView.addChildModel(tmpl.data.template.content)
+      elementor.previewView.addChildModel(tmpl.data.template.content)
       updateView('home');
     })
     .catch(function(error) {

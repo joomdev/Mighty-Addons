@@ -188,7 +188,7 @@
                                 })
                                 .then(response => response.json())
                                 .then((tmpl) => {
-                                    elementor.sections.currentView.addChildModel(tmpl.data.data.template.content)
+                                    elementor.previewView.addChildModel(tmpl.data.template.content)
                                     elementor.notifications.showToast({
                                         message: elementor.translate('Page Pasted!')
                                     });
