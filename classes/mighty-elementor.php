@@ -207,7 +207,8 @@ class Mighty_Elementor {
 			'copy' => sprintf( __( '%1s Copy', 'mighty' ), $branding['plugin_short_name'] ),
 			'paste' => sprintf( __( '%1s Paste', 'mighty' ), $branding['plugin_short_name'] ),
 			'copy_all' => sprintf( __( '%1s Copy All', 'mighty' ), $branding['plugin_short_name'] ),
-			'paste_all' => sprintf( __( '%1s Paste All', 'mighty' ), $branding['plugin_short_name'] )
+			'paste_all' => sprintf( __( '%1s Paste All', 'mighty' ), $branding['plugin_short_name'] ),
+			'elementorCompatible' => ELEMENTOR_OLD_COMPATIBLITY
 		) );
 	}
 }

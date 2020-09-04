@@ -73,8 +73,13 @@ class App extends Component {
     })
     .then(response => response.json())
     .then((tmpl) => {
-      window.mightyModal.hide(),
-      elementor.previewView.addChildModel(tmpl.data.template.content)
+      window.mightyModal.hide()
+      if ( MightyLibrary.elementorCompatible ) {
+        // Compatibility for older elementor versions
+        elementor.sections.currentView.addChildModel(tmpl.data.template.content)
+      } else {
+        elementor.previewView.addChildModel(tmpl.data.template.content) 
+      }
       updateView('home');
     })
     .catch(function(error) {

@@ -188,7 +188,12 @@
                                 })
                                 .then(response => response.json())
                                 .then((tmpl) => {
-                                    elementor.previewView.addChildModel(tmpl.data.template.content)
+                                    if ( MightyLibrary.elementorCompatible ) {
+                                        // Compatibility for older elementor versions
+                                        elementor.sections.currentView.addChildModel(tmpl.data.data.template.content)
+                                    } else {
+                                        elementor.previewView.addChildModel(tmpl.data.data.template.content)
+                                    }
                                     elementor.notifications.showToast({
                                         message: elementor.translate('Page Pasted!')
                                     });

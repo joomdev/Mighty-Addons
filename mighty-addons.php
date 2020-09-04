@@ -34,20 +34,20 @@ define( 'MIGHTY_ADDONS_PLG_URL', plugin_dir_url( __FILE__ ) );
 final class Mighty_Addons {
 
 	/**
-	 * Plugin Version
-	 *
-	 * @since 1.0.0
-	 * @var string The plugin version.
-	 */
-	const VERSION = '1.0.0';
-
-	/**
 	 * Minimum Elementor Version
 	 *
 	 * @since 1.0.0
 	 * @var string Minimum Elementor version required to run the plugin.
 	 */
-	const MINIMUM_ELEMENTOR_VERSION = '2.0.0';
+	const MINIMUM_ELEMENTOR_VERSION = '2.9.0';
+
+	/**
+	 * Elementor Compatibility Version
+	 *
+	 * @since 1.3.11
+	 * @var string Used for running some features based on Elemnetor old API until v2.9.14
+	 */
+	const ELEMENTOR_COMPATIBILITY_VERSION = '3.0.0';
 
 	/**
 	 * Minimum PHP Version
@@ -150,6 +150,13 @@ final class Mighty_Addons {
 		if ( ! version_compare( ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
 			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_elementor_version' ) );
 			return;
+		}
+
+		// Check for required Compatible Elementor version
+		if ( ! version_compare( ELEMENTOR_VERSION, self::ELEMENTOR_COMPATIBILITY_VERSION, '>=' ) ) {
+			define( 'ELEMENTOR_OLD_COMPATIBLITY', true );
+		} else {
+			define( 'ELEMENTOR_OLD_COMPATIBLITY', false );
 		}
 
 		// Check for required PHP version

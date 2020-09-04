@@ -85,10 +85,11 @@ class Elementor extends base {
 			'host' => $_SERVER['HTTP_HOST'],
 			'nonce' => "MightyLibrary",
 			'pxStatus' => HelperFunctions::mighty_addons()['extensions']['pixabay']['enable'],
-			'unsplashStatus' => HelperFunctions::mighty_addons_pro()['extensions']['unsplash']['enable'],
+			'unsplashStatus' => isset( HelperFunctions::mighty_addons_pro()['extensions']['unsplash']['enable'] ) ? HelperFunctions::mighty_addons_pro()['extensions']['unsplash']['enable'] : false,
 			'pxUrl' => "pixabay/image/",
 			'usUrl' => "unsplash/image/",
-			'plgShortName' => HelperFunctions::get_white_label('plugin_short_name')
+			'plgShortName' => HelperFunctions::get_white_label('plugin_short_name'),
+			'elementorCompatible' => ELEMENTOR_OLD_COMPATIBLITY
 		) );
 	}
 
