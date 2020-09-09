@@ -80,7 +80,11 @@ class App extends Component {
       } else {
         elementor.previewView.addChildModel(tmpl.data.template.content) 
       }
+      $e.run( 'document/save/default' );
       updateView('home');
+      elementor.notifications.showToast({
+        message: elementor.translate( '🎉 Template Imported!' )
+      });
     })
     .catch(function(error) {
       console.log('Something went wrong!');
