@@ -38,3 +38,8 @@
 .mighty-testimonial-wrapper .slick-dots {
     padding: 0;
 }
+
+.mighty-testimonial-wrapper .slick-dots li button:focus,
+.mighty-testimonial-wrapper .slick-dots li button:hover {
+    background-color: transparent;
+}

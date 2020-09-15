@@ -493,6 +493,33 @@ class MT_Testimonial extends Widget_Base {
 				]
 			);
 
+			$this->add_responsive_control(
+				'avatar_alignment',
+				[
+					'label' => __( 'Alignment', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::CHOOSE,
+					'options' => [
+						'0 auto 0 0' => [
+							'title' => __( 'Left', 'mighty' ),
+							'icon' => 'fa fa-align-left',
+						],
+						'0 auto' => [
+							'title' => __( 'Center', 'mighty' ),
+							'icon' => 'fa fa-align-center',
+						],
+						'0 0 0 auto' => [
+							'title' => __( 'Right', 'mighty' ),
+							'icon' => 'fa fa-align-right',
+						],
+                    ],
+                    'default' => '0 auto',
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-testimonial-avatar img' => 'margin: {{VALUE}};'
+                    ],
+					'toggle' => true,
+				]
+            );
+
 		$this->end_controls_section();
 
 		// Content Styling
@@ -546,6 +573,33 @@ class MT_Testimonial extends Widget_Base {
 				]
 			);
 
+			$this->add_responsive_control(
+				'content_alignment',
+				[
+					'label' => __( 'Alignment', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::CHOOSE,
+					'options' => [
+						'left' => [
+							'title' => __( 'Left', 'mighty' ),
+							'icon' => 'fa fa-align-left',
+						],
+						'center' => [
+							'title' => __( 'Center', 'mighty' ),
+							'icon' => 'fa fa-align-center',
+						],
+						'right' => [
+							'title' => __( 'Right', 'mighty' ),
+							'icon' => 'fa fa-align-right',
+						],
+					],
+					'default' => 'center',
+					'toggle' => true,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-person-testimonial blockquote' => 'text-align: {{VALUE}};',
+					],
+				]
+			);
+
 		$this->end_controls_section();
 
 		// Author Styling
@@ -575,7 +629,34 @@ class MT_Testimonial extends Widget_Base {
 						'{{WRAPPER}} .mighty-testimonial .mt-person-name' => 'color: {{VALUES}}'
 					]
                 ]
-            );
+			);
+			
+			$this->add_responsive_control(
+				'author_alignment',
+				[
+					'label' => __( 'Alignment', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::CHOOSE,
+					'options' => [
+						'left' => [
+							'title' => __( 'Left', 'mighty' ),
+							'icon' => 'fa fa-align-left',
+						],
+						'center' => [
+							'title' => __( 'Center', 'mighty' ),
+							'icon' => 'fa fa-align-center',
+						],
+						'right' => [
+							'title' => __( 'Right', 'mighty' ),
+							'icon' => 'fa fa-align-right',
+						],
+					],
+					'default' => 'center',
+					'toggle' => true,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial-wrapper  .mighty-testimonial .mt-person-name' => 'text-align: {{VALUE}};',
+					],
+				]
+			);
 
 		$this->end_controls_section();
 
@@ -607,7 +688,34 @@ class MT_Testimonial extends Widget_Base {
 						'{{WRAPPER}} .mighty-testimonial .mt-person-title' => 'color: {{VALUES}}'
 					]
                 ]
-            );
+			);
+			
+			$this->add_responsive_control(
+				'author_title_alignment',
+				[
+					'label' => __( 'Alignment', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::CHOOSE,
+					'options' => [
+						'left' => [
+							'title' => __( 'Left', 'mighty' ),
+							'icon' => 'fa fa-align-left',
+						],
+						'center' => [
+							'title' => __( 'Center', 'mighty' ),
+							'icon' => 'fa fa-align-center',
+						],
+						'right' => [
+							'title' => __( 'Right', 'mighty' ),
+							'icon' => 'fa fa-align-right',
+						],
+					],
+					'default' => 'center',
+					'toggle' => true,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial-wrapper  .mighty-testimonial .mt-person-title' => 'text-align: {{VALUE}};',
+					],
+				]
+			);
 
 		$this->end_controls_section();
 
