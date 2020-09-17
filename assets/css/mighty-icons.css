@@ -29,7 +29,7 @@
 	content: "\e90a";
 }
 
-.mf-pixabay:before {
+.mf-pixabay-icon:before {
 	content: "\e90f";
 }
 
@@ -101,20 +101,12 @@
 	content: "\e90e";
 }
 
-.mf-particles:before {
-	content: "\e90f";
-}
-
 .mf-openstreetmap:before {
 	content: "\e90c";
 }
 
 .mf-contactform7:before {
 	content: "\e90b";
-}
-
-.mf-pixabay-icon:before {
-	content: "\e90a";
 }
 
 .mf-button:before {
