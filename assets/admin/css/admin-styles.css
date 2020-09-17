@@ -48,6 +48,10 @@ p {
     width: 100%;
 }
 
+.ma-col-half {
+    width: 50%;
+}
+
 button {
     box-shadow: none;
     outline: none;
@@ -402,7 +406,6 @@ a.help-link {
 
 .ma-tabs-content .info-field {
     display: inline-flex;
-    text-align: center;
     flex-direction: column;
 }
 
@@ -716,6 +719,10 @@ a.help-link {
 }
 
 .coming-soon .cs-description {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.2;
+}
+
+.mb-20 {
+    margin-bottom: 20px !important;
 }

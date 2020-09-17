@@ -12,9 +12,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <!-- Extensions -->
 <div id="integrations" class="ma-tabs-content">
     <div class="ma-row">
-        <div class="ma-col-full">
+        <div class="ma-col-half">
             
             <form id="mighty-integration-settings" action="" method="POST" name="mighty-integration-settings">
+
+                <div class="ma-element">
+                    <label for="mailchimp" class="ma-ele-title"><?php _e('🐵 Mailchimp Key', 'mighty-addons'); ?></label>
+                    <div class="info-field">
+                        <input class="regular-text" type="text" name="mailchimp-key" placeholder="YOUR_API_KEY" id="mailchimp" value="<?php echo Helper::get_integration_option('mailchimp-key'); ?>" />
+                        <a class="help-link" target="_blank" href="https://mailchimp.com/help/about-api-keys/"><?php _e('Get Mailchimp API key 🔑', 'mighty-addons'); ?></a>
+                    </div>
+                </div>
+
                 <div class="ma-element">
                     <label for="gmaps" class="ma-ele-title"><?php _e('🌏 Google Maps Key', 'mighty-addons'); ?></label>
                     <div class="info-field">
@@ -22,17 +31,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                             <input class="regular-text" type="text" name="gmaps-api-key" placeholder="YOUR_API_KEY" id="gmaps" value="<?php echo Helper::get_integration_option('gmaps-api-key'); ?>" />
                             <a class="help-link" target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e('Get Google Maps API key 🔑', 'mighty-addons'); ?></a>
                         <?php } else { ?>
-                            <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
+                            <a href="https://mightythemes.com/products/mighty-addons/" target="_BLANK" class="button ma-btn">Mighty Addons Pro Required</a>
                         <?php } ?>
                         
-                    </div>
-                </div>
-
-                <div class="ma-element">
-                    <label for="mailchimp" class="ma-ele-title"><?php _e('🐵 Mailchimp Key', 'mighty-addons'); ?></label>
-                    <div class="info-field">
-                        <input class="regular-text" type="text" name="mailchimp-key" placeholder="YOUR_API_KEY" id="mailchimp" value="<?php echo Helper::get_integration_option('mailchimp-key'); ?>" />
-                        <a class="help-link" target="_blank" href="https://mailchimp.com/help/about-api-keys/"><?php _e('Get Mailchimp API key 🔑', 'mighty-addons'); ?></a>
                     </div>
                 </div>
 
@@ -43,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         <?php if ( Helper::mightyProAvailable() ) { ?>
                             <a href="#white-label" class="button ma-btn white-label-settings"><?php _e('Configure', 'mighty-addons'); ?></a>
                         <?php } else { ?>
-                            <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
+                            <a href="https://mightythemes.com/products/mighty-addons/" target="_BLANK" class="button ma-btn">Mighty Addons Pro Required</a>
                         <?php } ?>
                     </div>
 
@@ -67,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                             <input style="<?php echo $weatherAPI == "weatherbit" || $weatherAPI == "openweather" ? 'display:block;' : 'display:none;'; ?> margin-top: 10px;" class="regular-text" type="text" name="weather-api-key" placeholder="YOUR_API_KEY" id="weather-api-key" value="<?php echo Helper::get_integration_option('weather-api-key'); ?>" />
                         </div>
                     <?php } else { ?>
-                        <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
+                        <a href="https://mightythemes.com/products/mighty-addons/" target="_BLANK" class="button ma-btn">Mighty Addons Pro Required</a>
                     <?php } ?>
                 </div>
 
@@ -82,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         <a class="help-link" target="_blank" href="https://mightythemes.com/insta-token-generator/"><?php _e('Generate Access Token 📃', 'mighty-addons'); ?></a>
                     </div>
                     <?php } else { ?>
-                        <input type="button" value="Mighty Addons Pro Required" class="button ma-btn white-label-settings" />
+                        <a href="https://mightythemes.com/products/mighty-addons/" target="_BLANK" class="button ma-btn">Mighty Addons Pro Required</a>
                     <?php } ?>
                 </div>
 
