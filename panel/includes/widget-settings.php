@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     <?php endforeach; ?>
                 </div>
                     
-                <?php if ( isset($mighty_addons_pro_active) && $mighty_addons_pro_active ) : ?>
+                
                 <div class="ma-element-container">
                     <?php foreach( $pro_widgets as $widget => $props ) : ?>
                     <div class="ma-element ma-element-free">
@@ -75,9 +75,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                                 <span class="ma-ele-info-tooltip">Documentation</span> -
                             </a> -->
                         </div>
-                        <div class="ma-ele-switch">
+                        <div class="ma-ele-switch <?php echo $props['stub'] ? 'stub-widget' : ''; ?>">
                             <label class="switch">
-                                <input class="switch-input mighty-addons-pro" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> />
+                                <input class="switch-input mighty-addons-pro" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> <?php echo $props['stub'] ? 'disabled' : ''; ?>/>
                                 <span class="switch-label"></span>
                                 <span class="switch-handle"></span>
                             </label>
@@ -85,7 +85,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     </div>
                     <?php endforeach; ?>
                 </div>
-                <?php endif; ?>
+                
                 <div class="text-center ma-cta-save">
                     <button type="submit" class="button ma-btn ma-save-button" disabled="disabled"><?php _e('Save Settings', 'mighty-addons'); ?></button>
                 </div>

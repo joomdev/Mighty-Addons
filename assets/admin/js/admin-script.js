@@ -171,4 +171,19 @@
         }
     });
 
+    // Stub clicked
+    $( '.stub-widget' ).on( 'click', function() {
+        
+        var modal = $("#proModal");
+        modal.css( 'display', 'block' );
+
+        window.onclick = function (event) {
+            if (event.target == modal[0]) {
+                modal.css('display', 'none');
+                $('body').removeClass('modal-open');
+            }
+        }
+        
+    });
+
 }) ( jQuery );
