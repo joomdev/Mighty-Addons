@@ -250,14 +250,33 @@ class Pages extends Component {
                       <li className="mt-btn mt-btn-preview-big">
                         <span onClick={ () => this.props.onPreview( pages ) }>Preview</span>
                       </li>
-                      <li className="mt-btn mt-btn-import">
-                        <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
-                      </li>
+
+                      { pages.free ?
+                        <li className="mt-btn mt-btn-import">
+                          <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
+                        </li>
+                      :
+                        MightyLibrary.keyActive ?
+                        <li className="mt-btn mt-btn-import">
+                          <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
+                        </li>
+                        :
+                        <a className="mt-btn mt-btn-import go-pro-btn" href="https://mightythemes.com/products/mighty-addons" target="_BLANK">Go Pro 🚀</a>
+                      }
                     </ul>
                     <div className="template-item-figure">
                       <img src={pages.thumbnail} alt="" />
                     </div>
-                    <div className="template-item-name"><span>{pages.title}</span></div>
+                    <div className="template-item-name">
+                      <span>{pages.title}</span>
+                      { pages.free == false ?
+                        <div className="mighty-pro-tag">
+                          <span>Pro</span>
+                        </div>
+                      :
+                      ''
+                      }
+                    </div>
                   </div>
                 ))}
               </div>

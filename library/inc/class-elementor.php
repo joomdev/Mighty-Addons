@@ -58,6 +58,12 @@ class Elementor extends base {
 		} else {
 			$mightyAddonsProActive = false;
 		}
+
+		if ( isset( get_option('mighty_addons_pro_key')['map-user-key'] ) ) {
+			$mapKeyActive = true;
+		} else {
+			$mapKeyActive = false;
+		}
 		
 		wp_enqueue_style( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/css/elementor-modal.css', [], MIGHTY_ADDONS_VERSION );
 
@@ -89,7 +95,8 @@ class Elementor extends base {
 			'pxUrl' => "pixabay/image/",
 			'usUrl' => "unsplash/image/",
 			'plgShortName' => HelperFunctions::get_white_label('plugin_short_name'),
-			'elementorCompatible' => ELEMENTOR_OLD_COMPATIBLITY
+			'elementorCompatible' => ELEMENTOR_OLD_COMPATIBLITY,
+			'keyActive' => $mapKeyActive,
 		) );
 	}
 
@@ -99,14 +106,15 @@ class Elementor extends base {
 	public function fetch_tmpl_data() 
 	{
 		$tmplUrl = !isset($_POST['tmpl']) ? '' : $_POST['tmpl'];
-
+		$key = get_option('mighty_addons_pro_key') ? get_option('mighty_addons_pro_key')['map-user-key'] : "";
+		
 		$response = wp_remote_post($tmplUrl, [
 			'method' => 'POST',
 			'headers' => [
 				'Content-Type' => 'application/json; charset=utf-8',
 			],
 			'body' => json_encode([
-				'key' => '',
+				'key' => $key,
 				'host' => $_SERVER['HTTP_HOST']
 			])
 		]);
