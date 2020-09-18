@@ -373,12 +373,12 @@ a.help-link {
     margin: 25px 0px 0px 0px;
 }
 
-.ma-settings-tabs ul li {
+.ma-settings-tabs ul.ma-tabs li {
     display: inline-block;
     margin-bottom: 0;
 }
 
-.ma-settings-tabs ul li a {
+.ma-settings-tabs ul.ma-tabs li a {
     padding: 20px 25px;
     background: #f8fafb;
     font-size: 14px;
@@ -503,6 +503,16 @@ a.help-link {
     left: 48px;
     box-shadow: -3px 0 5px rgba(0, 0, 0, 0.3);
 }
+
+.ma-element-container .mighty-pro-tag {
+    color: white;
+    font-size: 10px;
+    background: #FF6584;
+    padding: 2px 9px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-radius: 10px;
+  }
 
 .ma-element-pro-b {
     position: absolute;
@@ -682,45 +692,43 @@ a.help-link {
     margin-top: 3px;
 }
 
-.text-muted {
-    color: #78909C;
-}
-
 .mt-banner img {
     width: 100%;
 }
 
-/* Extension (Coming Soon) */
-
-.coming-soon .mt-illustration {
+/* Go-pro */
+#go-pro .mt-illustration {
     width: 600px;
     display: flex;
 }
 
-.coming-soon .ma-col-full {
+#go-pro .ma-col-full {
     height: 500px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.coming-soon .under-construction {
+#go-pro .under-construction {
     max-width: 100%
 }
 
-.coming-soon .cs-cta {
+#go-pro .cs-cta {
     margin-top: 26px;
     text-transform: capitalize;
 }
 
-.coming-soon .cs-title {
-    font-size: 55px;
+#go-pro .cs-title {
     margin-bottom: 30px;
 }
 
-.coming-soon .cs-description {
-    font-size: 20px;
+#go-pro .cs-description {
     line-height: 1.2;
+}
+
+#go-pro .cs-description ul {
+    list-style: disc;
+    margin-left: 20px;
 }
 
 .mb-20 {

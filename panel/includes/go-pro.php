@@ -8,18 +8,29 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 
 <!-- "Be a HERO" - Go Pro  -->
-<div id="go-pro" class="ma-tabs-content coming-soon">
+<div id="go-pro" class="ma-tabs-content">
     <div class="ma-row">
         <div class="ma-col-full">
             
-            <div class="text-center">
-                <h1 class="cs-title">On the way ..</h1>
+            <div class="ma-col-half">
+                <h1 class="cs-title">Why Upgrade to Mighty Addons Pro?</h1>
                 <p>: :&nbsp;&nbsp;&nbsp;&nbsp;: :&nbsp;&nbsp;&nbsp;&nbsp;: :</p>
-                <div class="text-muted cs-description">Mighty Addons is coming up with a pro version very soon.<br> Sign Up for an exclusive launch offer. </div>
-                <a href="https://mailchi.mp/58871d7350d3/mightyaddonspro" target="_BLANK" class="button ma-btn cs-cta"><?php _e('Get Aboard', 'mighty-addons'); ?></a>
+                <div class="text-muted cs-description">
+                    The Mighty Addons Pro offers you way more features and tools to help design world-class websites. With the pro version, you will get
+                    <ul>
+                        <li>More Widgets like the multilocation map, two-step login, etc</li>
+                        <li>Pro Template Kits and Blocks</li>
+                        <li>Particles background</li>
+                        <li>Unsplash Integration</li>
+                        <li>Cross-domain copy-paste style</li>
+                        <li>White Label Branding</li>
+                        <li>Dedicated Support and many more</li>
+                    </ul>
+                </div>
+                <a href="https://mightythemes.com/products/mighty-addons/" target="_BLANK" class="button ma-btn cs-cta"><?php _e( 'Get Mighty Addons Pro 🚀', 'mighty-addons' ); ?></a>
             </div>
             
-            <div class="mt-illustration">
+            <div class="mt-illustration ma-col-half">
                 <img class="under-construction" src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/undraw_on_the_way.svg' ?>" alt="">
             </div>
 

@@ -13,9 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         <div class="ma-col-full">
 
             <form id="mighty-settings" action="" method="POST" name="mighty-settings">
-                <div class="text-center">
-                    <h4>Free</h4>
-                </div>
                 <div class="ma-element-container">
                     <?php foreach( $extensions as $extension => $props ) : ?>
                     <div class="ma-element ma-element-free">
@@ -41,15 +38,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 </div>
 
                 <?php if ( isset($mighty_addons_pro_active) && $mighty_addons_pro_active ) : ?>
-                <div class="text-center">
-                    <h4>Pro</h4>
-                </div>
                 <div class="ma-element-container">
                     <?php foreach( $pro_extensions as $extension => $props ) : ?>
                     <div class="ma-element ma-element-free">
                         <div class="ma-ele-info">
                             <i class="<?php echo $props['icon']; ?> widget-icon"></i>
-                            <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
+                            <p class="ma-ele-title">
+                                <?php echo ucfirst($props['title']); ?>
+                                <sup class="mighty-pro-tag">PRO</sup>
+                            </p>
                             <!-- <a href="https://mightythemes.com/products/mighty-addons/" target="_blank" class="ma-ele-info-link">
                                 <span class="ma-get-help">
                                     <img src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/question-solid.svg' ?>" alt="">
