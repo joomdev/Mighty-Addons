@@ -183,6 +183,10 @@
                 $('body').removeClass('modal-open');
             }
         }
+
+        setTimeout(function() {
+            modal.css('display', 'none');
+        }, 3000);
         
     });
 

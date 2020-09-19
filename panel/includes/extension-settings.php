@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             <form id="mighty-settings" action="" method="POST" name="mighty-settings">
                 <div class="ma-element-container">
                     <?php foreach( $extensions as $extension => $props ) : ?>
-                    <div class="ma-element ma-element-free">
+                    <div class="ma-element">
                         <div class="ma-ele-info">
                             <i class="<?php echo $props['icon']; ?> widget-icon"></i>
                             <p class="ma-ele-title"><?php echo ucfirst($props['title']); ?></p>
@@ -35,11 +35,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         </div>
                     </div>
                     <?php endforeach; ?>
-                </div>
 
-                <div class="ma-element-container">
                     <?php foreach( $pro_extensions as $extension => $props ) : ?>
-                    <div class="ma-element ma-element-free">
+                    <div class="ma-element">
                         <div class="ma-ele-info">
                             <i class="<?php echo $props['icon']; ?> widget-icon"></i>
                             <p class="ma-ele-title">
@@ -65,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 </div>
 
                 <div class="text-center ma-cta-save">
-                    <button type="submit" class="button ma-btn ma-save-button" disabled="disabled"><?php _e('Save Settings', 'mighty-addons'); ?></button>
+                    <button type="submit" class="button ma-btn ma-save-button" disabled="disabled"><?php _e( 'Save Settings', 'mighty-addons' ); ?></button>
                 </div>
             </form>
         </div>
