@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             </div>
             
             <div class="mt-illustration ma-col-half">
-                <img class="under-construction" src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/undraw_on_the_way.svg' ?>" alt="">
+                <img class="under-construction" src="<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/admin/images/go-pro.png' ?>" alt="">
             </div>
 
         </div>
