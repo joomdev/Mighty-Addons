@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <!-- Extensions -->
 <div id="integrations" class="ma-tabs-content">
     <div class="ma-row">
-        <div class="ma-col-half">
+        <div class="ma-integration">
             
             <form id="mighty-integration-settings" action="" method="POST" name="mighty-integration-settings">
 

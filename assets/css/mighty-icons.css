@@ -25,11 +25,35 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-contactform7:before {
+	content: "\e905";
+}
+
+.mf-contenttoggle:before {
+	content: "\e90b";
+}
+
+.mf-gmaps:before {
+	content: "\e90c";
+}
+
+.mf-heading:before {
+	content: "\e90d";
+}
+
+.mf-mailchimp:before {
+	content: "\e90e";
+}
+
+.mf-openstreetmap:before {
+	content: "\e913";
+}
+
 .mf-particles:before {
 	content: "\e90a";
 }
 
-.mf-pixabay-icon:before {
+.mf-pixabay:before {
 	content: "\e90f";
 }
 
@@ -43,10 +67,6 @@
 
 .mf-clicktocall:before {
 	content: "\e912";
-}
-
-.mf-contenttoggle:before {
-	content: "\e913";
 }
 
 .mf-hotspot:before {
@@ -93,22 +113,6 @@
 	content: "\e910";
 }
 
-.mf-gmaps:before {
-	content: "\e90d";
-}
-
-.mf-mailchimp:before {
-	content: "\e90e";
-}
-
-.mf-openstreetmap:before {
-	content: "\e90c";
-}
-
-.mf-contactform7:before {
-	content: "\e90b";
-}
-
 .mf-button:before {
 	content: "\e900";
 }
@@ -129,10 +133,6 @@
 	content: "\e904";
 }
 
-.mf-heading:before {
-	content: "\e905";
-}
-
 .mf-openinghours:before {
 	content: "\e906";
 }
@@ -148,7 +148,6 @@
 .mf-testimonial:before {
 	content: "\e909";
 }
-
 .elementor-panel-category-items .elementor-element-wrapper .elementor-element:hover .icon .mf {
 	color: #350079;
 }

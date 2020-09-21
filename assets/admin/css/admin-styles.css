@@ -48,8 +48,9 @@ p {
     width: 100%;
 }
 
-.ma-col-half {
-    width: 50%;
+.ma-integration {
+    width: 90%;
+	max-width: 800px;
 }
 
 button {

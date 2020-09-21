@@ -114,7 +114,7 @@ class HelperFunctions {
                 'enable' => true,
                 'class' => 'MT_Photos',
                 'slug' => 'pixabay',
-                'icon' => 'mf mf-pixabay-icon'
+                'icon' => 'mf mf-pixabay'
             ],
             'xscp' => [
                 'title' => 'Cross-Site Copy Paste',
