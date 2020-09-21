@@ -82,19 +82,19 @@ a.help-link {
     opacity: 0;
 }
 
-.switch-input:checked~.switch-label {
+.switch-input[checked="checked"]~.switch-label {
     background: #5A00F0;
 }
 
-.switch-input:checked~.switch-label:before {
+.switch-input[checked="checked"]~.switch-label:before {
     opacity: 0;
 }
 
-.switch-input:checked~.switch-label:after {
+.switch-input[checked="checked"]~.switch-label:after {
     opacity: 1;
 }
 
-.switch-input:checked~.switch-handle {
+.switch-input[checked="checked"]~.switch-handle {
     left: 34px;
     box-shadow: -3px 0 5px rgba(0, 0, 0, 0.3);
 }

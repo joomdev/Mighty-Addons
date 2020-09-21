@@ -139,6 +139,15 @@
         $(".switch-input").removeAttr('checked');
     });
 
+    $('#mighty-settings .switch .switch-input').on('click', function() {
+        var checked = $(this).attr('checked');
+        if ( typeof checked == typeof undefined && checked !== 'checked' ) {
+            $(this).attr('checked', 'checked');
+        } else {
+            $(this).removeAttr('checked');
+        }
+    });
+
     // Detecting changes (Switch)
     $('#mighty-settings .switch').off('click').on('click', function() {
         $('.ma-settings-header-bar .ma-save-button').removeAttr('disabled'); // Header Button
