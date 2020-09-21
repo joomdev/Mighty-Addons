@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                                 <span class="ma-ele-info-tooltip">Documentation</span>
                             </a> -->
                         </div>
-                        <div class="ma-ele-switch <?php echo $props['stub'] ? 'stub-widget' : ''; ?>">
+                        <div class="ma-ele-switch <?php echo isset( $props['stub'] ) ? 'stub-widget' : ''; ?>">
                             <label class="switch">
                                 <input class="switch-input mighty-addons-pro" type="checkbox" name="<?php echo $props['slug']; ?>" id="<?php echo $props['slug']; ?>" <?php checked( 1, $props['enable'], true ); ?> <?php echo $props['stub'] ? 'disabled' : ''; ?>/>
                                 <span class="switch-label"></span>

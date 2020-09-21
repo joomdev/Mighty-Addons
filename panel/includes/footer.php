@@ -1,6 +1,5 @@
         </div>
     </div>
-</div>
 
   <div id="proModal" class="modal">
     <div class="modal-content text-center">
