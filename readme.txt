@@ -6,7 +6,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 1.3.13
+Stable Tag: 1.3.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements
@@ -166,6 +166,9 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.3.14
+* Fixed: Pro notification issue on Sections
 
 ### 1.3.13
 * Added: Added alignment control in Testimonial

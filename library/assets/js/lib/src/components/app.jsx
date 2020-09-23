@@ -298,13 +298,43 @@ class Blocks extends Component {
               <div className="template-item">
                 {this.props.data.templates.map(block => (
                   <div key={block.id} className="template-item-inner">
+
+                    { block.elementor_type == "pro" ?
+                    <div className="elementor-pro-tag">
+                      <span>Elementor Pro Required</span>
+                    </div>
+                    :
+                    ''
+                    }
+
                     <ul className="template-preview-btn">
+
+                      { block.elementor_type == "pro" ?
+                        <div className="elementor-pro-notice">
+                          <p>Required Plugins Missing</p>
+                          <img src={MightyLibrary.baseUrl + 'library/assets/images/elementor-pro-notice.png'} alt="elementor-pro-logo" />
+                        </div>
+                      :
+                      ''
+                      }
+
                       <li className="mt-btn mt-btn-preview-big">
                         <span onClick={ () => this.props.onPreview( block ) }>Preview</span>
                       </li>
-                      <li className="mt-btn mt-btn-import">
-                        <span onClick={ () => this.props.onClick( block ) }>Import</span>
-                      </li>
+
+                      { block.free ?
+                        <li className="mt-btn mt-btn-import">
+                          <span onClick={ () => this.props.onClick( block ) }>{block.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
+                        </li>
+                      :
+                        MightyLibrary.keyActive ?
+                        <li className="mt-btn mt-btn-import">
+                          <span onClick={ () => this.props.onClick( block ) }>{block.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
+                        </li>
+                        :
+                        <a className="mt-btn mt-btn-import go-pro-btn" href="https://mightythemes.com/products/mighty-addons" target="_BLANK">Go Pro 🚀</a>
+                      }
+
                     </ul>
                     <div className="template-item-figure">
                       <img src={block.thumbnail} alt="" />
