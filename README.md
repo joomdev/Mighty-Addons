@@ -1,19 +1,14 @@
 # Mighty Addons for Elementor
-
-Author URI: https://mightythemes.com
-
-Plugin URI: https://mightythemes.com/products/mighty-addons
-
 Contributors: mightythemes1
-
-Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements
-
+Author URI: https://mightythemes.com
+Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher
 Tested up to: 5.5
 Requires PHP: 5.6
 Stable Tag: 1.3.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements
 
 Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.
 
@@ -173,19 +168,19 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 ## Changelog
 
 ### 1.3.13
-* Added: Added alignment control in Testimonial
 * Fixed: Library Import trigger the bug
+* Added: Added alignment control in Testimonial
 * Fixed: Design issues in Dashboard
 * Fixed: PHP notices from Widgets
 
 ### 1.3.12
-* Added: Switcher Controls in the dashboard to control extensions
-* Added: Compatibility for both new and old Elementor versions
 * Fixed: Sub links in Mighty Addons Dashboard
+* Added: Switcher Controls in the dashboard to control extensions
 * Fixed: CSS issues in Widgets
 * Fixed: Bullets and Arrows Controls not working in Testimonial Widget
 * Fixed: Responsive breakpoints in Testimonial Widget
 * Fixed: Elementor API issues with Template Library and Cross-site Copy/Paste
+* Added: Compatibility for both new and old Elementor versions
 
 ### 1.3.11
 * Fixed: Copy/Paste Conflict with RankMath plugin
