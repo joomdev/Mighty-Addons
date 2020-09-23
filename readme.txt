@@ -1,9 +1,13 @@
-=== Mighty Addons for Elementor ===
+# Mighty Addons for Elementor
 
 Author URI: https://mightythemes.com
-Plugin URI: https://mightythemes.com/products/mighty-addons/
+
+Plugin URI: https://mightythemes.com/products/mighty-addons
+
 Contributors: mightythemes1
+
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements
+
 Requires at least: 4.0 or higher
 Tested up to: 5.5
 Requires PHP: 5.6
@@ -13,11 +17,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.
 
-== Description ==
 ## Mighty Addons - Free Elementor Widget Plugin
 **Mighty Addons for Elementor includes ready-to-use Elementor Widgets which can be easily modified as per the use-case. Install and give it a try. New Elementor Widgets & Features are going to be frequently uploaded and improved.**
 
-[**>> Check the Demos <<**](https://mightythemes.com/products/mighty-addons/)
+[youtube https://www.youtube.com/watch?v=OruhsnXWWdo]
+
+[**>> Check the Demos <<**](https://mightythemes.com/mighty-addons/)
 
 Let’s design Powerful WordPress Websites together with the Elementor page builder and achieve the imaginable designs in minutes. **No coding required.**
 ## Why Mighty Addons is the Best Elementor Widgets Plugin
@@ -26,7 +31,7 @@ Let’s design Powerful WordPress Websites together with the Elementor page buil
 Copy and Paste Sections, Widgets, or the whole page just in two clicks from one domain to another. So, you don't have to reinvent the wheel, thus, making your development speed faster.
 
 ### Pre-designed Templates Kits
-A template kit is a group of multiple pages designed for a specific theme. Like if you are looking for a business elementor theme, you can choose a business template kit and import pages from the kit one by one.
+A template kit is a group of multiple pages designed for a specific theme. Like if you are looking for a business Elementor theme, you can choose a business template kit and import pages from the kit one by one.
 You will get all the required pages such as Home, About, Services, Services Detail, FAQ, Contact, etc. for your business website. You need to import them and replace the dummy content with your real content. 
 Check out the Available Template Kits
 
@@ -57,7 +62,7 @@ Every Elementor widget comes with lots of customization controls. You can play w
 Just because it's free, don't think it is compromised with the quality. The free Elementor Widgets will always be free, and you don't need to purchase the pro version to use the full features of a free element. Free Element will always be free without any upsell.
 
 ### Highly Responsive & Browser Compatible
-We created different designs with Mighty Addons & tested them with different sizes of screens. They all were fully responsive and browser compatible.
+We created different designs with Mighty Addons & tested them with different sizes of screens. They all were fully responsive and browser compatible. 
 
 <a href="https://wordpress.org/plugins/elementor/" rel="nofollow">Elementor</a> plugin must be activated to use this plugin. After activating Elementor, the addons should be available for use in Elementor.
 
@@ -71,18 +76,43 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 6. **[MT Progress Bar](https://demo.mightythemes.com/mighty-addons/mt-progress-bar/)** - Highlight your skill stats with the help of Animated progress bars. You can add unlimited bars with a single element. 
 7. **[MT Button Group](https://demo.mightythemes.com/mighty-addons/mt-button-group/)** - Create a better call to actions with creative button styles using Button Group Element. It allows you to add unlimited Buttons with a single element. 
 8. **[MT Before After](https://demo.mightythemes.com/mighty-addons/mt-before-after/)** - Display before and after version of an image with the help of MT Before After Elementor Widget. 
-9. **[MT Gradient Heading](https://demo.mightythemes.com/mighty-addons/mt-gradient-heading/)** - Create an eye-catching gradient heading with the help of MT Gradient Heading. You can apply different gradient colors and angles, styles and positions. 
+9. **[MT Gradient Heading](https://demo.mightythemes.com/mighty-addons/mt-gradient-heading/)** - Create an eye-catching gradient heading with the help of MT Gradient Heading. You can apply for different gradient colors and angles, styles, and positions. 
 10. **[MT Flip Box Widget](https://demo.mightythemes.com/mighty-addons/mt-flip-box/)** - MT Flip Box Widget comes with different interactive flipping effects. This widget can be used as a banner, for listing your company's services, and much more uses.
 11. **[MT Opening Hours](https://demo.mightythemes.com/mighty-addons/mt-opening-hours/)** - Display your working hours on the website and customize the section to meet the theme design.
 12. **[MT Contact Form 7 Styler](#)** - Display your contact forms in a jiffy by selecting from the list and start styling and personalizing the form as you like.
 13. **[MT Mailchimp](#)** - Grow your audience with a subscriber form. Create and display a Mailchimp form that matches your website’s brand, so you can attract new contacts and boost engagement. Choose the list to segment your audience in different lists.
+
+**[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
+
+So Grab the Pro version and take Elementor to next level. In the Pro Version, you have the following Widgets and Features
+### Mighty Addons Pro widgets
+1. **OpenStreet Maps Widget** - OpenStreet Maps Widget allows you to create multi-location free maps on your WordPress site.
+2. **Google Maps Widget** - Google Maps Widget allows you to create multi-location Google maps on your WordPress site.
+3. **Two Step Login Widget** - The Elementor Widget allows you to create a two-step login form on Elementor Website.
+4. **Weather Widget** - Display Weather conditions, forecast, and many more on your website.
+5. **Advanced Heading Widget** - Creat attractive advanced heading on your webpage with Elementor
+6. **PayPal Button Widget** - Now sell anything on your website without setting up a store with the help of PayPal Widget.
+7. **Insta Gallery Widget** - Display Instagram images on your WordPress site.
+8. **Price List Widget** -  Create a highly responsive and interactive Price Menu for your business.
+9. **Click To Call Widget** - Display your support number within the floating box.
+10. **Image Hotspot Widget** - Map your image to showcase different parts of an image.
+11. **OpenTable Widget** - Integrate your OpenTable Listing on Your website and start taking orders.
+12. **Content Toggle Widget** - Create Content toggle section to display two variation of a content.
+13. **WhatsApp Chat Widget** - Add a floating WhatsApp Chatbox on your WordPress site.
+
+### Mighty Addons  Extensions
+1. **Cross-Site Copy Paste Style(Pro)** - The feature allows you to copy the style of website A to Website B.
+2. **Unsplash Integration (Pro)** Access to free royalty-free stock photos from Unsplash
+3. **Pixabay Integration** Access 1 million + Stock photos from Pixabay.
+4. **Particles Background (Pro)** Add Interactive and animated moving backgrounds on your content sections.
+5. **Cross-Site Copy Paste** Copy content from Website A to Website B with simply a few clicks.
 
 We are working on more Elementor Widgets, and they will be updated soon. Still, you have any specific widget or feature request, feel free to **[get in touch with us.](https://mightythemes.com/contact/)** 
 
 ## Have any questions or facing any issue?
 We are proud of our support team. If you are facing any issue or have any questions regarding Mighty Addons for Elementor, feel free to **[post us on our support forum](https://mightythemes.com/support/c/mighty-addons/)**. Our technical WordPress Developer would love to help you. 
 
-== Installation ==
+## How to Install Mighty Addons for Elementor
 
 1. Install and activate the Elementor page builder.
 2. Install the Mighty Addons and activate or download the plugin from WordPress Directory and unzip the directory to the *wp-content/plugins/* directory and activate.
@@ -90,33 +120,33 @@ We are proud of our support team. If you are facing any issue or have any questi
 4. You can type "MT" on your element tabs within the Elementor editor, and all the available elements will appear.
 Also, you can see them under the category "Mighty Addons" on your element/widget list.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
-= Is Mighty Addons a standalone plugin?=
+### Is Mighty Addons a standalone plugin?
 
 No, Mighty Addons is not a standalone plugin. You need to install the Elementor page builder to use Mighty Addon.
 
-= Does it work with any WordPress theme? =
+### Does it work with any WordPress theme?
 
 Yes, it will work with any WordPress theme as long as you are using the Elementor as your page builder.
 
-= How do I start using Mighty Addons? =
+### How do I start using Mighty Addons?
 
 You need to install Elementor and Mighty Addons plugin on your website to get started.
 
-= Will this Elementor Widget plugin slow down my website speed? =
+### Will this Elementor Widget plugin slow down my website speed?
 
 The Elementor Widget Plugin is lightweight so it will not slow down your website.
 
-= Is Mighty Addons 100% Ads Free? =
+### Is Mighty Addons 100% Ads Free?
 
-Yes, Mighty Addons plugin will be 100% ads free. You will get notices about the pro version only if you will be using the free version.
+Yes, the Mighty Addons plugin will be 100% ads free. You will get notices about the pro version only if you will be using the free version.
 
-= How often do you update Elementor widgets? =
+### How often do you update Elementor widgets?
 
 We always listen to our user's feedback and based on that feedback, we keep enhancing the existing features and widgets. So you can expect at least one update in a month.
 
-= Do I have to buy Elementor Pro to use Mighty Addons plugin? =
+### Do I have to buy Elementor Pro to use the Mighty Addons plugin?
 
 No, you don't need to buy Elementor Pro to use Mighty Addons. These free Elementor Widgets will work with both free and pro versions.
 
@@ -132,40 +162,30 @@ No, you don’t need Elementor Pro to access Mighty Addons Library. You can use 
 
 No, Mighty Addons Pro is not required to use the templates. But in the free version of Mighty Addons, you will have limited templates and blocks. But in the pro version, you will have many more options than the free version. 
 
-== Screenshots == 
-1. Advanced Accordion
-2. Testimonial Widget View
-3. Team Member widget
-4. Animated Progress bar widget
-5. Opening Hours Widgets
-6. Flipbox Widgets
 
-== Developer? Want to contribute? ==
+### Developer? Want to contribute?
 
 We 💗 Open Source. Come and see our products on <a href="https://github.com/mightythemes/" title="MightyThemes on GitHub">GitHub</a>.
 
 #Having any suggestions or ideas which can improve our product?
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
-== Upgrade Notice ==
-
-
-== Changelog ==
+## Changelog
 
 ### 1.3.13
-* Fixed: Library Import trigger bug
 * Added: Added alignment control in Testimonial
+* Fixed: Library Import trigger the bug
 * Fixed: Design issues in Dashboard
 * Fixed: PHP notices from Widgets
 
 ### 1.3.12
-* Fixed: Sub links in Mighty Addons Dashboard
+* Added: Compatibility for both new and old Elementor versions
 * Added: Switcher Controls in the dashboard to control extensions
+* Fixed: Sub links in Mighty Addons Dashboard
 * Fixed: CSS issues in Widgets
 * Fixed: Bullets and Arrows Controls not working in Testimonial Widget
 * Fixed: Responsive breakpoints in Testimonial Widget
 * Fixed: Elementor API issues with Template Library and Cross-site Copy/Paste
-* Added: Compatibility for both new and old Elementor versions
 
 ### 1.3.11
 * Fixed: Copy/Paste Conflict with RankMath plugin
@@ -196,21 +216,21 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 * Fixed: Issue while fetching Pixabay pictures
 * Fixed: Zoom Out Effect in Flip Box Widget
 
-= 1.3.3 =
+### 1.3.3
 * Added: Pagination for Pixabay giving you lot more options to choose from
 * Added: Contact Form 7 Styler Element
 * Fixed: Key bug in Pixabay Extension
 * Fixed: Removed Elementor default scheme colors
 
-= 1.3.2 =
-* Fixed: Images fetch in Gallery, when request not completed.
+### 1.3.2
+* Fixed: Images fetch in Gallery when request not completed.
 
-= 1.3.1 =
+### 1.3.1
 It was hard to find these bugs, but we found it and voila: 
 * Fixed: Widgets and extensions are not updated after updating the plugin.
 * Fixed: Old CSS was loading after updating plugin, now fixed.
 
-= 1.3.0 =
+### 1.3.0
 * Added: Library for Templates and Blocks
 * Added: Pixabay integration in Media Manager
 * Fixed: Button Group Stacking issue when using responsive
@@ -219,7 +239,7 @@ It was hard to find these bugs, but we found it and voila:
 * Fixed: Fixed FlipBox Box Shadow when using unsupported effects
 * Fixed: Accordion Bottom Margin theme conflict
 
-= 1.2.0 =
+### 1.2.0
 * Added: Mighty Admin Dashboard
 * Added: Opening Hours Schema for OpeningHours Widget
 * Fixes: Major and Minor fixes in Addons
@@ -227,7 +247,7 @@ It was hard to find these bugs, but we found it and voila:
 * Updated: Default layouts of widgets
 * Updated: Minification of CSS & JS
 
-= 1.1.0 =
+### 1.1.0
 * Added: MT Gradient Heading Widget
 * Added: MT Flip Box Widget
 * Added: MT Opening Hours Widget
@@ -236,5 +256,5 @@ It was hard to find these bugs, but we found it and voila:
 * Fixed: Few other minor fixes
 * Updated: Widget Icons
 
-= 1.0.0 =
+### 1.0.0
 * Initial release.
