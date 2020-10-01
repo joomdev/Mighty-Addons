@@ -177,6 +177,17 @@ if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'],
                 'stub' => 'true',
                 'include' => false // File include?
             ],
+            
+            'display-conditions' => [
+                'title' => 'Display Conditions',
+                'description' => 'Show elementor elements based on Conditional Rules.',
+                'enable' => true,
+                'class' => 'MT_DisplayConditions',
+                'slug' => 'displayconditions',
+                'icon' => 'mf mf-displayconditions',
+                'stub' => 'true',
+                'include' => true // File Include?
+            ],
         ]
     ];
     $pro_widgets = $mighty_addons_pro_list['addons'];
