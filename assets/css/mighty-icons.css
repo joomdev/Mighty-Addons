@@ -25,6 +25,20 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
+.mf-mabrand:before {
+	content: "\e91c";
+	color: #6d7882;
+}
+
+.mf-copypaste:before {
+	content: "\e910";
+}
+
+.mf-displayconditions:before {
+	content: "\e91b";
+}
+
 .mf-contactform7:before {
 	content: "\e905";
 }
@@ -166,4 +180,14 @@
 	border-style: solid;
 	border-color: #d1dde6;
 	font-family: Roboto, Helvetica, sans-serif;
+}
+
+/* MA Tab for Panel */
+.elementor-panel .elementor-panel-navigation .elementor-tab-control-map a:before {
+    font-family: 'mighty-fonts' !important;
+    content: '\e91c'
+}
+
+.elementor-panel .elementor-panel-navigation .elementor-tab-control-map {
+    vertical-align: top
 }
