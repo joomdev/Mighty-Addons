@@ -9,7 +9,6 @@ use Elementor\Repeater as Repeater;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Border;
 use \Elementor\Scheme_Typography;
-use \Elementor\Scheme_Color;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -87,7 +86,7 @@ class MT_Accordion extends Widget_Base {
                 );
 
                 $this->add_control(
-                    'tabs',
+                    'accordions',
                     [
                         'label' => __( 'Accordion Items', 'mighty' ),
                         'type' => Controls_Manager::REPEATER,
@@ -664,7 +663,7 @@ class MT_Accordion extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
 
-        if ( empty( $settings['tabs'] ) ) {
+        if ( empty( $settings['accordions'] ) ) {
             return;
         }
 
@@ -691,7 +690,7 @@ class MT_Accordion extends Widget_Base {
 
         <div <?php echo $faqSchema ? 'itemscope itemtype="https://schema.org/FAQPage" ' : ''; ?> class="mighty-accordion" data-enable-multiple="<?php echo $openMultiple; ?>" data-first-active="<?php echo $firstActive; ?>" data-open-all="<?php echo $openAll; ?>">
             <?php
-            foreach (  $settings['tabs'] as $index => $tab ) :
+            foreach (  $settings['accordions'] as $index => $tab ) :
                 $tabId = substr( $this->get_id_int(), 0, 3 ) . ( $index + 1 );
 
                 $accordionIcon = '<i aria-hidden="true" class="accordion-icon fas ' . $openAccordionIcon .'"></i>';
