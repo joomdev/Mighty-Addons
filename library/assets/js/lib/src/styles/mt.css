@@ -898,8 +898,12 @@
   font-weight: 500;
 }
 
+#mighty-extension-pixabay .mighty-image .selected-image h4:not(:first-child) {
+  margin-top: 30px;
+}
+
 #mighty-extension-pixabay .mighty-image .selected-image .pixabay-notice {
-  margin: 20px 0 35px 0;
+  margin: 20px 0 0 0;
   padding: 15px 20px;
   background: #f6f5fa;
   line-height: 1.5;

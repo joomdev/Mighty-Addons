@@ -97,6 +97,7 @@ class Elementor extends base {
 			'plgShortName' => HelperFunctions::get_white_label('plugin_short_name'),
 			'elementorCompatible' => ELEMENTOR_OLD_COMPATIBLITY,
 			'keyActive' => $mapKeyActive,
+			'imageSizes' => get_intermediate_image_sizes()
 		) );
 	}
 

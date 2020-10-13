@@ -115,16 +115,17 @@ class Gallery extends Component {
     this.updateView('image')
   }
 
-  importImage = ( image ) => {
+  importImage = ( image, size ) => {
     this.updateView('loader')
     fetch(MightyLibrary.ajaxurl, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
-      body: 'action=save_mighty_extension_media&src='+ this.state.searchPlatform +'&image=' + image
+      body: 'action=save_mighty_extension_media&size='+size+'&src='+ this.state.searchPlatform +'&image=' + image
     })
     .then(response => response.json())
     .then((data) => {
       importData.model.get("selection").add(data.attachmentData)
+      console.log(data);
       importData.model.frame.trigger("library:selection:add")
       let buttons = document.querySelectorAll(".media-toolbar .media-toolbar-primary .media-button-select")
       buttons[buttons.length-1].click()
@@ -169,7 +170,7 @@ class Gallery extends Component {
       case 'image':
         return <Image 
                 data={ this.state.choosenImage } 
-                onImport={ (image) => this.importImage(image) } 
+                onImport={ (image, size) => this.importImage(image, size) } 
                 onViewChange={ (view) => this.updateView(view) } 
                 platform={ this.state.searchPlatform }
               />
@@ -371,6 +372,17 @@ class UnsplashImages extends Component {
 }
 
 class Image extends Component {
+
+  state = {
+    selectedImageSize: 'None',
+  }
+
+  updateSize = ({ target }) => {
+    this.setState({
+      selectedImageSize: target.value,
+    });
+  }
+
   render() {    
     return (
       <div className="mighty-image">
@@ -396,7 +408,18 @@ class Image extends Component {
              :
              <p>Photo by <a target="_blank" href={ 'https://unsplash.com/@' + this.props.data.username }>{ this.props.data.user }</a> on <a target="_blank" href="https://unsplash.com"> Unsplash</a></p>
             }
-            <span className="action-button" onClick={ () => this.props.onImport( this.props.data.url ) }>
+
+            <h4>Choose Size</h4>
+            <select
+              value={this.state.selectedImageSize}
+              onChange={this.updateSize}
+            >
+              {MightyLibrary.imageSizes.map((size, index) => (
+                <option key={index} value={size}>{size.charAt(0).toUpperCase() + size.slice(1)}</option>
+              ))}
+            </select>
+
+            <span className="action-button" onClick={ () => this.props.onImport( this.props.data.url, this.state.selectedImageSize ) }>
               <i className="fas fa-download"></i>&nbsp; Insert Image
             </span>
           </div>
