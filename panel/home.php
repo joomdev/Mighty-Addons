@@ -177,14 +177,23 @@ if ( in_array( 'Mighty-Addons-Pro/mighty-addons-pro.php', $allPlugins['active'],
                 'stub' => 'true',
                 'include' => false // File include?
             ],
-            
-            'display-conditions' => [
+            'displayconditions' => [
                 'title' => 'Display Conditions',
                 'description' => 'Show elementor elements based on Conditional Rules.',
                 'enable' => true,
                 'class' => 'MT_DisplayConditions',
                 'slug' => 'displayconditions',
                 'icon' => 'mf mf-displayconditions',
+                'stub' => 'true',
+                'include' => true // File Include?
+            ],
+            'advanceshadow' => [
+                'title' => 'Advance Shadow',
+                'description' => 'Apply advance shadow to Elements.',
+                'enable' => true,
+                'class' => 'MT_AdvanceShadow',
+                'slug' => 'advanceshadow',
+                'icon' => 'mf mf-advanceshadow',
                 'stub' => 'true',
                 'include' => true // File Include?
             ],

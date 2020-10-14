@@ -25,9 +25,12 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-advanceshadow:before {
+	content: "\e91c";
+}
 
 .mf-mabrand:before {
-	content: "\e91c";
+	content: "\e91f";
 	color: #6d7882;
 }
 
@@ -185,7 +188,7 @@
 /* MA Tab for Panel */
 .elementor-panel .elementor-panel-navigation .elementor-tab-control-map a:before {
     font-family: 'mighty-fonts' !important;
-    content: '\e91c'
+    content: '\e91f'
 }
 
 .elementor-panel .elementor-panel-navigation .elementor-tab-control-map {
