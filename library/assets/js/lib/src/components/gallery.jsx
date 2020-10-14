@@ -125,7 +125,6 @@ class Gallery extends Component {
     .then(response => response.json())
     .then((data) => {
       importData.model.get("selection").add(data.attachmentData)
-      console.log(data);
       importData.model.frame.trigger("library:selection:add")
       let buttons = document.querySelectorAll(".media-toolbar .media-toolbar-primary .media-button-select")
       buttons[buttons.length-1].click()
@@ -374,7 +373,7 @@ class UnsplashImages extends Component {
 class Image extends Component {
 
   state = {
-    selectedImageSize: 'None',
+    selectedImageSize: MightyLibrary.imageSizes[MightyLibrary.imageSizes.length-1]['size'],
   }
 
   updateSize = ({ target }) => {
@@ -415,7 +414,7 @@ class Image extends Component {
               onChange={this.updateSize}
             >
               {MightyLibrary.imageSizes.map((size, index) => (
-                <option key={index} value={size}>{size.charAt(0).toUpperCase() + size.slice(1)}</option>
+                <option key={index} value={size['size']}>{size['name']}</option>
               ))}
             </select>
 

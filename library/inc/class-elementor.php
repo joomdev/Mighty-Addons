@@ -80,6 +80,20 @@ class Elementor extends base {
 			MIGHTY_ADDONS_VERSION,
 			true
 		);
+		
+		// Image Sizes for Gallery
+		$imageSizes = [];
+		foreach( get_intermediate_image_sizes() as $size ) {
+			if ( get_option( $size . "_size_w" ) || get_option( $size . "_size_h" ) ) {
+				$imageSizes[] = [
+					'name' => ucwords( implode( ' ', explode( '_', $size ) ) ) . ' - ' . get_option( $size . "_size_w" ) . ' x ' . get_option( $size . "_size_h" ),
+					'size' => $size
+				];
+			} else {
+				$imageSizes[] = [ 'name' => $size, 'size' => $size ];
+			}
+		}
+		$imageSizes[] = [ 'name' => 'Full', 'size' => 'full' ];
 
 		wp_localize_script( 'mighty-library-react', 'MightyLibrary', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -97,7 +111,7 @@ class Elementor extends base {
 			'plgShortName' => HelperFunctions::get_white_label('plugin_short_name'),
 			'elementorCompatible' => ELEMENTOR_OLD_COMPATIBLITY,
 			'keyActive' => $mapKeyActive,
-			'imageSizes' => get_intermediate_image_sizes()
+			'imageSizes' => $imageSizes
 		) );
 	}
 
@@ -166,6 +180,7 @@ class Elementor extends base {
 	{
 		$image = $_POST['image'];
 		$src = $_POST['src'];
+		$size = $_POST['size'];
 		
 		if ( $image ) {
 
@@ -220,6 +235,14 @@ class Elementor extends base {
 					'post_status' => 'inherit',
 					'guid' => $uploads['url'] . "/" . $filename,
 				);
+
+				if ( $size !== 'full' ) {
+					$resized = image_make_intermediate_size( $fullpathfilename, get_option( $size . "_size_w" ), get_option( $size . "_size_h" ), get_option( $size . "_crop" ) );
+
+					if ( $resized ) {
+						$fullpathfilename = $uploads['path'] . "/" . $resized['file'];
+					}
+				}
 				
 				$attach_id = wp_insert_attachment($attachment, $fullpathfilename);
 				

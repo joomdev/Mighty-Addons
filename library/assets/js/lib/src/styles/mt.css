@@ -873,6 +873,10 @@
   user-select: none;
 }
 
+#mighty-extension-pixabay .mighty-image .selected-image select {
+  width: 100%;
+}
+
 #mighty-extension-pixabay .mighty-image .selected-image {
   background-color: #ECF0F6;
   display: flex;
