@@ -101,7 +101,7 @@ class App extends Component {
   createView = ( view ) => {
     switch( view ) {
       case 'home':
-        return <Kits banner={ this.state.bannerMessages } data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } />
+        return <Kits data={ this.state.kitsData } onClick={ (templates) => this.showKit(templates) } banner={ this.state.bannerMessages } />
       case 'templates':
         return <Pages data={ this.state.choosenKit } onClick={ (item) => this.importJson(item) } onPreview={ (url) => this.showDemo(url) } />
       case 'blocks':
@@ -177,7 +177,51 @@ class App extends Component {
   }
 }
 
+class Filters extends Component {
+  render() {
+    return (
+      <div className="cta-section mt-templates-modal-body-mid mt-row">
+        <select
+          value={ this.props.chosenCategory }
+          onChange={ this.props.onCategoryChange() }
+        >
+          <option key='0' value='all'>Category</option>
+          {this.props.categories.map( ( category, index ) => (
+            <option key={index} value={category['id']}>{category['title']}</option>
+          ))}
+        </select>
+
+        <select
+          value={ this.props.chosenTheme }
+          onChange={ this.props.onThemeChange() }
+        >
+          <option value='both'>Both</option>
+          <option value='light'>Light</option>
+          <option value='dark'>Dark</option>
+        </select>
+      </div>
+    )
+  }
+}
+
 class Kits extends Component {
+
+  state = {
+    selectedCategory: 'all',
+    selectedTheme: 'both'
+  }
+
+  updateCategory = ({ target }) => {
+    this.setState({
+      selectedCategory: target.value,
+    });
+  }
+
+  updateTheme = ({ target }) => {
+    this.setState({
+      selectedTheme: target.value,
+    });
+  }
 
   render() {
     return (
@@ -187,6 +231,15 @@ class Kits extends Component {
           {this.props.banner.map((item, i) => (
             (item.type == "banner") ? <div key={i} className="mighty-banner" dangerouslySetInnerHTML={{ __html: item.html + item.styles }} /> : ''
           ))}
+
+          <Filters
+            chosenCategory={ this.selectedCategory }
+            chosenTheme={ this.selectedTheme }
+            categories={ this.props.data.categories }
+            onCategoryChange={ () => this.updateCategory }
+            onThemeChange={ () => this.updateTheme }
+          />
+
           <div className="mt-templates-modal-body-main">
               <div className="template-item">
                 {this.props.data.templates.map(item => (
@@ -289,10 +342,37 @@ class Pages extends Component {
 }
 
 class Blocks extends Component {
+
+  state = {
+    selectedCategory: 'all',
+    selectedTheme: 'both'
+  }
+
+  updateCategory = ({ target }) => {
+    this.setState({
+      selectedCategory: target.value,
+    });
+  }
+
+  updateTheme = ({ target }) => {
+    this.setState({
+      selectedTheme: target.value,
+    });
+  }
+
   render() {
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
+
+          <Filters
+            chosenCategory={ this.selectedCategory }
+            chosenTheme={ this.selectedTheme }
+            categories={ this.props.data.categories }
+            onCategoryChange={ () => this.updateCategory }
+            onThemeChange={ () => this.updateTheme }
+          />
+
           <div className="mt-templates-modal-body-main">
             <div className="mt-template-views-body">
               <div className="template-item">
