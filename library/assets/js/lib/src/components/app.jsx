@@ -180,25 +180,28 @@ class App extends Component {
 class Filters extends Component {
   render() {
     return (
-      <div className="cta-section mt-templates-modal-body-mid mt-row">
-        <select
-          value={ this.props.chosenCategory }
-          onChange={ this.props.onCategoryChange() }
-        >
-          <option key='0' value='0'>Category</option>
-          {this.props.categories.map( ( category, index ) => (
-            <option key={index} value={category['id']}>{category['title']}</option>
-          ))}
-        </select>
-
-        <input 
-          type="text"
-          value={ this.props.searchTerm }
-          onChange={ this.props.onSearchInput() }
-          type='text' 
-          placeholder='Search...'
-        />
+      <div className="filters-section mt-templates-modal-body-mid mt-row">
+        <div className="category-input">
+          <select
+            value={ this.props.chosenCategory }
+            onChange={ this.props.onCategoryChange() }
+          >
+            <option key='0' value='0'>Category</option>
+            {this.props.categories.map( ( category, index ) => (
+              <option key={index} value={category['id']}>{category['title']}</option>
+            ))}
+          </select>
+        </div>
         
+        <div className="search-input">
+          <input 
+            type="text"
+            value={ this.props.searchTerm }
+            onChange={ this.props.onSearchInput() }
+            type='text' 
+            placeholder='Search...'
+          />
+        </div>
       </div>
     )
   }

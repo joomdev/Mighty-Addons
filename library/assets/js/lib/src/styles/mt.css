@@ -581,7 +581,18 @@
   z-index: 9;
 }
 
-#mighty-library .cta-section.mt-templates-modal-body-mid {
+#mighty-library .filters-section input:focus,
+#mighty-library .filters-section  select:focus {
+  border: 1px solid #d5dadf;
+}
+
+#mighty-library .filters-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+#mighty-library .cta-section.mt-templates-modal-body-mid,
+#mighty-library .filters-section.mt-templates-modal-body-mid {
   background-color: #f7f7f7;
   padding: 15px;
 }
