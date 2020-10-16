@@ -190,6 +190,14 @@ class Filters extends Component {
             <option key={index} value={category['id']}>{category['title']}</option>
           ))}
         </select>
+
+        <input 
+          type="text"
+          value={ this.props.searchTerm }
+          onChange={ this.props.onSearchInput() }
+          type='text' 
+          placeholder='Search...'
+        />
         
       </div>
     )
@@ -200,6 +208,7 @@ class Kits extends Component {
 
   state = {
     selectedCategory: '0',
+    searchTerm: '',
     templates: this.props.data.templates
   }
 
@@ -208,6 +217,26 @@ class Kits extends Component {
       selectedCategory: target.value,
     });
     this.updateTemplates( target.value );
+  }
+
+  search = ( term ) => {
+    let searchTerm = term.target.value;
+    if ( searchTerm !== '' ) {
+      this.updateTemplates( this.state.selectedCategory );
+
+      let seachedTemplates = this.state.templates.filter( template => {
+        if( template.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) {
+          return template;
+        }
+      });
+
+      this.setState({
+        templates: seachedTemplates
+      });
+    } else {
+      this.updateTemplates( this.state.selectedCategory );
+    }
+    
   }
 
   updateTemplates = ( category ) => {
@@ -243,6 +272,7 @@ class Kits extends Component {
             chosenCategory={ this.selectedCategory }
             categories={ this.props.data.categories }
             onCategoryChange={ () => this.updateCategory }
+            onSearchInput={ () => this.search }
           />
 
           <div className="mt-templates-modal-body-main">
@@ -350,6 +380,7 @@ class Blocks extends Component {
 
   state = {
     selectedCategory: '0',
+    searchTerm: '',
     templates: this.props.data.templates
   }
 
@@ -358,6 +389,25 @@ class Blocks extends Component {
       selectedCategory: target.value,
     });
     this.updateTemplates( target.value );
+  }
+
+  search = ( term ) => {
+    let searchTerm = term.target.value;
+    if ( searchTerm !== '' ) {
+      this.updateTemplates( this.state.selectedCategory );
+
+      let seachedTemplates = this.state.templates.filter( template => {
+        if( template.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) {
+          return template;
+        }
+      });
+
+      this.setState({
+        templates: seachedTemplates
+      });
+    } else {
+      this.updateTemplates( this.state.selectedCategory );
+    }
   }
 
   updateTemplates = ( category ) => {
@@ -389,6 +439,7 @@ class Blocks extends Component {
             chosenCategory={ this.selectedCategory }
             categories={ this.props.data.categories }
             onCategoryChange={ () => this.updateCategory }
+            onSearchInput={ () => this.search }
           />
 
           <div className="mt-templates-modal-body-main">
