@@ -35,6 +35,8 @@ class Mighty_Elementor {
 
 		// Mailchimp
 		add_action( 'wp_ajax_save_mailchimp_details', [ $this, 'mighty_mailchimp_details'] );
+
+		$this->register_extension();
 		
 		// Copy/Paste
 		if ( HelperFunctions::mighty_addons()['extensions']['xscp']['enable'] ) {
@@ -127,6 +129,24 @@ class Mighty_Elementor {
 			}
 		}
 	}
+
+	public function register_extension() {
+        if ( isset( HelperFunctions::mighty_addons()['extensions'] ) ) {
+			
+			$extensions = HelperFunctions::mighty_addons()['extensions'];
+
+            if ( ! empty( $extensions ) ) {
+                foreach ( $extensions as $extension => $props ) {
+                    if ( $props['enable'] && $props['include'] ) {
+						
+                        // Magical Potion
+                        require_once( MIGHTY_ADDONS_DIR_PATH . 'extensions/' . $extension . '.php' );
+        
+                    }
+                }
+            }
+        }
+    }
 
 	/**
 	 * Send Mailchimp form data to API

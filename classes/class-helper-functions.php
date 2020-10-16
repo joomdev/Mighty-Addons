@@ -114,7 +114,8 @@ class HelperFunctions {
                 'enable' => true,
                 'class' => 'MT_Photos',
                 'slug' => 'pixabay',
-                'icon' => 'mf mf-pixabay'
+                'icon' => 'mf mf-pixabay',
+                'include' => false // File include?
             ],
             'xscp' => [
                 'title' => 'Cross-Site Copy Paste',
@@ -122,7 +123,17 @@ class HelperFunctions {
                 'enable' => true,
                 'class' => 'MT_Copypaste',
                 'slug' => 'xscp',
-                'icon' => 'mf mf-copypaste'
+                'icon' => 'mf mf-copypaste',
+                'include' => false // File include?
+            ],
+            'customcss' => [
+                'title' => 'Custom CSS',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_Customcss',
+                'slug' => 'customcss',
+                'icon' => 'mf mf-customcss',
+                'include' => true // File include?
             ],
         ]
     ];
