@@ -185,20 +185,12 @@ class Filters extends Component {
           value={ this.props.chosenCategory }
           onChange={ this.props.onCategoryChange() }
         >
-          <option key='0' value='all'>Category</option>
+          <option key='0' value='0'>Category</option>
           {this.props.categories.map( ( category, index ) => (
             <option key={index} value={category['id']}>{category['title']}</option>
           ))}
         </select>
-
-        <select
-          value={ this.props.chosenTheme }
-          onChange={ this.props.onThemeChange() }
-        >
-          <option value='both'>Both</option>
-          <option value='light'>Light</option>
-          <option value='dark'>Dark</option>
-        </select>
+        
       </div>
     )
   }
@@ -207,20 +199,35 @@ class Filters extends Component {
 class Kits extends Component {
 
   state = {
-    selectedCategory: 'all',
-    selectedTheme: 'both'
+    selectedCategory: '0',
+    templates: this.props.data.templates
   }
 
   updateCategory = ({ target }) => {
     this.setState({
       selectedCategory: target.value,
     });
+    this.updateTemplates( target.value );
   }
 
-  updateTheme = ({ target }) => {
-    this.setState({
-      selectedTheme: target.value,
-    });
+  updateTemplates = ( category ) => {
+    
+    if( category !== '0' ) {
+      let categorisedTemplates = this.props.data.templates.filter( template => {
+        if ( template.category == parseInt( category ) ) {
+          return template;
+        }
+      });
+
+      this.setState({
+        templates: categorisedTemplates
+      });
+    } else {
+      this.setState({
+        templates: this.props.data.templates
+      });
+    }
+    
   }
 
   render() {
@@ -234,15 +241,13 @@ class Kits extends Component {
 
           <Filters
             chosenCategory={ this.selectedCategory }
-            chosenTheme={ this.selectedTheme }
             categories={ this.props.data.categories }
             onCategoryChange={ () => this.updateCategory }
-            onThemeChange={ () => this.updateTheme }
           />
 
           <div className="mt-templates-modal-body-main">
               <div className="template-item">
-                {this.props.data.templates.map(item => (
+                {this.state.templates.map(item => (
                   <div key={item.id} className="template-item-inner">
                     <ul className="template-btn-group">
                         <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ? item.pages : [item] ) }><i className="far fa-eye"></i></button>
@@ -289,7 +294,7 @@ class Pages extends Component {
                     ''
                     }
 
-                    <ul className="template-preview-btn">
+                    <div className="template-preview-btn">
 
                       { pages.elementor_type == "pro" ?
                       <div className="elementor-pro-notice">
@@ -316,7 +321,7 @@ class Pages extends Component {
                         :
                         <a className="mt-btn mt-btn-import go-pro-btn" href="https://mightythemes.com/products/mighty-addons" target="_BLANK">Go Pro 🚀</a>
                       }
-                    </ul>
+                    </div>
                     <div className="template-item-figure">
                       <img src={pages.thumbnail} alt="" />
                     </div>
@@ -344,20 +349,35 @@ class Pages extends Component {
 class Blocks extends Component {
 
   state = {
-    selectedCategory: 'all',
-    selectedTheme: 'both'
+    selectedCategory: '0',
+    templates: this.props.data.templates
   }
 
   updateCategory = ({ target }) => {
     this.setState({
       selectedCategory: target.value,
     });
+    this.updateTemplates( target.value );
   }
 
-  updateTheme = ({ target }) => {
-    this.setState({
-      selectedTheme: target.value,
-    });
+  updateTemplates = ( category ) => {
+    
+    if( category !== '0' ) {
+      let categorisedTemplates = this.props.data.templates.filter( template => {
+        if ( template.category == parseInt( category ) ) {
+          return template;
+        }
+      });
+
+      this.setState({
+        templates: categorisedTemplates
+      });
+    } else {
+      this.setState({
+        templates: this.props.data.templates
+      });
+    }
+    
   }
 
   render() {
@@ -367,16 +387,14 @@ class Blocks extends Component {
 
           <Filters
             chosenCategory={ this.selectedCategory }
-            chosenTheme={ this.selectedTheme }
             categories={ this.props.data.categories }
             onCategoryChange={ () => this.updateCategory }
-            onThemeChange={ () => this.updateTheme }
           />
 
           <div className="mt-templates-modal-body-main">
             <div className="mt-template-views-body">
               <div className="template-item">
-                {this.props.data.templates.map(block => (
+                {this.state.templates.map(block => (
                   <div key={block.id} className="template-item-inner">
 
                     { block.elementor_type == "pro" ?
