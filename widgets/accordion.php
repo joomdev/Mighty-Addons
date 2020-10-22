@@ -708,10 +708,12 @@ class MT_Accordion extends Widget_Base {
 
                         <<?php echo $titleTag; ?><?php echo $faqSchema ? ' itemprop="name"' : ''; ?> class="mt-accordion-title">
                             <?php
-                            if ( $tab['accordion_main_icon']['library'] == "svg" ) {
-                                Icons_Manager::render_icon( $tab['accordion_main_icon'], [ 'aria-hidden' => 'true' ] );
-                            } elseif ( substr_count($tab['accordion_main_icon']['library'], "fa-") ) {
-                                echo '<i aria-hidden="true" class="accordion-icon-main ' . $tab['accordion_main_icon']['value'].'"></i>';
+                            if ( isset( $tab['accordion_main_icon'] ) ) {
+                                if ( $tab['accordion_main_icon']['library'] == "svg" ) {
+                                    Icons_Manager::render_icon( $tab['accordion_main_icon'], [ 'aria-hidden' => 'true' ] );
+                                } elseif ( substr_count($tab['accordion_main_icon']['library'], "fa-") ) {
+                                    echo '<i aria-hidden="true" class="accordion-icon-main ' . $tab['accordion_main_icon']['value'].'"></i>';
+                                }
                             }
                             ?>
                             <?php echo $tab['accordion_title']; ?>

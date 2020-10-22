@@ -12,7 +12,6 @@
 namespace Mighty_Addons;
 
 use MightyAddons\Classes\DashboardPanel;
-use \MightyAddons\Classes\HelperFunctions as Helper;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -68,8 +67,6 @@ final class Mighty_Addons {
 
 		register_activation_hook( __FILE__, array( $this, 'mighty_addons_activation_redirect' ) );
 
-		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta_links' ), 10, 2 );
-
 		// Load translation
 		add_action( 'init', array( $this, 'i18n' ) );
 
@@ -77,8 +74,6 @@ final class Mighty_Addons {
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 
 		add_action( 'admin_init', array( $this, 'show_user_what_we_got' ) );
-
-		add_filter( 'plugin_action_links_' . MIGHTY_ADDONS_PLG_BASENAME, [ $this, 'plugin_action_links' ] );
 	}
 
 	/**
@@ -141,9 +136,6 @@ final class Mighty_Addons {
 		
 		// Register Custom Controls
 		add_action( 'elementor/controls/controls_registered', [$this, 'register_controls'] );
-
-		// Register Custom Category
-		add_action( 'elementor/elements/categories_registered', [ $this, 'add_elementor_widget_categories' ] );
 
 		// Check if Elementor installed and activated
 		if ( ! did_action( 'elementor/loaded' ) ) {
@@ -287,26 +279,6 @@ final class Mighty_Addons {
     }
 
 	/**
-	 * Plugin Category
-	 *
-	 * Creating category for Mighty Addons
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 */
-	function add_elementor_widget_categories( $elements_manager ) {
-
-		$branding = Helper::get_white_label();
-
-		$elements_manager->add_category(
-			'mighty-addons',
-			[
-				'title' => $branding['plugin_name']
-			]
-		);
-	}
-
-	/**
 	 * MightyLibrary
 	 *
 	 * Library for Mighty Templates
@@ -318,42 +290,6 @@ final class Mighty_Addons {
 		// Including stuff for Library
 		require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-base.php' );
 		require_once ( MIGHTY_ADDONS_DIR_PATH . 'library/inc/class-elementor.php' );
-	}
-
-	/**
-	 * Plugin action seconday links
-	 * 
-	 * Adds action links to the plugin secondary column
-	 */
-	public function plugin_meta_links( $links, $file ) {
-
-		$currentScreen = get_current_screen();
-		
-		if( $currentScreen->id === "plugins" && MIGHTY_ADDONS_PLG_BASENAME == $file ) {
-
-			$links[] = '<a target="_blank" href="https://mightythemes.com/docs/docs-category/mighty-addons/">' . esc_html__( 'Documentation', 'mighty' ) . '</a>';
-			$links[] = '<a target="_blank" href="https://www.youtube.com/channel/UC6TOMaD5I2YTmf4mzHV5Yig">' . __( 'Video Tutorials', 'mighty' ) . '</a>';
-
-		}
-
-		return $links;
-	}
-
-	/**
-	 * Plugin action links.
-	 *
-	 * Adds action links to the plugin primary column
-	 */
-	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=mighty-addons-home' ), __( 'Settings', 'mighty' ) );
-
-		array_unshift( $links, $settings_link );
-
-		if ( ! Helper::mightyProAvailable() ) {
-			$links['go_pro'] = sprintf( '<a style="color: #5A00F0; font-weight: bold;" href="%1$s" target="_blank">%2$s</a>', 'https://mightythemes.com/mighty-addons', __( 'Go Pro', 'mighty' ) );
-		}
-
-		return $links;
 	}
 }
 
