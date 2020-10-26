@@ -167,6 +167,9 @@ final class Mighty_Addons {
 
 		// From the depths, a magical window has opened including our plugin!
 		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/mighty-elementor.php' );
+
+		// MA Extensions Tab for Elementor Editor Panel
+		\Elementor\Controls_Manager::add_tab( 'map', __( 'Extensions', 'mighty' ) );
 		
 		// Including Admin Widget
 		if ( is_admin() ) {

@@ -305,6 +305,9 @@ class MT_Team extends Widget_Base {
 							],
 						],
 						'title_field' => '{{{ mt_social_title }}}',
+						'condition' => [
+							'show_social_icons' => 'yes',
+						]
 					]
 				);
 				
@@ -632,6 +635,9 @@ class MT_Team extends Widget_Base {
 			[
 				'label' => __( 'Social Icons', 'mighty' ),
 				'tab' => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'show_social_icons' => 'yes',
+				]
 			]
 		);
 
