@@ -288,20 +288,20 @@ class MT_Team extends Widget_Base {
 								'mt_social_link'       => __( '#', 'mighty' ),
 							],
 							[
-								'mt_social_title'      => __( 'Twitter', 'mighty' ),
-								'mt_social_icon'       => [
+								'mt_social_title' => __( 'Twitter', 'mighty' ),
+								'mt_social_icon' => [
 									'value' => 'fab fa-twitter',
 									'library' => 'fa-brands',
 								],
-								'mt_social_link'       => __( '#', 'mighty' ),
+								'mt_social_link' => __( '#', 'mighty' ),
 							],
 							[
-								'mt_social_title'      => __( 'LinkedIn', 'mighty' ),
-								'mt_social_icon'       => [
+								'mt_social_title' => __( 'LinkedIn', 'mighty' ),
+								'mt_social_icon' => [
 									'value' => 'fab fa-linkedin-in',
 									'library' => 'fa-brands',
 								],
-								'mt_social_link'       => __( '#', 'mighty' ),
+								'mt_social_link' => __( '#', 'mighty' ),
 							],
 						],
 						'title_field' => '{{{ mt_social_title }}}',

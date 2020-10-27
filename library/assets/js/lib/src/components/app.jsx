@@ -186,7 +186,7 @@ class Filters extends Component {
             value={ this.props.chosenCategory }
             onChange={ this.props.onCategoryChange() }
           >
-            <option key='0' value='0'>Category</option>
+            <option key='0' value='0'>All</option>
             {this.props.categories.map( ( category, index ) => (
               <option key={index} value={category['id']}>{category['title']}</option>
             ))}
@@ -227,14 +227,14 @@ class Kits extends Component {
     if ( searchTerm !== '' ) {
       this.updateTemplates( this.state.selectedCategory );
 
-      let seachedTemplates = this.state.templates.filter( template => {
+      let searchedTemplates = this.state.templates.filter( template => {
         if( template.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) {
           return template;
         }
       });
 
       this.setState({
-        templates: seachedTemplates
+        templates: searchedTemplates
       });
     } else {
       this.updateTemplates( this.state.selectedCategory );
@@ -282,6 +282,17 @@ class Kits extends Component {
               <div className="template-item">
                 {this.state.templates.map(item => (
                   <div key={item.id} className="template-item-inner">
+
+                    <div className="template-tags">
+                      { item.tags.latest ?
+                        <div className="latest-tag">
+                          <span>Latest</span>
+                        </div>
+                        :
+                        ''
+                      }
+                    </div>
+
                     <ul className="template-btn-group">
                         <button className="template-btn-item mt-btn mt-btn-preview" onClick={ () => this.props.onClick( item.pages ? item.pages : [item] ) }><i className="far fa-eye"></i></button>
                     </ul>
@@ -319,20 +330,34 @@ class Pages extends Component {
                 {this.props.data.map(pages => (
                   <div key={pages.id} className="template-item-inner">
 
-                    { pages.elementor_type == "pro" ?
-                    <div className="elementor-pro-tag">
-                      <span>Elementor Pro Required</span>
-                    </div>
-                    :
-                    ''
+                    <div className="template-tags">
+
+                    { pages.tags.latest ?
+                      <div className="latest-tag">
+                        <span>Latest</span>
+                      </div>
+                      :
+                      ''
                     }
+
+                    { pages.elementor_type == "pro" ?
+                      <div className="elementor-pro-tag">
+                        <span>Elementor Pro Required</span>
+                      </div>
+                      :
+                      ''
+                    }
+
+                    </div>
 
                     <div className="template-preview-btn">
 
                       { pages.elementor_type == "pro" ?
                       <div className="elementor-pro-notice">
-                        <p>Required Plugins Missing</p>
-                        <img src={MightyLibrary.baseUrl + 'library/assets/images/elementor-pro-notice.png'} alt="elementor-pro-logo" />
+                        <a target="_blank" href="https://elementor.com/pricing/?ref=6508&campaign=mightyaddon">
+                          <p>Required Plugins Missing</p>
+                          <img src={MightyLibrary.baseUrl + 'library/assets/images/elementor-pro-notice.png'} alt="elementor-pro-logo" />
+                        </a>
                       </div>
                       :
                       ''
@@ -399,14 +424,14 @@ class Blocks extends Component {
     if ( searchTerm !== '' ) {
       this.updateTemplates( this.state.selectedCategory );
 
-      let seachedTemplates = this.state.templates.filter( template => {
+      let searchedTemplates = this.state.templates.filter( template => {
         if( template.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) {
           return template;
         }
       });
 
       this.setState({
-        templates: seachedTemplates
+        templates: searchedTemplates
       });
     } else {
       this.updateTemplates( this.state.selectedCategory );
@@ -451,13 +476,15 @@ class Blocks extends Component {
                 {this.state.templates.map(block => (
                   <div key={block.id} className="template-item-inner">
 
-                    { block.elementor_type == "pro" ?
-                    <div className="elementor-pro-tag">
-                      <span>Elementor Pro Required</span>
+                    <div className="template-tags">
+                      { block.elementor_type == "pro" ?
+                      <div className="elementor-pro-tag">
+                        <span>Elementor Pro Required</span>
+                      </div>
+                      :
+                      ''
+                      }
                     </div>
-                    :
-                    ''
-                    }
 
                     <ul className="template-preview-btn">
 
@@ -566,7 +593,7 @@ class Preview extends Component {
               <i title="Fullscreen View" onClick={ () => this.showFullscreen() } className="fas fa-expand"></i>
             </div>
             
-            <button onClick={ ()=> this.props.onClick(this.props.data) } className="back mt-btn">
+            <button onClick={ () => this.props.onClick(this.props.data) } className="back mt-btn">
               <i className="far fa-arrow-alt-circle-down"></i>&nbsp;
               { this.props.data.elementor_type == "pro" ? 'Import Anyway' : 'Import' }
             </button>

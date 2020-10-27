@@ -712,10 +712,12 @@
   text-transform: uppercase;
 }
 
-.elementor-pro-tag {
+.template-tags {
   position: absolute;
-  top: 25px;
-  right: 20px;
+  top: 0;
+  right: 0;
+  margin: 15px 10px;
+  text-align: end;
 }
 
 .elementor-pro-tag span {
@@ -723,6 +725,14 @@
   font-size: 11px;
   background: #D30C5C;
   padding: 2px 5px;
+  margin: 0 5px;
+}
+
+.latest-tag span {
+  background: #8bc34a;
+  color: white;
+  padding: 2px 5px;
+  font-size: 11px;
   margin: 0 5px;
 }
 
