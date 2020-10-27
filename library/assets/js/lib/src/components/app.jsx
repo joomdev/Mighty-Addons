@@ -477,6 +477,15 @@ class Blocks extends Component {
                   <div key={block.id} className="template-item-inner">
 
                     <div className="template-tags">
+
+                      { block.tags.latest ?
+                        <div className="latest-tag">
+                          <span>Latest</span>
+                        </div>
+                        :
+                        ''
+                      }
+
                       { block.elementor_type == "pro" ?
                       <div className="elementor-pro-tag">
                         <span>Elementor Pro Required</span>
@@ -484,6 +493,7 @@ class Blocks extends Component {
                       :
                       ''
                       }
+
                     </div>
 
                     <ul className="template-preview-btn">
