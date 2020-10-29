@@ -1,14 +1,14 @@
 # Mighty Addons for Elementor
-Contributors: mightythemes1
-Author URI: https://mightythemes.com
-Plugin URI: https://mightythemes.com/products/mighty-addons
-Requires at least: 4.0 or higher
-Tested up to: 5.5
-Requires PHP: 5.6
-Stable Tag: 1.3.14
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements
+Contributors: mightythemes1  
+Author URI: https://mightythemes.com  
+Plugin URI: https://mightythemes.com/products/mighty-addons  
+Requires at least: 4.0 or higher  
+Tested up to: 5.5  
+Requires PHP: 5.6  
+Stable Tag: 1.3.14  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
+Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
 
 Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.
 
