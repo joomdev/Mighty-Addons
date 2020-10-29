@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-customcss:before {
+	content: "\e91d";
+}
+
 .mf-advanceshadow:before {
 	content: "\e91c";
 }
