@@ -2,8 +2,6 @@
 
 namespace MightyAddons\Extensions\MT_Customcss;
 
-use \MightyAddons\Classes\HelperFunctions;
-
 // Elementor classes
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
@@ -21,7 +19,7 @@ class MT_Customcss {
 		
 		// Register controls
 		add_action( 'elementor/element/after_section_end', [ $this, 'register_controls' ], 10, 3 );
-
+		
 		add_action( 'elementor/element/parse_css', [ $this, 'add_custom_css' ], 10, 2 );
 
 		// Enqueuing Styles and Scripts

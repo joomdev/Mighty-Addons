@@ -157,10 +157,12 @@ class Mighty_Elementor {
 	}
 
 	public function register_extension() {
-        if ( isset( HelperFunctions::mighty_addons()['extensions'] ) ) {
-			
-			$extensions = HelperFunctions::mighty_addons()['extensions'];
 
+		// Registering stub extensions
+		require_once( MIGHTY_ADDONS_DIR_PATH . 'extensions/stub-extensions.php' );
+
+        if ( isset( HelperFunctions::mighty_addons()['extensions'] ) ) {
+			$extensions = HelperFunctions::mighty_addons()['extensions'];
             if ( ! empty( $extensions ) ) {
                 foreach ( $extensions as $extension => $props ) {
                     if ( $props['enable'] && $props['include'] ) {
@@ -171,7 +173,8 @@ class Mighty_Elementor {
                     }
                 }
             }
-        }
+		}
+		
     }
 
 	/**

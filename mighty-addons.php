@@ -117,7 +117,6 @@ final class Mighty_Addons {
 				wp_safe_redirect( admin_url( 'admin.php?page=mighty-addons-home' ) );
 			}
 		}
-
 	}
 
 	/**
