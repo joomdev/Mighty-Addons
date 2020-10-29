@@ -24,7 +24,11 @@ class MT_StubExtensions {
     
     public function register_controls( $element, $section_id ) {
 
-		if ( '_section_responsive' !== $section_id || HelperFunctions::mightyProAvailable() ) {
+		if ( '_section_responsive' !== $section_id ) {
+			return;
+		}
+
+		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() && HelperFunctions::mightyProAvailable() ) {
 			return;
 		}
 
