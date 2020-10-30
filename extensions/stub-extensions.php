@@ -16,7 +16,7 @@ class MT_StubExtensions {
     private static $_instance = null;
 
     public final function __construct() {
-		
+
 		// Register controls
 		add_action( 'elementor/element/after_section_end', [ $this, 'register_controls' ], 10, 3 );
 
@@ -28,7 +28,7 @@ class MT_StubExtensions {
 			return;
 		}
 
-		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() && HelperFunctions::mightyProAvailable() ) {
+		if ( function_exists('is_plugin_active') && HelperFunctions::mightyProAvailable() ) {
 			return;
 		}
 
