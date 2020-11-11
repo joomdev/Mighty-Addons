@@ -321,6 +321,17 @@ class HelperFunctions {
                 'sidebar' => 'true',
                 'include' => true // File Include?
             ],
+            'advancegradients' => [
+                'title' => 'MA Advance Gradients',
+                'description' => 'Apply Advance Gradients to Elements.',
+                'enable' => false,
+                'class' => 'MT_AdvanceGradients',
+                'slug' => 'advancegradients',
+                'icon' => 'mf mf-advancegradients',
+                'stub' => 'true',
+                'sidebar' => 'true',
+                'include' => true // File Include?
+            ],
         ]
     ];
 

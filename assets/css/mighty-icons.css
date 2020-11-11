@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-advancegradients:before {
+	content: "\e91e";
+}
+
 .mf-customcss:before {
 	content: "\e91d";
 }
