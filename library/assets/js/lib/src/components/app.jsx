@@ -316,6 +316,7 @@ class Kits extends Component {
 
 class Pages extends Component {
   render() {
+
     return (
       <div className="mt-templates-modal-body">
         <div className="mt-templates-modal-body-inner">
@@ -352,7 +353,7 @@ class Pages extends Component {
 
                     <div className="template-preview-btn">
 
-                      { pages.elementor_type == "pro" ?
+                      { pages.elementor_type == "pro" && !MightyLibrary.elementorPro ?
                       <div className="elementor-pro-notice">
                         <a target="_blank" href="https://elementor.com/pricing/?ref=6508&campaign=mightyaddon">
                           <p>Required Plugins Missing</p>
@@ -369,12 +370,12 @@ class Pages extends Component {
 
                       { pages.free ?
                         <li className="mt-btn mt-btn-import">
-                          <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
+                          <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" && !MightyLibrary.elementorPro ? 'Import anyway' : 'Import' }</span>
                         </li>
                       :
                         MightyLibrary.keyActive ?
                         <li className="mt-btn mt-btn-import">
-                          <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" ? 'Import anyway' : 'Import' }</span>
+                          <span onClick={ () => this.props.onClick( pages ) }>{pages.elementor_type == "pro" && !MightyLibrary.elementorPro ? 'Import anyway' : 'Import' }</span>
                         </li>
                         :
                         <a className="mt-btn mt-btn-import go-pro-btn" href="https://mightythemes.com/products/mighty-addons" target="_BLANK">Go Pro 🚀</a>
