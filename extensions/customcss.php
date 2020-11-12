@@ -48,7 +48,7 @@ class MT_Customcss {
         );
         
 			$element->add_control(
-				'custom_css',
+				'ma_custom_css',
 				[
 					'label' => __( 'Custom CSS', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::CODE,
@@ -59,7 +59,7 @@ class MT_Customcss {
 			);
 
 			$element->add_control(
-				'custom_css_help',
+				'ma_custom_css_help',
 				[
 					'type' => Controls_Manager::RAW_HTML,
 					'raw' => __( '<p><b>How to?</b></p><br>
