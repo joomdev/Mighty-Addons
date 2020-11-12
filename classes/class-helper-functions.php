@@ -135,6 +135,15 @@ class HelperFunctions {
                 'icon' => 'mf mf-customcss',
                 'include' => true // File include?
             ],
+            'wrapperlink' => [
+                'title' => 'Wrapper Link',
+                'description' => 'Wrap any section, column or widget in a link.',
+                'enable' => true,
+                'class' => 'MT_WrapperLink',
+                'slug' => 'wrapperlink',
+                'icon' => 'mf mf-wrapperlink',
+                'include' => true // File Include?
+            ],
         ]
     ];
 
