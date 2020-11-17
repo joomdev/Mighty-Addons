@@ -8,7 +8,7 @@ jQuery( window ).on( "elementor:init", function() {
         }
 
         var model = view.model;
-        var customCss = model.get('settings').get('custom_css');
+        var customCss = model.get('settings').get('ma_custom_css');
         var selector = '.elementor-element.elementor-element-' + model.get('id');
 
         if (customCss) {

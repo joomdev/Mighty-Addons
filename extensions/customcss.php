@@ -86,11 +86,11 @@ class MT_Customcss {
 
 		$settings = $element->get_settings_for_display();
 
-		if ( empty( $settings['custom_css'] ) ) {
+		if ( empty( $settings['ma_custom_css'] ) ) {
 			return;
 		}
 		
-		$customCss = trim( $settings['custom_css'] );
+		$customCss = trim( $settings['ma_custom_css'] );
 
 		$customCss = str_replace( 'selector', $post_css->get_element_unique_selector( $element ), $customCss );
 
