@@ -87,7 +87,7 @@ class MT_WrapperLink {
 			$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink', $settings['wrapper_link']['url'] );
 			$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink-external', $settings['wrapper_link']['is_external'] );
 			$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink-nofollow', $settings['wrapper_link']['nofollow'] );
-			$element->add_render_attribute( '_wrapper', 'style', 'cursor: pointer;' );
+			$element->add_render_attribute( '_wrapper', 'class', 'mighty-wrapper-link' );
 
 		}
 	}

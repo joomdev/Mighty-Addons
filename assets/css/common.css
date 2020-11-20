@@ -287,3 +287,8 @@
 .ma-btn-danger:not(:disabled):not(.disabled):active:focus {
     box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
 }
+
+/* Wrapper Link */
+.mighty-wrapper-link {
+	cursor: pointer;
+}

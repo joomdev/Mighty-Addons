@@ -142,7 +142,7 @@ class MT_Testimonial extends Widget_Base {
 						[
 							'image' => Utils::get_placeholder_image_src(),
 							'name' => __( 'Yoda', 'mighty' ),
-							'title' => __( 'Digita Master', 'mighty' ),
+							'title' => __( 'Digital Master', 'mighty' ),
 							'testimonial_content' => 'If you end your training now — if you choose the quick and easy path as Vader did — you will become an agent of evil.',
 						],
 					]
