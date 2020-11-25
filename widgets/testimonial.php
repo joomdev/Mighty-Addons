@@ -457,7 +457,7 @@ class MT_Testimonial extends Widget_Base {
 						'size' => 1,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-testimonial-avatar img' => 'margin: {{SIZE}}{{UNIT}} auto',
+						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-testimonial-avatar' => 'margin: {{SIZE}}{{UNIT}} auto;',
 					],
 				]
 			);
@@ -771,7 +771,7 @@ class MT_Testimonial extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial-wrapper .prev-next a i' => 'color: {{VALUES}}'
+						'{{WRAPPER}} .mighty-testimonial-wrapper .prev-next a i' => 'color: {{VALUES}};'
 					],
 					'condition' => [
 						'show_arrows' => 'yes'
@@ -929,6 +929,7 @@ class MT_Testimonial extends Widget_Base {
 
 				$slideId = substr( $this->get_id_int(), 0, 3 ) . ( $index + 1 );
 
+				echo '<div class="mt-slick-slide">';
 				echo '<div class="mt-testimonial-slide testimonial-slide-'. $slideId .'">';
 
 				echo '<div class="mt-person-testimonial">';
@@ -937,8 +938,9 @@ class MT_Testimonial extends Widget_Base {
 
 				echo '<div class="mt-testimonial-avatar">';
 					echo Group_Control_Image_Size::get_attachment_image_html( $item, 'avatar_image_size', 'avatar_image' );
-					echo '<div class="mt-person-name"><strong>' . $item['name'] . '</strong></div>';
 				echo '</div>';
+
+				echo '<div class="mt-person-name"><strong>' . $item['name'] . '</strong></div>';
 				
 				if ( !empty($item['company_url']['url']) ) {
 					$target = $item['company_url']['is_external'] ? ' target="_blank"' : '';
@@ -949,6 +951,7 @@ class MT_Testimonial extends Widget_Base {
 					echo '<div class="mt-person-title">' . $item['title'] . '</div>';
 				}
 
+				echo '</div>';
 				echo '</div>';
 			}
 			echo '</div>';
