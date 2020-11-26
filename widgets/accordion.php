@@ -86,7 +86,7 @@ class MT_Accordion extends Widget_Base {
                 );
 
                 $this->add_control(
-                    'accordions',
+                    'tabs',
                     [
                         'label' => __( 'Accordion Items', 'mighty' ),
                         'type' => Controls_Manager::REPEATER,
@@ -663,7 +663,7 @@ class MT_Accordion extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
 
-        if ( empty( $settings['accordions'] ) ) {
+        if ( empty( $settings['tabs'] ) ) {
             return;
         }
 
@@ -690,7 +690,7 @@ class MT_Accordion extends Widget_Base {
 
         <div <?php echo $faqSchema ? 'itemscope itemtype="https://schema.org/FAQPage" ' : ''; ?> class="mighty-accordion" data-enable-multiple="<?php echo $openMultiple; ?>" data-first-active="<?php echo $firstActive; ?>" data-open-all="<?php echo $openAll; ?>">
             <?php
-            foreach (  $settings['accordions'] as $index => $tab ) :
+            foreach (  $settings['tabs'] as $index => $tab ) :
                 $tabId = substr( $this->get_id_int(), 0, 3 ) . ( $index + 1 );
 
                 $accordionIcon = '<i aria-hidden="true" class="accordion-icon fas ' . $openAccordionIcon .'"></i>';

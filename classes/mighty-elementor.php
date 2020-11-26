@@ -42,6 +42,10 @@ class Mighty_Elementor {
 		// Mailchimp
 		add_action( 'wp_ajax_save_mailchimp_details', [ $this, 'mighty_mailchimp_details'] );
 
+		// Including Admin Widget and update options
+		$this->update_mighty_options();
+
+		// Including extensions
 		$this->register_extension();
 		
 		// Copy/Paste
@@ -156,6 +160,25 @@ class Mighty_Elementor {
 		}
 	}
 
+	public function update_mighty_options() {
+		
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/panel.php' );
+		
+		$dashboard = new \MightyAddons\Classes\DashboardPanel;
+		$widgets = $dashboard->get_enabled_addons();
+		
+		if ( 
+			get_option('mighty_addons_status') &&
+			isset(get_option('mighty_addons_status')['version']) && 
+			get_option('mighty_addons_status')['version'] === MIGHTY_ADDONS_VERSION
+		) {
+			// do nothing
+		} else {
+			update_option( 'mighty_addons_status', $widgets );
+		}
+
+	}
+
 	public function register_extension() {
 
 		// Registering stub extensions
@@ -165,6 +188,7 @@ class Mighty_Elementor {
 			$extensions = HelperFunctions::mighty_addons()['extensions'];
             if ( ! empty( $extensions ) ) {
                 foreach ( $extensions as $extension => $props ) {
+
                     if ( $props['enable'] && $props['include'] ) {
 						
                         // Magical Potion

@@ -169,25 +169,6 @@ final class Mighty_Addons {
 
 		// MA Extensions Tab for Elementor Editor Panel
 		\Elementor\Controls_Manager::add_tab( 'map', __( 'Extensions', 'mighty' ) );
-		
-		// Including Admin Widget
-		if ( is_admin() ) {
-
-			require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/panel.php' );
-			
-			$dashboard = new DashboardPanel;
-			$widgets = $dashboard->get_enabled_addons();
-			
-			if ( 
-                get_option('mighty_addons_status') &&
-                isset(get_option('mighty_addons_status')['version']) && 
-                get_option('mighty_addons_status')['version'] === MIGHTY_ADDONS_VERSION
-            ) {
-				// do nothing
-			} else {
-				update_option( 'mighty_addons_status', $widgets );
-			}
-		}
 
 		// When in doubt go to the library - J.K. Rowling
 		$this->loadLibrary();
