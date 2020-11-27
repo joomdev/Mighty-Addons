@@ -62,6 +62,7 @@ class MT_WrapperLink {
 					'type' => Controls_Manager::URL,
 					'placeholder' => __( 'https://example.com', 'mighty' ),
 					'show_external' => true,
+					'description' => __( 'Accepts both normal URL and hashed (#) URLs', 'mighty' ),
 					'default' => [
 						'url' => '',
 						'is_external' => false,
@@ -82,12 +83,17 @@ class MT_WrapperLink {
 
 		$settings  = $element->get_settings();
 
-		if ( 'yes' === $settings['enable_wrapper_link'] && filter_var( $settings['wrapper_link']['url'], FILTER_VALIDATE_URL ) ) {
-			
-			$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink', $settings['wrapper_link']['url'] );
-			$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink-external', $settings['wrapper_link']['is_external'] );
-			$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink-nofollow', $settings['wrapper_link']['nofollow'] );
+		if ( 'yes' === $settings['enable_wrapper_link'] ) {
+
 			$element->add_render_attribute( '_wrapper', 'class', 'mighty-wrapper-link' );
+
+			if( filter_var( $settings['wrapper_link']['url'], FILTER_VALIDATE_URL ) ) {
+				$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink', $settings['wrapper_link']['url'] );
+				$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink-external', $settings['wrapper_link']['is_external'] );
+			} else {
+				$element->add_render_attribute( '_wrapper', 'data-mt-hashed-wrapperlink', $settings['wrapper_link']['url'] );
+				$element->add_render_attribute( '_wrapper', 'data-mt-wrapperlink-external', $settings['wrapper_link']['is_external'] );
+			}
 
 		}
 	}

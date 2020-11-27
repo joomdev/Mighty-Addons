@@ -5,20 +5,30 @@
 
     Mighty_WrapperLink: function ( $scope, $ ) {
 
-      if( $scope.data('mt-wrapperlink') ) {
-        var url = $scope.data('mt-wrapperlink');
-        var isExternal = $scope.data('mt-wrapperlink-external');
-        var selector = $('[data-mt-wrapperlink]');
+      if( $scope.data( 'mt-wrapperlink' ) || $scope.data( 'mt-hashed-wrapperlink' ) ) {
+
+        var url = $scope.data( 'mt-wrapperlink' ) || $scope.data( 'mt-hashed-wrapperlink' );
+        var isExternal = $scope.data( 'mt-wrapperlink-external' );
+        var selector;
+
+        if ( $scope.data( 'mt-wrapperlink' ) ) {
+          selector = $( '[data-mt-wrapperlink]' );
+        } else {
+          selector = $( '[data-mt-hashed-wrapperlink]' );
+        }
 
         $( selector ).on( 'click', function() {
-
           if ( isExternal ) {
             window.open( url, '_blank' );
           } else {
-            window.location.href = url;
+            if ( $scope.data( 'mt-wrapperlink' ) ) {
+              window.location.href = url;
+            } else {
+              $( 'html, body' ).animate( { scrollTop: $( url ).offset().top }, 1000 );
+            }
           }
-
         });
+
       }
     }
 
