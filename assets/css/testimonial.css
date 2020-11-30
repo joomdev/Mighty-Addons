@@ -32,6 +32,8 @@
 
 .mighty-testimonial-wrapper .mt-person-testimonial blockquote {
     font-size: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .mighty-testimonial-wrapper .slick-dots {
