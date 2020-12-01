@@ -25,6 +25,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-wrapperlink:before {
+	content: "\e920";
+}
+
+.mf-sectionslider:before {
+	content: "\e925";
+}
+
 .mf-advancegradients:before {
 	content: "\e91e";
 }
