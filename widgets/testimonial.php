@@ -454,10 +454,10 @@ class MT_Testimonial extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 1,
+						'size' => 20,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-testimonial-avatar' => 'margin: {{SIZE}}{{UNIT}} auto;',
+						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-testimonial-avatar' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
@@ -545,10 +545,10 @@ class MT_Testimonial extends Widget_Base {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 1,
+						'size' => 20,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-person-testimonial' => 'margin: {{SIZE}}{{UNIT}} 0{{UNIT}}',
+						'{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-person-testimonial' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
