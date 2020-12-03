@@ -199,6 +199,19 @@ a.help-link {
     cursor: pointer;
 }
 
+#mighty-addons-pro-licencing .map-loader .loader {
+    animation: loader 2s infinite linear;
+}
+
+@keyframes loader {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
 .ma-row {
     width: 100%;
     height: auto;
