@@ -80,7 +80,7 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 15. **[MA Advance Shadow - PRO](https://mightythemes.com/mighty-addons/advance-shadow)** - Add Smoother and Sharper Multi-layered Box-Shadows to Elements with Advance Shadow.
 16. **[MA Advance Gradient - PRO](https://mightythemes.com/mighty-addons/advance-gradient)** - Add Smoother and Sharper Multi-gradients for normal/hover effects to Elements with Advance Gradient with smooth transition filter.
 17. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
-18. **[MA Wrapper Link](#)** - Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
+18. **[MA Wrapper Link](https://mightythemes.com/mighty-addons/wrapper-link/)** - Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
@@ -99,18 +99,21 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 11. **OpenTable Widget** - Integrate your OpenTable Listing on Your website and start taking orders.
 12. **Content Toggle Widget** - Create Content toggle section to display two variation of a content.
 13. **WhatsApp Chat Widget** - Add a floating WhatsApp Chatbox on your WordPress site.
+14. **Timeline** - Solve all your events showcase problems by showing them through Timeline by using different factors.
 
 ### Mighty Addons Extensions
-1. **Cross-Site Copy Paste Style(Pro)** - The feature allows you to copy the style of website A to Website B.
+1. **Cross-Site Copy Paste Style (Pro)** - The feature allows you to copy the style of website A to Website B.
 2. **Unsplash Integration (Pro)** Access to free royalty-free stock photos from Unsplash
 3. **Pixabay Integration** Access 1 million + Stock photos from Pixabay.
 4. **Particles Background (Pro)** Add Interactive and animated moving backgrounds on your content sections.
-5. **Cross-Site Copy Paste** Copy content from Website A to Website B with simply a few clicks.
-6. **Advance Gradient (Pro)** Add multiple gradients on any element for normal and hover mode with transition effects for hover.
-7. **Advance Shadow (Pro)** Add multiple shadows on any element for normal and hover mode.
-8. **Wrapper Link** Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
+5. **[Cross Domain Copy Paste](https://mightythemes.com/cross-domain-copy-paste/)** Copy content from Website A to Website B with simply a few clicks.
+6. **[Wrapper Link](https://mightythemes.com/mighty-addons/wrapper-link/)** Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
+7. **[Advance Gradient (Pro)](https://mightythemes.com/mighty-addons/advance-gradient)** Add multiple gradients on any element for normal and hover mode with transition effects for hover.
+8. **[Advance Shadow (Pro)](https://mightythemes.com/mighty-addons/advance-shadow)** Add multiple shadows on any element for normal and hover mode.
+9. **[Display Conditions - (Pro)](https://mightythemes.com/mighty-addons/display-conditions)** - Display your content to only those users who are satisfying the display rules and hide from others.
+10. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
 
-We are working on more Elementor Widgets, and they will be updated soon. Still, you have any specific widget or feature request, feel free to **[get in touch with us.](https://mightythemes.com/contact/)** 
+We are working on more Elementor Widgets which are frequently updated. Still, you have any specific widget or feature request, feel free to **[get in touch](https://mightythemes.com/contact/)**.
 
 ## Have any questions or facing any issue?
 We are proud of our support team. If you are facing any issue or have any questions regarding Mighty Addons for Elementor, feel free to **[post us on our support forum](https://mightythemes.com/support/c/mighty-addons/)**. Our technical WordPress Developer would love to help you. 
@@ -118,57 +121,57 @@ We are proud of our support team. If you are facing any issue or have any questi
 ## How to Install Mighty Addons for Elementor
 
 1. Install and activate the Elementor page builder.
-2. Install the Mighty Addons and activate or download the plugin from WordPress Directory and unzip the directory to the *wp-content/plugins/* directory and activate.
-3. Now they're ready to use. That's all, stop wandering!
-4. You can type "MT" on your element tabs within the Elementor editor, and all the available elements will appear.
+2. Install the Mighty Addons and activate or download the plugin from WordPress Directory and install.
+3. Now you're good to go. That's all, stop wandering!
+4. You can type "Mighty" in your Elementor editor search, and all the available elements will appear.
 Also, you can see them under the category "Mighty Addons" on your element/widget list.
 
 ## Frequently Asked Questions
 
-### Is Mighty Addons a standalone plugin?
+#### Is Mighty Addons a standalone plugin?
 
 No, Mighty Addons is not a standalone plugin. You need to install the Elementor page builder to use Mighty Addon.
 
-### Does it work with any WordPress theme?
+#### Does it work with any WordPress theme?
 
 Yes, it will work with any WordPress theme as long as you are using the Elementor as your page builder.
 
-### How do I start using Mighty Addons?
+#### How do I start using Mighty Addons?
 
 You need to install Elementor and Mighty Addons plugin on your website to get started.
 
-### Will this Elementor Widget plugin slow down my website speed?
+#### Will this Elementor plugin slow down my website speed?
 
-The Elementor Widget Plugin is lightweight so it will not slow down your website.
+The Elementor Plugin is lightweight so it will not slow down your website.
 
-### Is Mighty Addons 100% Ads Free?
+#### Is Mighty Addons 100% Ads Free?
 
 Yes, the Mighty Addons plugin will be 100% ads free. You will get notices about the pro version only if you will be using the free version.
 
-### How often do you update Elementor widgets?
+#### How often do you update Elementor widgets?
 
 We always listen to our user's feedback and based on that feedback, we keep enhancing the existing features and widgets. So you can expect at least one update in a month.
 
-### Do I have to buy Elementor Pro to use the Mighty Addons plugin?
+#### Do I have to buy Elementor Pro to use the Mighty Addons?
 
 No, you don't need to buy Elementor Pro to use Mighty Addons. These free Elementor Widgets will work with both free and pro versions.
 
-### Will you keep updating Free Elementor Templates?
+#### Will you keep updating Free Elementor Templates?
 
 Yes, we will keep adding free Elementor templates regularly, along with pro templates.
 
-### Do I need to use Elementor Pro to access Mighty Addons Library?
+#### Do I need to use Elementor Pro to access Mighty Library?
 
 No, you don’t need Elementor Pro to access Mighty Addons Library. You can use these Elementor templates or blocks with free Elementor plugin.
 
-### Do I need to purchase Mighty Addons Pro to use Elementor Template or Blocks?
+#### Do I need to purchase Mighty Addons Pro to use Elementor Template or Blocks?
 
 No, Mighty Addons Pro is not required to use the templates. But in the free version of Mighty Addons, you will have limited templates and blocks. But in the pro version, you will have many more options than the free version. 
 
 
-### Developer? Want to contribute?
+#### Developer? Want to contribute?
 
-We 💗 Open Source. Come and see our products on <a href="https://github.com/mightythemes/" title="MightyThemes on GitHub">GitHub</a>.
+We are 💗 Open Source. Come and see our products on <a href="https://github.com/mightythemes/" title="MightyThemes on GitHub">GitHub</a>.
 
 #Having any suggestions or ideas which can improve our product?
 Create an issue on the desired product or maybe give us a ⭐. 😀
@@ -178,7 +181,7 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 ### 1.4.3
 * Added: Advance Gradient Extension [PRO]
 * Added: Wrapper Link Extension
-* Added: Animation controls in WhatsApp and Click-to-call Widgets [PRO]
+* Added: Animation controls in WhatsApp and Click-to-Call Widgets [PRO]
 * Fixed: Advance Shadow bugs [PRO]
 * Fixed: Testimonial Styling issues
 * Fixed: Accordion update bug
