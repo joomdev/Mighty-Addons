@@ -5,7 +5,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher  
 Tested up to: 5.5  
 Requires PHP: 5.6  
-Stable Tag: 1.4.2  
+Stable Tag: 1.4.3  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
@@ -78,7 +78,9 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 13. **[MA Mailchimp](#)** - Grow your audience with a subscriber form. Create and display a Mailchimp form that matches your website’s brand, so you can attract new contacts and boost engagement. Choose the list to segment your audience in different lists.
 14. **[MA Display Conditions - PRO](https://mightythemes.com/mighty-addons/display-conditions)** - Display your content to only those users who are satisfying the display rules and hide from others.
 15. **[MA Advance Shadow - PRO](https://mightythemes.com/mighty-addons/advance-shadow)** - Add Smoother and Sharper Multi-layered Box-Shadows to Elements with Advance Shadow.
-16. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
+16. **[MA Advance Gradient - PRO](https://mightythemes.com/mighty-addons/advance-gradient)** - Add Smoother and Sharper Multi-gradients for normal/hover effects to Elements with Advance Gradient with smooth transition filter.
+17. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
+18. **[MA Wrapper Link](#)** - Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
@@ -98,12 +100,15 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 12. **Content Toggle Widget** - Create Content toggle section to display two variation of a content.
 13. **WhatsApp Chat Widget** - Add a floating WhatsApp Chatbox on your WordPress site.
 
-### Mighty Addons  Extensions
+### Mighty Addons Extensions
 1. **Cross-Site Copy Paste Style(Pro)** - The feature allows you to copy the style of website A to Website B.
 2. **Unsplash Integration (Pro)** Access to free royalty-free stock photos from Unsplash
 3. **Pixabay Integration** Access 1 million + Stock photos from Pixabay.
 4. **Particles Background (Pro)** Add Interactive and animated moving backgrounds on your content sections.
 5. **Cross-Site Copy Paste** Copy content from Website A to Website B with simply a few clicks.
+6. **Advance Gradient (Pro)** Add multiple gradients on any element for normal and hover mode with transition effects for hover.
+7. **Advance Shadow (Pro)** Add multiple shadows on any element for normal and hover mode.
+8. **Wrapper Link** Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
 
 We are working on more Elementor Widgets, and they will be updated soon. Still, you have any specific widget or feature request, feel free to **[get in touch with us.](https://mightythemes.com/contact/)** 
 
@@ -169,6 +174,14 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.4.3
+* Added: Advance Gradient Extension [PRO]
+* Added: Wrapper Link Extension
+* Added: Animation controls in WhatsApp and Click-to-call Widgets [PRO]
+* Fixed: Advance Shadow bugs [PRO]
+* Fixed: Testimonial Styling issues
+* Fixed: Accordion update bug
 
 ### 1.4.2
 * Fixed: Custom CSS Extension
