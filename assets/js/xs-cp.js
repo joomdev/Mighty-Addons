@@ -19,7 +19,7 @@
 
     function importContent( newWidget, elementCode, container ) {
 
-        var elementCodeStringify = JSON.stringify(elementCode);
+        var elementCodeStringify = encodeURIComponent( JSON.stringify(elementCode) );
         var containsMedia = /png|gif|webp|tiff|psd|raw|bmp|heif|svg|jpg/.test(elementCodeStringify);
         
         if ( containsMedia ) {
@@ -43,7 +43,7 @@
             })
             .catch(function(error) {
                 console.log('Something went wrong!');
-                console.log(JSON.stringify(error));
+                console.log(error);
 
                 elementor.notifications.showToast({
                     message: elementor.translate('#2 Something went wrong!')
@@ -200,7 +200,7 @@
                                 })
                                 .catch(function(error) {
                                     console.log('Something went wrong!');
-                                    console.log(JSON.stringify(error));
+                                    console.log(error);
                                     elementor.notifications.showToast({
                                         message: elementor.translate('#4 Something went wrong!')
                                     });
