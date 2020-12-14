@@ -9,7 +9,7 @@
 
     function getUniqueId( elements ) {
         elements.forEach( function( item, index ) {
-            item.id = elementor.helpers.getUniqueID();
+            item.id = elementorCommon.helpers.getUniqueId();
             if( item.elements.length > 0 ) {
                 getUniqueId( item.elements );
             }
@@ -133,7 +133,7 @@
                             copiedElement.elementCode = element.model.toJSON();
                             xdLocalStorage.setItem( 'mighty-xscp-element', JSON.stringify(copiedElement), function (data) {
                                 elementor.notifications.showToast({
-                                    message: elementor.translate('Element Copied!')
+                                    message: elementor.translate('Element Copied! 🎉')
                                 });
                             });
                         }
@@ -146,7 +146,7 @@
                                 pasteElement( JSON.parse( newElement.value ), element );
 
                                 elementor.notifications.showToast({
-                                    message: elementor.translate('Element Pasted!')
+                                    message: elementor.translate('Element Pasted! 🎉')
                                 });
                             });
                         }
@@ -167,7 +167,7 @@
 
                             xdLocalStorage.setItem( 'mighty-xscp-page-sections', JSON.stringify(allSections), function (data) {
                                 elementor.notifications.showToast({
-                                    message: elementor.translate('All Sections Copied!')
+                                    message: elementor.translate('All Sections Copied! 🎉')
                                 });
                             });
                         }
@@ -188,14 +188,17 @@
                                 })
                                 .then(response => response.json())
                                 .then((tmpl) => {
+
+                                    var elements = getUniqueId( tmpl.data.data.template.content );
+
                                     if ( MightyLibrary.elementorCompatible ) {
                                         // Compatibility for older elementor versions
-                                        elementor.sections.currentView.addChildModel(tmpl.data.data.template.content)
+                                        elementor.sections.currentView.addChildModel( elements )
                                     } else {
-                                        elementor.previewView.addChildModel(tmpl.data.data.template.content)
+                                        elementor.previewView.addChildModel( elements )
                                     }
                                     elementor.notifications.showToast({
-                                        message: elementor.translate('Page Pasted!')
+                                        message: elementor.translate('Page Pasted! 🎉')
                                     });
                                 })
                                 .catch(function(error) {
