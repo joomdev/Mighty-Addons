@@ -181,6 +181,7 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ### 1.4.4
 * Fixed: Copy/paste Issue with Special Characters
+* Fixed: Duplicate section pasting on Copy/Paste All
 
 ### 1.4.3
 * Added: Advance Gradient Extension [PRO]
