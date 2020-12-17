@@ -598,9 +598,8 @@ class MT_ContactForm7 extends Widget_Base {
                 ]
             );
 
-            $this->start_controls_tabs(
-                'fields_styling_tabs'
-            );
+            $this->start_controls_tabs( 'fields_styling_tabs' );
+            
                 // Normal Styling
                 $this->start_controls_tab(
                     'style_form_fields_normal',
@@ -615,7 +614,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => \Elementor\Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-text, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-date, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-textarea, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-number, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-select, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-quiz, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-url',
+                                '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-text, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-date, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-textarea, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-number, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-select, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-quiz, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-url' => 'background-color: {{VALUE}}',
                             ],
                         ]
                     );
@@ -682,6 +681,7 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'fields_border',
                     'label' => __( 'Border', 'mighty' ),
+                    'separator' => 'before',
                     'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-text, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-date, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-textarea, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-number, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-select, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-quiz, {{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control.wpcf7-url',
                 ]
             );
