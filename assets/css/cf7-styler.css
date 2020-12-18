@@ -134,6 +134,10 @@
     font-size: 15px;
 }
 
+.mighty-cf7-wrapper .wpcf7-form-control {
+    border: none;
+}
+
 /* Stacking */
 .mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-radio > span,
 .mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-checkbox > span {
