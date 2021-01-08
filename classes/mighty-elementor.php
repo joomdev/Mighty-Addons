@@ -90,6 +90,7 @@ class Mighty_Elementor {
 		wp_enqueue_style('mt-openinghours', MIGHTY_ADDONS_PLG_URL . 'assets/css/opening-hours.css', false, MIGHTY_ADDONS_VERSION );
 		wp_enqueue_style('mt-cf7styler', MIGHTY_ADDONS_PLG_URL . 'assets/css/cf7-styler.css', false, MIGHTY_ADDONS_VERSION );
 		wp_enqueue_style('mt-mailchimp', MIGHTY_ADDONS_PLG_URL . 'assets/css/mailchimp.css', false, MIGHTY_ADDONS_VERSION );
+		wp_enqueue_style('mt-linkeffects', MIGHTY_ADDONS_PLG_URL . 'assets/css/linkeffects.css', false, MIGHTY_ADDONS_VERSION );
 		// Common Stylings
 		wp_enqueue_style('mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css', false, MIGHTY_ADDONS_VERSION );
 	}
