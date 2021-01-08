@@ -104,9 +104,16 @@ class HelperFunctions {
                 'class' => 'MT_Mailchimp',
                 'slug' => 'mailchimp',
                 'icon' => 'mf mf-mailchimp'
+            ],
+            'linkeffects' => [
+                'title' => 'Link Effects',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_LinkEffects',
+                'slug' => 'linkeffects',
+                'icon' => 'mf mf-linkeffects'
             ]
         ],
-
         "extensions" => [
             'pixabay' => [
                 'title' => 'Pixabay',
