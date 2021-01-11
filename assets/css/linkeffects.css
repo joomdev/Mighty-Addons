@@ -310,7 +310,7 @@
     transform: translateY(0px) translateX(0px);
 }
 
-.mt-link-effect-s9 .mt-link-effect {
+.mt-link-effect-s9 {
     padding: 10px;
     color: #fff;
     font-weight: 700;
@@ -320,8 +320,8 @@
     transition: color 0.3s;
 }
 
-.mt-link-effect-s9 .mt-link-effect::before,
-.mt-link-effect-s9 .mt-link-effect::after {
+.mt-link-effect-s9::before,
+.mt-link-effect-s9::after {
     position: absolute;
     left: 0;
     width: 100%;
@@ -337,29 +337,29 @@
     transform: translateY(-10px);
 }
 
-.mt-link-effect-s9 .mt-link-effect::before {
+.mt-link-effect-s9::before {
     top: 0;
     -webkit-transform: translateY(-10px);
     -moz-transform: translateY(-10px);
     transform: translateY(-10px);
 }
 
-.mt-link-effect-s9 .mt-link-effect::after {
+.mt-link-effect-s9::after {
     bottom: 0;
     -webkit-transform: translateY(10px);
     -moz-transform: translateY(10px);
     transform: translateY(10px);
 }
 
-.mt-link-effect-s9 .mt-link-effect:hover,
-.mt-link-effect-s9 .mt-link-effect:focus {
+.mt-link-effect-s9:hover,
+.mt-link-effect-s9:focus {
     color: #fff;
 }
 
-.mt-link-effect-s9 .mt-link-effect:hover::before,
-.mt-link-effect-s9 .mt-link-effect:hover::after,
-.mt-link-effect-s9 .mt-link-effect:focus::before,
-.mt-link-effect-s9 .mt-link-effect:focus::after {
+.mt-link-effect-s9:hover::before,
+.mt-link-effect-s9:hover::after,
+.mt-link-effect-s9:focus::before,
+.mt-link-effect-s9:focus::after {
     opacity: 1;
     -webkit-transform: translateY(0px);
     -moz-transform: translateY(0px);
@@ -412,7 +412,7 @@
     transform: translateX(0%);
 }
 
-.mt-link-effect-s11 .mt-link-effect {
+.mt-link-effect-s11 {
     padding: 10px 0;
     border-top: 2px solid #0972b4;
     color: #0972b4;
@@ -420,7 +420,7 @@
     text-align: left;
 }
 
-.mt-link-effect-s11 .mt-link-effect span::before {
+.mt-link-effect-s11 span::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -436,8 +436,8 @@
     transition: max-width 0.5s;
 }
 
-.mt-link-effect-s11 .mt-link-effect:hover span::before,
-.mt-link-effect-s11 .mt-link-effect:focus span::before {
+.mt-link-effect-s11:hover span::before,
+.mt-link-effect-s11:focus span::before {
     max-width: 100%;
 }
 

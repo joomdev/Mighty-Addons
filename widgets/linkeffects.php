@@ -179,7 +179,7 @@ class MT_LinkEffects extends Widget_Base {
                 [
                     'name' => 'link_typography',
                     'label' => __( 'Link Typography', 'mighty' ),
-                    'selector' => '',
+                    'selector' => '{{WRAPPER}} .mt-link-effects .mt-link-effect',
                 ]
             );
 
@@ -197,8 +197,9 @@ class MT_LinkEffects extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
+                            'default' => '#fff',
                             'selectors' => [
-                                '' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effects .mt-link-effect' => 'color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -208,8 +209,9 @@ class MT_LinkEffects extends Widget_Base {
                         [
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
+                            'default' => '#000',
                             'selectors' => [
-                                '' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effects .mt-link-effect span' => 'background-color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -220,7 +222,7 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Border Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '' => 'border-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effects .mt-link-effect' => 'border-color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -240,7 +242,7 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effects .mt-link-effect:hover' => 'color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -251,7 +253,7 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effects .mt-link-effect:hover' => 'background-color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -262,7 +264,7 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Border Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '' => 'border-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effects .mt-link-effect:hover' => 'border-color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -285,7 +287,7 @@ class MT_LinkEffects extends Widget_Base {
                 [
                     'name' => 'text_typography',
                     'label' => __( 'Text Typography', 'mighty' ),
-                    'selector' => '',
+                    'selector' => '{{WRAPPER}} .mt-link-effects .text',
                 ]
             );
 
@@ -295,7 +297,7 @@ class MT_LinkEffects extends Widget_Base {
                     'label' => __( 'Color', 'mighty' ),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .mt-link-effects .text' => 'color: {{VALUE}};',
                     ],
                 ]
             );
@@ -316,7 +318,7 @@ class MT_LinkEffects extends Widget_Base {
                         'size' => 15,
                     ],
                     'selectors' => [
-                        '' => '',
+                        '{{WRAPPER}} .mt-link-effects .mt-link-effect' => 'margin: 0 {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -333,7 +335,7 @@ class MT_LinkEffects extends Widget_Base {
         <div class="mt-link-effects">
 
             <?php if ( $settings['pre_text'] ) : ?>
-            <span><?php echo $settings['pre_text']; ?></span>
+            <span class="pre-text text"><?php echo $settings['pre_text']; ?></span>
             <?php endif; ?>
 
             <?php if ( $settings['link_text'] ) :
@@ -350,12 +352,12 @@ class MT_LinkEffects extends Widget_Base {
             ?>
 
             <a <?php echo $this->get_render_attribute_string('mighty-linkeffects'); ?> >
-                <span><?php echo $settings['link_text']; ?></span>
+                <span class="link-text"><?php echo $settings['link_text']; ?></span>
             </a>
             <?php endif; ?>
 
             <?php if ( $settings['pre_text'] ) : ?>
-            <span><?php echo $settings['post_text']; ?></span>
+            <span class="post-text text"><?php echo $settings['post_text']; ?></span>
             <?php endif; ?>
 
         </div>
