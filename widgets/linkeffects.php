@@ -197,7 +197,7 @@ class MT_LinkEffects extends Widget_Base {
                         [
                             'label' => __( 'Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
-                            'default' => '#fff',
+                            // 'default' => '#fff',
                             'selectors' => [
                                 '{{WRAPPER}} .mt-link-effects .mt-link-effect' => 'color: {{VALUE}};',
                             ],
@@ -209,7 +209,7 @@ class MT_LinkEffects extends Widget_Base {
                         [
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
-                            'default' => '#000',
+                            // 'default' => '#000',
                             'selectors' => [
                                 '{{WRAPPER}} .mt-link-effects .mt-link-effect span' => 'background-color: {{VALUE}};',
                             ],
@@ -264,7 +264,35 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Border Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mt-link-effects .mt-link-effect:hover' => 'border-color: {{VALUE}};',
+                                '.mt-link-effect-s1:hover::before' => 'color: {{VALUE}};',
+                                '.mt-link-effect-s1:hover::after' => 'color: {{VALUE}};',
+
+                                '.mt-link-effect-s3:hover::after' => 'background: {{VALUE}};',
+
+                                '.mt-link-effect-s4:hover::after' => 'background: {{VALUE}};',
+
+                                '.mt-link-effect-s7:hover::before' => 'background: {{VALUE}};',
+                                '.mt-link-effect-s7:hover::after' => 'background: {{VALUE}};',
+
+                                '.mt-link-effect-s8:hover::after' => 'border-color: {{VALUE}};',
+
+                                '.mt-link-effect-s9:hover::before' => 'background: {{VALUE}};',
+                                '.mt-link-effect-s9:hover::after' => 'background: {{VALUE}};',
+
+                                '.mt-link-effect-s11 span:hover::before' => 'border-bottom-color: {{VALUE}};',
+
+                                '.mt-link-effect-s12:hover::after' => 'border-color: {{VALUE}};',
+
+                                '.mt-link-effect-s13:hover::before' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
+                                '.mt-link-effect-s13:hover::after' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
+
+                                '.mt-link-effect-s14:hover::before' => 'background: {{VALUE}};',
+                                '.mt-link-effect-s14:hover::after' => 'background: {{VALUE}};',
+
+                                '.mt-link-effect-s17:hover span::after' => 'background: {{VALUE}};',
+
+                                '.mt-link-effect-s18:hover::before' => 'background: {{VALUE}};',
+                                '.mt-link-effect-s18:hover::after' => 'background: {{VALUE}};',
                             ],
                         ]
                     );
@@ -352,7 +380,7 @@ class MT_LinkEffects extends Widget_Base {
             ?>
 
             <a <?php echo $this->get_render_attribute_string('mighty-linkeffects'); ?> >
-                <span class="link-text"><?php echo $settings['link_text']; ?></span>
+                <span data-hover="<?php echo $settings['link_text']; ?>" class="link-text"><?php echo $settings['link_text']; ?></span>
             </a>
             <?php endif; ?>
 
