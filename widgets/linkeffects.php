@@ -199,7 +199,26 @@ class MT_LinkEffects extends Widget_Base {
                             'type' => Controls_Manager::COLOR,
                             // 'default' => '#fff',
                             'selectors' => [
-                                '{{WRAPPER}} .mt-link-effects .mt-link-effect' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s1' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s2' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s3' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s4' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s5' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s6' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s7' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s8' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s9' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s10' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s11' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s12' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s13' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s14' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s15' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s16' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s17' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s18' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s19' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s20' => 'color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -211,7 +230,27 @@ class MT_LinkEffects extends Widget_Base {
                             'type' => Controls_Manager::COLOR,
                             // 'default' => '#000',
                             'selectors' => [
-                                '{{WRAPPER}} .mt-link-effects .mt-link-effect span' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s1' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s2 span' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s3' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s4' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s5' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s6' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s7' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s8' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s9' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s10 span' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s10::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s11' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s12' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s13' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s14' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s15' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s16' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s17' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s18' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s19 span::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s20 span::before' => 'background-color: {{VALUE}}',
                             ],
                         ]
                     );
@@ -222,7 +261,15 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Border Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mt-link-effects .mt-link-effect' => 'border-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s6::before' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s6::after' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s7::before' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s8::before' => 'border-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s11' => 'border-top-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s14::before' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s14::after' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s18::before' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s18::after' => 'background: {{VALUE}};'
                             ],
                         ]
                     );
@@ -242,7 +289,26 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mt-link-effects .mt-link-effect:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s1:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s2:hover span::before' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s3:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s4:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s5:hover span::before' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s6:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s7:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s8:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s9:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s10:hover::before' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s11:hover span::before' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s12:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s13:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s14:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s15:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s16:hover span::before' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s17:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s18:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s19:hover span::before' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s20:hover span::before' => 'color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -253,7 +319,26 @@ class MT_LinkEffects extends Widget_Base {
                             'label' => __( 'Background Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mt-link-effects .mt-link-effect:hover' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s1:hover' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s2:hover span::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s3:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s4:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s5:hover span::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s6:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s7:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s8:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s9:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s10:hover::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s11:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s12:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s13:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s14:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s15:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s16:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s17:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s18:hover' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s19:hover span::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s20:hover span::before' => 'background-color: {{VALUE}}',
                             ],
                         ]
                     );
@@ -271,14 +356,18 @@ class MT_LinkEffects extends Widget_Base {
 
                                 '.mt-link-effect-s4:hover::after' => 'background: {{VALUE}};',
 
-                                '.mt-link-effect-s7:hover::before' => 'background: {{VALUE}};',
-                                '.mt-link-effect-s7:hover::after' => 'background: {{VALUE}};',
+                                '.mt-link-effect-s6:hover::after' => 'background: {{VALUE}} !important;',
+                                '.mt-link-effect-s6:hover::before' => 'background: {{VALUE}} !important;',
+
+                                '.mt-link-effect-s7:hover::before' => 'background: {{VALUE}} !important;',
+                                '.mt-link-effect-s7:hover::after' => 'background: {{VALUE}} !important;',
 
                                 '.mt-link-effect-s8:hover::after' => 'border-color: {{VALUE}};',
 
                                 '.mt-link-effect-s9:hover::before' => 'background: {{VALUE}};',
                                 '.mt-link-effect-s9:hover::after' => 'background: {{VALUE}};',
 
+                                '.mt-link-effect-s11:hover' => 'border-top-color: {{VALUE}} !important;',
                                 '.mt-link-effect-s11 span:hover::before' => 'border-bottom-color: {{VALUE}};',
 
                                 '.mt-link-effect-s12:hover::after' => 'border-color: {{VALUE}};',
@@ -286,13 +375,13 @@ class MT_LinkEffects extends Widget_Base {
                                 '.mt-link-effect-s13:hover::before' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
                                 '.mt-link-effect-s13:hover::after' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
 
-                                '.mt-link-effect-s14:hover::before' => 'background: {{VALUE}};',
-                                '.mt-link-effect-s14:hover::after' => 'background: {{VALUE}};',
+                                '.mt-link-effect-s14:hover::before' => 'background: {{VALUE}} !important;',
+                                '.mt-link-effect-s14:hover::after' => 'background: {{VALUE}} !important;',
 
                                 '.mt-link-effect-s17:hover span::after' => 'background: {{VALUE}};',
 
-                                '.mt-link-effect-s18:hover::before' => 'background: {{VALUE}};',
-                                '.mt-link-effect-s18:hover::after' => 'background: {{VALUE}};',
+                                '.mt-link-effect-s18:hover::before' => 'background: {{VALUE}} !important;',
+                                '.mt-link-effect-s18:hover::after' => 'background: {{VALUE}} !important;',
                             ],
                         ]
                     );
@@ -379,7 +468,7 @@ class MT_LinkEffects extends Widget_Base {
             }
             ?>
 
-            <a <?php echo $this->get_render_attribute_string('mighty-linkeffects'); ?> >
+            <a data-hover="<?php echo $settings['link_text']; ?>" <?php echo $this->get_render_attribute_string('mighty-linkeffects'); ?> >
                 <span data-hover="<?php echo $settings['link_text']; ?>" class="link-text"><?php echo $settings['link_text']; ?></span>
             </a>
             <?php endif; ?>

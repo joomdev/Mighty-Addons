@@ -375,7 +375,6 @@
 .mt-link-effect-s10 span {
     display: block;
     padding: 10px 20px;
-    background: #0f7c67;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
@@ -507,8 +506,8 @@
     color: #ba7700;
 }
 
-.mt-link-effect-s13.mt-link-effect:hover:before,
-.mt-link-effect-s13.mt-link-effect:focus:before {
+.mt-link-effect-s13:hover:before,
+.mt-link-effect-s13:focus:before {
     color: #fff;
     text-shadow: 10px 0 #fff, -10px 0 #fff;
 }
