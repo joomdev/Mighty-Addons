@@ -8,7 +8,7 @@ Requires PHP: 5.6
 Stable Tag: 1.4.5  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
-Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
+Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules, testimonials, page builder, elementor widgets, elements  
 
 Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.
 

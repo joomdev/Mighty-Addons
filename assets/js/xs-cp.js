@@ -9,7 +9,7 @@
 
     function getUniqueId( elements ) {
         elements.forEach( function( item, index ) {
-            item.id = elementorCommon.helpers.getUniqueId();
+            item.id = MightyLibrary.elementorCompatible ? elementor.helpers.getUniqueID() : elementorCommon.helpers.getUniqueId();
             if( item.elements.length > 0 ) {
                 getUniqueId( item.elements );
             }
@@ -43,7 +43,7 @@
             })
             .catch(function(error) {
                 console.log('Something went wrong!');
-                console.log(error);
+                console.error(error);
 
                 elementor.notifications.showToast({
                     message: elementor.translate('#2 Something went wrong!')
@@ -203,7 +203,7 @@
                                 })
                                 .catch(function(error) {
                                     console.log('Something went wrong!');
-                                    console.log(error);
+                                    console.error(error);
                                     elementor.notifications.showToast({
                                         message: elementor.translate('#4 Something went wrong!')
                                     });
