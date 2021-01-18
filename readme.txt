@@ -6,7 +6,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher  
 Tested up to: 5.5  
 Requires PHP: 5.6  
-Stable Tag: 1.4.6  
+Stable Tag: 1.4.5  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
@@ -179,11 +179,9 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
 
-### 1.4.6
-* Fixed: [XSCP] copy/paste bug with Elementor's old version 🔢
-
 ### 1.4.5
 * Fixed: Contact Form 7 Styler bugs
+* Fixed: [XSCP] copy/paste bug with Elementor's old version 🔢
 
 ### 1.4.4
 * Fixed: Copy/paste Issue with Special Characters
