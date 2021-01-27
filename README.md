@@ -171,7 +171,7 @@ No, Mighty Addons Pro is not required to use the templates. But in the free vers
 
 #### Developer? Want to contribute?
 
-We are 💗 Open Source. Come and see our products on <a href="https://github.com/mightythemes/" title="MightyThemes on GitHub">GitHub</a>.
+We 💗 Open Source. Come and see our products on <a href="https://github.com/mightythemes/" title="MightyThemes on GitHub">GitHub</a>.
 
 #Having any suggestions or ideas which can improve our product?
 Create an issue on the desired product or maybe give us a ⭐. 😀
