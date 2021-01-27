@@ -41,6 +41,7 @@ class Mighty_Elementor {
 
 		// Mailchimp
 		add_action( 'wp_ajax_save_mailchimp_details', [ $this, 'mighty_mailchimp_details'] );
+		add_action( 'wp_ajax_nopriv_save_mailchimp_details', [ $this, 'mighty_mailchimp_details'] );
 
 		// Including Admin Widget and update options
 		$this->update_mighty_options();
