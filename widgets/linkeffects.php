@@ -249,8 +249,9 @@ class MT_LinkEffects extends Widget_Base {
                                 '{{WRAPPER}} .mt-link-effect-s16' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s17' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s18' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s19 span' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s19 span::before' => 'background-color: {{VALUE}}',
-                                '{{WRAPPER}} .mt-link-effect-s20 span::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s20 span' => 'background-color: {{VALUE}}',
                             ],
                         ]
                     );
