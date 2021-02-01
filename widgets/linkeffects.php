@@ -324,7 +324,7 @@ class MT_LinkEffects extends Widget_Base {
                                 '{{WRAPPER}} .mt-link-effect-s2:hover span::before' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s3:hover' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s4:hover' => 'background-color: {{VALUE}}',
-                                '{{WRAPPER}} .mt-link-effect-s5:hover span::before' => 'background-color: {{VALUE}}',
+                                '{{WRAPPER}} .mt-link-effect-s5:hover' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s6:hover' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s7:hover' => 'background-color: {{VALUE}}',
                                 '{{WRAPPER}} .mt-link-effect-s8:hover' => 'background-color: {{VALUE}}',
