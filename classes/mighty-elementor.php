@@ -76,24 +76,12 @@ class Mighty_Elementor {
 	}
 
 	public function mt_enqueue_styles() {
-		wp_enqueue_style('mighty-slickcss', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick.min.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.min.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/css/testimonial.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-team', MIGHTY_ADDONS_PLG_URL . 'assets/css/team.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-progressbar', MIGHTY_ADDONS_PLG_URL . 'assets/css/progressbar.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-counter', MIGHTY_ADDONS_PLG_URL . 'assets/css/counter.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-buttongroup', MIGHTY_ADDONS_PLG_URL . 'assets/css/buttongroup.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-accordion', MIGHTY_ADDONS_PLG_URL . 'assets/css/accordion.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-twentytwenty', MIGHTY_ADDONS_PLG_URL . 'assets/css/twentytwenty.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/css/before-after.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/gradient-heading.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-flipbox', MIGHTY_ADDONS_PLG_URL . 'assets/css/flip-box.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-openinghours', MIGHTY_ADDONS_PLG_URL . 'assets/css/opening-hours.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-cf7styler', MIGHTY_ADDONS_PLG_URL . 'assets/css/cf7-styler.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-mailchimp', MIGHTY_ADDONS_PLG_URL . 'assets/css/mailchimp.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style('mt-linkeffects', MIGHTY_ADDONS_PLG_URL . 'assets/css/linkeffects.css', false, MIGHTY_ADDONS_VERSION );
+		wp_enqueue_style( 'mighty-slickcss', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick.min.css', false, MIGHTY_ADDONS_VERSION );
+		wp_enqueue_style( 'mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.min.css', false, MIGHTY_ADDONS_VERSION );
+		wp_enqueue_style( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/css/testimonial.css', false, MIGHTY_ADDONS_VERSION );
+		
 		// Common Stylings
-		wp_enqueue_style('mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css', false, MIGHTY_ADDONS_VERSION );
+		wp_enqueue_style( 'mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css', false, MIGHTY_ADDONS_VERSION );
 	}
 
 	public function widget_scripts() {

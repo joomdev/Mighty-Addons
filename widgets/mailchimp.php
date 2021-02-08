@@ -19,6 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 1.3.4
  */
 class MT_Mailchimp extends Widget_Base {
+
+	public function __construct( $data = array(), $args = null ) {
+		parent::__construct( $data, $args );
+	
+		wp_register_style( 'mt-mailchimp', MIGHTY_ADDONS_PLG_URL . 'assets/css/mailchimp.css', false, MIGHTY_ADDONS_VERSION );
+	}
 	
 	public function get_name() {
 		return 'mt-mailchimp';

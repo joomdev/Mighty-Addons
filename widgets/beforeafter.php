@@ -20,6 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 1.0.0
  */
 class MT_Beforeafter extends Widget_Base {
+
+    public function __construct( $data = array(), $args = null ) {
+		parent::__construct( $data, $args );
+	
+		wp_register_style( 'mt-twentytwenty', MIGHTY_ADDONS_PLG_URL . 'assets/css/twentytwenty.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/css/before-after.css', false, MIGHTY_ADDONS_VERSION );
+	}
 	
 	public function get_name() {
 		return 'mt-before-after';
@@ -42,7 +49,7 @@ class MT_Beforeafter extends Widget_Base {
     }
 
 	public function get_style_depends() {
-		return [ 'mt-beforeafter' ];
+		return [ 'mt-twentytwenty', 'mt-beforeafter' ];
     }
     
     public function get_script_depends() {
