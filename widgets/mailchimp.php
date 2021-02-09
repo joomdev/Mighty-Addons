@@ -24,6 +24,11 @@ class MT_Mailchimp extends Widget_Base {
 		parent::__construct( $data, $args );
 	
 		wp_register_style( 'mt-mailchimp', MIGHTY_ADDONS_PLG_URL . 'assets/css/mailchimp.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_script( 'mt-mailchimp', MIGHTY_ADDONS_PLG_URL . 'assets/js/mailchimp.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+		wp_localize_script( 'mt-mailchimp', 'MightyAddons', array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'mailchimpAction' => 'save_mailchimp_details'
+		) );
 	}
 	
 	public function get_name() {

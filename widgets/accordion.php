@@ -20,6 +20,7 @@ class MT_Accordion extends Widget_Base {
 		parent::__construct( $data, $args );
 	
 		wp_register_style( 'mt-accordion', MIGHTY_ADDONS_PLG_URL . 'assets/css/accordion.css', false, MIGHTY_ADDONS_VERSION );
+        wp_register_script( 'mt-accordion', MIGHTY_ADDONS_PLG_URL . 'assets/js/accordion.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
 	}
 
 	public function get_name() {

@@ -26,10 +26,6 @@ class Mighty_Elementor {
 
 		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 
-		// Register widget scripts
-		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
-		add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'mt_enqueue_scripts' ] );
-
 		// Register Custom Category
 		add_action( 'elementor/elements/categories_registered', [ $this, 'add_elementor_widget_categories' ] );
 
@@ -75,34 +71,9 @@ class Mighty_Elementor {
 		}
 	}
 
-	public function mt_enqueue_styles() {
-		wp_enqueue_style( 'mighty-slickcss', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick.min.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style( 'mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.min.css', false, MIGHTY_ADDONS_VERSION );
-		wp_enqueue_style( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/css/testimonial.css', false, MIGHTY_ADDONS_VERSION );
-		
+	public function mt_enqueue_styles() {		
 		// Common Stylings
 		wp_enqueue_style( 'mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css', false, MIGHTY_ADDONS_VERSION );
-	}
-
-	public function widget_scripts() {
-		wp_register_script( 'mighty-slickjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/slick.min.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
-		wp_register_script( 'mt-eventmovejs', MIGHTY_ADDONS_PLG_URL . 'assets/js/event.move.min.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
-		wp_register_script( 'mt-twentytwentyjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/twentytwenty.min.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
-		
-		wp_register_script( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/js/testimonial.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-
-		wp_register_script( 'mt-counter', MIGHTY_ADDONS_PLG_URL . 'assets/js/counter.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-
-		wp_register_script( 'mt-accordion', MIGHTY_ADDONS_PLG_URL . 'assets/js/accordion.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-
-		wp_register_script( 'mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/js/beforeafter.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-
-		wp_register_script( 'mt-mailchimp', MIGHTY_ADDONS_PLG_URL . 'assets/js/mailchimp.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-
-		wp_localize_script( 'mt-mailchimp', 'MightyAddons', array(
-			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-			'mailchimpAction' => 'save_mailchimp_details'
-		) );
 	}
 
 	/**
@@ -123,14 +94,6 @@ class Mighty_Elementor {
 				'title' => $branding['plugin_name']
 			]
 		);
-	}
-
-	// enqueue frontend scripts
-	public function mt_enqueue_scripts() {
-		wp_enqueue_script( 'mt-testimonial' );
-		wp_enqueue_script( 'mighty-slickjs' );
-		wp_enqueue_script( 'mt-eventmovejs' );
-		wp_enqueue_script( 'mt-twentytwentyjs' );
 	}
 	
 	public function register_widgets() {

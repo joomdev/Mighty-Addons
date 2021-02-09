@@ -26,6 +26,9 @@ class MT_Beforeafter extends Widget_Base {
 	
 		wp_register_style( 'mt-twentytwenty', MIGHTY_ADDONS_PLG_URL . 'assets/css/twentytwenty.css', false, MIGHTY_ADDONS_VERSION );
 		wp_register_style( 'mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/css/before-after.css', false, MIGHTY_ADDONS_VERSION );
+        wp_register_script( 'mt-eventmovejs', MIGHTY_ADDONS_PLG_URL . 'assets/js/event.move.min.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
+        wp_register_script( 'mt-twentytwentyjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/twentytwenty.min.js', [ 'mt-eventmovejs', 'jquery' ], MIGHTY_ADDONS_VERSION );
+        wp_register_script( 'mt-beforeafter', MIGHTY_ADDONS_PLG_URL . 'assets/js/beforeafter.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
 	}
 	
 	public function get_name() {
@@ -53,7 +56,7 @@ class MT_Beforeafter extends Widget_Base {
     }
     
     public function get_script_depends() {
-		return [ 'mt-eventmove', 'mt-twentytwenty', 'mt-beforeafter' ];
+		return [ 'mt-eventmovejs', 'mt-twentytwentyjs', 'mt-beforeafter' ];
 	}
 	
 	protected function _register_controls() {

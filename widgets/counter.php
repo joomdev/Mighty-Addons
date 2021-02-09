@@ -24,6 +24,7 @@ class MT_Counter extends Widget_Base {
 		parent::__construct( $data, $args );
 	
 		wp_register_style( 'mt-counter', MIGHTY_ADDONS_PLG_URL . 'assets/css/counter.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_script( 'mt-counter', MIGHTY_ADDONS_PLG_URL . 'assets/js/counter.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
 	}
 	
 	public function get_name() {

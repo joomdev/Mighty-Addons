@@ -20,6 +20,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 1.0.0
  */
 class MT_Testimonial extends Widget_Base {
+
+	public function __construct( $data = array(), $args = null ) {
+		parent::__construct( $data, $args );
+	
+		wp_register_style( 'mighty-slickcss', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick.min.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.min.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/css/testimonial.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_script( 'mighty-slickjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/slick.min.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
+		wp_register_script( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/js/testimonial.js', [ 'mighty-slickjs', 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+	}
 	
 	public function get_name() {
 		return 'mt-testimonial';
@@ -42,11 +52,11 @@ class MT_Testimonial extends Widget_Base {
     }
 	
 	public function get_script_depends() {
-		return [ 'mt-testimonial', 'mighty-slickjs' ];
+		return [ 'mighty-slickjs', 'mt-testimonial' ];
 	}
 
 	public function get_style_depends() {
-		return [ 'mighty-slickcss', 'mt-testimonial' ];
+		return [ 'mighty-slicktheme', 'mighty-slickcss', 'mt-testimonial' ];
 	}
 	
 	protected function _register_controls() {
