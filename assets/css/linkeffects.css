@@ -3,6 +3,10 @@
     position: relative;
 }
 
+.mt-link-effects {
+    display: flex;
+}
+
 .mt-link-effect-s1::before,
 .mt-link-effect-s1::after {
     display: inline-block;
@@ -170,6 +174,7 @@
     top: 100%;
     content: attr(data-hover);
     font-weight: 700;
+    white-space: nowrap;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -374,10 +379,11 @@
 
 .mt-link-effect-s10 span {
     display: block;
-    padding: 10px 20px;
+    padding: 0 20px;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
+    background-color: #fff;
 }
 
 .mt-link-effect-s10::before {
@@ -385,7 +391,7 @@
     top: 0;
     left: 0;
     z-index: -1;
-    padding: 10px 20px;
+    padding: 0 20px;
     width: 100%;
     height: 100%;
     background: #fff;
@@ -492,7 +498,8 @@
     color: transparent;
     content: '.';
     text-shadow: 0 0 transparent;
-    font-size: 1.2em;
+    font-size: 24px;
+    line-height: 0;
     -webkit-transition: text-shadow 0.3s, color 0.3s;
     -moz-transition: text-shadow 0.3s, color 0.3s;
     transition: text-shadow 0.3s, color 0.3s;
@@ -515,12 +522,15 @@
 
 .mt-link-effect-s14.mt-link-effect {
     padding: 0 20px;
-    height: 45px;
-    line-height: 45px;
+    display: initial;
 }
 
-.mt-link-effect-s14.mt-link-effect::before,
-.mt-link-effect-s14.mt-link-effect::after {
+.mt-link-effect-s14.mt-link-effect .link-text{
+    position: relative;
+}
+
+.mt-link-effect-s14.mt-link-effect span::before,
+.mt-link-effect-s14.mt-link-effect span::after {
     position: absolute;
     width: 45px;
     height: 2px;
@@ -533,46 +543,49 @@
     pointer-events: none;
 }
 
-.mt-link-effect-s14.mt-link-effect::before {
-    top: 0;
+.mt-link-effect-s14.mt-link-effect span::before {
+    top: 50%;
     left: 0;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
     -webkit-transform-origin: 0 0;
     -moz-transform-origin: 0 0;
     transform-origin: 0 0;
+    -webkit-transform: rotate(90deg) translateX(-50%);
+    -moz-transform: rotate(90deg) translateX(-50%);
+    transform: rotate(90deg) translateX(-50%);
 }
 
-.mt-link-effect-s14.mt-link-effect::after {
+.mt-link-effect-s14.mt-link-effect span::after {
     right: 0;
-    bottom: 0;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
+    top: 50%;
     -webkit-transform-origin: 100% 0;
     -moz-transform-origin: 100% 0;
     transform-origin: 100% 0;
+    -webkit-transform: rotate(90deg) translateX(50%);
+    -moz-transform: rotate(90deg) translateX(50%);
+    transform: rotate(90deg) translateX(50%);
 }
 
-.mt-link-effect-s14.mt-link-effect:hover::before,
-.mt-link-effect-s14.mt-link-effect:hover::after,
-.mt-link-effect-s14.mt-link-effect:focus::before,
-.mt-link-effect-s14.mt-link-effect:focus::after {
+.mt-link-effect-s14.mt-link-effect:hover span::before,
+.mt-link-effect-s14.mt-link-effect:hover span::after,
+.mt-link-effect-s14.mt-link-effect:focus span::before,
+.mt-link-effect-s14.mt-link-effect:focus span::after {
     opacity: 1;
 }
 
-.mt-link-effect-s14.mt-link-effect:hover::before,
-.mt-link-effect-s14.mt-link-effect:focus::before {
+.mt-link-effect-s14.mt-link-effect:hover span::before,
+.mt-link-effect-s14.mt-link-effect:focus span::before {
     left: 50%;
+    top: 0;
     -webkit-transform: rotate(0deg) translateX(-50%);
     -moz-transform: rotate(0deg) translateX(-50%);
     transform: rotate(0deg) translateX(-50%);
 }
 
-.mt-link-effect-s14.mt-link-effect:hover::after,
-.mt-link-effect-s14.mt-link-effect:focus::after {
+.mt-link-effect-s14.mt-link-effect:hover span::after,
+.mt-link-effect-s14.mt-link-effect:focus span::after {
     right: 50%;
+    top: auto;
+    bottom: 0;
     -webkit-transform: rotate(0deg) translateX(50%);
     -moz-transform: rotate(0deg) translateX(50%);
     transform: rotate(0deg) translateX(50%);
@@ -694,7 +707,6 @@
     position: absolute;
     width: 100%;
     left: 0;
-    top: 50%;
     height: 2px;
     margin-top: -1px;
     background: #b4770d;
@@ -707,15 +719,17 @@
 }
 
 .mt-link-effect-s18.mt-link-effect::before {
-    -webkit-transform: translateY(-20px);
-    -moz-transform: translateY(-20px);
-    transform: translateY(-20px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    transform: translateY(-10px);
+    top: 0;
 }
 
 .mt-link-effect-s18.mt-link-effect::after {
-    -webkit-transform: translateY(20px);
-    -moz-transform: translateY(20px);
-    transform: translateY(20px);
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    transform: translateY(10px);
+    bottom: 0;
 }
 
 .mt-link-effect-s18.mt-link-effect:hover a,
@@ -735,6 +749,7 @@
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
+    top: 50%;
 }
 
 .mt-link-effect-s18.mt-link-effect:hover::after,
@@ -742,6 +757,7 @@
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     transform: rotate(-45deg);
+    bottom: 50%;
 }
 
 .mt-link-effect-s19.mt-link-effect {
@@ -750,53 +766,62 @@
     -webkit-perspective: 800px;
     -moz-perspective: 800px;
     perspective: 800px;
+    text-align: center;
 }
 
 .mt-link-effect-s19.mt-link-effect span {
     position: relative;
     display: inline-block;
     padding: 0 14px;
-    -webkit-transition: -webkit-transform 0.4s, background 0.4s;
-    -moz-transition: -moz-transform 0.4s, background 0.4s;
-    transition: transform 0.4s, background 0.4s;
+    width: 100%;
+    background-color: #fff;
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.4s;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transform-origin: 50% 50% -100px;
-    -moz-transform-origin: 50% 50% -100px;
-    transform-origin: 50% 50% -100px;
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
 }
 
 .mt-link-effect-s19.mt-link-effect span::before {
     position: absolute;
     top: 0;
-    left: 100%;
+    left: 0;
     width: 100%;
     height: 100%;
     content: attr(data-hover);
-    -webkit-transition: background 0.4s;
-    -moz-transition: background 0.4s;
-    transition: background 0.4s;
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.4s;
     -webkit-transform: rotateY(90deg);
     -moz-transform: rotateY(90deg);
     transform: rotateY(90deg);
-    -webkit-transform-origin: 0 50%;
-    -moz-transform-origin: 0 50%;
-    transform-origin: 0 50%;
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
     pointer-events: none;
 }
 
 .mt-link-effect-s19.mt-link-effect:hover span,
 .mt-link-effect-s19.mt-link-effect:focus span {
-    background: #b53a2d;
+    background-color: #b53a2d;
     -webkit-transform: rotateY(-90deg);
     -moz-transform: rotateY(-90deg);
     transform: rotateY(-90deg);
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.4s;
 }
 
 .mt-link-effect-s19.mt-link-effect:hover span::before,
 .mt-link-effect-s19.mt-link-effect:focus span::before {
-    background: #ef5e50;
+    background-color: #ef5e50;
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.4s;
 }
 
 .mt-link-effect-s20.mt-link-effect {

@@ -273,8 +273,8 @@ class MT_LinkEffects extends Widget_Base {
                                 '{{WRAPPER}} .mt-link-effect-s7::before' => 'background: {{VALUE}};',
                                 '{{WRAPPER}} .mt-link-effect-s8::before' => 'border-color: {{VALUE}};',
                                 '{{WRAPPER}} .mt-link-effect-s11' => 'border-top-color: {{VALUE}};',
-                                '{{WRAPPER}} .mt-link-effect-s14::before' => 'background: {{VALUE}};',
-                                '{{WRAPPER}} .mt-link-effect-s14::after' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s14 span::before' => 'background: {{VALUE}};',
+                                '{{WRAPPER}} .mt-link-effect-s14 span::after' => 'background: {{VALUE}};',
                                 '{{WRAPPER}} .mt-link-effect-s18::before' => 'background: {{VALUE}};',
                                 '{{WRAPPER}} .mt-link-effect-s18::after' => 'background: {{VALUE}};'
                             ],
@@ -382,8 +382,8 @@ class MT_LinkEffects extends Widget_Base {
                                 '.mt-link-effect-s13:hover::before' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
                                 '.mt-link-effect-s13:hover::after' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
 
-                                '.mt-link-effect-s14:hover::before' => 'background: {{VALUE}} !important;',
-                                '.mt-link-effect-s14:hover::after' => 'background: {{VALUE}} !important;',
+                                '.mt-link-effect-s14:hover  span::before' => 'background: {{VALUE}} !important;',
+                                '.mt-link-effect-s14:hover  span::after' => 'background: {{VALUE}} !important;',
 
                                 '.mt-link-effect-s17:hover span::after' => 'background: {{VALUE}};',
 
