@@ -173,7 +173,6 @@
     position: absolute;
     top: 100%;
     content: attr(data-hover);
-    font-weight: 700;
     white-space: nowrap;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);

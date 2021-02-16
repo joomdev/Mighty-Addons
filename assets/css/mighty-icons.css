@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-linkeffects:before {
+	content: "\e91e";
+}
+
 .mf-wrapperlink:before {
 	content: "\e920";
 }
