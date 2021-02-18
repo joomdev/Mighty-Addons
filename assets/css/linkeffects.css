@@ -532,9 +532,8 @@
     position: absolute;
     width: 45px;
     height: 2px;
-    background: #fff;
+    background: currentColor;
     content: '';
-    opacity: 0.2;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
