@@ -125,8 +125,8 @@ class MT_LinkEffects extends Widget_Base {
                         's16' => __( 'Style 16', 'mighty' ),
                         's17' => __( 'Style 17', 'mighty' ),
                         's18' => __( 'Style 18', 'mighty' ),
-                        's19' => __( 'Style 19', 'mighty' ),
-                        's20' => __( 'Style 20', 'mighty' ),
+                        // 's19' => __( 'Style 19', 'mighty' ),
+                        's20' => __( 'Style 19', 'mighty' ),
                     ]
                 ]
             );
@@ -374,7 +374,7 @@ class MT_LinkEffects extends Widget_Base {
                                 '.mt-link-effect-s11:hover' => 'border-top-color: {{VALUE}} !important;',
                                 '.mt-link-effect-s11 span:hover::before' => 'border-bottom-color: {{VALUE}};',
 
-                                '.mt-link-effect-s12:hover::after' => 'border-color: {{VALUE}};',
+                                '.mt-link-effect-s12:hover::after' => 'border-color: {{VALUE}} !important;',
 
                                 '.mt-link-effect-s13:hover:before' => 'color: {{VALUE}} !important; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}} !important;',
 

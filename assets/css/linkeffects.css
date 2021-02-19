@@ -96,10 +96,6 @@
     background: #28a2ee;
 }
 
-.mt-link-effect-s3 {
-    padding: 8px 0;
-}
-
 .mt-link-effect-s3::after {
     position: absolute;
     top: 100%;
@@ -187,7 +183,6 @@
 
 .mt-link-effect-s6 {
     margin: 0 10px;
-    padding: 10px 20px;
 }
 
 .mt-link-effect-s6::before {
@@ -225,11 +220,13 @@
     height: 100%;
 }
 
+.mt-link-effect-s6 span {
+    padding: 10px;
+}
+
 .mt-link-effect-s7 {
-    padding: 12px 10px 10px;
     color: #566473;
     text-shadow: none;
-    font-weight: 700;
 }
 
 .mt-link-effect-s7::before,
@@ -271,10 +268,6 @@
     opacity: 1;
 }
 
-.mt-link-effect-s8 {
-    padding: 10px 20px;
-}
-
 .mt-link-effect-s8::before,
 .mt-link-effect-s8::after {
     position: absolute;
@@ -313,8 +306,11 @@
     transform: translateY(0px) translateX(0px);
 }
 
-.mt-link-effect-s9.mt-link-effect {
+.mt-link-effect-s8 span {
     padding: 10px;
+}
+
+.mt-link-effect-s9.mt-link-effect {
     color: #fff;
     font-weight: 700;
     text-shadow: none;
@@ -369,6 +365,10 @@
     transform: translateY(0px);
 }
 
+.mt-link-effect-s9 span {
+    padding: 10px;
+}
+
 .mt-link-effect-s10 {
     z-index: 1;
     overflow: hidden;
@@ -416,7 +416,6 @@
 }
 
 .mt-link-effect-s11.mt-link-effect {
-    padding: 10px 0;
     border-top: 2px solid #0972b4;
     color: #0972b4;
     text-shadow: none;
@@ -428,7 +427,6 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    padding: 10px 0;
     max-width: 0px;
     border-bottom: 2px solid #fff;
     color: #fff;
@@ -455,7 +453,7 @@
     left: 50%;
     width: 100px;
     height: 100px;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid;
     border-radius: 50%;
     content: '';
     opacity: 0;
@@ -639,7 +637,6 @@
 .mt-link-effect-s17.mt-link-effect {
     color: #10649b;
     text-shadow: none;
-    padding: 10px 0;
 }
 
 .mt-link-effect-s17.mt-link-effect span::before {
@@ -659,7 +656,6 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: #fff;
     opacity: 0;
     -webkit-transform: translateY(5px);
     -moz-transform: translateY(5px);
@@ -830,6 +826,7 @@
     position: relative;
     display: inline-block;
     padding: 3px 15px 0;
+    text-align: center;
     box-shadow: inset 0 3px #2f4351;
     -webkit-transition: background 0.6s;
     -moz-transition: background 0.6s;
