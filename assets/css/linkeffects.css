@@ -444,6 +444,10 @@
     max-width: 100%;
 }
 
+.mt-link-effect-s12 {
+    z-index: 1;
+}
+
 .mt-link-effect-s12.mt-link-effect::before,
 .mt-link-effect-s12.mt-link-effect::after {
     position: absolute;
