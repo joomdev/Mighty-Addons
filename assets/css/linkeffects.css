@@ -43,7 +43,6 @@
 }
 
 .mt-link-effect-s2 {
-    line-height: 44px;
     -webkit-perspective: 1000px;
     -moz-perspective: 1000px;
     perspective: 1000px;
@@ -511,12 +510,6 @@
 .mt-link-effect-s13.mt-link-effect:hover,
 .mt-link-effect-s13.mt-link-effect:focus {
     color: #ba7700;
-}
-
-.mt-link-effect-s13:hover:before,
-.mt-link-effect-s13:focus:before {
-    color: #fff;
-    text-shadow: 10px 0 #fff, -10px 0 #fff;
 }
 
 .mt-link-effect-s14.mt-link-effect {

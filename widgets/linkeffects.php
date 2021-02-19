@@ -137,7 +137,7 @@ class MT_LinkEffects extends Widget_Base {
                     'label' => __( 'Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'flex-start' => [
                             'title' => __( 'Left', 'mighty' ),
                             'icon' => 'fa fa-align-left',
                         ],
@@ -145,19 +145,15 @@ class MT_LinkEffects extends Widget_Base {
                             'title' => __( 'Center', 'mighty' ),
                             'icon' => 'fa fa-align-center',
                         ],
-                        'right' => [
+                        'flex-end' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'fa fa-align-right',
-                        ],
-                        'justify' => [
-                            'title' => __( 'Justify', 'mighty' ),
-                            'icon' => 'fa fa-align-justify',
                         ]
                     ],
                     'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-link-effects' => "text-align: {{VALUE}};",
+                        '{{WRAPPER}} .mt-link-effects' => "justify-content: {{VALUE}};",
                     ]
                 ]
             );
@@ -355,6 +351,7 @@ class MT_LinkEffects extends Widget_Base {
                         [
                             'label' => __( 'Border Color', 'mighty' ),
                             'type' => Controls_Manager::COLOR,
+                            'default' => '#000000',
                             'selectors' => [
                                 '.mt-link-effect-s1:hover::before' => 'color: {{VALUE}};',
                                 '.mt-link-effect-s1:hover::after' => 'color: {{VALUE}};',
@@ -379,8 +376,7 @@ class MT_LinkEffects extends Widget_Base {
 
                                 '.mt-link-effect-s12:hover::after' => 'border-color: {{VALUE}};',
 
-                                '.mt-link-effect-s13:hover::before' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
-                                '.mt-link-effect-s13:hover::after' => 'color: {{VALUE}}; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}};',
+                                '.mt-link-effect-s13:hover:before' => 'color: {{VALUE}} !important; text-shadow: 10px 0 {{VALUE}}, -10px 0 {{VALUE}} !important;',
 
                                 '.mt-link-effect-s14:hover  span::before' => 'background: {{VALUE}} !important;',
                                 '.mt-link-effect-s14:hover  span::after' => 'background: {{VALUE}} !important;',
