@@ -516,12 +516,6 @@
     color: #ba7700;
 }
 
-.mt-link-effect-s13:hover:before,
-.mt-link-effect-s13:focus:before {
-    color: #fff;
-    text-shadow: 10px 0 #fff, -10px 0 #fff;
-}
-
 .mt-link-effect-s14.mt-link-effect {
     padding: 0 20px;
     display: initial;
