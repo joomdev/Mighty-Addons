@@ -61,75 +61,88 @@ class MT_Progressbar extends Widget_Base {
 			]
 		);
 
-			$this->add_control(
-				'mt_progressbar_list',
-				[
-					'label' => __( 'Progress Bar', 'mighty' ),
-					'type' => Controls_Manager::REPEATER,
-					'default' => [
-						[
-							'mt_progressbar_title'         => __('Graphic Design','mighty'),
-							'mt_progressbar_value'         => '93',
-						],
-						[
-							'mt_progressbar_title'         => __('Web Design','mighty'),
-							'mt_progressbar_value'         => '84',
-						],
-						[
-							'mt_progressbar_title'         => __('Photoshop','mighty'),
-							'mt_progressbar_value'         => '89',
+			$repeater = new Repeater();
 
-						],
-					],
-
-					'fields' => [
-						[
-							'name'        => 'mt_progressbar_title',
-							'label'       => __( 'Title', 'mighty' ),
-							'type'        => Controls_Manager::TEXT,
-							'default'     => __( 'Item' , 'mighty' ),
-						],
-
-						[
-							'name' => 'mt_progressbar_value',
-							'label' => __( 'Progress Bar Value', 'mighty' ),
-							'type' => Controls_Manager::SLIDER,
-							'range' => [
-								'%' => [
-									'min' => 0,
-									'max' => 100,
-								],
-							],
-							'default' => [
-								'unit' => '%',
-								'size' => 50,
-							],
-							'selectors' => [
-								'{{WRAPPER}} .mighty-progressbar {{CURRENT_ITEM}} > .progressbar' => 'width: {{SIZE}}{{UNIT}};',
-							]
-						],
-
-						[
-							'name' => 'mt_progressbar_color',
-							'label' => __( 'Progress Bar Color', 'mighty' ),
-							'type' => Controls_Manager::COLOR,
-							'selectors' => [
-								'{{WRAPPER}} .mighty-progressbar .progress-bar{{CURRENT_ITEM}} > .progressbar' => 'background: {{VALUE}};',
+				$repeater->add_control(
+					'mt_progressbar_title',
+					[
+						'label' => __( 'Title', 'mighty' ),
+						'type' => Controls_Manager::TEXT,
+						'default' => __( 'Item', 'mighty' ),
+						'label_block' => true,
+					]
+				);
+				
+				$repeater->add_control(
+					'mt_progressbar_value',
+					[
+						'label' => __( 'Progress Bar Value', 'mighty' ),
+						'type' => Controls_Manager::SLIDER,
+						'default' => __( 'Item', 'mighty' ),
+						'range' => [
+							'%' => [
+								'min' => 0,
+								'max' => 100,
 							],
 						],
-						
-						[
-							'name' => 'mt_progressbar_bgcolor',
-							'label' => __( 'Background Color', 'mighty' ),
-							'type' => Controls_Manager::COLOR,
-							'selectors' => [
-								'{{WRAPPER}} .mighty-progressbar .progress-bar{{CURRENT_ITEM}}' => 'background: {{VALUE}};',
+						'default' => [
+							'unit' => '%',
+							'size' => 50,
+						],
+						'selectors' => [
+							'{{WRAPPER}} .mighty-progressbar {{CURRENT_ITEM}} > .progressbar' => 'width: {{SIZE}}{{UNIT}};',
+						]
+					]
+				);
+
+				$repeater->add_control(
+					'mt_progressbar_color',
+					[
+						'label' => __( 'Progress Bar Color', 'mighty' ),
+						'type' => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} .mighty-progressbar .progress-bar{{CURRENT_ITEM}} > .progressbar' => 'background: {{VALUE}};',
+						],
+					]
+				);
+
+				$repeater->add_control(
+					'mt_progressbar_bgcolor',
+					[
+						'label' => __( 'Background Color', 'mighty' ),
+						'type' => Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} .mighty-progressbar .progress-bar{{CURRENT_ITEM}}' => 'background: {{VALUE}};',
+						],
+					]
+				);
+
+				$this->add_control(
+					'mt_progressbar_list',
+					[
+						'label' => __( 'Progress Bar', 'mighty' ),
+						'type' => Controls_Manager::REPEATER,
+						'default' => [
+							[
+								'mt_progressbar_title'         => __('Graphic Design','mighty'),
+								'mt_progressbar_value'         => '93',
+							],
+							[
+								'mt_progressbar_title'         => __('Web Design','mighty'),
+								'mt_progressbar_value'         => '84',
+							],
+							[
+								'mt_progressbar_title'         => __('Photoshop','mighty'),
+								'mt_progressbar_value'         => '89',
+
 							],
 						],
-					],
-					'title_field' => '{{{ mt_progressbar_title }}}',
-				]
-			);
+						'fields' => $repeater->get_controls(),
+						'title_field' => '{{{ mt_progressbar_title }}}',
+					]
+				);
+
+			$repeater->end_controls_tabs();
 
         $this->end_controls_section();
         
