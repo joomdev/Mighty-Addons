@@ -93,7 +93,7 @@ class MT_Accordion extends Widget_Base {
                 );
 
                 $this->add_control(
-                    'tabs',
+                    'ma_accordion_tabs',
                     [
                         'label' => __( 'Accordion Items', 'mighty' ),
                         'type' => Controls_Manager::REPEATER,
@@ -670,7 +670,7 @@ class MT_Accordion extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
 
-        if ( empty( $settings['tabs'] ) ) {
+        if ( empty( $settings['ma_accordion_tabs'] ) ) {
             return;
         }
 
@@ -681,23 +681,23 @@ class MT_Accordion extends Widget_Base {
         $titleTag = $settings['title_html_tag'];
         $openAccordionIcon = $settings['open_close_icon'];
         $closeAccordionIcon = "";
-            if( $openAccordionIcon ) {
-                switch( $openAccordionIcon ) {
-                    case 'fa-angle-down': $closeAccordionIcon = 'fa-angle-up';
-                    break;
-                    case 'fa-plus': $closeAccordionIcon = 'fa-minus';
-                    break;
-                    case 'fa-arrow-down': $closeAccordionIcon = 'fa-arrow-up';
-                    break;
-                    case 'fa-sort-down': $closeAccordionIcon = 'fa-sort-up';
-                    break;
-                }
+        if( $openAccordionIcon ) {
+            switch( $openAccordionIcon ) {
+                case 'fa-angle-down': $closeAccordionIcon = 'fa-angle-up';
+                break;
+                case 'fa-plus': $closeAccordionIcon = 'fa-minus';
+                break;
+                case 'fa-arrow-down': $closeAccordionIcon = 'fa-arrow-up';
+                break;
+                case 'fa-sort-down': $closeAccordionIcon = 'fa-sort-up';
+                break;
             }
+        }
         ?>
 
         <div <?php echo $faqSchema ? 'itemscope itemtype="https://schema.org/FAQPage" ' : ''; ?> class="mighty-accordion" data-enable-multiple="<?php echo $openMultiple; ?>" data-first-active="<?php echo $firstActive; ?>" data-open-all="<?php echo $openAll; ?>">
             <?php
-            foreach (  $settings['tabs'] as $index => $tab ) :
+            foreach (  $settings['ma_accordion_tabs'] as $index => $tab ) :
                 $tabId = substr( $this->get_id_int(), 0, 3 ) . ( $index + 1 );
 
                 $accordionIcon = '<i aria-hidden="true" class="accordion-icon fas ' . $openAccordionIcon .'"></i>';
