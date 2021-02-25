@@ -125,7 +125,7 @@ class MT_LinkEffects extends Widget_Base {
                         's16' => __( 'Style 16', 'mighty' ),
                         's17' => __( 'Style 17', 'mighty' ),
                         's18' => __( 'Style 18', 'mighty' ),
-                        // 's19' => __( 'Style 19', 'mighty' ),
+                        // 's19' => __( 'Style 19', 'mighty' ), // todo: styling fix
                         's20' => __( 'Style 19', 'mighty' ),
                     ]
                 ]

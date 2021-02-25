@@ -25,16 +25,16 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.mf-linkeffects:before {
-	content: "\e91e";
-}
-
-.mf-wrapperlink:before {
+.mf-sectionslider:before {
 	content: "\e920";
 }
 
-.mf-sectionslider:before {
+.mf-wrapperlink:before {
 	content: "\e925";
+}
+
+.mf-linkeffects:before {
+	content: "\e91e";
 }
 
 .mf-advancegradients:before {
