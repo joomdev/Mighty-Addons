@@ -49,6 +49,9 @@ class Mighty_Elementor {
 		if ( HelperFunctions::mighty_addons()['extensions']['xscp']['enable'] ) {
 			add_action( 'elementor/editor/after_enqueue_scripts', [ $this, 'copy_paste_extension_scripts' ] );
 		}
+
+		// Registering stub widgets
+		add_filter( 'elementor/editor/localize_settings', [ $this, 'get_stub_widgets' ] );
 	}
 
 	public static function enqueue_editor_scripts() {
@@ -95,23 +98,6 @@ class Mighty_Elementor {
 			]
 		);
 	}
-	
-	public function register_widgets() {
-
-		$widgets = HelperFunctions::mighty_addons()['addons'];
-		
-		foreach( $widgets as $widget => $props ) {
-			if( $props['enable'] ) {
-				
-				// Including Plugin
-				require_once( MIGHTY_ADDONS_DIR_PATH . 'widgets/' . $widget .'.php' );
-				
-				// Register Widgets
-				$class = sprintf( 'MightyAddons\Widgets\%s', $props['class'] );
-				\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class );
-			}
-		}
-	}
 
 	public function update_mighty_options() {
 		
@@ -130,6 +116,24 @@ class Mighty_Elementor {
 			update_option( 'mighty_addons_status', $widgets );
 		}
 
+	}
+	
+	public function register_widgets() {
+
+		$widgets = HelperFunctions::mighty_addons()['addons'];
+		
+		foreach( $widgets as $widget => $props ) {
+			if( $props['enable'] ) {
+				
+				// Including Plugin
+				require_once( MIGHTY_ADDONS_DIR_PATH . 'widgets/' . $widget .'.php' );
+				
+				// Register Widgets
+				$class = sprintf( 'MightyAddons\Widgets\%s', $props['class'] );
+				\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class );
+			}
+		}
+		
 	}
 
 	public function register_extension() {
@@ -153,6 +157,37 @@ class Mighty_Elementor {
 		}
 		
     }
+
+	public function get_stub_widgets( $settings ) {
+		
+		if ( function_exists('is_plugin_active') && HelperFunctions::mightyProAvailable() ) {
+			return $settings;
+		}
+
+		$promotion_widgets = [];
+		
+		if ( isset( $settings['promotionWidgets'] ) ) {
+			$promotion_widgets = $settings['promotionWidgets'];
+		}
+
+		$stub_widgets = HelperFunctions::$mighty_addons_pro_stub['addons'];
+
+		$maWidgets = [];
+		foreach( $stub_widgets as $stub ) {
+			$maWidgets[] = [
+				'name' => $stub['slug'],
+				'title' => $stub['title'],
+				'icon' => $stub['icon'],
+				'categories' => '[ "mighty-addons" ]'
+			];
+		}
+
+		$mergedArray = array_merge( $promotion_widgets, $maWidgets );
+
+		$settings['promotionWidgets'] = $mergedArray;
+
+		return $settings;
+	}
 
 	/**
 	 * Send Mailchimp form data to API

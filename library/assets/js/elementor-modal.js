@@ -45,5 +45,48 @@
                 $(elementor.$previewContents[0].body).on("click", ".elementor-add-mighty-button", showStuff)
             })
         }
+
+        // Updating pro widgets stub button functcionality
+        if ( undefined !== window.elementor.panel ) {
+
+            parent.document.addEventListener( "mousedown", function( e ) {
+				var widgets = parent.document.querySelectorAll( ".elementor-element--promotion" );
+
+				if (widgets.length > 0) {
+					for (var i = 0; i < widgets.length; i++) {
+
+						if ( widgets[i].contains( e.target ) ) {
+							
+                            var icon = widgets[i].querySelector( ".icon > i" );
+							var dialog = parent.document.querySelector( "#elementor-element--promotion__dialog" );
+
+							if ( icon.classList.toString().indexOf( "mf" ) >= 0 ) {
+								dialog.querySelector(".dialog-buttons-action").style.display = "none";
+
+								if ( dialog.querySelector(".ma-dialog-cta") === null ) {
+
+									var ctaBtn = document.createElement("button");
+									ctaBtn.setAttribute( "onclick", "window.open('https://mightythemes.com/mighty-addons')" );
+									ctaBtn.setAttribute( "class", "ma-dialog-cta dialog-button dialog-action dialog-buttons-action elementor-button elementor-button-success" );
+									ctaBtn.textContent = "Upgrade Mighty Addons 🚀";
+
+									dialog.querySelector( ".dialog-buttons-wrapper" ).appendChild( ctaBtn );
+								} else {
+									dialog.querySelector( ".ma-dialog-cta" ).style.display = "";
+								}
+							} else {
+								dialog.querySelector( ".dialog-buttons-action" ).style.display = "";
+
+								if (dialog.querySelector( ".ma-dialog-cta" ) !== null) {
+									dialog.querySelector( ".ma-dialog-cta" ).style.display = "none";
+								}
+							}
+						}
+					}
+				}
+			});
+
+        }
+        
     })
 }(jQuery);
