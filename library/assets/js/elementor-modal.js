@@ -66,7 +66,7 @@
 								if ( dialog.querySelector(".ma-dialog-cta") === null ) {
 
 									var ctaBtn = document.createElement("button");
-									ctaBtn.setAttribute( "onclick", "window.open('https://mightythemes.com/mighty-addons')" );
+									ctaBtn.setAttribute( "onclick", "window.open('https://mightythemes.com/mighty-addons/pricing/')" );
 									ctaBtn.setAttribute( "class", "ma-dialog-cta dialog-button dialog-action dialog-buttons-action elementor-button elementor-button-success" );
 									ctaBtn.textContent = "Upgrade Mighty Addons 🚀";
 
