@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-spacer:before {
+	content: "\e926";
+}
+
 .mf-sectionslider:before {
 	content: "\e920";
 }
@@ -38,7 +42,7 @@
 }
 
 .mf-advancegradients:before {
-	content: "\e91e";
+	content: "\e927";
 }
 
 .mf-customcss:before {
