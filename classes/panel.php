@@ -38,7 +38,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
 
-            add_action( 'wp_ajax_save_mighty_addons_settings', [ __CLASS__, 'mighty_addons_status' ] );
+            add_action( 'wp_ajax_save_mighty_addons_settings', [ __CLASS__, 'update_ma_settings' ] );
 
             add_action( 'wp_ajax_save_mighty_addons_integration', [ __CLASS__, 'mighty_addons_integration' ] );
 
@@ -188,7 +188,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
         }
 
-        public static function mighty_addons_status() {
+        public static function update_ma_settings() {
             
             check_ajax_referer( 'mighty_addons_panel', 'security' );
             
@@ -207,24 +207,28 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
             $proAddons = self::get_enabled_pro_addons();
             $freeAddons = self::get_enabled_addons();
 
-            // Free Addons
-            foreach( $freeAddons['addons'] as $addon ) {
-                $freeAddons['addons'][$addon['slug']]['enable'] = intval( $settings[ $addon['slug'] ] ? 1 : 0 );
-            }
-            
-            // Free Extensions
-            foreach( $freeAddons['extensions'] as $extension ) {
-                $freeAddons['extensions'][$extension['slug']]['enable'] = intval( $settings[ $extension['slug'] ] ? 1 : 0 );
-            }
-
-            // Pro Addons
-            foreach( $proAddons['addons'] as $addon ) {
-                $proAddons['addons'][$addon['slug']]['enable'] = intval( $proSettings[ $addon['slug'] ] ? 1 : 0 );
+            if( ! empty( $settings ) ) {
+                // Free Addons
+                foreach( $freeAddons['addons'] as $addon ) {
+                    $freeAddons['addons'][$addon['slug']]['enable'] = intval( $settings[ $addon['slug'] ] ? 1 : 0 );
+                }
+                
+                // Free Extensions
+                foreach( $freeAddons['extensions'] as $extension ) {
+                    $freeAddons['extensions'][$extension['slug']]['enable'] = intval( $settings[ $extension['slug'] ] ? 1 : 0 );
+                }
             }
 
-            // Pro Extensions
-            foreach( $proAddons['extensions'] as $extension ) {
-                $proAddons['extensions'][$extension['slug']]['enable'] = intval( $proSettings[ $extension['slug'] ] ? 1 : 0 );
+            if( ! empty( $proSettings ) ) {
+                // Pro Addons
+                foreach( $proAddons['addons'] as $addon ) {
+                    $proAddons['addons'][$addon['slug']]['enable'] = intval( $proSettings[ $addon['slug'] ] ? 1 : 0 );
+                }
+
+                // Pro Extensions
+                foreach( $proAddons['extensions'] as $extension ) {
+                    $proAddons['extensions'][$extension['slug']]['enable'] = intval( $proSettings[ $extension['slug'] ] ? 1 : 0 );
+                }
             }
             
             update_option( 'mighty_addons_status', $freeAddons );

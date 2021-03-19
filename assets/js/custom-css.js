@@ -11,7 +11,7 @@ jQuery( window ).on( "elementor:init", function() {
         var customCss = model.get('settings').get('ma_custom_css');
         var selector = '.elementor-element.elementor-element-' + model.get('id');
 
-        if (customCss) {
+        if ( customCss ) {
             css += customCss.replace(/selector/g, selector);
         }
 
