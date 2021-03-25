@@ -1,162 +1,180 @@
 /* Placeholder */
 .mighty-cf7-wrapper .hide-placeholders ::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: transparent;
+	/* WebKit browsers */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders :-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: transparent;
+	/* Mozilla Firefox 4 to 18 */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders ::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: transparent;
+	/* Mozilla Firefox 19+ */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders :-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: transparent;
+	/* Internet Explorer 10+ */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders input::placeholder {
-    color: transparent;
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders textarea::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: transparent;
+	/* WebKit browsers */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders textarea:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: transparent;
+	/* Mozilla Firefox 4 to 18 */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders textarea::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: transparent;
+	/* Mozilla Firefox 19+ */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders textarea:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: transparent;
+	/* Internet Explorer 10+ */
+	color: transparent;
 }
+
 .mighty-cf7-wrapper .hide-placeholders textarea::placeholder {
-    color: transparent;
+	color: transparent;
 }
 
 /* Hide/show Messages */
 .mighty-cf7-wrapper .hide-success-msg .wpcf7-mail-sent-ok {
-    display: none !important;
+	display: none !important;
 }
+
 .mighty-cf7-wrapper .hide-validation-msg .wpcf7-validation-errors {
-    display: none !important;
+	display: none !important;
 }
+
 .mighty-cf7-wrapper .hide-error-msg .wpcf7-not-valid-tip {
-    display: none !important;
+	display: none !important;
 }
 
 /* Alignment */
 .mighty-cf7-wrapper .align-left,
 .mighty-cf7-wrapper .form-details.align-details-left {
-    text-align: left;
+	text-align: left;
 }
+
 .mighty-cf7-wrapper .align-center,
 .mighty-cf7-wrapper .form-details.align-details-center {
-    text-align: center;
+	text-align: center;
 }
+
 .mighty-cf7-wrapper .align-right,
 .mighty-cf7-wrapper .form-details.align-details-right {
-    text-align: right;
+	text-align: right;
 }
+
 .mighty-cf7-wrapper .form-details.align-details-justify {
-    text-align: justify;
+	text-align: justify;
 }
 
 /* Custom Radio Buttons */
 .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"] {
-    /* remove standard background appearance */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    /* create custom radiobutton appearance */
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    padding: 3px;
-    /* background-color only for content */
-    background-clip: content-box;
-    border: 1px solid #54595F;
-    background-color: #000000;
-    border-radius: 50%;
-    vertical-align: middle;
+	/* remove standard background appearance */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* create custom radiobutton appearance */
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	padding: 3px;
+	/* background-color only for content */
+	background-clip: content-box;
+	border: 1px solid #54595F;
+	background-color: #000000;
+	border-radius: 50%;
+	vertical-align: middle;
 }
 
 /* appearance for checked radiobutton */
 .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="radio"]:checked {
-    background-color: #61CE70;
+	background-color: #61CE70;
 }
 
 /* Custom Checkboxes */
 .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"] {
-    /* remove standard background appearance */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    /* create custom radiobutton appearance */
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    padding: 3px;
-    /* background-color only for content */
-    background-clip: content-box;
-    border: 1px solid #54595F;
-    background-color: #000000;
-    vertical-align: middle;
+	/* remove standard background appearance */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* create custom radiobutton appearance */
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	padding: 3px;
+	/* background-color only for content */
+	background-clip: content-box;
+	border: 1px solid #54595F;
+	background-color: #000000;
+	vertical-align: middle;
 }
 
 /* appearance for checked radiobutton */
 .mighty-cf7-wrapper .enable-custom-btns .wpcf7-form-control-wrap .wpcf7-form-control input[type="checkbox"]:checked {
-    background-color: #61CE70;
+	background-color: #61CE70;
 }
 
 /* Button Alignment */
 .mighty-cf7-wrapper .align-btn-left .wpcf7-submit {
-    float: left;
+	float: left;
 }
+
 .mighty-cf7-wrapper .align-btn-center .wpcf7-submit {
-    display: block;
-    margin: 0 auto;
+	display: block;
+	margin: 0 auto;
 }
+
 .mighty-cf7-wrapper .align-btn-right .wpcf7-submit {
-    float: right;
+	float: right;
 }
 
 /* Title & Description */
 .mighty-cf7-wrapper .mighty-cf7-title {
-    font-size: 25px;
+	font-size: 25px;
 }
 
 .mighty-cf7-wrapper .mighty-cf7-description {
-    font-size: 15px;
+	font-size: 15px;
 }
 
 .mighty-cf7-wrapper .wpcf7-form-control {
-    border: none;
+	border: none;
 }
 
 /* Stacking */
-.mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-radio > span,
-.mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-checkbox > span {
-    display: block;
-    
+.mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-radio>span,
+.mighty-cf7-wrapper .control-stack-desktop .wpcf7-form-control-wrap .wpcf7-checkbox>span {
+	display: block;
+
 }
 
 @media only screen and (max-width: 991px) {
-    .mighty-cf7-wrapper .control-stack-tablet .wpcf7-form-control-wrap .wpcf7-radio > span,
-    .mighty-cf7-wrapper .control-stack-tablet .wpcf7-form-control-wrap .wpcf7-checkbox > span {
-        display: block;
-        
-    }
+
+	.mighty-cf7-wrapper .control-stack-tablet .wpcf7-form-control-wrap .wpcf7-radio>span,
+	.mighty-cf7-wrapper .control-stack-tablet .wpcf7-form-control-wrap .wpcf7-checkbox>span {
+		display: block;
+
+	}
 }
 
 @media only screen and (max-width: 767px) {
-    .mighty-cf7-wrapper .control-stack-mobile .wpcf7-form-control-wrap .wpcf7-radio > span,
-    .mighty-cf7-wrapper .control-stack-mobile .wpcf7-form-control-wrap .wpcf7-checkbox > span {
-        display: block;
-        
-    }
+
+	.mighty-cf7-wrapper .control-stack-mobile .wpcf7-form-control-wrap .wpcf7-radio>span,
+	.mighty-cf7-wrapper .control-stack-mobile .wpcf7-form-control-wrap .wpcf7-checkbox>span {
+		display: block;
+
+	}
 }

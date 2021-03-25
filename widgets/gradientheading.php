@@ -23,7 +23,7 @@ class MT_Gradientheading extends Widget_Base {
     public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 	
-		wp_register_style( 'mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/gradient-heading.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mt-gradientheading', MIGHTY_ADDONS_PLG_URL . 'assets/css/gradient-heading.min.css', false, MIGHTY_ADDONS_VERSION );
 	}
 	
 	public function get_name() {

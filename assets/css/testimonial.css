@@ -1,46 +1,46 @@
 .mighty-testimonial {
-    text-align: center;
+	text-align: center;
 }
 
 .mighty-testimonial .mt-testimonial-avatar {
-    justify-content: center;
+	justify-content: center;
 }
 
 .mighty-testimonial .mt-testimonial-avatar img {
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
 }
 
 .mighty-testimonial-wrapper .prev-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    z-index: 5;
-    cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	z-index: 5;
+	cursor: pointer;
 }
 
 .mighty-testimonial-wrapper .next-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    z-index: 5;
-    cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+	z-index: 5;
+	cursor: pointer;
 }
 
 .mighty-testimonial-wrapper .mt-person-testimonial blockquote {
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
+	font-size: 20px;
+	margin: 0;
+	padding: 0;
 }
 
 .mighty-testimonial-wrapper .slick-dots {
-    padding: 0;
+	padding: 0;
 }
 
 .mighty-testimonial-wrapper .slick-dots li button:focus,
 .mighty-testimonial-wrapper .slick-dots li button:hover {
-    background-color: transparent;
+	background-color: transparent;
 }

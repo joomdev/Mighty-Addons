@@ -105,7 +105,7 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             wp_enqueue_style(
                 'mighty-icons',
-                MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.css',
+                MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.min.css',
                 null,
                 MIGHTY_ADDONS_VERSION
             );

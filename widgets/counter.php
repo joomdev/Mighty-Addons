@@ -23,7 +23,7 @@ class MT_Counter extends Widget_Base {
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 	
-		wp_register_style( 'mt-counter', MIGHTY_ADDONS_PLG_URL . 'assets/css/counter.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mt-counter', MIGHTY_ADDONS_PLG_URL . 'assets/css/counter.min.css', false, MIGHTY_ADDONS_VERSION );
 		wp_register_script( 'mt-counter', MIGHTY_ADDONS_PLG_URL . 'assets/js/counter.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
 	}
 	
