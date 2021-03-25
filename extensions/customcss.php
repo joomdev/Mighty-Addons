@@ -4,7 +4,6 @@ namespace MightyAddons\Extensions\MT_Customcss;
 
 // Elementor classes
 use Elementor\Controls_Manager;
-use Elementor\Repeater;
 use Elementor\Core\DynamicTags\Dynamic_CSS;
 
 if ( ! defined( 'ABSPATH' ) ) {

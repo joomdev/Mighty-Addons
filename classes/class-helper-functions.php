@@ -151,6 +151,15 @@ class HelperFunctions {
                 'icon' => 'mf mf-wrapperlink',
                 'include' => true // File Include?
             ],
+            'readingprogressbar' => [
+                'title' => 'Reading Progress Bar',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_ReadingProgressBar',
+                'slug' => 'readingprogressbar',
+                'icon' => 'mf mf-readingprogressbar',
+                'include' => true // File Include?
+            ],
         ]
     ];
 
