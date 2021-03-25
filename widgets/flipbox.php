@@ -26,7 +26,7 @@ class MT_Flipbox extends Widget_Base {
     public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 	
-		wp_register_style( 'mt-flipbox', MIGHTY_ADDONS_PLG_URL . 'assets/css/flip-box.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mt-flipbox', MIGHTY_ADDONS_PLG_URL . 'assets/css/flip-box.min.css', false, MIGHTY_ADDONS_VERSION );
 	}
 	
 	public function get_name() {

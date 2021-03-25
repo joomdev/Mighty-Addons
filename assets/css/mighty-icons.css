@@ -189,6 +189,7 @@
 .mf-testimonial:before {
 	content: "\e909";
 }
+
 .elementor-panel-category-items .elementor-element-wrapper .elementor-element:hover .icon .mf {
 	color: #350079;
 }
@@ -211,10 +212,10 @@
 
 /* MA Tab for Panel */
 .elementor-panel .elementor-panel-navigation .elementor-tab-control-map a:before {
-    font-family: 'mighty-fonts' !important;
-    content: '\e91f'
+	font-family: 'mighty-fonts' !important;
+	content: '\e91f'
 }
 
 .elementor-panel .elementor-panel-navigation .elementor-tab-control-map {
-    vertical-align: top
+	vertical-align: top
 }

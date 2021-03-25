@@ -57,7 +57,7 @@ class Mighty_Elementor {
 	public static function enqueue_editor_scripts() {
         wp_enqueue_style(
             'mighty-icons',
-            MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.css',
+            MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.min.css',
             null,
             MIGHTY_ADDONS_VERSION
 		);
@@ -76,7 +76,7 @@ class Mighty_Elementor {
 
 	public function mt_enqueue_styles() {		
 		// Common Stylings
-		wp_enqueue_style( 'mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css', false, MIGHTY_ADDONS_VERSION );
+		wp_enqueue_style( 'mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.min.css', false, MIGHTY_ADDONS_VERSION );
 	}
 
 	/**
