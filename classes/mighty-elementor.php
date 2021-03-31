@@ -52,6 +52,8 @@ class Mighty_Elementor {
 
 		// Registering stub widgets
 		add_filter( 'elementor/editor/localize_settings', [ $this, 'get_stub_widgets' ] );
+
+		add_action( 'wp_footer', [ $this, 'html_to_footer' ] );
 	}
 
 	public static function enqueue_editor_scripts() {
@@ -307,6 +309,27 @@ class Mighty_Elementor {
 		}
 
 		return $links;
+	}
+
+	/**
+	 * Renders custom HTML to footer
+	 */
+	public function html_to_footer() {
+
+		$postId = get_the_ID();
+
+		echo "<pre>";
+		print_r( get_option('mighty_addons_integration')['reading-progress-bar'] );
+		echo "</pre>";
+
+		if( isset( get_option('mighty_addons_integration')['reading-progress-bar'] ) && array_key_exists( $postId, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
+
+			echo '<div class="ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar" id="myBar"></div></div></div>';
+
+		} else {
+			echo "<h1>not working</h1>";
+		}
+		
 	}
 }
 

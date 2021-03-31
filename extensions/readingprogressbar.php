@@ -18,6 +18,24 @@ class MT_ReadingProgressBar {
 		// Register controls on Post/Page Settings
 		add_action( 'elementor/documents/register_controls', [ $this, 'register_controls' ], 10, 3 );
 
+        // Enqueue scripts.
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+
+		add_action( 'elementor/editor/after_save', [ $this, 'save_global_values' ], 10, 2 );
+		add_action( 'elementor/preview/enqueue_styles', [ $this, 'enqueue_styles' ] );
+
+	}
+
+    public function enqueue_scripts() {
+		
+		wp_enqueue_script( 'mt-rpbjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/rpb.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+        
+	}
+
+	public function enqueue_styles() {
+
+		wp_enqueue_style( 'mt-reading-bar', MIGHTY_ADDONS_PLG_URL . 'assets/css/rpb.css', [], MIGHTY_ADDONS_PRO_VERSION );
+
 	}
     
     public function register_controls( $element ) {
@@ -68,6 +86,7 @@ class MT_ReadingProgressBar {
 					],
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
+						'ma_enable_rpb_globally' => 'yes'
 					],
 				]
 			);
@@ -154,7 +173,7 @@ class MT_ReadingProgressBar {
 				]
 			);
 
-            // View 1 controls
+            // View 2 controls
             $element->add_control(
                 'ma_rpb_icon',
                 [
@@ -172,7 +191,7 @@ class MT_ReadingProgressBar {
             );
 
             $element->add_control(
-				'ma_icons_size',
+				'ma_icon_size',
 				[
 					'label' => __( 'Icon Size', 'mighty' ),
 					'type' => Controls_Manager::SLIDER,
@@ -366,6 +385,46 @@ class MT_ReadingProgressBar {
 
         $element->end_controls_section();
         
+	}
+
+	public function save_global_values( $post_id, $editor_data ) {
+
+		$document = \Elementor\Plugin::$instance->documents->get($post_id, false);
+		$settings = $document->get_settings();
+		$oldSettings = get_option( 'mighty_addons_integration' );
+
+		if ( $settings['ma_enable_rpb'] == 'yes' ) {
+			$oldSettings['reading-progress-bar'][$post_id]['select_view'] = $settings['ma_select_view'];
+			$oldSettings['reading-progress-bar'][$post_id]['animation_speed'] = $settings['ma _animation_speed'];
+			$oldSettings['reading-progress-bar'][$post_id]['hide_on'] = $settings['ma_hide_on'];
+
+			if( $settings['ma_select_view'] == 'view1' ) {
+				// view 1
+				$oldSettings['reading-progress-bar'][$post_id]['position'] = $settings['ma_position'];
+				$oldSettings['reading-progress-bar'][$post_id]['height'] = $settings['ma_height'];
+				$oldSettings['reading-progress-bar'][$post_id]['background_color'] = $settings['ma_background_color'];
+				$oldSettings['reading-progress-bar'][$post_id]['fill_color'] = $settings['ma_fill_color'];
+			} else {
+				// view 2
+				$oldSettings['reading-progress-bar'][$post_id]['rpb_icon'] = $settings['ma_rpb_icon'];
+				$oldSettings['reading-progress-bar'][$post_id]['icon_size'] = $settings['ma_icon_size'];
+				$oldSettings['reading-progress-bar'][$post_id]['icon_color'] = $settings['ma_icon_color'];
+				$oldSettings['reading-progress-bar'][$post_id]['icon_bg_color'] = $settings['ma_icon_bg_color'];
+				$oldSettings['reading-progress-bar'][$post_id]['icon_hover_color'] = $settings['ma_icon_hover_color'];
+				$oldSettings['reading-progress-bar'][$post_id]['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
+				$oldSettings['reading-progress-bar'][$post_id]['icon_shape'] = $settings['ma_icon_shape'];
+				$oldSettings['reading-progress-bar'][$post_id]['bar_size'] = $settings['ma_bar_size'];
+				$oldSettings['reading-progress-bar'][$post_id]['bar_background_color'] = $settings['ma_bar_background_color'];	
+			}
+		} else {
+			if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
+				// removing the disabled RPB
+				unset( $oldSettings['reading-progress-bar'][$post_id] );
+			}
+		}
+		
+		update_option( 'mighty_addons_integration', $oldSettings );
+
 	}
     
     public static function instance() {
