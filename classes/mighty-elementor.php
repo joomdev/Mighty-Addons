@@ -318,16 +318,10 @@ class Mighty_Elementor {
 
 		$postId = get_the_ID();
 
-		echo "<pre>";
-		print_r( get_option('mighty_addons_integration')['reading-progress-bar'] );
-		echo "</pre>";
-
 		if( isset( get_option('mighty_addons_integration')['reading-progress-bar'] ) && array_key_exists( $postId, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
 
 			echo '<div class="ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar" id="myBar"></div></div></div>';
 
-		} else {
-			echo "<h1>not working</h1>";
 		}
 		
 	}

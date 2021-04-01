@@ -55,7 +55,7 @@ class MT_ReadingProgressBar {
                     'type' => Controls_Manager::SWITCHER,
                     'label_on' => __( 'On', 'mighty' ),
                     'label_off' => __( 'Off', 'mighty' ),
-                    'return_value' => 'yes'
+                    'return_value' => 'yes',
                 ]
             );
 
@@ -394,28 +394,15 @@ class MT_ReadingProgressBar {
 		$oldSettings = get_option( 'mighty_addons_integration' );
 
 		if ( $settings['ma_enable_rpb'] == 'yes' ) {
-			$oldSettings['reading-progress-bar'][$post_id]['select_view'] = $settings['ma_select_view'];
-			$oldSettings['reading-progress-bar'][$post_id]['animation_speed'] = $settings['ma _animation_speed'];
-			$oldSettings['reading-progress-bar'][$post_id]['hide_on'] = $settings['ma_hide_on'];
 
-			if( $settings['ma_select_view'] == 'view1' ) {
-				// view 1
-				$oldSettings['reading-progress-bar'][$post_id]['position'] = $settings['ma_position'];
-				$oldSettings['reading-progress-bar'][$post_id]['height'] = $settings['ma_height'];
-				$oldSettings['reading-progress-bar'][$post_id]['background_color'] = $settings['ma_background_color'];
-				$oldSettings['reading-progress-bar'][$post_id]['fill_color'] = $settings['ma_fill_color'];
+			// Global Settings
+			if ( $settings['ma_enable_rpb_globally'] == 'yes' ) {
+				$oldSettings = createOption( 'reading-progress-bar-globally', $post_id );
+				$oldSettings['reading-progress-bar-globally'][$post_id]['display_on'] = $settings['ma_display_on'];
 			} else {
-				// view 2
-				$oldSettings['reading-progress-bar'][$post_id]['rpb_icon'] = $settings['ma_rpb_icon'];
-				$oldSettings['reading-progress-bar'][$post_id]['icon_size'] = $settings['ma_icon_size'];
-				$oldSettings['reading-progress-bar'][$post_id]['icon_color'] = $settings['ma_icon_color'];
-				$oldSettings['reading-progress-bar'][$post_id]['icon_bg_color'] = $settings['ma_icon_bg_color'];
-				$oldSettings['reading-progress-bar'][$post_id]['icon_hover_color'] = $settings['ma_icon_hover_color'];
-				$oldSettings['reading-progress-bar'][$post_id]['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
-				$oldSettings['reading-progress-bar'][$post_id]['icon_shape'] = $settings['ma_icon_shape'];
-				$oldSettings['reading-progress-bar'][$post_id]['bar_size'] = $settings['ma_bar_size'];
-				$oldSettings['reading-progress-bar'][$post_id]['bar_background_color'] = $settings['ma_bar_background_color'];	
+				$oldSettings = createOption( 'reading-progress-bar', $post_id );
 			}
+
 		} else {
 			if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
 				// removing the disabled RPB
@@ -425,6 +412,34 @@ class MT_ReadingProgressBar {
 		
 		update_option( 'mighty_addons_integration', $oldSettings );
 
+	}
+
+	public static function createOption( $optionName, $oldSettings ) {
+
+		$oldSettings[$optionName][$post_id]['select_view'] = $settings['ma_select_view'];
+		$oldSettings[$optionName][$post_id]['animation_speed'] = $settings['ma _animation_speed'];
+		$oldSettings[$optionName][$post_id]['hide_on'] = $settings['ma_hide_on'];
+
+		if( $settings['ma_select_view'] == 'view1' ) {
+			// view 1
+			$oldSettings[$optionName][$post_id]['position'] = $settings['ma_position'];
+			$oldSettings[$optionName][$post_id]['height'] = $settings['ma_height'];
+			$oldSettings[$optionName][$post_id]['background_color'] = $settings['ma_background_color'];
+			$oldSettings[$optionName][$post_id]['fill_color'] = $settings['ma_fill_color'];
+		} else {
+			// view 2
+			$oldSettings[$optionName][$post_id]['rpb_icon'] = $settings['ma_rpb_icon'];
+			$oldSettings[$optionName][$post_id]['icon_size'] = $settings['ma_icon_size'];
+			$oldSettings[$optionName][$post_id]['icon_color'] = $settings['ma_icon_color'];
+			$oldSettings[$optionName][$post_id]['icon_bg_color'] = $settings['ma_icon_bg_color'];
+			$oldSettings[$optionName][$post_id]['icon_hover_color'] = $settings['ma_icon_hover_color'];
+			$oldSettings[$optionName][$post_id]['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
+			$oldSettings[$optionName][$post_id]['icon_shape'] = $settings['ma_icon_shape'];
+			$oldSettings[$optionName][$post_id]['bar_size'] = $settings['ma_bar_size'];
+			$oldSettings[$optionName][$post_id]['bar_background_color'] = $settings['ma_bar_background_color'];	
+		}
+
+		return $oldSettings;
 	}
     
     public static function instance() {
