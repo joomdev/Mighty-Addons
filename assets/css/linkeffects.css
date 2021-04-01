@@ -17,7 +17,7 @@
 }
 
 .mt-link-effect-s1::before {
-	margin-right: 10px;
+	margin-right: 0;
 	content: '[';
 	-webkit-transform: translateX(20px);
 	-moz-transform: translateX(20px);
@@ -25,7 +25,7 @@
 }
 
 .mt-link-effect-s1::after {
-	margin-left: 10px;
+	margin-left: 0;
 	content: ']';
 	-webkit-transform: translateX(-20px);
 	-moz-transform: translateX(-20px);
@@ -52,7 +52,7 @@
 	position: relative;
 	display: inline-block;
 	padding: 0 14px;
-	background: #2195de;
+	background-color: #2195de;
 	-webkit-transition: -webkit-transform 0.3s;
 	-moz-transition: -moz-transform 0.3s;
 	transition: transform 0.3s;
@@ -71,7 +71,6 @@
 	width: 100%;
 	height: 100%;
 	text-align: center;
-	background: #0965a0;
 	content: attr(data-hover);
 	-webkit-transition: background 0.3s;
 	-moz-transition: background 0.3s;
@@ -390,7 +389,7 @@
 	width: 100%;
 	height: 100%;
 	background: #fff;
-	color: #0f7c67;
+	color: currentColor;
 	content: attr(data-hover);
 	-webkit-transition: -webkit-transform 0.3s;
 	-moz-transition: -moz-transform 0.3s;
@@ -515,12 +514,12 @@
 }
 
 .mt-link-effect-s14.mt-link-effect {
-	padding: 0 20px;
 	display: initial;
 }
 
 .mt-link-effect-s14.mt-link-effect .link-text {
 	position: relative;
+	padding: 0 15px;
 }
 
 .mt-link-effect-s14.mt-link-effect span::before,
@@ -598,9 +597,9 @@
 
 .mt-link-effect-s15.mt-link-effect:hover span::before,
 .mt-link-effect-s15.mt-link-effect:focus span::before {
-	-webkit-transform: scale(0.9);
-	-moz-transform: scale(0.9);
-	transform: scale(0.9);
+	-webkit-transform: scale(.7);
+	-moz-transform: scale(.7);
+	transform: scale(.7);
 	opacity: 0;
 }
 
