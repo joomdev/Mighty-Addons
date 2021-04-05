@@ -81,6 +81,8 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 16. **[MA Advance Gradient - PRO](https://mightythemes.com/mighty-addons/advance-gradient)** - Add Smoother and Sharper Multi-gradients for normal/hover effects to Elements with Advance Gradient with smooth transition filter.
 17. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
 18. **[MA Wrapper Link](https://mightythemes.com/mighty-addons/wrapper-link/)** - Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
+19. **[MA Link Effects](https://mightythemes.com/mighty-addons/link-effects/)** - Link Effects for applying cool effects on links.
+20. **[MA Spacers](https://mightythemes.com/mighty-addons/spacer/)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
@@ -100,6 +102,7 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 12. **Content Toggle Widget** - Create Content toggle section to display two variation of a content.
 13. **WhatsApp Chat Widget** - Add a floating WhatsApp Chatbox on your WordPress site.
 14. **Timeline** - Solve all your events showcase problems by showing them through Timeline by using different factors.
+15. **Link Effects** - Link Effects for applying cool effects on links.
 
 ### Mighty Addons Extensions
 1. **Cross-Site Copy Paste Style (Pro)** - The feature allows you to copy the style of website A to Website B.
@@ -111,7 +114,8 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 7. **[Advance Gradient (Pro)](https://mightythemes.com/mighty-addons/advance-gradient)** Add multiple gradients on any element for normal and hover mode with transition effects for hover.
 8. **[Advance Shadow (Pro)](https://mightythemes.com/mighty-addons/advance-shadow)** Add multiple shadows on any element for normal and hover mode.
 9. **[Display Conditions - (Pro)](https://mightythemes.com/mighty-addons/display-conditions)** - Display your content to only those users who are satisfying the display rules and hide from others.
-10. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
+10. **[Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
+11. **[Spacers (Pro)](https://mightythemes.com/mighty-addons/spacer/)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
 
 We are working on more Elementor Widgets which are frequently updated. Still, you have any specific widget or feature request, feel free to **[get in touch](https://mightythemes.com/contact/)**.
 
