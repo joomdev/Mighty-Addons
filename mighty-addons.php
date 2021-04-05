@@ -7,8 +7,8 @@
  * Author:      MightyThemes
  * Author URI:  https://mightythemes.com/
  * Text Domain: mighty
- * Elementor tested up to: 3.0.16
- * Elementor Pro tested up to: 3.0.9
+ * Elementor tested up to: 3.1.4
+ * Elementor Pro tested up to: 3.1.1
  */
 
 namespace Mighty_Addons;
