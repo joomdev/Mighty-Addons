@@ -69,6 +69,15 @@ class Elementor extends base {
 
 		wp_enqueue_script( 'mightyaddons-elementor-modal', MIGHTY_ADDONS_PLG_URL . 'library/assets/js/elementor-modal.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 
+		// Reading-progress-bar
+		wp_register_script(
+			'mt-rpbjs',
+			MIGHTY_ADDONS_PLG_URL . 'assets/js/rpb.js',
+			[ 'jquery' ],
+			MIGHTY_ADDONS_VERSION,
+			true 
+		);
+
 		wp_localize_script( 'mightyaddons-elementor-modal', 'MightyAddonsModal', array(
 			'enableLibrary' => HelperFunctions::get_white_label( 'hide_templatelibrary' ),
 		) );

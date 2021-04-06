@@ -316,12 +316,30 @@ class Mighty_Elementor {
 	 */
 	public function html_to_footer() {
 
-		$postId = get_the_ID();
+		$postId = (string) get_the_ID();
+		$html = '<div class="ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar" id="ma-rpb"></div></div></div>';
+		$enableRpb = false;
 
-		if( isset( get_option('mighty_addons_integration')['reading-progress-bar'] ) && array_key_exists( $postId, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
+		if( isset( get_option('mighty_addons_integration')['reading-progress-bar'] ) && array_key_exists( $postId, get_option('mighty_addons_integration')['reading-progress-bar'] )
+		) {
 
-			echo '<div class="ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar" id="myBar"></div></div></div>';
+			echo $html;
+			$enableRpb = true;
 
+		} else if( isset( get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) ) {
+
+			$enableRpb = true;
+			$globalRpb = array_values( get_option('mighty_addons_integration')['reading-progress-bar-globally'] )[0];
+			$showOn = $globalRpb['display_on'];
+
+			if( ( get_post_type() == 'page' && $showOn == 'all-pages' ) || ( get_post_type() == 'post' && $showOn == 'all-posts' ) || ( ( get_post_type() == 'post' || get_post_type() == 'page' ) && $showOn == 'all-pages-posts' )) {
+				echo $html;
+			}
+
+		}
+
+		if( $enableRpb ) {
+			wp_enqueue_script( 'mt-rpbjs' );
 		}
 		
 	}

@@ -18,23 +18,7 @@ class MT_ReadingProgressBar {
 		// Register controls on Post/Page Settings
 		add_action( 'elementor/documents/register_controls', [ $this, 'register_controls' ], 10, 3 );
 
-        // Enqueue scripts.
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-
 		add_action( 'elementor/editor/after_save', [ $this, 'save_global_values' ], 10, 2 );
-		add_action( 'elementor/preview/enqueue_styles', [ $this, 'enqueue_styles' ] );
-
-	}
-
-    public function enqueue_scripts() {
-		
-		wp_enqueue_script( 'mt-rpbjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/rpb.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
-        
-	}
-
-	public function enqueue_styles() {
-
-		wp_enqueue_style( 'mt-reading-bar', MIGHTY_ADDONS_PLG_URL . 'assets/css/rpb.css', [], MIGHTY_ADDONS_PRO_VERSION );
 
 	}
     
@@ -59,37 +43,54 @@ class MT_ReadingProgressBar {
                 ]
             );
 
-            $element->add_control(
-                'ma_enable_rpb_globally',
-                [
-                    'label' => __( 'Enable Progress Bar Globally', 'mighty' ),
-                    'type' => Controls_Manager::SWITCHER,
-                    'label_on' => __( 'On', 'mighty' ),
-                    'label_off' => __( 'Off', 'mighty' ),
-                    'return_value' => 'yes',
-                    'condition' => [
-                        'ma_enable_rpb' => 'yes'
-                    ]
-                ]
-            );
+			$rpbOptions = get_option( 'mighty_addons_integration' );
+			$currentPostId = (string) get_the_ID();
 
-            $element->add_control(
-				'ma_display_on',
-				[
-					'label' => __( 'Display On', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'all-pages',
-					'options' => [
-						'all-pages' => __( 'All Pages', 'mighty' ),
-						'all-posts' => __( 'All Posts', 'mighty' ),
-						'all-pages-posts' => __( 'All Pages & Posts', 'mighty' ),
-					],
-					'condition' => [
-						'ma_enable_rpb' => 'yes',
-						'ma_enable_rpb_globally' => 'yes'
-					],
-				]
-			);
+			if ( !isset( $rpbOptions['reading-progress-bar-globally'] ) || ( isset( $rpbOptions['reading-progress-bar-globally'][$currentPostId] ) && $rpbOptions['reading-progress-bar-globally'][$currentPostId]['post_id'] == $currentPostId ) ) {
+				$element->add_control(
+					'ma_enable_rpb_globally',
+					[
+						'label' => __( 'Enable Progress Bar Globally', 'mighty' ),
+						'type' => Controls_Manager::SWITCHER,
+						'label_on' => __( 'On', 'mighty' ),
+						'label_off' => __( 'Off', 'mighty' ),
+						'return_value' => 'yes',
+						'condition' => [
+							'ma_enable_rpb' => 'yes'
+						]
+					]
+				);
+	
+				$element->add_control(
+					'ma_display_on',
+					[
+						'label' => __( 'Display On', 'mighty' ),
+						'type' => \Elementor\Controls_Manager::SELECT,
+						'default' => 'all-pages',
+						'options' => [
+							'all-pages' => __( 'All Pages', 'mighty' ),
+							'all-posts' => __( 'All Posts', 'mighty' ),
+							'all-pages-posts' => __( 'All Pages & Posts', 'mighty' ),
+						],
+						'condition' => [
+							'ma_enable_rpb' => 'yes',
+							'ma_enable_rpb_globally' => 'yes'
+						]
+					]
+				);
+			} else {
+				$element->add_control(
+                    'ma_rpb_global_notice',
+                    [
+                        'type' => Controls_Manager::RAW_HTML,
+                        'raw' => __( '<p>This is enabled globally. Go <a target="_blank" href="' . get_bloginfo('url') . '/wp-admin/post.php?post=' . array_values( $rpbOptions['reading-progress-bar-globally'] )[0]['post_id'] . '&action=elementor">here</a> to edit globally.</p>', 'mighty' ),
+                        'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+						'condition' => [
+							'ma_enable_rpb' => 'yes'
+						]
+                    ]
+                );
+			}
 
             $element->add_control(
 				'ma_select_view',
@@ -395,14 +396,19 @@ class MT_ReadingProgressBar {
 
 		if ( $settings['ma_enable_rpb'] == 'yes' ) {
 
-			// Global Settings
+			// Global Settings	
 			if ( $settings['ma_enable_rpb_globally'] == 'yes' ) {
-				$oldSettings = createOption( 'reading-progress-bar-globally', $post_id );
+				$oldSettings['reading-progress-bar-globally'] = self::createOption( $post_id, $settings );
+				$oldSettings['reading-progress-bar-globally'][$post_id]['post_id'] = get_the_ID();
 				$oldSettings['reading-progress-bar-globally'][$post_id]['display_on'] = $settings['ma_display_on'];
 			} else {
-				$oldSettings = createOption( 'reading-progress-bar', $post_id );
-			}
+				$oldSettings['reading-progress-bar'] = self::createOption( $post_id, $settings );
 
+				// Removing global values if disabled
+				if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) ) {
+					unset( $oldSettings['reading-progress-bar-globally'] );
+				}
+			}
 		} else {
 			if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
 				// removing the disabled RPB
@@ -414,32 +420,34 @@ class MT_ReadingProgressBar {
 
 	}
 
-	public static function createOption( $optionName, $oldSettings ) {
+	public static function createOption( $post_id, $settings ) {
 
-		$oldSettings[$optionName][$post_id]['select_view'] = $settings['ma_select_view'];
-		$oldSettings[$optionName][$post_id]['animation_speed'] = $settings['ma _animation_speed'];
-		$oldSettings[$optionName][$post_id]['hide_on'] = $settings['ma_hide_on'];
+		$rpbSetting = [];
+
+		$rpbSetting[$post_id]['select_view'] = $settings['ma_select_view'];
+		$rpbSetting[$post_id]['animation_speed'] = $settings['ma _animation_speed'];
+		$rpbSetting[$post_id]['hide_on'] = $settings['ma_hide_on'];
 
 		if( $settings['ma_select_view'] == 'view1' ) {
 			// view 1
-			$oldSettings[$optionName][$post_id]['position'] = $settings['ma_position'];
-			$oldSettings[$optionName][$post_id]['height'] = $settings['ma_height'];
-			$oldSettings[$optionName][$post_id]['background_color'] = $settings['ma_background_color'];
-			$oldSettings[$optionName][$post_id]['fill_color'] = $settings['ma_fill_color'];
+			$rpbSetting[$post_id]['position'] = $settings['ma_position'];
+			$rpbSetting[$post_id]['height'] = $settings['ma_height'];
+			$rpbSetting[$post_id]['background_color'] = $settings['ma_background_color'];
+			$rpbSetting[$post_id]['fill_color'] = $settings['ma_fill_color'];
 		} else {
 			// view 2
-			$oldSettings[$optionName][$post_id]['rpb_icon'] = $settings['ma_rpb_icon'];
-			$oldSettings[$optionName][$post_id]['icon_size'] = $settings['ma_icon_size'];
-			$oldSettings[$optionName][$post_id]['icon_color'] = $settings['ma_icon_color'];
-			$oldSettings[$optionName][$post_id]['icon_bg_color'] = $settings['ma_icon_bg_color'];
-			$oldSettings[$optionName][$post_id]['icon_hover_color'] = $settings['ma_icon_hover_color'];
-			$oldSettings[$optionName][$post_id]['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
-			$oldSettings[$optionName][$post_id]['icon_shape'] = $settings['ma_icon_shape'];
-			$oldSettings[$optionName][$post_id]['bar_size'] = $settings['ma_bar_size'];
-			$oldSettings[$optionName][$post_id]['bar_background_color'] = $settings['ma_bar_background_color'];	
+			$rpbSetting[$post_id]['rpb_icon'] = $settings['ma_rpb_icon'];
+			$rpbSetting[$post_id]['icon_size'] = $settings['ma_icon_size'];
+			$rpbSetting[$post_id]['icon_color'] = $settings['ma_icon_color'];
+			$rpbSetting[$post_id]['icon_bg_color'] = $settings['ma_icon_bg_color'];
+			$rpbSetting[$post_id]['icon_hover_color'] = $settings['ma_icon_hover_color'];
+			$rpbSetting[$post_id]['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
+			$rpbSetting[$post_id]['icon_shape'] = $settings['ma_icon_shape'];
+			$rpbSetting[$post_id]['bar_size'] = $settings['ma_bar_size'];
+			$rpbSetting[$post_id]['bar_background_color'] = $settings['ma_bar_background_color'];	
 		}
 
-		return $oldSettings;
+		return $rpbSetting;
 	}
     
     public static function instance() {
