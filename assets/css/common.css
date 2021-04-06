@@ -313,3 +313,26 @@
     background: #4caf50;
     width: 0%;
 }
+
+/* Hiding on responsive */
+.ma-rpb-header[data-hide-on='desktop'] {
+    display: none;
+}
+
+@media only screen and (max-width: 991px) {
+    .ma-rpb-header[data-hide-on='tablet'] {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .ma-rpb-header[data-hide-on='mobile'] {
+        display: none;
+    }
+}
+
+/* RPB Position */
+.ma-rpb-header[data-position='bottom'] {
+    top: unset;
+    bottom: 0;
+}

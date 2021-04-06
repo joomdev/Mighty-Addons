@@ -146,7 +146,11 @@ class MT_ReadingProgressBar {
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
                         'ma_select_view' => 'view1'
-					]
+					],
+					'selectors' => [
+						'.ma-rpb-progress-container' => 'height: {{SIZE}}{{UNIT}} !important',
+						'.ma-rpb-progress-container .ma-rpb-progress-bar' => 'height: {{SIZE}}{{UNIT}} !important',
+					],
 				]
 			);
 
@@ -155,9 +159,13 @@ class MT_ReadingProgressBar {
 				[
 					'label' => __( 'Background Color', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
+					'default' => '#C5C5C6',
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
                         'ma_select_view' => 'view1'
+					],
+					'selectors' => [
+						'.ma-rpb-progress-container' => 'background-color: {{VALUE}};'
 					]
 				]
 			);
@@ -167,9 +175,13 @@ class MT_ReadingProgressBar {
 				[
 					'label' => __( 'Fill Color', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
+					'default' => '#6A63DA',
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
                         'ma_select_view' => 'view1'
+					],
+					'selectors' => [
+						'.ma-rpb-progress-container .ma-rpb-progress-bar' => 'background-color: {{VALUE}};'
 					]
 				]
 			);
@@ -346,12 +358,12 @@ class MT_ReadingProgressBar {
             $element->add_control(
 				'ma_animation_speed',
 				[
-					'label' => __( 'Animation Speed', 'mighty' ),
+					'label' => __( 'Animation Speed (Milliseconds)', 'mighty' ),
 					'type' => Controls_Manager::SLIDER,
 					'range' => [
 						'px' => [
 							'min'  => 1,
-							'max'  => 100,
+							'max'  => 2000,
 							'step' => 1,
 						],
 					],
@@ -362,7 +374,10 @@ class MT_ReadingProgressBar {
                     'separator' => 'before',
 					'condition' => [
 						'ma_enable_rpb' => 'yes'
-					]
+					],
+					'selectors' => [
+						'.ma-rpb-progress-container .ma-rpb-progress-bar' => 'transition: width {{SIZE}}ms ease;',
+					],
 				]
 			);
 
@@ -396,6 +411,8 @@ class MT_ReadingProgressBar {
 
 		if ( $settings['ma_enable_rpb'] == 'yes' ) {
 
+			echo 'enable';
+
 			// Global Settings	
 			if ( $settings['ma_enable_rpb_globally'] == 'yes' ) {
 				$oldSettings['reading-progress-bar-globally'] = self::createOption( $post_id, $settings );
@@ -410,6 +427,8 @@ class MT_ReadingProgressBar {
 				}
 			}
 		} else {
+
+			echo 'disable';
 			if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
 				// removing the disabled RPB
 				unset( $oldSettings['reading-progress-bar'][$post_id] );

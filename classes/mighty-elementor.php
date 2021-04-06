@@ -79,6 +79,15 @@ class Mighty_Elementor {
 	public function mt_enqueue_styles() {		
 		// Common Stylings
 		wp_enqueue_style( 'mt-common', MIGHTY_ADDONS_PLG_URL . 'assets/css/common.css', false, MIGHTY_ADDONS_VERSION );
+
+		// Reading-progress-bar
+		wp_enqueue_script(
+			'mt-rpbjs',
+			MIGHTY_ADDONS_PLG_URL . 'assets/js/rpb.js',
+			[ 'jquery' ],
+			MIGHTY_ADDONS_VERSION,
+			true
+		);
 	}
 
 	/**
@@ -324,11 +333,9 @@ class Mighty_Elementor {
 		) {
 
 			echo $html;
-			$enableRpb = true;
 
 		} else if( isset( get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) ) {
 
-			$enableRpb = true;
 			$globalRpb = array_values( get_option('mighty_addons_integration')['reading-progress-bar-globally'] )[0];
 			$showOn = $globalRpb['display_on'];
 
@@ -336,10 +343,6 @@ class Mighty_Elementor {
 				echo $html;
 			}
 
-		}
-
-		if( $enableRpb ) {
-			wp_enqueue_script( 'mt-rpbjs' );
 		}
 		
 	}
