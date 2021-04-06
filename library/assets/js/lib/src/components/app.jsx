@@ -604,10 +604,19 @@ class Preview extends Component {
               <i title="Fullscreen View" onClick={ () => this.showFullscreen() } className="fas fa-expand"></i>
             </div>
             
-            <button onClick={ () => this.props.onClick(this.props.data) } className="back mt-btn">
-              <i className="far fa-arrow-alt-circle-down"></i>&nbsp;
-              { this.props.data.elementor_type == "pro" ? 'Import Anyway' : 'Import' }
-            </button>
+            { this.props.data.free ?
+                <li className="mt-btn mt-btn-import">
+                  <span onClick={ () => this.props.onClick( this.props.data ) }>{this.props.data.elementor_type == "pro" && !MightyLibrary.elementorPro ? 'Import anyway' : 'Import' }</span>
+                </li>
+              :
+                MightyLibrary.keyActive ?
+                <li className="mt-btn mt-btn-import">
+                  <span onClick={ () => this.props.onClick( this.props.data ) }>{this.props.data.elementor_type == "pro" && !MightyLibrary.elementorPro ? 'Import anyway' : 'Import' }</span>
+                </li>
+                :
+                <a className="mt-btn mt-btn-import go-pro-btn" href="https://mightythemes.com/products/mighty-addons" target="_BLANK">Go Pro 🚀</a>
+              }
+            
           </div>
           <div className="mt-templates-modal-body-main preview-section">
             <iframe style={iframeWidth} src={this.props.data.link} frameBorder={0} allowFullScreen width="" />
