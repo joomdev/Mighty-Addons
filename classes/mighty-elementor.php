@@ -350,14 +350,33 @@ class Mighty_Elementor {
 	 */
 	public function getRpbHTML( $options ) {
 
-		$rpbPosition = $options['position'];
-		$rpbHeight = 'height: ' . $options['height']['size'] . $options['height']['unit'] . '; ';
-		$rpbBgColor = 'background-color: ' . $options['background_color'] . '; ';
-		$rpbFillColor = 'fill-color: ' . $options['fill_color'] . '; ';
 		$rpbAnimationSpeed = 'transition: width ' . ( $options['animation_speed'] ? $options['animation_speed']['size'] : '10') . 'ms ease; ';
 		$rpbHideOn = $options['hide_on'];
 
-		$html = '<div data-position="' . $rpbPosition . '" data-hide-on="' . $rpbHideOn . '" class="ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . '"><div class="ma-rpb-progress-bar" id="ma-rpb" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
+		if ( $options['select_view'] ) {
+
+			$rpbIcon = $options['rpb_icon'];
+			$iconSize = $options['icon_size'];
+			$iconColor = $options['icon_color'];
+			$iconBgColor = $options['icon_bg_color'];
+			$iconHoverColor = $options['icon_hover_color'];
+			$iconBgHoverColor = $options['icon_bg_hover_color'];
+			$iconShape = $options['icon_shape'];
+			$barSize = $options['bar_size'];
+			$barBackgroundColor = $options['bar_background_color'];
+
+			$html = '<div id="ma-btt-rpb" class="ma-progress-wrap"><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /></svg></div>';
+
+		} else {
+
+			$rpbPosition = $options['position'];
+			$rpbHeight = 'height: ' . $options['height']['size'] . $options['height']['unit'] . '; ';
+			$rpbBgColor = 'background-color: ' . $options['background_color'] . '; ';
+			$rpbFillColor = 'fill-color: ' . $options['fill_color'] . '; ';
+			
+			$html = '<div data-position="' . $rpbPosition . '" data-hide-on="' . $rpbHideOn . '" class="ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . '"><div class="ma-rpb-progress-bar" id="ma-rpb" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
+
+		}
 
 		return $html;
 

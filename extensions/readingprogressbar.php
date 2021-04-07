@@ -462,7 +462,7 @@ class MT_ReadingProgressBar {
 			$rpbSetting['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
 			$rpbSetting['icon_shape'] = $settings['ma_icon_shape'];
 			$rpbSetting['bar_size'] = $settings['ma_bar_size'];
-			$rpbSetting['bar_background_color'] = $settings['ma_bar_background_color'];	
+			$rpbSetting['bar_background_color'] = $settings['ma_bar_background_color'];
 		}
 
 		return $rpbSetting;
