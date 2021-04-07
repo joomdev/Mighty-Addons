@@ -411,59 +411,58 @@ class MT_ReadingProgressBar {
 
 		if ( $settings['ma_enable_rpb'] == 'yes' ) {
 
-			echo 'enable';
-
 			// Global Settings	
 			if ( $settings['ma_enable_rpb_globally'] == 'yes' ) {
-				$oldSettings['reading-progress-bar-globally'] = self::createOption( $post_id, $settings );
+				$oldSettings['reading-progress-bar-globally'][$post_id] = self::createOption( $settings );
 				$oldSettings['reading-progress-bar-globally'][$post_id]['post_id'] = get_the_ID();
 				$oldSettings['reading-progress-bar-globally'][$post_id]['display_on'] = $settings['ma_display_on'];
 			} else {
-				$oldSettings['reading-progress-bar'] = self::createOption( $post_id, $settings );
+				$oldSettings['reading-progress-bar'][$post_id] = self::createOption( $settings );
 
 				// Removing global values if disabled
 				if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) ) {
 					unset( $oldSettings['reading-progress-bar-globally'] );
 				}
 			}
+
 		} else {
 
-			echo 'disable';
 			if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
 				// removing the disabled RPB
 				unset( $oldSettings['reading-progress-bar'][$post_id] );
 			}
+
 		}
 		
 		update_option( 'mighty_addons_integration', $oldSettings );
 
 	}
 
-	public static function createOption( $post_id, $settings ) {
+	public static function createOption( $settings ) {
 
 		$rpbSetting = [];
 
-		$rpbSetting[$post_id]['select_view'] = $settings['ma_select_view'];
-		$rpbSetting[$post_id]['animation_speed'] = $settings['ma _animation_speed'];
-		$rpbSetting[$post_id]['hide_on'] = $settings['ma_hide_on'];
+		$rpbSetting['select_view'] = $settings['ma_select_view'];
+		$rpbSetting['animation_speed'] = $settings['ma_animation_speed'];
+		$rpbSetting['hide_on'] = $settings['ma_hide_on'];
 
 		if( $settings['ma_select_view'] == 'view1' ) {
 			// view 1
-			$rpbSetting[$post_id]['position'] = $settings['ma_position'];
-			$rpbSetting[$post_id]['height'] = $settings['ma_height'];
-			$rpbSetting[$post_id]['background_color'] = $settings['ma_background_color'];
-			$rpbSetting[$post_id]['fill_color'] = $settings['ma_fill_color'];
+			$rpbSetting['position'] = $settings['ma_position'];
+			$rpbSetting['height'] = $settings['ma_height'];
+			$rpbSetting['background_color'] = $settings['ma_background_color'];
+			$rpbSetting['fill_color'] = $settings['ma_fill_color'];
 		} else {
 			// view 2
-			$rpbSetting[$post_id]['rpb_icon'] = $settings['ma_rpb_icon'];
-			$rpbSetting[$post_id]['icon_size'] = $settings['ma_icon_size'];
-			$rpbSetting[$post_id]['icon_color'] = $settings['ma_icon_color'];
-			$rpbSetting[$post_id]['icon_bg_color'] = $settings['ma_icon_bg_color'];
-			$rpbSetting[$post_id]['icon_hover_color'] = $settings['ma_icon_hover_color'];
-			$rpbSetting[$post_id]['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
-			$rpbSetting[$post_id]['icon_shape'] = $settings['ma_icon_shape'];
-			$rpbSetting[$post_id]['bar_size'] = $settings['ma_bar_size'];
-			$rpbSetting[$post_id]['bar_background_color'] = $settings['ma_bar_background_color'];	
+			$rpbSetting['rpb_icon'] = $settings['ma_rpb_icon'];
+			$rpbSetting['icon_size'] = $settings['ma_icon_size'];
+			$rpbSetting['icon_color'] = $settings['ma_icon_color'];
+			$rpbSetting['icon_bg_color'] = $settings['ma_icon_bg_color'];
+			$rpbSetting['icon_hover_color'] = $settings['ma_icon_hover_color'];
+			$rpbSetting['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
+			$rpbSetting['icon_shape'] = $settings['ma_icon_shape'];
+			$rpbSetting['bar_size'] = $settings['ma_bar_size'];
+			$rpbSetting['bar_background_color'] = $settings['ma_bar_background_color'];	
 		}
 
 		return $rpbSetting;
