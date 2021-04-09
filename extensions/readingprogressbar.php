@@ -343,10 +343,10 @@ class MT_ReadingProgressBar {
 				]
 			);
 
-            $element->add_control(
-				'ma_bar_background_color',
+			$element->add_control(
+				'ma_bar_color',
 				[
-					'label' => __( 'Bar Background Color', 'mighty' ),
+					'label' => __( 'Bar Color', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
@@ -462,7 +462,7 @@ class MT_ReadingProgressBar {
 			$rpbSetting['icon_bg_hover_color'] = $settings['ma_icon_bg_hover_color'];
 			$rpbSetting['icon_shape'] = $settings['ma_icon_shape'];
 			$rpbSetting['bar_size'] = $settings['ma_bar_size'];
-			$rpbSetting['bar_background_color'] = $settings['ma_bar_background_color'];
+			$rpbSetting['bar_color'] = $settings['ma_bar_color'];
 		}
 
 		return $rpbSetting;

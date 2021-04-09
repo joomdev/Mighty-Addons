@@ -315,18 +315,18 @@
 }
 
 /* Hiding on responsive */
-.ma-rpb-header[data-hide-on='desktop'] {
+.ma-rpb[data-hide-on='desktop'] {
     display: none;
 }
 
 @media only screen and (max-width: 991px) {
-    .ma-rpb-header[data-hide-on='tablet'] {
+    .ma-rpb[data-hide-on='tablet'] {
         display: none;
     }
 }
 
 @media only screen and (max-width: 767px) {
-    .ma-rpb-header[data-hide-on='mobile'] {
+    .ma-rpb[data-hide-on='mobile'] {
         display: none;
     }
 }
@@ -339,6 +339,7 @@
 
 /* Back to top - RPB */
 .ma-progress-wrap {
+    overflow: hidden;
     position: fixed;
     right: 50px;
     bottom: 50px;
@@ -382,4 +383,10 @@
     -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
-  
+
+.ma-rpb-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

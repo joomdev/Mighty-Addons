@@ -54,11 +54,9 @@
 
     // View 2
     if ( document.getElementById( "ma-btt-rpb" ) ) {
-
       var scroll = $(window).scrollTop();
       var height = $(document).height() - $(window).height();
       var progress = pathLength - (scroll * pathLength / height);
-      console.log('scrolled', progress);
       progressPath.style.strokeDashoffset = progress;
     }
 
@@ -72,7 +70,7 @@
       // On Enable RPB
       elementor.settings.page.addChangeCallback( 'ma_enable_rpb', function( value ) {
         if( value == 'yes' ) {
-          let html = '<div class="ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar" id="ma-rpb"></div></div></div>';
+          let html = '<div class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar" id="ma-rpb"></div></div></div>';
           jQuery( elementorFrontend.elements.$body ).append( html );
         } else {
           if ( jQuery( elementorFrontend.elements.$body ).find( '.ma-rpb-header' ).length ) {
