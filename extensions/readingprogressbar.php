@@ -193,7 +193,7 @@ class MT_ReadingProgressBar {
                     'label' => __( 'Select Icon', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::ICONS,
                     'default' => [
-                        'value' => 'fas fa-star',
+                        'value' => 'fas fa-arrow-up',
                         'library' => 'solid',
                     ],
 					'condition' => [
@@ -222,6 +222,10 @@ class MT_ReadingProgressBar {
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
                         'ma_select_view' => 'view2'
+					],
+					'selectors' => [
+						'#ma-btt-rpb .ma-rpb-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+						'#ma-btt-rpb.ma-progress-wrap' => 'height: calc(46px + ({{SIZE}}{{UNIT}} - 20px)) !important; width: calc(46px + ({{SIZE}}{{UNIT}} - 20px)) !important;',
 					]
 				]
 			);
@@ -246,7 +250,10 @@ class MT_ReadingProgressBar {
                             'condition' => [
                                 'ma_enable_rpb' => 'yes',
                                 'ma_select_view' => 'view2'
-                            ]
+							],
+							'selectors' => [
+								'.ma-progress-wrap .ma-rpb-icon' => 'color: {{VALUE}};'
+							]
                         ]
                     );
 
@@ -258,7 +265,10 @@ class MT_ReadingProgressBar {
                             'condition' => [
                                 'ma_enable_rpb' => 'yes',
                                 'ma_select_view' => 'view2'
-                            ]
+							],
+							'selectors' => [
+								'#ma-btt-rpb svg.progress-circle' => 'background-color: {{VALUE}} !important;'
+							]
                         ]
                     );
 
@@ -282,7 +292,10 @@ class MT_ReadingProgressBar {
                             'condition' => [
                                 'ma_enable_rpb' => 'yes',
                                 'ma_select_view' => 'view2'
-                            ]
+							],
+							'selectors' => [
+								'#ma-btt-rpb .ma-rpb-icon:hover' => 'color: {{VALUE}} !important;'
+							]
                         ]
                     );
 
@@ -294,31 +307,16 @@ class MT_ReadingProgressBar {
                             'condition' => [
                                 'ma_enable_rpb' => 'yes',
                                 'ma_select_view' => 'view2'
-                            ]
+							],
+							'selectors' => [
+								'#ma-btt-rpb svg.progress-circle:hover' => 'background-color: {{VALUE}} !important;'
+							]
                         ]
                     );
 
                 $element->end_controls_tab();
             
 			$element->end_controls_tabs( 'view2_styling' );
-
-            $element->add_control(
-				'ma_icon_shape',
-				[
-					'label' => __( 'Icon Shape', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'circle',
-					'options' => [
-						'circle' => __( 'Circle', 'mighty' ),
-						'square' => __( 'Square', 'mighty' ),
-						'rounded' => __( 'Rounded', 'mighty' ),
-					],
-                    'condition' => [
-						'ma_enable_rpb' => 'yes',
-                        'ma_select_view' => 'view2'
-					]
-				]
-			);
 
             $element->add_control(
 				'ma_bar_size',
@@ -339,6 +337,9 @@ class MT_ReadingProgressBar {
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
                         'ma_select_view' => 'view2'
+					],
+					'selectors' => [
+						'#ma-btt-rpb svg.progress-circle path' => 'stroke-width: {{SIZE}} !important;'
 					]
 				]
 			);
@@ -351,6 +352,9 @@ class MT_ReadingProgressBar {
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
                         'ma_select_view' => 'view2'
+					],
+					'selectors' => [
+						'#ma-btt-rpb svg.progress-circle path' => 'stroke: {{VALUE}} !important;'
 					]
 				]
 			);
@@ -377,6 +381,7 @@ class MT_ReadingProgressBar {
 					],
 					'selectors' => [
 						'.ma-rpb-progress-container .ma-rpb-progress-bar' => 'transition: width {{SIZE}}ms ease;',
+						'.ma-progress-wrap svg.progress-circle path' => 'transition: stroke-dashoffset {{SIZE}}ms ease !important;'
 					],
 				]
 			);

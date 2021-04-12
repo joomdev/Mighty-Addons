@@ -353,7 +353,7 @@ class Mighty_Elementor {
 		
 		$rpbHideOn = $options['hide_on'];
 
-		if ( $options['select_view'] ) {
+		if ( $options['select_view'] == 'view2' ) {
 
 			$rpbIcon = $options['rpb_icon']['value'];
 			$iconSize = $options['icon_size']['size'] . $options['icon_size']['unit'];
@@ -364,13 +364,18 @@ class Mighty_Elementor {
 			$iconShape = $options['icon_shape'];
 			$barSize = $options['bar_size']['size'];
 			$barColor = $options['bar_color'];
-			$rpbAnimationSpeed = 'transition: stroke-dashoffset ' . ( $options['animation_speed'] ? $options['animation_speed']['size'] : '10') . 'ms ease !important; ';
+			$rpbAnimationSpeed = 'transition: stroke-dashoffset ' . ( $options['animation_speed'] ? $options['animation_speed']['size'] : '10') . 'ms ease; ';
 			
 			$rpbCss = 
 			'<style>
 				.ma-rpb-icon {
 					font-size: ' . $iconSize . ';
 					color: ' . $iconColor . ';
+				}
+
+				#ma-btt-rpb.ma-progress-wrap {
+					height: calc( 46px + (' . $iconSize . ' - 20px ) );
+					width: calc( 46px + (' . $iconSize . ' - 20px ) );
 				}
 
 				.ma-rpb-icon:hover {
@@ -392,17 +397,16 @@ class Mighty_Elementor {
 				}
 			</style>';
 
-			$html = $rpbCss . '<div data-hide-on="' . $rpbHideOn . '" id="ma-btt-rpb" class="ma-rpb ma-progress-wrap"><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'. $rpbIcon .'"></i></div> </svg></div>';
+			$html = $rpbCss . '<div id="ma-btt-rpb" data-hide-on="' . $rpbHideOn . '" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'. $rpbIcon .'"></i></div> </svg></div>';
 
 		} else {
 			$rpbAnimationSpeed = 'transition: width ' . ( $options['animation_speed'] ? $options['animation_speed']['size'] : '10') . 'ms ease; ';
 			$rpbPosition = $options['position'];
 			$rpbHeight = 'height: ' . $options['height']['size'] . $options['height']['unit'] . '; ';
 			$rpbBgColor = 'background-color: ' . $options['background_color'] . '; ';
-			$rpbFillColor = 'fill-color: ' . $options['fill_color'] . '; ';
+			$rpbFillColor = 'background-color: ' . $options['fill_color'] . '; ';
 			
-			$html = '<div data-position="' . $rpbPosition . '" data-hide-on="' . $rpbHideOn . '" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . '"><div class="ma-rpb-progress-bar" id="ma-rpb" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
-
+			$html = '<div id="ma-rpb" data-position="' . $rpbPosition . '" data-hide-on="' . $rpbHideOn . '" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . '"><div class="ma-rpb-progress-bar" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
 		}
 
 		return $html;
