@@ -3,22 +3,6 @@
 
   window.onscroll = function() {readingProgressBar()};
 
-  // Configuration of Progress bar
-  if ( document.getElementById( "ma-btt-rpb" ) ) {
-    
-    let duration = 550;
-
-    // Send to top
-    $( '.ma-progress-wrap' ).on( 'click', function( event ) {
-      event.preventDefault();
-      $( 'html, body' ).animate({
-        scrollTop: 0
-      }, duration );
-      return false;
-    })
-
-  }
-
   // Updating progress
   function readingProgressBar() {
 
@@ -64,6 +48,15 @@
   // Dynamic Progress Bar for Elementor Editor
   $(window).on('elementor/frontend/init', function () {
 
+    // Back to top event listener
+    $( '#ma-btt-rpb' ).on( 'click', function( event ) {
+      event.preventDefault();
+      $( 'html, body' ).animate({
+        scrollTop: 0
+      }, 550 );
+      return false;
+    });
+
     if ( elementorFrontend.isEditMode() ) {
 
       let rpbHtml = '<div id="ma-rpb" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar"></div></div></div>';
@@ -93,12 +86,23 @@
 
       // On icon change
       elementor.settings.page.addChangeCallback( 'ma_select_view', function( value ) {
+        // Removing old instances
+        $( elementorFrontend.elements.$body ).find( '#ma-rpb' ).remove();
+        $( elementorFrontend.elements.$body ).find( '#ma-btt-rpb' ).remove();
+        
         if( value == 'view1' ) {
-          $( elementorFrontend.elements.$body ).find( '#ma-btt-rpb' ).remove();
           $( elementorFrontend.elements.$body ).append( rpbHtml );
         } else if( value == 'view2' ) {
-          $( elementorFrontend.elements.$body ).find( '#ma-rpb' ).remove();
           $( elementorFrontend.elements.$body ).append( bttHtml );
+          
+          // Attaching event listener
+          $( '#ma-btt-rpb' ).on( 'click', function( event ) {
+            event.preventDefault();
+            $( 'html, body' ).animate({
+              scrollTop: 0
+            }, 550 );
+            return false;
+          })
         }
       });
 
@@ -108,8 +112,6 @@
       });
 
     }
-      
-
   });
 
 })(jQuery);
