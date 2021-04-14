@@ -319,15 +319,23 @@
     display: none;
 }
 
-@media only screen and (max-width: 991px) {
+@media (max-width: 1024px) {
     .ma-rpb[data-hide-on='tablet'] {
         display: none;
     }
+    .ma-rpb[data-hide-on='desktop'],
+    .ma-rpb[data-hide-on='mobile'] {
+        display: block;
+    }
 }
 
-@media only screen and (max-width: 767px) {
+@media (max-width: 767px) {
     .ma-rpb[data-hide-on='mobile'] {
         display: none;
+    }
+    .ma-rpb[data-hide-on='desktop'],
+    .ma-rpb[data-hide-on='tablet'] {
+        display: block;
     }
 }
 
