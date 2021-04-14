@@ -364,6 +364,7 @@ class Mighty_Elementor {
 			$iconShape = $options['icon_shape'];
 			$barSize = $options['bar_size']['size'];
 			$barColor = $options['bar_color'];
+			$barBgColor = $options['bar_bg_color'];
 			$rpbAnimationSpeed = 'transition: stroke-dashoffset ' . ( $options['animation_speed'] ? $options['animation_speed']['size'] : '10') . 'ms ease; ';
 			
 			$rpbCss = 
@@ -394,6 +395,10 @@ class Mighty_Elementor {
 					' . $rpbAnimationSpeed . '
 					stroke-width: '. $barSize .';
 					stroke: '. $barColor .';
+				}
+
+				.ma-progress-wrap {
+					box-shadow: inset 0 0 0 4px '. $barBgColor .' !important;
 				}
 			</style>';
 

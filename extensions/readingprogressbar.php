@@ -217,7 +217,7 @@ class MT_ReadingProgressBar {
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 10,
+						'size' => 30,
 					],
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
@@ -359,6 +359,22 @@ class MT_ReadingProgressBar {
 				]
 			);
 
+			$element->add_control(
+				'ma_bar_bg_color',
+				[
+					'label' => __( 'Bar Background Color', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'default' => '#D1CFCF',
+					'condition' => [
+						'ma_enable_rpb' => 'yes',
+                        'ma_select_view' => 'view2'
+					],
+					'selectors' => [
+						'#ma-btt-rpb.ma-progress-wrap' => 'box-shadow: inset 0 0 0 4px {{VALUE}} !important;'
+					]
+				]
+			);
+
             $element->add_control(
 				'ma_animation_speed',
 				[
@@ -468,6 +484,7 @@ class MT_ReadingProgressBar {
 			$rpbSetting['icon_shape'] = $settings['ma_icon_shape'];
 			$rpbSetting['bar_size'] = $settings['ma_bar_size'];
 			$rpbSetting['bar_color'] = $settings['ma_bar_color'];
+			$rpbSetting['bar_bg_color'] = $settings['ma_bar_bg_color'];
 		}
 
 		return $rpbSetting;
