@@ -224,7 +224,7 @@ class MT_ReadingProgressBar {
                         'ma_select_view' => 'view2'
 					],
 					'selectors' => [
-						'#ma-btt-rpb .ma-rpb-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+						'#ma-btt-rpb .ma-rpb-icon' => 'font-size: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
 						'#ma-btt-rpb.ma-progress-wrap' => 'height: calc(46px + ({{SIZE}}{{UNIT}} - 20px)) !important; width: calc(46px + ({{SIZE}}{{UNIT}} - 20px)) !important;',
 					]
 				]
@@ -267,7 +267,7 @@ class MT_ReadingProgressBar {
                                 'ma_select_view' => 'view2'
 							],
 							'selectors' => [
-								'#ma-btt-rpb svg.progress-circle' => 'background-color: {{VALUE}} !important;'
+								'#ma-btt-rpb svg' => 'background-color: {{VALUE}} !important;'
 							]
                         ]
                     );
@@ -309,7 +309,7 @@ class MT_ReadingProgressBar {
                                 'ma_select_view' => 'view2'
 							],
 							'selectors' => [
-								'#ma-btt-rpb svg.progress-circle:hover' => 'background-color: {{VALUE}} !important;'
+								'#ma-btt-rpb:hover svg' => 'background-color: {{VALUE}} !important;'
 							]
                         ]
                     );
@@ -339,7 +339,8 @@ class MT_ReadingProgressBar {
                         'ma_select_view' => 'view2'
 					],
 					'selectors' => [
-						'#ma-btt-rpb svg.progress-circle path' => 'stroke-width: {{SIZE}} !important;'
+						'#ma-btt-rpb svg.progress-circle path.bar' => 'stroke-width: {{SIZE}} !important;',
+						'#ma-btt-rpb svg.progress-circle path.bar-bg' => 'stroke-width: {{SIZE}} !important;'
 					]
 				]
 			);
@@ -354,7 +355,7 @@ class MT_ReadingProgressBar {
                         'ma_select_view' => 'view2'
 					],
 					'selectors' => [
-						'#ma-btt-rpb svg.progress-circle path' => 'stroke: {{VALUE}} !important;'
+						'#ma-btt-rpb svg.progress-circle path.bar' => 'stroke: {{VALUE}} !important;'
 					]
 				]
 			);
@@ -370,7 +371,7 @@ class MT_ReadingProgressBar {
                         'ma_select_view' => 'view2'
 					],
 					'selectors' => [
-						'#ma-btt-rpb.ma-progress-wrap' => 'box-shadow: inset 0 0 0 4px {{VALUE}} !important;'
+						'#ma-btt-rpb svg.progress-circle path.bar-bg' => 'stroke: {{VALUE}} !important;'
 					]
 				]
 			);
@@ -397,7 +398,7 @@ class MT_ReadingProgressBar {
 					],
 					'selectors' => [
 						'.ma-rpb-progress-container .ma-rpb-progress-bar' => 'transition: width {{SIZE}}ms ease;',
-						'.ma-progress-wrap svg.progress-circle path' => 'transition: stroke-dashoffset {{SIZE}}ms ease !important;'
+						'.ma-progress-wrap svg.progress-circle path.bar' => 'transition: stroke-dashoffset {{SIZE}}ms ease !important;'
 					],
 				]
 			);

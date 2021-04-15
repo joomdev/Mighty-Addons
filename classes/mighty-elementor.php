@@ -373,6 +373,7 @@ class Mighty_Elementor {
 			'<style>
 				.ma-rpb-icon {
 					font-size: ' . $iconSize . ';
+					line-height: ' . $iconSize . ';
 					color: ' . $iconColor . ';
 				}
 
@@ -385,26 +386,27 @@ class Mighty_Elementor {
 					color: ' . $iconHoverColor . ';
 				}
 
-				.ma-progress-wrap svg.progress-circle {
+				.ma-progress-wrap svg {
 					background-color: ' . $iconBgColor . ';
 				}
 
-				.ma-progress-wrap:hover svg.progress-circle {
+				.ma-progress-wrap:hover svg {
 					background-color: ' . $iconBgHoverColor . ';
 				}
 
-				.ma-progress-wrap svg.progress-circle path {
+				.ma-progress-wrap svg.progress-circle path.bar {
 					' . $rpbAnimationSpeed . '
 					stroke-width: '. $barSize .';
 					stroke: '. $barColor .';
 				}
-
-				.ma-progress-wrap {
-					box-shadow: inset 0 0 0 4px '. $barBgColor .' !important;
+				
+				.ma-progress-wrap svg.progress-circle path.bar-bg {
+					stroke: #f00;
+					stroke-width: 4;
 				}
 			</style>';
 
-			$html = $rpbCss . '<div id="ma-btt-rpb" data-hide-on="' . $rpbHideOn . '" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'. $rpbIcon .'"></i></div> </svg></div>';
+			$html = $rpbCss . '<div id="ma-btt-rpb" data-hide-on="' . $rpbHideOn . '" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"> <path class="bar-bg" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <path class="bar" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'. $rpbIcon .'"></i></div> </svg></div>';
 
 		} else {
 			$rpbAnimationSpeed = 'transition: width ' . ( $options['animation_speed'] ? $options['animation_speed']['size'] : '10') . 'ms ease; ';
