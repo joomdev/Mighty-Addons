@@ -3,6 +3,14 @@
 
   window.onscroll = function() {readingProgressBar()};
 
+  // When no scroll is initialized
+  if ( document.getElementById( "ma-btt-rpb" ) ) {
+
+    var progressPath = document.querySelector( '.ma-progress-wrap path' );
+    progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+
+  }
+
   // Updating progress
   function readingProgressBar() {
 
@@ -21,8 +29,6 @@
 
       var progressPath = document.querySelector( '.ma-progress-wrap path' );
       var pathLength = progressPath.getTotalLength();
-
-      progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
       progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
       progressPath.style.strokeDashoffset = pathLength;
       progressPath.getBoundingClientRect();
@@ -60,7 +66,6 @@
     if ( elementorFrontend.isEditMode() ) {
 
       let rpbHtml = '<div id="ma-rpb" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container"><div class="ma-rpb-progress-bar"></div></div></div>';
-      let bttHtml = '<div data-hide-on="" id="ma-btt-rpb" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="fas fa-arrow-up"></i></div> </svg></div>';
       
       // On Enable RPB
       elementor.settings.page.addChangeCallback( 'ma_enable_rpb', function( value ) {
@@ -84,7 +89,7 @@
         $( elementorFrontend.elements.$body ).find( '.ma-rpb-header' ).attr( 'data-position', value );
       });
 
-      // On icon change
+      // On view change
       elementor.settings.page.addChangeCallback( 'ma_select_view', function( value ) {
         // Removing old instances
         $( elementorFrontend.elements.$body ).find( '#ma-rpb' ).remove();
@@ -93,6 +98,11 @@
         if( value == 'view1' ) {
           $( elementorFrontend.elements.$body ).append( rpbHtml );
         } else if( value == 'view2' ) {
+
+          let bttIcon = elementor.getPanelView().getCurrentPageView().model.attributes.ma_rpb_icon.value;
+          let hideOn = elementor.getPanelView().getCurrentPageView().model.attributes.ma_hide_on;
+          let bttHtml = '<div data-hide-on="'+ hideOn +'" id="ma-btt-rpb" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'+ bttIcon +'"></i></div> </svg></div>';
+
           $( elementorFrontend.elements.$body ).append( bttHtml );
           
           // Attaching event listener

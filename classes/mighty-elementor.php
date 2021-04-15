@@ -335,10 +335,12 @@ class Mighty_Elementor {
 		} else if( isset( get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) ) {
 
 			$globalRpb = array_values( get_option('mighty_addons_integration')['reading-progress-bar-globally'] )[0];
+
 			$showOn = $globalRpb['display_on'];
 
 			if( ( get_post_type() == 'page' && $showOn == 'all-pages' ) || ( get_post_type() == 'post' && $showOn == 'all-posts' ) || ( ( get_post_type() == 'post' || get_post_type() == 'page' ) && $showOn == 'all-pages-posts' )) {
-				echo $this->getRpbHTML( get_option('mighty_addons_integration')['reading-progress-bar-globally'][$postId] );
+				
+				echo $this->getRpbHTML( $globalRpb );
 			}
 
 		}
@@ -411,7 +413,7 @@ class Mighty_Elementor {
 			$rpbBgColor = 'background-color: ' . $options['background_color'] . '; ';
 			$rpbFillColor = 'background-color: ' . $options['fill_color'] . '; ';
 			
-			$html = '<div id="ma-rpb" data-position="' . $rpbPosition . '" data-hide-on="' . $rpbHideOn . '" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . '"><div class="ma-rpb-progress-bar" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
+			$html = '<div id="ma-rpb" data-position="' . $rpbPosition . '" data-hide-on="' . $rpbHideOn . '" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . $rpbHeight . '"><div class="ma-rpb-progress-bar" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
 		}
 
 		return $html;

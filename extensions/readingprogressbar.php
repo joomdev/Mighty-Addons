@@ -364,7 +364,7 @@ class MT_ReadingProgressBar {
 				[
 					'label' => __( 'Bar Background Color', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
-					'default' => '#D1CFCF',
+					'default' => '#B3A9A97A',
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
                         'ma_select_view' => 'view2'
