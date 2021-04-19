@@ -72,9 +72,8 @@
         if( value == 'yes' ) {
           $( elementorFrontend.elements.$body ).append( rpbHtml );
         } else {
-          if ( $( elementorFrontend.elements.$body ).find( '.ma-rpb-header' ).length ) {
-            $( elementorFrontend.elements.$body ).find( '.ma-rpb-header' ).remove();
-            $( elementorFrontend.elements.$body ).find( '#ma-btt-rpb' ).remove();
+          if ( $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).length ) {
+            $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).remove();
           }
         }
       });
@@ -92,8 +91,7 @@
       // On view change
       elementor.settings.page.addChangeCallback( 'ma_select_view', function( value ) {
         // Removing old instances
-        $( elementorFrontend.elements.$body ).find( '#ma-rpb' ).remove();
-        $( elementorFrontend.elements.$body ).find( '#ma-btt-rpb' ).remove();
+        $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).remove();
         
         if( value == 'view1' ) {
           $( elementorFrontend.elements.$body ).append( rpbHtml );
