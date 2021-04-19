@@ -81,7 +81,7 @@
 
       // On Hide On Change
       elementor.settings.page.addChangeCallback( 'ma_hide_on', function( value ) {
-        $( elementorFrontend.elements.$body ).find( '.ma-rpb-header' ).attr( 'data-hide-on', value );  
+        $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).attr( 'data-hide-on', value );  
       });
 
       // On Position change

@@ -341,7 +341,7 @@ class Mighty_Elementor {
 			if( ( get_post_type() == 'page' && $showOn == 'all-pages' ) || ( get_post_type() == 'post' && $showOn == 'all-posts' ) || ( ( get_post_type() == 'post' || get_post_type() == 'page' ) && $showOn == 'all-pages-posts' )) {
 				
 				echo $this->getRpbHTML( $globalRpb );
-				
+
 			}
 
 		}
@@ -402,8 +402,8 @@ class Mighty_Elementor {
 				}
 				
 				.ma-progress-wrap svg.progress-circle path.bar-bg {
-					stroke: #f00;
-					stroke-width: 4;
+					stroke: '. $barBgColor .';
+					stroke-width: '. $barSize .';
 				}
 			</style>';
 
