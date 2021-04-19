@@ -438,6 +438,11 @@ class MT_ReadingProgressBar {
 				$oldSettings['reading-progress-bar-globally'][$post_id] = self::createOption( $settings );
 				$oldSettings['reading-progress-bar-globally'][$post_id]['post_id'] = get_the_ID();
 				$oldSettings['reading-progress-bar-globally'][$post_id]['display_on'] = $settings['ma_display_on'];
+
+				// Updating old settings if present
+				if ( $oldSettings['reading-progress-bar'][$post_id] ) {
+					$oldSettings['reading-progress-bar'][$post_id] = self::createOption( $settings );
+				}
 			} else {
 				$oldSettings['reading-progress-bar'][$post_id] = self::createOption( $settings );
 
