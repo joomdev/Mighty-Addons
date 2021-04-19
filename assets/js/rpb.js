@@ -11,6 +11,15 @@
 
   }
 
+  // Back to top event listener
+  $( '#ma-btt-rpb' ).on( 'click', function( event ) {
+    event.preventDefault();
+    $( 'html, body' ).animate({
+      scrollTop: 0
+    }, 550 );
+    return false;
+  });
+
   // Updating progress
   function readingProgressBar() {
 
@@ -53,15 +62,6 @@
 
   // Dynamic Progress Bar for Elementor Editor
   $(window).on('elementor/frontend/init', function () {
-
-    // Back to top event listener
-    $( '#ma-btt-rpb' ).on( 'click', function( event ) {
-      event.preventDefault();
-      $( 'html, body' ).animate({
-        scrollTop: 0
-      }, 550 );
-      return false;
-    });
 
     if ( elementorFrontend.isEditMode() ) {
 
