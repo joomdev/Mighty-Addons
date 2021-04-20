@@ -403,18 +403,42 @@ class MT_ReadingProgressBar {
 				]
 			);
 
-            $element->add_control(
-				'ma_hide_on',
+			$element->add_control(
+				'ma_hide_on_desktop',
 				[
-					'label' => __( 'Hide On', 'mighty' ),
-					'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'nothing',
-					'options' => [
-                        'nothing' => __( 'Nothing', 'mighty' ),
-						'desktop' => __( 'Desktop', 'mighty' ),
-						'tablet' => __( 'Tablet', 'mighty' ),
-						'mobile' => __( 'Mobile', 'mighty' ),
+					'label' => __( 'Hide On Desktop', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => __( 'Show', 'mighty' ),
+					'label_off' => __( 'Hide', 'mighty' ),
+					'return_value' => 'yes',
+					'condition' => [
+						'ma_enable_rpb' => 'yes',
 					],
+				]
+			);
+
+			$element->add_control(
+				'ma_hide_on_tablet',
+				[
+					'label' => __( 'Hide On Tablet', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => __( 'Show', 'mighty' ),
+					'label_off' => __( 'Hide', 'mighty' ),
+					'return_value' => 'yes',
+					'condition' => [
+						'ma_enable_rpb' => 'yes',
+					],
+				]
+			);
+
+			$element->add_control(
+				'ma_hide_on_mobile',
+				[
+					'label' => __( 'Hide On Mobile', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => __( 'Show', 'mighty' ),
+					'label_off' => __( 'Hide', 'mighty' ),
+					'return_value' => 'yes',
 					'condition' => [
 						'ma_enable_rpb' => 'yes',
 					],
@@ -471,7 +495,9 @@ class MT_ReadingProgressBar {
 
 		$rpbSetting['select_view'] = $settings['ma_select_view'];
 		$rpbSetting['animation_speed'] = $settings['ma_animation_speed'];
-		$rpbSetting['hide_on'] = $settings['ma_hide_on'];
+		$rpbSetting['hide_on_desktop'] = $settings['ma_hide_on_desktop'];
+		$rpbSetting['hide_on_tablet'] = $settings['ma_hide_on_tablet'];
+		$rpbSetting['hide_on_mobile'] = $settings['ma_hide_on_mobile'];
 
 		if( $settings['ma_select_view'] == 'view1' ) {
 			// view 1

@@ -79,8 +79,14 @@
       });
 
       // On Hide On Change
-      elementor.settings.page.addChangeCallback( 'ma_hide_on', function( value ) {
-        $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).attr( 'data-hide-on', value );  
+      elementor.settings.page.addChangeCallback( 'ma_hide_on_desktop', function( value ) {
+        $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).attr( 'data-hide-on-desktop', value );  
+      });
+      elementor.settings.page.addChangeCallback( 'ma_hide_on_tablet', function( value ) {
+        $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).attr( 'data-hide-on-tablet', value );  
+      });
+      elementor.settings.page.addChangeCallback( 'ma_hide_on_mobile', function( value ) {
+        $( elementorFrontend.elements.$body ).find( '.ma-rpb' ).attr( 'data-hide-on-mobile', value );  
       });
 
       // On Position change
@@ -98,8 +104,11 @@
         } else if( value == 'view2' ) {
 
           let bttIcon = elementor.getPanelView().getCurrentPageView().model.attributes.ma_rpb_icon.value;
-          let hideOn = elementor.getPanelView().getCurrentPageView().model.attributes.ma_hide_on;
-          let bttHtml = '<div data-hide-on="'+ hideOn +'" id="ma-btt-rpb" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"><path class="bar-bg" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <path class="bar" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'+ bttIcon +'"></i></div> </svg></div>';
+          let hideOnDesktop = elementor.getPanelView().getCurrentPageView().model.attributes.ma_hide_on_desktop;
+          let hideOnTablet = elementor.getPanelView().getCurrentPageView().model.attributes.ma_hide_on_tablet;
+          let hideOnMobile = elementor.getPanelView().getCurrentPageView().model.attributes.ma_hide_on_mobile;
+
+          let bttHtml = '<div data-hide-desktop="' + hideOnDesktop + '" data-hide-tablet="' + hideOnTablet + '" data-hide-mobile="' + hideOnMobile + '" id="ma-btt-rpb" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"><path class="bar-bg" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <path class="bar" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'+ bttIcon +'"></i></div> </svg></div>';
 
           $( elementorFrontend.elements.$body ).append( bttHtml );
           

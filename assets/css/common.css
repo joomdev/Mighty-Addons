@@ -315,27 +315,21 @@
 }
 
 /* Hiding on responsive */
-.ma-rpb[data-hide-on='desktop'] {
-    display: none;
-}
-
-@media (max-width: 1024px) {
-    .ma-rpb[data-hide-on='tablet'] {
+@media (min-width: 1025px) {
+    .ma-rpb[data-hide-on-desktop='yes'] {
         display: none;
     }
-    .ma-rpb[data-hide-on='desktop'],
-    .ma-rpb[data-hide-on='mobile'] {
-        display: block;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .ma-rpb[data-hide-on-tablet='yes'] {
+        display: none;
     }
 }
 
 @media (max-width: 767px) {
-    .ma-rpb[data-hide-on='mobile'] {
+    .ma-rpb[data-hide-on-mobile='yes'] {
         display: none;
-    }
-    .ma-rpb[data-hide-on='desktop'],
-    .ma-rpb[data-hide-on='tablet'] {
-        display: block;
     }
 }
 
