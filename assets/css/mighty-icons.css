@@ -26,7 +26,11 @@
 }
 
 .mf-spacer:before {
-	content: "\e926";
+  content: "\e927";
+}
+
+.mf-readingprogressbar:before {
+  content: "\e926";
 }
 
 .mf-sectionslider:before {

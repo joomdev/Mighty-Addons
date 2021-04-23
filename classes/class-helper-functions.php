@@ -325,7 +325,7 @@ class HelperFunctions {
                 'include' => false // File include?
             ],
             'displayconditions' => [
-                'title' => 'MA Display Conditions',
+                'title' => 'Display Conditions',
                 'description' => 'Restrict any section or element to any specific type of audience that meets the specified rules.',
                 'enable' => false,
                 'class' => 'MT_DisplayConditions',
@@ -336,7 +336,7 @@ class HelperFunctions {
                 'include' => true // File Include?
             ],
             'advanceshadow' => [
-                'title' => 'MA Advance Shadow',
+                'title' => 'Advance Shadow',
                 'description' => 'Advance Shadow helps to you add multiple-layered shadow to any element or section.',
                 'enable' => false,
                 'class' => 'MT_AdvanceShadow',
@@ -347,7 +347,7 @@ class HelperFunctions {
                 'include' => true // File Include?
             ],
             'advancegradients' => [
-                'title' => 'MA Advance Gradients',
+                'title' => 'Advance Gradients',
                 'description' => 'Apply Advance Gradients to Elements.',
                 'enable' => false,
                 'class' => 'MT_AdvanceGradients',
@@ -355,6 +355,26 @@ class HelperFunctions {
                 'icon' => 'mf mf-advancegradients',
                 'stub' => 'true',
                 'sidebar' => 'true',
+                'include' => true // File Include?
+            ],
+            'spacer' => [
+                'title' => 'Spacers',
+                'description' => 'Apply quick padding & margin to the elements.',
+                'enable' => false,
+                'class' => 'MT_Spacer',
+                'slug' => 'spacer',
+                'icon' => 'mf mf-spacer',
+                'stub' => 'true',
+                'include' => true // File Include?
+            ],
+            'sectionslider' => [
+                'title' => 'Section Slider',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_SectionSlider',
+                'slug' => 'sectionslider',
+                'icon' => 'mf mf-sectionslider',
+                'stub' => 'true',
                 'include' => true // File Include?
             ],
         ]
