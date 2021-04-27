@@ -5,8 +5,6 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
-use \Elementor\Scheme_Color;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Border;
@@ -768,7 +766,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'name' => 'front_title_typography',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-title',
                 ]
             );
@@ -800,7 +797,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'name' => 'front_description_typography',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-front .mt-flipbox-description',
                 ]
             );
@@ -1255,7 +1251,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'name' => 'back_title_typography',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-title',
                 ]
             );
@@ -1310,7 +1305,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'name' => 'back_description_typography',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-description',
                 ]
             );
@@ -1347,7 +1341,6 @@ class MT_Flipbox extends Widget_Base {
                 [
                     'name' => 'button_typogrpahy',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back .mt-flipbox-button a',
                 ]
             );

@@ -6,7 +6,6 @@ use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use Elementor\Repeater as Repeater;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 
@@ -578,7 +577,6 @@ class MT_Testimonial extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'testimonial_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
 				]
 			);
@@ -625,7 +623,6 @@ class MT_Testimonial extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'author_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-person-name',
 				]
 			);
@@ -683,7 +680,6 @@ class MT_Testimonial extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'author_title_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-person-title',
 				]
 			);

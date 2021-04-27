@@ -4,8 +4,6 @@ namespace MightyAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
-use \Elementor\Scheme_Color;
 use \Elementor\Group_Control_Text_Shadow;
 use Mighty_Addons\Controls\Group_Control_Text_Gradient;
 
@@ -150,7 +148,6 @@ class MT_Gradientheading extends Widget_Base {
                 [
                     'name' => 'gh_heading_typography',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mighty-gradient-heading',
                 ]
             );

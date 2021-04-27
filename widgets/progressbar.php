@@ -5,10 +5,8 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use \Elementor\Repeater;
-use \Elementor\Scheme_Color;
 use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 
@@ -336,7 +334,6 @@ class MT_Progressbar extends Widget_Base {
 				[
                     'name' => 'mighty_title_typography',
                     'label' => __( 'Typography', 'mighty' ),
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-progressbar .progressbar-details *',
 				]
             );

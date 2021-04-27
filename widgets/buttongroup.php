@@ -10,7 +10,6 @@ use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Border;
 use \Elementor\Scheme_Typography;
-use \Elementor\Scheme_Color;
 use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

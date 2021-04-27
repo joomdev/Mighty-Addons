@@ -10,7 +10,6 @@ use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -481,7 +480,6 @@ class MT_ContactForm7 extends Widget_Base {
                         Group_Control_Typography::get_type(),
                         [
                             'name' => 'title_typography',
-                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                             'selector' => '{{WRAPPER}} .mighty-cf7-title',
                         ]
                     );
@@ -512,7 +510,6 @@ class MT_ContactForm7 extends Widget_Base {
                         Group_Control_Typography::get_type(),
                         [
                             'name' => 'description_typography',
-                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                             'selector' => '{{WRAPPER}} .mighty-cf7-description',
                         ]
                     );
@@ -673,7 +670,6 @@ class MT_ContactForm7 extends Widget_Base {
                         Group_Control_Typography::get_type(),
                         [
                             'name' => 'field_focus_typography',
-                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                             'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control:focus',
                         ]
                     );
@@ -745,7 +741,6 @@ class MT_ContactForm7 extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'placeholder_text_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-form-control::placeholder',
                 ]
             );
@@ -777,7 +772,6 @@ class MT_ContactForm7 extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'label_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selectors' => [ 
                         '{{WRAPPER}} .mighty-cf7-wrapper label',
                         '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-list-item-label'
@@ -1149,7 +1143,6 @@ class MT_ContactForm7 extends Widget_Base {
                 [
                     'name' => 'button_typography',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-submit',
                 ]
             );
@@ -1345,7 +1338,6 @@ class MT_ContactForm7 extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'success_msg_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-mail-sent-ok',
                 ]
             );
@@ -1446,7 +1438,6 @@ class MT_ContactForm7 extends Widget_Base {
                         Group_Control_Typography::get_type(),
                         [
                             'name' => 'alert_typography',
-                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                             'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-not-valid-tip',
                         ]
                     );
@@ -1513,7 +1504,6 @@ class MT_ContactForm7 extends Widget_Base {
                         Group_Control_Typography::get_type(),
                         [
                             'name' => 'error_fields_typography',
-                            'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                             'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-form-control-wrap .wpcf7-not-valid',
                         ]
                     );
@@ -1567,7 +1557,6 @@ class MT_ContactForm7 extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'validation_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mighty-cf7-wrapper .wpcf7-validation-errors',
                 ]
             );

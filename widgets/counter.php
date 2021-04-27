@@ -5,8 +5,6 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
-use \Elementor\Scheme_Color;
 use \Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -336,7 +334,6 @@ class MT_Counter extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'counter_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-counter .counter *',
 				]
 			);
@@ -381,7 +378,6 @@ class MT_Counter extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'title_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-counter .counter-title',
 				]
 			);

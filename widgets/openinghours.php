@@ -9,8 +9,6 @@ use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Border;
-use \Elementor\Scheme_Typography;
-use \Elementor\Scheme_Color;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -583,7 +581,6 @@ class MT_Openinghours extends Widget_Base {
                 [
                     'name' => 'day_typography',
                     'label' => __( 'Day Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-day',
                 ]
             );
@@ -605,7 +602,6 @@ class MT_Openinghours extends Widget_Base {
                 [
                     'name' => 'time_typography',
                     'label' => __( 'Time Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-time',
                 ]
             );
@@ -693,7 +689,6 @@ class MT_Openinghours extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'oh_header_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .ma-oh-header',
 				]
             );
@@ -775,7 +770,6 @@ class MT_Openinghours extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'oh_footer_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .ma-oh-footer',
                 ]
             );

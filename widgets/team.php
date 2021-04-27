@@ -5,7 +5,6 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use Elementor\Repeater as Repeater;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
@@ -511,7 +510,6 @@ class MT_Team extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'team_name_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-team .person-name',
 				]
 			);
@@ -568,7 +566,6 @@ class MT_Team extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'team_designation_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-team .person-designation',
 				]
 			);
@@ -628,7 +625,6 @@ class MT_Team extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'team_about_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .mighty-team .person-about',
 				]
 			);

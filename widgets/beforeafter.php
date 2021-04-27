@@ -6,7 +6,6 @@ use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Scheme_Typography;
-use \Elementor\Scheme_Color;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Control_Media;
 
