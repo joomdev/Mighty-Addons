@@ -9,7 +9,6 @@ use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Border;
-use \Elementor\Scheme_Typography;
 use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -322,7 +321,6 @@ class MT_Buttongroup extends Widget_Base {
                     Group_Control_Typography::get_type(),
                     [
                         'name' => 'buttongroup_typography',
-                        'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                         'selector' => '{{WRAPPER}} .mighty-buttongroup {{CURRENT_ITEM}} a',
                     ]
                 );

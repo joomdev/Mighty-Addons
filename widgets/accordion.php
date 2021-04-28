@@ -8,7 +8,6 @@ use \Elementor\Utils as Utils;
 use Elementor\Repeater as Repeater;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Border;
-use \Elementor\Scheme_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -251,7 +250,6 @@ class MT_Accordion extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'title_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .accordion .mt-accordion-title',
                 ]
             );
@@ -621,7 +619,6 @@ class MT_Accordion extends Widget_Base {
                 [
                     'name' => 'content_typography',
                     'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel .panel',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_3,
                 ]
             );
 

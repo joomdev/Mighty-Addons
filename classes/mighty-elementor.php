@@ -408,7 +408,7 @@ class Mighty_Elementor {
 				}
 			</style>';
 
-			$html = $rpbCss . '<div id="ma-btt-rpb" data-hide-desktop="' . $rpbHideOnDesktop . '" data-hide-tablet="' . $rpbHideOnTablet . '" data-hide-mobile="' . $rpbHideOnMobile . '" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"> <path class="bar-bg" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <path class="bar" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'. $rpbIcon .'"></i></div> </svg></div>';
+			$html = $rpbCss . '<div id="ma-btt-rpb" data-hide-on-desktop="' . $rpbHideOnDesktop . '" data-hide-on-tablet="' . $rpbHideOnTablet . '" data-hide-on-mobile="' . $rpbHideOnMobile . '" class="ma-rpb ma-progress-wrap"><svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102"> <path class="bar-bg" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <path class="bar" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> <div class="ma-rpb-icon"><i class="'. $rpbIcon .'"></i></div> </svg></div>';
 
 		} else {
 			$rpbAnimationSpeed = 'transition: width ' . ( $options['animation_speed'] ? $options['animation_speed']['size'] : '10') . 'ms ease; ';
@@ -417,7 +417,7 @@ class Mighty_Elementor {
 			$rpbBgColor = 'background-color: ' . $options['background_color'] . '; ';
 			$rpbFillColor = 'background-color: ' . $options['fill_color'] . '; ';
 			
-			$html = '<div id="ma-rpb" data-position="' . $rpbPosition . '" data-hide-desktop="' . $rpbHideOnDesktop . '" data-hide-tablet="' . $rpbHideOnTablet . '" data-hide-mobile="' . $rpbHideOnMobile . '" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . $rpbHeight . '"><div class="ma-rpb-progress-bar" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
+			$html = '<div id="ma-rpb" data-position="' . $rpbPosition . '" data-hide-on-desktop="' . $rpbHideOnDesktop . '" data-hide-on-tablet="' . $rpbHideOnTablet . '" data-hide-on-mobile="' . $rpbHideOnMobile . '" class="ma-rpb ma-rpb-header"><div class="ma-rpb-progress-container" style="' . $rpbBgColor . $rpbHeight . '"><div class="ma-rpb-progress-bar" style="' . $rpbHeight . $rpbFillColor . $rpbAnimationSpeed .'"></div></div></div>';
 		}
 
 		return $html;

@@ -5,7 +5,6 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Control_Media;
 
@@ -345,7 +344,6 @@ class MT_Beforeafter extends Widget_Base {
                 [
                     'name' => 'ba_label_typography',
                     'label' => __( 'Typography', 'mighty' ),
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                     'selectors' => [
                         '{{WRAPPER}} .twentytwenty-wrapper .mighty-before-after .twentytwenty-overlay div:before',
                         '{{WRAPPER}} .twentytwenty-wrapper .mighty-before-after .inverted-overlay div:before'
