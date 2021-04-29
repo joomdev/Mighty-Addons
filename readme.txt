@@ -6,7 +6,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher  
 Tested up to: 5.7  
 Requires PHP: 5.6  
-Stable Tag: 1.4.9  
+Stable Tag: 1.5.0  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
@@ -84,6 +84,8 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 18. **[MA Wrapper Link](https://mightythemes.com/mighty-addons/wrapper-link/)** - Transform any element into a link by entering any normal URL or Hashed URL with smooth scroll.
 19. **[MA Link Effects](https://mightythemes.com/mighty-addons/link-effects/)** - Link Effects for applying cool effects on links.
 20. **[MA Spacers](https://mightythemes.com/mighty-addons/spacer/)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
+21. **[Section Slider](https://mightythemes.com/mighty-addons/section-slider)** - Create sliders out of your Elementor Sections in just one click.
+22. **[Reading Progress Bar](https://mightythemes.com/mighty-addons/reading-progress-bar)** - Show reading progress bar to your users by selecting from two views which also contains Back To Top feature.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
@@ -117,6 +119,8 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 9. **[Display Conditions - (Pro)](https://mightythemes.com/mighty-addons/display-conditions)** - Display your content to only those users who are satisfying the display rules and hide from others.
 10. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
 11. **[MA Spacers (Pro)](https://mightythemes.com/mighty-addons/spacer/)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
+12. **[Section Slider (Pro)](https://mightythemes.com/mighty-addons/section-slider)** - Create sliders out of your Elementor Sections in just one click.
+13. **[Reading Progress Bar](https://mightythemes.com/mighty-addons/reading-progress-bar)** - Show reading progress bar to your users by selecting from two views which also contains Back To Top feature.
 
 We are working on more Elementor Widgets which are frequently updated. Still, you have any specific widget or feature request, feel free to **[get in touch](https://mightythemes.com/contact/)**.
 
@@ -182,6 +186,13 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.5.0
+* Added: Reading Progress Bar Extension with two views
+* Added: Section Slider to create sliders out of Elementor Sections [PRO]
+* Added: Minified stylesheets for performance improvements
+* Fixed: Elementor Compatibility Fixes
+* Fixed: Link Effects styling issues
 
 ### 1.4.9
 * Added: Link Effects for applying cool effects on links
