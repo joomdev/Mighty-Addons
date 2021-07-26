@@ -112,6 +112,14 @@ class HelperFunctions {
                 'class' => 'MT_LinkEffects',
                 'slug' => 'linkeffects',
                 'icon' => 'mf mf-linkeffects'
+            ],
+            'textmarquee' => [
+                'title' => 'Text Marquee',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_textmarquee',
+                'slug' => 'textmarquee',
+                'icon' => 'mf mf-textmarquee'
             ]
         ],
         "extensions" => [
