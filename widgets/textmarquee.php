@@ -87,7 +87,10 @@ class MT_textmarquee extends Widget_Base {
                 [
                     'label' => __( 'Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => 'grey'
+                    'default' => 'grey',
+                    'selectors' => [
+                        '{{WRAPPER}} .marquee' => 'color: {{VALUE}};',
+                    ]
                 ]
             );
 
@@ -96,7 +99,7 @@ class MT_textmarquee extends Widget_Base {
 				[
 					'name' => 'text_marquee_typography',
 					'label' => __( 'Typography', 'mighty' ),
-					// 'selector' => '{{WRAPPER}} .mt-insta-gallery .btn',
+					'selector' => '{{WRAPPER}} .marquee',
 				]
             );
 
@@ -117,6 +120,9 @@ class MT_textmarquee extends Widget_Base {
                     'condition' => [
                         'text_stroke_effect' => 'yes'
                     ],
+                    'selectors' => [
+                        '{{WRAPPER}} .marquee' => 'padding-right: {{SIZE}}{{UNIT}};',
+                    ]
                 ]
             );
 
@@ -126,7 +132,10 @@ class MT_textmarquee extends Widget_Base {
                     'label' => __( 'Text Stroke Width', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::DIMENSIONS,
                     'condition' => [
-                        'text_stroke_effect' => 'yes'
+                        'text_stroke_effect' => 'yes',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .marquee' => 'padding-right: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -144,12 +153,12 @@ class MT_textmarquee extends Widget_Base {
                             'step' => 1,
                         ],
                     ],
-                    // 'default' => [
-                    //     'unit' => '%',
-                    //     'size' => 2,
-                    // ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 20,
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .marquee' => 'padding-right: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -161,13 +170,21 @@ class MT_textmarquee extends Widget_Base {
 	protected function render() {
         
         $settings = $this->get_settings_for_display();
+
         $this->add_render_attribute( 'mighty-text-marquee', 'class', 'mighty-marquee' );
-        $this->add_render_attribute( 'text-marquee', 'class', 'marquee' );
+        $this->add_render_attribute( 'text-marquee', 'class', 'marquee__inner' );
 
         ?>
-        <?php echo '<div '.$this->get_render_attribute_string('mighty-text-marquee').'  id="mighty-chart-' . $this->get_id() . '" >' ?>
 
-        <marquee <?php echo $this->get_render_attribute_string('text-marquee'); ?> ><?php echo $settings['text_marquee_item']; ?></marquee>
+        <?php echo '<div '.$this->get_render_attribute_string('mighty-text-marquee').'  id="mighty-text-marquee-' . $this->get_id() . '" >' ?>
+
+            <div class="marquee">
+                <?php foreach ($settings['text_marquee_item'] as $key => $value) { ?>
+                    
+                        <span <?php echo $this->get_render_attribute_string('text-marquee');?> ><?php echo $value['text_marquee_text']; ?></span>
+
+                <?php } ?>
+            </div>
 
         <?php echo '</div>'; ?>
 
