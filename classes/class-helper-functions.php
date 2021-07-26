@@ -120,6 +120,14 @@ class HelperFunctions {
                 'class' => 'MT_piedonutchart',
                 'slug' => 'piedonutchart',
                 'icon' => 'mf mf-piedonutchart'
+            ],
+            'textmarquee' => [
+                'title' => 'Text Marquee',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_textmarquee',
+                'slug' => 'textmarquee',
+                'icon' => 'mf mf-textmarquee'
             ]
         ],
         "extensions" => [
