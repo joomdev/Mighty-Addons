@@ -13,7 +13,8 @@ class MT_textmarquee extends Widget_Base {
 
     public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
-		// wp_register_script( 'mightypro-chart', MIGHTY_ADDONS_PRO_PLG_URL . 'assets/js/chart.js', [ 'jquery' ], MIGHTY_ADDONS_PRO_VERSION, true );
+        
+        wp_register_style( 'mt-text-marquee', MIGHTY_ADDONS_PLG_URL . 'assets/css/text-marquee.css', false, MIGHTY_ADDONS_VERSION );
 	}
 
 	public function get_name() {
@@ -32,11 +33,8 @@ class MT_textmarquee extends Widget_Base {
         return [ 'mighty-addons' ];
     }
 
-    public function get_script_depends() {
-        return [
-            // 'mightypro-main',
-            // 'mightypro-chart'
-        ];
+    public function get_style_depends() {
+		return [ 'mt-text-marquee' ];
     }
     
 	public function get_keywords() {
@@ -67,6 +65,11 @@ class MT_textmarquee extends Widget_Base {
                 [
                     'label' => __( 'Items', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::REPEATER,
+                    'default' => [
+                        [
+                            'text_marquee_text' => __( 'EXAMPLE', 'mighty' ),
+                        ],
+                    ],                    
                     'fields' => $repeater->get_controls(),
                     'title_field' => ' Items ',
                 ]
@@ -121,7 +124,7 @@ class MT_textmarquee extends Widget_Base {
                         'text_stroke_effect' => 'yes'
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .marquee' => 'padding-right: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .marquee' => '-webkit-text-stroke-color: {{VALUE}}; color: transparent;',
                     ]
                 ]
             );
@@ -130,12 +133,13 @@ class MT_textmarquee extends Widget_Base {
                 'text_stroke_width',
                 [
                     'label' => __( 'Text Stroke Width', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'type' => \Elementor\Controls_Manager::NUMBER,
                     'condition' => [
                         'text_stroke_effect' => 'yes',
                     ],
+                    'default' => 1,
                     'selectors' => [
-                        '{{WRAPPER}} .marquee' => 'padding-right: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .marquee' => '-webkit-text-stroke-width: {{VALUE}}px;',
                     ]
                 ]
             );
@@ -148,17 +152,17 @@ class MT_textmarquee extends Widget_Base {
                     'size_units' => [ 'Px', '%' , 'EM' ],
                     'range' => [
                         '%' => [
-                            'min' => 1,
+                            'min' => 25,
                             'max' => 100,
                             'step' => 1,
                         ],
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 20,
+                        'size' => 25,
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .marquee' => 'padding-right: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-marquee .marquee .marquee_inner' => 'padding-right: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -171,23 +175,22 @@ class MT_textmarquee extends Widget_Base {
         
         $settings = $this->get_settings_for_display();
 
-        $this->add_render_attribute( 'mighty-text-marquee', 'class', 'mighty-marquee' );
-        $this->add_render_attribute( 'text-marquee', 'class', 'marquee__inner' );
-
         ?>
 
-        <?php echo '<div '.$this->get_render_attribute_string('mighty-text-marquee').'  id="mighty-text-marquee-' . $this->get_id() . '" >' ?>
+        <?php echo '<div class="mighty-marquee"  id="mighty-text-marquee-' . $this->get_id() . '" >' ?>
 
             <div class="marquee">
-                <?php foreach ($settings['text_marquee_item'] as $key => $value) { ?>
+
+                <?php  foreach ($settings['text_marquee_item'] as $key => $value) { ?>
                     
-                        <span <?php echo $this->get_render_attribute_string('text-marquee');?> ><?php echo $value['text_marquee_text']; ?></span>
+                    <span class="marquee_inner" ><?php echo $value['text_marquee_text']; ?></span>
 
                 <?php } ?>
+
             </div>
 
         <?php echo '</div>'; ?>
-
+       
     <?php
 
 	}
