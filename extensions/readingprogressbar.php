@@ -451,41 +451,39 @@ class MT_ReadingProgressBar {
 
 	public function save_global_values( $post_id, $editor_data ) {
 
-		$document = \Elementor\Plugin::$instance->documents->get($post_id, false);
+		$document = \Elementor\Plugin::$instance->documents->get( $post_id, false );
 		$settings = $document->get_settings();
-		$oldSettings = get_option( 'mighty_addons_integration' );
+		$integrationOptions = get_option( 'mighty_addons_integration' );
 
 		if ( $settings['ma_enable_rpb'] == 'yes' ) {
 
 			// Global Settings	
 			if ( $settings['ma_enable_rpb_globally'] == 'yes' ) {
-				$oldSettings['reading-progress-bar-globally'][$post_id] = self::createOption( $settings );
-				$oldSettings['reading-progress-bar-globally'][$post_id]['post_id'] = get_the_ID();
-				$oldSettings['reading-progress-bar-globally'][$post_id]['display_on'] = $settings['ma_display_on'];
+				$integrationOptions['reading-progress-bar-globally'][$post_id] = self::createOption( $settings );
+				$integrationOptions['reading-progress-bar-globally'][$post_id]['post_id'] = get_the_ID();
+				$integrationOptions['reading-progress-bar-globally'][$post_id]['display_on'] = $settings['ma_display_on'];
 
 				// Updating old settings if present
-				if ( $oldSettings['reading-progress-bar'][$post_id] ) {
-					$oldSettings['reading-progress-bar'][$post_id] = self::createOption( $settings );
+				if ( $integrationOptions['reading-progress-bar'][$post_id] ) {
+					$integrationOptions['reading-progress-bar'][$post_id] = self::createOption( $settings );
 				}
 			} else {
-				$oldSettings['reading-progress-bar'][$post_id] = self::createOption( $settings );
+				$integrationOptions['reading-progress-bar'][$post_id] = self::createOption( $settings );
 
 				// Removing global values if disabled
-				if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) ) {
-					unset( $oldSettings['reading-progress-bar-globally'] );
+				if( isset( get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) && array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar-globally'] ) ) {
+					unset( $integrationOptions['reading-progress-bar-globally'] );
 				}
 			}
 
 		} else {
-
-			if( array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
-				// removing the disabled RPB
-				unset( $oldSettings['reading-progress-bar'][$post_id] );
-			}
-
+				if( isset( get_option('mighty_addons_integration')['reading-progress-bar'] ) && array_key_exists( $post_id, get_option('mighty_addons_integration')['reading-progress-bar'] ) ) {
+					// removing the disabled RPB
+					unset( $integrationOptions['reading-progress-bar'][$post_id] );
+				}
 		}
 		
-		update_option( 'mighty_addons_integration', $oldSettings );
+		update_option( 'mighty_addons_integration', $integrationOptions );
 
 	}
 
