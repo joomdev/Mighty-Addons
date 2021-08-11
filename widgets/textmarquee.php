@@ -149,16 +149,16 @@ class MT_textmarquee extends Widget_Base {
                 [
                     'label' => __( 'Space Between Items', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
-                        '%' => [
+                        'px' => [
                             'min' => 5,
-                            'max' => 100,
+                            'max' => 1000,
                             'step' => 1,
                         ],
                     ],
                     'default' => [
-                        'unit' => '%',
+                        'unit' => 'px',
                         'size' => 5,
                     ],
                     'selectors' => [
