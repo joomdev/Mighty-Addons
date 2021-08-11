@@ -172,26 +172,23 @@ class MT_textmarquee extends Widget_Base {
     }
     
 	protected function render() {
-        
         $settings = $this->get_settings_for_display();
-
         ?>
-
         <?php echo '<div class="mighty-marquee"  id="mighty-text-marquee-' . $this->get_id() . '" >' ?>
 
             <div class="marquee">
-
-                <?php  foreach ( $settings['text_marquee_item'] as $key => $value ) { ?>
-                    
-                    <p class="marquee_inner" ><?php echo $value['text_marquee_text']; ?></p>
-
-                <?php } ?>
-
+                <div class="marquee-items">
+                    <?php  foreach ( $settings['text_marquee_item'] as $key => $value ) { ?>
+                        <p class="marquee_inner" ><?php echo $value['text_marquee_text']; ?></p>
+                    <?php } ?>
+                </div>
+                <div class="marquee-items">
+                    <?php  foreach ( $settings['text_marquee_item'] as $key => $value ) { ?>
+                        <p class="marquee_inner" ><?php echo $value['text_marquee_text']; ?></p>
+                    <?php } ?>
+                </div>
             </div>
-
         <?php echo '</div>'; ?>
-       
     <?php
-
 	}
 }

@@ -6,20 +6,20 @@
     font-size: 40px;
 }
 
-.mighty-marquee > div {
-    display: table-row;
+.mighty-marquee .marquee {
+    display: flex;
     white-space: nowrap;
-    padding-left: 100%; 
+}
+
+.mighty-marquee .marquee .marquee-items{
     animation: marquee 20s linear infinite; 
 }
   
-.mighty-marquee > div p {
-    /* width: 450px; 
-    padding-left: 450px;  */
-    display: table-cell; 
+.mighty-marquee .marquee p {
+    display: inline-block; 
 }
   
 @keyframes marquee {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
