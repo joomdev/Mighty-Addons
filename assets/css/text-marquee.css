@@ -11,7 +11,7 @@
     white-space: nowrap;
 }
 
-.mighty-marquee .marquee .marquee-items{
+.mighty-marquee .marquee .marquee-items {
     animation: marquee 20s linear infinite; 
 }
   
