@@ -152,14 +152,14 @@ class MT_textmarquee extends Widget_Base {
                     'size_units' => [ 'px' ],
                     'range' => [
                         'px' => [
-                            'min' => 5,
+                            'min' => 0,
                             'max' => 1000,
                             'step' => 1,
                         ],
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 5,
+                        'size' => 40,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-marquee .marquee .marquee_inner' => 'padding-right: {{SIZE}}{{UNIT}};',
