@@ -55,7 +55,7 @@ class MT_textmarquee extends Widget_Base {
             $repeater->add_control(
                 'text_marquee_text', [
                     'label' => __( 'Text', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::TEXT,
+                    'type' => \Elementor\Controls_Manager::TEXTAREA,
                     'label_block' => true,
                 ]
             );
@@ -93,7 +93,7 @@ class MT_textmarquee extends Widget_Base {
                     'default' => 'grey',
                     'selectors' => [
                         '{{WRAPPER}} .marquee' => 'color: {{VALUE}};',
-                    ]
+                    ],
                 ]
             );
 
@@ -105,12 +105,12 @@ class MT_textmarquee extends Widget_Base {
 					'selector' => '{{WRAPPER}} .marquee',
 				]
             );
-
+            
             $this->add_control(
                 'text_stroke_effect', [
                     'label' => __( 'Enable Text Stroke Effect', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'default' => 'yes',
+                    'default' => 'no',
                 ]
             );
 
@@ -144,22 +144,22 @@ class MT_textmarquee extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'space_between_items',
                 [
                     'label' => __( 'Space Between Items', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'Px', '%' , 'EM' ],
+                    'size_units' => [ '%' ],
                     'range' => [
                         '%' => [
-                            'min' => 25,
+                            'min' => 5,
                             'max' => 100,
                             'step' => 1,
                         ],
                     ],
                     'default' => [
-                        'unit' => 'px',
-                        'size' => 25,
+                        'unit' => '%',
+                        'size' => 5,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-marquee .marquee .marquee_inner' => 'padding-right: {{SIZE}}{{UNIT}};',
@@ -181,9 +181,9 @@ class MT_textmarquee extends Widget_Base {
 
             <div class="marquee">
 
-                <?php  foreach ($settings['text_marquee_item'] as $key => $value) { ?>
+                <?php  foreach ( $settings['text_marquee_item'] as $key => $value ) { ?>
                     
-                    <span class="marquee_inner" ><?php echo $value['text_marquee_text']; ?></span>
+                    <p class="marquee_inner" ><?php echo $value['text_marquee_text']; ?></p>
 
                 <?php } ?>
 
