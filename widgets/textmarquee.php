@@ -166,6 +166,29 @@ class MT_textmarquee extends Widget_Base {
                     ]
                 ]
             );
+            
+            $this->add_responsive_control(
+                'animation_speed',
+                [
+                    'label' => __( 'Speed', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 20,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-marquee .marquee .marquee-items' => 'animation-duration: {{SIZE}}s;',
+                    ]
+                ]
+            );
 
         $this->end_controls_section();
 
