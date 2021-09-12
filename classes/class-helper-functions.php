@@ -112,6 +112,14 @@ class HelperFunctions {
                 'class' => 'MT_LinkEffects',
                 'slug' => 'linkeffects',
                 'icon' => 'mf mf-linkeffects'
+            ],
+            'piedoughnutchart' => [
+                'title' => 'Doughnut and Pie Chart ',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_piedoughnutchart',
+                'slug' => 'piedoughnutchart',
+                'icon' => 'mf mf-piedoughnutchart'
             ]
         ],
         "extensions" => [
