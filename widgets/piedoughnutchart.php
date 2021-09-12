@@ -54,16 +54,9 @@ class MT_piedoughnutchart extends Widget_Base {
 			]
 		);
 
-        $this->end_controls_section();
-        // Datasect section
-        $this->start_controls_section(
-			'section_cg_dataset',
-			[
-				'label' => __( 'Values', 'mighty' ),
-			]
-		);
+            $repeater = new \Elementor\Repeater();
 
-            $this->add_control(
+            $repeater->add_control(
                 'data_label',
                 [
                     'label' => __('Data Label', 'mighty'),
@@ -71,8 +64,6 @@ class MT_piedoughnutchart extends Widget_Base {
                     // 'default' => __('2019'),
                 ]
             );
-
-            $repeater = new \Elementor\Repeater();
 
             $repeater->add_control(
                 'data_value', [
@@ -83,7 +74,7 @@ class MT_piedoughnutchart extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $repeater->add_control(
                 'background_image',
                 [
                     'label' => __( 'Background Image', 'mighty' ),
@@ -121,15 +112,6 @@ class MT_piedoughnutchart extends Widget_Base {
                 'border_hover_color', [
                     'label' => __( 'Border Hover Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                ]
-            );
-
-            $repeater->add_control(
-                'enable_linear_mode', [
-                    'label' => __( 'Enable Linear Mode', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'deafult' => 'no',
-                    'description' => 'Only for line graphs',
                 ]
             );
 
@@ -348,10 +330,19 @@ class MT_piedoughnutchart extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
-                'title_color',
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
                 [
-                    'label' => __( 'Title Color', 'mighty' ),
+                    'name' => 'title_typography',
+                    'label' => __('Title Typography', 'mighty'),
+                    'selector' => '{{WRAPPER}} .mt-woo-product-title a',
+                ]
+            );
+
+            $this->add_control(
+                'background_color',
+                [
+                    'label' => __( 'Background Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
                     'default' => 'grey'
                 ]
@@ -360,9 +351,49 @@ class MT_piedoughnutchart extends Widget_Base {
             $this->add_group_control(
                 Group_Control_Typography::get_type(),
                 [
-                    'name' => 'title_typography',
-                    'label' => __('Title Typography', 'mighty'),
+                    'name' => 'description_typography',
+                    'label' => __('Description Typography', 'mighty'),
                     'selector' => '{{WRAPPER}} .mt-woo-product-title a',
+                ]
+            );
+
+            $this->add_control(
+                'space_between_chart_content',
+                [
+                    'label' => __( 'Space Between Chart & Content', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 0,
+                            'max' => 1,
+                            'step' => 0.05,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => '%',
+                        'size' => 0.9,
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'space_between_title_description',
+                [
+                    'label' => __( 'Space Between Title & Description', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 0,
+                            'max' => 1,
+                            'step' => 0.05,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => '%',
+                        'size' => 0.9,
+                    ],
                 ]
             );
 
@@ -549,25 +580,26 @@ class MT_piedoughnutchart extends Widget_Base {
         
         foreach ($settings['data_list'] as $key => $value) {
 
-            $tension = ($value['enable_linear_mode'] == 'yes') ? 0 : 0.5;
             $data = array(
 
                 'label' => $value['data_label'],
-                'data' => explode(',', $value['data_value'] ),
+                'data' => $value['data_value'],
                 'borderColor' => $value['border_color'],
                 'hoverBorderColor' => $value['border_hover_color'],
-                'fill'=>$value['filling_modes'],
+                // 'fill'=>$value['filling_modes'],
                 'backgroundColor' => $value['background_color'],
                 'hoverBackgroundColor' => $value['background_hover_color'],
-                'borderWidth'=> $settings['graph_border_width'],
-                'hoverBorderWidth'=> $settings['bar_border_hover_width'],
-                'barPercentage' => ( isset($settings['bar_size']['size']) ) ? $settings['bar_size']['size'] : '' ,
-                'categoryPercentage' => ( isset($settings['category_size']['size']) ) ? $settings['category_size']['size'] : ''
+                // 'borderWidth'=> $settings['graph_border_width'],
+                // 'hoverBorderWidth'=> $settings['bar_border_hover_width'],
+                // 'barPercentage' => ( isset($settings['bar_size']['size']) ) ? $settings['bar_size']['size'] : '' ,
+                // 'categoryPercentage' => ( isset($settings['category_size']['size']) ) ? $settings['category_size']['size'] : ''
                 
             );
 
             array_push($data_values,$data);
         }
+
+        print_r($data_values);
 
 
         if( $settings['graph_alignment'] == 'left' ){
