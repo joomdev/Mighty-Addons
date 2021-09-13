@@ -1,1 +1,42 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).Chart=e()}(this,(function(){"use strict";const t="undefined"==typeof window?function(t){return t()}:window.requestAnimationFrame;function e(e,i,n){const o=n||(t=>Array.prototype.slice.call(t));let s=!1,a=[];return function(...n){a=o(n),s||(s=!0,t.call(window,(()=>{s=!1,e.apply(i,a)})))}}function i(t,e){let i;return function(){return e?(clearTimeout(i),i=setTimeout(t,e)):t(),e}}const n=t=>"start"===t?"left":"end"===t?"right":"center",o=(t,e,i)=>"start"===t?e:"end"===t?i:(e+i)/2,s=(t,e,i,n)=>t===(n?"left":"right")?i:"center"===t?(e+i)/2:e;var a=new class{constructor(){this._request=null,this._charts=new Map,this._running=!1,this._lastDate=void 0}_notify(t,e,i,n){const o=e.listeners[n],s=e.duration;o.forEach((n=>n({chart:t,initial:e.initial,numSteps:s,currentStep:Math.min(i-e.start,s)})))}_refresh(){const e=this;e._request||(e._running=!0,e._request=t.call(window,(()=>{e._update(),e._request=null,e._running&&e._refresh()})))}_update(t=Date.now()){const e=this;let i=0;e._charts.forEach(((n,o)=>{if(!n.running||!n.items.length)return;const s=n.items;let a,r=s.length-1,l=!1;for(;r>=0;--r)a=s[r],a._active?(a._total>n.duration&&(n.duration=a._total),a.tick(t),l=!0):(s[r]=s[s.length-1],s.pop());l&&(o.draw(),e._notify(o,n,t,"progress")),s.length||(n.running=!1,e._notify(o,n,t,"complete"),n.initial=!1),i+=s.length})),e._lastDate=t,0===i&&(e._running=!1)}_getAnims(t){const e=this._charts;let i=e.get(t);return i||(i={running:!1,initial:!0,items:[],listeners:{complete:[],progress:[]}},e.set(t,i)),i}listen(t,e,i){this._getAnims(t).listeners[e].push(i)}add(t,e){e&&e.length&&this._getAnims(t).items.push(...e)}has(t){return this._getAnims(t).items.length>0}start(t){const e=this._charts.get(t);e&&(e.running=!0,e.start=Date.now(),e.duration=e.items.reduce(((t,e)=>Math.max(t,e._duration)),0),this._refresh())}running(t){if(!this._running)return!1;const e=this._charts.get(t);return!!(e&&e.running&&e.items.length)}stop(t){const e=this._charts.get(t);if(!e||!e.items.length)return;const i=e.items;let n=i.length-1;for(;n>=0;--n)i[n].cancel();e.items=[],this._notify(t,e,Date.now(),"complete")}remove(t){return this._charts.delete(t)}};
+(function ($) {
+    // console.log($scope);
+        var WidgetPieDoughnutChartHandler = function ($scope, $) {
+    
+            var chart = $scope.find('canvas');        
+            let chart_labels = chart.attr("data-label");
+            let chart_values = chart.attr("data-values");
+            let chart_backgroundColor = chart.attr("data-backgroundColor");
+            console.log(chart_backgroundColor);
+            let chart_type = chart.attr("data-type");
+            let legend_style = chart.attr("data-legend_style");
+            let legend_position = chart.attr("data-legend_position");
+            let legend_alignment = chart.attr("data-legend_alignment");
+            let legend_bar_width = chart.attr("data-legend_bar_width");
+            let legend_bar_margin = chart.attr("data-legend_bar_margin");
+            let legend_label_color = chart.attr("data-legend_label_color");
+            let legend_bar_height = chart.attr("data-legend_bar_height");
+            let legend_label_font = chart.attr("data-legend_label_font");
+            let legend_label_font_size = chart.attr("data-legend_label_font_size");
+            let step_value = chart.attr("data-step_value");
+            let max_value = chart.attr("data-max_value");
+            let min_value = chart.attr("data-min_value");
+            var legend_display = (legend_style == 'yes') ? true : false;
+            Chart.defaults.font.size = 16;
+            
+            var myChart = new Chart(chart, {
+                type: 'pie',
+                data: {
+                  labels: chart_labels,
+                  datasets: [{
+                    backgroundColor: chart_backgroundColor,
+                    data: chart_values
+                  }]
+                }
+              });
+        };
+    
+        // Make sure you run this code under Elementor.
+        $(window).on('elementor/frontend/init', function () {
+            elementorFrontend.hooks.addAction('frontend/element_ready/mt-piedoughnutchart.default', WidgetPieDoughnutChartHandler);
+        });
+    })(jQuery);

@@ -15,7 +15,8 @@ class MT_piedoughnutchart extends Widget_Base {
 
     public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
-		wp_register_script( 'mightypro-piedoughnutchart', MIGHTY_ADDONS_PLG_URL . 'assets/js/piechart.js', [ 'jquery' ], MIGHTY_ADDONS_PRO_VERSION, true );
+		wp_register_script( 'mt-chart', MIGHTY_ADDONS_PLG_URL . 'assets/js/chart.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+		wp_register_script( 'mt-piedoughnutchart', MIGHTY_ADDONS_PLG_URL . 'assets/js/piechart.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION, true );
 	}
 
 	public function get_name() {
@@ -36,8 +37,8 @@ class MT_piedoughnutchart extends Widget_Base {
 
     public function get_script_depends() {
         return [
-            'mighty-main',
-            'mighty-chart'
+            'mt-chart',
+            'mt-piedoughnutchart'
         ];
     }
     
@@ -45,7 +46,7 @@ class MT_piedoughnutchart extends Widget_Base {
 		return [ 'mighty', 'mt', 'chart', 'graph', 'product' ];
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
         // basic section
 		$this->start_controls_section(
 			'section_mpdc_basic',
@@ -573,65 +574,64 @@ class MT_piedoughnutchart extends Widget_Base {
     }
     
 	protected function render() {
+        echo '<pre>';
+        // print_r(get_option('active_plugins'));
         
         $settings = $this->get_settings_for_display();
-
         $data_values = [];
+        $label = [];
+        $values = [];
+        $backgroundColor = [];
+        $borderColor = [];
+        $hoverBorderColor = [];
+        $hoverBackgroundColor = [];
         
         foreach ($settings['data_list'] as $key => $value) {
 
-            $data = array(
+            array_push($label, $value['data_label']);
+            array_push($values, $value['data_value']);
+            array_push($borderColor, $value['border_color']);
+            array_push($hoverBorderColor, $value['border_hover_color']);
+            array_push($backgroundColor, $value['background_color']);
+            array_push($hoverBackgroundColor, $value['background_hover_color']);
 
-                'label' => $value['data_label'],
-                'data' => $value['data_value'],
-                'borderColor' => $value['border_color'],
-                'hoverBorderColor' => $value['border_hover_color'],
-                // 'fill'=>$value['filling_modes'],
-                'backgroundColor' => $value['background_color'],
-                'hoverBackgroundColor' => $value['background_hover_color'],
-                // 'borderWidth'=> $settings['graph_border_width'],
-                // 'hoverBorderWidth'=> $settings['bar_border_hover_width'],
-                // 'barPercentage' => ( isset($settings['bar_size']['size']) ) ? $settings['bar_size']['size'] : '' ,
-                // 'categoryPercentage' => ( isset($settings['category_size']['size']) ) ? $settings['category_size']['size'] : ''
-                
-            );
-
-            array_push($data_values,$data);
         }
 
-        print_r($data_values);
+        // if( $settings['graph_alignment'] == 'left' ){
 
+        //     $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_left' );
 
-        if( $settings['graph_alignment'] == 'left' ){
-
-            $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_left' );
-
-            } elseif( $settings['graph_alignment'] == 'right' ){
+        //     } elseif( $settings['graph_alignment'] == 'right' ){
                 
-            $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_right' );
+        //     $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_right' );
             
-        } else {
+        // } else {
 
-            $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_center' );
+        //     $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_center' );
             
-        }
+        // }
         $this->add_render_attribute( 'mighty-chart-position', 'class', 'mighty-chart' );
 
-        $this->add_render_attribute( 'mighty-chart', 'data-label', $settings['data_label'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-type', $settings['graph_type'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-label', json_encode($label) );
+        $this->add_render_attribute( 'mighty-chart', 'data-values', json_encode($values) );
+        $this->add_render_attribute( 'mighty-chart', 'data-borderColor', json_encode($borderColor) );
+        $this->add_render_attribute( 'mighty-chart', 'data-hoverBorderColor', json_encode($hoverBorderColor) );
+        $this->add_render_attribute( 'mighty-chart', 'data-backgroundColor', json_encode($backgroundColor) );
+        $this->add_render_attribute( 'mighty-chart', 'data-hoverBackgroundColor', json_encode($hoverBackgroundColor) );
+        $this->add_render_attribute( 'mighty-chart', 'data-type', $settings['chart_type'] );
         $this->add_render_attribute( 'mighty-chart', 'data-chart_data', json_encode($data_values) );
-        $this->add_render_attribute( 'mighty-chart', 'data-max_value', $settings['maximum_data_value'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-min_value', $settings['minimum_data_value'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-step_value', $settings['step_size'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_style', $settings['enable_chart_legend'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_position', $settings['legend_position'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_alignment', $settings['legend_alignment'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_height', $settings['legend_bar_height']['size'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_width', $settings['legend_bar_width']['size'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_margin', $settings['legend_bar_margin']['size'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_label_color', $settings['legend_label_color'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font', $settings['legend_label_font'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font_size', $settings['legend_label_font_size']['size'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-max_value', $settings['maximum_data_value'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-min_value', $settings['minimum_data_value'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-step_value', $settings['step_size'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_style', $settings['enable_chart_legend'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_position', $settings['legend_position'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_alignment', $settings['legend_alignment'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_height', $settings['legend_bar_height']['size'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_width', $settings['legend_bar_width']['size'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_margin', $settings['legend_bar_margin']['size'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_label_color', $settings['legend_label_color'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font', $settings['legend_label_font'] );
+        // $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font_size', $settings['legend_label_font_size']['size'] );
         ?>
         <?php echo '<div '.$this->get_render_attribute_string('mighty-chart-position').'  id="mighty-chart-' . $this->get_id() . '" >' ?>
 
