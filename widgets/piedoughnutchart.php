@@ -62,7 +62,6 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'label' => __('Data Label', 'mighty'),
                     'type' => \Elementor\Controls_Manager::TEXT,
-                    // 'default' => __('2019'),
                 ]
             );
 
@@ -71,7 +70,6 @@ class MT_piedoughnutchart extends Widget_Base {
                     'label' => __( 'Data Value', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::NUMBER,
                     'label_block' => true,
-                    // 'default' => __( '30' , 'mighty' ),
                 ]
             );
 
@@ -188,7 +186,7 @@ class MT_piedoughnutchart extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 100,
+                        'size' => 30,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
@@ -483,6 +481,9 @@ class MT_piedoughnutchart extends Widget_Base {
                         'unit' => '%',
                         'size' => 40,
                     ],
+                    'condition' => [
+                        'enable_chart_legend' => 'yes'
+                    ]
                 ]
             );
 
@@ -503,6 +504,9 @@ class MT_piedoughnutchart extends Widget_Base {
                         'unit' => '%',
                         'size' => 10,
                     ],
+                    'condition' => [
+                        'enable_chart_legend' => 'yes'
+                    ]
                 ]
             );
 
@@ -523,6 +527,9 @@ class MT_piedoughnutchart extends Widget_Base {
                         'unit' => '%',
                         'size' => 20,
                     ],
+                    'condition' => [
+                        'enable_chart_legend' => 'yes'
+                    ]
                 ]
             );
 
@@ -531,7 +538,10 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'label' => __( 'Label Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => 'grey'
+                    'default' => 'grey',
+                    'condition' => [
+                        'enable_chart_legend' => 'yes'
+                    ]
                 ]
             );
 
@@ -566,6 +576,9 @@ class MT_piedoughnutchart extends Widget_Base {
                         'unit' => '%',
                         'size' => 10,
                     ],
+                    'condition' => [
+                        'enable_chart_legend' => 'yes'
+                    ]
                 ]
             );
 
@@ -574,8 +587,6 @@ class MT_piedoughnutchart extends Widget_Base {
     }
     
 	protected function render() {
-        echo '<pre>';
-        // print_r(get_option('active_plugins'));
         
         $settings = $this->get_settings_for_display();
         $data_values = [];
@@ -597,19 +608,19 @@ class MT_piedoughnutchart extends Widget_Base {
 
         }
 
-        // if( $settings['graph_alignment'] == 'left' ){
+        if( $settings['chart_alignment'] == 'left' ){
 
-        //     $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_left' );
+            $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt-chart-left' );
 
-        //     } elseif( $settings['graph_alignment'] == 'right' ){
+            } elseif( $settings['chart_alignment'] == 'right' ){
                 
-        //     $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_right' );
+            $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt-chart-right' );
             
-        // } else {
+        } else {
 
-        //     $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt_chart_center' );
+            $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt-chart-center' );
             
-        // }
+        }
         $this->add_render_attribute( 'mighty-chart-position', 'class', 'mighty-chart' );
 
         $this->add_render_attribute( 'mighty-chart', 'data-label', json_encode($label) );
@@ -620,20 +631,19 @@ class MT_piedoughnutchart extends Widget_Base {
         $this->add_render_attribute( 'mighty-chart', 'data-hoverBackgroundColor', json_encode($hoverBackgroundColor) );
         $this->add_render_attribute( 'mighty-chart', 'data-type', $settings['chart_type'] );
         $this->add_render_attribute( 'mighty-chart', 'data-chart_data', json_encode($data_values) );
-        // $this->add_render_attribute( 'mighty-chart', 'data-max_value', $settings['maximum_data_value'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-min_value', $settings['minimum_data_value'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-step_value', $settings['step_size'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_style', $settings['enable_chart_legend'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_position', $settings['legend_position'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_alignment', $settings['legend_alignment'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_height', $settings['legend_bar_height']['size'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_width', $settings['legend_bar_width']['size'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_margin', $settings['legend_bar_margin']['size'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_label_color', $settings['legend_label_color'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font', $settings['legend_label_font'] );
-        // $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font_size', $settings['legend_label_font_size']['size'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-borderWidth', $settings['chart_border_width'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-borderHoverWidth', $settings['chart_hover_border_width'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_style', $settings['enable_chart_legend'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_position', $settings['legend_position'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_alignment', $settings['legend_alignment'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_height', $settings['legend_bar_height']['size'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_bar_width', $settings['legend_bar_width']['size'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-space_between_legend', $settings['space_between_legend']['size'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_label_color', $settings['legend_label_color'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font', $settings['legend_label_font'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font_size', $settings['legend_label_font_size']['size'] );
         ?>
-        <?php echo '<div '.$this->get_render_attribute_string('mighty-chart-position').'  id="mighty-chart-' . $this->get_id() . '" >' ?>
+        <?php echo '<div '.$this->get_render_attribute_string('mighty-chart-position').'  id="mt-chart-' . $this->get_id() . '" >' ?>
 
         <canvas <?php echo $this->get_render_attribute_string('mighty-chart'); ?> ></canvas>
 
