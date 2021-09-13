@@ -168,10 +168,24 @@ class MT_piedoughnutchart extends Widget_Base {
                 ]
             );
 
-            $this->add_responsive_control(
-                'graph_size',
+            
+            $this->add_control(
+                'chart_type',
                 [
-                    'label' => __( 'Graph Size', 'mighty' ),
+                    'label' => __('Chart Type', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => __('pie'),
+                    'options' => [
+                        'pie' => __('Pie', 'mighty'),
+                        'doughnut' => __('Doughnut', 'mighty'),
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'chart_width',
+                [
+                    'label' => __( 'Chart Width', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' ],
                     'range' => [
@@ -194,38 +208,6 @@ class MT_piedoughnutchart extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
-                'chart_type',
-                [
-                    'label' => __('Chart Type', 'mighty'),
-                    'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => __('pie'),
-                    'options' => [
-                        'pie' => __('Pie', 'mighty'),
-                        'doughnut' => __('Doughnut', 'mighty'),
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'chart_width',
-                [
-                    'label' => __( 'Chart Width', 'mighty' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%' ],
-                    'range' => [
-                        '%' => [
-                            'min' => 0,
-                            'max' => 1,
-                            'step' => 0.05,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => '%',
-                        'size' => 0.9,
-                    ],
-                ]
-            );
 
             $this->add_control(
                 'chart_aspect_ratio',
