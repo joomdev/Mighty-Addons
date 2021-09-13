@@ -45,7 +45,7 @@ class MT_LinkEffects extends Widget_Base {
 		return [ 'mt-common', 'mt-linkeffects' ];
     }
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 
         $this->start_controls_section(
 			'section_linkeffects',

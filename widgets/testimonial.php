@@ -58,7 +58,7 @@ class MT_Testimonial extends Widget_Base {
 		return [ 'mighty-slicktheme', 'mighty-slickcss', 'mt-testimonial' ];
 	}
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_testimonials',
 			[

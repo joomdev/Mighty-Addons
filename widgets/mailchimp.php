@@ -59,7 +59,7 @@ class MT_Mailchimp extends Widget_Base {
 		return [ 'mt-common', 'mt-mailchimp' ];
 	}
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 		
 		$this->start_controls_section(
 			'section_mailchimp',

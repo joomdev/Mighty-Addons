@@ -41,7 +41,7 @@ class MT_textmarquee extends Widget_Base {
 		return [ 'mighty', 'mt', 'text', 'marquee' ];
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
         // basic section
 		$this->start_controls_section(
 			'section_wcg_basic',

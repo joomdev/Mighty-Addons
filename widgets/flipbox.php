@@ -51,7 +51,7 @@ class MT_Flipbox extends Widget_Base {
 		return [ 'mt-common', 'mt-flipbox' ];
     }
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 
         // Front
 		$this->start_controls_section(
