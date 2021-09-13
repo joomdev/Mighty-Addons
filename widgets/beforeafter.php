@@ -57,7 +57,7 @@ class MT_Beforeafter extends Widget_Base {
 		return [ 'mt-eventmovejs', 'mt-twentytwentyjs', 'mt-beforeafter' ];
 	}
 	
-	protected function _register_controls() {
+	protected function register_controls() {
         // Before Image ops
 		$this->start_controls_section(
 			'section_content_before',

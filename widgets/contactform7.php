@@ -52,7 +52,7 @@ class MT_ContactForm7 extends Widget_Base {
 		return [ 'mt-common', 'mt-contactform7' ];
     }
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 
         $this->start_controls_section(
 			'section_contactform7',
