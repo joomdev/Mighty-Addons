@@ -41,6 +41,10 @@ class MT_piedoughnutchart extends Widget_Base {
             'mt-piedoughnutchart'
         ];
     }
+
+    public function get_style_depends() {
+		return [ 'mt-common' ];
+    }
     
 	public function get_keywords() {
 		return [ 'mighty', 'mt', 'chart', 'graph', 'product' ];
@@ -134,6 +138,22 @@ class MT_piedoughnutchart extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'chart_title',
+                [
+                    'label' => __('Title', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::TEXT,
+                ]
+            );
+
+            $this->add_control(
+                'chart_description',
+                [
+                    'label' => __('Description', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::TEXTAREA,
+                ]
+            );
+
         $this->end_controls_section();
         // style 
         $this->start_controls_section(
@@ -187,7 +207,7 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'label' => __( 'Chart Width', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%', 'px' ],
+                    'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
                         '%' => [
                             'min' => 1,
@@ -281,6 +301,9 @@ class MT_piedoughnutchart extends Widget_Base {
                     ],
                     'default' => 'center',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-chart .chart-text' => "text-align: {{VALUE}}",
+                    ]
                 ]
             );
 
@@ -291,14 +314,20 @@ class MT_piedoughnutchart extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::SELECT,
                     'default' => 'icon',
                     'options' => [
-                        'default' => __('Default', 'mighty'),
-                        'heading' => __('H1-H6', 'mighty'),
-                        'paragraph' => __('P', 'mighty'),
+                        'H5' => __('Default', 'mighty'),
+                        'h1' => __('H1', 'mighty'),
+                        'h2' => __('H2', 'mighty'),
+                        'h3' => __('H3', 'mighty'),
+                        'h4' => __('H4', 'mighty'),
+                        'h5' => __('H5', 'mighty'),
+                        'h6' => __('H6', 'mighty'),
+                        'p' => __('P', 'mighty'),
                     ],
-                    'default' => 'center',
+                    'default' => 'H5',
                     'condition' => [
                         'enable_chart_legend' => 'yes'
-                    ]
+                    ],
+                    
                 ]
             );
 
@@ -307,7 +336,10 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'label' => __( 'Title Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => 'grey'
+                    'default' => 'grey',
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-chart .chart-title' => "color: {{VALUE}}",
+                    ]
                 ]
             );
 
@@ -316,7 +348,7 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'name' => 'title_typography',
                     'label' => __('Title Typography', 'mighty'),
-                    'selector' => '{{WRAPPER}} .mt-woo-product-title a',
+                    'selector' => '{{WRAPPER}} .mighty-chart .chart-title',
                 ]
             );
 
@@ -325,7 +357,10 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'label' => __( 'Background Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => 'grey'
+                    'default' => 'grey',
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-chart .chart-desc' => "color: {{VALUE}}",
+                    ]
                 ]
             );
 
@@ -334,7 +369,7 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'name' => 'description_typography',
                     'label' => __('Description Typography', 'mighty'),
-                    'selector' => '{{WRAPPER}} .mt-woo-product-title a',
+                    'selector' => '{{WRAPPER}} .mighty-chart .chart-desc',
                 ]
             );
 
@@ -343,18 +378,21 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'label' => __( 'Space Between Chart & Content', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
                         '%' => [
                             'min' => 0,
-                            'max' => 1,
-                            'step' => 0.05,
+                            'max' => 100,
+                            'step' => 1,
                         ],
                     ],
                     'default' => [
-                        'unit' => '%',
-                        'size' => 0.9,
+                        'unit' => 'px',
+                        'size' => 5,
                     ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-chart .chart-text' => "margin-top: {{SIZE}}{{UNIT}}",
+                    ]
                 ]
             );
 
@@ -363,18 +401,21 @@ class MT_piedoughnutchart extends Widget_Base {
                 [
                     'label' => __( 'Space Between Title & Description', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
                         '%' => [
                             'min' => 0,
-                            'max' => 1,
-                            'step' => 0.05,
+                            'max' => 100,
+                            'step' => 1,
                         ],
                     ],
                     'default' => [
-                        'unit' => '%',
-                        'size' => 0.9,
+                        'unit' => 'px',
+                        'size' => 5,
                     ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-chart .chart-desc' => "margin-top: {{SIZE}}{{UNIT}}",
+                    ]
                 ]
             );
 
@@ -605,6 +646,7 @@ class MT_piedoughnutchart extends Widget_Base {
         }
         $this->add_render_attribute( 'mighty-chart-position', 'class', 'mighty-chart' );
 
+        $this->add_render_attribute( 'chart_title', 'class', 'chart-title' );
         $this->add_render_attribute( 'mighty-chart', 'data-label', json_encode($label) );
         $this->add_render_attribute( 'mighty-chart', 'data-values', json_encode($values) );
         $this->add_render_attribute( 'mighty-chart', 'data-borderColor', json_encode($borderColor) );
@@ -628,7 +670,10 @@ class MT_piedoughnutchart extends Widget_Base {
         <?php echo '<div '.$this->get_render_attribute_string('mighty-chart-position').'  id="mt-chart-' . $this->get_id() . '" >' ?>
 
         <canvas <?php echo $this->get_render_attribute_string('mighty-chart'); ?> ></canvas>
-
+        <div class="chart-text">
+            <<?php echo $settings['title_html_tag'];?> <?php echo $this->get_render_attribute_string('chart_title');?>><?php echo $settings['chart_title']; ?></<?php echo $settings['title_html_tag'];?>>
+            <p class="chart-desc"><?php echo $settings['chart_description']; ?></p>
+        </div>
         <?php echo '</div>'; ?>
 
     <?php

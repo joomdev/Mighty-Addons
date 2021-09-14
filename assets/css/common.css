@@ -396,3 +396,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* doughnut and pie chart css */
+.mt-chart-left {
+	float:left;
+}
+
+.mt-chart-center {
+	margin: 0 auto;
+}
+
+.mt-chart-right {
+	float:right;
+}
