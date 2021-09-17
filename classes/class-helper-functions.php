@@ -113,13 +113,13 @@ class HelperFunctions {
                 'slug' => 'linkeffects',
                 'icon' => 'mf mf-linkeffects'
             ],
-            'piedoughnutchart' => [
-                'title' => 'Doughnut and Pie Chart ',
+            'piedonutchart' => [
+                'title' => 'Donut and Pie Chart ',
                 'description' => '',
                 'enable' => true,
-                'class' => 'MT_piedoughnutchart',
-                'slug' => 'piedoughnutchart',
-                'icon' => 'mf mf-piedoughnutchart'
+                'class' => 'MT_piedonutchart',
+                'slug' => 'piedonutchart',
+                'icon' => 'mf mf-piedonutchart'
             ]
         ],
         "extensions" => [
