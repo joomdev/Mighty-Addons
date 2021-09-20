@@ -237,9 +237,9 @@ class MT_piedonutchart extends Widget_Base {
                     'size_units' => [ '%' , 'px' , 'EM' ],
                     'range' => [
                         '%' => [
-                            'min' => 0,
+                            'min' => 1,
                             'max' => 10,
-                            'step' => 1,
+                            'step' => 0.5,
                         ],
                     ],
                     'default' => [
@@ -687,6 +687,7 @@ class MT_piedonutchart extends Widget_Base {
         $this->add_render_attribute( 'mighty-chart', 'data-legend_label_color', $settings['legend_label_color'] );
         $this->add_render_attribute( 'mighty-chart', 'data-legend_label_font', $settings['legend_label_font'] );
         $this->add_render_attribute( 'mighty-chart', 'data-legend_font_weight', $settings['legend_font_weight'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-aspect_ratio', isset($settings['chart_aspect_ratio']) ? $settings['chart_aspect_ratio']['size'] : '' );
         ?>
         <?php echo '<div '.$this->get_render_attribute_string('mighty-chart-position').'  id="mt-chart-' . $this->get_id() . '" >' ?>
 

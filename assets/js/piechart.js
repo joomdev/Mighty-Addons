@@ -20,7 +20,8 @@
         let legend_bar_height =          chart.attr("data-legend_bar_height");
         let legend_label_font =          chart.attr("data-legend_label_font");
         let legend_label_font_size =     chart.attr("data-legend_label_font_size");
-        let legend_font_weight =     chart.attr("data-legend_font_weight");
+        let legend_font_weight =         chart.attr("data-legend_font_weight");
+        let aspect_ratio =               chart.attr("data-aspect_ratio");
         var legend_display = (legend_style == 'yes') ? true : false;
         var myChart = new Chart(chart, {
             type: chart_type,
@@ -39,6 +40,8 @@
                 }],
             },
             options : {
+              aspectRatio : aspect_ratio,
+              responsive: true,
                 elements: {
                   arc: {
                     borderWidth: borderWidth, 
