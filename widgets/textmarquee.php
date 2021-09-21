@@ -67,7 +67,13 @@ class MT_textmarquee extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::REPEATER,
                     'default' => [
                         [
-                            'text_marquee_text' => __( 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'mighty' ),
+                            'text_marquee_text' => __( 'Example Text 1.', 'mighty' ),
+                        ],
+                        [
+                            'text_marquee_text' => __( 'Example Text 2.', 'mighty' ),
+                        ],
+                        [
+                            'text_marquee_text' => __( 'Example Text 3.', 'mighty' ),
                         ],
                     ],                    
                     'fields' => $repeater->get_controls(),
