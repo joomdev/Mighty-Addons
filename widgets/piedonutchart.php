@@ -130,7 +130,7 @@ class MT_piedonutchart extends Widget_Base {
                             'data_label' => __( 'Label 1' ),
                             'background_color' => __( 'red', 'mighty' ),
                             'background_hover_color' => __( 'blue', 'mighty' ),
-                            'background_image' => __( ' ', 'mighty' ),
+                            'background_image' => __( '', 'mighty' ),
                             'border_color' => __( 'red', 'mighty' ),
                             'border_hover_color' => __( 'blue', 'mighty' ),
                     ],
@@ -634,24 +634,25 @@ class MT_piedonutchart extends Widget_Base {
 	protected function render() {
         
         $settings = $this->get_settings_for_display();
+        // print_r(wp_get_attachment_image_src( $settings['background_image'], 'full' )[0]);
+        // print_r($settings['background_image']);
         $label = [];
         $values = [];
         $backgroundColor = [];
         $borderColor = [];
         $hoverBorderColor = [];
         $hoverBackgroundColor = [];
+        $backgroundImage = [];
         
         foreach ($settings['data_list'] as $key => $value) {
-
             array_push($label, $value['data_label']);
             array_push($values, $value['data_value']);
             array_push($borderColor, $value['border_color']);
             array_push($hoverBorderColor, $value['border_hover_color']);
             array_push($backgroundColor, $value['background_color']);
-            array_push($hoverBackgroundColor, $value['background_hover_color']);
-
+            array_push($backgroundImage, $value['background_image']['url']);
+            
         }
-
         if( $settings['chart_alignment'] == 'left' ){
 
             $this->add_render_attribute( 'mighty-chart-position', 'class', 'mt-chart-left' );
@@ -667,12 +668,14 @@ class MT_piedonutchart extends Widget_Base {
         }
         $this->add_render_attribute( 'mighty-chart-position', 'class', 'mighty-chart' );
 
+        $this->add_render_attribute( 'mighty-chart', 'id', 'canvas' );
         $this->add_render_attribute( 'chart_title', 'class', 'chart-title' );
         $this->add_render_attribute( 'mighty-chart', 'data-label', json_encode($label) );
         $this->add_render_attribute( 'mighty-chart', 'data-values', json_encode($values) );
         $this->add_render_attribute( 'mighty-chart', 'data-borderColor', json_encode($borderColor) );
         $this->add_render_attribute( 'mighty-chart', 'data-hoverBorderColor', json_encode($hoverBorderColor) );
         $this->add_render_attribute( 'mighty-chart', 'data-backgroundColor', json_encode($backgroundColor) );
+        $this->add_render_attribute( 'mighty-chart', 'data-backgroundImage', json_encode($backgroundImage) );
         $this->add_render_attribute( 'mighty-chart', 'data-hoverBackgroundColor', json_encode($hoverBackgroundColor) );
         $this->add_render_attribute( 'mighty-chart', 'data-type', $settings['chart_type'] );
         $this->add_render_attribute( 'mighty-chart', 'data-borderWidth', $settings['chart_border_width'] );

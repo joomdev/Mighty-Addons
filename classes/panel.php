@@ -159,7 +159,6 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
         }
 
         public static function get_enabled_addons() {
-
             self::$ma_default_settings = self::$mighty_addons; // Default values
 
             self::$ma_get_settings = get_option( 'mighty_addons_status', self::$mighty_addons );
