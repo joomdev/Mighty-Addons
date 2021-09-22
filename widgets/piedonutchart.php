@@ -82,9 +82,6 @@ class MT_piedonutchart extends Widget_Base {
                 [
                     'label' => __( 'Background Image', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::MEDIA,
-                    'default' => [
-                        'url' => \Elementor\Utils::get_placeholder_image_src(),
-                    ],
                 ]
             );
 
@@ -92,7 +89,6 @@ class MT_piedonutchart extends Widget_Base {
                 'background_color', [
                     'label' => __( 'Background Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => __( 'red' , 'mighty' ),
                 ]
             );
 
@@ -100,7 +96,6 @@ class MT_piedonutchart extends Widget_Base {
                 'background_hover_color', [
                     'label' => __( 'Background Hover Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => __( 'red' , 'mighty' ),
                 ]
             );
 
@@ -124,16 +119,39 @@ class MT_piedonutchart extends Widget_Base {
                     'label' => __( 'Data Sets', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
-                    'default' => [
+                    'default' => 
+                    array(
+                    [
+                            'data_value' => __( '10', 'mighty' ),
+                            'data_label' => __( 'Label 1' ),
+                            'background_color' => __( '#B7AFAF', 'mighty' ),
+                            'background_hover_color' => __( '#B7AFAF', 'mighty' ),
+                            'background_image' => __( '', 'mighty' ),
+                            'border_color' => __( '#B7AFAF', 'mighty' ),
+                            'border_hover_color' => __( '#B7AFAF', 'mighty' ),
+                    ],
+                    [
                         
                             'data_value' => __( '30', 'mighty' ),
-                            'data_label' => __( 'Label 1' ),
-                            'background_color' => __( 'red', 'mighty' ),
-                            'background_hover_color' => __( 'blue', 'mighty' ),
+                            'data_label' => __( 'Label 2' ),
+                            'background_color' => __( '#827C7C', 'mighty' ),
+                            'background_hover_color' => __( '#827C7C', 'mighty' ),
                             'background_image' => __( '', 'mighty' ),
-                            'border_color' => __( 'red', 'mighty' ),
-                            'border_hover_color' => __( 'blue', 'mighty' ),
+                            'border_color' => __( '#827C7C', 'mighty' ),
+                            'border_hover_color' => __( '#827C7C', 'mighty' ),
                     ],
+                    [
+                        
+                            'data_value' => __( '60', 'mighty' ),
+                            'data_label' => __( 'Label 3' ),
+                            'background_color' => __( '#484444', 'mighty' ),
+                            'background_hover_color' => __( '#484444', 'mighty' ),
+                            'background_image' => __( '', 'mighty' ),
+                            'border_color' => __( '#484444', 'mighty' ),
+                            'border_hover_color' => __( '#484444', 'mighty' ),
+                    ],
+                   
+                ),
                     'title_field' => 'Data Values',
                 ]
             );
@@ -220,7 +238,7 @@ class MT_piedonutchart extends Widget_Base {
                     ],
                     'default' => [
                         'unit' => '%',
-                        'size' => 30,
+                        'size' => 50,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
@@ -254,7 +272,6 @@ class MT_piedonutchart extends Widget_Base {
                 [
                     'label' => __( 'Border Width', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
-                    'default' => '2',
 
                 ]
             );
@@ -264,7 +281,6 @@ class MT_piedonutchart extends Widget_Base {
                 [
                     'label' => __( 'Hover Border Width', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
-                    'default' => '2',
 
                 ]
             );
@@ -634,8 +650,6 @@ class MT_piedonutchart extends Widget_Base {
 	protected function render() {
         
         $settings = $this->get_settings_for_display();
-        // print_r(wp_get_attachment_image_src( $settings['background_image'], 'full' )[0]);
-        // print_r($settings['background_image']);
         $label = [];
         $values = [];
         $backgroundColor = [];
@@ -650,6 +664,7 @@ class MT_piedonutchart extends Widget_Base {
             array_push($borderColor, $value['border_color']);
             array_push($hoverBorderColor, $value['border_hover_color']);
             array_push($backgroundColor, $value['background_color']);
+            array_push($hoverBackgroundColor, $value['background_hover_color']);
             array_push($backgroundImage, $value['background_image']['url']);
             
         }

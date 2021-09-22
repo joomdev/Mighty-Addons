@@ -7,6 +7,7 @@
         chart_backgroundColor =          JSON.parse(chart_backgroundColor);
         let chart_hoverBackgroundColor = chart.attr("data-hoverBackgroundColor");
         chart_hoverBackgroundColor =     JSON.parse(chart_hoverBackgroundColor);
+        console.log(chart_hoverBackgroundColor);
         let chart_borderColor =          chart.attr("data-borderColor");
         let chart_hoverBorderColor =     chart.attr("data-hoverBorderColor");
         let chart_type =                 chart.attr("data-type");
@@ -75,7 +76,6 @@
       };
 
         background_image.forEach(
-
           function ( item, index ) {
 
             if ( item ) {
@@ -101,7 +101,7 @@
           }
         );
       	if ( ! hasPatternImages ) {
-          var ctx = $scope.find( 'canvas' );
+          ctx = document.getElementById('canvas');
   
           chart1 = new Chart(
             ctx,
