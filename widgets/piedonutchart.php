@@ -585,7 +585,7 @@ class MT_piedonutchart extends Widget_Base {
                     'condition' => [
                         'enable_chart_legend' => 'yes'
                     ],
-                    'default' => 'Arial'
+                    'default' => "'Open Sans', sans-serif",
                 ]
             );
 
