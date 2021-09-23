@@ -124,7 +124,7 @@ class HelperFunctions {
             'textmarquee' => [
                 'title' => 'Text Marquee',
                 'description' => '',
-                'enable' => true,
+                'enable' => false,
                 'class' => 'MT_textmarquee',
                 'slug' => 'textmarquee',
                 'icon' => 'mf mf-textmarquee'
