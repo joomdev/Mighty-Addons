@@ -272,7 +272,6 @@ class MT_piedonutchart extends Widget_Base {
                 [
                     'label' => __( 'Border Width', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
-
                 ]
             );
 
@@ -281,7 +280,6 @@ class MT_piedonutchart extends Widget_Base {
                 [
                     'label' => __( 'Hover Border Width', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
-
                 ]
             );
 
@@ -587,6 +585,7 @@ class MT_piedonutchart extends Widget_Base {
                     'condition' => [
                         'enable_chart_legend' => 'yes'
                     ],
+                    'default' => 'Arial'
                 ]
             );
 
@@ -693,8 +692,8 @@ class MT_piedonutchart extends Widget_Base {
         $this->add_render_attribute( 'mighty-chart', 'data-backgroundImage', json_encode($backgroundImage) );
         $this->add_render_attribute( 'mighty-chart', 'data-hoverBackgroundColor', json_encode($hoverBackgroundColor) );
         $this->add_render_attribute( 'mighty-chart', 'data-type', $settings['chart_type'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-borderWidth', $settings['chart_border_width'] );
-        $this->add_render_attribute( 'mighty-chart', 'data-borderHoverWidth', $settings['chart_hover_border_width'] );
+        $this->add_render_attribute( 'mighty-chart', 'data-borderWidth', intval($settings['chart_border_width']) );
+        $this->add_render_attribute( 'mighty-chart', 'data-borderHoverWidth', intval($settings['chart_hover_border_width']) );
         $this->add_render_attribute( 'mighty-chart', 'data-legend_style', $settings['enable_chart_legend'] );
         $this->add_render_attribute( 'mighty-chart', 'data-legend_position', $settings['legend_position'] );
         $this->add_render_attribute( 'mighty-chart', 'data-legend_alignment', $settings['legend_alignment'] );

@@ -7,7 +7,6 @@
         chart_backgroundColor =          JSON.parse(chart_backgroundColor);
         let chart_hoverBackgroundColor = chart.attr("data-hoverBackgroundColor");
         chart_hoverBackgroundColor =     JSON.parse(chart_hoverBackgroundColor);
-        console.log(chart_hoverBackgroundColor);
         let chart_borderColor =          chart.attr("data-borderColor");
         let chart_hoverBorderColor =     chart.attr("data-hoverBorderColor");
         let chart_type =                 chart.attr("data-type");
@@ -44,6 +43,7 @@
                     data: JSON.parse(chart_values),
                     borderWidth: borderWidth, 
                     hoverBorderWidth : borderHoverWidth,
+                    borderAlign: 'center',
                 }],
             },
             options : {
@@ -62,9 +62,9 @@
                         color: legend_label_color,
                         padding: parseInt(space_between_legend),
                         font: {
-                          family: legend_label_font,
                           size: legend_label_font_size,
-                          weight : legend_font_weight
+                          weight : legend_font_weight,
+                          family: legend_label_font,
                         },
                       },
                         position: legend_position,
