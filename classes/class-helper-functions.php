@@ -385,6 +385,26 @@ class HelperFunctions {
                 'stub' => 'true',
                 'include' => true // File Include?
             ],
+            'backdropfilter' => [
+                'title' => 'Backdrop Filters',
+                'description' => 'Apply Backdrop Filter to Elements.',
+                'enable' => false,
+                'class' => 'MT_BackdropFilter',
+                'slug' => 'backdropfilter',
+                'icon' => 'mf mf-backdropfilter',
+                'stub' => 'true',
+                'include' => true // File Include?
+            ],
+            'filtereffects' => [
+                'title' => 'CSS Filters',
+                'description' => 'Apply Filter Effects to Elements.',
+                'enable' => false,
+                'class' => 'MT_FilterEffects',
+                'slug' => 'filtereffects',
+                'icon' => 'mf mf-filtereffects',
+                'stub' => 'true',
+                'include' => true // File Include?
+            ]
         ]
     ];
 

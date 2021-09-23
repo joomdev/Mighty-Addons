@@ -25,6 +25,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-filtereffects:before {
+	content: "\e92d";
+}
+
+.mf-backdropfilter:before {
+content: "\e92e";
+}
+
 .mf-chart:before {
 	content: "\e928";
 }
