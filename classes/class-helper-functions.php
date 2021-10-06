@@ -112,6 +112,14 @@ class HelperFunctions {
                 'class' => 'MT_LinkEffects',
                 'slug' => 'linkeffects',
                 'icon' => 'mf mf-linkeffects'
+            ],
+            'agechecker' => [
+                'title' => 'Age Checker',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_agechecker',
+                'slug' => 'agechecker',
+                'icon' => 'mf mf-agechecker'
             ]
         ],
         "extensions" => [
