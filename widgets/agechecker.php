@@ -188,6 +188,352 @@ class MT_agechecker extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'button_text',
+                [
+                    'label' => __('Button Text', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::TEXT,
+                ]
+            );
+
+            $this->add_control(
+                'button_icon',
+                [
+                    'label' => __('Button Icon', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::ICON,
+                ]
+            );
+
+            $this->add_control(
+                'icon_position',
+                [
+                    'label' => __('Icon Position', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => __('age_confirmation'),
+                    'options' => [
+                        'before' => __('Before', 'mighty'),
+                        'after' => __('After', 'mighty'),
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_icon_text',
+                [
+                    'label' => __('Space between Icon and text', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'second_button_options',
+                [
+                    'label' => __( 'Second Button Options', 'plugin-name' ),
+                    'type' => \Elementor\Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'condition' => [
+                        'method' => 'yes_no'
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'second_button_text',
+                [
+                    'label' => __('Button Text', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::TEXT,
+                    'condition' => [
+                        'method' => 'yes_no'
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'second_button_icon',
+                [
+                    'label' => __('Button Icon', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::ICON,
+                    'condition' => [
+                        'method' => 'yes_no'
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'second_icon_position',
+                [
+                    'label' => __('Icon Position', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => __('age_confirmation'),
+                    'options' => [
+                        'before' => __('Before', 'mighty'),
+                        'after' => __('After', 'mighty'),
+                    ],
+                    'condition' => [
+                        'method' => 'yes_no'
+                    ]
+                ]
+            );
+
+            $this->add_responsive_control(
+                'second_space_icon_text',
+                [
+                    'label' => __('Space between Icon and text', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'condition' => [
+                        'method' => 'yes_no'
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'bottom_text',
+                [
+                    'label' => __( 'Bottom Text', 'plugin-domain' ),
+                    'type' => \Elementor\Controls_Manager::WYSIWYG,
+                    'title' => 'Leave empty if you dont want to add the bottom text.',
+                ]
+            );
+
+            $this->add_control(
+                'error_message',
+                [
+                    'label' => __( 'Error Message', 'plugin-domain' ),
+                    'type' => \Elementor\Controls_Manager::WYSIWYG,
+                    'title' => 'Leave empty if you dont want to add the bottom text.',
+                    'conditions' => [
+                        'terms' => [
+                            [
+                                'name' => 'method',
+                                'operator' => '!==',
+                                'value' => 'age_confirmation',
+                            ],
+                        ],
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'content_alignment',
+                [
+                    'label' => __( 'Alignment', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Start', 'mighty' ),
+                            'icon' => 'fa fa-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'fa fa-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'End', 'mighty' ),
+                            'icon' => 'fa fa-align-right',
+                        ],
+                    ],
+                    'default' => 'center',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_control(
+                'bottom_line_alignment',
+                [
+                    'label' => __( 'Bottom Line Alginment', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Start', 'mighty' ),
+                            'icon' => 'fa fa-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'fa fa-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'End', 'mighty' ),
+                            'icon' => 'fa fa-align-right',
+                        ],
+                    ],
+                    'default' => 'center',
+                    'toggle' => true,
+                ]
+            );
+
+        $this->end_controls_section();
+
+        // Extra
+        $this->start_controls_section(
+			'section_agechecker_extra',
+			[
+				'label' => __( 'Extra', 'mighty' ),
+			]
+		);
+
+            $this->add_control(
+                'add_background_image', [
+                    'label' => __( 'Add Background Image', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::SWITCHER,
+                ]
+            );
+
+            $this->add_control(
+                'background_image',
+                [
+                    'label' => __( 'Background Image', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::MEDIA,
+                    'condition' => [
+                        'add_background_image' => 'yes'
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'overlay_color',
+                [
+                    'label' => __( 'Overlay Color', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => \Elementor\Scheme_Color::get_type(),
+                        'value' => \Elementor\Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'add_right_side_image', [
+                    'label' => __( 'Add Right Side Image', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::SWITCHER,
+                ]
+            );
+
+            $this->add_control(
+                'right_side_background_image',
+                [
+                    'label' => __( 'Image', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::MEDIA,
+                    'condition' => [
+                        'add_right_side_image' => 'yes'
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'enable_cookies', [
+                    'label' => __( 'Enable Cookies', 'mighty' ),
+                    'type' => \Elementor\Controls_Manager::SWITCHER,
+                ]
+            );
+
+            $this->add_control(
+                'cookies_expiry_time',
+                [
+                    'label' => __('Cookies Expiry Time', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::TEXT,
+                ]
+            );
+
+        $this->end_controls_section();
+
+        // style
+        $this->start_controls_section(
+			'section_agechecker_style',
+			[
+				'label' => __( 'Popup', 'mighty' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+        );
+
+            $this->add_control(
+                'display_position',
+                [
+                    'label' => __('Display Position', 'mighty'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => __('default'),
+                    'options' => [
+                        'top_left' => __('Top Left', 'mighty'),
+                        'top_center' => __('Top Center', 'mighty'),
+                        'top_right' => __('Top Right', 'mighty'),
+                        'center_left' => __('Center Left', 'mighty'),
+                        'center_center' => __('Center Center', 'mighty'),
+                        'center_right' => __('Center Right', 'mighty'),
+                        'bottom_left' => __('Bottom Left', 'mighty'),
+                        'bottom_center' => __('Bottom Center', 'mighty'),
+                        'bottom_right' => __('Bottom Right', 'mighty'),
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'popup_width',
+                [
+                    'label' => __( 'Popup Width', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px'],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
+                    ]
+                ]
+            );
+
+            $this->add_responsive_control(
+                'popup_height',
+                [
+                    'label' => __( 'Popup Height', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px'],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
+                    ]
+                ]
+            );
+
         $this->end_controls_section();
 
     }
