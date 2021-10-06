@@ -128,6 +128,14 @@ class HelperFunctions {
                 'class' => 'MT_piedonutchart',
                 'slug' => 'piedonutchart',
                 'icon' => 'mf mf-piedonutchart'
+            ],
+            'agechecker' => [
+                'title' => 'Age Checker',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_agechecker',
+                'slug' => 'agechecker',
+                'icon' => 'mf mf-agechecker'
             ]
         ],
         "extensions" => [
