@@ -1,6 +1,8 @@
 <?php
 namespace MightyAddons\Widgets;
 
+use MightyAddons\Classes\AgeChecker;
+
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \Elementor\Utils as Utils;
@@ -23,7 +25,7 @@ class MT_agechecker extends Widget_Base {
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 	
-		// wp_register_style( 'mighty-slickcss', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick.min.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mighty-agecheckercss', MIGHTY_ADDONS_PLG_URL . 'assets/css/age-checker.css', false, MIGHTY_ADDONS_VERSION );
 		// wp_register_style( 'mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.min.css', false, MIGHTY_ADDONS_VERSION );
 		// wp_register_style( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/css/testimonial.min.css', false, MIGHTY_ADDONS_VERSION );
 		// wp_register_script( 'mighty-slickjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/slick.min.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
@@ -55,7 +57,7 @@ class MT_agechecker extends Widget_Base {
 	}
 
 	public function get_style_depends() {
-		// return [ 'mighty-slicktheme', 'mighty-slickcss', 'mt-testimonial' ];
+		return [ 'mighty-agecheckercss' ];
 	}
 
     protected function register_controls() {
@@ -161,7 +163,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __( 'Description', 'plugin-domain' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
-                    'default' => 'You must be 18 years old in order to visit this website.', 'mighty',
+                    'default' => 'you must be 18 years old to visit our website. Enter your birthdate below, your agre will be calculated automatically.', 'mighty',
                     'title' => 'Leave empty if dont want to add any description',
                     'condition' => [
                         'enable_description' => 'yes'
@@ -456,10 +458,6 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __( 'Overlay Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Scheme_Color::get_type(),
-                        'value' => \Elementor\Scheme_Color::COLOR_1,
-                    ],
                     'selectors' => [
                         '{{WRAPPER}} .title' => 'color: {{VALUE}}',
                     ],
@@ -1124,7 +1122,7 @@ class MT_agechecker extends Widget_Base {
             $this->add_group_control(
                 \Elementor\Group_Control_Typography::get_type(),
                 [
-                    'name' => 'button_typography',
+                    'name' => 'second_button_typography',
                     'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
                 ]
             );
@@ -1396,6 +1394,14 @@ class MT_agechecker extends Widget_Base {
 
         $this->end_controls_section();
 
+    }
+
+    protected function render()
+    {
+        $settings = $this->get_settings_for_display();
+
+        $html = AgeChecker::agecheckerhtml( $settings );
+        // echo $html;
     }
 
 }
