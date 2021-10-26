@@ -1,0 +1,214 @@
+.ma-agech {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100vh; }
+    .ma-agech.has-overlay {
+      position: relative; }
+    .ma-agech.has-overlay:before {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .ma-agech__wrapper {
+      display: flex;
+      background-color: #fff;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #fcb900;
+      border-radius: 15px;
+      position: absolute;
+      z-index: 1;
+      overflow: hidden;
+      max-width: 1000px;
+      min-height: 500px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 15px 0px; }
+      .ma-agech__wrapper.default {
+        top: 50%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%); }
+      .ma-agech__wrapper.top-left {
+        left: 0; }
+      .ma-agech__wrapper.top-center {
+        margin: 0 auto;
+        left: 0;
+        right: 0; }
+      .ma-agech__wrapper.top-right {
+        right: 0; }
+      .ma-agech__wrapper.center-left {
+        top: 50%;
+        transform: translateY(-50%); }
+      .ma-agech__wrapper.center-center {
+        top: 50%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%); }
+      .ma-agech__wrapper.center-right {
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0; }
+      .ma-agech__wrapper.bottom-left {
+        bottom: 0; }
+      .ma-agech__wrapper.bottom-center {
+        bottom: 0;
+        margin: 0 auto;
+        left: 0;
+        right: 0; }
+      .ma-agech__wrapper.bottom-right {
+        right: 0;
+        bottom: 0; }
+      .ma-agech__wrapper.ma-right-side-image .ma-agech__content {
+        width: 50%; }
+      .ma-agech__wrapper.ma-right-side-image .ma-agech__side-image {
+        width: 50%; }
+      .ma-agech__wrapper .ma-agech__side-image {
+        background-image: url("../images/men.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top left; }
+    .ma-agech__content {
+      padding: 40px;
+      flex: 1;
+      align-self: center; }
+    .ma-agech__content-inner.ma-align-left {
+      text-align: left; }
+    .ma-agech__content-inner.ma-align-center {
+      text-align: center; }
+      .ma-agech__content-inner.ma-align-center .ma-agech__input-btn-wrapper {
+        margin-left: auto;
+        margin-right: auto; }
+    .ma-agech__content-inner.ma-align-right {
+      text-align: right; }
+      .ma-agech__content-inner.ma-align-right .ma-agech__input-btn-wrapper {
+        margin-left: auto; }
+    .ma-agech__logo-wrapper {
+      margin-bottom: 10px; }
+    .ma-agech__logo {
+      max-width: 200px; }
+    .ma-agech__title {
+      font-size: 32px;
+      margin: 0 0 30px;
+      line-height: 1; }
+    .ma-agech__description {
+      font-size: 15px;
+      color: #646A80;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px dashed #e5e5e5;
+      border-radius: 5px; }
+    .ma-agech__checkbox-wrapper {
+      margin-bottom: 30px; }
+    .ma-agech__input-btn-wrapper {
+      max-width: 250px; }
+    .ma-agech__input {
+      color: #000;
+      background-color: #fff;
+      padding: 10px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #000;
+      border-radius: 5px;
+      width: 100%;
+      margin-bottom: 30px; }
+    .ma-agech__btn-wrapper {
+      display: flex; }
+    .ma-agech .ma-agech__btn-primary,
+    .ma-agech .ma-agech__btn-secondary {
+      display: flex;
+      width: 100%;
+      justify-content: center; }
+      .ma-agech .ma-agech__btn-primary.ma-agech__icon-before .ma-agech-btn__icon,
+      .ma-agech .ma-agech__btn-secondary.ma-agech__icon-before .ma-agech-btn__icon {
+        margin-right: 10px; }
+      .ma-agech .ma-agech__btn-primary.ma-agech__icon-after .ma-agech-btn__icon,
+      .ma-agech .ma-agech__btn-secondary.ma-agech__icon-after .ma-agech-btn__icon {
+        order: 1;
+        margin-left: 10px; }
+      .ma-agech .ma-agech__btn-primary.ma-agech__icon-after .ma-agech-btn__text,
+      .ma-agech .ma-agech__btn-secondary.ma-agech__icon-after .ma-agech-btn__text {
+        order: 0; }
+    .ma-agech__btn-primary {
+      color: #000;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: normal;
+      background-color: #fcb900;
+      border-style: solid;
+      border-color: #fcb900;
+      border-width: 1px;
+      border-radius: 5px;
+      box-shadow: none;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding: 10px 25px; }
+      .ma-agech__btn-primary:hover {
+        color: #fff;
+        background-color: #fd9800;
+        border-style: solid;
+        border-color: #fd9800;
+        border-width: 1px;
+        border-radius: 5px;
+        box-shadow: none; }
+    .ma-agech__btn-secondary {
+      color: #6f6f6f;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: normal;
+      background-color: transparent;
+      border-style: solid;
+      border-color: #6f6f6f;
+      border-width: 1px;
+      border-radius: 5px;
+      box-shadow: none;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding: 10px 15px; }
+      .ma-agech__btn-secondary:hover {
+        color: #fff;
+        background-color: #6f6f6f;
+        border-style: solid;
+        border-color: #6f6f6f;
+        border-width: 1px;
+        border-radius: 5px;
+        box-shadow: none; }
+    .ma-agech__bottom-text {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #737373; }
+    .ma-agech__bottom-text.ma-align-left {
+      text-align: left; }
+    .ma-agech__bottom-text.ma-align-center {
+      text-align: center; }
+    .ma-agech__bottom-text.ma-align-right {
+      text-align: right; }
+  
+  @media (max-width: 767px) {
+    .ma-agech__wrapper.ma-right-side-image .ma-agech__content {
+      width: 100%; }
+    .ma-agech__wrapper.ma-right-side-image .ma-agech__side-image {
+      width: 100%;
+      display: none; } }
+      body {
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.5; }
+      
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0; }
+      
+      img {
+        max-width: 100%;
+        height: auto; }
+      
+      a {
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif; }

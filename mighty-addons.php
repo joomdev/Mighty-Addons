@@ -166,6 +166,8 @@ final class Mighty_Addons {
 		// Say hello to my little friend - Helper
 		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/class-helper-functions.php' );
 
+		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/class-age-checker.php' );
+
 		// From the depths, a magical window has opened including our plugin!
 		require_once ( MIGHTY_ADDONS_DIR_PATH . 'classes/mighty-elementor.php' );
 
