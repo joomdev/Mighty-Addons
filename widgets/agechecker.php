@@ -117,6 +117,7 @@ class MT_agechecker extends Widget_Base {
                 'display_logo', [
                     'label' => __( 'Display Logo', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
+                    'default' => 'yes'
                 ]
             );
 
@@ -135,6 +136,7 @@ class MT_agechecker extends Widget_Base {
                 'enable_title', [
                     'label' => __( 'Enable Title', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
+                    'default' => 'yes'
                 ]
             );
 
@@ -155,6 +157,7 @@ class MT_agechecker extends Widget_Base {
                 'enable_description', [
                     'label' => __( 'Enable Description', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
+                    'default' => 'yes'
                 ]
             );
 
@@ -163,7 +166,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __( 'Description', 'plugin-domain' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
-                    'default' => 'you must be 18 years old to visit our website. Enter your birthdate below, your agre will be calculated automatically.', 'mighty',
+                    'default' => 'you must be 18 years old to visit our website. Enter your birth date below, your age will be calculated automatically.', 'mighty',
                     'title' => 'Leave empty if dont want to add any description',
                     'condition' => [
                         'enable_description' => 'yes'
@@ -175,7 +178,8 @@ class MT_agechecker extends Widget_Base {
                 'check_input_box',
                 [
                     'label' => __('Check Input Text', 'mighty'),
-                    'type' => \Elementor\Controls_Manager::TEXT,
+                    'type' => \Elementor\Controls_Manager::TEXTAREA,
+                    'default' => 'I confirm that i am 18 years old or over',
                     'condition' => [
                         'method' => 'age_confirmation'
                     ]
@@ -215,6 +219,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Button Text', 'mighty'),
                     'type' => \Elementor\Controls_Manager::TEXT,
+                    'default' => 'ENTER',
                 ]
             );
 
@@ -222,7 +227,11 @@ class MT_agechecker extends Widget_Base {
                 'button_icon',
                 [
                     'label' => __('Button Icon', 'mighty'),
-                    'type' => \Elementor\Controls_Manager::ICON,
+                    'type' => \Elementor\Controls_Manager::ICONS,
+                    'default' => [
+                        'value' => 'fas fa-check',
+                        'library' => 'solid',
+                    ],
                 ]
             );
 
@@ -231,7 +240,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Icon Position', 'mighty'),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => __('age_confirmation'),
+                    'default' => __('before'),
                     'options' => [
                         'before' => __('Before', 'mighty'),
                         'after' => __('After', 'mighty'),
@@ -254,6 +263,10 @@ class MT_agechecker extends Widget_Base {
                             'min' => 1,
                             'max' => 1000
                         ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
                     ],
                 ]
             );
@@ -285,7 +298,7 @@ class MT_agechecker extends Widget_Base {
                 'second_button_icon',
                 [
                     'label' => __('Button Icon', 'mighty'),
-                    'type' => \Elementor\Controls_Manager::ICON,
+                    'type' => \Elementor\Controls_Manager::ICONS,
                     'condition' => [
                         'method' => 'yes_no'
                     ]
@@ -335,6 +348,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __( 'Bottom Text', 'plugin-domain' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
+                    'default' => 'By entering this site you are agreeing to the Terms of Use and Privacy Policy',
                     'title' => 'Leave empty if you dont want to add the bottom text.',
                 ]
             );
@@ -535,15 +549,16 @@ class MT_agechecker extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::SELECT,
                     'default' => __('default'),
                     'options' => [
-                        'top_left' => __('Top Left', 'mighty'),
-                        'top_center' => __('Top Center', 'mighty'),
-                        'top_right' => __('Top Right', 'mighty'),
-                        'center_left' => __('Center Left', 'mighty'),
-                        'center_center' => __('Center Center', 'mighty'),
-                        'center_right' => __('Center Right', 'mighty'),
-                        'bottom_left' => __('Bottom Left', 'mighty'),
-                        'bottom_center' => __('Bottom Center', 'mighty'),
-                        'bottom_right' => __('Bottom Right', 'mighty'),
+                        'default' => __('Default', 'mighty'),
+                        'top-left' => __('Top Left', 'mighty'),
+                        'top-center' => __('Top Center', 'mighty'),
+                        'top-right' => __('Top Right', 'mighty'),
+                        'center-left' => __('Center Left', 'mighty'),
+                        'center-center' => __('Center Center', 'mighty'),
+                        'center-right' => __('Center Right', 'mighty'),
+                        'bottom-left' => __('Bottom Left', 'mighty'),
+                        'bottom-center' => __('Bottom Center', 'mighty'),
+                        'bottom-right' => __('Bottom Right', 'mighty'),
                     ],
                 ]
             );
@@ -565,7 +580,7 @@ class MT_agechecker extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} ..ma-agech__wrapper' => 'max-width: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -587,7 +602,7 @@ class MT_agechecker extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} ..ma-agech__wrapper' => 'min-height: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -598,7 +613,7 @@ class MT_agechecker extends Widget_Base {
                     'name' => 'background_type',
                     'label' => __( 'Background Type', 'mighty' ),
                     'types' => [ 'classic', 'gradient' ],
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .ma-agech__wrapper',
                 ]
 		    );
 
@@ -621,7 +636,7 @@ class MT_agechecker extends Widget_Base {
 				[
 					'name' => 'popup_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide',
+					'selector' => '{{WRAPPER}} .ma-agech__wrapper',
 				]
 			);
 
@@ -632,7 +647,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -676,7 +691,7 @@ class MT_agechecker extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-chart' => 'width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .ma-agech__logo' => 'max-width: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -688,7 +703,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__logo-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -700,7 +715,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__logo-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -724,7 +739,7 @@ class MT_agechecker extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
                     ]
                 ]
             );
@@ -733,7 +748,7 @@ class MT_agechecker extends Widget_Base {
 				\Elementor\Group_Control_Typography::get_type(),
 				[
 					'name' => 'title_typography',
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
+					'selector' => '{{WRAPPER}} .ma-agech__title',
 				]
 			);
 
@@ -744,7 +759,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -756,7 +771,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -780,7 +795,7 @@ class MT_agechecker extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-agech__description' => 'color: {{VALUES}}'
                     ]
                 ]
             );
@@ -789,7 +804,7 @@ class MT_agechecker extends Widget_Base {
 				\Elementor\Group_Control_Typography::get_type(),
 				[
 					'name' => 'description_typography',
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
+					'selector' => '{{WRAPPER}} .ma-agech__description',
 				]
 			);
 
@@ -800,7 +815,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -812,7 +827,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__description' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -836,7 +851,7 @@ class MT_agechecker extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-agech__checkbox-label' => 'color: {{VALUES}}'
                     ]
                 ]
             );
@@ -845,7 +860,7 @@ class MT_agechecker extends Widget_Base {
 				\Elementor\Group_Control_Typography::get_type(),
 				[
 					'name' => 'checkbox_typography',
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
+					'selector' => '{{WRAPPER}} .ma-agech__checkbox-label',
 				]
 			);
 
@@ -856,7 +871,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__checkbox-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -868,7 +883,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__checkbox-label' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -892,7 +907,7 @@ class MT_agechecker extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-agech__input' => 'color: {{VALUES}}'
                     ]
                 ]
             );
@@ -903,7 +918,7 @@ class MT_agechecker extends Widget_Base {
                     'label'     => __( 'Background Color', 'mighty' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-agech__input' => 'background-color: {{VALUES}}'
                     ]
                 ]
             );
@@ -912,7 +927,7 @@ class MT_agechecker extends Widget_Base {
 				\Elementor\Group_Control_Typography::get_type(),
 				[
 					'name' => 'input_field_typography',
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
+					'selector' => '{{WRAPPER}} .ma-agech__input',
 				]
 			);
 
@@ -923,7 +938,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__input' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -935,7 +950,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__input' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -945,7 +960,7 @@ class MT_agechecker extends Widget_Base {
 				[
 					'name' => 'input_field_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-testimonial-wrapper .mt-testimonial-slide .mt-testimonial-avatar img',
+					'selector' => '{{WRAPPER}} .ma-agech__input',
 				]
 			);
 
@@ -956,7 +971,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -966,7 +981,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'name' => 'input_field_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .ma-agech__input',
                 ]
             );
 
@@ -984,7 +999,7 @@ class MT_agechecker extends Widget_Base {
                 \Elementor\Group_Control_Typography::get_type(),
                 [
                     'name' => 'button_typography',
-                    'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
+                    'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
                 ]
             );
 
@@ -1005,7 +1020,7 @@ class MT_agechecker extends Widget_Base {
                             'label'     => __( 'Text Color', 'mighty' ),
                             'type'      => \Elementor\Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mighty-testimonial .mt-person-name' => 'color: {{VALUES}}'
+                                '{{WRAPPER}} .ma-agech__btn-primary' => 'color: {{VALUES}}'
                             ]
                         ]
                     );
@@ -1016,7 +1031,7 @@ class MT_agechecker extends Widget_Base {
                             'name' => 'button_background_type',
                             'label' => __( 'Background Type', 'mighty' ),
                             'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} .wrapper',
+                            'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
                         ]
                     );
 
@@ -1036,7 +1051,7 @@ class MT_agechecker extends Widget_Base {
                             'label'     => __( 'Text Color', 'mighty' ),
                             'type'      => \Elementor\Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mighty-testimonial .mt-person-name' => 'color: {{VALUES}}'
+                                '{{WRAPPER}} .ma-agech__btn-primary:hover' => 'color: {{VALUES}}'
                             ]
                         ]
                     );
@@ -1047,7 +1062,7 @@ class MT_agechecker extends Widget_Base {
                             'name' => 'button_hover_background_type',
                             'label' => __( 'Background Type', 'mighty' ),
                             'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} .wrapper',
+                            'selector' => '{{WRAPPER}} .ma-agech__btn-primary:hover',
                         ]
                     );
 
@@ -1060,7 +1075,7 @@ class MT_agechecker extends Widget_Base {
 				[
 					'name' => 'button_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide',
+					'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
 				]
 			);
 
@@ -1071,7 +1086,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__btn-primary' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1081,7 +1096,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'name' => 'button_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
                 ]
             );
 
@@ -1092,7 +1107,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__btn-primary' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1104,7 +1119,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__btn-primary' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1123,7 +1138,7 @@ class MT_agechecker extends Widget_Base {
                 \Elementor\Group_Control_Typography::get_type(),
                 [
                     'name' => 'second_button_typography',
-                    'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
+                    'selector' => '{{WRAPPER}} .ma-agech__btn-secondary',
                 ]
             );
 
@@ -1144,7 +1159,7 @@ class MT_agechecker extends Widget_Base {
                             'label'     => __( 'Text Color', 'mighty' ),
                             'type'      => \Elementor\Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mighty-testimonial .mt-person-name' => 'color: {{VALUES}}'
+                                '{{WRAPPER}} .ma-agech__btn-secondary' => 'color: {{VALUES}}'
                             ]
                         ]
                     );
@@ -1155,7 +1170,7 @@ class MT_agechecker extends Widget_Base {
                             'name' => 'second_button_background_type',
                             'label' => __( 'Background Type', 'mighty' ),
                             'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} .wrapper',
+                            'selector' => '{{WRAPPER}} .ma-agech__btn-secondary',
                         ]
                     );
 
@@ -1175,7 +1190,7 @@ class MT_agechecker extends Widget_Base {
                             'label'     => __( 'Text Color', 'mighty' ),
                             'type'      => \Elementor\Controls_Manager::COLOR,
                             'selectors' => [
-                                '{{WRAPPER}} .mighty-testimonial .mt-person-name' => 'color: {{VALUES}}'
+                                '{{WRAPPER}} .ma-agech__btn-secondary:hover' => 'color: {{VALUES}}'
                             ]
                         ]
                     );
@@ -1186,7 +1201,7 @@ class MT_agechecker extends Widget_Base {
                             'name' => 'second_button_hover_background_type',
                             'label' => __( 'Background Type', 'mighty' ),
                             'types' => [ 'classic', 'gradient' ],
-                            'selector' => '{{WRAPPER}} .wrapper',
+                            'selector' => '{{WRAPPER}} .ma-agech__btn-secondary:hover',
                         ]
                     );
 
@@ -1199,7 +1214,7 @@ class MT_agechecker extends Widget_Base {
 				[
 					'name' => 'second_button_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide',
+					'selector' => '{{WRAPPER}} .ma-agech__btn-secondary',
 				]
 			);
 
@@ -1210,7 +1225,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__btn-secondary' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1220,7 +1235,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'name' => 'second_button_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .ma-agech__btn-secondary',
                 ]
             );
 
@@ -1231,7 +1246,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__btn-secondary' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1243,7 +1258,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__btn-secondary' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1255,9 +1270,6 @@ class MT_agechecker extends Widget_Base {
 			[
 				'label' => __( 'Bottom Text', 'mighty' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'method' => 'age_confirmation'
-                ]
 			]
         );
 
@@ -1267,7 +1279,7 @@ class MT_agechecker extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-agech__bottom-text' => 'color: {{VALUE}}'
                     ]
                 ]
             );
@@ -1276,7 +1288,7 @@ class MT_agechecker extends Widget_Base {
 				\Elementor\Group_Control_Typography::get_type(),
 				[
 					'name' => 'bottom_text_typography',
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote',
+					'selector' => '{{WRAPPER}} .ma-agech__bottom-text',
 				]
 			);
 
@@ -1287,7 +1299,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__bottom-text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1299,7 +1311,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__bottom-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1311,9 +1323,6 @@ class MT_agechecker extends Widget_Base {
 			[
 				'label' => __( 'Error Message', 'mighty' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'method' => 'age_confirmation'
-                ]
 			]
         );
 
@@ -1401,7 +1410,6 @@ class MT_agechecker extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         $html = AgeChecker::agecheckerhtml( $settings );
-        // echo $html;
     }
 
 }
