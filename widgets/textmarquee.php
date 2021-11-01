@@ -108,7 +108,7 @@ class MT_textmarquee extends Widget_Base {
 				[
 					'name' => 'text_marquee_typography',
 					'label' => __( 'Typography', 'mighty' ),
-					'selector' => '{{WRAPPER}} .marquee',
+					'selector' => '{{WRAPPER}} .marquee_inner',
 				]
             );
             
