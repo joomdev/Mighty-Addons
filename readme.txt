@@ -86,8 +86,13 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 20. **[MA Spacers](https://mightythemes.com/mighty-addons/spacer/)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
 21. **[Section Slider](https://mightythemes.com/mighty-addons/section-slider)** - Create sliders out of your Elementor Sections in just one click.
 22. **[Reading Progress Bar](https://mightythemes.com/mighty-addons/reading-progress-bar)** - Show reading progress bar to your users by selecting from two views which also contains Back To Top feature.
-23. **[CSS Filters](https://mightythemes.com/mighty-addons/css-filter/)** - Take advantage of CSS Filter Effects and create something totally unique and mesmerizing to greet your visitors.
-24. **[Backdrop Filter](https://mightythemes.com/mighty-addons/backdrop-filter/)** - The Backdrop filter lets you add graphical effects such as blurring or color shifting on the background image of your web page.
+23. **[Text Marquee](https://mightythemes.com/mighty-addons/text-marquee/)** - Take advantage of the Text Marquee Elementor widget and create custom auto-scrolling text anywhere in your website.
+24. **[WooCommerce Add to Cart (Pro)](https://mightythemes.com/mighty-addons/add-to-cart-widget)** -  Add to Cart Widget Comes With Pre-defined Quantity & Allows Customers to Add Products Directly to Cart.
+25. **[Woo Slider (Pro)](https://mightythemes.com/mighty-addons/woo-slider-widget)** - Woo Slider Elementor widget lets you showcase your WooCommerce products and categories in dynamic and visually appealing highly responsive and interactive slider layouts.
+26. **[WooCommerce Product Grid (Pro)](https://mightythemes.com/mighty-addons/products-grid-widget/)** - Display your WooCommerce store products with all the important information and badges anywhere in your website using Woo Product Grid Elementor widget.
+27. **[Chart Widget (Pro)](https://mightythemes.com/mighty-addons/chart/)** - Create interactive Line and Bar Charts and make everlasting impression using Chart Widget
+28. **[CSS Filters](https://mightythemes.com/mighty-addons/css-filter/)** - Take advantage of CSS Filter Effects and create something totally unique and mesmerizing to greet your visitors.
+29. **[Backdrop Filter](https://mightythemes.com/mighty-addons/backdrop-filter/)** - The Backdrop filter lets you add graphical effects such as blurring or color shifting on the background image of your web page.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
