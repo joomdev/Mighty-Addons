@@ -1,14 +1,15 @@
 # Mighty Addons for Elementor
+
 Contributors: mightythemes1  
 Author URI: https://mightythemes.com  
 Plugin URI: https://mightythemes.com/products/mighty-addons  
 Requires at least: 4.0 or higher  
 Tested up to: 5.8  
 Requires PHP: 5.6  
-Stable Tag: 1.5.2  
+Stable Tag: 1.6.0  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
-Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules, testimonials, page builder, elementor widgets, elements  
+Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
 
 Mighty Addons is a collection of premium quality addons for the Elementor page builder. Addons are continually added and improved.
 
@@ -85,6 +86,8 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 20. **[MA Spacers](https://mightythemes.com/mighty-addons/spacer/)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
 21. **[Section Slider](https://mightythemes.com/mighty-addons/section-slider)** - Create sliders out of your Elementor Sections in just one click.
 22. **[Reading Progress Bar](https://mightythemes.com/mighty-addons/reading-progress-bar)** - Show reading progress bar to your users by selecting from two views which also contains Back To Top feature.
+23. **[CSS Filters](https://mightythemes.com/mighty-addons/css-filter/)** - Take advantage of CSS Filter Effects and create something totally unique and mesmerizing to greet your visitors.
+24. **[Backdrop Filter](https://mightythemes.com/mighty-addons/backdrop-filter/)** - The Backdrop filter lets you add graphical effects such as blurring or color shifting on the background image of your web page.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
@@ -104,7 +107,12 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 12. **Content Toggle Widget** - Create Content toggle section to display two variation of a content.
 13. **WhatsApp Chat Widget** - Add a floating WhatsApp Chatbox on your WordPress site.
 14. **Timeline** - Solve all your events showcase problems by showing them through Timeline by using different factors.
-15. **Link Effects** - Link Effects for applying cool effects on links.
+15. **MA Link Effects** - Link Effects for applying cool effects on links.
+16. **WooCommerce Add to Cart** -  Add to Cart Widget Comes With Pre-defined Quantity & Allows Customers to Add Products Directly to Cart.
+17. **Woo Slider** - Woo Slider Elementor widget lets you showcase your WooCommerce products and categories in dynamic and visually appealing highly responsive and interactive slider layouts.
+18. **WooCommerce Product Grid** - Display your WooCommerce store products with all the important information and badges anywhere in your website using Woo Product Grid Elementor widget.
+19. **Chart Widget** - Create interactive Line and Bar Charts and make everlasting impression using Chart Widget
+20. **Text Marquee** - Take advantage of the Text Marquee Elementor widget and create custom auto-scrolling text anywhere in your website.
 
 ### Mighty Addons Extensions
 1. **Cross-Site Copy Paste Style (Pro)** - The feature allows you to copy the style of website A to Website B.
@@ -116,10 +124,12 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 7. **[Advance Gradient (Pro)](https://mightythemes.com/mighty-addons/advance-gradient)** Add multiple gradients on any element for normal and hover mode with transition effects for hover.
 8. **[Advance Shadow (Pro)](https://mightythemes.com/mighty-addons/advance-shadow)** Add multiple shadows on any element for normal and hover mode.
 9. **[Display Conditions - (Pro)](https://mightythemes.com/mighty-addons/display-conditions)** - Display your content to only those users who are satisfying the display rules and hide from others.
-10. **[Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
-11. **[Spacers (Pro)](https://mightythemes.com/mighty-addons/spacer)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
+10. **[MA Custom CSS](#)** - Add and apply custom CSS from Elementor Free through Mighty Addons.
+11. **[MA Spacers (Pro)](https://mightythemes.com/mighty-addons/spacer/)** - Apply quick margin/padding on elements on all 3 levels i.e., Section, Column and Widget.
 12. **[Section Slider (Pro)](https://mightythemes.com/mighty-addons/section-slider)** - Create sliders out of your Elementor Sections in just one click.
 13. **[Reading Progress Bar](https://mightythemes.com/mighty-addons/reading-progress-bar)** - Show reading progress bar to your users by selecting from two views which also contains Back To Top feature.
+14. **[CSS Filters (Pro)](https://mightythemes.com/mighty-addons/css-filter/)** - Take advantage of CSS Filter Effects and create something totally unique and mesmerizing to greet your visitors.
+15. **[Backdrop Filter (Pro)](https://mightythemes.com/mighty-addons/backdrop-filter/)** - The Backdrop filter lets you add graphical effects such as blurring or color shifting on the background image of your web page.
 
 We are working on more Elementor Widgets which are frequently updated. Still, you have any specific widget or feature request, feel free to **[get in touch](https://mightythemes.com/contact/)**.
 
@@ -185,6 +195,16 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.6.0
+* Added: Woo Slider for showcasing products in a slider [PRO]
+* Added: Woo Products Grid for showcasing products in a grid [PRO]
+* Added: Woo Add to Cart widget for quickly adding products to cart [PRO]
+* Added: Chart widget for displaying charts [PRO]
+* Added: CSS Filters Extension for applying CSS filters on any element [PRO]
+* Added: Backdrop Filter Extension for applying Backdrop filters on any element [PRO]
+* Added Text Marquee for displaying text in a marquee style
+* Fixed: Elementor deprecations in the older version of Elementor
 
 ### 1.5.2
 * Fixed: Reading Progress Bar compatibility issue with PHP 8
