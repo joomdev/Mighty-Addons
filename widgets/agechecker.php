@@ -117,7 +117,7 @@ class MT_agechecker extends Widget_Base {
                 'display_logo', [
                     'label' => __( 'Display Logo', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
-                    'default' => 'yes'
+                    'default' => 'no'
                 ]
             );
 
@@ -166,10 +166,72 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __( 'Description', 'plugin-domain' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
-                    'default' => 'you must be 18 years old to visit our website. Enter your birth date below, your age will be calculated automatically.', 'mighty',
+                    'default' => 'You must be 18 years old in order to visit this website.', 'mighty',
                     'title' => 'Leave empty if dont want to add any description',
-                    'condition' => [
-                        'enable_description' => 'yes'
+                    'conditions' => [
+                        'relation' => 'and',
+                        'terms' => [
+                            [
+                                'name' => 'enable_description',
+                                'operator' => '==',
+                                'value' => 'yes'
+                            ],
+                            [
+                                'name' => 'method',
+                                'operator' => '==',
+                                'value' => 'age_confirmation'
+                            ]
+                        ]
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'description_date_birth',
+                [
+                    'label' => __( 'Description', 'plugin-domain' ),
+                    'type' => \Elementor\Controls_Manager::WYSIWYG,
+                    'default' => 'you must be 18 years old to visit our website. Enter your birthdate below, your agre will be calculated automatically.', 'mighty',
+                    'title' => 'Leave empty if dont want to add any description',
+                    'conditions' => [
+                        'relation' => 'and',
+                        'terms' => [
+                            [
+                                'name' => 'enable_description',
+                                'operator' => '==',
+                                'value' => 'yes'
+                            ],
+                            [
+                                'name' => 'method',
+                                'operator' => '==',
+                                'value' => 'date_birth'
+                            ]
+                        ]
+                    ]
+                ]
+            );
+
+            $this->add_control(
+                'description_yes_no',
+                [
+                    'label' => __( 'Description', 'plugin-domain' ),
+                    'type' => \Elementor\Controls_Manager::WYSIWYG,
+                    'default' => 'you must be 18 years old to visit our website. Select your preference below.', 'mighty',
+                    'title' => 'Leave empty if dont want to add any description',
+                    'conditions' => [
+                        'relation' => 'and',
+                        'terms' => [
+                            [
+                                'name' => 'enable_description',
+                                'operator' => '==',
+                                'value' => 'yes'
+                            ],
+                            [
+                                'name' => 'method',
+                                'operator' => '==',
+                                'value' => 'yes_no'
+                            ]
+                        ]
                     ]
                 ]
             );
@@ -433,6 +495,8 @@ class MT_agechecker extends Widget_Base {
                 'add_background_image', [
                     'label' => __( 'Add Background Image', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
+                    'default' => 'no'
+
                 ]
             );
 
@@ -443,7 +507,7 @@ class MT_agechecker extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::MEDIA,
                     'condition' => [
                         'add_background_image' => 'yes'
-                    ]
+                    ],
                 ]
             );
 
@@ -452,17 +516,20 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Background Image Positon', 'mighty'),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => __('default'),
+                    'default' => __('center center'),
                     'options' => [
-                        'top_left' => __('Top Left', 'mighty'),
-                        'top_center' => __('Top Center', 'mighty'),
-                        'top_right' => __('Top Right', 'mighty'),
-                        'center_left' => __('Center Left', 'mighty'),
-                        'center_center' => __('Center Center', 'mighty'),
-                        'center_right' => __('Center Right', 'mighty'),
-                        'bottom_left' => __('Bottom Left', 'mighty'),
-                        'bottom_center' => __('Bottom Center', 'mighty'),
-                        'bottom_right' => __('Bottom Right', 'mighty'),
+                        'top left' => __('Top Left', 'mighty'),
+                        'top center' => __('Top Center', 'mighty'),
+                        'top right' => __('Top Right', 'mighty'),
+                        'center left' => __('Center Left', 'mighty'),
+                        'center center' => __('Center Center', 'mighty'),
+                        'center right' => __('Center Right', 'mighty'),
+                        'bottom left' => __('Bottom Left', 'mighty'),
+                        'bottom center' => __('Bottom Center', 'mighty'),
+                        'bottom right' => __('Bottom Right', 'mighty'),
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-agech' => 'background-position: {{VALUE}}',
                     ],
                 ]
             );
@@ -473,7 +540,7 @@ class MT_agechecker extends Widget_Base {
                     'label' => __( 'Overlay Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .ma-agech' => 'overlay: {{VALUE}}',
                     ],
                 ]
             );
@@ -482,6 +549,7 @@ class MT_agechecker extends Widget_Base {
                 'add_right_side_image', [
                     'label' => __( 'Add Right Side Image', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
+                    'default' => 'no'
                 ]
             );
 
