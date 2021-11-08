@@ -102,7 +102,7 @@ class Mighty_Elementor {
 
 		$branding = HelperFunctions::get_white_label();
 
-		$elements_manager->register(
+		$elements_manager->add_category(
 			'mighty-addons',
 			[
 				'title' => $branding['plugin_name']
@@ -141,7 +141,7 @@ class Mighty_Elementor {
 				
 				// Register Widgets
 				$class = sprintf( 'MightyAddons\Widgets\%s', $props['class'] );
-				\Elementor\Plugin::instance()->widgets_manager->register( new $class );
+				\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class );
 			}
 		}
 		
