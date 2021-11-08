@@ -14,12 +14,22 @@ class AgeChecker{
             $logo = $settings[ 'logo' ]['id'] ? $settings[ 'logo' ]['url'] : '';
         }
 
+        if ( $settings[ 'add_background_image' ] == 'yes' ) {
+            $background_image = $settings[ 'background_image' ]['id'] ? $settings[ 'background_image' ]['url'] : '';
+        }
+
         $title = ( $settings[ 'enable_title' ] == 'yes' ) ? $settings[ 'title' ] : '';
 
-        $description = ( $settings[ 'enable_description' ] == 'yes' ) ? $settings[ 'description' ] : '';
+        if ( $settings[ 'enable_description' ] == 'yes' ) {
+
+            $description = ( $settings[ 'method' ] == 'age_confirmation' ) ? $settings[ 'description' ] : '';
+            $description = ( $settings[ 'method' ] == 'yes_no' ) ? $settings[ 'description_yes_no' ] : '';
+            $description = ( $settings[ 'method' ] == 'date_birth' ) ? $settings[ 'description_date_birth' ] : '';
+
+        }
     
     ?>
-        <div class="ma-agech">
+        <div class="ma-agech" style='background-image: url(<?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
 
             <div class="ma-agech__wrapper ma-right-side-image <?php echo $settings['display_position'];?> ">
 
@@ -27,17 +37,17 @@ class AgeChecker{
 
                     <div class="ma-agech__content-inner ma-align-<?php echo $settings['content_alignment'];?>">
 
-                        <?php if ( $logo ) { ?>
+                        <?php if ( isset( $logo ) ) { ?>
                             <div class="ma-agech__logo-wrapper">
                                 <img src="<?php echo $logo ;?>" alt="logo" class="ma-agech__logo">
                             </div>
                         <?php } ?>    
 
-                        <?php if ( $title ) { ?>
+                        <?php if ( isset ( $title ) ) { ?>
                             <h3 class="ma-agech__title"><?php echo $title ?></h3>
                         <?php } ?>    
 
-                        <?php if ( $description ) { ?>
+                        <?php if ( isset ( $description ) ) { ?>
                             <p class="ma-agech__description"><?php echo $description; ?></p>
                         <?php } ?>
 
@@ -49,10 +59,11 @@ class AgeChecker{
                         <?php } ?>
 
                         <div class="ma-agech__input-btn-wrapper">
-
-                            <div class="ma-agech__input-wrapper">
-                                <input type="date" id="birthdate" class="ma-agech__input" name="birthdate">
-                            </div>
+                            <?php if ( $settings['method'] == 'date_birth' ) { ?>
+                                <div class="ma-agech__input-wrapper">
+                                    <input type="date" id="birthdate" class="ma-agech__input" name="birthdate">
+                                </div>
+                            <?php } ?>
 
                             <div class="ma-agech__btn-wrapper">
 
@@ -78,8 +89,10 @@ class AgeChecker{
                     <p class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></p>
 
                 </div>
-
-                <div class="ma-agech__side-image"></div>
+                
+                <?php if ( $settings['add_right_side_image'] == 'yes' ) { ?>
+                    <div class="ma-agech__side-image"></div>
+                <?php } ?>
 
             </div>
 
