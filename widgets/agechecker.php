@@ -540,7 +540,7 @@ class MT_agechecker extends Widget_Base {
                     'label' => __( 'Overlay Color', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .ma-agech' => 'overlay: {{VALUE}}',
+                        '{{WRAPPER}} .has-overlay' => 'background: {{VALUE}}',
                     ],
                 ]
             );
@@ -569,17 +569,20 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Image Positon', 'mighty'),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => __('default'),
+                    'default' => __('top left'),
                     'options' => [
-                        'top_left' => __('Top Left', 'mighty'),
-                        'top_center' => __('Top Center', 'mighty'),
-                        'top_right' => __('Top Right', 'mighty'),
-                        'center_left' => __('Center Left', 'mighty'),
-                        'center_center' => __('Center Center', 'mighty'),
-                        'center_right' => __('Center Right', 'mighty'),
-                        'bottom_left' => __('Bottom Left', 'mighty'),
-                        'bottom_center' => __('Bottom Center', 'mighty'),
-                        'bottom_right' => __('Bottom Right', 'mighty'),
+                        'top left' => __('Default', 'mighty'),
+                        'top center' => __('Top Center', 'mighty'),
+                        'top right' => __('Top Right', 'mighty'),
+                        'center left' => __('Center Left', 'mighty'),
+                        'center center' => __('Center Center', 'mighty'),
+                        'center right' => __('Center Right', 'mighty'),
+                        'bottom left' => __('Bottom Left', 'mighty'),
+                        'bottom center' => __('Bottom Center', 'mighty'),
+                        'bottom right' => __('Bottom Right', 'mighty'),
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-agech__wrapper .ma-agech__side-image' => 'background-position: {{VALUE}}',
                     ],
                 ]
             );
@@ -648,7 +651,7 @@ class MT_agechecker extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ..ma-agech__wrapper' => 'max-width: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .ma-agech__wrapper' => 'max-width: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -670,7 +673,7 @@ class MT_agechecker extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} ..ma-agech__wrapper' => 'min-height: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .ma-agech__wrapper' => 'min-height: {{SIZE}}{{UNIT}};',
                     ]
                 ]
             );
@@ -684,20 +687,6 @@ class MT_agechecker extends Widget_Base {
                     'selector' => '{{WRAPPER}} .ma-agech__wrapper',
                 ]
 		    );
-
-            // $this->add_control(
-			// 	'popup_border_color',
-            //     [
-            //         'label'     => __( 'Border Color', 'mighty' ),
-			// 		'type'      => \Elementor\Controls_Manager::COLOR,
-			// 		'selectors' => [
-			// 			'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
-            //         ],
-            //         'condition' => [
-            //             'background_type' => 'gradient'
-            //         ]
-            //     ]
-			// );
 
             $this->add_group_control(
 				\Elementor\Group_Control_Border::get_type(),
@@ -725,7 +714,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'name' => 'popup_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .ma-agech__wrapper',
                 ]
             );
 
@@ -1199,6 +1188,9 @@ class MT_agechecker extends Widget_Base {
 			[
 				'label' => __( 'Second Button', 'mighty' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'method' => 'yes_no'
+                ]
 			]
         );
 
@@ -1477,7 +1469,122 @@ class MT_agechecker extends Widget_Base {
     {
         $settings = $this->get_settings_for_display();
 
-        $html = AgeChecker::agecheckerhtml( $settings );
+        if ( $settings['overlay_color'] ) {
+            $this->add_render_attribute( 'background-overlay', 'class', 'has-overlay' );
+        }
+
+        if ( $settings[ 'display_logo' ] == 'yes' ) {
+            $logo = $settings[ 'logo' ]['id'] ? $settings[ 'logo' ]['url'] : '';
+        }
+
+        if ( $settings[ 'add_background_image' ] == 'yes' ) {
+            $background_image = $settings[ 'background_image' ]['id'] ? $settings[ 'background_image' ]['url'] : '';
+        }
+
+        if ( $settings[ 'right_side_background_image' ] ) {
+            $right_side_background_image = $settings[ 'right_side_background_image' ]['id'] ? $settings[ 'right_side_background_image' ]['url'] : '';
+        }
+
+        $title = ( $settings[ 'enable_title' ] == 'yes' ) ? $settings[ 'title' ] : '';
+
+        if ( $settings[ 'enable_description' ] == 'yes' ) {
+
+            if ( $settings[ 'method' ] == 'age_confirmation' ) {
+                $description = $settings[ 'description' ];
+            }
+            if ( $settings[ 'method' ] == 'yes_no' ) {
+                $description = $settings[ 'description_yes_no' ];
+            }
+            if ( $settings[ 'method' ] == 'date_birth' ) {
+                $description = $settings[ 'description_date_birth' ];
+            }
+
+            $this->add_render_attribute( 'background-overlay', 'class', 'ma-agech' );
+            if ( $settings['overlay_color'] ) {
+                $this->add_render_attribute( 'background-overlay', 'class', 'has-overlay' );
+            }
+
+            $this->add_render_attribute( 'right-side-image', 'class', 'ma-agech__wrapper' );
+            $this->add_render_attribute( 'right-side-image', 'class', $settings['display_position'] );
+            if ( $settings['add_right_side_image'] == 'yes' ) {
+                $this->add_render_attribute( 'right-side-image', 'class', 'ma-right-side-image' );
+            }
+
+        }
+    
+    ?>
+        <div <?php echo $this->get_render_attribute_string('background-overlay'); ?>  style='background-image: url( <?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
+
+            <div <?php echo $this->get_render_attribute_string('right-side-image'); ?> >
+
+                <div class="ma-agech__content">
+
+                    <div class="ma-agech__content-inner ma-align-<?php echo $settings['content_alignment'];?>">
+
+                        <?php if ( isset( $logo ) ) { ?>
+                            <div class="ma-agech__logo-wrapper">
+                                <img src="<?php echo $logo ;?>" alt="logo" class="ma-agech__logo">
+                            </div>
+                        <?php } ?>    
+
+                        <?php if ( isset ( $title ) ) { ?>
+                            <h3 class="ma-agech__title"><?php echo $title ?></h3>
+                        <?php } ?>    
+
+                        <?php if ( isset ( $description ) ) { ?>
+                            <div class="ma-agech__description"><?php echo $description; ?></div>
+                        <?php } ?>
+
+                        <?php if ( $settings['method'] == 'age_confirmation' ) { ?>
+                            <div class="ma-agech__checkbox-wrapper">
+                                <input type="checkbox" id="age18plus" class="ma-agech__checkbox" name="age"value="age">
+                                <label for="vehicle1" class="ma-agech__checkbox-label"><?php echo $settings['check_input_box'];?></label>
+                            </div>
+                        <?php } ?>
+
+                        <div class="ma-agech__input-btn-wrapper">
+                            <?php if ( $settings['method'] == 'date_birth' ) { ?>
+                                <div class="ma-agech__input-wrapper">
+                                    <input type="date" id="birthdate" class="ma-agech__input" name="birthdate">
+                                </div>
+                            <?php } ?>
+
+                            <div class="ma-agech__btn-wrapper">
+
+                                <a href="#" class="ma-agech__btn-primary ma-agech__icon-<?php echo $settings['icon_position'];?>"role="btn">
+                                    <span class="ma-agech-btn__icon"><i class="<?php echo $settings['button_icon']['value']; ?>"></i></span>
+                                    <span class="ma-agech-btn__text"><?php echo $settings['button_text']; ?></span>
+                                    
+                                </a>
+
+                                <?php if( $settings['method'] == 'yes_no' ) { ?>
+                                    <a href="#" class="ma-agech__btn-secondary ma-agech__icon-after"role="btn">
+                                        <span class="ma-agech-btn__icon"><i class="fas fa-times"></i></span>
+                                        <span class="ma-agech-btn__text">No</span>
+                                    </a>
+                                <?php } ?>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
+
+                </div>
+                
+                <?php if ( $settings['add_right_side_image'] == 'yes' ) { ?>
+                    <div class="ma-agech__side-image" style='background-image: url( <?php echo $right_side_background_image ;?> )' ></div>
+                <?php } ?>
+
+            </div>
+
+	    </div>
+
+	<script type="text/javascript"  src="https://apiv2.popupsmart.com/api/Bundle/371727" async></script>
+    <?php 
+
     }
 
 }
