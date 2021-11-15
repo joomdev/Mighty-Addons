@@ -328,8 +328,8 @@ class MT_agechecker extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .ma-agech__btn-primary .ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .ma-agech__btn-primary .ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
+                        '{{WRAPPER}} .ma-agech .ma-agech__btn-primary.ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .ma-agech .ma-agech__btn-primary.ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
                     ],
                     
                 ]
@@ -364,7 +364,10 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Button Icon', 'mighty'),
                     'type' => \Elementor\Controls_Manager::ICONS,
-                    'value' => 'fas fa-close',
+                    'default' => [
+                        'value' => 'fas fa-skull-crossbones',
+                        'library' => 'solid',
+                    ],                    
                     'condition' => [
                         'method' => 'yes_no'
                     ]
@@ -407,8 +410,8 @@ class MT_agechecker extends Widget_Base {
                         'method' => 'yes_no'
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
+                        '{{WRAPPER}} .ma-agech .ma-agech__btn-secondary.ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .ma-agech .ma-agech__btn-secondary.ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
                     ],
                 ]
             );
