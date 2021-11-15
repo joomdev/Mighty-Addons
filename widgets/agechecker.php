@@ -271,6 +271,9 @@ class MT_agechecker extends Widget_Base {
                             ],
                         ],
                     ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -325,9 +328,10 @@ class MT_agechecker extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
+                        '{{WRAPPER}} .ma-agech__btn-primary .ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .ma-agech__btn-primary .ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
                     ],
+                    
                 ]
             );
 
@@ -348,9 +352,10 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Button Text', 'mighty'),
                     'type' => \Elementor\Controls_Manager::TEXT,
+                    'default' => 'No',
                     'condition' => [
                         'method' => 'yes_no'
-                    ]
+                    ],
                 ]
             );
 
@@ -359,6 +364,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Button Icon', 'mighty'),
                     'type' => \Elementor\Controls_Manager::ICONS,
+                    'value' => 'fas fa-close',
                     'condition' => [
                         'method' => 'yes_no'
                     ]
@@ -370,7 +376,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Icon Position', 'mighty'),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => __('age_confirmation'),
+                    'default' => __('before'),
                     'options' => [
                         'before' => __('Before', 'mighty'),
                         'after' => __('After', 'mighty'),
@@ -399,6 +405,10 @@ class MT_agechecker extends Widget_Base {
                     ],
                     'condition' => [
                         'method' => 'yes_no'
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .ma-agech__icon-after .ma-agech-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}}'
                     ],
                 ]
             );
@@ -591,6 +601,7 @@ class MT_agechecker extends Widget_Base {
                 'enable_cookies', [
                     'label' => __( 'Enable Cookies', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
+                    'default' => 'no'
                 ]
             );
 
@@ -598,7 +609,11 @@ class MT_agechecker extends Widget_Base {
                 'cookies_expiry_time',
                 [
                     'label' => __('Cookies Expiry Time', 'mighty'),
-                    'type' => \Elementor\Controls_Manager::TEXT,
+                    'type' => \Elementor\Controls_Manager::NUMBER,
+                    'default' => '1',
+                    'condition' => [
+                        'enable_cookies' => 'yes'
+                    ]
                 ]
             );
 
@@ -1481,6 +1496,11 @@ class MT_agechecker extends Widget_Base {
         $this->add_render_attribute( 'right-side-image', 'class', 'ma-agech__wrapper' );
         $this->add_render_attribute( 'right-side-image', 'class', $settings['display_position'] );
         $this->add_render_attribute( 'first-button', 'class', 'ma-agech__btn-primary' );
+        
+        $cookie_time =  ( $settings['enable_cookies'] == 'yes' ) ? $settings['cookies_expiry_time'] : '';
+        $this->add_render_attribute( 'age-checker', 'data-cookie_time', $cookie_time );
+        $this->add_render_attribute( 'age-checker', 'data-id', $this->get_id() );
+        
 
         if ( $settings[ 'display_logo' ] == 'yes' ) {
             $logo = $settings[ 'logo' ][ 'id' ] ? $settings[ 'logo' ][ 'url' ] : '';
@@ -1524,76 +1544,80 @@ class MT_agechecker extends Widget_Base {
             }
 
         }
-    
+       
     ?>
-        <div <?php echo $this->get_render_attribute_string('age-checker'); ?>  style='background-image: url( <?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
 
-            <div <?php echo $this->get_render_attribute_string('right-side-image'); ?> >
-            <div class="ma-agech__content-wrapper">
-				<div class="ma-agech__age-alert"><?php echo ( isset( $settings['error_message'] ) ) ? $settings['error_message'] : '';?></div>
-                <div class="ma-agech__content">
+        <?php if ( !isset( $_COOKIE['applicable-for-site'.$this->get_id()] ) && $_COOKIE['applicable-for-site'].$this->get_id() != 'yes' ) {?>
+            <div <?php echo $this->get_render_attribute_string('age-checker'); ?>  style='background-image: url( <?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
 
-                    <div class="ma-agech__content-inner ma-align-<?php echo $settings['content_alignment'];?>">
+                <div <?php echo $this->get_render_attribute_string('right-side-image'); ?> >
+                <div class="ma-agech__content-wrapper">
+                    <div class="ma-agech__age-alert"><?php echo ( isset( $settings['error_message'] ) ) ? $settings['error_message'] : '';?></div>
+                    <div class="ma-agech__content">
 
-                        <?php if ( isset( $logo ) ) { ?>
-                            <div class="ma-agech__logo-wrapper">
-                                <img src="<?php echo $logo ;?>" alt="logo" class="ma-agech__logo">
-                            </div>
-                        <?php } ?>    
+                        <div class="ma-agech__content-inner ma-align-<?php echo $settings['content_alignment'];?>">
 
-                        <?php if ( isset ( $title ) ) { ?>
-                            <h3 class="ma-agech__title"><?php echo $title ?></h3>
-                        <?php } ?>    
+                            <?php if ( isset( $logo ) ) { ?>
+                                <div class="ma-agech__logo-wrapper">
+                                    <img src="<?php echo $logo ;?>" alt="logo" class="ma-agech__logo">
+                                </div>
+                            <?php } ?>    
 
-                        <?php if ( isset ( $description ) ) { ?>
-                            <div class="ma-agech__description"><?php echo $description; ?></div>
-                        <?php } ?>
+                            <?php if ( isset ( $title ) ) { ?>
+                                <h3 class="ma-agech__title"><?php echo $title ?></h3>
+                            <?php } ?>    
 
-                        <?php if ( $settings['method'] == 'age_confirmation' ) { ?>
-                            <div class="ma-agech__checkbox-wrapper">
-                                <input type="checkbox" id="age18plus" class="ma-agech__checkbox" name="age" >
-                                <label for="vehicle1" class="ma-agech__checkbox-label"><?php echo $settings['check_input_box'];?></label>
-                            </div>
-                        <?php } ?>
+                            <?php if ( isset ( $description ) && !empty ( $description ) ) { ?>
+                                <div class="ma-agech__description"><?php echo $description; ?></div>
+                            <?php } ?>
 
-                        <div class="ma-agech__input-btn-wrapper">
-                            <?php if ( $settings['method'] == 'date_birth' ) { ?>
-                                <div class="ma-agech__input-wrapper">
-                                    <input type="date" data-min_age = "<?php echo ( isset($settings['minimum_age_limit'] ) ) ? $settings['minimum_age_limit'] : '' ?>"  value="" id="birthdate" class="ma-agech__input" name="birthdate">
+                            <?php if ( $settings['method'] == 'age_confirmation' ) { ?>
+                                <div class="ma-agech__checkbox-wrapper">
+                                    <input type="checkbox" id="age18plus" class="ma-agech__checkbox" name="age" >
+                                    <label for="vehicle1" class="ma-agech__checkbox-label"><?php echo $settings['check_input_box'];?></label>
                                 </div>
                             <?php } ?>
 
-                            <div class="ma-agech__btn-wrapper">
-
-                                <a href="#" onclick="enterInSite()" <?php echo $this->get_render_attribute_string('first-button'); ?> role="btn">
-                                    <span class="ma-agech-btn__icon"><i class="<?php echo $settings['button_icon']['value']; ?>"></i></span>
-                                    <span class="ma-agech-btn__text" ><?php echo $settings['button_text']; ?></span>
-                                </a>
-
-                                <?php if( $settings['method'] == 'yes_no' ) { ?>
-                                    <a href="#" onclick="notAllowed()" class="ma-agech__btn-secondary ma-agech__icon-after"role="btn">
-                                        <span class="ma-agech-btn__icon"><i class="fas fa-times"></i></span>
-                                        <span class="ma-agech-btn__text">No</span>
-                                    </a>
+                            <div class="ma-agech__input-btn-wrapper">
+                                <?php if ( $settings['method'] == 'date_birth' ) { ?>
+                                    <div class="ma-agech__input-wrapper">
+                                        <input type="date" data-min_age = "<?php echo ( isset($settings['minimum_age_limit'] ) ) ? $settings['minimum_age_limit'] : '' ?>"  value="" id="birthdate" class="ma-agech__input" name="birthdate">
+                                    </div>
                                 <?php } ?>
+
+                                <div class="ma-agech__btn-wrapper">
+
+                                    <a href="#" onclick="enterInSite()" <?php echo $this->get_render_attribute_string('first-button'); ?> role="btn">
+                                        <span class="ma-agech-btn__icon"><i class="<?php echo $settings['button_icon']['value']; ?>"></i></span>
+                                        <span class="ma-agech-btn__text" ><?php echo $settings['button_text']; ?></span>
+                                    </a>
+
+                                    <?php if( $settings['method'] == 'yes_no' ) { ?>
+                                        <a href="#" onclick="notAllowed()" class="ma-agech__btn-secondary ma-agech__icon-<?php echo $settings['second_icon_position']; ?>" role="btn">
+                                            <span class="ma-agech-btn__icon"><i class="<?php echo $settings['second_button_icon']['value']; ?>"></i></span>
+                                            <span class="ma-agech-btn__text"><?php echo $settings['second_button_text'];?></span>
+                                        </a>
+                                    <?php } ?>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </div>
+                        <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
 
-                    <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
+                    </div>
+                </div>
+                    <?php if ( $settings['add_right_side_image'] == 'yes' ) { ?>
+                        <div class="ma-agech__side-image" style='background-image: url( <?php echo $right_side_background_image ;?> )' ></div>
+                    <?php } ?>
 
                 </div>
-            </div>
-                <?php if ( $settings['add_right_side_image'] == 'yes' ) { ?>
-                    <div class="ma-agech__side-image" style='background-image: url( <?php echo $right_side_background_image ;?> )' ></div>
-                <?php } ?>
 
             </div>
+        <?php } ?>    
 
-	    </div>
     <?php 
 
     }
