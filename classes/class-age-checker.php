@@ -4,9 +4,10 @@ namespace MightyAddons\classes;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// include 
 class AgeChecker{
 
-    public static function agecheckerhtml( $settings )
+    public static function agecheckerhtml( $settings , $this )
     { ?>
 
     <?php 
@@ -22,14 +23,24 @@ class AgeChecker{
 
         if ( $settings[ 'enable_description' ] == 'yes' ) {
 
-            $description = ( $settings[ 'method' ] == 'age_confirmation' ) ? $settings[ 'description' ] : '';
-            $description = ( $settings[ 'method' ] == 'yes_no' ) ? $settings[ 'description_yes_no' ] : '';
-            $description = ( $settings[ 'method' ] == 'date_birth' ) ? $settings[ 'description_date_birth' ] : '';
+            if ( $settings[ 'method' ] == 'age_confirmation' ) {
+                $description = $settings[ 'description' ];
+            }
+            if ( $settings[ 'method' ] == 'yes_no' ) {
+                $description = $settings[ 'description_yes_no' ];
+            }
+            if ( $settings[ 'method' ] == 'date_birth' ) {
+                $description = $settings[ 'description_date_birth' ];
+            }
+
+            if ( $settings['overlay_color'] ) {
+                $this->add_render_attribute( 'background-overlay', 'class', 'has-overlay' );
+            }
 
         }
     
     ?>
-        <div class="ma-agech" style='background-image: url(<?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
+        <div class="ma-agech <?php echo Element_Base::get_render_attribute_string('background-overlay'); ?>"  style='background-image: url(<?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
 
             <div class="ma-agech__wrapper ma-right-side-image <?php echo $settings['display_position'];?> ">
 
@@ -48,7 +59,7 @@ class AgeChecker{
                         <?php } ?>    
 
                         <?php if ( isset ( $description ) ) { ?>
-                            <p class="ma-agech__description"><?php echo $description; ?></p>
+                            <div class="ma-agech__description"><?php echo $description; ?></div>
                         <?php } ?>
 
                         <?php if ( $settings['method'] == 'age_confirmation' ) { ?>
@@ -69,7 +80,7 @@ class AgeChecker{
 
                                 <a href="#" class="ma-agech__btn-primary ma-agech__icon-<?php echo $settings['icon_position'];?>"role="btn">
                                     <span class="ma-agech-btn__icon"><i class="<?php echo $settings['button_icon']['value']; ?>"></i></span>
-                                    <span class="ma-agech-btn__text"><?php echo $settings['button_text']; ?></span>
+                                    <input tye= class="ma-agech-btn__text"><?php echo $settings['button_text']; ?></input>
                                     
                                 </a>
 
@@ -86,12 +97,12 @@ class AgeChecker{
 
                     </div>
 
-                    <p class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></p>
+                    <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
 
                 </div>
                 
                 <?php if ( $settings['add_right_side_image'] == 'yes' ) { ?>
-                    <div class="ma-agech__side-image"></div>
+                    <div class="ma-agech__side-image" ></div>
                 <?php } ?>
 
             </div>

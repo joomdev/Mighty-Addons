@@ -26,10 +26,8 @@ class MT_agechecker extends Widget_Base {
 		parent::__construct( $data, $args );
 	
 		wp_register_style( 'mighty-agecheckercss', MIGHTY_ADDONS_PLG_URL . 'assets/css/age-checker.css', false, MIGHTY_ADDONS_VERSION );
-		// wp_register_style( 'mighty-slicktheme', MIGHTY_ADDONS_PLG_URL . 'assets/css/slick-theme.min.css', false, MIGHTY_ADDONS_VERSION );
-		// wp_register_style( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/css/testimonial.min.css', false, MIGHTY_ADDONS_VERSION );
-		// wp_register_script( 'mighty-slickjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/slick.min.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
-		// wp_register_script( 'mt-testimonial', MIGHTY_ADDONS_PLG_URL . 'assets/js/testimonial.js', [ 'mighty-slickjs', 'jquery' ], MIGHTY_ADDONS_VERSION, true );
+		
+		wp_register_script( 'mighty-age-checkerjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/age-checker.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 	}
 	
 	public function get_name() {
@@ -53,7 +51,7 @@ class MT_agechecker extends Widget_Base {
     }
 	
 	public function get_script_depends() {
-		// return [ 'mighty-slickjs', 'mt-testimonial' ];
+		return [ 'mighty-age-checkerjs' ];
 	}
 
 	public function get_style_depends() {
@@ -164,7 +162,7 @@ class MT_agechecker extends Widget_Base {
             $this->add_control(
                 'description',
                 [
-                    'label' => __( 'Description', 'plugin-domain' ),
+                    'label' => __( 'Description', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'default' => 'You must be 18 years old in order to visit this website.', 'mighty',
                     'title' => 'Leave empty if dont want to add any description',
@@ -189,9 +187,9 @@ class MT_agechecker extends Widget_Base {
             $this->add_control(
                 'description_date_birth',
                 [
-                    'label' => __( 'Description', 'plugin-domain' ),
+                    'label' => __( 'Description', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
-                    'default' => 'you must be 18 years old to visit our website. Enter your birthdate below, your agre will be calculated automatically.', 'mighty',
+                    'default' => 'you must be 18 years old to visit our website. Enter your birth date below, your age will be calculated automatically.', 'mighty',
                     'title' => 'Leave empty if dont want to add any description',
                     'conditions' => [
                         'relation' => 'and',
@@ -214,7 +212,7 @@ class MT_agechecker extends Widget_Base {
             $this->add_control(
                 'description_yes_no',
                 [
-                    'label' => __( 'Description', 'plugin-domain' ),
+                    'label' => __( 'Description', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'default' => 'you must be 18 years old to visit our website. Select your preference below.', 'mighty',
                     'title' => 'Leave empty if dont want to add any description',
@@ -408,7 +406,7 @@ class MT_agechecker extends Widget_Base {
             $this->add_control(
                 'bottom_text',
                 [
-                    'label' => __( 'Bottom Text', 'plugin-domain' ),
+                    'label' => __( 'Bottom Text', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'default' => 'By entering this site you are agreeing to the Terms of Use and Privacy Policy',
                     'title' => 'Leave empty if you dont want to add the bottom text.',
@@ -418,9 +416,10 @@ class MT_agechecker extends Widget_Base {
             $this->add_control(
                 'error_message',
                 [
-                    'label' => __( 'Error Message', 'plugin-domain' ),
+                    'label' => __( 'Error Message', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'title' => 'Leave empty if you dont want to add the bottom text.',
+                    'default' => 'Sorry...!!! You are not eligible for this website',
                     'conditions' => [
                         'terms' => [
                             [
@@ -516,8 +515,9 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __('Background Image Positon', 'mighty'),
                     'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => __('center center'),
+                    'default' => __('default'),
                     'options' => [
+                        'default' => __('Default', 'mighty'),
                         'top left' => __('Top Left', 'mighty'),
                         'top center' => __('Top Center', 'mighty'),
                         'top right' => __('Top Right', 'mighty'),
@@ -1383,6 +1383,15 @@ class MT_agechecker extends Widget_Base {
 			[
 				'label' => __( 'Error Message', 'mighty' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'method',
+                            'operator' => '!==',
+                            'value' => 'age_confirmation',
+                        ],
+                    ],
+                ],
 			]
         );
 
@@ -1392,7 +1401,7 @@ class MT_agechecker extends Widget_Base {
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => \Elementor\Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide .mt-person-testimonial blockquote' => 'color: {{VALUES}}'
+                        '{{WRAPPER}} .ma-agech__age-alert' => 'color: {{VALUES}}'
                     ]
                 ]
             );
@@ -1403,7 +1412,7 @@ class MT_agechecker extends Widget_Base {
                     'name' => 'error_background_type',
                     'label' => __( 'Background Type', 'mighty' ),
                     'types' => [ 'classic', 'gradient' ],
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .ma-agech__age-alert',
                 ]
             );
 
@@ -1412,7 +1421,7 @@ class MT_agechecker extends Widget_Base {
 				[
 					'name' => 'error_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide',
+					'selector' => '{{WRAPPER}} .ma-agech__age-alert',
 				]
 			);
 
@@ -1423,7 +1432,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__age-alert' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1433,7 +1442,7 @@ class MT_agechecker extends Widget_Base {
                 [
                     'name' => 'error_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .wrapper',
+                    'selector' => '{{WRAPPER}} .ma-agech__age-alert',
                 ]
             );
 
@@ -1444,7 +1453,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__age-alert' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1456,7 +1465,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
 					'selectors' => [
-						'{{WRAPPER}} .mighty-testimonial .mt-testimonial-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__age-alert' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1468,17 +1477,19 @@ class MT_agechecker extends Widget_Base {
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-
-        if ( $settings['overlay_color'] ) {
-            $this->add_render_attribute( 'background-overlay', 'class', 'has-overlay' );
-        }
+        $this->add_render_attribute( 'age-checker', 'class', 'ma-agech' );
+        $this->add_render_attribute( 'right-side-image', 'class', 'ma-agech__wrapper' );
+        $this->add_render_attribute( 'right-side-image', 'class', $settings['display_position'] );
+        $this->add_render_attribute( 'first-button', 'class', 'ma-agech__btn-primary' );
 
         if ( $settings[ 'display_logo' ] == 'yes' ) {
-            $logo = $settings[ 'logo' ]['id'] ? $settings[ 'logo' ]['url'] : '';
+            $logo = $settings[ 'logo' ][ 'id' ] ? $settings[ 'logo' ][ 'url' ] : '';
         }
 
         if ( $settings[ 'add_background_image' ] == 'yes' ) {
-            $background_image = $settings[ 'background_image' ]['id'] ? $settings[ 'background_image' ]['url'] : '';
+            $background_image = $settings[ 'background_image' ][ 'id' ] ? $settings[ 'background_image' ][ 'url' ] : '';
+        } else {
+            $background_image = '';
         }
 
         if ( $settings[ 'right_side_background_image' ] ) {
@@ -1499,24 +1510,27 @@ class MT_agechecker extends Widget_Base {
                 $description = $settings[ 'description_date_birth' ];
             }
 
-            $this->add_render_attribute( 'background-overlay', 'class', 'ma-agech' );
             if ( $settings['overlay_color'] ) {
-                $this->add_render_attribute( 'background-overlay', 'class', 'has-overlay' );
+                $this->add_render_attribute( 'age-checker', 'class', 'has-overlay' );
             }
 
-            $this->add_render_attribute( 'right-side-image', 'class', 'ma-agech__wrapper' );
-            $this->add_render_attribute( 'right-side-image', 'class', $settings['display_position'] );
             if ( $settings['add_right_side_image'] == 'yes' ) {
                 $this->add_render_attribute( 'right-side-image', 'class', 'ma-right-side-image' );
+            }
+
+            $this->add_render_attribute( 'first-button', 'class', 'ma-agech__icon-'. $settings['icon_position'] .' ' );
+            if ( $settings['method'] != 'yes_no' ) {
+                $this->add_render_attribute( 'first-button', 'class', 'button-disable' );
             }
 
         }
     
     ?>
-        <div <?php echo $this->get_render_attribute_string('background-overlay'); ?>  style='background-image: url( <?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
+        <div <?php echo $this->get_render_attribute_string('age-checker'); ?>  style='background-image: url( <?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
 
             <div <?php echo $this->get_render_attribute_string('right-side-image'); ?> >
-
+            <div class="ma-agech__content-wrapper">
+				<div class="ma-agech__age-alert"><?php echo ( isset( $settings['error_message'] ) ) ? $settings['error_message'] : '';?></div>
                 <div class="ma-agech__content">
 
                     <div class="ma-agech__content-inner ma-align-<?php echo $settings['content_alignment'];?>">
@@ -1537,7 +1551,7 @@ class MT_agechecker extends Widget_Base {
 
                         <?php if ( $settings['method'] == 'age_confirmation' ) { ?>
                             <div class="ma-agech__checkbox-wrapper">
-                                <input type="checkbox" id="age18plus" class="ma-agech__checkbox" name="age"value="age">
+                                <input type="checkbox" id="age18plus" class="ma-agech__checkbox" name="age" >
                                 <label for="vehicle1" class="ma-agech__checkbox-label"><?php echo $settings['check_input_box'];?></label>
                             </div>
                         <?php } ?>
@@ -1545,20 +1559,19 @@ class MT_agechecker extends Widget_Base {
                         <div class="ma-agech__input-btn-wrapper">
                             <?php if ( $settings['method'] == 'date_birth' ) { ?>
                                 <div class="ma-agech__input-wrapper">
-                                    <input type="date" id="birthdate" class="ma-agech__input" name="birthdate">
+                                    <input type="date" data-min_age = "<?php echo ( isset($settings['minimum_age_limit'] ) ) ? $settings['minimum_age_limit'] : '' ?>"  value="" id="birthdate" class="ma-agech__input" name="birthdate">
                                 </div>
                             <?php } ?>
 
                             <div class="ma-agech__btn-wrapper">
 
-                                <a href="#" class="ma-agech__btn-primary ma-agech__icon-<?php echo $settings['icon_position'];?>"role="btn">
+                                <a href="#" onclick="enterInSite()" <?php echo $this->get_render_attribute_string('first-button'); ?> role="btn">
                                     <span class="ma-agech-btn__icon"><i class="<?php echo $settings['button_icon']['value']; ?>"></i></span>
-                                    <span class="ma-agech-btn__text"><?php echo $settings['button_text']; ?></span>
-                                    
+                                    <span class="ma-agech-btn__text" ><?php echo $settings['button_text']; ?></span>
                                 </a>
 
                                 <?php if( $settings['method'] == 'yes_no' ) { ?>
-                                    <a href="#" class="ma-agech__btn-secondary ma-agech__icon-after"role="btn">
+                                    <a href="#" onclick="notAllowed()" class="ma-agech__btn-secondary ma-agech__icon-after"role="btn">
                                         <span class="ma-agech-btn__icon"><i class="fas fa-times"></i></span>
                                         <span class="ma-agech-btn__text">No</span>
                                     </a>
@@ -1573,7 +1586,7 @@ class MT_agechecker extends Widget_Base {
                     <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
 
                 </div>
-                
+            </div>
                 <?php if ( $settings['add_right_side_image'] == 'yes' ) { ?>
                     <div class="ma-agech__side-image" style='background-image: url( <?php echo $right_side_background_image ;?> )' ></div>
                 <?php } ?>
@@ -1581,8 +1594,6 @@ class MT_agechecker extends Widget_Base {
             </div>
 
 	    </div>
-
-	<script type="text/javascript"  src="https://apiv2.popupsmart.com/api/Bundle/371727" async></script>
     <?php 
 
     }
