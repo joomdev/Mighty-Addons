@@ -329,3 +329,7 @@
 .ma-agech__logo-wrapper img {
   display: inline;
 }
+
+.ma-agech__input-wrapper input {
+  margin-bottom: 30px;
+}
