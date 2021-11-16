@@ -316,3 +316,12 @@
   flex-direction: column;
   width: 100%;
 }
+
+.widget_info {
+  background-color: #8d8dff;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 14px;
+}

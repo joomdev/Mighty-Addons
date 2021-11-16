@@ -722,7 +722,7 @@ class MT_agechecker extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .ma-agech__wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .ma-agech__wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1550,12 +1550,20 @@ class MT_agechecker extends Widget_Base {
        
     ?>
 
-        <?php if ( !isset( $_COOKIE['applicable-for-site'.$this->get_id()] ) && $_COOKIE['applicable-for-site'].$this->get_id() != 'yes' ) {?>
+    <?php if ( \Elementor\Plugin::$instance->editor->is_edit_mode() && $settings['load_popup_in_editor'] == 'yes' ) { ?>
+
+        <p class="widget_info" > Note: You may use this widget on Header or Footer Template directly. It will load it on all pages throughout the website. </p>
+
+    <?php } else { ?>
+
+        <?php if ( !isset( $_COOKIE['applicable-for-site'.$this->get_id()] ) && $_COOKIE['applicable-for-site'].$this->get_id() != 'yes' ) { ?>
             <div <?php echo $this->get_render_attribute_string('age-checker'); ?>  style='background-image: url( <?php echo $background_image ;?> ); background-position : <?php echo $settings['background_image_position'];?>' >
 
                 <div <?php echo $this->get_render_attribute_string('right-side-image'); ?> >
                 <div class="ma-agech__content-wrapper">
+
                     <div class="ma-agech__age-alert"><?php echo ( isset( $settings['error_message'] ) ) ? $settings['error_message'] : '';?></div>
+
                     <div class="ma-agech__content">
 
                         <div class="ma-agech__content-inner ma-align-<?php echo $settings['content_alignment'];?>">
@@ -1611,7 +1619,9 @@ class MT_agechecker extends Widget_Base {
                         <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
 
                     </div>
+
                 </div>
+
                     <?php if ( $settings['add_right_side_image'] == 'yes' ) { ?>
                         <div class="ma-agech__side-image" style='background-image: url( <?php echo $right_side_background_image ;?> )' ></div>
                     <?php } ?>
@@ -1619,7 +1629,9 @@ class MT_agechecker extends Widget_Base {
                 </div>
 
             </div>
-        <?php } ?>    
+        <?php } ?> 
+
+    <?php } ?>
 
     <?php 
 
