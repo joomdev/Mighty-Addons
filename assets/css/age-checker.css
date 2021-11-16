@@ -85,7 +85,7 @@
 }
 
 .ma-agech__wrapper.ma-right-side-image .ma-agech__content {
-  width: 50%; 
+  width: 100%; 
 }
 
 .ma-agech__wrapper.ma-right-side-image .ma-agech__side-image {
@@ -284,7 +284,7 @@
 
 .ma-agech {
   position: fixed; 
-  z-index: 1; 
+  z-index: 1000; 
   padding-top: 100px; 
   left: 0;
   top: 0;
@@ -324,4 +324,8 @@
   padding: 12px;
   font-weight: 600;
   font-size: 14px;
+}
+
+.ma-agech__logo-wrapper img {
+  display: inline;
 }
