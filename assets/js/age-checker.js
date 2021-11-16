@@ -1,7 +1,15 @@
 
 let checkbox = document.getElementsByClassName( 'ma-agech__checkbox' );
-let cookieTime = document.querySelector( '.ma-agech' ).getAttribute('data-cookie_time');
-let id = document.querySelector( '.ma-agech' ).getAttribute('data-id');
+
+let cookieTime = document.querySelector( '.ma-agech' )
+if ( cookieTime ) {
+    cookieTime = cookieTime.getAttribute('data-cookie_time');
+}
+
+let id = document.querySelector( '.ma-agech' )
+if ( id ) {
+    id = id.getAttribute('data-id');
+}
 
 if ( checkbox[0] ) {
 
