@@ -86,7 +86,7 @@ class MT_agechecker extends Widget_Base {
                     'label' => __( 'Load Popup in Editor', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::SWITCHER,
                     'default' => 'yes',
-                    'title' => 'Select No, if you do not want to load the age checker popup in your editor.',
+                    'description' => 'Select No, if you do not want to load the age checker popup in your editor.',
                 ]
             );
 
@@ -144,7 +144,6 @@ class MT_agechecker extends Widget_Base {
                     'label' => __('Title', 'mighty'),
                     'type' => \Elementor\Controls_Manager::TEXT,
                     'default' => 'Age Verification',
-                    'title' => 'Leave empty if dont want to add any title',
                     'condition' => [
                         'enable_title' => 'yes'
                     ]
@@ -165,7 +164,6 @@ class MT_agechecker extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'default' => 'You must be 18 years old in order to visit this website.', 'mighty',
-                    'title' => 'Leave empty if dont want to add any description',
                     'conditions' => [
                         'relation' => 'and',
                         'terms' => [
@@ -190,7 +188,6 @@ class MT_agechecker extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'default' => 'you must be 18 years old to visit our website. Enter your birth date below, your age will be calculated automatically.', 'mighty',
-                    'title' => 'Leave empty if dont want to add any description',
                     'conditions' => [
                         'relation' => 'and',
                         'terms' => [
@@ -215,7 +212,6 @@ class MT_agechecker extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'default' => 'you must be 18 years old to visit our website. Select your preference below.', 'mighty',
-                    'title' => 'Leave empty if dont want to add any description',
                     'conditions' => [
                         'relation' => 'and',
                         'terms' => [
@@ -422,7 +418,7 @@ class MT_agechecker extends Widget_Base {
                     'label' => __( 'Bottom Text', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
                     'default' => 'By entering this site you are agreeing to the Terms of Use and Privacy Policy',
-                    'title' => 'Leave empty if you dont want to add the bottom text.',
+                    'description' => 'Leave empty if you dont want to add the bottom text.',
                 ]
             );
 
@@ -431,7 +427,6 @@ class MT_agechecker extends Widget_Base {
                 [
                     'label' => __( 'Error Message', 'mighty' ),
                     'type' => \Elementor\Controls_Manager::WYSIWYG,
-                    'title' => 'Leave empty if you dont want to add the bottom text.',
                     'default' => 'Sorry...!!! You are not eligible for this website',
                     'conditions' => [
                         'terms' => [
@@ -616,7 +611,8 @@ class MT_agechecker extends Widget_Base {
                     'default' => '1',
                     'condition' => [
                         'enable_cookies' => 'yes'
-                    ]
+                    ],
+                    'description' => 'Set the number of days cookies to be stored.'
                 ]
             );
 
@@ -1563,8 +1559,10 @@ class MT_agechecker extends Widget_Base {
                 <div <?php echo $this->get_render_attribute_string('right-side-image'); ?> >
 
                 <div class="ma-agech__content-wrapper">
-
-                    <div class="ma-agech__age-alert"><?php echo ( isset( $settings['error_message'] ) ) ? $settings['error_message'] : '';?></div>
+                    
+                    <?php if ( !empty ( $settings['error_message'] ) ) { ?>
+                        <div class="ma-agech__age-alert"><?php echo ( isset( $settings['error_message'] ) ) ? $settings['error_message'] : '';?></div>
+                    <?php } ?>
 
                     <div class="ma-agech__content">
 
@@ -1618,7 +1616,9 @@ class MT_agechecker extends Widget_Base {
 
                         </div>
 
-                        <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
+                        <?php if ( !empty( $settings['bottom_text'] ) ) { ?>
+                            <div class="ma-agech__bottom-text ma-align-<?php echo $settings['bottom_line_alignment'];?>"><?php echo $settings['bottom_text']; ?></div>
+                        <?php } ?>
 
                     </div>
 
