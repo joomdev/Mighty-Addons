@@ -333,3 +333,11 @@
 .ma-agech__input-wrapper input {
   margin-bottom: 30px;
 }
+
+.ma-agech__checkbox-label {
+  vertical-align: unset;
+}
+
+.ma-agech__checkbox {
+  height: 12px;
+}
