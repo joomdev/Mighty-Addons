@@ -1559,7 +1559,7 @@ class MT_agechecker extends Widget_Base {
                 <div <?php echo $this->get_render_attribute_string('right-side-image'); ?> >
 
                 <div class="ma-agech__content-wrapper">
-                    
+
                     <?php if ( !empty ( $settings['error_message'] ) ) { ?>
                         <div class="ma-agech__age-alert"><?php echo ( isset( $settings['error_message'] ) ) ? $settings['error_message'] : '';?></div>
                     <?php } ?>
