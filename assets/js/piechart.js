@@ -111,7 +111,7 @@
           }
         );
       	if ( ! hasPatternImages ) {
-          ctx = document.getElementById('canvas');
+          ctx = document.getElementById('canvas'+chart_id);
   
           chart1 = new Chart(
             ctx,

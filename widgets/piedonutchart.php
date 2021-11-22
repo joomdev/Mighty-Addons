@@ -682,7 +682,7 @@ class MT_piedonutchart extends Widget_Base {
         }
         $this->add_render_attribute( 'mighty-chart-position', 'class', 'mighty-chart' );
 
-        $this->add_render_attribute( 'mighty-chart', 'id', 'canvas' );
+        $this->add_render_attribute( 'mighty-chart', 'id', 'canvas'.$this->get_id() );
         $this->add_render_attribute( 'chart_title', 'class', 'chart-title' );
         $this->add_render_attribute( 'mighty-chart', 'data-id', $this->get_id() );
         $this->add_render_attribute( 'mighty-chart', 'data-label', json_encode($label) );
