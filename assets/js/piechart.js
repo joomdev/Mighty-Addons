@@ -1,6 +1,7 @@
 (function ($) {
     var WidgetPieDonutChartHandler = function ( $scope, $ ) {
         var chart =                      $scope.find( 'canvas' );        
+        let chart_id =                   chart.attr( "data-id" );
         let chart_labels =               chart.attr( "data-label" );
         let chart_values =               chart.attr( "data-values" );
         let chart_backgroundColor =      chart.attr( "data-backgroundColor" );
@@ -26,7 +27,7 @@
         let background_image =           chart.attr( "data-backgroundImage" );
         background_image = JSON.parse( background_image );
         let hasPatternImages = false;
-        var chart1;
+        var chart1 = chart1 + chart_id;
 
         var legend_display = ( legend_style == 'yes' ) ? true : false;
         legend_label_font = ( legend_label_font ) ?  legend_label_font : 'arial';
