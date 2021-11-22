@@ -113,14 +113,6 @@ class HelperFunctions {
                 'slug' => 'linkeffects',
                 'icon' => 'mf mf-linkeffects'
             ],
-            'piedonutchart' => [
-                'title' => 'Donut and Pie Chart ',
-                'description' => '',
-                'enable' => true,
-                'class' => 'MT_piedonutchart',
-                'slug' => 'piedonutchart',
-                'icon' => 'mf mf-piedonutchart'
-            ],
             'textmarquee' => [
                 'title' => 'Text Marquee',
                 'description' => '',
@@ -128,6 +120,14 @@ class HelperFunctions {
                 'class' => 'MT_textmarquee',
                 'slug' => 'textmarquee',
                 'icon' => 'mf mf-textmarquee'
+            ],
+            'piedonutchart' => [
+                'title' => 'Donut and Pie Chart ',
+                'description' => '',
+                'enable' => true,
+                'class' => 'MT_piedonutchart',
+                'slug' => 'piedonutchart',
+                'icon' => 'mf mf-piedonutchart'
             ]
         ],
         "extensions" => [
