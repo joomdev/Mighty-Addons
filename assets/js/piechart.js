@@ -94,7 +94,7 @@
               img.src          = background_image[index];
               
               img.onload = function () {
-                var ctx                      = document.getElementById('canvas').getContext('2d');
+                var ctx                      = document.getElementById('canvas'+chart_id).getContext('2d');
                 var fillPattern              = ctx.createPattern(
                   img,
                   'repeat'

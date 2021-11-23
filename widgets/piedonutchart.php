@@ -190,15 +190,15 @@ class MT_piedonutchart extends Widget_Base {
                     'options' => [
                         'left' => [
                             'title' => __( 'Start', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
+                            'icon' => 'eicon-h-align-left',
                         ],
                         'center' => [
                             'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'fa fa-align-center',
+                            'icon' => 'eicon-h-align-center',
                         ],
                         'right' => [
                             'title' => __( 'End', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
+                            'icon' => 'eicon-h-align-right',
                         ],
                     ],
                     'default' => 'center',
@@ -302,15 +302,15 @@ class MT_piedonutchart extends Widget_Base {
                     'options' => [
                         'left' => [
                             'title' => __( 'left', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
+                            'icon' => 'eicon-h-align-left',
                         ],
                         'center' => [
                             'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'fa fa-align-center',
+                            'icon' => 'eicon-h-align-center',
                         ],
                         'right' => [
                             'title' => __( 'right', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
+                            'icon' => 'eicon-h-align-right',
                         ],
                     ],
                     'default' => 'center',
@@ -455,19 +455,19 @@ class MT_piedonutchart extends Widget_Base {
                     'options' => [
                         'left' => [
                             'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
+                            'icon' => 'eicon-h-align-left',
                         ],
                         'top' => [
                             'title' => __( 'top', 'mighty' ),
-                            'icon' => 'fa fa-sort-up',
+                            'icon' => 'eicon-v-align-top',
                         ],
                         'right' => [
                             'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
+                            'icon' => 'eicon-h-align-right',
                         ],
                         'bottom' => [
                             'title' => __( 'Bottom', 'mighty' ),
-                            'icon' => 'fa fa-sort-down',
+                            'icon' => 'eicon-v-align-bottom',
                         ],
                     ],
                     'default' => 'top',

@@ -448,15 +448,15 @@ class MT_agechecker extends Widget_Base {
                     'options' => [
                         'left' => [
                             'title' => __( 'Start', 'mighty' ),
-                            'icon' => 'fa fa-align-left',
+                            'icon' => 'eicon-h-align-left',
                         ],
                         'center' => [
                             'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'fa fa-align-center',
+                            'icon' => 'eicon-h-align-center',
                         ],
                         'right' => [
                             'title' => __( 'End', 'mighty' ),
-                            'icon' => 'fa fa-align-right',
+                            'icon' => 'eicon-h-align-right',
                         ],
                     ],
                     'default' => 'center',
