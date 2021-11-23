@@ -124,7 +124,7 @@ class HelperFunctions {
             'piedonutchart' => [
                 'title' => 'Donut and Pie Chart ',
                 'description' => '',
-                'enable' => true,
+                'enable' => false,
                 'class' => 'MT_piedonutchart',
                 'slug' => 'piedonutchart',
                 'icon' => 'mf mf-piedonutchart'
@@ -132,7 +132,7 @@ class HelperFunctions {
             'agechecker' => [
                 'title' => 'Age Checker',
                 'description' => '',
-                'enable' => true,
+                'enable' => false,
                 'class' => 'MT_agechecker',
                 'slug' => 'agechecker',
                 'icon' => 'mf mf-agechecker'
