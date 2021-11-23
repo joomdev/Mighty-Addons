@@ -25,6 +25,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-agechecker:before {
+	content: "\e92f";
+}
+
+.mf-piedonutchart:before {
+	content: "\e930";
+}
+
 .mf-filtereffects:before {
 	content: "\e92d";
 }
