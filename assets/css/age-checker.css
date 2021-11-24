@@ -284,7 +284,7 @@
 
 .ma-agech {
   position: fixed; 
-  z-index: 1000; 
+  z-index: 99999; 
   padding-top: 100px; 
   left: 0;
   top: 0;
