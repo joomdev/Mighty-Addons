@@ -6,7 +6,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher  
 Tested up to: 5.8  
 Requires PHP: 5.6  
-Stable Tag: 1.6.0  
+Stable Tag: 1.7.0  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
@@ -93,6 +93,8 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 27. **[Chart Widget (Pro)](https://mightythemes.com/mighty-addons/chart/)** - Create interactive Line and Bar Charts and make everlasting impression using Chart Widget
 28. **[CSS Filters](https://mightythemes.com/mighty-addons/css-filter/)** - Take advantage of CSS Filter Effects and create something totally unique and mesmerizing to greet your visitors.
 29. **[Backdrop Filter](https://mightythemes.com/mighty-addons/backdrop-filter/)** - The Backdrop filter lets you add graphical effects such as blurring or color shifting on the background image of your web page.
+30. **[Pie and Donut Chart](https://mightythemes.com/mighty-addons/donut/)** - Create Customized and Visually Appealing Charts with Pie and Donut Chart Widget.
+31. **[Age checker](https://mightythemes.com/mighty-addons/age-checker/)** - Create Stunning Age Verification Pop-up using Age Gate Elementor Widget.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
@@ -118,6 +120,8 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 18. **WooCommerce Product Grid** - Display your WooCommerce store products with all the important information and badges anywhere in your website using Woo Product Grid Elementor widget.
 19. **Chart Widget** - Create interactive Line and Bar Charts and make everlasting impression using Chart Widget
 20. **Text Marquee** - Take advantage of the Text Marquee Elementor widget and create custom auto-scrolling text anywhere in your website.
+21. **Pie and Donut chart** - Create Customized and Visually Appealing Charts with Pie and Donut Chart Widget.
+22. **Age Chceker** - Create Stunning Age Verification Pop-up using Age Gate Elementor Widget.
 
 ### Mighty Addons Extensions
 1. **Cross-Site Copy Paste Style (Pro)** - The feature allows you to copy the style of website A to Website B.
@@ -201,6 +205,10 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
 
+### 1.7.0
+* Added: Pie and Donut Chart Widget [Free]
+* Added: Age Checker Widget [Free]
+* Added: 20+ Ready to use Elementor Blocks
 ### 1.6.0
 * Added: Woo Slider for showcasing products in a slider [PRO]
 * Added: Woo Products Grid for showcasing products in a grid [PRO]
