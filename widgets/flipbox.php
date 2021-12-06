@@ -1462,6 +1462,4 @@ class MT_Flipbox extends Widget_Base {
     <?php
 	}
 	
-	protected function _content_template() {
-	}
 }

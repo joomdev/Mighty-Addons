@@ -479,6 +479,4 @@ class MT_LinkEffects extends Widget_Base {
         <?php
 	}
 	
-	protected function _content_template() {
-	}
 }

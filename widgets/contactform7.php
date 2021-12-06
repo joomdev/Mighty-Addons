@@ -1662,6 +1662,5 @@ class MT_ContactForm7 extends Widget_Base {
         }
 	}
 	
-	protected function _content_template() {
-	}
+	
 }

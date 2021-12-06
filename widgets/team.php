@@ -854,7 +854,9 @@ class MT_Team extends Widget_Base {
 		echo '<div class="mighty-team text-center">';
 
 			echo '<div class="avatar-wrapper">';
-				echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar_image_size', 'avatar_image' );
+			echo wp_get_attachment_image( $settings['avatar_image']['id'], 'avatar_image_size' );
+
+				// echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar_image_size', 'avatar_image' );
 			echo '</div>';
 
 			if ( $settings['name'] !== "" ) {
@@ -890,6 +892,4 @@ class MT_Team extends Widget_Base {
 		echo '</div>';
 	}
 	
-	protected function _content_template() {
-	}
 }

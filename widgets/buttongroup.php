@@ -480,6 +480,4 @@ class MT_Buttongroup extends Widget_Base {
         echo '</div>';
 	}
 	
-	protected function _content_template() {
-	}
 }

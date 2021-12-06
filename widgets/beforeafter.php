@@ -461,6 +461,4 @@ class MT_Beforeafter extends Widget_Base {
         <?php }
 	}
 	
-	protected function _content_template() {
-	}
 }

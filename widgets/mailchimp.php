@@ -1166,6 +1166,4 @@ class MT_Mailchimp extends Widget_Base {
 		echo "</div>";
 	}
 	
-	protected function _content_template() {
-	}
 }

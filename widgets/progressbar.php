@@ -404,6 +404,4 @@ class MT_Progressbar extends Widget_Base {
         echo '</div>'; # .mighty-progressbar
 	}
 	
-	protected function _content_template() {
-	}
 }

@@ -212,6 +212,4 @@ class MT_Gradientheading extends Widget_Base {
         <?php
 	}
 	
-	protected function _content_template() {
-	}
 }

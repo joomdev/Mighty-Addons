@@ -874,6 +874,4 @@ class MT_Openinghours extends Widget_Base {
         <?php
 	}
 	
-	protected function _content_template() {
-	}
 }

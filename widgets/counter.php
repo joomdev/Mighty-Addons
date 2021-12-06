@@ -422,6 +422,4 @@ class MT_Counter extends Widget_Base {
         echo '</div>';
 	}
 	
-	protected function _content_template() {
-	}
 }

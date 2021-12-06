@@ -916,12 +916,12 @@ class MT_Testimonial extends Widget_Base {
 
 			$this->add_render_attribute( 'mighty-testimonial', 'class', 'mighty-testimonial' );
 			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-desktop', $settings['slides_to_show'] );
-			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-tablet', $settings['slides_to_show_tablet'] );
-			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-mobile', $settings['slides_to_show_mobile'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-tablet', isset( $settings['slides_to_show_tablet'] ) ? $settings['slides_to_show_tablet'] : '' );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-mobile', isset( $settings['slides_to_show_mobile'] ) ? $settings['slides_to_show_mobile'] : '' );
 
 			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-desktop', $settings['slides_to_scroll'] );
-			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-tablet', $settings['slides_to_scroll_tablet'] );
-			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-mobile', $settings['slides_to_scroll_mobile'] );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-tablet', isset( $settings['slides_to_scroll_tablet'] ) ? $settings['slides_to_scroll_tablet'] : '' );
+			$this->add_render_attribute( 'mighty-testimonial', 'data-scroll-slides-mobile', isset( $settings['slides_to_scroll_mobile'] ) ? $settings['slides_to_scroll_mobile'] : '' );
 
 			$this->add_render_attribute( 'mighty-testimonial', 'data-autoplay-status', ($settings['enable_autoplay'] == "true" ? 'true' : 'false') );
 			$this->add_render_attribute( 'mighty-testimonial', 'data-autoplay-speed', $settings['autoplay_speed'] );
@@ -973,6 +973,4 @@ class MT_Testimonial extends Widget_Base {
 		echo '</div>';
 	}
 	
-	protected function _content_template() {
-	}
 }
