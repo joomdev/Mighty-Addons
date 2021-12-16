@@ -406,3 +406,7 @@
 .mt-chart-right {
 	float:right;
 }
+
+.mt-overflow-hidden { 
+	overflow: hidden !important; 
+}
