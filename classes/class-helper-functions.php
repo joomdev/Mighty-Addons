@@ -136,6 +136,15 @@ class HelperFunctions {
                 'class' => 'MT_agechecker',
                 'slug' => 'agechecker',
                 'icon' => 'mf mf-agechecker'
+            ],
+            'howto' => [
+                'title' => 'How To',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_howto',
+                'slug' => 'howto',
+                'icon' => 'mf mf-howto',
+                // 'group' => 'howto',
             ]
         ],
         "extensions" => [
