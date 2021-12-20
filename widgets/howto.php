@@ -134,9 +134,9 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'how_to_image_link',
                 [
-                    'label' => __( 'Link', 'plugin-domain' ),
+                    'label' => __( 'Link', 'mighty' ),
                     'type' => Controls_Manager::URL,
-                    'placeholder' => __( 'https://your-link.com', 'plugin-domain' ),
+                    'placeholder' => __( 'https://your-link.com', 'mighty' ),
                     'show_external' => true,
                     'default' => [
                         'url' => '',
@@ -422,7 +422,7 @@ class MT_howto extends Widget_Base {
                 'supply_list',
                 [
                     'label' => esc_html__( 'Add Supply', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::REPEATER,
+                    'type' => Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
                     'condition' => [
                         'how_to_supply' => 'yes'
@@ -550,7 +550,7 @@ class MT_howto extends Widget_Base {
                 'tool_list',
                 [
                     'label' => esc_html__( 'Add Tool', 'mighty' ),
-                    'type' => \Elementor\Controls_Manager::REPEATER,
+                    'type' => Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
                     'condition' => [
                         'how_to_tool' => 'yes'
@@ -582,15 +582,1190 @@ class MT_howto extends Widget_Base {
         );
 
             $this->add_control(
-                'step_title', [
+                'steps_title', [
                     'label' => esc_html__( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => 'Necessary Steps',
                     'dynamic' => [ 'active' => true ],
                 ]
             );
+
+            $this->add_control(
+                'steps_description',
+                [
+                    'label' => __('Description', 'mighty'),
+                    'type' => Controls_Manager::TEXTAREA,
+                    'dynamic' => [ 'active' => true ],
+                ]
+            );
+
+            $repeater = new \Elementor\Repeater();
+
+            $repeater->add_control(
+                'step_title', [
+                    'label' => esc_html__( 'Tool', 'mighty' ),
+                    'type' => Controls_Manager::TEXT,
+                    'label_block' => true,
+                    'dynamic' => [ 'active' => true ],
+                ]
+            );
+
+            $repeater->add_control(
+                'step_description',
+                [
+                    'label' => __('Description', 'mighty'),
+                    'type' => Controls_Manager::TEXTAREA,
+                    'dynamic' => [ 'active' => true ],
+                    'default' => 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+                ]
+            );
+            
+            $repeater->add_control(
+                'step_image',
+                [
+                    'label' => __( 'Image', 'mighty' ),
+                    'type' => Controls_Manager::MEDIA,
+                    'dynamic' => [ 'active' => true ],
+                ]
+            );
+
+            $repeater->add_control(
+                'image_position',
+                [
+                    'label' => __('Image Positon', 'mighty'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => __('default'),
+                    'options' => [
+                        'default' => __('Default', 'mighty'),
+                        'custom' => __('Custom', 'mighty'),
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech' => 'background-position: {{VALUE}}',
+                    // ],
+                ]
+            );
+
+            $repeater->add_control(
+                'image_alignment',
+                [
+                    'label' => __( 'Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'top' => [
+                            'title' => __( 'Top', 'mighty' ),
+                            'icon' => 'eicon-v-align-top',
+                        ],
+                        'bottom' => [
+                            'title' => __( 'Bottom', 'mighty' ),
+                            'icon' => 'eicon-v-align-bottom',
+                        ],
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'condition' => [
+                        'image_position' => 'custom'
+                    ],
+                    'default' => 'right',
+                    'toggle' => true,
+                ]
+            );
+
+            $repeater->add_control(
+                'horizontal_alignment',
+                [
+                    'label' => __( 'Horizontal Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'condition' => [
+                        'image_alignment' => [ 'top', 'bottom' ]
+                    ],
+                    'default' => 'center',
+                    'toggle' => true,
+                ]
+            );
+
+            $repeater->add_control(
+                'vertical_alignment',
+                [
+                    'label' => __( 'Vertical Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'top' => [
+                            'title' => __( 'Top', 'mighty' ),
+                            'icon' => 'eicon-v-align-top',
+                        ],
+                        'middle' => [
+                            'title' => __( 'Middle', 'mighty' ),
+                            'icon' => ' eicon-v-align-middle',
+                        ],
+                        'bottom' => [
+                            'title' => __( 'Bottom', 'mighty' ),
+                            'icon' => 'eicon-v-align-bottom',
+                        ],
+                    ],
+                    'condition' => [
+                        'image_alignment' => [ 'left', 'right' ]
+                    ],
+                    'default' => 'middle',
+                    'toggle' => true,
+                ]
+            );
+
+            $repeater->add_control(
+                'step_image_link',
+                [
+                    'label' => __( 'Link', 'mighty' ),
+                    'type' => Controls_Manager::URL,
+                    'placeholder' => __( 'https://your-link.com', 'mighty' ),
+                    'show_external' => true,
+                    'default' => [
+                        'url' => '',
+                        'is_external' => true,
+                        'nofollow' => true,
+                    ],
+                    'dynamic' => [ 'active' => true ],
+                ]
+            );
+
+            $this->add_control(
+                'step_list',
+                [
+                    'label' => esc_html__( 'Steps', 'mighty' ),
+                    'type' => Controls_Manager::REPEATER,
+                    'fields' => $repeater->get_controls(),
+                    'default' => [
+                        [
+                            'step_title' => esc_html__( 'Step 1', 'mighty' ),
+                        ],
+                        [
+                            'step_title' => esc_html__( 'Step 2', 'mighty' ),
+                        ],
+                        [
+                            'step_title' => esc_html__( 'Step 3', 'mighty' ),
+                        ],
+                    ],
+                    'title_field' => '{{{ step_title }}}',
+                ]
+            );
+
+            $this->add_control(
+                'step_enable_lightbox',
+                [
+                    'label' => __('Enable Lightbox', 'mighty'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => __('yes'),
+                    'options' => [
+                        'yes' => __('Yes', 'mighty'),
+                        'no' => __('No', 'mighty'),
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech' => 'background-position: {{VALUE}}',
+                    // ],
+                ]
+            );
             
         $this->end_controls_section();
+
+        $this->start_controls_section(
+			'section_box_style',
+			[
+				'label' => __( 'Box', 'mighty' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+            $this->add_control(
+                'box_alignment',
+                [
+                    'label' => __( 'Box Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_control(
+                'box_background_color',
+                [
+                    'label'     => __( 'Background Color', 'mighty' ),
+                    'type'      => Controls_Manager::COLOR,
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                    // ]
+                ]
+            );
+
+            $this->add_responsive_control(
+				'box_padding',
+				[
+					'label' => __( 'Padding', 'mighty' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px' ],
+					// 'selectors' => [
+					// 	'{{WRAPPER}} .ma-agech__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					// ],
+				]
+			);
+
+            $this->add_group_control(
+				Group_Control_Border::get_type(),
+				[
+					'name' => 'box_border',
+					'label' => __( 'Border Type', 'mighty' ),
+					// 'selector' => '{{WRAPPER}} .ma-agech__input',
+				]
+			);
+
+            $this->add_responsive_control(
+				'box_border_radius',
+				[
+					'label' => __( 'Box Border Radius', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px' , '%' ],
+					// 'selectors' => [
+					// 	'{{WRAPPER}} .ma-agech__input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					// ],
+				]
+			);
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'box_box_shadow',
+                    'label' => __( 'Box Shadow', 'mighty' ),
+                    // 'selector' => '{{WRAPPER}} .ma-agech__input',
+                ]
+            );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+			'section_title_style',
+			[
+				'label' => __( 'Title', 'mighty' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+            $this->add_control(
+                'title_color',
+                [
+                    'label'     => __( 'Title Color', 'mighty' ),
+                    'type'      => Controls_Manager::COLOR,
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                    // ]
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'title_typography',
+                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                ]
+            );
+
+            $this->add_control(
+                'title_html_tag',
+                [
+                    'label' => __( 'Title HTML Tag', 'mighty' ),
+                    'type' => Controls_Manager::SELECT,
+                    'options' => [
+                        'h1' => 'H1',
+                        'h2' => 'H2',
+                        'h3' => 'H3',
+                        'h4' => 'H4',
+                        'h5' => 'H5',
+                        'h6' => 'H6',
+                    ],
+                    'default' => 'h2',
+                ]
+            );
+
+            $this->add_control(
+                'title_alignment',
+                [
+                    'label' => __( 'Title Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_below_title',
+                [
+                    'label' => __('Space Below Title', 'mighty'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    // ],
+                ]
+            );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+			'section_description_style',
+			[
+				'label' => __( 'Description', 'mighty' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+            $this->add_control(
+                'description_color',
+                [
+                    'label'     => __( 'Description Color', 'mighty' ),
+                    'type'      => Controls_Manager::COLOR,
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                    // ]
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'description_typography',
+                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                ]
+            );
+
+            $this->add_control(
+                'description_alignment',
+                [
+                    'label' => __( 'Description Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_below_description',
+                [
+                    'label' => __('Space Below Description', 'mighty'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    // ],
+                ]
+            );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+			'section_image_style',
+			[
+				'label' => __( 'Image', 'mighty' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+            $this->add_control(
+                'image_alignment',
+                [
+                    'label' => __( 'Image Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+				'image_padding',
+				[
+					'label' => __( 'Padding', 'mighty' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px' ],
+					// 'selectors' => [
+					// 	'{{WRAPPER}} .ma-agech__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					// ],
+				]
+			);
+
+            $this->add_group_control(
+				Group_Control_Border::get_type(),
+				[
+					'name' => 'image_border',
+					'label' => __( 'Border Type', 'mighty' ),
+					// 'selector' => '{{WRAPPER}} .ma-agech__input',
+				]
+			);
+
+            $this->add_responsive_control(
+				'image_border_radius',
+				[
+					'label' => __( 'Image Border Radius', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px' , '%' ],
+					// 'selectors' => [
+					// 	'{{WRAPPER}} .ma-agech__input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					// ],
+				]
+			);
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'image_box_shadow',
+                    'label' => __( 'Box Shadow', 'mighty' ),
+                    // 'selector' => '{{WRAPPER}} .ma-agech__input',
+                ]
+            );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+			'section_advance_options_style',
+			[
+				'label' => __( 'Advance Options', 'mighty' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+            $this->add_control(
+                'total_time_options',
+                [
+                    'label' => esc_html__( 'Total Time', 'mighty' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'condition' => [
+                        'how_to_total_time' => 'yes'
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'total_time_color',
+                [
+                    'label'     => __( 'Total Time Color', 'mighty' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'condition' => [
+                        'how_to_total_time' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                    // ]
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'total_time_typography',
+                    'condition' => [
+                        'how_to_total_time' => 'yes'
+                    ],
+                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                ]
+            );
+
+            $this->add_control(
+                'total_time_alignment',
+                [
+                    'label' => __( 'Total Time Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'condition' => [
+                        'how_to_total_time' => 'yes'
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_below_total_time',
+                [
+                    'label' => __('Space Below Total Time', 'mighty'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'condition' => [
+                        'how_to_total_time' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    // ],
+                ]
+            );
+
+            $this->add_control(
+                'estimate_cost_options',
+                [
+                    'label' => esc_html__( 'Estimate Cost', 'mighty' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'condition' => [
+                        'how_to_estimated_time' => 'yes'
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'estimate_cost_color',
+                [
+                    'label'     => __( 'Estimate Cost Color', 'mighty' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'condition' => [
+                        'how_to_estimated_time' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                    // ]
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'estimate_cost_typography',
+                    'condition' => [
+                        'how_to_estimated_time' => 'yes'
+                    ],
+                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                ]
+            );
+
+            $this->add_control(
+                'estimate_cost_alignment',
+                [
+                    'label' => __( 'Estimate Cost Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'condition' => [
+                        'how_to_estimated_time' => 'yes'
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_below_estimate_cost',
+                [
+                    'label' => __('Space Below Estimate Cost', 'mighty'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'condition' => [
+                        'how_to_estimated_time' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    // ],
+                ]
+            );
+
+            $this->add_control(
+                'supply_options',
+                [
+                    'label' => esc_html__( 'Supply', 'mighty' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'supply_title_color',
+                [
+                    'label'     => __( 'Supply Title Color', 'mighty' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                    // ]
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'supply_title_typography',
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                ]
+            );
+
+            $this->add_control(
+                'supply_title_alignment',
+                [
+                    'label' => __( 'Supply Title Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_below_supply_title',
+                [
+                    'label' => __('Space Below Supply Title', 'mighty'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    // ],
+                ]
+            );
+
+            $this->add_control(
+                'supply_html_tag',
+                [
+                    'label' => __( 'Supply Title HTML Tag', 'mighty' ),
+                    'type' => Controls_Manager::SELECT,
+                    'options' => [
+                        'h1' => 'H1',
+                        'h2' => 'H2',
+                        'h3' => 'H3',
+                        'h4' => 'H4',
+                        'h5' => 'H5',
+                        'h6' => 'H6',
+                    ],
+                    'default' => 'h2',
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'supply_color',
+                [
+                    'label'     => __( 'Supply Color', 'mighty' ),
+                    'type'      => Controls_Manager::COLOR,
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                    // ]
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'supply_typography',
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                ]
+            );
+
+            $this->add_control(
+                'supply_alignment',
+                [
+                    'label' => __( 'Supply Alignment', 'mighty' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'mighty' ),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'mighty' ),
+                            'icon' => 'eicon-h-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'mighty' ),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    'default' => 'left',
+                    'toggle' => true,
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_below_supply',
+                [
+                    'label' => __('Space Between Supplies', 'mighty'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    // ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'space_below_supply_section',
+                [
+                    'label' => __('Space Below Supply Section', 'mighty'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px' , 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'condition' => [
+                        'how_to_supply' => 'yes'
+                    ],
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                    // ],
+                ]
+            );
+
+        $this->end_controls_section();
+
+        $this->add_control(
+            'tool_options',
+            [
+                'label' => esc_html__( 'Tools', 'mighty' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tool_title_color',
+            [
+                'label'     => __( 'Tool Title Color', 'mighty' ),
+                'type'      => Controls_Manager::COLOR,
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                // 'selectors' => [
+                //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                // ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'tool_title_typography',
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+            ]
+        );
+
+        $this->add_control(
+            'tool_title_alignment',
+            [
+                'label' => __( 'Tool Title Alignment', 'mighty' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'mighty' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'mighty' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'mighty' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                'default' => 'left',
+                'toggle' => true,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'space_below_tool_title',
+            [
+                'label' => __('Space Below Tool Title', 'mighty'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ '%', 'px' , 'em' ],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100
+                    ],
+                    'px' => [
+                        'min' => 1,
+                        'max' => 1000
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 1000
+                    ]
+                ],
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                // 'selectors' => [
+                //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                // ],
+            ]
+        );
+
+        $this->add_control(
+            'tool_html_tag',
+            [
+                'label' => __( 'Tool Title HTML Tag', 'mighty' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'h1' => 'H1',
+                    'h2' => 'H2',
+                    'h3' => 'H3',
+                    'h4' => 'H4',
+                    'h5' => 'H5',
+                    'h6' => 'H6',
+                ],
+                'default' => 'h2',
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tool_color',
+            [
+                'label'     => __( 'Tool Color', 'mighty' ),
+                'type'      => Controls_Manager::COLOR,
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                // 'selectors' => [
+                //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
+                // ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'tool_typography',
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+            ]
+        );
+
+        $this->add_control(
+            'tool_alignment',
+            [
+                'label' => __( 'Tools Alignment', 'mighty' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'mighty' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'mighty' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'mighty' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                'default' => 'left',
+                'toggle' => true,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'space_below_tools',
+            [
+                'label' => __('Space Between Tools', 'mighty'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ '%', 'px' , 'em' ],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100
+                    ],
+                    'px' => [
+                        'min' => 1,
+                        'max' => 1000
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 1000
+                    ]
+                ],
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                // 'selectors' => [
+                //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                // ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'space_below_tools_section',
+            [
+                'label' => __('Space Below Tools Section', 'mighty'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ '%', 'px' , 'em' ],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100
+                    ],
+                    'px' => [
+                        'min' => 1,
+                        'max' => 1000
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 1000
+                    ]
+                ],
+                'condition' => [
+                    'how_to_tool' => 'yes'
+                ],
+                // 'selectors' => [
+                //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
+                // ],
+            ]
+        );
+
+    $this->end_controls_section();
 
     }
 
