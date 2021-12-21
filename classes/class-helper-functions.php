@@ -315,6 +315,49 @@ class HelperFunctions {
                 'icon' => 'mf mf-timeline',
                 'stub' => 'true',
             ],
+            'wooslider' => [
+                'title' => 'Woo Slider',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_WooSlider',
+                'slug' => 'wooslider',
+                'icon' => 'mf mf-wooslider',
+                'dependency' => 'WooCommerce'
+            ],
+            'wooaddtocart' => [
+                'title' => 'Woo Add to Cart',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_AddToCart',
+                'slug' => 'wooaddtocart',
+                'icon' => 'mf mf-wooaddtocart',
+                'dependency' => 'WooCommerce'
+            ],
+            'wooproductsgrid' => [
+                'title' => 'Woo Products Grid',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_ProductsGrid',
+                'slug' => 'wooproductsgrid',
+                'icon' => 'mf mf-wooproductsgrid',
+                'dependency' => 'WooCommerce'
+            ],
+            'chart' => [
+                'title' => 'Chart',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_Chart',
+                'slug' => 'chart',
+                'icon' => 'mf mf-chart'
+            ],
+            'modal' => [
+                'title' => 'Modal',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_Modal',
+                'slug' => 'modal',
+                'icon' => 'mf mf-modal'
+            ]
         ],
         "extensions" => [
             'particles' => [
