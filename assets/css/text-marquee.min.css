@@ -1,0 +1,1 @@
+.mighty-marquee{width:100%;margin:0 auto;white-space:nowrap;overflow:hidden;font-size:70px}.mighty-marquee .marquee{display:flex;white-space:nowrap}.mighty-marquee .marquee .marquee-items{animation:marquee 20s linear infinite}.mighty-marquee .marquee p{display:inline-block}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
