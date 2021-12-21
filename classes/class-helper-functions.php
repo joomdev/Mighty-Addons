@@ -144,7 +144,6 @@ class HelperFunctions {
                 'class' => 'MT_howto',
                 'slug' => 'howto',
                 'icon' => 'mf mf-howto',
-                // 'group' => 'howto',
             ]
         ],
         "extensions" => [
