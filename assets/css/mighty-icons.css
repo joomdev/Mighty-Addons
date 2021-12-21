@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.mf-modal:before {
+	content: "\e931";
+}
+
 .mf-agechecker:before {
 	content: "\e92f";
 }
