@@ -23,9 +23,8 @@ class MT_howto extends Widget_Base {
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 	
-		// wp_register_style( 'mighty-agecheckercss', MIGHTY_ADDONS_PLG_URL . 'assets/css/age-checker.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mighty-howtocss', MIGHTY_ADDONS_PLG_URL . 'assets/css/howto.min.css', false, MIGHTY_ADDONS_VERSION );
 		
-		// wp_register_script( 'mighty-age-checkerjs', MIGHTY_ADDONS_PLG_URL . 'assets/js/age-checker.js', [ 'jquery' ], MIGHTY_ADDONS_VERSION );
 	}
 	
 	public function get_name() {
@@ -109,6 +108,7 @@ class MT_howto extends Widget_Base {
                     'label' => __('Description', 'mighty'),
                     'type' => Controls_Manager::TEXTAREA,
                     'dynamic' => [ 'active' => true ],
+                    'default' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eum nisi et quo doloremque laborum autem alias mollitia nobis delectus nemo hic, earum, voluptatem provident! Quo blanditiis laboriosam aliquam quibusdam!',
                 ]
             );
 
@@ -2269,10 +2269,162 @@ class MT_howto extends Widget_Base {
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        
-       
 
-    }
+        if ( !empty($settings['how_to_image_link']['url'] ) ) {
+            $how_to_image_link = $settings['how_to_image_link']['url'];
+        } else {
+            $how_to_image_link = "javascript:void(0)";
+        }
+
+        if ( $settings['how_to_total_time'] == 'yes' ) {
+            $total_time = $settings['how_to_total_time_text'];
+
+            if ( !empty ( $settings['duration_year'] ) ) {
+                $total_time = $total_time . ' '. $settings['duration_year'] . ' years,';
+            }
+            if ( !empty ( $settings['duration_month'] ) ) {
+                $total_time = $total_time . ' '. $settings['duration_month'] . ' months,';
+            }
+            if ( !empty ( $settings['duration_days'] ) ) {
+                $total_time = $total_time . ' ' . $settings['duration_days'] . ' days,';
+            }
+            if ( !empty ( $settings['duration_hours'] ) ) {
+                $total_time = $total_time . ' ' . $settings['duration_hours'] . ' hours,';
+            }
+            if ( !empty ( $settings['duration_minutes'] ) ) {
+                $total_time = $total_time . ' ' . $settings['duration_minutes'] . ' minutes';
+            }
+        }
+        
+        if ( $settings['how_to_estimated_time'] == 'yes' ) {
+            $estimate_time = $settings['how_to_estimated_time_text'];
+            
+            if ( !empty ( $settings['estimated_currency'] ) ) {
+                $estimate_time = $estimate_time . ' <span>' . $settings['estimated_currency'];
+            }
+            if ( !empty ( $settings['estimate_cost'] ) ) {
+                $estimate_time = $estimate_time . $settings['estimate_cost'] . '</span>';
+            }
+        }
+
+    ?>
+             
+    <div class="mt-how-to mt-how-to-'<?php echo $this->get_id();?>' " id ="mt-how-to-'<?php echo $this->get_id();?>' ">
+        
+        <?php if ( !empty( $settings['how_to_title'] ) ) { ?>
+            <h2 class="mt-how-to-title"><?php echo $settings['how_to_title']; ?></h2>
+        <?php } ?>
+
+        <?php if ( !empty( $settings['how_to_subtitle'] ) ) { ?>
+            <h4 class="mt-how-to-subtitle"><?php echo $settings['how_to_subtitle']; ?></h4>
+        <?php } ?>
+
+        <?php if ( !empty( $settings['how_to_description'] ) ) { ?>
+            <div class="mt-how-to-description"><?php echo $settings['how_to_description'];?></div>
+        <?php } ?>
+
+        <?php if ( !empty( $settings['how_to_image']['url'] ) ) { ?>
+            <a href="<?php echo $how_to_image_link;?>">
+                <div class="mt-how-to-image">
+                    <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'how_to_image_size', 'how_to_image' ); ?>
+                </div>
+            </a>
+        <?php } ?>
+
+        <!-- Advanced Options -->
+        <?php if ( $settings['how_to_total_time'] == 'yes' ||  $settings['how_to_estimated_time'] == 'yes'  ) { ?>
+
+            <div class="mt-how-to-slug">
+
+                <?php if ( $settings['how_to_total_time'] == 'yes' ) { ?>
+                    <p class="mt-how-to-total-time"><?php echo  $total_time; ?></p>
+                <?php } ?>
+
+                <?php if ( $settings['how_to_estimated_time'] == 'yes' ) { ?>
+                    <p class="mt-how-to-estimated-cost"><?php echo $estimate_time;?></p>
+                <?php } ?>
+
+            </div>
+
+        <?php } ?>
+
+        <div class="mt-how-to-supply">
+            <h3 class="mt-how-to-supply-title">Necessary Supply Items</h3>
+            <div class="mt-supply mt-supply-1">
+                <i class="mt-supply-icon fas fa-check"></i>
+                <span>Supply 1</span>
+            </div>
+            <div class="mt-supply mt-supply-2">
+                <i class="mt-supply-icon fas fa-check"></i>
+                <span>Supply 2</span>
+            </div>
+            <div class="mt-supply mt-supply-3">
+                <i class="mt-supply-icon fas fa-check"></i>
+                <span>Supply 3</span>
+            </div>
+        </div>
+
+        <div class="mt-how-to-tools">
+            <h3 class="mt-how-to-tools-title">Necessary Tool Items</h3>
+            <div class="mt-tool mt-tool-1">
+                <i class="mt-tool-icon fas fa-check"></i>
+                <span>Tool 1</span>
+            </div>
+            <div class="mt-tool mt-tool-2">
+                <i class="mt-tool-icon fas fa-check"></i>
+                <span>Tool 2</span>
+            </div>
+            <div class="mt-tool mt-tool-3">
+                <i class="mt-tool-icon fas fa-check"></i>
+                <span>Tool 3</span>
+            </div>
+        </div>
+        <!-- Advanced Options -->
+
+        <div class="mt-how-to-steps">
+            <h3 class="mt-how-to-step-section-title">Necessary Steps</h3>
+
+            <div class="mt-how-to-step mt-has-img mt-step-img-right">
+                <div class="mt-how-to-step-content">
+                    <h3 class="mt-how-to-step-title">Step 1</h3>
+                    <div class="mt-how-to-step-description">Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
+                </div>
+                <div class="mt-how-to-step-image">
+                    <a href="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" class="elementor-clickable">
+                    <img src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" alt="Place Step Title Here" title="Place Step Title Here">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-how-to-step mt-has-img mt-step-img-right">
+                <div class="mt-how-to-step-content">
+                    <h3 class="mt-how-to-step-title">Step 2</h3>
+                    <div class="mt-how-to-step-description">Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
+                </div>
+                <div class="mt-how-to-step-image">
+                    <a href="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" class="elementor-clickable">
+                    <img src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" alt="Place Step Title Here" title="Place Step Title Here">
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-how-to-step mt-has-img mt-step-img-right">
+                <div class="mt-how-to-step-content">
+                    <h3 class="mt-how-to-step-title">Step 3</h3>
+                    <div class="mt-how-to-step-description">Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
+                </div>
+                <div class="mt-how-to-step-image">
+                    <a href="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" class="elementor-clickable">
+                    <img src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" alt="Place Step Title Here" title="Place Step Title Here">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <?php }
 
 }
 	
