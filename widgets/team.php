@@ -851,7 +851,7 @@ class MT_Team extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		echo '<div class="mighty-team text-center">';
+		echo '<div class="mighty-team">';
 
 			echo '<div class="avatar-wrapper">';
 			echo wp_get_attachment_image( $settings['avatar_image']['id'], 'avatar_image_size' );
