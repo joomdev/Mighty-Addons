@@ -343,6 +343,10 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
+                    'default' => [
+                        'value' => 'fas fa-check',
+                        'library' => 'solid',
+                    ],
                 ]
             );
 
@@ -470,6 +474,10 @@ class MT_howto extends Widget_Base {
                     'type' => Controls_Manager::ICONS,
                     'condition' => [
                         'how_to_tool' => 'yes'
+                    ],
+                    'default' => [
+                        'value' => 'fas fa-check',
+                        'library' => 'solid',
                     ],
                 ]
             );
@@ -2269,6 +2277,8 @@ class MT_howto extends Widget_Base {
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        // echo '<pre>';
+        // print_r($settings['supply_list']);
 
         if ( !empty($settings['how_to_image_link']['url'] ) ) {
             $how_to_image_link = $settings['how_to_image_link']['url'];
@@ -2348,37 +2358,29 @@ class MT_howto extends Widget_Base {
 
         <?php } ?>
 
-        <div class="mt-how-to-supply">
-            <h3 class="mt-how-to-supply-title">Necessary Supply Items</h3>
-            <div class="mt-supply mt-supply-1">
-                <i class="mt-supply-icon fas fa-check"></i>
-                <span>Supply 1</span>
+        <?php if ( $settings['how_to_supply'] == 'yes' ) { ?>
+            <div class="mt-how-to-supply">
+                <h3 class="mt-how-to-supply-title"><?php echo $settings['supply_title'];?></h3>
+                <?php foreach ($settings['supply_list'] as $key => $value) { ?>
+                    <div class="mt-supply mt-supply-'<?php echo $key + 1; ?>'">
+                        <i class="<?php echo $settings['supply_icon']['value'];?>"></i>
+                        <span><?php echo $value['supply_name'];?></span>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="mt-supply mt-supply-2">
-                <i class="mt-supply-icon fas fa-check"></i>
-                <span>Supply 2</span>
+        <?php } ?>
+                
+        <?php if ( $settings['how_to_tool'] == 'yes' ) { ?>
+            <div class="mt-how-to-tools">
+                <h3 class="mt-how-to-tools-title"><?php echo $settings['tool_title'];?></h3>
+                <?php foreach ($settings['tool_list'] as $key => $value) { ?>
+                    <div class="mt-tool mt-tool-'<?php echo $key + 1; ?>'">
+                        <i class="<?php echo $settings['tool_icon']['value'];?>"></i>
+                        <span><?php echo $value['tool_name'];?></span>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="mt-supply mt-supply-3">
-                <i class="mt-supply-icon fas fa-check"></i>
-                <span>Supply 3</span>
-            </div>
-        </div>
-
-        <div class="mt-how-to-tools">
-            <h3 class="mt-how-to-tools-title">Necessary Tool Items</h3>
-            <div class="mt-tool mt-tool-1">
-                <i class="mt-tool-icon fas fa-check"></i>
-                <span>Tool 1</span>
-            </div>
-            <div class="mt-tool mt-tool-2">
-                <i class="mt-tool-icon fas fa-check"></i>
-                <span>Tool 2</span>
-            </div>
-            <div class="mt-tool mt-tool-3">
-                <i class="mt-tool-icon fas fa-check"></i>
-                <span>Tool 3</span>
-            </div>
-        </div>
+        <?php } ?>
         <!-- Advanced Options -->
 
         <div class="mt-how-to-steps">
