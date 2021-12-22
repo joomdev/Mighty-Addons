@@ -205,28 +205,52 @@ if ( ! class_exists( 'DashboardPanel' ) ) {
 
             $proAddons = self::get_enabled_pro_addons();
             $freeAddons = self::get_enabled_addons();
-
-            if( ! empty( $settings ) ) {
+        
+            if( ! empty( $settings ) || $_POST['widgetEnable'] == 'off' ) {
                 // Free Addons
                 foreach( $freeAddons['addons'] as $addon ) {
-                    $freeAddons['addons'][$addon['slug']]['enable'] = intval( $settings[ $addon['slug'] ] ? 1 : 0 );
+
+                    if( $_POST['widgetEnable'] == 'off' ) {
+                        $freeAddons['addons'][$addon['slug']]['enable'] = 0 ;
+                    } else {
+                        $freeAddons['addons'][$addon['slug']]['enable'] = intval( $settings[ $addon['slug'] ] ? 1 : 0 );
+                    }
+
                 }
                 
                 // Free Extensions
                 foreach( $freeAddons['extensions'] as $extension ) {
-                    $freeAddons['extensions'][$extension['slug']]['enable'] = intval( $settings[ $extension['slug'] ] ? 1 : 0 );
+
+                    if( $_POST['widgetEnable'] == 'off' ) {
+                        $freeAddons['extensions'][$extension['slug']]['enable'] = 0 ;
+                    } else {
+                        $freeAddons['extensions'][$extension['slug']]['enable'] = intval( $settings[ $extension['slug'] ] ? 1 : 0 );
+                    }
+
                 }
             }
 
-            if( ! empty( $proSettings ) ) {
+            if( ! empty( $proSettings ) || $_POST['widgetEnable'] == 'off' ) {
                 // Pro Addons
                 foreach( $proAddons['addons'] as $addon ) {
-                    $proAddons['addons'][$addon['slug']]['enable'] = intval( $proSettings[ $addon['slug'] ] ? 1 : 0 );
+
+                    if( $_POST['widgetEnable'] == 'off' ) {
+                        $proAddons['addons'][$addon['slug']]['enable'] = 0 ;
+                    } else {
+                        $proAddons['addons'][$addon['slug']]['enable'] = intval( $proSettings[ $addon['slug'] ] ? 1 : 0 );
+                    }
+
                 }
 
                 // Pro Extensions
                 foreach( $proAddons['extensions'] as $extension ) {
-                    $proAddons['extensions'][$extension['slug']]['enable'] = intval( $proSettings[ $extension['slug'] ] ? 1 : 0 );
+
+                    if( $_POST['widgetEnable'] == 'off' ) {
+                        $proAddons['extensions'][$extension['slug']]['enable'] = 0 ;
+                    } else {
+                        $proAddons['extensions'][$extension['slug']]['enable'] = intval( $proSettings[ $extension['slug'] ] ? 1 : 0 );
+                    }
+                    
                 }
             }
             

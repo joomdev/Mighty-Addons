@@ -1,6 +1,7 @@
 ( function( $ ) {
 
     function saveAddons() {
+        console.log($('form#mighty-settings input.mighty-addons-free').serialize());
         $.ajax({
             url: MightyAddonsDashboard.ajaxUrl,
             type: 'post',
@@ -8,7 +9,8 @@
                 action: 'save_mighty_addons_settings',
                 security: MightyAddonsDashboard.nonce,
                 fields: $('form#mighty-settings input.mighty-addons-free').serialize(),
-                proFields: $('form#mighty-settings input.mighty-addons-pro').serialize()
+                proFields: $('form#mighty-settings input.mighty-addons-pro').serialize(),
+                widgetEnable: $('form#mighty-settings').attr('widget-enable'),
             },
             success: function(response) {
                 console.log('successfully saved!');
@@ -137,6 +139,7 @@
     // Disable all button
     $('.ma-gl-cnt-right #disable-all').on('click', function() {
         $(".switch-input").removeAttr('checked');
+        $("form#mighty-settings").attr('widget-enable','off');
     });
 
     $('#mighty-settings .switch .switch-input').on('click', function() {
