@@ -86,7 +86,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'how_to_title',
                 [
-                    'label' => __('Title', 'mighty'),
+                    'label' => __( 'Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => 'How To',
                     'dynamic' => [ 'active' => true ],
@@ -96,7 +96,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'how_to_subtitle',
                 [
-                    'label' => __('Subtitle', 'mighty'),
+                    'label' => __( 'Subtitle', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'dynamic' => [ 'active' => true ],
                 ]
@@ -105,7 +105,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'how_to_description',
                 [
-                    'label' => __('Description', 'mighty'),
+                    'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::TEXTAREA,
                     'dynamic' => [ 'active' => true ],
                     'default' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eum nisi et quo doloremque laborum autem alias mollitia nobis delectus nemo hic, earum, voluptatem provident! Quo blanditiis laboriosam aliquam quibusdam!',
@@ -186,7 +186,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'how_to_total_time_text',
                 [
-                    'label' => __('Total Time Text', 'mighty'),
+                    'label' => __( 'Total Time Text', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => 'Time Needed:',
                     'dynamic' => [ 'active' => true ],
@@ -211,7 +211,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'duration_year',
                 [
-                    'label' => __('Years', 'mighty'),
+                    'label' => __( 'Years', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
@@ -223,7 +223,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'duration_month',
                 [
-                    'label' => __('Months', 'mighty'),
+                    'label' => __( 'Months', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
@@ -235,7 +235,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'duration_days',
                 [
-                    'label' => __('Days', 'mighty'),
+                    'label' => __( 'Days', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
@@ -247,7 +247,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'duration_hours',
                 [
-                    'label' => __('Hours', 'mighty'),
+                    'label' => __( 'Hours', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
@@ -259,7 +259,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'duration_minutes',
                 [
-                    'label' => __('Minutes', 'mighty'),
+                    'label' => __( 'Minutes', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
@@ -279,7 +279,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'how_to_estimated_time_text',
                 [
-                    'label' => __('Estimated Cost Text', 'mighty'),
+                    'label' => __( 'Estimated Cost Text', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => 'Total Cost:',
                     'dynamic' => [ 'active' => true ],
@@ -292,7 +292,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'estimate_cost',
                 [
-                    'label' => __('Estimated Cost', 'mighty'),
+                    'label' => __( 'Estimated Cost', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
@@ -304,7 +304,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'estimated_currency',
                 [
-                    'label' => __('Currency', 'mighty'),
+                    'label' => __( 'Currency', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => '$',
                     'dynamic' => [ 'active' => true ],
@@ -325,7 +325,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'supply_title',
                 [
-                    'label' => __('Supply Title', 'mighty'),
+                    'label' => __( 'Supply Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => 'Necessary Supply Items',
                     'dynamic' => [ 'active' => true ],
@@ -338,7 +338,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'supply_icon',
                 [
-                    'label' => __('Supply Icon', 'mighty'),
+                    'label' => __( 'Supply Icon', 'mighty' ),
                     'type' => Controls_Manager::ICONS,
                     'condition' => [
                         'how_to_supply' => 'yes'
@@ -353,7 +353,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'supply_icon_size',
                 [
-                    'label' => __('Icon Size', 'mighty'),
+                    'label' => __( 'Icon Size', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'condition' => [
@@ -383,7 +383,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'supply_icon_spacing',
                 [
-                    'label' => __('Icon Spacing', 'mighty'),
+                    'label' => __( 'Icon Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'condition' => [
@@ -457,7 +457,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'tool_title',
                 [
-                    'label' => __('Tool Title', 'mighty'),
+                    'label' => __( 'Tool Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'default' => 'Necessary Tool Items',
                     'dynamic' => [ 'active' => true ],
@@ -470,7 +470,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'tool_icon',
                 [
-                    'label' => __('Tool Icon', 'mighty'),
+                    'label' => __( 'Tool Icon', 'mighty' ),
                     'type' => Controls_Manager::ICONS,
                     'condition' => [
                         'how_to_tool' => 'yes'
@@ -485,7 +485,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'tool_icon_size',
                 [
-                    'label' => __('Icon Size', 'mighty'),
+                    'label' => __( 'Icon Size', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'condition' => [
@@ -515,7 +515,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'tool_icon_spacing',
                 [
-                    'label' => __('Icon Spacing', 'mighty'),
+                    'label' => __( 'Icon Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'condition' => [
@@ -601,7 +601,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'steps_description',
                 [
-                    'label' => __('Description', 'mighty'),
+                    'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::TEXTAREA,
                     'dynamic' => [ 'active' => true ],
                 ]
@@ -621,7 +621,7 @@ class MT_howto extends Widget_Base {
             $repeater->add_control(
                 'step_description',
                 [
-                    'label' => __('Description', 'mighty'),
+                    'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::TEXTAREA,
                     'dynamic' => [ 'active' => true ],
                     'default' => 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
@@ -640,7 +640,7 @@ class MT_howto extends Widget_Base {
             $repeater->add_control(
                 'image_position',
                 [
-                    'label' => __('Image Positon', 'mighty'),
+                    'label' => __( 'Image Positon', 'mighty' ),
                     'type' => Controls_Manager::SELECT,
                     'default' => __('default'),
                     'options' => [
@@ -778,7 +778,7 @@ class MT_howto extends Widget_Base {
             $this->add_control(
                 'step_enable_lightbox',
                 [
-                    'label' => __('Enable Lightbox', 'mighty'),
+                    'label' => __( 'Enable Lightbox', 'mighty' ),
                     'type' => Controls_Manager::SELECT,
                     'default' => __('yes'),
                     'options' => [
@@ -951,7 +951,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_title',
                 [
-                    'label' => __('Space Below Title', 'mighty'),
+                    'label' => __( 'Space Below Title', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1030,7 +1030,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_description',
                 [
-                    'label' => __('Space Below Description', 'mighty'),
+                    'label' => __( 'Space Below Description', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1206,7 +1206,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_total_time',
                 [
-                    'label' => __('Space Below Total Time', 'mighty'),
+                    'label' => __( 'Space Below Total Time', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1299,7 +1299,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_estimate_cost',
                 [
-                    'label' => __('Space Below Estimate Cost', 'mighty'),
+                    'label' => __( 'Space Below Estimate Cost', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1392,7 +1392,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_supply_title',
                 [
-                    'label' => __('Space Below Supply Title', 'mighty'),
+                    'label' => __( 'Space Below Supply Title', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1493,7 +1493,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_supply',
                 [
-                    'label' => __('Space Between Supplies', 'mighty'),
+                    'label' => __( 'Space Between Supplies', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1522,7 +1522,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_supply_section',
                 [
-                    'label' => __('Space Below Supply Section', 'mighty'),
+                    'label' => __( 'Space Below Supply Section', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1615,7 +1615,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_tool_title',
                 [
-                    'label' => __('Space Below Tool Title', 'mighty'),
+                    'label' => __( 'Space Below Tool Title', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1716,7 +1716,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_tools',
                 [
-                    'label' => __('Space Between Tools', 'mighty'),
+                    'label' => __( 'Space Between Tools', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1745,7 +1745,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_tools_section',
                 [
-                    'label' => __('Space Below Tools Section', 'mighty'),
+                    'label' => __( 'Space Below Tools Section', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1784,7 +1784,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_between_steps',
                 [
-                    'label' => __('Spacing Between Steps', 'mighty'),
+                    'label' => __( 'Spacing Between Steps', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1879,7 +1879,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_section_title',
                 [
-                    'label' => __('Space Below Title', 'mighty'),
+                    'label' => __( 'Space Below Title', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1957,7 +1957,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_section_description',
                 [
-                    'label' => __('Space Below Description', 'mighty'),
+                    'label' => __( 'Space Below Description', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -2052,7 +2052,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_section_title',
                 [
-                    'label' => __('Space Below Title', 'mighty'),
+                    'label' => __( 'Space Below Title', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -2221,7 +2221,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'step_image_width',
                 [
-                    'label' => __('Image Width', 'mighty'),
+                    'label' => __( 'Image Width', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -2247,7 +2247,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'step_image_spacing',
                 [
-                    'label' => __('Image Spacing', 'mighty'),
+                    'label' => __( 'Image Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -2363,7 +2363,7 @@ class MT_howto extends Widget_Base {
                 <h3 class="mt-how-to-supply-title"><?php echo $settings['supply_title'];?></h3>
                 <?php foreach ($settings['supply_list'] as $key => $value) { ?>
                     <div class="mt-supply mt-supply-'<?php echo $key + 1; ?>'">
-                        <i class="<?php echo $settings['supply_icon']['value'];?>"></i>
+                        <i class="<?php echo $settings['supply_icon']['value'];?>" ></i>
                         <span><?php echo $value['supply_name'];?></span>
                     </div>
                 <?php } ?>
