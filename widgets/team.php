@@ -854,9 +854,7 @@ class MT_Team extends Widget_Base {
 		echo '<div class="mighty-team">';
 
 			echo '<div class="avatar-wrapper">';
-			echo wp_get_attachment_image( $settings['avatar_image']['id'], 'avatar_image_size' );
-
-				// echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar_image_size', 'avatar_image' );
+				echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar_image_size', 'avatar_image' );
 			echo '</div>';
 
 			if ( $settings['name'] !== "" ) {
