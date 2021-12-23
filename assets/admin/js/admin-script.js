@@ -1,7 +1,6 @@
 ( function( $ ) {
 
     function saveAddons() {
-        console.log($('form#mighty-settings input.mighty-addons-free').serialize());
         $.ajax({
             url: MightyAddonsDashboard.ajaxUrl,
             type: 'post',
