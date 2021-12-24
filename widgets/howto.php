@@ -604,6 +604,7 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::TEXTAREA,
                     'dynamic' => [ 'active' => true ],
+                    'default' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eum nisi et quo doloremque laborum autem alias mollitia nobis delectus nemo hic, earum, voluptatem provident! Quo blanditiis laboriosam aliquam quibusdam!',
                 ]
             );
 
@@ -2277,8 +2278,8 @@ class MT_howto extends Widget_Base {
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        // echo '<pre>';
-        // print_r($settings['supply_list']);
+        echo '<pre>';
+        print_r($settings['step_list']);
 
         if ( !empty($settings['how_to_image_link']['url'] ) ) {
             $how_to_image_link = $settings['how_to_image_link']['url'];
@@ -2384,8 +2385,8 @@ class MT_howto extends Widget_Base {
         <!-- Advanced Options -->
 
         <div class="mt-how-to-steps">
-            <h3 class="mt-how-to-step-section-title">Necessary Steps</h3>
-
+            <h3 class="mt-how-to-step-section-title"><?php echo $settings['steps_title'];?></h3>
+            <p class="mt-how-to-step-section-sub-title"><?php echo $settings['steps_description'];?></p>
             <div class="mt-how-to-step mt-has-img mt-step-img-right">
                 <div class="mt-how-to-step-content">
                     <h3 class="mt-how-to-step-title">Step 1</h3>
