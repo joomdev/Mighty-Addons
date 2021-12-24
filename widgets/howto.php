@@ -638,106 +638,109 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $repeater->add_control(
-                'image_position',
-                [
-                    'label' => __( 'Image Positon', 'mighty' ),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => __('default'),
-                    'options' => [
-                        'default' => __('Default', 'mighty'),
-                        'custom' => __('Custom', 'mighty'),
-                    ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech' => 'background-position: {{VALUE}}',
-                    // ],
-                ]
-            );
+            // $repeater->add_control(
+            //     'image_position',
+            //     [
+            //         'label' => __( 'Image Positon', 'mighty' ),
+            //         'type' => Controls_Manager::SELECT,
+            //         'default' => __('default'),
+            //         'options' => [
+            //             'default' => __('Default', 'mighty'),
+            //             'custom' => __('Custom', 'mighty'),
+            //         ],
+            //         // 'selectors' => [
+            //         //     '{{WRAPPER}} .ma-agech' => 'background-position: {{VALUE}}',
+            //         // ],
+            //         ]
+            //     );
+                
+            //     $repeater->add_control(
+            //         'image_alignment',
+            //         [
+            //         'label' => __( 'Alignment', 'mighty' ),
+            //         'type' => Controls_Manager::CHOOSE,
+            //         'options' => [
+            //             'top' => [
+            //                 'title' => __( 'Top', 'mighty' ),
+            //                 'icon' => 'eicon-v-align-top',
+            //             ],
+            //             'bottom' => [
+            //                 'title' => __( 'Bottom', 'mighty' ),
+            //                 'icon' => 'eicon-v-align-bottom',
+            //             ],
+            //             'left' => [
+            //                 'title' => __( 'Left', 'mighty' ),
+            //                 'icon' => 'eicon-h-align-left',
+            //             ],
+            //             'right' => [
+            //                 'title' => __( 'Right', 'mighty' ),
+            //                 'icon' => 'eicon-h-align-right',
+            //             ],
+            //         ],
+            //         'condition' => [
+            //             'image_position' => 'custom'
+            //         ],
+            //         'default' => 'right',
+            //         'toggle' => true,
+            //         ]
+            //     );
+                
+            //     $repeater->add_control(
+            //         'horizontal_alignment',
+            //         [
+            //             'label' => __( 'Horizontal Alignment', 'mighty' ),
+            //             'type' => Controls_Manager::CHOOSE,
+            //             'options' => [
+            //                 'flex-start' => [
+            //                     'title' => __( 'Left', 'mighty' ),
+            //                     'icon' => 'eicon-h-align-left',
+            //                 ],
+            //                 'center' => [
+            //                     'title' => __( 'Center', 'mighty' ),
+            //                     'icon' => 'eicon-h-align-center',
+            //                 ],
+            //                 'flex-end' => [
+            //                     'title' => __( 'Right', 'mighty' ),
+            //                     'icon' => 'eicon-h-align-right',
+            //                 ],
+            //             ],
+            //             'condition' => [
+            //                 'image_alignment' => [ 'top', 'bottom' ]
+            //             ],
+            //             'default' => 'center',
+            //             'toggle' => true,
+            //             'selectors' => [
+            //                 '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUE}}',
+            //             ],
+            //     ]
+            // );
 
-            $repeater->add_control(
-                'image_alignment',
-                [
-                    'label' => __( 'Alignment', 'mighty' ),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'top' => [
-                            'title' => __( 'Top', 'mighty' ),
-                            'icon' => 'eicon-v-align-top',
-                        ],
-                        'bottom' => [
-                            'title' => __( 'Bottom', 'mighty' ),
-                            'icon' => 'eicon-v-align-bottom',
-                        ],
-                        'left' => [
-                            'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'eicon-h-align-left',
-                        ],
-                        'right' => [
-                            'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'eicon-h-align-right',
-                        ],
-                    ],
-                    'condition' => [
-                        'image_position' => 'custom'
-                    ],
-                    'default' => 'right',
-                    'toggle' => true,
-                ]
-            );
-
-            $repeater->add_control(
-                'horizontal_alignment',
-                [
-                    'label' => __( 'Horizontal Alignment', 'mighty' ),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'eicon-h-align-left',
-                        ],
-                        'center' => [
-                            'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'eicon-h-align-center',
-                        ],
-                        'right' => [
-                            'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'eicon-h-align-right',
-                        ],
-                    ],
-                    'condition' => [
-                        'image_alignment' => [ 'top', 'bottom' ]
-                    ],
-                    'default' => 'center',
-                    'toggle' => true,
-                ]
-            );
-
-            $repeater->add_control(
-                'vertical_alignment',
-                [
-                    'label' => __( 'Vertical Alignment', 'mighty' ),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'top' => [
-                            'title' => __( 'Top', 'mighty' ),
-                            'icon' => 'eicon-v-align-top',
-                        ],
-                        'middle' => [
-                            'title' => __( 'Middle', 'mighty' ),
-                            'icon' => ' eicon-v-align-middle',
-                        ],
-                        'bottom' => [
-                            'title' => __( 'Bottom', 'mighty' ),
-                            'icon' => 'eicon-v-align-bottom',
-                        ],
-                    ],
-                    'condition' => [
-                        'image_alignment' => [ 'left', 'right' ]
-                    ],
-                    'default' => 'middle',
-                    'toggle' => true,
-                ]
-            );
+            // $repeater->add_control(
+            //     'vertical_alignment',
+            //     [
+            //         'label' => __( 'Vertical Alignment', 'mighty' ),
+            //         'type' => Controls_Manager::CHOOSE,
+            //         'options' => [
+            //             'top' => [
+            //                 'title' => __( 'Top', 'mighty' ),
+            //                 'icon' => 'eicon-v-align-top',
+            //             ],
+            //             'middle' => [
+            //                 'title' => __( 'Middle', 'mighty' ),
+            //                 'icon' => ' eicon-v-align-middle',
+            //             ],
+            //             'bottom' => [
+            //                 'title' => __( 'Bottom', 'mighty' ),
+            //                 'icon' => 'eicon-v-align-bottom',
+            //             ],
+            //         ],
+            //         'condition' => [
+            //             'image_alignment' => [ 'left', 'right' ]
+            //         ],
+            //         'default' => 'middle',
+            //         'toggle' => true,
+            //     ]
+            // );
 
             $repeater->add_control(
                 'step_image_link',
@@ -823,6 +826,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -831,9 +837,9 @@ class MT_howto extends Widget_Base {
                 [
                     'label'     => __( 'Background Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to' => 'background-color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -842,10 +848,10 @@ class MT_howto extends Widget_Base {
 				[
 					'label' => __( 'Padding', 'mighty' ),
 					'type' => Controls_Manager::DIMENSIONS,
-					'size_units' => [ 'px' ],
-					// 'selectors' => [
-					// 	'{{WRAPPER}} .ma-agech__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					// ],
+					'size_units' => [ 'px' , '%' ],
+					'selectors' => [
+						'{{WRAPPER}} .mt-how-to' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
 				]
 			);
 
@@ -854,7 +860,7 @@ class MT_howto extends Widget_Base {
 				[
 					'name' => 'box_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					// 'selector' => '{{WRAPPER}} .ma-agech__input',
+					'selector' => '{{WRAPPER}} .mt-how-to',
 				]
 			);
 
@@ -864,9 +870,9 @@ class MT_howto extends Widget_Base {
 					'label' => __( 'Box Border Radius', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
-					// 'selectors' => [
-					// 	'{{WRAPPER}} .ma-agech__input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					// ],
+					'selectors' => [
+						'{{WRAPPER}} .mt-how-to' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
 				]
 			);
 
@@ -875,7 +881,7 @@ class MT_howto extends Widget_Base {
                 [
                     'name' => 'box_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    // 'selector' => '{{WRAPPER}} .ma-agech__input',
+                    'selector' => '{{WRAPPER}} .mt-how-to',
                 ]
             );
 
@@ -894,9 +900,9 @@ class MT_howto extends Widget_Base {
                 [
                     'label'     => __( 'Title Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-title' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -904,7 +910,7 @@ class MT_howto extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'title_typography',
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-title',
                 ]
             );
 
@@ -946,6 +952,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-title' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -969,9 +978,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -990,9 +999,9 @@ class MT_howto extends Widget_Base {
                 [
                     'label'     => __( 'Description Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-description' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1000,7 +1009,7 @@ class MT_howto extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'description_typography',
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-description',
                 ]
             );
 
@@ -1025,6 +1034,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-description' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1048,9 +1060,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-description' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1065,7 +1077,7 @@ class MT_howto extends Widget_Base {
         );
 
             $this->add_control(
-                'image_alignment',
+                'style_image_alignment',
                 [
                     'label' => __( 'Image Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
@@ -1085,6 +1097,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-image' => 'text-align: {{VALUE}}',
+                    ],
                 ]
             );
 
@@ -1094,9 +1109,9 @@ class MT_howto extends Widget_Base {
 					'label' => __( 'Padding', 'mighty' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' ],
-					// 'selectors' => [
-					// 	'{{WRAPPER}} .ma-agech__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					// ],
+					'selectors' => [
+						'{{WRAPPER}} .mt-how-to-image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
 				]
 			);
 
@@ -1105,7 +1120,7 @@ class MT_howto extends Widget_Base {
 				[
 					'name' => 'image_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					// 'selector' => '{{WRAPPER}} .ma-agech__input',
+					'selector' => '{{WRAPPER}} .mt-how-to-image',
 				]
 			);
 
@@ -1115,9 +1130,9 @@ class MT_howto extends Widget_Base {
 					'label' => __( 'Image Border Radius', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
-					// 'selectors' => [
-					// 	'{{WRAPPER}} .ma-agech__input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					// ],
+					'selectors' => [
+						'{{WRAPPER}} .mt-how-to-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
 				]
 			);
 
@@ -1126,7 +1141,7 @@ class MT_howto extends Widget_Base {
                 [
                     'name' => 'image_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    // 'selector' => '{{WRAPPER}} .ma-agech__input',
+                    'selector' => '{{WRAPPER}} .mt-how-to-image',
                 ]
             );
 
@@ -1137,6 +1152,9 @@ class MT_howto extends Widget_Base {
 			[
 				'label' => __( 'Advance Options', 'mighty' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'how_to_advance_option' => 'yes'
+                ],
 			]
         );
 
@@ -1160,9 +1178,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_total_time' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-total-time' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1173,7 +1191,7 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_total_time' => 'yes'
                     ],
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-total-time',
                 ]
             );
 
@@ -1201,6 +1219,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-total-time' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1227,9 +1248,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_total_time' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-total-time' => 'max-width: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1253,9 +1274,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_estimated_time' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-estimated-cost' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1266,7 +1287,7 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_estimated_time' => 'yes'
                     ],
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-estimated-cost',
                 ]
             );
 
@@ -1294,6 +1315,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-estimated-cost' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1320,9 +1344,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_estimated_time' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-estimated-cost' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1346,9 +1370,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-supply-title' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1359,7 +1383,7 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-supply-title',
                 ]
             );
 
@@ -1387,6 +1411,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-supply-title' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1413,9 +1440,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-supply-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1447,9 +1474,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-supply' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1460,7 +1487,7 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-supply',
                 ]
             );
 
@@ -1488,6 +1515,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-supply' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1514,9 +1544,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-supply + .mt-supply' => 'margin-top: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1543,9 +1573,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-supply' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1569,9 +1599,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-tools-title' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1582,7 +1612,7 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-tools-title',
                 ]
             );
 
@@ -1610,6 +1640,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-tools-title' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1636,9 +1669,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-tools-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1670,9 +1703,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-tool' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1683,7 +1716,7 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-tool',
                 ]
             );
 
@@ -1711,6 +1744,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-tool' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1737,9 +1773,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-tool + .mt-tool' => 'margin-top: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1766,9 +1802,9 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-tools' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1802,9 +1838,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-section-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1822,9 +1858,9 @@ class MT_howto extends Widget_Base {
                 [
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-section-title' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1832,7 +1868,7 @@ class MT_howto extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'step_section_title_typography',
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-step-section-title',
                 ]
             );
 
@@ -1874,6 +1910,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-section-title' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1897,9 +1936,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-section-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1917,9 +1956,9 @@ class MT_howto extends Widget_Base {
                 [
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-section-sub-title' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1927,7 +1966,7 @@ class MT_howto extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'step_section_description_typography',
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-step-section-sub-title',
                 ]
             );
 
@@ -1952,6 +1991,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-section-sub-title' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -1975,9 +2017,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-section-sub-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -1995,9 +2037,9 @@ class MT_howto extends Widget_Base {
                 [
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-title' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -2005,7 +2047,7 @@ class MT_howto extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'step_title_typography',
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-step-title',
                 ]
             );
 
@@ -2047,6 +2089,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-title' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -2070,9 +2115,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -2090,9 +2135,9 @@ class MT_howto extends Widget_Base {
                 [
                     'label'     => __( 'Color', 'mighty' ),
                     'type'      => Controls_Manager::COLOR,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__title' => 'color: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-description' => 'color: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -2100,7 +2145,7 @@ class MT_howto extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'step_description_typography',
-                    // 'selector' => '{{WRAPPER}} .ma-agech__btn-primary',
+                    'selector' => '{{WRAPPER}} .mt-how-to-step-description',
                 ]
             );
 
@@ -2125,6 +2170,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'left',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-description' => 'text-align: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -2171,7 +2219,7 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Horizontal Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'left' => [
+                        'flex-start' => [
                             'title' => __( 'Left', 'mighty' ),
                             'icon' => 'eicon-h-align-left',
                         ],
@@ -2179,7 +2227,7 @@ class MT_howto extends Widget_Base {
                             'title' => __( 'Center', 'mighty' ),
                             'icon' => 'eicon-h-align-center',
                         ],
-                        'right' => [
+                        'flex-end' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'eicon-h-align-right',
                         ],
@@ -2189,6 +2237,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'center',
                     'toggle' => true,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -2216,6 +2267,9 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'middle',
                     'toggle' => true,
+                    // 'selectors' => [
+                    //     '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUES}}'
+                    // ]
                 ]
             );
 
@@ -2239,9 +2293,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-image img' => 'width: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -2265,9 +2319,12 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech__input-btn-wrapper' => 'max-width: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-step-img-top .mt-how-to-step-image' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-step-img-right .mt-how-to-step-image' => 'margin-left: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-step-img-bottom .mt-how-to-step-image' => 'margin-top: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-step-img-left .mt-how-to-step-image' => 'margin-right: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -2278,8 +2335,8 @@ class MT_howto extends Widget_Base {
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        echo '<pre>';
-        print_r($settings['step_list']);
+        // echo '<pre>';
+        // print_r($settings['step_list']);
 
         if ( !empty($settings['how_to_image_link']['url'] ) ) {
             $how_to_image_link = $settings['how_to_image_link']['url'];
@@ -2318,12 +2375,18 @@ class MT_howto extends Widget_Base {
             }
         }
 
+        $this->add_render_attribute( 'mt-how-to-title', 'class',  'mt-how-to-title' );
+        $this->add_render_attribute( 'mt-how-to-supply-title', 'class',  'mt-how-to-supply-title' );
+        $this->add_render_attribute( 'mt-how-to-tools-title', 'class',  'mt-how-to-tools-title' );
+        $this->add_render_attribute( 'mt-how-to-step-title', 'class',  'mt-how-to-step-title' );
+        $this->add_render_attribute( 'mt-how-to-step-section-title', 'class',  'mt-how-to-step-section-title' );
+
     ?>
              
-    <div class="mt-how-to mt-how-to-'<?php echo $this->get_id();?>' " id ="mt-how-to-'<?php echo $this->get_id();?>' ">
+    <div class="mt-how-to mt-how-to-<?php echo $this->get_id();?>" id ="mt-how-to-<?php echo $this->get_id();?>">
         
         <?php if ( !empty( $settings['how_to_title'] ) ) { ?>
-            <h2 class="mt-how-to-title"><?php echo $settings['how_to_title']; ?></h2>
+            <<?php echo $settings['title_html_tag']?> <?php echo $this->get_render_attribute_string('mt-how-to-title'); ?> ><?php echo $settings['how_to_title']; ?></<?php echo $settings['title_html_tag']?>>
         <?php } ?>
 
         <?php if ( !empty( $settings['how_to_subtitle'] ) ) { ?>
@@ -2361,7 +2424,7 @@ class MT_howto extends Widget_Base {
 
         <?php if ( $settings['how_to_supply'] == 'yes' ) { ?>
             <div class="mt-how-to-supply">
-                <h3 class="mt-how-to-supply-title"><?php echo $settings['supply_title'];?></h3>
+                <<?php echo $settings['supply_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-supply-title'); ?> ><?php echo $settings['supply_title'];?></<?php echo $settings['supply_html_tag'];?> >
                 <?php foreach ($settings['supply_list'] as $key => $value) { ?>
                     <div class="mt-supply mt-supply-'<?php echo $key + 1; ?>'">
                         <i class="<?php echo $settings['supply_icon']['value'];?>" ></i>
@@ -2373,56 +2436,56 @@ class MT_howto extends Widget_Base {
                 
         <?php if ( $settings['how_to_tool'] == 'yes' ) { ?>
             <div class="mt-how-to-tools">
-                <h3 class="mt-how-to-tools-title"><?php echo $settings['tool_title'];?></h3>
-                <?php foreach ($settings['tool_list'] as $key => $value) { ?>
-                    <div class="mt-tool mt-tool-'<?php echo $key + 1; ?>'">
-                        <i class="<?php echo $settings['tool_icon']['value'];?>"></i>
-                        <span><?php echo $value['tool_name'];?></span>
-                    </div>
+            <<?php echo $settings['tool_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-tools-title'); ?> ><?php echo $settings['tool_title'];?></<?php echo $settings['tool_html_tag'];?> >
+            <?php foreach ($settings['tool_list'] as $key => $value) { ?>
+                <div class="mt-tool mt-tool-'<?php echo $key + 1; ?>'">
+                    <i class="<?php echo $settings['tool_icon']['value'];?>"></i>
+                    <span><?php echo $value['tool_name'];?></span>
+                </div>
                 <?php } ?>
             </div>
-        <?php } ?>
-        <!-- Advanced Options -->
-
-        <div class="mt-how-to-steps">
-            <h3 class="mt-how-to-step-section-title"><?php echo $settings['steps_title'];?></h3>
-            <p class="mt-how-to-step-section-sub-title"><?php echo $settings['steps_description'];?></p>
-            <div class="mt-how-to-step mt-has-img mt-step-img-right">
-                <div class="mt-how-to-step-content">
-                    <h3 class="mt-how-to-step-title">Step 1</h3>
-                    <div class="mt-how-to-step-description">Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
-                </div>
-                <div class="mt-how-to-step-image">
-                    <a href="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" class="elementor-clickable">
-                    <img src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" alt="Place Step Title Here" title="Place Step Title Here">
-                    </a>
-                </div>
-            </div>
+            <?php } ?>
+            <!-- Advanced Options -->
             
-            <div class="mt-how-to-step mt-has-img mt-step-img-right">
-                <div class="mt-how-to-step-content">
-                    <h3 class="mt-how-to-step-title">Step 2</h3>
-                    <div class="mt-how-to-step-description">Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
-                </div>
-                <div class="mt-how-to-step-image">
-                    <a href="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" class="elementor-clickable">
-                    <img src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" alt="Place Step Title Here" title="Place Step Title Here">
-                    </a>
-                </div>
-            </div>
+            <div class="mt-how-to-steps">
+            <<?php echo $settings['step_section_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-section-title'); ?> ><?php echo $settings['steps_title'];?></<?php echo $settings['step_section_html_tag'];?> >
+                
+                <p class="mt-how-to-step-section-sub-title"><?php echo $settings['steps_description'];?></p>
+                
+                <?php foreach ( $settings['step_list'] as $key => $value ) { ?>
+                    
+                    <div class="mt-how-to-step mt-has-img mt-step-img-<?php echo $settings['step_image_alignment'];?>" >
 
-            <div class="mt-how-to-step mt-has-img mt-step-img-right">
-                <div class="mt-how-to-step-content">
-                    <h3 class="mt-how-to-step-title">Step 3</h3>
-                    <div class="mt-how-to-step-description">Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
-                </div>
-                <div class="mt-how-to-step-image">
-                    <a href="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" class="elementor-clickable">
-                    <img src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0" alt="Place Step Title Here" title="Place Step Title Here">
-                    </a>
-                </div>
-            </div>
+                        <?php if ( !empty( $value['step_title'] ) || !empty( $value['step_description'] ) ) { ?>
+                            
+                            <div class="mt-how-to-step-content">
+                                
+                                <?php if ( !empty( $value['step_title'] ) ) { ?>
+                                    <<?php echo $settings['step_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-title'); ?> ><?php echo $value['step_title'];?></<?php echo $settings['step_html_tag'];?> >
+                            <?php } ?>
 
+                            <?php if ( !empty( $value['step_description'] ) ) { ?>
+                                <div class="mt-how-to-step-description"><?php echo $value['step_description'];?></div>
+                            <?php } ?>
+
+                        </div>
+
+                    <?php } ?>
+
+                    <?php if ( !empty( $value['step_image']['url'] )  ) { ?>
+
+                        <div class="mt-how-to-step-image">
+                            <a href="<?php echo $value['step_image_link']['url'];?>" class="elementor-clickable">
+                                <img src="<?php echo $value['step_image']['url'];?>" alt="Place Step Title Here" title="<?php echo $settings['steps_title'];?>" >
+                            </a>
+                        </div>
+
+                    <?php } ?>
+
+                </div>
+
+            <?php } ?>
+            
         </div>
 
     </div>
