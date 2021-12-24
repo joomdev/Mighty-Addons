@@ -331,7 +331,8 @@ class HelperFunctions {
                 'class' => 'MT_AddToCart',
                 'slug' => 'wooaddtocart',
                 'icon' => 'mf mf-wooaddtocart',
-                'dependency' => 'WooCommerce'
+                'dependency' => 'WooCommerce',
+                'stub' => 'true',
             ],
             'wooproductsgrid' => [
                 'title' => 'Woo Products Grid',
@@ -340,7 +341,8 @@ class HelperFunctions {
                 'class' => 'MT_ProductsGrid',
                 'slug' => 'wooproductsgrid',
                 'icon' => 'mf mf-wooproductsgrid',
-                'dependency' => 'WooCommerce'
+                'dependency' => 'WooCommerce',
+                'stub' => 'true',
             ],
             'chart' => [
                 'title' => 'Chart',
@@ -348,7 +350,8 @@ class HelperFunctions {
                 'enable' => false,
                 'class' => 'MT_Chart',
                 'slug' => 'chart',
-                'icon' => 'mf mf-chart'
+                'icon' => 'mf mf-chart',
+                'stub' => 'true',
             ],
             'modal' => [
                 'title' => 'Modal',
@@ -356,7 +359,8 @@ class HelperFunctions {
                 'enable' => false,
                 'class' => 'MT_Modal',
                 'slug' => 'modal',
-                'icon' => 'mf mf-modal'
+                'icon' => 'mf mf-modal',
+                'stub' => 'true',
             ]
         ],
         "extensions" => [
