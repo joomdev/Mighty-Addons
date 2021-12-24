@@ -24,6 +24,9 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.mf-howto:before {
+	content: "\e932";
+}
 
 .mf-modal:before {
 	content: "\e931";
