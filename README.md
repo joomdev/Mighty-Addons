@@ -95,6 +95,7 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 29. **[Backdrop Filter](https://mightythemes.com/mighty-addons/backdrop-filter/)** - The Backdrop filter lets you add graphical effects such as blurring or color shifting on the background image of your web page.
 30. **[Pie and Donut Chart](https://mightythemes.com/mighty-addons/donut/)** - Create Customized and Visually Appealing Charts with Pie and Donut Chart Widget.
 31. **[Age checker](https://mightythemes.com/mighty-addons/age-checker/)** - Create Stunning Age Verification Pop-up using Age Gate Elementor Widget.
+32. **[Modal Popup](https://mightythemes.com/mighty-addons/modal-widget/)** - Create Stunning Modal Popup using Modal Elementor Widget.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
@@ -121,7 +122,8 @@ So Grab the Pro version and take Elementor to next level. In the Pro Version, yo
 19. **Chart Widget** - Create interactive Line and Bar Charts and make everlasting impression using Chart Widget
 20. **Text Marquee** - Take advantage of the Text Marquee Elementor widget and create custom auto-scrolling text anywhere in your website.
 21. **Pie and Donut chart** - Create Customized and Visually Appealing Charts with Pie and Donut Chart Widget.
-22. **Age Chceker** - Create Stunning Age Verification Pop-up using Age Gate Elementor Widget.
+22. **Age Checker** - Create Stunning Age Verification Pop-up using Age Gate Elementor Widget.
+23. **Modal Popup** - Create Stunning Modal Popup using Modal Elementor Widget.
 
 ### Mighty Addons Extensions
 1. **Cross-Site Copy Paste Style (Pro)** - The feature allows you to copy the style of website A to Website B.
@@ -208,6 +210,7 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 * Fixed: Elementor deprecations in the older version of Elementor
 * Fixed: Icon issue
 * Fixed: disable all widgets issue
+* Fixed: Section Slider CSS issue [PRO]
 ### 1.7.0
 * Added: Pie and Donut Chart Widget [Free]
 * Added: Age Checker Widget [Free]
