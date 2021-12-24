@@ -206,15 +206,18 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
 ### 1.7.1
 * Fixed: Elementor deprecations in the older version of Elementor
 * Fixed: Icon issue
 * Fixed: disable all widgets issue
 * Fixed: Section Slider CSS issue [PRO]
+
 ### 1.7.0
-* Added: Pie and Donut Chart Widget [Free]
-* Added: Age Checker Widget [Free]
+* Added: Pie and Donut Chart Widget
+* Added: Age Checker Widget
 * Added: 20+ Ready to use Elementor Blocks
+
 ### 1.6.0
 * Added: Woo Slider for showcasing products in a slider [PRO]
 * Added: Woo Products Grid for showcasing products in a grid [PRO]
