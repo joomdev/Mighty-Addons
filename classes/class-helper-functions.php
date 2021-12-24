@@ -322,7 +322,8 @@ class HelperFunctions {
                 'class' => 'MT_WooSlider',
                 'slug' => 'wooslider',
                 'icon' => 'mf mf-wooslider',
-                'dependency' => 'WooCommerce'
+                'dependency' => 'WooCommerce',
+                'stub' => 'true',
             ],
             'wooaddtocart' => [
                 'title' => 'Woo Add to Cart',

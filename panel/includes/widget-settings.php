@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 </div>
             </div>
             
-            <form id="mighty-settings" action="" method="POST" name="mighty-settings">
+            <form id="mighty-settings" action="" method="POST" name="mighty-settings" data-pro='<?php echo $mighty_addons_pro_active;?>'>
                 <div class="ma-element-container">
                     <?php foreach( $widgets as $widget => $props ) : ?>
                     <div class="ma-element">

@@ -132,12 +132,22 @@
     
     // Enable all button
     $('.ma-gl-cnt-right #enable-all').on('click', function() {
-        $(".switch-input").attr('checked', 'checked');
+       let isPro = $('#mighty-settings').attr('data-pro');
+       if ( isPro ) {
+           $(".switch-input").attr('checked', 'checked');
+        } else {
+           $(".switch-input.mighty-addons-free").attr('checked', 'checked');
+       }
     });
     
     // Disable all button
     $('.ma-gl-cnt-right #disable-all').on('click', function() {
-        $(".switch-input").removeAttr('checked');
+        let isPro = $('#mighty-settings').attr('data-pro');
+        if ( isPro ) {
+            $(".switch-input").removeAttr('checked');
+        } else {
+            $(".switch-input.mighty-addons-free").removeAttr('checked');
+        }
         $("form#mighty-settings").attr('widget-enable','off');
     });
 
