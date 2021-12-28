@@ -21,6 +21,8 @@ Mighty Addons is a collection of premium quality addons for the Elementor page b
 [**>> Check the Demos <<**](https://mightythemes.com/mighty-addons/)
 
 Let’s design Powerful WordPress Websites together with the Elementor page builder and achieve the imaginable designs in minutes. **No coding required.**
+
+Want to test it online? [Try it online now](https://tastewp.com/new?pre-installed-plugin-slug=elementor%2Cmighty-addons&redirect=admin.php%3Fpage%3Dmighty-addons-home&ni=true)
 ## Why Mighty Addons is the Best Elementor Widgets Plugin
 
 ### [Cross Domain Copy Paste](https://mightythemes.com/cross-domain-copy-paste/)
