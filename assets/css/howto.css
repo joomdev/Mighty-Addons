@@ -22,9 +22,9 @@
     margin-bottom: 10px;
 }
 
-.mt-has-img.mt-step-img-right .mt-how-to-step-content {
+/* .mt-has-img.mt-step-img-right .mt-how-to-step-content {
     width: 60%;
-}
+} */
 
 .mt-has-img.mt-step-img-right .mt-how-to-step-image {
     width: 40%;
@@ -107,4 +107,8 @@ p {
     outline: 0;
     padding: 0;
     vertical-align: baseline;
+}
+
+.mt-how-to-step {
+    padding: 10px 0px;
 }

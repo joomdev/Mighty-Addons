@@ -52,7 +52,7 @@ class MT_howto extends Widget_Base {
 	}
 
 	public function get_style_depends() {
-		// return [ 'mighty-agecheckercss' ];
+		return [ 'mighty-howtocss' ];
 	}
 
     protected function register_controls() {
@@ -188,7 +188,7 @@ class MT_howto extends Widget_Base {
                 [
                     'label' => __( 'Total Time Text', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'default' => 'Time Needed:',
+                    'default' => 'Total Time Required:',
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
                         'how_to_total_time' => 'yes'
@@ -311,6 +311,7 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_estimated_time' => 'yes'
                     ],
+                    'description' => 'For your country ISO code <a href="https://en.wikipedia.org/wiki/List_of_circulating_currencies" target="_blank">click here</a>'
                 ]
             );
 
@@ -327,7 +328,7 @@ class MT_howto extends Widget_Base {
                 [
                     'label' => __( 'Supply Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'default' => 'Necessary Supply Items',
+                    'default' => 'Required Supply/Material',
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
                         'how_to_supply' => 'yes'
@@ -373,9 +374,9 @@ class MT_howto extends Widget_Base {
                             'max' => 100
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech .ma-agech__btn-primary.ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-supply i' => 'font-size: {{SIZE}}{{UNIT}}',
+                    ],
                     
                 ]
             );
@@ -403,9 +404,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech .ma-agech__btn-primary.ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-supply i' => 'margin-right: {{SIZE}}{{UNIT}}',
+                    ],
                     
                 ]
             );
@@ -505,9 +506,9 @@ class MT_howto extends Widget_Base {
                             'max' => 100
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech .ma-agech__btn-primary.ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-                    // ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-tool i' => 'font-size: {{SIZE}}{{UNIT}}',
+                    ],
                     
                 ]
             );
@@ -535,10 +536,9 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .ma-agech .ma-agech__btn-primary.ma-agech__icon-before .ma-agech-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}}',
-                    // ],
-                    
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-tool i' => 'margin-right: {{SIZE}}{{UNIT}}',
+                    ],
                 ]
             );
 
@@ -612,7 +612,7 @@ class MT_howto extends Widget_Base {
 
             $repeater->add_control(
                 'step_title', [
-                    'label' => esc_html__( 'Tool', 'mighty' ),
+                    'label' => esc_html__( 'Step', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
                     'label_block' => true,
                     'dynamic' => [ 'active' => true ],
@@ -625,7 +625,6 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Description', 'mighty' ),
                     'type' => Controls_Manager::TEXTAREA,
                     'dynamic' => [ 'active' => true ],
-                    'default' => 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
                 ]
             );
             
@@ -635,6 +634,9 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Image', 'mighty' ),
                     'type' => Controls_Manager::MEDIA,
                     'dynamic' => [ 'active' => true ],
+                    'default' => [
+                        'url' => \Elementor\Utils::get_placeholder_image_src(),
+                    ],
                 ]
             );
 
@@ -767,12 +769,16 @@ class MT_howto extends Widget_Base {
                     'default' => [
                         [
                             'step_title' => esc_html__( 'Step 1', 'mighty' ),
+                            'step_description' => esc_html__( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
+
                         ],
                         [
                             'step_title' => esc_html__( 'Step 2', 'mighty' ),
+                            'step_description' => esc_html__( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
                         ],
                         [
                             'step_title' => esc_html__( 'Step 3', 'mighty' ),
+                            'step_description' => esc_html__( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'mighty' ),
                         ],
                     ],
                     'title_field' => '{{{ step_title }}}',
@@ -805,7 +811,7 @@ class MT_howto extends Widget_Base {
 			]
         );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'box_alignment',
                 [
                     'label' => __( 'Box Alignment', 'mighty' ),
@@ -832,14 +838,13 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
-                'box_background_color',
+            $this->add_group_control(
+                \Elementor\Group_Control_Background::get_type(),
                 [
-                    'label'     => __( 'Background Color', 'mighty' ),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .mt-how-to' => 'background-color: {{VALUES}}'
-                    ]
+                    'name' => 'box_background_color',
+                    'label' => __( 'Background Color', 'mighty' ),
+                    'types' => [ 'classic', 'gradient' ],
+                    'selector' => '{{WRAPPER}} .mt-how-to',
                 ]
             );
 
@@ -931,7 +936,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'title_alignment',
                 [
                     'label' => __( 'Title Alignment', 'mighty' ),
@@ -1013,7 +1018,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'description_alignment',
                 [
                     'label' => __( 'Description Alignment', 'mighty' ),
@@ -1076,7 +1081,7 @@ class MT_howto extends Widget_Base {
 			]
         );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'style_image_alignment',
                 [
                     'label' => __( 'Image Alignment', 'mighty' ),
@@ -1120,7 +1125,7 @@ class MT_howto extends Widget_Base {
 				[
 					'name' => 'image_border',
 					'label' => __( 'Border Type', 'mighty' ),
-					'selector' => '{{WRAPPER}} .mt-how-to-image',
+					'selector' => '{{WRAPPER}} .mt-how-to-image img',
 				]
 			);
 
@@ -1195,7 +1200,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'total_time_alignment',
                 [
                     'label' => __( 'Total Time Alignment', 'mighty' ),
@@ -1217,7 +1222,6 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_total_time' => 'yes'
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-total-time' => 'text-align: {{VALUES}}'
@@ -1249,7 +1253,7 @@ class MT_howto extends Widget_Base {
                         'how_to_total_time' => 'yes'
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-total-time' => 'max-width: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-total-time' => 'margin-bottom: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -1291,7 +1295,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'estimate_cost_alignment',
                 [
                     'label' => __( 'Estimate Cost Alignment', 'mighty' ),
@@ -1313,7 +1317,6 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_estimated_time' => 'yes'
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-estimated-cost' => 'text-align: {{VALUES}}'
@@ -1387,7 +1390,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'supply_title_alignment',
                 [
                     'label' => __( 'Supply Title Alignment', 'mighty' ),
@@ -1409,7 +1412,6 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-supply-title' => 'text-align: {{VALUES}}'
@@ -1491,7 +1493,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'supply_alignment',
                 [
                     'label' => __( 'Supply Alignment', 'mighty' ),
@@ -1513,7 +1515,6 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_supply' => 'yes'
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-supply' => 'text-align: {{VALUES}}'
@@ -1524,7 +1525,7 @@ class MT_howto extends Widget_Base {
             $this->add_responsive_control(
                 'space_below_supply',
                 [
-                    'label' => __( 'Space Between Supplies', 'mighty' ),
+                    'label' => __( 'Space Between Items', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
                     'size_units' => [ '%', 'px' , 'em' ],
                     'range' => [
@@ -1616,7 +1617,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'tool_title_alignment',
                 [
                     'label' => __( 'Tool Title Alignment', 'mighty' ),
@@ -1638,7 +1639,6 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-tools-title' => 'text-align: {{VALUES}}'
@@ -1720,7 +1720,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'tool_alignment',
                 [
                     'label' => __( 'Tools Alignment', 'mighty' ),
@@ -1742,7 +1742,6 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'how_to_tool' => 'yes'
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-tool' => 'text-align: {{VALUES}}'
@@ -1885,11 +1884,11 @@ class MT_howto extends Widget_Base {
                         'h5' => 'H5',
                         'h6' => 'H6',
                     ],
-                    'default' => 'h2',
+                    'default' => 'h3',
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'step_section_title_alignment',
                 [
                     'label' => __( 'Alignment', 'mighty' ),
@@ -1908,7 +1907,6 @@ class MT_howto extends Widget_Base {
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-section-title' => 'text-align: {{VALUES}}'
@@ -1970,7 +1968,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'step_section_description_alignment',
                 [
                     'label' => __( 'Alignment', 'mighty' ),
@@ -1989,7 +1987,6 @@ class MT_howto extends Widget_Base {
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-section-sub-title' => 'text-align: {{VALUES}}'
@@ -2064,11 +2061,11 @@ class MT_howto extends Widget_Base {
                         'h5' => 'H5',
                         'h6' => 'H6',
                     ],
-                    'default' => 'h2',
+                    'default' => 'h4',
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'step_title_alignment',
                 [
                     'label' => __( 'Alignment', 'mighty' ),
@@ -2087,7 +2084,6 @@ class MT_howto extends Widget_Base {
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-title' => 'text-align: {{VALUES}}'
@@ -2096,7 +2092,7 @@ class MT_howto extends Widget_Base {
             );
 
             $this->add_responsive_control(
-                'space_below_section_title',
+                'space_below_section_step_title',
                 [
                     'label' => __( 'Space Below Title', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
@@ -2149,7 +2145,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'step_description_alignment',
                 [
                     'label' => __( 'Alignment', 'mighty' ),
@@ -2168,7 +2164,6 @@ class MT_howto extends Widget_Base {
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
-                    'default' => 'left',
                     'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-description' => 'text-align: {{VALUES}}'
@@ -2185,10 +2180,10 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'step_image_alignment',
                 [
-                    'label' => __( 'Alignment', 'mighty' ),
+                    'label' => __( 'Position', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
                         'top' => [
@@ -2213,7 +2208,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'step_horizontal_alignment',
                 [
                     'label' => __( 'Horizontal Alignment', 'mighty' ),
@@ -2243,21 +2238,21 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'step_vertical_alignment',
                 [
                     'label' => __( 'Vertical Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'top' => [
+                        'flex-start' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'middle' => [
+                        'center' => [
                             'title' => __( 'Middle', 'mighty' ),
                             'icon' => ' eicon-v-align-middle',
                         ],
-                        'bottom' => [
+                        'flex-end' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
@@ -2265,11 +2260,11 @@ class MT_howto extends Widget_Base {
                     'condition' => [
                         'step_image_alignment' => [ 'left', 'right' ]
                     ],
-                    'default' => 'middle',
+                    'default' => 'center',
                     'toggle' => true,
-                    // 'selectors' => [
-                    //     '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUES}}'
-                    // ]
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUES}}'
+                    ]
                 ]
             );
 
@@ -2294,7 +2289,7 @@ class MT_howto extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step-image img' => 'width: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-step-image' => 'width: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -2426,7 +2421,7 @@ class MT_howto extends Widget_Base {
             <div class="mt-how-to-supply">
                 <<?php echo $settings['supply_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-supply-title'); ?> ><?php echo $settings['supply_title'];?></<?php echo $settings['supply_html_tag'];?> >
                 <?php foreach ($settings['supply_list'] as $key => $value) { ?>
-                    <div class="mt-supply mt-supply-'<?php echo $key + 1; ?>'">
+                    <div class="mt-supply mt-supply-<?php echo $key + 1; ?>">
                         <i class="<?php echo $settings['supply_icon']['value'];?>" ></i>
                         <span><?php echo $value['supply_name'];?></span>
                     </div>
@@ -2438,7 +2433,7 @@ class MT_howto extends Widget_Base {
             <div class="mt-how-to-tools">
             <<?php echo $settings['tool_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-tools-title'); ?> ><?php echo $settings['tool_title'];?></<?php echo $settings['tool_html_tag'];?> >
             <?php foreach ($settings['tool_list'] as $key => $value) { ?>
-                <div class="mt-tool mt-tool-'<?php echo $key + 1; ?>'">
+                <div class="mt-tool mt-tool-<?php echo $key + 1; ?>">
                     <i class="<?php echo $settings['tool_icon']['value'];?>"></i>
                     <span><?php echo $value['tool_name'];?></span>
                 </div>
@@ -2472,12 +2467,16 @@ class MT_howto extends Widget_Base {
 
                     <?php } ?>
 
-                    <?php if ( !empty( $value['step_image']['url'] )  ) { ?>
+                    <?php if ( !empty( $value['step_image']['url'] ) ) { ?>
 
                         <div class="mt-how-to-step-image">
-                            <a href="<?php echo $value['step_image_link']['url'];?>" class="elementor-clickable">
+                            <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
+                                <a href="<?php echo $value['step_image_link']['url'];?>" class="elementor-clickable">
+                                    <img src="<?php echo $value['step_image']['url'];?>" alt="Place Step Title Here" title="<?php echo $settings['steps_title'];?>" >
+                                </a>
+                            <?php } else { ?>
                                 <img src="<?php echo $value['step_image']['url'];?>" alt="Place Step Title Here" title="<?php echo $settings['steps_title'];?>" >
-                            </a>
+                            <?php } ?>
                         </div>
 
                     <?php } ?>
