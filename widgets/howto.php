@@ -413,7 +413,6 @@ class MT_howto extends Widget_Base {
                 'supply_name', [
                     'label' => esc_html__( 'Supply', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'default' => esc_html__( 'Supply' , 'mighty' ),
                     'label_block' => true,
                     'dynamic' => [ 'active' => true ],
                 ]
@@ -456,7 +455,7 @@ class MT_howto extends Widget_Base {
                 [
                     'label' => __( 'Tool Title', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'default' => 'Necessary Tool Items',
+                    'default' => 'Required Tools',
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
                         'how_to_tool' => 'yes'
@@ -544,7 +543,6 @@ class MT_howto extends Widget_Base {
                 'tool_name', [
                     'label' => esc_html__( 'Tool', 'mighty' ),
                     'type' => Controls_Manager::TEXT,
-                    'default' => esc_html__( 'Tool' , 'mighty' ),
                     'label_block' => true,
                     'dynamic' => [ 'active' => true ],
                 ]
@@ -651,7 +649,7 @@ class MT_howto extends Widget_Base {
                 $repeater->add_control(
                     'image_alignment',
                     [
-                    'label' => __( 'Alignment', 'mighty' ),
+                    'label' => __( 'Position', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
                         'top' => [
@@ -1132,7 +1130,7 @@ class MT_howto extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px' , '%' ],
 					'selectors' => [
-						'{{WRAPPER}} .mt-how-to-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .mt-how-to-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -1153,9 +1151,31 @@ class MT_howto extends Widget_Base {
 			[
 				'label' => __( 'Advance Options', 'mighty' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'how_to_advance_option' => 'yes'
-                ],
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'how_to_total_time',
+                            'operator' => '==',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'how_to_estimated_time',
+                            'operator' => '==',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'how_to_supply',
+                            'operator' => '==',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'how_to_tool',
+                            'operator' => '==',
+                            'value' => 'yes'
+                        ],
+                    ]
+                ]
 			]
         );
 
