@@ -43,9 +43,9 @@
     flex-direction: row-reverse;
 }
 
-.mt-has-img.mt-step-img-left .mt-how-to-step-content {
+/* .mt-has-img.mt-step-img-left .mt-how-to-step-content {
     width: 60%;
-}
+} */
 
 .mt-has-img.mt-step-img-left .mt-how-to-step-image {
     width: 40%;
@@ -115,4 +115,28 @@ p {
 
 .mt-how-to-image img {
     display: inline;
+}
+
+.mt-how-to-step-content-flex-start {
+    align-self: flex-start;
+}
+
+.mt-how-to-step-content-center {
+    align-self: center;
+}
+
+.mt-how-to-step-content-flex-end {
+    align-self: flex-end;
+}
+
+.mt-how-to-step-image-flex-start {
+    align-self: flex-start;
+}
+
+.mt-how-to-step-image-center {
+    align-self: center;
+}
+
+.mt-how-to-step-image-flex-end {
+    align-self: flex-end;
 }
