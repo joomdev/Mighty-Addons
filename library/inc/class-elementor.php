@@ -261,7 +261,7 @@ class Elementor extends base {
 					"category" => "photos",
 					"photoId" => "2QSPL8V",
 					"attachmentData" => [
-					  "id" => 133,
+					  "id" => $attach_id,
 					  "title" => "Lorem ipsum dolor sit amet",
 					  "filename" => "lorem-ipsum-dolor-sit-amet.jpg",
 					  "url" => $localUrl,
