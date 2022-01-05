@@ -245,6 +245,7 @@ class MT_howto extends Widget_Base {
                 [
                     'label' => __( 'Hours', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
+                    'default' => '2',
                     'dynamic' => [ 'active' => true ],
                     'condition' => [
                         'how_to_total_time' => 'yes'
@@ -258,6 +259,7 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Minutes', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
+                    'default' => '30',
                     'condition' => [
                         'how_to_total_time' => 'yes'
                     ],
@@ -291,6 +293,7 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Estimated Cost', 'mighty' ),
                     'type' => Controls_Manager::NUMBER,
                     'dynamic' => [ 'active' => true ],
+                    'default' => '200',
                     'condition' => [
                         'how_to_estimated_time' => 'yes'
                     ],
@@ -2304,6 +2307,10 @@ class MT_howto extends Widget_Base {
                             'max' => 1000
                         ]
                     ],
+                    'default' => [
+                        'unit' => '%',
+                        'size' => 30,
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-image' => 'width: {{SIZE}}{{UNIT}}',
                     ],
@@ -2484,19 +2491,24 @@ class MT_howto extends Widget_Base {
             $total_time = $settings['how_to_total_time_text'];
 
             if ( !empty ( $settings['duration_year'] ) ) {
-                $total_time = $total_time . ' '. $settings['duration_year'] . ' years,';
+                $year = ( $settings['duration_year'] > 1 ) ? ' years,' : ' year,';
+                $total_time = $total_time . ' '. $settings['duration_year'] . $year;
             }
             if ( !empty ( $settings['duration_month'] ) ) {
-                $total_time = $total_time . ' '. $settings['duration_month'] . ' months,';
+                $month = ( $settings['duration_month'] > 1 ) ? ' months,' : ' month,';
+                $total_time = $total_time . ' '. $settings['duration_month'] . $month;
             }
             if ( !empty ( $settings['duration_days'] ) ) {
-                $total_time = $total_time . ' ' . $settings['duration_days'] . ' days,';
+                $days = ( $settings['duration_days'] > 1 ) ? ' days,' : ' day,';
+                $total_time = $total_time . ' ' . $settings['duration_days'] . $days;
             }
             if ( !empty ( $settings['duration_hours'] ) ) {
-                $total_time = $total_time . ' ' . $settings['duration_hours'] . ' hours,';
+                $hours = ( $settings['duration_hours'] > 1 ) ? ' hours,' : ' hour,';
+                $total_time = $total_time . ' ' . $settings['duration_hours'] . $hours;
             }
             if ( !empty ( $settings['duration_minutes'] ) ) {
-                $total_time = $total_time . ' ' . $settings['duration_minutes'] . ' minutes';
+                $minutes = ( $settings['duration_minutes'] > 1 ) ? ' minutes,' : ' minute,';
+                $total_time = $total_time . ' ' . $settings['duration_minutes'] . $minutes;
             }
         }
         
@@ -2606,7 +2618,7 @@ class MT_howto extends Widget_Base {
                             
                             <?php if ( !empty( $value['step_title'] ) ) { ?>
                                 <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
-                                    <a href="<?php echo $value['step_image_link']['url'];?>" >
+                                    <a target="_blank" href="<?php echo $value['step_image_link']['url'];?>" >
                                 <?php } ?>
                                     <<?php echo $settings['step_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-title'); ?> ><?php echo $value['step_title'];?></<?php echo $settings['step_html_tag'];?> >
                                 <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>

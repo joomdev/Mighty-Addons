@@ -112,3 +112,7 @@ p {
 .mt-how-to-step {
     padding: 10px 0px;
 }
+
+.mt-how-to-image img {
+    display: inline;
+}
