@@ -7,7 +7,6 @@
 
       if( $scope.data( 'mt-wrapperlink' ) || $scope.data( 'mt-hashed-wrapperlink' ) ) {
 
-        var url = $scope.data( 'mt-wrapperlink' ) || $scope.data( 'mt-hashed-wrapperlink' );
         var isExternal = $scope.data( 'mt-wrapperlink-external' );
         var selector;
 
@@ -18,6 +17,9 @@
         }
 
         $( selector ).on( 'click', function() {
+
+          let url = this.getAttribute( 'data-mt-wrapperlink' );
+
           if ( isExternal ) {
             window.open( url, '_blank' );
           } else {
