@@ -3,11 +3,11 @@ namespace MightyAddons\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Image_Size;
 use Elementor\Utils as Utils;
 use Elementor\Repeater as Repeater;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Image_Size;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -120,10 +120,9 @@ class MT_howto extends Widget_Base {
             $this->add_group_control(
                 Group_Control_Image_Size::get_type(),
                 [
-                    'name' => 'how_to_image_size', 
-                    'exclude' => [ 'custom' ],
-                    'include' => [],
-                    'default' => 'large',
+                    'name' => 'image_size', 
+                    'label'   => __( 'Image Size', 'mighty' ),
+                    'default' => 'full',
                 ]
             );
 
@@ -134,11 +133,6 @@ class MT_howto extends Widget_Base {
                     'type' => Controls_Manager::URL,
                     'placeholder' => __( 'https://your-link.com', 'mighty' ),
                     'show_external' => true,
-                    'default' => [
-                        'url' => '',
-                        'is_external' => true,
-                        'nofollow' => true,
-                    ],
                     'dynamic' => [ 'active' => true ],
                 ]
             );
@@ -705,9 +699,6 @@ class MT_howto extends Widget_Base {
                         ],
                         'default' => 'center',
                         'toggle' => true,
-                        'selectors' => [
-                            '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUE}}',
-                        ],
                 ]
             );
 
@@ -717,15 +708,15 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Vertical Alignment', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'top' => [
+                        'flex-start' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'middle' => [
+                        'center' => [
                             'title' => __( 'Middle', 'mighty' ),
                             'icon' => ' eicon-v-align-middle',
                         ],
-                        'bottom' => [
+                        'flex-end' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
@@ -736,9 +727,6 @@ class MT_howto extends Widget_Base {
                     ],
                     'default' => 'middle',
                     'toggle' => true,
-                    'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUES}}'
-                    ]
                 ]
             );
 
@@ -2252,7 +2240,7 @@ class MT_howto extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUES}}'
+                        '{{WRAPPER}} .mt-how-to-step-image' => 'align-items: {{VALUES}}'
                     ]
                 ]
             );
@@ -2282,7 +2270,7 @@ class MT_howto extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step' => 'align-items: {{VALUES}}'
+                        '{{WRAPPER}} .mt-how-to-step-image' => 'align-items: {{VALUES}}'
                     ]
                 ]
             );
@@ -2393,7 +2381,7 @@ class MT_howto extends Widget_Base {
 		}
 
 		if ( ! empty( $how_to_image['url'] ) ) {
-			$image_url = Group_Control_Image_Size::get_attachment_image_src( $how_to_image['id'], 'how_to_image_size', $settings );
+			$image_url = Group_Control_Image_Size::get_attachment_image_src( strval($how_to_image['id']), 'image_size', $settings );
 		};
 		?>
 		<script type="application/ld+json">
@@ -2483,9 +2471,9 @@ class MT_howto extends Widget_Base {
 
         if ( !empty($settings['how_to_image_link']['url'] ) ) {
             $how_to_image_link = $settings['how_to_image_link']['url'];
-        } else {
-            $how_to_image_link = "javascript:void(0)";
         }
+
+        $image_url = Group_Control_Image_Size::get_attachment_image_src( strval($settings['how_to_image']['id']), 'image_size', $settings );
 
         if ( $settings['how_to_total_time'] == 'yes' ) {
             $total_time = $settings['how_to_total_time_text'];
@@ -2528,6 +2516,8 @@ class MT_howto extends Widget_Base {
         $this->add_render_attribute( 'mt-how-to-tools-title', 'class',  'mt-how-to-tools-title' );
         $this->add_render_attribute( 'mt-how-to-step-title', 'class',  'mt-how-to-step-title' );
         $this->add_render_attribute( 'mt-how-to-step-section-title', 'class',  'mt-how-to-step-section-title' );
+        $this->add_render_attribute( 'mt-how-to-step-image', 'class',  'mt-how-to-step-image' );
+        $this->add_render_attribute( 'mt-how-to-step-content', 'class',  'mt-how-to-step-content' );
 
     ?>
              
@@ -2537,7 +2527,13 @@ class MT_howto extends Widget_Base {
 				<?php $this->get_how_to_json_ld(); ?>
 		<?php } ?>
         <?php if ( !empty( $settings['how_to_title'] ) ) { ?>
-            <<?php echo $settings['title_html_tag']?> <?php echo $this->get_render_attribute_string('mt-how-to-title'); ?> ><?php echo $settings['how_to_title']; ?></<?php echo $settings['title_html_tag']?>>
+            <?php if ( !empty($how_to_image_link) ) { ?>
+                <a href="<?php echo $how_to_image_link;?>">
+            <?php } ?>
+                <<?php echo $settings['title_html_tag']?> <?php echo $this->get_render_attribute_string('mt-how-to-title'); ?> ><?php echo $settings['how_to_title']; ?></<?php echo $settings['title_html_tag']?>>
+            <?php if ( !empty($how_to_image_link) ) { ?>
+                </a>
+            <?php } ?>
         <?php } ?>
 
         <?php if ( !empty( $settings['how_to_subtitle'] ) ) { ?>
@@ -2549,11 +2545,9 @@ class MT_howto extends Widget_Base {
         <?php } ?>
 
         <?php if ( !empty( $settings['how_to_image']['url'] ) ) { ?>
-            <a href="<?php echo $how_to_image_link;?>">
                 <div class="mt-how-to-image">
-                    <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'how_to_image_size', 'how_to_image' ); ?>
+                    <img src=<?php echo $image_url; ?> >
                 </div>
-            </a>
         <?php } ?>
 
         <!-- Advanced Options -->
@@ -2605,8 +2599,22 @@ class MT_howto extends Widget_Base {
                 <p class="mt-how-to-step-section-sub-title"><?php echo $settings['steps_description'];?></p>
                 
                 <?php foreach ( $settings['step_list'] as $key => $value ) { ?>
+
+                    <php print_r($value); ?>
                     
                 <?php if ( $value['image_position'] == 'custom' ) { ?>
+
+                   <?php if ( $value['image_alignment'] == 'left' || $value['image_alignment'] == 'right' ) {
+
+                    $this->add_render_attribute( 'mt-how-to-step-image', 'style',  'align-self:'.$value['vertical_alignment'].';' );
+                    }
+
+                    if ( $value['image_alignment'] == 'top' || $value['image_alignment'] == 'bottom' ) {
+
+                    $this->add_render_attribute( 'mt-how-to-step-image', 'style',  'align-self:'.$value['horizontal_alignment'].';' );
+
+                    } ?>
+
                 <div class="mt-how-to-step mt-has-img mt-step-img-<?php echo $value['image_alignment'];?>" >
                 <?php } else { ?>
                 <div class="mt-how-to-step mt-has-img mt-step-img-<?php echo $settings['step_image_alignment'];?>" >
@@ -2614,7 +2622,7 @@ class MT_howto extends Widget_Base {
 
                     <?php if ( !empty( $value['step_title'] ) || !empty( $value['step_description'] ) ) { ?>
                         
-                        <div class="mt-how-to-step-content">
+                        <div <?php echo $this->get_render_attribute_string('mt-how-to-step-content'); ?>>
                             
                             <?php if ( !empty( $value['step_title'] ) ) { ?>
                                 <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
@@ -2652,8 +2660,8 @@ class MT_howto extends Widget_Base {
 								);
 							}
 							?>
-
-                        <div class="mt-how-to-step-image">
+                        
+                        <div <?php echo $this->get_render_attribute_string('mt-how-to-step-image'); ?> >
                             <?php if ( 'no' !== $settings['step_enable_lightbox'] ) {
 								echo '<a ' . wp_kses_post( $this->get_render_attribute_string( $link_key ) ) . '>';
 							} ?>
