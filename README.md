@@ -6,7 +6,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher  
 Tested up to: 5.8  
 Requires PHP: 5.6  
-Stable Tag: 1.7.1  
+Stable Tag: 1.7.2  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
@@ -208,6 +208,10 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.7.2
+* Fixed: Dashboard enable/disable controls issue
+* Fixed: Wrapper Link overwrite link issue
 
 ### 1.7.1
 * Fixed: Elementor deprecations in the older version of Elementor
