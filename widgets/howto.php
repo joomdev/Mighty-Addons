@@ -1131,7 +1131,7 @@ class MT_howto extends Widget_Base {
                 [
                     'name' => 'image_box_shadow',
                     'label' => __( 'Box Shadow', 'mighty' ),
-                    'selector' => '{{WRAPPER}} .mt-how-to-image',
+                    'selector' => '{{WRAPPER}} .mt-how-to-image img',
                 ]
             );
 
@@ -2240,7 +2240,7 @@ class MT_howto extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step-image' => 'align-items: {{VALUES}}'
+                        '{{WRAPPER}} .mt-how-to-step-image' => 'align-self: {{VALUES}}'
                     ]
                 ]
             );
@@ -2270,7 +2270,7 @@ class MT_howto extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step-image' => 'align-items: {{VALUES}}'
+                        '{{WRAPPER}} .mt-how-to-step-image' => 'align-self: {{VALUES}}'
                     ]
                 ]
             );
@@ -2504,7 +2504,7 @@ class MT_howto extends Widget_Base {
             $estimate_time = $settings['how_to_estimated_time_text'];
             
             if ( !empty ( $settings['estimated_currency'] ) ) {
-                $estimate_time = $estimate_time . ' <span>' . $settings['estimated_currency'];
+                $estimate_time = $estimate_time . ' <span> ' . $settings['estimated_currency'] ;
             }
             if ( !empty ( $settings['estimate_cost'] ) ) {
                 $estimate_time = $estimate_time . $settings['estimate_cost'] . '</span>';
@@ -2516,16 +2516,16 @@ class MT_howto extends Widget_Base {
         $this->add_render_attribute( 'mt-how-to-tools-title', 'class',  'mt-how-to-tools-title' );
         $this->add_render_attribute( 'mt-how-to-step-title', 'class',  'mt-how-to-step-title' );
         $this->add_render_attribute( 'mt-how-to-step-section-title', 'class',  'mt-how-to-step-section-title' );
-        $this->add_render_attribute( 'mt-how-to-step-image', 'class',  'mt-how-to-step-image' );
-        $this->add_render_attribute( 'mt-how-to-step-content', 'class',  'mt-how-to-step-content' );
+        $this->add_render_attribute( 'mt-how-to-step-content', 'style',  'width:calc(100% - '. $settings['step_image_width']['size'].'%);' );
 
     ?>
              
     <div class="mt-how-to mt-how-to-<?php echo $this->get_id();?>" id ="mt-how-to-<?php echo $this->get_id();?>">
-        <?php
-			if ( 'yes' == $settings['enable_schema'] ) { ?>
+
+        <?php if ( 'yes' == $settings['enable_schema'] ) { ?>
 				<?php $this->get_how_to_json_ld(); ?>
 		<?php } ?>
+
         <?php if ( !empty( $settings['how_to_title'] ) ) { ?>
             <?php if ( !empty($how_to_image_link) ) { ?>
                 <a href="<?php echo $how_to_image_link;?>">
@@ -2581,7 +2581,7 @@ class MT_howto extends Widget_Base {
                 
         <?php if ( $settings['how_to_tool'] == 'yes' ) { ?>
             <div class="mt-how-to-tools">
-            <<?php echo $settings['tool_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-tools-title'); ?> ><?php echo $settings['tool_title'];?></<?php echo $settings['tool_html_tag'];?> >
+                <<?php echo $settings['tool_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-tools-title'); ?> ><?php echo $settings['tool_title'];?></<?php echo $settings['tool_html_tag'];?> >
             <?php foreach ($settings['tool_list'] as $key => $value) { ?>
                 <div class="mt-tool mt-tool-<?php echo $key + 1; ?>">
                     <i class="<?php echo $settings['tool_icon']['value'];?>"></i>
@@ -2589,89 +2589,81 @@ class MT_howto extends Widget_Base {
                 </div>
                 <?php } ?>
             </div>
-            <?php } ?>
+        <?php } ?>
             <!-- Advanced Options -->
             
-            <div class="mt-how-to-steps">
+        <div class="mt-how-to-steps">
 
-                <<?php echo $settings['step_section_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-section-title'); ?> ><?php echo $settings['steps_title'];?></<?php echo $settings['step_section_html_tag'];?> >
+            <<?php echo $settings['step_section_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-section-title'); ?> ><?php echo $settings['steps_title'];?></<?php echo $settings['step_section_html_tag'];?> >
                 
-                <p class="mt-how-to-step-section-sub-title"><?php echo $settings['steps_description'];?></p>
+            <p class="mt-how-to-step-section-sub-title"><?php echo $settings['steps_description'];?></p>
                 
-                <?php foreach ( $settings['step_list'] as $key => $value ) { ?>
-
-                    <php print_r($value); ?>
-                    
+            <?php foreach ( $settings['step_list'] as $key => $value ) { ?>
+                   
                 <?php if ( $value['image_position'] == 'custom' ) { ?>
-
-                   <?php if ( $value['image_alignment'] == 'left' || $value['image_alignment'] == 'right' ) {
-
-                    $this->add_render_attribute( 'mt-how-to-step-image', 'style',  'align-self:'.$value['vertical_alignment'].';' );
-                    }
-
-                    if ( $value['image_alignment'] == 'top' || $value['image_alignment'] == 'bottom' ) {
-
-                    $this->add_render_attribute( 'mt-how-to-step-image', 'style',  'align-self:'.$value['horizontal_alignment'].';' );
-
-                    } ?>
 
                 <div class="mt-how-to-step mt-has-img mt-step-img-<?php echo $value['image_alignment'];?>" >
                 <?php } else { ?>
                 <div class="mt-how-to-step mt-has-img mt-step-img-<?php echo $settings['step_image_alignment'];?>" >
                 <?php } ?>
 
-                    <?php if ( !empty( $value['step_title'] ) || !empty( $value['step_description'] ) ) { ?>
-                        
-                        <div <?php echo $this->get_render_attribute_string('mt-how-to-step-content'); ?>>
-                            
-                            <?php if ( !empty( $value['step_title'] ) ) { ?>
-                                <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
-                                    <a target="_blank" href="<?php echo $value['step_image_link']['url'];?>" >
-                                <?php } ?>
-                                    <<?php echo $settings['step_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-title'); ?> ><?php echo $value['step_title'];?></<?php echo $settings['step_html_tag'];?> >
-                                <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
-                                    </a>
-                                <?php } ?>
-
+                    <div class="mt-how-to-step-content">
+                        <?php if ( !empty( $value['step_title'] ) ) { ?>
+                            <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
+                                <a target="_blank" href="<?php echo $value['step_image_link']['url'];?>" >
+                            <?php } ?>
+                                <<?php echo $settings['step_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-title'); ?> ><?php echo $value['step_title'];?></<?php echo $settings['step_html_tag'];?> >
+                            <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
+                                </a>
                             <?php } ?>
 
-                            <?php if ( !empty( $value['step_description'] ) ) { ?>
-                                <div class="mt-how-to-step-description"><?php echo $value['step_description'];?></div>
-                            <?php } ?>
+                        <?php } ?>
 
-                        </div>
+                        <?php if ( !empty( $value['step_description'] ) ) { ?>
+                            <div class="mt-how-to-step-description"><?php echo $value['step_description'];?></div>
+                        <?php } ?>
 
-                    <?php } ?>
+                    </div>
 
-                    <?php if ( !empty( $value['step_image']['url'] ) ) { ?>
+                <?php if ( !empty( $value['step_image']['url'] ) ) { ?>
 
-                        <?php
-							$link_key = 'mt-lightbox-' . ( $key + 1 );
+                    <?php $link_key = 'mt-lightbox-' . ( $key + 1 );
 
-							if ( 'no' !== $settings['step_enable_lightbox'] ) {
-								$this->add_render_attribute(
-									$link_key,
-									[
-										'href'  => $value['step_image']['url'],
-										'class' => 'elementor-clickable',
-										'data-elementor-open-lightbox' => $settings['step_enable_lightbox'],
-										'data-elementor-lightbox-slideshow' => $this->get_id(),
-									]
-								);
-							}
-							?>
-                        
-                        <div <?php echo $this->get_render_attribute_string('mt-how-to-step-image'); ?> >
-                            <?php if ( 'no' !== $settings['step_enable_lightbox'] ) {
-								echo '<a ' . wp_kses_post( $this->get_render_attribute_string( $link_key ) ) . '>';
-							} ?>
-                                <img src="<?php echo $value['step_image']['url'];?>" alt="Place Step Title Here" title="<?php echo $settings['steps_title'];?>" >
-                            <?php if ( 'no' !== $settings['step_enable_lightbox'] ) {
-                                echo '</a>';
-                            } ?>
-                        </div>
+                        if ( 'no' !== $settings['step_enable_lightbox'] ) {
+                            $this->add_render_attribute(
+                                $link_key,
+                                [
+                                    'href'  => $value['step_image']['url'],
+                                    'class' => 'elementor-clickable',
+                                    'data-elementor-open-lightbox' => $settings['step_enable_lightbox'],
+                                    'data-elementor-lightbox-slideshow' => $this->get_id(),
+                                ]
+                            );
+                        } ?>
 
-                    <?php } ?>
+                <?php } ?>
+
+                <?php if ( $value['image_position'] == 'custom' && ( $value['image_alignment'] == 'top' || $value['image_alignment'] == 'bottom' ) ) { ?>
+
+                    <div class="mt-how-to-step-image" style="align-self:<?php echo $value['horizontal_alignment'];?>">
+
+                <?php } elseif( $value['image_position'] == 'custom' && ( $value['image_alignment'] == 'left' || $value['image_alignment'] == 'right' ) ) { ?>
+
+                    <div class="mt-how-to-step-image" style="align-self:<?php echo $value['vertical_alignment'];?>">
+
+                <?php } else { ?>
+
+                    <div class="mt-how-to-step-image">
+
+                <?php } ?>
+                    <?php if ( 'no' !== $settings['step_enable_lightbox'] ) {
+                        echo '<a ' . wp_kses_post( $this->get_render_attribute_string( $link_key ) ) . '>';
+                    } ?>
+                        <img src="<?php echo $value['step_image']['url'];?>" alt="Place Step Title Here" title="<?php echo $settings['steps_title'];?>" >
+                    <?php if ( 'no' !== $settings['step_enable_lightbox'] ) {
+                        echo '</a>';
+                    } ?>
+                    </div>                       
 
                 </div>
 
