@@ -14,6 +14,19 @@
     display: flex;
 }
 
+.mt-how-to-step.mt-has-img.mt-step-img-bottom {
+    flex-direction: column;
+}
+.mt-how-to-step.mt-has-img.mt-step-img-top {
+    flex-direction: column-reverse;
+}
+.mt-how-to-step.mt-has-img.mt-step-img-left {
+    flex-direction: row-reverse;
+}
+.mt-how-to-step.mt-has-img.mt-step-img-right {
+    flex-direction: row;
+}
+
 .mt-how-to-supply {
     margin-bottom: 10px;
 }
