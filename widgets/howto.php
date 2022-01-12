@@ -2185,7 +2185,7 @@ class MT_howto extends Widget_Base {
                 [
                     'label' => __( 'Image Width', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%', 'px', 'em' ],
+                    'size_units' => [ '%' ],
                     'range' => [
                         '%' => [
                             'min' => 1,
@@ -2209,7 +2209,7 @@ class MT_howto extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-image' => 'width: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .mt-how-to-step-content' => 'width: (100% - {{SIZE}}{{UNIT}})',
+                        '{{WRAPPER}} .mt-how-to-step-content' => 'width: calc(100% - {{SIZE}}{{UNIT}})',
                     ],
                 ]
             );
