@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 class MT_howto extends Widget_Base {
 
+    private $_schema_rendered = false;
+
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 	
@@ -649,28 +651,28 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Position', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'top' => [
+                        'column-reverse' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'bottom' => [
+                        'column' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
-                        'left' => [
+                        'row-reverse' => [
                             'title' => __( 'Left', 'mighty' ),
                             'icon' => 'eicon-h-align-left',
                         ],
-                        'right' => [
+                        'row' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
+                    'default' => 'right',
+                    'toggle' => true,
                     'condition' => [
                         'image_position' => 'custom'
                     ],
-                    'default' => 'right',
-                    'toggle' => true,
                     ]
                 );
                 
@@ -695,7 +697,7 @@ class MT_howto extends Widget_Base {
                         ],
                         'condition' => [
                             'image_position' => 'custom',
-                            'image_alignment' => [ 'top', 'bottom' ],
+                            'image_alignment' => [ 'column-reverse', 'column' ],
                         ],
                         'default' => 'center',
                         'toggle' => true,
@@ -723,7 +725,7 @@ class MT_howto extends Widget_Base {
                     ],
                     'condition' => [
                         'image_position' => 'custom',
-                        'image_alignment' => [ 'left', 'right' ],
+                        'image_alignment' => [ 'row-reverse', 'row' ],
                     ],
                     'default' => 'middle',
                     'toggle' => true,
@@ -1845,7 +1847,7 @@ class MT_howto extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step-section-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-step' => 'margin-bottom: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -2193,25 +2195,28 @@ class MT_howto extends Widget_Base {
                     'label' => __( 'Position', 'mighty' ),
                     'type' => Controls_Manager::CHOOSE,
                     'options' => [
-                        'top' => [
+                        'column-reverse' => [
                             'title' => __( 'Top', 'mighty' ),
                             'icon' => 'eicon-v-align-top',
                         ],
-                        'bottom' => [
+                        'column' => [
                             'title' => __( 'Bottom', 'mighty' ),
                             'icon' => 'eicon-v-align-bottom',
                         ],
-                        'left' => [
+                        'row-reverse' => [
                             'title' => __( 'Left', 'mighty' ),
                             'icon' => 'eicon-h-align-left',
                         ],
-                        'right' => [
+                        'row' => [
                             'title' => __( 'Right', 'mighty' ),
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
                     'default' => 'right',
                     'toggle' => true,
+                    'selectors'   => [
+                        '{{WRAPPER}} .mt-how-to-step.mt-has-img' => 'flex-direction: {{VALUE}};',
+                    ],
                 ]
             );
 
@@ -2235,7 +2240,7 @@ class MT_howto extends Widget_Base {
                         ],
                     ],
                     'condition' => [
-                        'step_image_alignment' => [ 'top', 'bottom' ]
+                        'step_image_alignment' => [ 'column-reverse', 'column' ]
                     ],
                     'default' => 'center',
                     'toggle' => true,
@@ -2265,7 +2270,7 @@ class MT_howto extends Widget_Base {
                         ],
                     ],
                     'condition' => [
-                        'step_image_alignment' => [ 'left', 'right' ]
+                        'step_image_alignment' => [ 'row-reverse', 'row' ]
                     ],
                     'default' => 'center',
                     'toggle' => true,
@@ -2326,10 +2331,10 @@ class MT_howto extends Widget_Base {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mt-step-img-top .mt-how-to-step-image' => 'margin-bottom: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .mt-step-img-right .mt-how-to-step-image' => 'margin-left: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .mt-step-img-bottom .mt-how-to-step-image' => 'margin-top: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .mt-step-img-left .mt-how-to-step-image' => 'margin-right: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-step-column-reverse' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-step-row' => 'margin-left: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-step-column' => 'margin-top: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-step-row-reverse' => 'margin-right: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -2344,9 +2349,9 @@ class MT_howto extends Widget_Base {
 		$how_to_title       = $settings['how_to_title'];
 		$how_to_description = wp_json_encode( $settings['how_to_description'] );
 		$how_to_image       = $settings['how_to_image'];
-		$show_advanced      = $settings['show_advanced'];
+		$show_advanced      = $settings['how_to_advance_option'];
 		$years              = ( '' !== $settings['duration_year'] ) ? $settings['duration_year'] : '0';
-		$months             = ( '' !== $settings['duration_month'] ) ? $settings['total_time_months'] : '0';
+		$months             = ( '' !== $settings['duration_month'] ) ? $settings['duration_month'] : '0';
 		$days               = ( '' !== $settings['duration_days'] ) ? $settings['duration_days'] : '0';
 		$hours              = ( '' !== $settings['duration_hours'] ) ? $settings['duration_hours'] : '0';
 		$minutes            = ( '' !== $settings['duration_minutes'] ) ? $settings['duration_minutes'] : '0';
@@ -2358,7 +2363,7 @@ class MT_howto extends Widget_Base {
 		$supplies           = $settings['supply_list'];
 		$add_tools          = $settings['how_to_tool'];
 		$tools              = $settings['tool_list'];
-		$step_section_title = $settings['mt-how-to-step-section-title'];
+		$step_section_title = $settings['steps_title'];
 		$steps_form         = $settings['step_list'];
 		$enable_schema      = true;
 
@@ -2498,6 +2503,8 @@ class MT_howto extends Widget_Base {
                 $minutes = ( $settings['duration_minutes'] > 1 ) ? ' minutes,' : ' minute,';
                 $total_time = $total_time . ' ' . $settings['duration_minutes'] . $minutes;
             }
+
+            $total_time = rtrim($total_time, ", ");
         }
         
         if ( $settings['how_to_estimated_time'] == 'yes' ) {
@@ -2510,13 +2517,16 @@ class MT_howto extends Widget_Base {
                 $estimate_time = $estimate_time . $settings['estimate_cost'] . '</span>';
             }
         }
-
+        
         $this->add_render_attribute( 'mt-how-to-title', 'class',  'mt-how-to-title' );
         $this->add_render_attribute( 'mt-how-to-supply-title', 'class',  'mt-how-to-supply-title' );
         $this->add_render_attribute( 'mt-how-to-tools-title', 'class',  'mt-how-to-tools-title' );
         $this->add_render_attribute( 'mt-how-to-step-title', 'class',  'mt-how-to-step-title' );
         $this->add_render_attribute( 'mt-how-to-step-section-title', 'class',  'mt-how-to-step-section-title' );
         $this->add_render_attribute( 'mt-how-to-step-content', 'style',  'width:calc(100% - '. $settings['step_image_width']['size'].'%);' );
+        $this->add_render_attribute( 'mt-how-to-step-content', 'class',  'mt-how-to-step-content' );
+        $this->add_render_attribute( 'mt-how-to-step', 'class',  'mt-how-to-step' );
+        $this->add_render_attribute( 'mt-how-to-step', 'class',  'mt-has-img' );
 
     ?>
              
@@ -2599,15 +2609,15 @@ class MT_howto extends Widget_Base {
             <p class="mt-how-to-step-section-sub-title"><?php echo $settings['steps_description'];?></p>
                 
             <?php foreach ( $settings['step_list'] as $key => $value ) { ?>
-                   
+
                 <?php if ( $value['image_position'] == 'custom' ) { ?>
 
-                <div class="mt-how-to-step mt-has-img mt-step-img-<?php echo $value['image_alignment'];?>" >
+                    <div <?php echo $this->get_render_attribute_string('mt-how-to-step'); ?> style="flex-direction:<?php echo $value['image_alignment'];?>">
+                    
                 <?php } else { ?>
-                <div class="mt-how-to-step mt-has-img mt-step-img-<?php echo $settings['step_image_alignment'];?>" >
+                    <div <?php echo $this->get_render_attribute_string('mt-how-to-step'); ?> >
                 <?php } ?>
-
-                    <div class="mt-how-to-step-content">
+                    <div <?php echo $this->get_render_attribute_string('mt-how-to-step-content'); ?>>
                         <?php if ( !empty( $value['step_title'] ) ) { ?>
                             <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
                                 <a target="_blank" href="<?php echo $value['step_image_link']['url'];?>" >
@@ -2643,17 +2653,17 @@ class MT_howto extends Widget_Base {
 
                 <?php } ?>
 
-                <?php if ( $value['image_position'] == 'custom' && ( $value['image_alignment'] == 'top' || $value['image_alignment'] == 'bottom' ) ) { ?>
+                <?php if ( $value['image_position'] == 'custom' && ( $value['image_alignment'] == 'column-reverse' || $value['image_alignment'] == 'column' ) ) { ?>
 
-                    <div class="mt-how-to-step-image" style="align-self:<?php echo $value['horizontal_alignment'];?>">
+                    <div class="mt-how-to-step-image mt-how-to-step-<?php echo $value['image_alignment'];?>" style="align-self:<?php echo $value['horizontal_alignment'];?>">
 
-                <?php } elseif( $value['image_position'] == 'custom' && ( $value['image_alignment'] == 'left' || $value['image_alignment'] == 'right' ) ) { ?>
+                <?php } elseif( $value['image_position'] == 'custom' && ( $value['image_alignment'] == 'row-reverse' || $value['image_alignment'] == 'row' ) ) { ?>
 
-                    <div class="mt-how-to-step-image" style="align-self:<?php echo $value['vertical_alignment'];?>">
+                    <div class="mt-how-to-step-image mt-how-to-step-<?php echo $value['image_alignment'];?>" style="align-self:<?php echo $value['vertical_alignment'];?>">
 
                 <?php } else { ?>
 
-                    <div class="mt-how-to-step-image">
+                    <div class="mt-how-to-step-image mt-how-to-step-<?php echo $settings['step_image_alignment'];?>">
 
                 <?php } ?>
                     <?php if ( 'no' !== $settings['step_enable_lightbox'] ) {
