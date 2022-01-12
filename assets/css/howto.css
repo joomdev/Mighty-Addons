@@ -10,6 +10,10 @@
     margin: 0;
 }
 
+.mt-has-img {
+    display: flex;
+}
+
 .mt-how-to-supply {
     margin-bottom: 10px;
 }
