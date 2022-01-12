@@ -2212,7 +2212,7 @@ class MT_howto extends Widget_Base {
                             'icon' => 'eicon-h-align-right',
                         ],
                     ],
-                    'default' => 'right',
+                    'default' => 'row',
                     'toggle' => true,
                     'selectors'   => [
                         '{{WRAPPER}} .mt-how-to-step.mt-has-img' => 'flex-direction: {{VALUE}};',
@@ -2329,6 +2329,10 @@ class MT_howto extends Widget_Base {
                             'min' => 1,
                             'max' => 1000
                         ]
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 10,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-column-reverse' => 'margin-bottom: {{SIZE}}{{UNIT}}',
