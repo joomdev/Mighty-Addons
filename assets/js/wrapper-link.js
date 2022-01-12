@@ -8,7 +8,6 @@
       if( $scope.data( 'mt-wrapperlink' ) || $scope.data( 'mt-hashed-wrapperlink' ) ) {
 
         var isExternal = $scope.data( 'mt-wrapperlink-external' );
-        var selector;
 
         if ( ! $scope.data( 'mt-wrapperlink' ) ) {
           return;
