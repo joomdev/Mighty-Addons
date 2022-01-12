@@ -2175,7 +2175,7 @@ class MT_howto extends Widget_Base {
                     'default' => 'center',
                     'toggle' => true,
                     'selectors' => [
-                        '{{WRAPPER}} .mt-how-to-step-image' => 'align-self: {{VALUES}}'
+                        '{{WRAPPER}} .mt-has-img' => 'align-items: {{VALUES}}'
                     ]
                 ]
             );
@@ -2203,6 +2203,43 @@ class MT_howto extends Widget_Base {
                     'default' => [
                         'unit' => '%',
                         'size' => 30,
+                    ],
+                    'condition' => [
+                        'step_image_alignment' => [ 'row-reverse', 'row' ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-how-to-step-image' => 'width: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .mt-how-to-step-content' => 'width: (100% - {{SIZE}}{{UNIT}})',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'step_image_top_bottom_width',
+                [
+                    'label' => __( 'Image Width', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ '%', 'px', 'em' ],
+                    'range' => [
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100
+                        ],
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ],
+                        'em' => [
+                            'min' => 1,
+                            'max' => 1000
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => '%',
+                        'size' => 30,
+                    ],
+                    'condition' => [
+                        'step_image_alignment' => [ 'column-reverse', 'column' ]
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-image' => 'width: {{SIZE}}{{UNIT}}',
@@ -2438,9 +2475,6 @@ class MT_howto extends Widget_Base {
         $this->add_render_attribute( 'mt-how-to-tools-title', 'class',  'mt-how-to-tools-title' );
         $this->add_render_attribute( 'mt-how-to-step-title', 'class',  'mt-how-to-step-title' );
         $this->add_render_attribute( 'mt-how-to-step-section-title', 'class',  'mt-how-to-step-section-title' );
-        if ( $settings['step_image_alignment'] == 'row' || $settings['step_image_alignment'] == 'row-reverse' ) {
-        $this->add_render_attribute( 'mt-how-to-step-content', 'style',  'width:calc(100% - '. $settings['step_image_width']['size'].'%);' );
-        }
         $this->add_render_attribute( 'mt-how-to-step-content', 'class',  'mt-how-to-step-content' );
         $this->add_render_attribute( 'mt-how-to-step', 'class',  'mt-how-to-step' );
         $this->add_render_attribute( 'mt-how-to-step', 'class',  'mt-has-img' );
@@ -2555,7 +2589,7 @@ class MT_howto extends Widget_Base {
                             <?php } ?>
 
                             <<?php echo $settings['step_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-title'); ?> ><?php echo $value['step_title'];?></<?php echo $settings['step_html_tag'];?> >
-                            
+
                             <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
                                 </a>
                             <?php } ?>
