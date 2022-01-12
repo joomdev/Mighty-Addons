@@ -10,13 +10,13 @@
         var isExternal = $scope.data( 'mt-wrapperlink-external' );
         var selector;
 
-        if ( $scope.data( 'mt-wrapperlink' ) ) {
-          selector = $( '[data-mt-wrapperlink]' );
-        } else {
-          selector = $( '[data-mt-hashed-wrapperlink]' );
+        if ( ! $scope.data( 'mt-wrapperlink' ) ) {
+          return;
         }
 
-        $( selector ).on( 'click', function() {
+        
+        $scope.on( 'click', function( e ) {
+          e.stopPropagation();
 
           let url = this.getAttribute( 'data-mt-wrapperlink' );
 
