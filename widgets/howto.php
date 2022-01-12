@@ -2496,27 +2496,43 @@ class MT_howto extends Widget_Base {
         <?php } ?>
 
         <?php if ( $settings['how_to_supply'] == 'yes' ) { ?>
+
             <div class="mt-how-to-supply">
-                <<?php echo $settings['supply_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-supply-title'); ?> ><?php echo $settings['supply_title'];?></<?php echo $settings['supply_html_tag'];?> >
-                <?php foreach ($settings['supply_list'] as $key => $value) { ?>
+
+                <<?php echo $settings['supply_html_tag'];?> <?php echo $this->get_render_attribute_string( 'mt-how-to-supply-title' ); ?> ><?php echo $settings['supply_title'];?></<?php echo $settings['supply_html_tag'];?> >
+
+                <?php foreach ( $settings['supply_list'] as $key => $value ) { ?>
+
                     <div class="mt-supply mt-supply-<?php echo $key + 1; ?>">
+
                         <i class="<?php echo $settings['supply_icon']['value'];?>" ></i>
                         <span><?php echo $value['supply_name'];?></span>
+
                     </div>
+
                 <?php } ?>
+
             </div>
+
         <?php } ?>
                 
         <?php if ( $settings['how_to_tool'] == 'yes' ) { ?>
+
             <div class="mt-how-to-tools">
+
                 <<?php echo $settings['tool_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-tools-title'); ?> ><?php echo $settings['tool_title'];?></<?php echo $settings['tool_html_tag'];?> >
-            <?php foreach ($settings['tool_list'] as $key => $value) { ?>
+
+            <?php foreach ( $settings['tool_list'] as $key => $value ) { ?>
+
                 <div class="mt-tool mt-tool-<?php echo $key + 1; ?>">
                     <i class="<?php echo $settings['tool_icon']['value'];?>"></i>
                     <span><?php echo $value['tool_name'];?></span>
                 </div>
+                
                 <?php } ?>
+
             </div>
+
         <?php } ?>
             <!-- Advanced Options -->
             
@@ -2528,14 +2544,18 @@ class MT_howto extends Widget_Base {
                 
             <?php foreach ( $settings['step_list'] as $key => $value ) { ?>
 
-                    <div <?php echo $this->get_render_attribute_string('mt-how-to-step'); ?> >
+                <div <?php echo $this->get_render_attribute_string('mt-how-to-step'); ?> >
 
                     <div <?php echo $this->get_render_attribute_string('mt-how-to-step-content'); ?>>
+
                         <?php if ( !empty( $value['step_title'] ) ) { ?>
+
                             <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
                                 <a target="_blank" href="<?php echo $value['step_image_link']['url'];?>" >
                             <?php } ?>
-                                <<?php echo $settings['step_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-title'); ?> ><?php echo $value['step_title'];?></<?php echo $settings['step_html_tag'];?> >
+
+                            <<?php echo $settings['step_html_tag'];?> <?php echo $this->get_render_attribute_string('mt-how-to-step-title'); ?> ><?php echo $value['step_title'];?></<?php echo $settings['step_html_tag'];?> >
+                            
                             <?php if ( !empty($value['step_image_link']['url'] ) ) { ?>
                                 </a>
                             <?php } ?>
@@ -2548,7 +2568,7 @@ class MT_howto extends Widget_Base {
 
                     </div>
 
-                <?php if ( !empty( $value['step_image']['url'] ) ) { ?>
+                    <?php if ( !empty( $value['step_image']['url'] ) ) { ?>
 
                     <?php $link_key = 'mt-lightbox-' . ( $key + 1 );
 
@@ -2564,7 +2584,7 @@ class MT_howto extends Widget_Base {
                             );
                         } ?>
 
-                <?php } ?>
+                    <?php } ?>
 
                     <div class="mt-how-to-step-image">
 
@@ -2578,11 +2598,14 @@ class MT_howto extends Widget_Base {
                     </div>                       
                     
                 </div>
-                <?php } ?>
+
+            <?php } ?>
+
         </div>
+
     </div>
 
-    <?php }
+<?php }
 
 }
 	
