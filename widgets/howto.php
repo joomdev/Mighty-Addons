@@ -2092,7 +2092,7 @@ class MT_howto extends Widget_Base {
                 ]
             );
 
-            $this->add_responsive_control(
+            $this->add_control(
                 'step_image_alignment',
                 [
                     'label' => __( 'Position', 'mighty' ),
@@ -2116,7 +2116,6 @@ class MT_howto extends Widget_Base {
                         ],
                     ],
                     'default' => 'row',
-                    'toggle' => true,
                 ]
             );
 
@@ -2140,13 +2139,12 @@ class MT_howto extends Widget_Base {
                         ],
                     ],
                     'condition' => [
-                        'step_image_alignment' => [ 'column-reverse', 'column' ]
+                        'step_image_alignment' => [ 'column-reverse', 'column' ],
                     ],
-                    'default' => 'center',
-                    'toggle' => true,
                     'selectors' => [
                         '{{WRAPPER}} .mt-how-to-step-image' => 'align-self: {{VALUES}}'
-                    ]
+                    ],
+
                 ]
             );
 
@@ -2169,14 +2167,14 @@ class MT_howto extends Widget_Base {
                             'icon' => 'eicon-v-align-bottom',
                         ],
                     ],
-                    'condition' => [
-                        'step_image_alignment' => [ 'row-reverse', 'row' ]
-                    ],
                     'default' => 'center',
                     'toggle' => true,
+                    'condition' => [
+                        'step_image_alignment' => [ 'row-reverse', 'row' ],
+                    ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-has-img' => 'align-items: {{VALUES}}'
-                    ]
+                    ],
                 ]
             );
 
@@ -2460,6 +2458,7 @@ class MT_howto extends Widget_Base {
         }
 
         $step_img_position  = '';
+
 		if ( 'column-reverse' === $settings['step_image_alignment'] ) {
 			$step_img_position = 'mt-step-img-top';
 		} elseif ( 'column' === $settings['step_image_alignment'] ) {
@@ -2469,7 +2468,7 @@ class MT_howto extends Widget_Base {
 		} elseif ( 'row-reverse' === $settings['step_image_alignment'] ) {
 			$step_img_position = 'mt-step-img-left';
 		}
-        
+
         $this->add_render_attribute( 'mt-how-to-title', 'class',  'mt-how-to-title' );
         $this->add_render_attribute( 'mt-how-to-supply-title', 'class',  'mt-how-to-supply-title' );
         $this->add_render_attribute( 'mt-how-to-tools-title', 'class',  'mt-how-to-tools-title' );
