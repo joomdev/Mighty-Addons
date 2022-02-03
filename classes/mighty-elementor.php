@@ -63,7 +63,8 @@ class Mighty_Elementor {
 		wp_enqueue_style( 
 			'font-awesome', 
 			plugins_url( '/elementor/assets/lib/font-awesome/css/all.css' ), 
-			false );
+			false
+		);
 
         wp_enqueue_style(
             'mighty-icons',
