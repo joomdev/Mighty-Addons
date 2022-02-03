@@ -55,20 +55,16 @@ class Mighty_Elementor {
 
 		add_action( 'wp_footer', [ $this, 'html_to_footer' ] );
 
-		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'load_fontawsome_library' ] );
-
-	}
-
-	public function load_fontawsome_library() {
-
-		wp_enqueue_style( 
-		'font-awesome', 
-		plugins_url( '/elementor/assets/lib/font-awesome/css/all.css' ), 
-		false );
 
 	}
 
 	public static function enqueue_editor_scripts() {
+
+		wp_enqueue_style( 
+			'font-awesome', 
+			plugins_url( '/elementor/assets/lib/font-awesome/css/all.css' ), 
+			false );
+
         wp_enqueue_style(
             'mighty-icons',
             MIGHTY_ADDONS_PLG_URL . 'assets/css/mighty-icons.min.css',

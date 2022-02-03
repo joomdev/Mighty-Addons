@@ -850,11 +850,12 @@ class MT_Team extends Widget_Base {
 	
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+		$img_url = Group_Control_Image_Size::get_attachment_image_src( strval($settings['avatar_image']['id']), 'avatar_image_size', $settings );
 
 		echo '<div class="mighty-team">';
 
 			echo '<div class="avatar-wrapper">';
-				echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'avatar_image_size', 'avatar_image' );
+				echo '<img src='.$img_url.' >';
 			echo '</div>';
 
 			if ( $settings['name'] !== "" ) {
