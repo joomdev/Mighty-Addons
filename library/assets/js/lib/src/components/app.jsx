@@ -499,7 +499,7 @@ class Blocks extends Component {
 
                     <ul className="template-preview-btn">
 
-                      { block.elementor_type == "pro" ?
+                      { block.elementor_type == "pro" && !MightyLibrary.elementorPro ?
                         <div className="elementor-pro-notice">
                           <p>Required Plugins Missing</p>
                           <img src={MightyLibrary.baseUrl + 'library/assets/images/elementor-pro-notice.png'} alt="elementor-pro-logo" />
