@@ -85,9 +85,27 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     <?php } ?>
                 </div>
 
+                <div class="ma-element">
+                    <label for="captcha" class="ma-ele-title"><?php _e('🚫 Captcha Site Key', 'mighty-addons'); ?></label>
+                    <div class="info-field">
+                        <input class="regular-text" type="text" name="captcha-key" placeholder="YOUR_SITE_API_KEY" id="captcha_key" value="<?php echo Helper::get_integration_option('captcha-key'); ?>" />
+                        <a class="help-link" target="_blank" href="https://mailchimp.com/help/about-api-keys/"><?php _e('Get captcha Site key 🔑', 'mighty-addons'); ?></a>
+                    </div>
+                </div>
+
+                <div class="ma-element">
+                    <label for="captcha" class="ma-ele-title"><?php _e('🚫 Captcha Secret Key', 'mighty-addons'); ?></label>
+                    <div class="info-field">
+                        <input class="regular-text" type="text" name="captcha-secret-key" placeholder="YOUR_SECRET_API_KEY" id="captcha_secret_key" value="<?php echo Helper::get_integration_option('captcha-secret-key'); ?>" />
+                        <a class="help-link" target="_blank" href="https://mailchimp.com/help/about-api-keys/"><?php _e('Get captcha Secret key 🔑', 'mighty-addons'); ?></a>
+                    </div>
+                </div>
+
                 <div class="text-center ma-cta-save">
                     <button type="submit" class="button ma-btn ma-save-button"><?php _e('Save Settings', 'mighty-addons'); ?></button>
                 </div>
+
+                
             </form>
             
         </div>

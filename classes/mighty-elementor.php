@@ -55,6 +55,10 @@ class Mighty_Elementor {
 
 		add_action( 'wp_footer', [ $this, 'html_to_footer' ] );
 
+		// contact form
+		add_action( 'wp_ajax_save_contact_form_details', [ $this, 'mighty_contactform_details'] );
+		add_action( 'wp_ajax_nopriv_save_contact_form_details', [ $this, 'mighty_contactform_details'] );
+
 
 	}
 
@@ -431,6 +435,147 @@ class Mighty_Elementor {
 
 		return $html;
 
+	}
+
+	public function mighty_contactform_details() 
+	{
+	
+		$output = [];
+		if( isset( $_POST['emailValues'] ) ) {
+			$email_values = json_decode( stripslashes( $_POST['emailValues'] ) );
+		}
+		if( isset( $_POST['contactFormData'] ) ) {
+			$contactFormData = json_decode( stripslashes( $_POST['contactFormData'] ) );
+		}
+		
+		if( isset( $email_values->form_from_email ) ) {
+			$headers[] = 'From: '.$email_values->form_from_name.' <'.$email_values->form_from_email.'>';
+		}
+		if( isset( $email_values->form_reply_email ) ) {
+			$headers[] = 'Reply-To: '.$email_values->form_reply_name.' <'.$email_values->form_reply_email.'>';
+		}
+		if( isset( $email_values->form_cc_emails ) ) {
+			$headers[] = 'Cc: '.explode(",",$email_values->form_cc_emails).'';
+		}
+		if( isset( $email_values->form_bcc_emails ) ) {
+			$headers[] = 'Bcc: '.explode(",",$email_values->form_bcc_emails).'';
+		}
+		if( isset( $email_values->form_send_to ) ) {
+			$to = explode(",",$email_values->form_send_to);
+		}
+		if( isset( $_POST['senderEmail'] ) ) {
+			array_push( $to, $_POST['senderEmail'] );
+		}
+		if( isset( $email_values->form_email_subject ) ) {
+			$subject = $email_values->form_email_subject;
+		}
+
+		$message = '';
+
+		$email_data = [];
+
+		foreach ( $_POST as $key => $value ) {
+			if( str_contains($key, 'form-') ) {
+				$key_data = explode('-',$key);
+				$keydata = preg_replace('/[0-9]+/', '', $key_data[1]);
+				$message = $message . '<br>' . $keydata . ' : ' .$value; 
+				$email_data[ $keydata ] = $value;
+			}
+			
+		}
+
+		if( isset( $_POST['template_data'] ) ){
+			$custom_template_data = $_POST['template_data'];
+			foreach ($contactFormData as $key1 => $value1) {
+
+
+				if( str_contains( $custom_template_data, '['.$key1.']' ) ) {
+					
+					foreach ( $_POST as $key2 => $value2 ) {
+						if( str_contains($key2, 'form-') ) {
+							if( $key2 == $value1 ) {
+							 	$custom_template_data =	str_replace( '['.$key1.']', $value2 , $custom_template_data );
+							}
+						}
+
+					}
+				}
+			}
+			if( str_contains( $custom_template_data, '[all-fields]' ) ) {
+				$custom_template_data = str_replace( '[all-fields]' , $message, $custom_template_data );
+			}
+			$message = $custom_template_data;
+		}
+		
+		if( !empty( $message ) ) {
+			$current_url=home_url(); 
+			$date = date('Y-m-d H:i:s');
+			$message = $message . '<br><br><br>' . '---' . '<br><br>' . 'Date : '.$date.'' . '<br>' . 'Url : '.$current_url.'';
+		}
+
+		$enable_captcha = $_POST['enableCaptcha'];
+
+		if( $enable_captcha == 'yes' ) {
+
+			if( $_POST['CaptchaType'] == 'default' ) {
+
+				if ( $_POST['defaultCaptchaValue'] == $_POST['default_captcha_ans'] ) {
+					$send = wp_mail($to, $subject, $message, $headers);
+					if ( $send ) {
+						$output['msg'] = '<div class="submit-message thankyou"><i class="fas fa-check-circle" aria-hidden="true"></i>'.$_POST['thankyouMsg'].'</div>';
+						$output['result'] = true;
+					} else {
+						$output['msg'] = '<div class="submit-message error"><i class="fas fa-times-circle" aria-hidden="true"></i>Something Went Wrong.</div>';
+						$output['result'] = false;
+					} 
+				} else {
+					$output['msg'] = '<div class="submit-message error"><i class="fas fa-times-circle" aria-hidden="true"></i>Captcha value is not correct.</div>';
+					$output['result'] = false;
+				} 
+			}
+			elseif( $_POST['CaptchaType'] == 'gr' ) {
+
+				if ( !empty( $_POST['g-recaptcha-response'] ) ) {
+
+					$send = wp_mail( $to, $subject, $message, $headers );
+					if ( $send ) {
+						$output['msg'] = '<div class="submit-message thankyou"><i class="fas fa-check-circle" aria-hidden="true"></i>'.$_POST['thankyouMsg'].'</div>';
+						$output['result'] = true;
+					} else {
+						$output['msg'] = '<div class="submit-message error"><i class="fas fa-times-circle" aria-hidden="true"></i>Something Went Wrong.</div>';
+						$output['result'] = false;
+					}
+				} else {
+					$output = '<div class="submit-message error"><i class="fas fa-times-circle" aria-hidden="true"></i>Captcha value is not correct.</div>';
+					$output['result'] = false;
+				} 
+			} else {
+				$send = wp_mail( $to, $subject, $message, $headers );
+
+				if( $send ) {
+					$output['msg'] = '<div class="submit-message thankyou"><i class="fas fa-check-circle" aria-hidden="true"></i>'.$_POST['thankyouMsg'].'</div>';
+					$output['result'] = true;
+				} else {
+					$output = '<div class="submit-message error"><i class="fas fa-times-circle" aria-hidden="true"></i>Invalid Captcha.</div>';
+					$output['result'] = false;
+				}
+			}
+		
+		} else {
+
+			$send = wp_mail( $to, $subject, $message, $headers );
+
+			if( $send ) {
+				$output['msg'] = '<div class="submit-message thank you"><i class="fas fa-check-circle" aria-hidden="true"></i>'.$_POST['thankyouMsg'].'</div>';
+				$output['result'] = true;
+			} else {
+				$output['msg'] = '<div class="submit-message error"><i class="fas fa-times-circle" aria-hidden="true"></i>Something Went Wrong. Make sure you have filled email details.</div>';
+				$output['result'] = false;
+			}
+		}
+
+		echo json_encode( $output );
+		wp_die();
 	}
 }
 

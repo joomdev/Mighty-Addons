@@ -144,6 +144,14 @@ class HelperFunctions {
                 'class' => 'MT_howto',
                 'slug' => 'howto',
                 'icon' => 'mf mf-howto',
+            ],
+            'contactform' => [
+                'title' => 'Contact Form',
+                'description' => '',
+                'enable' => false,
+                'class' => 'MT_contactform',
+                'slug' => 'contactform',
+                'icon' => 'mf mf-contactform',
             ]
         ],
         "extensions" => [
