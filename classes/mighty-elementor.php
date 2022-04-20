@@ -458,8 +458,6 @@ class Mighty_Elementor {
 
 		}
 
-		$to =( isset( $email_values->form_send_to ) ) ? explode(",", $email_values->form_send_to) : '';
-
 		( isset( $_POST['senderEmail'] ) && !empty( $_POST['senderEmail'] ) ) ? array_push( $to, $_POST['senderEmail'] ) : '';
 
 		$headers[] = ( isset( $email_values->form_from_email ) ) ? 'From: '.$email_values->form_from_name.' <'.$email_values->form_from_email.'>' : '';
@@ -482,7 +480,7 @@ class Mighty_Elementor {
 				$keydata = preg_replace('/[0-9]+/', '', $key_data[1]);
 				$message = $message . '<br>' . $keydata . ' : ' .$value; 
 				$email_data[ $keydata ] = $value;
-				
+
 			}
 			
 		}
