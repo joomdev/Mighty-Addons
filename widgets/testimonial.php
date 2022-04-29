@@ -158,18 +158,18 @@ class MT_Testimonial extends Widget_Base {
 				]
 			);
 
-			// $this->add_control(
-			// 	'testimonial_skin',
-			// 	[
-			// 		'label' => __( 'Skin', 'mighty' ),
-			// 		'type' => \Elementor\Controls_Manager::SELECT,
-			// 		'default' => 'skin-default',
-			// 		'options' => [
-			// 			'skin-default'  => __( 'Default', 'mighty' ),
-			// 			'skin-bubble' => __( 'Bubble', 'mighty' ),
-			// 		],
-			// 	]
-			// );
+			$this->add_control(
+				'testimonial_view',
+				[
+					'label' => __( 'View Type', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SELECT,
+					'default' => 'view1',
+					'options' => [
+						'view1'  => __( 'View 1', 'mighty' ),
+						'view2' => __( 'View 2', 'mighty' ),
+					],
+				]
+			);
 
 			$this->add_responsive_control(
 				'slides_to_show',
@@ -260,8 +260,6 @@ class MT_Testimonial extends Widget_Base {
 					'default' => 300,
 				]
 			);
-
-
 
 			$this->add_control(
 				'enable_autoplay',
@@ -903,16 +901,6 @@ class MT_Testimonial extends Widget_Base {
 		if ( empty( $settings['testimonials'] ) ) {
 			return;
 		}
-		
-		echo '<div class="mighty-testimonial-wrapper" id="mighty-testimonial-'. $this->get_id() .'">';
-
-			if ( $settings['show_arrows'] === 'yes' ) {
-				echo '<div class="prev-next prev-icon">';
-					echo '<a class="prev" role="button">';
-						\Elementor\Icons_Manager::render_icon( $settings['prev_icon'], [ 'aria-hidden' => 'true' ] );
-					echo '</a>';
-				echo '</div>';
-			}
 
 			$this->add_render_attribute( 'mighty-testimonial', 'class', 'mighty-testimonial' );
 			$this->add_render_attribute( 'mighty-testimonial', 'data-show-slides-desktop', $settings['slides_to_show'] );
@@ -929,6 +917,16 @@ class MT_Testimonial extends Widget_Base {
 			$this->add_render_attribute( 'mighty-testimonial', 'data-infinite-looping', ($settings['infinite_loop'] == "true" ? 'true' : 'false') );
 			$this->add_render_attribute( 'mighty-testimonial', 'data-transition-speed', $settings['transition_speed'] );
 			$this->add_render_attribute( 'mighty-testimonial', 'data-enable-dots', ($settings['show_bullets'] == "yes" ? 'true' : 'false') );
+
+			echo '<div class="mighty-testimonial-wrapper" id="mighty-testimonial-'. $this->get_id() .'">';
+
+			if ( $settings['show_arrows'] === 'yes' ) {
+				echo '<div class="prev-next prev-icon">';
+					echo '<a class="prev" role="button">';
+						\Elementor\Icons_Manager::render_icon( $settings['prev_icon'], [ 'aria-hidden' => 'true' ] );
+					echo '</a>';
+				echo '</div>';
+			}
 
 			echo '<div ' . $this->get_render_attribute_string( 'mighty-testimonial' ) . '>';
 			foreach (  $settings['testimonials'] as $index => $item ) {
@@ -969,6 +967,8 @@ class MT_Testimonial extends Widget_Base {
 					echo '</a>';
 				echo '</div>';
 			}
+
+
 			
 		echo '</div>';
 	}

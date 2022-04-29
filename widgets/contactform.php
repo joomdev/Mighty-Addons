@@ -114,7 +114,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-			$repeater->add_control(
+			$repeater->add_responsive_control(
 				'form_field_column_width', [
 					'label' => esc_html__( 'Column Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
@@ -152,7 +152,7 @@ class MT_contactform extends Widget_Base {
 					'condition' => [
 						'form_field_type' => 'number',
 					],
-					'description' => 'Enter a number if you did like to limit the field input to a minimum number of characters.'
+					'description' => "Enter a number if you'd like to limit the field input to a minimum number of chracters."
 				]
 			);
 
@@ -164,7 +164,7 @@ class MT_contactform extends Widget_Base {
 					'condition' => [
 						'form_field_type' => 'number',
 					],
-					'description' => 'Enter a number if you did like to limit the field input to a maximum number of characters.'
+					'description' => "Enter a number if you'd like to limit the field input to a maximum number of chracters."	
 				]
 			);
 
@@ -197,13 +197,17 @@ class MT_contactform extends Widget_Base {
 					'default' => [
 						[
 							'form_field_label' => esc_html__( 'Name', 'mighty' ),
+							'form_field_type' => esc_html__( 'name', 'mighty' ),
+							
 						],
 						[
 							'form_field_label' => esc_html__( 'Email', 'mighty' ),
 							'form_field_required' => esc_html__( 'yes', 'mighty' ),
+							'form_field_type' => esc_html__( 'email', 'mighty' ),
 						],
 						[
 							'form_field_label' => esc_html__( 'Subject', 'mighty' ),
+							'form_field_type' => esc_html__( 'subject', 'mighty' ),
 						],
 					],
 					'title_field' => '{{{ form_field_label }}}',
@@ -214,7 +218,7 @@ class MT_contactform extends Widget_Base {
 				'form_field_input_size', [
 					'label' => esc_html__( 'Input Size', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
-                    'default' => __('xs'),
+                    'default' => __('sm'),
                     'options' => [
                         'xs' => __('Extra Small', 'mighty'),
                         'sm' => __('Small', 'mighty'),
@@ -228,7 +232,7 @@ class MT_contactform extends Widget_Base {
 
 			$this->add_control(
                 'form_field_show_label', [
-                    'label' => __( 'Show Label', 'mighty' ),
+                    'label' => __( 'Label', 'mighty' ),
                     'type' => Controls_Manager::SWITCHER,
                     'default' => 'yes',
                 ]
@@ -236,9 +240,9 @@ class MT_contactform extends Widget_Base {
 
 			$this->add_control(
                 'form_field_show_required_mark', [
-                    'label' => __( 'Show Required Mark', 'mighty' ),
+                    'label' => __( 'Required Mark', 'mighty' ),
                     'type' => Controls_Manager::SWITCHER,
-                    'default' => 'yes',
+                    'default' => 'no',
                 ]
             );
 
@@ -357,7 +361,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
                 'button_icon_spacing',
                 [
                     'label' => __( 'Icon Spacing', 'mighty' ),
@@ -404,7 +408,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-			$this->add_control(
+			$this->add_responsive_control(
 				'form_button_width', [
 					'label' => esc_html__( 'Button Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
@@ -433,19 +437,19 @@ class MT_contactform extends Widget_Base {
                     'options' => [
                         'left' => [
                             'title' => __( 'Left', 'mighty' ),
-                            'icon' => 'eicon-v-align-top',
+                            'icon' => 'eicon-h-align-left',
                         ],
                         'center' => [
                             'title' => __( 'Center', 'mighty' ),
-                            'icon' => 'eicon-v-align-bottom',
+                            'icon' => 'eicon-h-align-center',
                         ],
                         'right' => [
                             'title' => __( 'Right', 'mighty' ),
-                            'icon' => 'eicon-h-align-left',
+                            'icon' => 'eicon-h-align-right',
                         ],
                         'block' => [
                             'title' => __( 'Block', 'mighty' ),
-                            'icon' => 'eicon-h-align-right',
+                            'icon' => 'eicon-h-align-stretch',
                         ],
                     ],
                     'default' => 'block',
@@ -614,7 +618,7 @@ class MT_contactform extends Widget_Base {
 			]
         );
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'column_gap',
 				[
 					'label' => __( 'Columns Gap', 'mighty' ),
@@ -641,7 +645,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
                 'row_gap',
                 [
                     'label' => __( 'Rows Gap', 'mighty' ),
@@ -709,7 +713,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
                 'form_label_spacing',
                 [
                     'label' => __( 'Spacing', 'mighty' ),
@@ -833,7 +837,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'field_border_width',
 				[
 					'label' => __( 'Border Width', 'mighty' ),
@@ -845,7 +849,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-            $this->add_responsive_control(
+            $this->add_control(
 				'image_border_radius',
 				[
 					'label' => __( 'Border Radius', 'mighty' ),
@@ -961,7 +965,7 @@ class MT_contactform extends Widget_Base {
 				]
 			);
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'button_border_radius',
 				[
 					'label' => __( 'Border Radius', 'mighty' ),
@@ -982,7 +986,7 @@ class MT_contactform extends Widget_Base {
                 ]
             );
 
-			$this->add_responsive_control(
+			$this->add_control(
 				'button_padding',
 				[
 					'label' => __( 'Padding', 'mighty' ),
@@ -1070,10 +1074,8 @@ class MT_contactform extends Widget_Base {
 
 		$this->add_render_attribute( 'mt-contact', 'data-enable_captcha', $settings['form_enable_captcha'] );
 
-		if ( $settings['email_copy_sender'] == 'yes' ) {
+		$this->add_render_attribute( 'mt-contact', 'data-sender_email', $settings['email_copy_sender'] );
 
-			$this->add_render_attribute( 'mt-contact', 'data-sender_email', wp_get_current_user()->user_email );
-		}
 		if ( $settings['submission_type'] == 'ajax_submission' ) {
 
 			$this->add_render_attribute( 'mt-contact', 'data-thankyoumsg', $settings['thank_you_msg'] );

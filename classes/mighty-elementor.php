@@ -448,18 +448,6 @@ class Mighty_Elementor {
 
 		$subject = ( isset( $email_values->form_email_subject ) ) ? $email_values->form_email_subject : '';
 
-		if( isset( $email_values->form_send_to ) && !empty( $email_values->form_send_to ) ) {
-
-			if( str_contains( $email_values->form_send_to, ',' ) ) {
-				$to = explode( ",", $email_values->form_send_to );
-			} else {
-				$to = $email_values->form_send_to;
-			}
-
-		}
-
-		( isset( $_POST['senderEmail'] ) && !empty( $_POST['senderEmail'] ) ) ? array_push( $to, $_POST['senderEmail'] ) : '';
-
 		$headers[] = ( isset( $email_values->form_from_email ) ) ? 'From: '.$email_values->form_from_name.' <'.$email_values->form_from_email.'>' : '';
 
 		$headers[] = ( isset( $email_values->form_reply_email ) ) ? 'Reply-To: '.$email_values->form_reply_name.' <'.$email_values->form_reply_email.'>' : '';
@@ -472,6 +460,16 @@ class Mighty_Elementor {
 
 		$email_data = [];
 
+		if( isset( $email_values->form_send_to ) && !empty( $email_values->form_send_to ) ) {
+
+			if( str_contains( $email_values->form_send_to, ',' ) ) {
+				$to = explode( ",", $email_values->form_send_to );
+			} else {
+				$to = $email_values->form_send_to;
+			}
+
+		}
+
 		foreach ( $_POST as $key => $value ) {
 
 			if( str_contains($key, 'form-') ) {
@@ -482,14 +480,24 @@ class Mighty_Elementor {
 				$email_data[ $keydata ] = $value;
 
 			}
-			
+
+			if( isset( $_POST['senderEmail'] ) &&  $_POST['senderEmail'] == 'yes' ) {
+				if( str_contains($key, 'form-Email') ) {
+					if( is_array( $to ) ) {
+						array_push( $to, $value );
+					} else {
+						$to=explode(" ",$to); 
+						array_push( $to, $value );
+					}
+				}
+			}
 		}
 
 		if( isset( $_POST['template_data'] ) ){
 
 			$custom_template_data = $_POST['template_data'];
 
-			foreach ($contactFormData as $key1 => $value1) {
+			foreach ( $contactFormData as $key1 => $value1 ) {
 
 				if( str_contains( $custom_template_data, '['.$key1.']' ) ) {
 					
@@ -506,6 +514,7 @@ class Mighty_Elementor {
 
 					}
 				}
+
 			}
 			if( str_contains( $custom_template_data, '[all-fields]' ) ) {
 
@@ -514,7 +523,7 @@ class Mighty_Elementor {
 
 			$message = $custom_template_data;
 		}
-		
+
 		if( !empty( $message ) ) {
 			$current_url=home_url(); 
 			$date = date('Y-m-d H:i:s');
