@@ -460,6 +460,8 @@ class Mighty_Elementor {
 
 		$email_data = [];
 
+		$headers = array('Content-Type: text/html; charset=UTF-8');
+
 		if( isset( $email_values->form_send_to ) && !empty( $email_values->form_send_to ) ) {
 
 			if( str_contains( $email_values->form_send_to, ',' ) ) {
