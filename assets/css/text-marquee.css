@@ -18,6 +18,10 @@
 .mighty-marquee .marquee p {
     display: inline-block; 
 }
+
+.mighty-marquee .marquee .marquee-items p{
+    margin: 0 !important;
+}
   
 @keyframes marquee {
     0%   { transform: translateX(0); }

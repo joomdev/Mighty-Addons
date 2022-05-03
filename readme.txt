@@ -6,7 +6,7 @@ Plugin URI: https://mightythemes.com/products/mighty-addons
 Requires at least: 4.0 or higher  
 Tested up to: 5.9  
 Requires PHP: 5.6  
-Stable Tag: 1.8.0 
+Stable Tag: 1.8.1
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
@@ -207,6 +207,9 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+
+### 1.8.1
+* Fixed: Minor issue on text marquee
 
 ### 1.8.0
 * Added: How-to widget
