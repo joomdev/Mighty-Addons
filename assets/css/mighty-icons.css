@@ -24,12 +24,16 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.mf-contactform:before {
+	content: "\e931";
+}
+
 .mf-howto:before {
-	content: "\e932";
+	content: "\e964";
 }
 
 .mf-modal:before {
-	content: "\e931";
+	content: "\e963";
 }
 
 .mf-agechecker:before {
