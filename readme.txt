@@ -4,9 +4,9 @@ Contributors: mightythemes1
 Author URI: https://mightythemes.com  
 Plugin URI: https://mightythemes.com/products/mighty-addons  
 Requires at least: 4.0 or higher  
-Tested up to: 5.9  
+Tested up to: 6.0 
 Requires PHP: 5.6  
-Stable Tag: 1.8.1
+Stable Tag: 1.9.0 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Tags: elementor, elementor extensions, progress bar, elementor addons, elementor modules,testimonials, page builder, elementor widgets, elements  
@@ -99,6 +99,7 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 31. **[Age checker](https://mightythemes.com/mighty-addons/age-checker/)** - Create Stunning Age Verification Pop-up using Age Gate Elementor Widget.
 32. **[Modal Popup](https://mightythemes.com/mighty-addons/modal-widget/)** - Create Stunning Modal Popup using Modal Elementor Widget.
 33. **[How-To](https://mightythemes.com/mighty-addons/how-to-schema)** - Create How-To Steps with the help of How-To Elementor Widget.
+34. **[Contact-Form](https://mightythemes.com/mighty-addons/contact-form)** - Create contact form with the help of Contact-form Elementor Widget.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
 
