@@ -98,7 +98,7 @@ Every Elementor Widget is curated and developed with thousands of test cases and
 30. **[Pie and Donut Chart](https://mightythemes.com/mighty-addons/donut/)** - Create Customized and Visually Appealing Charts with Pie and Donut Chart Widget.
 31. **[Age checker](https://mightythemes.com/mighty-addons/age-checker/)** - Create Stunning Age Verification Pop-up using Age Gate Elementor Widget.
 32. **[Modal Popup](https://mightythemes.com/mighty-addons/modal-widget/)** - Create Stunning Modal Popup using Modal Elementor Widget.
-33. **[How-To](https://mightythemes.com/mighty-addons/how-to-schema)** - Create How-To Steps with the help of How To Elementor Widget.
+33. **[How To](https://mightythemes.com/mighty-addons/how-to-schema)** - Create How To Steps with the help of How To Elementor Widget.
 34. **[Contact-Form](https://mightythemes.com/mighty-addons/contact-form)** - Create contact form with the help of Contact Form Elementor Widget.
 
 **[Mighty Addons Pro](https://mightythemes.com/mighty-addons) is here as well.** 
@@ -217,7 +217,7 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 * Fixed: Minor issue on text marquee
 
 ### 1.8.0
-* Added: How-to widget
+* Added: How to widget
 * Fixed: Minor issues and bugs
 
 ### 1.7.4
