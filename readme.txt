@@ -210,6 +210,8 @@ We 💗 Open Source. Come and see our products on <a href="https://github.com/mi
 Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
+### 1.9.0
+* Added: Contact Form widget
 
 ### 1.8.1
 * Fixed: Minor issue on text marquee

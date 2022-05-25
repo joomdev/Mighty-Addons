@@ -211,7 +211,7 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 
 ## Changelog
 ### 1.9.0
-* Added: contact form widget
+* Added: Contact Form widget
 
 ### 1.8.1
 * Fixed: Minor issue on text marquee
