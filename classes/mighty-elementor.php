@@ -452,9 +452,29 @@ class Mighty_Elementor {
 
 		$headers[] = ( isset( $email_values->form_reply_email ) ) ? 'Reply-To: '.$email_values->form_reply_name.' <'.$email_values->form_reply_email.'>' : '';
 
-		$headers[] = ( isset( $email_values->form_cc_emails ) ) ? 'Cc: '.explode(",",$email_values->form_cc_emails).'' : '';
+		if ( isset( $email_values->form_cc_emails ) ) {
+		
+		if( str_contains( $email_values->form_cc_emails, ',' ) ) {
+			$cc_values = explode(",",$email_values->form_cc_emails);
+			foreach ($cc_values as $cc_key => $cc_value) {
+				$headers[] = 'Cc: '.$cc_value.'';
+			}
+			} else {
+				$headers[] = 'Cc: '.$email_values->form_cc_emails.'' ;
+			}
+		}
 
-		$headers[] = ( isset( $email_values->form_bcc_emails ) ) ? 'Bcc: '.explode(",",$email_values->form_bcc_emails).'' : '';
+		if ( isset( $email_values->form_cc_emails ) ) {
+
+			if( str_contains( $email_values->form_bcc_emails, ',' ) ) {
+				$bcc_values = explode(",",$email_values->form_bcc_emails);
+				foreach ($bcc_values as $bcc_key => $bcc_value) {
+					$headers[] = 'Bcc: '.$bcc_value.'';
+				}
+			} else {
+				$headers[] = 'Bcc: '.$email_values->form_bcc_emails.'' ;
+			}
+		}
 
 		$message = '';
 
@@ -506,9 +526,8 @@ class Mighty_Elementor {
 					foreach ( $_POST as $key2 => $value2 ) {
 
 						if( str_contains($key2, 'form-') ) {
-
+							
 							if( $key2 == $value1 ) {
-
 							 	$custom_template_data =	str_replace( '['.$key1.']', $value2 , $custom_template_data );
 
 							}
@@ -518,6 +537,7 @@ class Mighty_Elementor {
 				}
 
 			}
+
 			if( str_contains( $custom_template_data, '[all-fields]' ) ) {
 
 				$custom_template_data = str_replace( '[all-fields]' , $message, $custom_template_data );

@@ -143,31 +143,6 @@ class MT_contactform extends Widget_Base {
                 ]
             );
 
-
-			$repeater->add_control(
-				'form_field_min_length',
-				[
-					'label' => esc_html__( 'Minimum Length', 'mighty' ),
-					'type' => Controls_Manager::NUMBER,
-					'condition' => [
-						'form_field_type' => 'number',
-					],
-					'description' => "Enter a number if you'd like to limit the field input to a minimum number of chracters."
-				]
-			);
-
-			$repeater->add_control(
-				'form_field_max_length',
-				[
-					'label' => esc_html__( 'Maximum Length', 'mighty' ),
-					'type' => Controls_Manager::NUMBER,
-					'condition' => [
-						'form_field_type' => 'number',
-					],
-					'description' => "Enter a number if you'd like to limit the field input to a maximum number of chracters."	
-				]
-			);
-
 			$repeater->add_control(
 				'form_field_message_rows',
 				[
@@ -198,16 +173,21 @@ class MT_contactform extends Widget_Base {
 						[
 							'form_field_label' => esc_html__( 'Name', 'mighty' ),
 							'form_field_type' => esc_html__( 'name', 'mighty' ),
+							'form_field_id' => esc_html__( 'mt_name', 'mighty' ),
 							
 						],
 						[
 							'form_field_label' => esc_html__( 'Email', 'mighty' ),
 							'form_field_required' => esc_html__( 'yes', 'mighty' ),
 							'form_field_type' => esc_html__( 'email', 'mighty' ),
+							'form_field_id' => esc_html__( 'mt_email', 'mighty' ),
+
 						],
 						[
 							'form_field_label' => esc_html__( 'Subject', 'mighty' ),
 							'form_field_type' => esc_html__( 'subject', 'mighty' ),
+							'form_field_id' => esc_html__( 'mt_subject', 'mighty' ),
+
 						],
 					],
 					'title_field' => '{{{ form_field_label }}}',
@@ -366,20 +346,12 @@ class MT_contactform extends Widget_Base {
                 [
                     'label' => __( 'Icon Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%', 'px' , 'em' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
-                        '%' => [
-                            'min' => 1,
-                            'max' => 50
-                        ],
                         'px' => [
                             'min' => 1,
                             'max' => 50
                         ],
-                        'em' => [
-                            'min' => 1,
-                            'max' => 50
-                        ]
                     ],
 					'default' => [
                         'unit' => 'px',
@@ -426,6 +398,7 @@ class MT_contactform extends Widget_Base {
                         '100' => __('100%', 'mighty'),
                     ],
 					'label_block' => true,
+
 				]
 			);
 
@@ -453,6 +426,7 @@ class MT_contactform extends Widget_Base {
                         ],
                     ],
                     'default' => 'block',
+					
                 ]
             );
 
@@ -623,24 +597,16 @@ class MT_contactform extends Widget_Base {
 				[
 					'label' => __( 'Columns Gap', 'mighty' ),
 					'type' => Controls_Manager::SLIDER,
-					'size_units' => [ '%', 'px' , 'em' ],
+					'size_units' => ['px'],
 					'range' => [
-						'%' => [
+						'px' => [
 							'min' => 1,
 							'max' => 100
 						],
-						'px' => [
-							'min' => 1,
-							'max' => 1000
-						],
-						'em' => [
-							'min' => 1,
-							'max' => 1000
-						]
 					],
 					'selectors' => [
-						'{{WRAPPER}} .mt-c-form-fields-wrapper .field-group' => 'padding-left: {{SIZE}}{{UNIT}}',
-						'{{WRAPPER}} .mt-c-form-fields-wrapper .field-group' => 'padding-right: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .mt-c-form-fields-wrapper .mt-c-form-fields-wrapper-inner' => 'margin-left: calc(-{{SIZE}}{{UNIT}}/2 ); margin-right: calc(-{{SIZE}}{{UNIT}}/2 );',
+						'{{WRAPPER}} .mt-c-form-fields-wrapper .field-group' => 'padding-left:calc({{SIZE}}{{UNIT}}/2 ); padding-right:calc({{SIZE}}{{UNIT}}/2 );'
 					],
 				]
 			);
@@ -718,20 +684,12 @@ class MT_contactform extends Widget_Base {
                 [
                     'label' => __( 'Spacing', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%', 'px' , 'em' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
-                        '%' => [
-                            'min' => 1,
-                            'max' => 100
-                        ],
                         'px' => [
                             'min' => 1,
                             'max' => 1000
                         ],
-                        'em' => [
-                            'min' => 1,
-                            'max' => 1000
-                        ]
                     ],
 					'selectors' => [
                         '{{WRAPPER}} .mt-c-form-fields-wrapper .field-group .field-label' => 'margin-bottom: {{SIZE}}{{UNIT}}'
@@ -1088,8 +1046,9 @@ class MT_contactform extends Widget_Base {
 		$form_fields_data = []; 
 
 		foreach( $form_fields as $field_id => $field_values ) {
-			$form_fields_data[$field_values['form_field_id']] = 'form-'.$field_values['form_field_label'].$field_id;
+			$form_fields_data[$field_values['form_field_id']] = 'form-'.str_replace(' ','_',$field_values['form_field_label'].$field_id);
 		}
+
 		if( $settings['form_email_template'] == 'custom' ) {
 
 			$this->add_render_attribute( 'mt-contact', 'data-template_data', $settings['form_email_custom_template'] );
@@ -1107,7 +1066,7 @@ class MT_contactform extends Widget_Base {
 
 					<?php foreach( $form_fields as $key => $field_type ) { ?> 
 
-						<div class="type-text field-group <?php echo ( $field_type['form_field_required'] == 'yes' && $settings['form_field_show_required_mark'] == 'yes' ) ? 'mark-required' : ''; ?> mt-form-col-<?php echo $field_type['form_field_column_width']; ?>">
+						<div class="type-text field-group <?php echo ( $field_type['form_field_required'] == 'yes' && $settings['form_field_show_required_mark'] == 'yes' ) ? 'mark-required' : ''; ?> mt-form-col-<?php echo $field_type['form_field_column_width'];?> mt-form-col-md-<?php echo $field_type['form_field_column_width_tablet'];?> mt-form-col-sm-<?php echo $field_type['form_field_column_width_mobile'];?>">
 							<?php if ( $settings['form_field_show_label'] == 'yes' ) { ?>
 								<label class="field-label"><?php echo $field_type['form_field_label']; ?></label>
 							<?php } ?>
@@ -1116,19 +1075,21 @@ class MT_contactform extends Widget_Base {
 								<input type="text" name="form-<?php echo $field_type['form_field_label'].$key; ?>" class="field field-size-<?php echo $settings['form_field_input_size'];?>" placeholder="<?php echo $field_type['form_field_placeholder']; ?>" <?php echo ( $field_type['form_field_required'] == 'yes' ) ? 'required' : ''; ?> >
 
 							<?php } ?>	
+
 							<?php if ( $field_type['form_field_type'] == 'number' ) { ?>
 
-								<input type="number" name="form-<?php echo $field_type['form_field_label'] . $key; ?>" class="field field-size-<?php echo $settings['form_field_input_size'];?>" placeholder="<?php echo $field_type['form_field_placeholder']; ?>" <?php echo ( $field_type['form_field_required'] == 'yes' ) ? 'required' : ''; ?> min=<?php echo $field_type['form_field_min_length']; ?> max=<?php echo $field_type['form_field_max_length']; ?> >
+								<input type="number" name="form-<?php echo $field_type['form_field_label'].$key; ?>" class="field field-size-<?php echo $settings['form_field_input_size'];?>" placeholder="<?php echo $field_type['form_field_placeholder']; ?>" <?php echo ( $field_type['form_field_required'] == 'yes' ) ? 'required' : ''; ?> >
 
 							<?php } ?>	
+
 							<?php if ( $field_type['form_field_type'] == 'email' ) { ?>
 
-								<input type="email" name="form-<?php echo $field_type['form_field_label'] . $key; ?>" class="field field-size-<?php echo $settings['form_field_input_size'];?>" placeholder="<?php echo $field_type['form_field_placeholder']; ?>" <?php echo ( $field_type['form_field_required'] == 'yes' ) ? 'required' : ''; ?> >
+								<input type="email" name="form-<?php echo $field_type['form_field_label'].$key; ?>" class="field field-size-<?php echo $settings['form_field_input_size'];?>" placeholder="<?php echo $field_type['form_field_placeholder']; ?>" <?php echo ( $field_type['form_field_required'] == 'yes' ) ? 'required' : ''; ?> >
 
 							<?php } ?>	
 							<?php if ( $field_type['form_field_type'] == 'message' ) { ?>
 
-								<textarea name="form-<?php echo $field_type['form_field_label'] . $key; ?>" class="field field-size-<?php echo $settings['form_field_input_size'];?>" placeholder="<?php echo $field_type['form_field_placeholder']; ?>" <?php echo ( $field_type['form_field_required'] == 'yes' ) ? 'required' : ''; ?> rows="<?php echo $field_type['form_field_message_rows'];?>" ></textarea>
+								<textarea name="form-<?php echo $field_type['form_field_label'].$key; ?>" class="field field-size-<?php echo $settings['form_field_input_size'];?>" placeholder="<?php echo $field_type['form_field_placeholder']; ?>" <?php echo ( $field_type['form_field_required'] == 'yes' ) ? 'required' : ''; ?> rows="<?php echo $field_type['form_field_message_rows'];?>" ></textarea>
 
 							<?php } ?>	
 
@@ -1154,15 +1115,25 @@ class MT_contactform extends Widget_Base {
 									<!-- <div class="captcha-output"></div> -->
 									<input type="text" class="field field-size-md captcha-input" name="default_captcha_ans" placeholder="<?php echo $a . '*' . $b; ?>" required>
 								</div>
-								<?php } else { ?>
+								<?php } else {
+									if( $settings['form_captcha_type'] == 'gr' ) { ?>
 									<?php if ( !empty( Helper::get_integration_option('captcha-key') ) ) { ?>
-										<div class="g-recaptcha" data-sitekey="<?php echo Helper::get_integration_option('captcha-key'); ?>" <?php echo ( $settings['form_captcha_type'] == 'gir' ) ? 'data-size="invisible"' : ''; ?>></div>
+										<div class="g-recaptcha" data-sitekey="<?php echo Helper::get_integration_option('captcha-key'); ?>"></div>
+									<?php } else { ?>
+										<label for="">Enter keys to enable captcha</label>
 									<?php } ?>	
+							<?php } else { ?>
+									<?php if ( !empty( Helper::get_integration_option('captcha-v3-key') ) ) { ?>
+										<div class="g-recaptcha" data-sitekey="<?php echo Helper::get_integration_option('captcha-v3-key'); ?>" <?php echo ( $settings['form_captcha_type'] == 'gir' ) ? 'data-size="invisible"' : ''; ?>></div>
+									<?php } else { ?>
+										<label for="">Enter keys to enable captcha</label>
+									<?php } ?>	
+							<?php } ?>
 							<?php } ?>
 						</div>
 					<?php } ?>
 				
-					<div class="type-submit field-group mt-form-col-<?php echo $settings['form_button_width'];?>  button-<?php echo $settings['button_alignment']; ?>">
+					<div class="type-submit field-group  mt-form-col-<?php echo $settings['form_button_width'];?> mt-form-col-md-<?php echo $settings['form_button_width_tablet'];?> mt-form-col-sm-<?php echo $settings['form_button_width_mobile'];?>  button-<?php echo $settings['button_alignment']; ?>">
 						<button type="submit" class="button button-<?php echo $settings['form_button_size']; ?> icon-<?php echo $settings['button_icon_position']; ?>" <?php echo ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) ? 'disabled="disabled"' : ''; ?> >
 							<span>
 								<?php if( !empty( $settings['form_button_icon']['value'] ) ) { ?>

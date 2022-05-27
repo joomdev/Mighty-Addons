@@ -11,6 +11,7 @@
         let redirectUrl = sel.data( 'redirect_url' );
         let templateData = sel.data( 'template_data' );
         let contactFormData = sel.data( 'form_data' );
+        console.log(contactFormData);
         let defaultCaptchaValue = '';
         if ( CaptchaType == 'default'  && enableCaptcha == 'yes' ) {
             defaultCaptchaValue = sel.data( 'dc_value' );

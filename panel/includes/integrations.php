@@ -86,18 +86,34 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 </div>
 
                 <div class="ma-element">
-                    <label for="captcha" class="ma-ele-title"><?php _e('🚫 Captcha Site Key', 'mighty-addons'); ?></label>
+                    <label for="captcha" class="ma-ele-title"><img height="15" width="30" src=<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/images/recaptcha.svg'; ?>><?php _e('Captcha v2 Site Key', 'mighty-addons'); ?></label>
                     <div class="info-field">
                         <input class="regular-text" type="text" name="captcha-key" placeholder="YOUR_SITE_API_KEY" id="captcha_key" value="<?php echo Helper::get_integration_option('captcha-key'); ?>" />
-                        <a class="help-link" target="_blank" href="https://cloud.google.com/recaptcha-enterprise/docs/create-key"><?php _e('Get captcha Site key 🔑', 'mighty-addons'); ?></a>
+                        <a class="help-link" target="_blank" href="https://www.google.com/recaptcha/admin/create"><?php _e('Get captcha Site key 🔑', 'mighty-addons'); ?></a>
                     </div>
                 </div>
 
                 <div class="ma-element">
-                    <label for="captcha" class="ma-ele-title"><?php _e('🚫 Captcha Secret Key', 'mighty-addons'); ?></label>
+                    <label for="captcha" class="ma-ele-title"><img height="15" width="30" src=<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/images/recaptcha.svg'; ?>><?php _e('Captcha v2 Secret Key', 'mighty-addons'); ?></label>
                     <div class="info-field">
                         <input class="regular-text" type="text" name="captcha-secret-key" placeholder="YOUR_SECRET_API_KEY" id="captcha_secret_key" value="<?php echo Helper::get_integration_option('captcha-secret-key'); ?>" />
-                        <a class="help-link" target="_blank" href="https://cloud.google.com/recaptcha-enterprise/docs/create-key"><?php _e('Get captcha Secret key 🔑', 'mighty-addons'); ?></a>
+                        <a class="help-link" target="_blank" href="https://www.google.com/recaptcha/admin/create"><?php _e('Get captcha Secret key 🔑', 'mighty-addons'); ?></a>
+                    </div>
+                </div>
+
+                <div class="ma-element">
+                    <label for="captcha" class="ma-ele-title"><img height="15" width="30" src=<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/images/recaptcha.svg'; ?>><?php _e('Captcha v3 Site Key', 'mighty-addons'); ?></label>
+                    <div class="info-field">
+                        <input class="regular-text" type="text" name="captcha-v3-key" placeholder="YOUR_SITE_API_KEY" id="captcha_v3_key" value="<?php echo Helper::get_integration_option('captcha-v3-key'); ?>" />
+                        <a class="help-link" target="_blank" href="https://www.google.com/recaptcha/admin/create"><?php _e('Get captcha Site key 🔑', 'mighty-addons'); ?></a>
+                    </div>
+                </div>
+
+                <div class="ma-element">
+                    <label for="captcha" class="ma-ele-title"><img height="15" width="30" src=<?php echo MIGHTY_ADDONS_PLG_URL . 'assets/images/recaptcha.svg'; ?>><?php _e('Captcha v3 Secret Key', 'mighty-addons'); ?></label>
+                    <div class="info-field">
+                        <input class="regular-text" type="text" name="captcha-v3-secret-key" placeholder="YOUR_SECRET_API_KEY" id="captcha_v3_secret_key" value="<?php echo Helper::get_integration_option('captcha-v3-secret-key'); ?>" />
+                        <a class="help-link" target="_blank" href="https://www.google.com/recaptcha/admin/create"><?php _e('Get captcha Secret key 🔑', 'mighty-addons'); ?></a>
                     </div>
                 </div>
 
@@ -105,7 +121,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     <button type="submit" class="button ma-btn ma-save-button"><?php _e('Save Settings', 'mighty-addons'); ?></button>
                 </div>
 
-                
             </form>
             
         </div>

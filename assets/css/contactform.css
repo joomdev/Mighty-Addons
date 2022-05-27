@@ -23,14 +23,14 @@
 .mt-c-form-fields-wrapper .mt-c-form-fields-wrapper-inner {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: calc( -30px/2 );
+  margin-right: calc( -30px/2 );
   margin-bottom: -30px;
 }
 
 .mt-c-form-fields-wrapper .field-group {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: calc( 30px/2 );
+  padding-left: calc( 30px/2 );
   margin-bottom: 30px;
 }
 
@@ -390,4 +390,12 @@
   .mt-form-col-sm-100 {
     width: 100%;
   }
+}
+
+.mt-c-form input[type=number]::-webkit-inner-spin-button, 
+.mt-c-form input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
