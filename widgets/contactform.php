@@ -118,8 +118,11 @@ class MT_contactform extends Widget_Base {
 				'form_field_column_width', [
 					'label' => esc_html__( 'Column Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
-                    'default' => __('100'),
-                    'options' => [
+					'desktop_default' => __('100'),
+                    'tablet_default' => __(''),
+                    'mobile_default' => __(''),                    
+					'options' => [
+						'' => __('Default', 'mighty'),
                         '20' => __('20%', 'mighty'),
                         '25' => __('25%', 'mighty'),
                         '33' => __('33%', 'mighty'),
@@ -355,7 +358,7 @@ class MT_contactform extends Widget_Base {
                     ],
 					'default' => [
                         'unit' => 'px',
-                        'size' => 20,
+                        'size' => 10,
                     ],                    
 					'selectors' => [
 						'{{WRAPPER}} .mt-c-form-fields-wrapper .type-submit .button.icon-before .button-icon' => 'margin-right: {{SIZE}}{{UNIT}}',
@@ -384,8 +387,11 @@ class MT_contactform extends Widget_Base {
 				'form_button_width', [
 					'label' => esc_html__( 'Button Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
-                    'default' => __('100'),
+                    'desktop_default' => __('100'),
+                    'tablet_default' => __(''),
+                    'mobile_default' => __(''),
                     'options' => [
+						'' => __('Default', 'mighty'),
                         '20' => __('20%', 'mighty'),
                         '25' => __('25%', 'mighty'),
                         '33' => __('33%', 'mighty'),
@@ -616,20 +622,12 @@ class MT_contactform extends Widget_Base {
                 [
                     'label' => __( 'Rows Gap', 'mighty' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ '%', 'px' , 'em' ],
+                    'size_units' => [ 'px' ],
                     'range' => [
-                        '%' => [
-                            'min' => 1,
-                            'max' => 100
-                        ],
                         'px' => [
                             'min' => 1,
                             'max' => 1000
                         ],
-                        'em' => [
-                            'min' => 1,
-                            'max' => 1000
-                        ]
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .mt-c-form-fields-wrapper .field-group' => 'margin-bottom: {{SIZE}}{{UNIT}}',
@@ -800,7 +798,7 @@ class MT_contactform extends Widget_Base {
 				[
 					'label' => __( 'Border Width', 'mighty' ),
 					'type' => Controls_Manager::DIMENSIONS,
-					'size_units' => [ 'px' , '%' ],
+					'size_units' => [ 'px' ],
 					'selectors' => [
 						'{{WRAPPER}} .mt-c-form-fields-wrapper .field-group .field' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
