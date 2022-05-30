@@ -817,3 +817,35 @@ a.help-link {
         opacity: 1
     }
 }
+
+.ma-element.ma-captcha-element {
+	display: block;
+}
+
+.ma-element.ma-captcha-element .info-field {
+	padding-left: calc(15px/2);
+	padding-right: calc(15px/2);
+    display: block;
+}
+
+.ma-element.ma-captcha-element .info-field:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.ma-element.ma-captcha-element .info-field .info-field-inner {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ma-element.ma-captcha-element .info-field .info-field-inner label {
+	font-size: 15px;
+}
+
+.ma-element.ma-captcha-element .info-field .info-field-inner .captcha-keys input {
+    display: block;
+}
+
+.ma-element.ma-captcha-element .ma-ele-title {
+    margin: 0;
+}
