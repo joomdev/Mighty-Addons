@@ -182,15 +182,15 @@
 }
 
 .mt-c-form-fields-wrapper .type-submit.button-left {
-  text-align: left;
+  justify-content: flex-start;
 }
 
 .mt-c-form-fields-wrapper .type-submit.button-center {
-  text-align: center;
+  justify-content: center;
 }
 
 .mt-c-form-fields-wrapper .type-submit.button-right {
-  text-align: right;
+  justify-content: flex-end;
 }
 
 .mt-c-form-fields-wrapper .type-submit.button-block .button {
