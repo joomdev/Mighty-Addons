@@ -118,7 +118,7 @@ class MT_contactform extends Widget_Base {
 				'form_field_column_width', [
 					'label' => esc_html__( 'Column Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
-					'desktop_default' => __('100'),
+					'default' => __('100'),
                     'tablet_default' => __(''),
                     'mobile_default' => __(''),                    
 					'options' => [
@@ -387,7 +387,7 @@ class MT_contactform extends Widget_Base {
 				'form_button_width', [
 					'label' => esc_html__( 'Button Width', 'mighty' ),
 					'type' => Controls_Manager::SELECT,
-                    'desktop_default' => __('100'),
+                    'default' => __('100'),
                     'tablet_default' => __(''),
                     'mobile_default' => __(''),
                     'options' => [
@@ -1064,7 +1064,7 @@ class MT_contactform extends Widget_Base {
 
 					<?php foreach( $form_fields as $key => $field_type ) { ?> 
 
-						<div class="type-text field-group <?php echo ( $field_type['form_field_required'] == 'yes' && $settings['form_field_show_required_mark'] == 'yes' ) ? 'mark-required' : ''; ?> mt-form-col-<?php echo $field_type['form_field_column_width'];?> mt-form-col-md-<?php echo $field_type['form_field_column_width_tablet'];?> mt-form-col-sm-<?php echo $field_type['form_field_column_width_mobile'];?>">
+						<div class="type-text field-group<?php echo ( $field_type['form_field_required'] == 'yes' && $settings['form_field_show_required_mark'] == 'yes' ) ? ' mark-required' : ''; ?> mt-form-col-<?php echo $field_type['form_field_column_width'];?> mt-form-col-md-<?php echo $field_type['form_field_column_width_tablet'];?> mt-form-col-sm-<?php echo $field_type['form_field_column_width_mobile'];?>">
 							<?php if ( $settings['form_field_show_label'] == 'yes' ) { ?>
 								<label class="field-label"><?php echo $field_type['form_field_label']; ?></label>
 							<?php } ?>
@@ -1131,7 +1131,7 @@ class MT_contactform extends Widget_Base {
 						</div>
 					<?php } ?>
 				
-					<div class="type-submit field-group  mt-form-col-<?php echo $settings['form_button_width'];?> mt-form-col-md-<?php echo $settings['form_button_width_tablet'];?> mt-form-col-sm-<?php echo $settings['form_button_width_mobile'];?>  button-<?php echo $settings['button_alignment']; ?>">
+					<div class="type-submit field-group mt-form-col-<?php echo $settings['form_button_width'];?> mt-form-col-md-<?php echo $settings['form_button_width_tablet'];?> mt-form-col-sm-<?php echo $settings['form_button_width_mobile'];?>  button-<?php echo $settings['button_alignment']; ?>">
 						<button type="submit" class="button button-<?php echo $settings['form_button_size']; ?> icon-<?php echo $settings['button_icon_position']; ?>" <?php echo ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) ? 'disabled="disabled"' : ''; ?> >
 							<span>
 								<?php if( !empty( $settings['form_button_icon']['value'] ) ) { ?>
