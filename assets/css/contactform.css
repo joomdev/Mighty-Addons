@@ -32,6 +32,9 @@
   padding-right: calc( 30px/2 );
   padding-left: calc( 30px/2 );
   margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 .mt-c-form-fields-wrapper .field-group .field-label {
@@ -394,8 +397,8 @@
 
 .mt-c-form input[type=number]::-webkit-inner-spin-button, 
 .mt-c-form input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
     margin: 0; 
 }
