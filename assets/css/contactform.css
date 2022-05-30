@@ -194,7 +194,7 @@
 }
 
 .mt-c-form-fields-wrapper .type-submit.button-block .button {
-  width: 100%;
+  flex-basis: 100%;
 }
 
 .mt-c-form-fields-wrapper .type-submit.button-block .button>span {
