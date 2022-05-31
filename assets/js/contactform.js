@@ -11,7 +11,6 @@
         let redirectUrl = sel.data( 'redirect_url' );
         let templateData = sel.data( 'template_data' );
         let contactFormData = sel.data( 'form_data' );
-        console.log(contactFormData);
         let defaultCaptchaValue = '';
         if ( CaptchaType == 'default'  && enableCaptcha == 'yes' ) {
             defaultCaptchaValue = sel.data( 'dc_value' );
@@ -54,6 +53,10 @@
             data.append( 'senderEmail', senderEmail );
             data.append( 'action', MightyContactForm.contactformAction );
 
+            if( $( form ).find('.submit-message').length != 0 ) {
+                $( form ).find('.submit-message')[0].remove();
+            }
+
             jQuery.ajax( {
                 url: MightyContactForm.ajaxUrl,
                 type: 'post',
@@ -63,7 +66,9 @@
                 success: function( data ) {
                     data = JSON.parse( data );
                     if( thankyouMsg ) {
-                        $( form ).find('.mt-c-form-fields-wrapper-inner')[0].insertAdjacentHTML('afterend', data.msg);;
+
+                        $( form ).find('.mt-c-form-fields-wrapper-inner')[0].insertAdjacentHTML('afterend', data.msg);
+
                         if( data.result ) {
                             $( form ).trigger('reset');
                         }
