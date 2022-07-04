@@ -395,7 +395,8 @@ class MT_Buttongroup extends Widget_Base {
                         'unit' => 'px',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .mighty-buttongroup>*+*' => 'margin-left: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .mighty-button' => 'margin: calc( {{SIZE}}{{UNIT}} / 2 );',
+                        '{{WRAPPER}} .mighty-buttongroup' => 'margin: calc( -{{SIZE}}{{UNIT}} / 2 );',
                         '{{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-desktop>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
                         '(tablet) {{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-tablet>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
                         '(mobile) {{WRAPPER}} .mighty-buttongroup.mighty-buttongroup-stack-mobile>*+*' => 'margin-top: {{SIZE}}{{UNIT}}; margin-left:0;',
