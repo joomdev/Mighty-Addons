@@ -25,7 +25,7 @@ class MT_ContactForm7 extends Widget_Base {
     public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 	
-		wp_register_style( 'mt-cf7styler', MIGHTY_ADDONS_PLG_URL . 'assets/css/cf7-styler.min.css', false, MIGHTY_ADDONS_VERSION );
+		wp_register_style( 'mt-contactform7', MIGHTY_ADDONS_PLG_URL . 'assets/css/cf7-styler.min.css', false, MIGHTY_ADDONS_VERSION );
 	}
 	
 	public function get_name() {
@@ -386,7 +386,7 @@ class MT_ContactForm7 extends Widget_Base {
                             'icon' => 'fa fa-align-right',
                         ],
                         'align-details-justify' => [
-                            'title' => __( 'Right', 'mighty' ),
+                            'title' => __( 'Justify', 'mighty' ),
                             'icon' => 'fa fa-align-justify',
                         ]
                     ],

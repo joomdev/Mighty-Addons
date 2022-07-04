@@ -625,7 +625,7 @@ class MT_Openinghours extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::COLOR,
                     'default' => '#fff',
                     'selectors' => [
-                        '.ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(odd)' => 'background: {{VALUE}}',
+                       '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(odd)' => 'background: {{VALUE}}',
                     ],
                     'condition' => [
                         'striped_effect' => 'true',
@@ -640,7 +640,7 @@ class MT_Openinghours extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::COLOR,
                     'default' => '#FAFBFD',
                     'selectors' => [
-                        '.ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(even)' => 'background: {{VALUE}}',
+                        '{{WRAPPER}} .ma-openinghours-wrapper .ma-oh-row.mt-striped:nth-child(even)' => 'background: {{VALUE}}',
                     ],
                     'condition' => [
                         'striped_effect' => 'true',
