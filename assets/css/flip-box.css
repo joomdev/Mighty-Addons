@@ -232,3 +232,29 @@
 .elementor-widget-mt-flip-box .mt-flipbox-wrapper .mt-flipbox-icon {
 	background-color: transparent;
 }
+
+.mt-flipbox-front,
+.mt-flipbox-back {
+	position: relative;
+}
+
+.mt-flipbox-front::after,
+.mt-flipbox-back::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	/* background-color: #000; */
+	/* opacity: 0.5; */
+}
+.mt-flipbox-wrapper,
+.mt-flipbox-title,
+.mt-flipbox-description,
+.mt-flipbox-image,
+.mt-flipbox-button {
+	position: relative;
+	z-index: 1;
+}

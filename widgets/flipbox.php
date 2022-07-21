@@ -386,6 +386,38 @@ class MT_Flipbox extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'front_overlay_color',
+                [
+                    'label' => __( 'Background Color', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-front::after' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'front_image_opacity',
+                [
+                    'label' => __( 'Opacity', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 0.5,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-front::after' => 'opacity: {{SIZE}};'
+                    ],
+                ]
+            );
+
             $this->add_responsive_control(
                 'front_padding',
                 [
@@ -869,6 +901,38 @@ class MT_Flipbox extends Widget_Base {
                     'name' => 'back_background',
                     'label' => __( 'Background', 'mighty' ),
                     'selector' => '{{WRAPPER}} .mt-flipbox-wrapper .mt-flipbox-card .mt-flipbox-back',
+                ]
+            );
+
+            $this->add_control(
+                'back_overlay_color',
+                [
+                    'label' => __( 'Background Color', 'mighty' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-back::after' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'back_image_opacity',
+                [
+                    'label' => __( 'Opacity', 'mighty' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 0.5,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .mt-flipbox-back::after' => 'opacity: {{SIZE}};'
+                    ],
                 ]
             );
 

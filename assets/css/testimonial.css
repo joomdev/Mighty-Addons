@@ -44,3 +44,8 @@
 .mighty-testimonial-wrapper .slick-dots li button:hover {
 	background-color: transparent;
 }
+
+.mighty-testimonial .slick-dots {
+    position: static;
+    bottom: auto;
+}

@@ -117,3 +117,13 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+/* .slick-dots {
+    position: static;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+} */

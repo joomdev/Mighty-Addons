@@ -372,7 +372,7 @@ class MT_Testimonial extends Widget_Base {
 				[
 					'label' => __( 'Border Radius', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
-					'size_units' => [ 'px' ],
+					'size_units' => [ 'px','%' ],
 					'range' => [
 						'px' => [
 							'min' => 1,
@@ -483,7 +483,7 @@ class MT_Testimonial extends Widget_Base {
 				[
 					'label' => __( 'Border Radius', 'mighty' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
-					'size_units' => [ 'px' ],
+					'size_units' => [ 'px', '%' ],
 					'range' => [
 						'px' => [
 							'min' => 1,
@@ -849,6 +849,31 @@ class MT_Testimonial extends Widget_Base {
 					]
 				]
 			);
+
+			$this->add_responsive_control(
+				'space_dots_slide',
+				[
+					'label' => __( 'Space b/w Slides and Dots', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px' ],
+					'range' => [
+						'px' => [
+							'min' => 1,
+							'max' => 100,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 0,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial .slick-dots' => 'margin-top: {{SIZE}}{{UNIT}}',
+					],
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
+				]
+			);
 			
 			$this->add_control(
                 'dots_color',
@@ -857,6 +882,34 @@ class MT_Testimonial extends Widget_Base {
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial .slick-dots li button::before' => 'color: {{VALUES}}'
+					],
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
+                ]
+			);
+
+			$this->add_control(
+                'dots_hover_color',
+                [
+                    'label'     => __( 'Hover Color', 'mighty' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial .slick-dots li button::before:hover' => 'color: {{VALUES}}'
+					],
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
+                ]
+			);
+
+			$this->add_control(
+                'dots_active_color',
+                [
+                    'label'     => __( 'Active Color', 'mighty' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial .slick-dots .slick-active button::before' => 'color: {{VALUES}}'
 					],
 					'condition' => [
 						'show_bullets' => 'yes'
@@ -885,6 +938,20 @@ class MT_Testimonial extends Widget_Base {
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .mighty-testimonial .slick-dots li button:hover' => 'background-color: {{VALUES}}'
+					],
+					'condition' => [
+						'show_bullets' => 'yes'
+					]
+                ]
+			);
+
+			$this->add_control(
+                'dots_active_bg_color',
+                [
+                    'label'     => __( 'Active Background Color', 'mighty' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .mighty-testimonial .slick-dots .slick-active button' => 'background-color: {{VALUES}}'
 					],
 					'condition' => [
 						'show_bullets' => 'yes'

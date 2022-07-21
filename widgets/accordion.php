@@ -582,6 +582,49 @@ class MT_Accordion extends Widget_Base {
                 ]
             );
 
+            $this->add_group_control(
+				Group_Control_Border::get_type(),
+				[
+					'name' => 'accordion_border',
+					'label' => __( 'Border Type', 'mighty' ),
+					'selector' => '{{WRAPPER}} .mighty-accordion .mt-panel',
+				]
+			);
+
+			$this->add_responsive_control(
+				'accordion_border_radius',
+				[
+					'label' => __( 'Border Radius', 'mighty' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px', '%' ],
+					'range' => [
+						'px' => [
+							'min' => 1,
+							'max' => 100,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 0,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-accordion .mt-panel' => 'border-radius: {{SIZE}}{{UNIT}}',
+					],
+				]
+			);
+
+            $this->add_control(
+				'accordion_padding',
+				[
+					'label' => __( 'Padding', 'mighty' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px', '%', 'em' ],
+					'selectors' => [
+						'{{WRAPPER}} .mighty-accordion .mt-panel' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
