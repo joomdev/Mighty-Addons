@@ -3,7 +3,7 @@
  * Plugin Name: Mighty Addons
  * Description: <a href="https://mightythemes.com/products/mighty-addons/">Mighty Addons</a> is a Powerful Elementor Widget Plugin that comes with advanced & flexible features powering up your Elementor website and increasing your designing experience.
  * Plugin URI: https://mightythemes.com/products/mighty-addons/
- * Version:     1.9.1
+ * Version:     1.9.2
  * Author:      MightyThemes
  * Author URI:  https://mightythemes.com/
  * Text Domain: mighty
@@ -17,7 +17,7 @@ use MightyAddons\Classes\DashboardPanel;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'MIGHTY_ADDONS_VERSION', '1.9.1' );
+define( 'MIGHTY_ADDONS_VERSION', '1.9.2' );
 define( 'MIGHTY_ADDONS_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MIGHTY_ADDONS_PLG_URL', plugin_dir_url( __FILE__ ) );
 define( 'MIGHTY_ADDONS_PLG_BASENAME', plugin_basename( __FILE__ ) );
