@@ -212,7 +212,9 @@ Create an issue on the desired product or maybe give us a ⭐. 😀
 ## Changelog
 
 ### 1.9.2
-* Fixed: Minor issues and bugs
+* Fixed: Styling Controls and Styling issues in Testimonial Widget
+* Fixed: Styling issues in FlipBox widget
+* Added: Styling Controls in Accordion Widget
 
 ### 1.9.1
 * Fixed: Minor issues and bugs
